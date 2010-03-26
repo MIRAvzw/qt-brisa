@@ -1,0 +1,174 @@
+#!/bin/bash
+
+#====some defaults====
+QMAKE_BIN=qmake
+WHICH=which
+
+NO_DB=0
+NO_FFMPEG=0
+NO_XSS=0
+NO_ZEROCONF=0
+
+if uname -a | grep -iq Darwin; then
+    DEFAULT_LIBS="/Library/Frameworks"
+    QMAKE_PARAMS="-spec macx-g++"
+    NO_XSS=1
+else
+    DEFAULT_LIBS="PREFIX/lib"
+    QMAKE_PARAMS=""
+fi
+
+# the directory of this script (the root)
+PROJECT_ROOT=`dirname $0`
+PROJECT_ROOT=`(cd "$relpath"; /bin/pwd)`
+TESTDIR=$PROJECT_ROOT/config.tests
+CONFIG_LOG=$PROJECT_ROOT/config.log
+
+# Define some colors for neat output
+C_RED='\e[1;31m'
+C_BLUE='\e[1;34m'
+C_GREEN='\e[1;32m'
+C_CYAN='\e[1;36m'
+C_NONE='\e[0m' # No Color
+
+#====parse configure options====
+
+echo "CONFIG += silent" > config.in
+
+while (( $# > 0 )); do
+    if [ $1 == "-qmake-bin" ]; then
+        QMAKE_BIN=$2; shift
+    elif [ $1 == "-bootstrap" ]; then
+        echo "CONFIG += bootstrap" >> config.in; shift
+    elif [ $1 == "-prefix" ]; then
+        echo "BRISAINSTALLDIR = $2" >> config.in; shift
+    elif [ $1 == "-libdir" ]; then
+        echo "target.path = $2" >> config.in; shift
+    elif [ $1 == "-docdir" ]; then
+        echo "docs.path = $2" >> config.in; shift
+    elif [ $1 == "-headerdir" ]; then
+        echo "include.path = $2" >> config.in; shift
+    elif [ $1 == "-bindir" ]; then
+        echo "bin.path = $2" >> config.in; shift
+    elif [ $1 == "-static" ]; then
+        echo "CONFIG += static staticlib" >> config.in
+    elif [ $1 == "-debug" ]; then
+        echo "CONFIG += debug" >> config.in
+    elif [ $1 == "-release" ]; then
+        echo "CONFIG += release" >> config.in
+    elif [ $1 == "-verbose" ]; then
+        echo "CONFIG -= silent" >> config.in
+    elif [ $1 == "-qws" ]; then
+        echo "CONFIG += qws" >> config.in
+    elif [ $1 == "-coverage" ]; then
+        echo "CONFIG += coverage" >> config.in
+    elif [ $1 == "-help" ] || [ $1 == "--help" ]; then
+        echo "Usage: configure [-prefix <dir>] [-libdir <dir>] [-docdir <dir>]"
+        echo "       [-bindir <dir>] [-headerdir <dir>] [-qmake-bin <path>]"
+        echo "       [-static] [-debug] [-release] [-no-db] [-no-xss]"
+        echo "       [-verbose] [-qws]"
+        echo
+        echo "Installation options:"
+        echo
+        echo "-prefix <dir> ....... This will install everything relative to <dir>"
+        echo "                      default: /usr/local/brisa"
+        echo "-libdir <dir> ....... Libraries will be installed to <dir>"
+        echo "                      default: $DEFAULT_LIBS"
+        echo "-docdir <dir> ....... Documentation will be installed to <dir>"
+        echo "                      default: PREFIX/share/doc"
+        echo "-bindir <dir> ....... Executables will be installed to <dir>"
+        echo "                      default: PREFIX/bin"
+        echo "-headerdir <dir> .... Include files will be installed to <dir>"
+        echo "                      default: PREFIX/include"
+        echo "-qmake-bin <path> ... Specifies the path to the qmake executable"
+        echo "                      default: search the system path"
+        echo "-static ............. Compile BRisa as a static library"
+        echo "-debug .............. Build BRisa with debugging symbols"
+        echo "-release ............ Build BRisa without debugging support"
+        echo "-verbose ............ shows compiler output"
+        echo "-qws ................ Build for Qt/Embedded"
+        echo "-coverage ........... Collect coverage information"
+
+        rm config.in
+        exit
+    else
+        echo "Unrecognized configure option: $1"
+        rm config.in
+        exit
+    fi
+    shift
+done
+
+#====begin some autodetection====
+>$CONFIG_LOG
+
+# qmake?
+if ! $WHICH $QMAKE_BIN >>$CONFIG_LOG 2>&1; then
+    echo >&2 "You don't seem to have 'qmake' in your PATH."
+    echo >&2 "Cannot proceed."
+    exit 1
+fi
+
+# find a make command
+if [ -z "$MAKE" ]; then
+    MAKE=
+    for mk in gmake make; do
+        if "$WHICH" $mk 2>&1| grep -qv "no "; then
+            MAKE=`$WHICH $mk`
+            break
+        fi
+    done
+    if [ -z "$MAKE" ]; then
+        echo >&2 "You don't seem to have 'make' or 'gmake' in your PATH."
+        echo >&2 "Cannot proceed."
+        exit 1
+    fi
+fi
+
+configtest()
+{
+    echo -en "checking for $1\t"
+    echo -e  " \n\n $1\n" >>$CONFIG_LOG
+    cd $TESTDIR/$1
+    $QMAKE_BIN $QMAKE_PARAMS  >>$CONFIG_LOG
+    echo -n "."
+    $MAKE clean >>$CONFIG_LOG
+    [ -f ./$1 ] && rm ./$1
+    echo -n "."
+    $MAKE >>$CONFIG_LOG
+    echo -n "."
+    if ./$1 >>$CONFIG_LOG ; then
+    	echo -e >&2 "  [${C_GREEN}success${C_NONE}] "
+    	echo "DEFINES+=HAVE_$2">>$PROJECT_ROOT/config.in
+    else
+    	echo -e >&2 "  [${C_RED}failure${C_NONE}] "
+    fi
+
+    [ -f ./$1 ] && rm ./$1
+    $MAKE clean >>$CONFIG_LOG
+    $MAKE distclean >>$CONFIG_LOG
+}
+
+echo >&2 "Installing dependencies."
+
+echo >&2 "Installing QtSoap 2.6..."
+cd deps/qtsoap-2.6-opensource
+./configure &> qtsoap_build.log
+make &> qtsoap_build.log
+cd ../..
+
+echo >&2 "Testing for external libraries."
+
+configtest qt4     Qt
+configtest qxt     Qxt
+
+#====finaly running qmake====
+echo "Autodetection finished. Running qmake."
+cd  $PROJECT_ROOT
+
+[ -f config.pri ] && mv config.pri config.pri.bak
+mv config.in config.pri
+
+$QMAKE_BIN $QMAKE_PARAMS -recursive 2>>$CONFIG_LOG
+
+echo -e >&2 "${C_CYAN}Configure finished. Run $MAKE now.${C_NONE}\n"

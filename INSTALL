@@ -1,0 +1,38 @@
+Installing Brisa-C++
+====================
+
+Configure:
+
+   $ ./configure
+
+Build:
+
+   $ make
+
+Install:
+
+   # make install
+
+
+Examples
+========
+
+   $ cd examples
+   $ qmake
+   $ make
+
+For running, enter the example directory and run the binary.
+
+
+Instructions for developers
+===========================
+
+Cleaning before commit:
+
+   $ make distclean
+
+Building tests:
+
+   $ cd tests
+   $ qmake
+   $ make

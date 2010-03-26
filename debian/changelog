@@ -1,0 +1,5 @@
+libbrisa (0.4.0maemo) unstable; urgency=low
+
+  * Initial debian packaging
+
+ -- Andre Dieb Martins <andre.dieb@gmail.com>  Tue, 22 Sep 2009 12:34:21 -0300

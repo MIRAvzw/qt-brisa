@@ -1,0 +1,3 @@
+BRISA_MODULES+=core
+BRISA_MODULES+=utils
+BRISA_MODULES+=upnp
