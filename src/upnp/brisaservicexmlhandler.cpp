@@ -222,6 +222,14 @@ bool BrisaServiceXMLHandler::characters(const QString &str)
         context->getStateVariable()->addAllowedValue(str);
         break;
 
+    case StateVariableAllowedValueRangeMinimum:
+        context->getStateVariable()->setAttribute(BrisaStateVariable::Minimum, str);
+        break;
+    case StateVariableAllowedValueRangeMaximum:
+        context->getStateVariable()->setAttribute(BrisaStateVariable::Maximum, str);
+        break;
+
+
     case ServiceStart:
     case Scpd:
     case ServiceSpecVersion:
@@ -233,8 +241,6 @@ bool BrisaServiceXMLHandler::characters(const QString &str)
     case StateVariable:
     case StateVariableAllowedValueList:
     case StateVariableAllowedValueRange:
-    case StateVariableAllowedValueRangeMinimum:
-    case StateVariableAllowedValueRangeMaximum:
     case StateVariableAllowedValueRangeStep:
     case ServiceError:
     case ServiceFinished:
