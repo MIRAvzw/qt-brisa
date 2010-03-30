@@ -1,0 +1,16 @@
+cd examples/ && make -f Makefile 
+make[1]: Entering directory `/home/andre/workspace/brisa/qt/trunk/qt-brisa/deps/qtsoap-2.6-opensource/examples'
+cd google/ && make -f Makefile 
+make[2]: Entering directory `/home/andre/workspace/brisa/qt/trunk/qt-brisa/deps/qtsoap-2.6-opensource/examples/google'
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtXml -I/usr/include/qt4 -I. -I../../src -I. -o moc_qtsoap.o moc_qtsoap.cpp
+moc_qtsoap.cpp:14:2: error: #error "This file was generated using the moc from 4.6.2. It"
+moc_qtsoap.cpp:15:2: error: #error "cannot be used with the include files from this version of Qt."
+moc_qtsoap.cpp:16:2: error: #error "(The moc has changed too much.)"
+moc_qtsoap.cpp: In member function ‘virtual const QMetaObject* QtSoapHttpTransport::metaObject() const’:
+moc_qtsoap.cpp:60: error: ‘class QObjectData’ has no member named ‘metaObject’
+moc_qtsoap.cpp:60: error: ‘class QObjectData’ has no member named ‘metaObject’
+make[2]: *** [moc_qtsoap.o] Error 1
+make[2]: Leaving directory `/home/andre/workspace/brisa/qt/trunk/qt-brisa/deps/qtsoap-2.6-opensource/examples/google'
+make[1]: *** [sub-google-make_default] Error 2
+make[1]: Leaving directory `/home/andre/workspace/brisa/qt/trunk/qt-brisa/deps/qtsoap-2.6-opensource/examples'
+make: *** [sub-examples-make_default-ordered] Error 2
