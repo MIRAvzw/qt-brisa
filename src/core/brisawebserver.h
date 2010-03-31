@@ -36,17 +36,36 @@
 
 namespace BrisaCore {
 
-class BRISA_CORE_EXPORT BrisaWebService  : public QxtWebServiceDirectory
-{
-    Q_OBJECT
+    /*!
+     *  \brief Web service abstraction class
+     *
+     *  BrisaWebService is used to receive and respond UPnP action and event requests. Currently this
+     *  class is used mostly with BrisaService and BrisaEventController.
+     *
+     *  \sa BrisaUpnp::BrisaService , BrisaUpnp::BrisaEventController
+     */
+    class BRISA_CORE_EXPORT BrisaWebService  : public QxtWebServiceDirectory
+    {
+        Q_OBJECT
 
     public:
+        /*!
+         *  Constructor for BrisaWebService
+         */
         BrisaWebService(QxtAbstractWebSessionManager *sm, QObject *parent = 0) :
-            QxtWebServiceDirectory(sm, parent) {}
+                QxtWebServiceDirectory(sm, parent) {}
 
+        /*!
+         *  Destructor for BrisaWebService
+         */
         ~BrisaWebService() {}
 
     public slots:
+        /*!
+         *  Reimplemented from libQxt.
+         *  This method receives all web service requests and emits a genericRequestReceived() signal. If
+         *  the request method is of "POST" type, the web service will reply a default message.
+         */
         void pageRequestedEvent(QxtWebRequestEvent *event)
         {
             this->sessionID = event->sessionID;
@@ -68,18 +87,35 @@ class BRISA_CORE_EXPORT BrisaWebService  : public QxtWebServiceDirectory
                 postEvent(new QxtWebPageEvent(event->sessionID, event->requestID, DEFAULT_PAGE));
         }
 
+        /*!
+         *  Responds \a response to the session and request ID currently stored in BrisaWebService, if using
+         *  this method the response must be synchronous because the request and session ID can change
+         *  quickly.
+         */
         void respond(QByteArray response)
         {
             this->respond(response, this->sessionID, this->requestID);
         }
+        /*!
+         *  Reimplements respond().
+         *  We recommend using this method given the fact that it supports asynchronous requests.
+         */
         void respond(const QByteArray &response, const int &sessionId, const int &requestId)
         {
             this->postEvent(new QxtWebPageEvent(sessionId, requestId, response));
         }
+        /*!
+         *  Reimplements respond()
+         *  This method responds only a HTTP header to the session and request ID stored in BrisaWebService
+         */
         void respond(const QHttpResponseHeader &response)
         {
             this->respond(response, this->sessionID, this->requestID);
         }
+        /*!
+         *  Reimplements respond().
+         *  This method responds only a HTTP header using the given session and request ID.
+         */
         void respond(const QHttpResponseHeader &response, const int &sessionId,
                      const int &requestId)
         {
@@ -92,7 +128,7 @@ class BRISA_CORE_EXPORT BrisaWebService  : public QxtWebServiceDirectory
             // it is done because LibQxt's events cannot receive QHttpResponseHeaders
             QList<QPair<QString, QString> > headerValues = response.values();
             for (QList<QPair<QString, QString> >::iterator i = headerValues.begin();
-                 i != headerValues.end(); ++i) {
+            i != headerValues.end(); ++i) {
                 event->headers.insertMulti(i->first, i->second);
             }
 
@@ -100,11 +136,19 @@ class BRISA_CORE_EXPORT BrisaWebService  : public QxtWebServiceDirectory
         }
 
     signals:
+        /*!
+         *  This signal is emmited when BrisaWebService receives a request.
+         */
         void genericRequestReceived(const QString &method,
                                     const QMultiHash<QString, QString> &headers,
                                     const QByteArray &requestContent,
                                     int sessionId,
                                     int requestId);
+        /*!
+         *  Reimplements genericRequestReceived()
+         *  This signal is emmited when BrisaWebService receives a request, the main difference is that this
+         *  signal has a pointer to the class that is emmiting the signal.
+         */
         void genericRequestReceived(BrisaWebService *service,
                                     QMultiHash<QString, QString>,
                                     QString requestContent);
@@ -112,31 +156,49 @@ class BRISA_CORE_EXPORT BrisaWebService  : public QxtWebServiceDirectory
     private:
         int sessionID;
         int requestID;
-};
+    };
 
 
-class BRISA_CORE_EXPORT BrisaWebFile : public QxtAbstractWebService
-{
-    Q_OBJECT
+    /*!
+     *  \brief Adds a file to the web server.
+     *
+     *  Use this class to store a file into the web server. If the BrisaWebFile is stored using a
+     *  BrisaWebServiceProvider, it's url path will be of "IP:PORT/SERVICENAME/yourfile". if it's stored
+     *  using the BrisaWebServer convenience method \a "publishFile()", it's url path will be
+     *  "IP:PORT/yourfile".
+     */
+    class BRISA_CORE_EXPORT BrisaWebFile : public QxtAbstractWebService
+    {
+        Q_OBJECT
 
     public:
+        /*!
+         *  Constructor for BrisaWebFile. It creates a QFile with the given file path.
+         */
         BrisaWebFile(QxtAbstractWebSessionManager *sm, QString filePath, QObject *parent = 0) :
-            QxtAbstractWebService(sm, parent)
+                QxtAbstractWebService(sm, parent)
         {
             file = new QFile(filePath);
             if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
                 throw "Could not open file for read.";
         }
 
+        /*!
+         *  Destructor for BrisaWebFile.
+         */
         ~BrisaWebFile()
         {
             delete file;
         }
 
+        /*!
+         *  Reimplemented from libQxt. When a request is received the BrisaWebFile will reply the stored
+         *  file.
+         */
         void pageRequestedEvent(QxtWebRequestEvent *event)
         {
             QxtWebPageEvent *c =
-                new QxtWebPageEvent(event->sessionID, event->requestID, file->readAll());
+                    new QxtWebPageEvent(event->sessionID, event->requestID, file->readAll());
             c->contentType = "text/xml";
             postEvent(c);
             file->reset();
@@ -144,28 +206,42 @@ class BRISA_CORE_EXPORT BrisaWebFile : public QxtAbstractWebService
 
     private:
         QFile *file;
-};
+    };
 
 
-class BRISA_CORE_EXPORT BrisaWebStaticContent : public QxtWebSlotService
-{
-    Q_OBJECT
+    /*!
+     *  \brief The BrisaWebStaticContent class stores a QString into the web server.
+     *
+     *  Use this class to store static content in the web server using a string format.
+     */
+    class BRISA_CORE_EXPORT BrisaWebStaticContent : public QxtWebSlotService
+    {
+        Q_OBJECT
 
     public:
+        /*!
+         *  Constructor for BrisaWebStaticContent. Stores the given QString.
+         */
         BrisaWebStaticContent(QxtAbstractWebSessionManager *sm,
                               QString content,
                               QObject *parent = 0) :
-            QxtWebSlotService(sm, parent)
+        QxtWebSlotService(sm, parent)
         {
             this->content = new QString(content);
         }
 
+        /*!
+         *  Destructor for BrisaWebStaticContent.
+         */
         ~BrisaWebStaticContent()
         {
             delete content;
         }
 
     public slots:
+        /*!
+         *  This method is called by BrisaWebServiceProvider, it replys the stored content.
+         */
         void index(QxtWebRequestEvent *event)
         {
             postEvent(new QxtWebPageEvent(event->sessionID, event->requestID, content->toUtf8()));
@@ -173,21 +249,33 @@ class BRISA_CORE_EXPORT BrisaWebStaticContent : public QxtWebSlotService
 
     private:
         QString *content;
-};
+    };
 
 
-class BRISA_CORE_EXPORT BrisaWebServiceProvider : public QxtWebServiceDirectory
-{
-    Q_OBJECT
+    /*!
+     *  \brief The BrisaWebServiceProvider class works as web service manager for the web server.
+     *
+     *  The BrisaWebServiceProvider has convenience methods for managing web services, like addFile()
+     *  and addContent(). It also keeps track of all files and content stored into the web service.
+     */
+    class BRISA_CORE_EXPORT BrisaWebServiceProvider : public QxtWebServiceDirectory
+    {
+        Q_OBJECT
 
     public:
+        /*!
+         *  Constructor for BrisaWebServiceProvider
+         */
         BrisaWebServiceProvider(QxtAbstractWebSessionManager *sm, QObject *parent) :
-            QxtWebServiceDirectory(sm, parent)
+                QxtWebServiceDirectory(sm, parent)
         {
             root = new BrisaWebStaticContent(sm, DEFAULT_PAGE, this);
             sessionManager = sm;
         }
 
+        /*!
+         *  Destructor for BrisaWebServiceProvider.
+         */
         ~BrisaWebServiceProvider()
         {
             delete root;
@@ -195,11 +283,24 @@ class BRISA_CORE_EXPORT BrisaWebServiceProvider : public QxtWebServiceDirectory
                 delete files.takeFirst();
         }
 
+        /*!
+         *  Call this method to add a BrisaWebFile to the web service.
+         */
         void addFile(const QString path, QString filePath);
+        /*!
+         *  Call this method to add a BrisaWebStaticContent to the web service.
+         */
         void addContent(const QString path, QString content);
+        /*!
+         * Reimplemented from libQxt.
+         */
         void pageRequestedEvent(QxtWebRequestEvent *event);
 
     protected:
+        /*!
+         *  Reimplemented from libQxt.
+         *  This method calls the BrisaWebStaticContent \a index() method.
+         */
         void indexRequested(QxtWebRequestEvent *event)
         {
             //TODO: fix it
@@ -211,27 +312,50 @@ class BRISA_CORE_EXPORT BrisaWebServiceProvider : public QxtWebServiceDirectory
         QxtAbstractWebSessionManager *sessionManager;
         QList<BrisaWebFile*> files;
         QList<BrisaWebStaticContent*> content;
-};
+    };
 
 
-class BRISA_CORE_EXPORT BrisaWebserver : public QxtHttpSessionManager
-{
-    Q_OBJECT
+    /*!
+     *  \brief The BrisaWebserver class is a web server implementation.
+     *
+     *  BrisaWebServer implements a Web Server using libQxt.
+     */
+    class BRISA_CORE_EXPORT BrisaWebserver : public QxtHttpSessionManager
+    {
+        Q_OBJECT
 
     public:
+        /*!
+         *  Constructor for BrisaWebServer
+         */
         BrisaWebserver(const QHostAddress &host, quint16 port);
+        /*!
+         *  Destructor for BrisaWebServer
+         */
         ~BrisaWebserver();
+        /*!
+         *  Publishes a file to the root.
+         */
         void publishFile(QString publishPath, QString filePath);
+        /*!
+         *  Adds a service to the web server. The service url path will be added to the root of the server.
+         */
         void addService(QString path, QxtWebServiceDirectory *service);
 
     protected:
+        /*!
+         *  This method dumps request information to the screen.
+         */
         void incomingRequest(quint32 requestID, const QHttpRequestHeader &header,
                              QxtWebContent *deviceContent);
+        /*!
+         *  Creates a new session and returns the session number.
+         */
         int newSession();
 
     private:
         BrisaWebServiceProvider *rootService;
-};
+    };
 
 };
 
