@@ -133,10 +133,7 @@ using namespace BrisaUpnp;
  *    \brief Map that identify each deliveryPath to a subscription.
  */
 
-/*!
- *    Constructs a BrisaControlPoint with the given \a parent, the service type \a st and
- *    the passed interval \a mx.
- */
+
 BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st , int mx) : QObject(parent)
 {
     buildUrlBase();
@@ -183,9 +180,6 @@ BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st , int mx) : QOb
     webserver->start();
 }
 
-/*!
- *    Destructor of BrisaControlPoint class.
- */
 BrisaControlPoint::~BrisaControlPoint()
 {
     if (!isRunning()) stop();
@@ -196,11 +190,6 @@ BrisaControlPoint::~BrisaControlPoint()
     delete http;
 }
 
-/*!
- *    This function starts the control point, the ssdpClient and the msearch
- *
- *    \sa stop(), isRunning()
- */
 void BrisaControlPoint::start()
 {
     if (isRunning()) {
@@ -213,11 +202,6 @@ void BrisaControlPoint::start()
     running = true;
 }
 
-/*!
- *    This function stops the control point, the ssdpClient and the msearch
- *
- *    \sa start(), isRunning()
- */
 void BrisaControlPoint::stop()
 {
     if (!isRunning()) {
@@ -230,28 +214,16 @@ void BrisaControlPoint::stop()
     running = false;
 }
 
-/*!
- *    Returns true if the control point is running.
- *
- *    \sa start(), stop()
- */
 bool BrisaControlPoint::isRunning()
 {
     return running;
 }
 
-/*!
- *    Starts the control point msearch discover.
- */
 void BrisaControlPoint::discover()
 {
     msearch->discover();
 }
 
-/*!
- *    Write the content of the downloaded xml in a new xml temporary file to set the device's
- *    attributes emits the deviceFound signal when finished.
- */
 void BrisaControlPoint::replyFinished(QNetworkReply *reply)
 {
     QTemporaryFile *rootXml = new QTemporaryFile();
@@ -282,27 +254,16 @@ void BrisaControlPoint::replyFinished(QNetworkReply *reply)
     emit deviceFound(device);
 }
 
-/*!
- *    Slot called when receive a newDevice event, this slot start the device's xml download.
- */
 void BrisaControlPoint::deviceFound(QString, QString location, QString, QString, QString, QString)
 {
     downloader->get(QNetworkRequest(QUrl(location)));
 }
 
-/*!
- *    Slot called when ssdp client emits a removed device event, this slot emit the deviceGone signal
- *    which has as parameter the device's usn.
- */
 void BrisaControlPoint::deviceRemoved(const QString usn)
 {
     emit deviceGone(usn);
 }
 
-/*!
- *    Private function to create the UrlBase of the control point(ip Address) and set the port.
- *    After that creates the urlBase(http:// + ip + : + port)'
- */
 void BrisaControlPoint::buildUrlBase()
 {
     QString sPort;
@@ -313,9 +274,6 @@ void BrisaControlPoint::buildUrlBase()
     this->urlBase = "http://" + ipAddress + ":" + sPort;
 }
 
-/*!
- *    Function to get a event proxy to subscribe, usubscribe or renew the events from a \a service.
- */
 BrisaEventProxy *BrisaControlPoint::getSubscriptionProxy(BrisaControlPointService *service)
 {
     deliveryPath++;
@@ -332,10 +290,6 @@ BrisaEventProxy *BrisaControlPoint::getSubscriptionProxy(BrisaControlPointServic
     return subscription;
 }
 
-/*!
- *    Slot to get the response of the http request, made by BrisaEventProxy class and set the SID
- *    of the subscription object.
- */
 void BrisaControlPoint::httpResponse(int i, bool error)
 {
     qWarning() << "Http response for request " << i;
@@ -385,4 +339,3 @@ void BrisaControlPoint::httpResponse(int i, bool error)
     subscription->setSid(sid);
     qDebug() << "Subscribed with SID " << subscription->getSid();
 }
-

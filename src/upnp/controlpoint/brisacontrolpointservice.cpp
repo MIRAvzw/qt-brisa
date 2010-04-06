@@ -26,35 +26,11 @@
 
 using namespace BrisaUpnp;
 
-/*!
- *    \class BrisaUpnp::BrisaControlPointService brisacontrolpointservice.h BrisaUpnp/BrisaControlPointService
- *
- *    \brief BrisaControlPointService is the class that implements action control in UPnP
- *    Architecture
- *
- *    It performs the action requests it's used in control point part, so that the user can make
- *    action calls.
- *
- *    BrisaControlPointService is a BrisaAbstractService.
- */
-
-/*!
- *    \property lastMethod
- *
- *    \brief String representing the method that was called to emit to the user.
- */
-
-/*!
- *    Constructs an empty BrisaControlPointService
- */
 BrisaControlPointService::BrisaControlPointService(QObject *parent) : BrisaAbstractService(parent)
 {
     connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
-/*!
- *    Constructs a BrisaControlPointService with the passed attributes.
- */
 BrisaControlPointService::BrisaControlPointService(const QString &serviceType,
                                                    const QString &serviceId, const QString &scpdUrl,
                                                    const QString &controlUrl,
@@ -65,29 +41,18 @@ BrisaControlPointService::BrisaControlPointService(const QString &serviceType,
     connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
-/*!
- *    Constructs a copy of \a serv.
- */
 BrisaControlPointService::BrisaControlPointService(BrisaControlPointService &serv) :
     BrisaAbstractService(serv)
 {
     connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
-/*!
- *    Initializes the BrisaControlPointService from the parse of \a xml that is a xml description
- *    file containing the service information.
- */
 void BrisaControlPointService::parseFromXml(QTemporaryFile *xml)
 {
     BrisaServiceXMLHandler handler;
     handler.parseService(this, xml);
 }
 
-/*!
- *    Call the \a method, with the passed \a param from a service, this action is performed by a
- *    webservice request.
- */
 void BrisaControlPointService::call(const QString &method, const QMap<QString, QString> &param)
 {
     QtSoapMessage request;
@@ -104,9 +69,6 @@ void BrisaControlPointService::call(const QString &method, const QMap<QString, Q
     this->http.submitRequest(request, this->controlUrl);
 }
 
-/*!
- *    Gets the method return and emits the returned value and the lastMethod called.
- */
 void BrisaControlPointService::getResponse()
 {
     const QtSoapMessage &message = http.getResponse();

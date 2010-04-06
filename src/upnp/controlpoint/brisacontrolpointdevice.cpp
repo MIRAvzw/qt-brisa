@@ -24,82 +24,10 @@
 
 using namespace BrisaUpnp;
 
-/*!
- *    \class BrisaUpnp::BrisaControlPointDevice brisacontrolpointdevice.h BrisaUpnp/BrisaControlPointDevice
- *
- *    \brief Class that implements the devices that control point part is going to handle.
- */
-
-/*!
- *    \enum BrisaUpnp::BrisaControlPointDevice::xmlTags
- *
- *    \brief This enum specifies the devices attributes that are going to be set/get
- *
- *    \param Major  Major version of the UPnP Device Architecture.
- *
- *    \param Minor  Minor version of the UPnP Device Architecture.
- *
- *    \param UrlBase  Defines the base URL. Used to construct fully-qualified URLs.
- *
- *    \param DeviceType  UPnP device type. Single URI.
- *
- *    \param FriendlyName  Short description for end user.
- *
- *    \param Manufacturer  Manufacturer's name.
- *
- *    \param ManufacturerUrl  Web site for Manufacturer.
- *
- *    \param ModelDescription  Long description for end user.
- *
- *    \param ModelName  Model name. Should be less then 32 characters.
- *
- *    \param ModelNumber  Model number. Should be less then 32 characters.
- *
- *    \param ModelUrl  Web site for model.
- *
- *    \param SerialNumber  Serial number. Should be less then 64 characters
- *
- *    \param Udn  Unique Device Name. Universally-unique identifier for the device.
- *
- *    \param Upc  Universal Product Code. 12-digit, all-numeric code that identifies the consumer package.
- *
- *    \param PresentationUrl  URL to presentation for device.
- *
- *    \param FileAddress  Device's file address.
- *
- *    \sa setAttribute(xmlTags key, QString v), getAttribute(xmlTags key)
- */
-
-/*!
- *    \property iconList
- *
- *    \brief Device's icon list.
- */
-
-/*!
- *    \property serviceList
- *
- *    \brief Device's service list.
- */
-
-/*!
- *    \property embeddedDeviceList
- *
- *    \brief Device's embedded device list.
- */
-
-/*!
- *    Constructor to BrisaControlPointDevice, when it makes use of this constructor the device's
- *    attributes should be set.
- */
 BrisaControlPointDevice::BrisaControlPointDevice(QObject *parent) : QObject(parent)
 {
 }
 
-/*!
- *    Constructor for BrisaControlPointDevice that receives a xml file containing the device
- *    description, so that the device's attributes can be initialized.
- */
 BrisaControlPointDevice::BrisaControlPointDevice(QTemporaryFile *xml, QUrl *url, QObject *parent) : QObject(parent)
 {
     this->setAttribute(BrisaControlPointDevice::UrlBase, url->toString(QUrl::RemovePath));
@@ -108,9 +36,6 @@ BrisaControlPointDevice::BrisaControlPointDevice(QTemporaryFile *xml, QUrl *url,
     delete handler;
 }
 
-/*!
- *    Constructor where all device's attributes are passed as parameter.
- */
 BrisaControlPointDevice::BrisaControlPointDevice(QString deviceType, QString friendlyName, QString manufacturer,
                              QString manufacturerURL, QString modelDescription, QString modelName,
                              QString modelNumber, QString modelURL, QString serialNumber,
@@ -135,10 +60,6 @@ BrisaControlPointDevice::BrisaControlPointDevice(QString deviceType, QString fri
     this->fileAddress.append(".xml");
 }
 
-/*!
- *    Constructor for BrisaControlPointDevice that receives another object of the same type and
- *    copy it's attributes.
- */
 BrisaControlPointDevice::BrisaControlPointDevice(BrisaControlPointDevice &dev, QObject *parent) : QObject(parent)
 {
     this->iconList = dev.getIconList();
@@ -164,17 +85,10 @@ BrisaControlPointDevice::BrisaControlPointDevice(BrisaControlPointDevice &dev, Q
     this->fileAddress = dev.getAttribute(BrisaControlPointDevice::FileAddress);
 }
 
-/*!
- *    Destructor
- */
 BrisaControlPointDevice::~BrisaControlPointDevice()
 {
 }
 
-/*!
- *    Set a device's attribute, depending on the \a key that is passed as parameter, so that,
- *    the attribute e set to value \a v
- */
 void BrisaControlPointDevice::setAttribute(xmlTags key, QString v)
 {
     switch(key)
@@ -232,9 +146,6 @@ void BrisaControlPointDevice::setAttribute(xmlTags key, QString v)
     }
 }
 
-/*!
- *    Gets the \a key attribute.
- */
 QString BrisaControlPointDevice::getAttribute(xmlTags key)
 {
     switch(key)
@@ -293,9 +204,6 @@ QString BrisaControlPointDevice::getAttribute(xmlTags key)
     }
 }
 
-/*!
- *    Check the device's service list and return the service that has the passed \serviceId.
- */
 BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString serviceId)
 {
     for(int i = 0; i < this->serviceList.size(); i++)
@@ -307,10 +215,6 @@ BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString servic
     }
     return NULL;
 }
-
-/*!
- *    Check the device's service list and return the service that has the passed \serviceType.
- */
 
 BrisaControlPointService *BrisaControlPointDevice::getServiceByType(QString serviceType)
 {
@@ -324,57 +228,36 @@ BrisaControlPointService *BrisaControlPointDevice::getServiceByType(QString serv
     return NULL;
 }
 
-/*!
- *    Returns device's icon list.
- */
 QList<BrisaIcon*> BrisaControlPointDevice::getIconList()
 {
     return this->iconList;
 }
 
-/*!
- *    Returns device's service list.
- */
 QList<BrisaControlPointService*> &BrisaControlPointDevice::getServiceList()
 {
     return this->serviceList;
 }
 
-/*!
- *    Returns device's embedded device list.
- */
 QList<BrisaControlPointDevice*> BrisaControlPointDevice::getEmbeddedDeviceList()
 {
     return this->embeddedDeviceList;
 }
 
-/*!
- *    Add \a icon to device's icon list.
- */
 void BrisaControlPointDevice::addIcon(BrisaIcon *icon)
 {
     iconList.append(icon);
 }
 
-/*!
- *    Add \a serviceSwap to device's service list.
- */
 void BrisaControlPointDevice::addService(BrisaControlPointService *serviceSwap)
 {
     serviceList.append(serviceSwap);
 }
 
-/*!
- *    Add \a device to device's embedded device list.
- */
 void BrisaControlPointDevice::addDevice(BrisaControlPointDevice *device)
 {
     embeddedDeviceList.append(device);
 }
 
-/*!
- *    Clear device's attributes.
- */
 void BrisaControlPointDevice::clear()
 {
     this->iconList.clear();

@@ -60,15 +60,60 @@ class BRISA_UPNP_EXPORT BrisaControlPoint : public QObject
     QMap<QString, int> subscriptions;
     QMap<int, int> requestsMapping;
 
+    /*!
+     *  Private function to create the UrlBase of the control point(ip Address) and set the port.
+     *  After that creates the urlBase(http:// + ip + : + port)'
+     */
     void buildUrlBase();
 
     public:
+		/*!
+		 *  Constructor
+		 *
+		 *  \param parent parent
+		 *  \param st service type
+		 *  \param mx interval
+		 */
         BrisaControlPoint(QObject *parent=0, QString st = "ssdp:all", int mx = 5);
+
+        /**
+         *  Destructor
+         */
         ~BrisaControlPoint();
+
+        /*!
+         *  Starts the control point, the ssdpClient and the msearch
+         *
+         *  \sa stop(), isRunning()
+         */
         void start();
+
+        /*!
+         *  Stops the control point, the ssdpClient and the msearch
+         *
+         *  \sa start(), isRunning()
+         */
         void stop();
+
+        /*!
+         *  Return if the control point is running
+         *
+         *  \return true if the control point is running or false otherwise
+         *
+         *  \sa start(), stop()
+         */
         bool isRunning();
+
+        /*!
+         *  Starts the control point msearch discover.
+         */
         void discover();
+
+        /*!
+         *  Gets an event proxy to subscribe, usubscribe or renew the events from a \a service.
+         *
+         *  \param service \a empty
+         */
         BrisaEventProxy *getSubscriptionProxy(BrisaControlPointService *service);
 
     signals:
@@ -76,10 +121,42 @@ class BRISA_UPNP_EXPORT BrisaControlPoint : public QObject
         void deviceGone(QString usn);
 
     private slots:
+        /*!
+         *  Slot called when receive a newDevice event, this slot start the device's xml download.
+         *
+         *  \param usn \a empty
+         *  \param location \a empty
+         *  \param ext \a empty
+         *  \param server \a empty
+         *  \param cacheControl \a empty
+         */
         void deviceFound(QString usn, QString location, QString st, QString ext, QString server,
                          QString cacheControl);
+
+        /*!
+         *  Slot called when ssdp client emits a removed device event, this slot emit the deviceGone signal
+         *  which has as parameter the device's usn.
+         *
+         *  \param usn empty
+         */
         void deviceRemoved(const QString usn);
+
+        /*!
+         *  Write the content of the downloaded xml in a new xml temporary file to set the device's
+         *  attributes emits the deviceFound signal when finished.
+         *
+         *  \param reply \a empty
+         *
+         */
         void replyFinished(QNetworkReply *reply);
+
+        /*!
+         *  Slot to get the response of the http request, made by BrisaEventProxy class and set the SID
+         *  of the subscription object.
+         *
+         *  \param i \a empty
+         *  \param error \a empty
+         */
         void httpResponse(int i, bool error);
 };
 
