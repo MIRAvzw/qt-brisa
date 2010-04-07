@@ -32,38 +32,6 @@
 using namespace BrisaUpnp;
 
 /*!
- *  \class BrisaUpnp::BrisaSSDPClient brisassdpclient.h BrisaUpnp/BrisaSSDPClient
- *  \brief SSDP stack implementantion for UPnP control points.
- *
- *  Create a new BrisaSSCPClient and call "start()" to connect to the multicast
- *  group and start listening to ssdp notification messages.
- *
- *  When BrisaSSDPClient receives a notification message it emits \a "newDeviceEvent()"
- *  in case of "ssdp:alive" and \a "removedDeviceEvent" in case of "ssdp:byebye".
- *  Other ssdp messages will be ignored.
- */
-
-/*!
- *  \fn void BrisaSSDPClient::newDeviceEvent(const QString &usn, const QString &location,
-                                             const QString &st, const QString &ext,
-                                             const QString &server, const QString &cacheControl)
-
- *  This signal is emitted when the client receives a "ssdp:alive" message from a device joining
- *  the network
-
- *  \sa removedDeviceEvent()
- */
-
-/*!
- *  \fn void BrisaSSDPClient::removedDeviceEvent(const QString &usn)
- *
- *  This signal is emitted when the client receives a "ssdp:byebye" message from a device leaving the
- *  network
- *
- *  \sa newDeviceEvent()
- */
-
-/*!
  *  Constructs a BrisaSSCPClient with the given parent.
  */
 BrisaSSDPClient::BrisaSSDPClient(QObject *parent)
@@ -78,11 +46,6 @@ BrisaSSDPClient::BrisaSSDPClient(QObject *parent)
     connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
-/*!
- *  Destroys the client.
- *
- *  Stops the client if it's running.
- */
 BrisaSSDPClient::~BrisaSSDPClient()
 {
     if(isRunning())
@@ -91,12 +54,6 @@ BrisaSSDPClient::~BrisaSSDPClient()
     delete udpListener;
 }
 
-/*!
- *
- *  Connects to the MultiCast group and starts the client.
- *
- *  \sa isRunning(), stop()
- */
 void BrisaSSDPClient::start()
 {
     if (!isRunning()) {
@@ -122,11 +79,6 @@ void BrisaSSDPClient::start()
     }
 }
 
-/*!
- *  Stops the client.
- *
- *  \sa isRunning(), start()
- */
 void BrisaSSDPClient::stop()
 {
     if (isRunning()) {
@@ -137,18 +89,11 @@ void BrisaSSDPClient::stop()
     }
 }
 
-/*!
- *  Returns true if the client is running.
- */
 bool BrisaSSDPClient::isRunning() const
 {
     return running;
 }
 
-/*!
- *  \internal
- *  Receives UDP datagrams from a QUdpSocket.
- */
 void BrisaSSDPClient::datagramReceived()
 {
     while (udpListener->hasPendingDatagrams()) {
@@ -167,11 +112,6 @@ void BrisaSSDPClient::datagramReceived()
     }
 }
 
-
-/*!
- *  \internal
- *  Parses the UDP datagram received from "datagramReceived()".
- */
 void BrisaSSDPClient::notifyReceived(QHttpRequestHeader *datagram)
 {
     if (!datagram->hasKey("nts"))

@@ -58,30 +58,6 @@ using namespace BrisaUpnp;
                               "USN: %6\r\n"                     \
                               "\r\n"
 
-/*! \class BrisaUpnp::BrisaSSDPServer brisassdpserver.h BrisaUpnp/BrisaSSDPServer
- *  \brief SSDP stack implementation for UPnP devices.
- *
- *  Call \a start() to begin listening for MSearch requests from control points. Whenever a new
- *  msearch request is parsed by the BrisaSSDPServer, a \a msearchRequestReceived() signal is
- *  emmited containning all of the request information. You can connect this signal to some slot
- *  wich calls \a respondMSearch() and get a synchronous response to msearch requests.
- *
- *  BrisaSSDPServer also implements SSDP notify messages. Call \a doNotify() or \a doByeBye()
- *  when entering or leaving the multicast group.
- */
-
-/*!
- *  \fn void BrisaSSDPServer::msearchRequestReceived(const QString &st, const QString &senderIp,
-                                                     quint16 senderPort)
- *
- *  This signal is emmited when the BrisaSSDPServer receives a valid UPnP msearch request.
- *
- *  \sa respondMSearch()
- */
-
-/*!
- *  Constructs a BrisaSSDPServer with the given parent object.
- */
 BrisaSSDPServer::BrisaSSDPServer(QObject *parent) :
         QObject(parent),
         running(false),
@@ -94,11 +70,6 @@ BrisaSSDPServer::BrisaSSDPServer(QObject *parent) :
     connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
-/*!
- *  Destroys the Object.
- *
- *  Stops the server if running.
- */
 BrisaSSDPServer::~BrisaSSDPServer()
 {
     if(isRunning())
@@ -107,12 +78,6 @@ BrisaSSDPServer::~BrisaSSDPServer()
     delete udpListener;
 }
 
-/*!
- *  Call this method to join the multicast group and
- *  start listening for UPnP msearch responses.
- *
- *  \sa stop()
- */
 void BrisaSSDPServer::start()
 {
     if (!isRunning()) {
@@ -139,11 +104,6 @@ void BrisaSSDPServer::start()
     }
 }
 
-/*!
- *  Stops the BrisaSSDPServer.
- *
- *  \sa start()
- */
 void BrisaSSDPServer::stop()
 {
     if (isRunning()) {
@@ -154,19 +114,11 @@ void BrisaSSDPServer::stop()
     }
 }
 
-/*!
- *  Returns true if BrisaSSDPServer is running.
- */
 bool BrisaSSDPServer::isRunning()
 {
     return running;
 }
 
-/*!
- *  Sends a UPnP notify alive message to the multicast group with the given information.
- *
- *  \sa doByeBye()
- */
 void BrisaSSDPServer::doNotify(const QString &usn, const QString &location, const QString &st,
                                const QString &server, const QString &cacheControl)
 {
@@ -178,11 +130,6 @@ void BrisaSSDPServer::doNotify(const QString &usn, const QString &location, cons
     qDebug() << "BrisaSSDPServer writing Notify alive for: " << usn << "";
 }
 
-/*!
- *  Sends a UPnP notify byebye message to the multicast group with the given information.
- *
- *  \sa doNotify()
- */
 void BrisaSSDPServer::doByeBye(const QString &usn, const QString &st)
 {
     QString message = QString(UPNP_BYEBYE_MESSAGE).arg(st).arg(usn);
@@ -193,11 +140,6 @@ void BrisaSSDPServer::doByeBye(const QString &usn, const QString &st)
     qDebug() << "BrisaSSDPServer writing notify byebye for: " << usn << "";
 }
 
-/*!
- *  \internal
- *  This slot is called when the readyRead() signal is emmited by the QUdpSocket listening
- *  to incoming messages.
- */
 void BrisaSSDPServer::datagramReceived()
 {
     while (udpListener->hasPendingDatagrams()) {
@@ -218,10 +160,6 @@ void BrisaSSDPServer::datagramReceived()
     }
 }
 
-/*!
- *  \internal
- *  Emits msearchRequestReceived if the incoming message is a valid msearch.
- */
 void BrisaSSDPServer::msearchReceived(QHttpRequestHeader *datagram, QHostAddress *senderIp,
                                       quint16 senderPort)
 {
@@ -236,13 +174,6 @@ void BrisaSSDPServer::msearchReceived(QHttpRequestHeader *datagram, QHostAddress
     }
 }
 
-/*!
- *  Sends a UPnP msearch response message to the given sender IP address and port.
- *
- *  Connect this slot to a proper signal to get synchronous response for msearch requests.
- *
- *  \sa msearchRequestReceived()
- */
 void BrisaSSDPServer::respondMSearch(const QString &senderIp, quint16 senderPort,
                                      const QString &cacheControl, const QString &date,
                                      const QString &location, const QString &server,
