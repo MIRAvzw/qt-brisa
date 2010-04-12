@@ -1,21 +1,30 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisaargument.cpp
+ * Created:
+ * Description: Implements the BrisaArgument class.
+ * Authors: Name <email> @since 2009
  *
- * This file is part of brisa-c++.
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
  */
-
 #ifndef _BRISAARGUMENT_H
 #define _BRISAARGUMENT_H
 
@@ -26,25 +35,54 @@
 
 namespace BrisaUpnp {
 
-class BRISA_UPNP_EXPORT BrisaArgument
-{
-    public:
-        BrisaArgument(const QString &name = "", const QString &direction = "",
-                      const QString &relatedStateVariable = "");
+/*!
+ * \internal
+ *
+ * \class BrisaUpnp::BrisaArgument brisaargument.h BrisaUpnp/BrisaArgument
+ *
+ * \brief Represents the action's input and output arguments.
+ */
+class BRISA_UPNP_EXPORT BrisaArgument {
+public:
 
-        typedef enum { ArgumentName,
-                       Direction,
-                       RelatedStateVariable} xmlArgument;
+	/*!
+	 * \internal
+	 *
+	 * Constructs an argument with given \a name, \a direction and
+	 * \a relatedStateVariable.
+	 */
+	BrisaArgument(const QString &name = "", const QString &direction = "",
+			const QString &relatedStateVariable = "");
 
-        void setAttribute(xmlArgument key, const QString &value);
-        QString getAttribute(xmlArgument key) const;
+	typedef enum {
+		ArgumentName, Direction, RelatedStateVariable
+	} xmlArgument;
 
-        void clear();
+	/*!
+	 * \internal
+	 *
+	 * Sets the argument's attribute \a key to the given \a value.
+	 */
+	void setAttribute(xmlArgument key, const QString &value);
 
-    private:
-        QString name;
-        QString direction;
-        QString relatedStateVariable;
+	/*!
+	 * \internal
+	 *
+	 * Returns the value of the argument's attribute \a key.
+	 */
+	QString getAttribute(xmlArgument key) const;
+
+	/*!
+	 * \internal
+	 *
+	 * Sets the argument's attributes to their default value.
+	 */
+	void clear();
+
+private:
+	QString name;
+	QString direction;
+	QString relatedStateVariable;
 };
 
 }

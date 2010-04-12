@@ -1,19 +1,28 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisaeventcontroller.h
+ * Created:
+ * Description: Defines BrisaEventController class.
+ * Authors: Name <email> @since 2009
  *
- * This file is part of brisa-c++.
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -32,47 +41,111 @@ using namespace BrisaCore;
 
 namespace BrisaUpnp {
 
-class BRISA_UPNP_EXPORT BrisaEventController : public BrisaWebService
-{
-    Q_OBJECT
+/*!
+ * \internal
+ * \class BrisaUpnp::BrisaEventController
+ *
+ * \brief Handles the event subscriptions and event messages for the service.
+ */
 
-    public:
-        BrisaEventController(QxtAbstractWebSessionManager *sessionManager,
-                             QList<BrisaStateVariable *> *stateVariableList,
-                             QObject *parent=0);
-        ~BrisaEventController();
+class BRISA_UPNP_EXPORT BrisaEventController: public BrisaWebService {
+Q_OBJECT
 
-    public slots:
-        void variableChanged(BrisaStateVariable *variable);
+public:
+	BrisaEventController(QxtAbstractWebSessionManager *sessionManager, QList<
+			BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
+	/*!
+	 * Destructor.
+	 */
+	~BrisaEventController();
 
-        void subscribe(const QMultiHash<QString, QString> &subscriberInfo,
-                       int sessionId, int requestId);
+public slots:
+	/*!
+	 * Slot that shall be called when some service's state \a variable change.
+	 */
+	void variableChanged(BrisaStateVariable *variable);
+	/*!
+	 * Creates a subscription for the given \a subscriberInfo, \a sessionId and
+	 * \a requestId.
+	 */
+	void subscribe(const QMultiHash<QString, QString> &subscriberInfo,
+			int sessionId, int requestId);
+	/*!
+	 * Removes the subscription for the given \a subscriberInfo, \a sessionId and
+	 * \a requestId.
+	 */
+	void unsubscribe(const QMultiHash<QString, QString> &subscriberInfo,
+			int sessionId, int requestId);
 
-        void unsubscribe(const QMultiHash<QString, QString> &subscriberInfo,
-                         int sessionId, int requestId);
+	/*!
+	 * Parses a generic request to web service and calls the local related methods
+	 * as necessary.
+	 */
+	void parseGenericRequest(const QString &method, const QMultiHash<QString,
+			QString> &headers, const QByteArray &requestContent, int sessionId,
+			int requestId);
 
-        void parseGenericRequest(const QString &method,
-                                 const QMultiHash<QString, QString> &headers,
-                                 const QByteArray &requestContent,
-                                 int sessionId,
-                                 int requestId);
+signals:
 
-    signals:
+private slots:
 
-    private slots:
+private:
 
-    private:
-        BrisaEventController(const BrisaEventController &);
+	/*!
+	 * Constructs a service's event controller with the given \a sessionManager, service's \a stateVariableList and \a parent.
+	 */
+	BrisaEventController(const BrisaEventController &);
 
-        void sendEvent(const BrisaEventMessage &message, const QUrl &url);
-        QStringList getEventUrls(const QString &urls);
-        int getTimeOut(const QString &timeout);
-        QString getUuid();
-        QHttpResponseHeader getErrorHeader(const int &errorCode, const QString &errorMessage);
+	/*!
+	 * Sends the event \a message to the given \a url.
+	 */
+	void sendEvent(const BrisaEventMessage &message, const QUrl &url);
 
-        QList<BrisaEventSubscription *> subscriptions;
-        QList<BrisaStateVariable *> *variableList;
-        QHttp httpClient;
+	/*!
+	 * Parses the event \a urls of a subscription request from the CALLBACK header
+	 * value.
+	 */
+	QStringList getEventUrls(const QString &urls);
+
+	/*!
+	 * Parses the \a timeout of a subscription request from the TIMEOUT header
+	 * value.
+	 */
+	int getTimeOut(const QString &timeout);
+
+	/*!
+	 * Generates random uuids.
+	 */
+	QString getUuid();
+
+	/*!
+	 * Returns a header for error messages with the given \a errorCode and
+	 * \a errorMessage.
+	 */
+	QHttpResponseHeader getErrorHeader(const int &errorCode,
+			const QString &errorMessage);
+
+	/*!
+	 * \property subscriptions
+	 *
+	 * \brief the list of subscriptions to the service's events
+	 */
+	QList<BrisaEventSubscription *> subscriptions;
+
+	/*!
+	 * \property variableList
+	 *
+	 * \brief the list of the service's state variables
+	 */
+	QList<BrisaStateVariable *> *variableList;
+
+	/*!
+	 * \property httpClient
+	 *
+	 * \brief the http client that will be used to send the events to the
+	 * subscribers
+	 */
+	QHttp httpClient;
 };
 
 }

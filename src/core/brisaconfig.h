@@ -2,7 +2,7 @@
  * Universidade Federal de Campina Grande
  * Centro de Engenharia Elétrica e Informática
  * Laboratório de Sistemas Embarcados e Computação Pervasiva
- * BRisa / BRisa-Qt
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
  * Filename: brisaconfig.cpp
  * Created:
  * Description: Implementation of BrisaConfigurationManager class.

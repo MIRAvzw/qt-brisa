@@ -1,25 +1,33 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisadevicexmlhandlercp.cpp
+ * Created:
+ * Description: Definition of BrisaDeviceParserContext,BrisaDeviceXMLHandlerCP and
+ * BrisaServiceFetcher  classes.
+ * Authors: Name <email> @since 2009
  *
- * This file is part of brisa-c++.
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 #ifndef _BRISADEVICEXMLHANDLER_H
 #define _BRISADEVICEXMLHANDLER_H
-
 
 #include <QXmlDefaultHandler>
 #include <QXmlSimpleReader>
@@ -37,7 +45,6 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QTemporaryFile>
-
 
 #include "brisaicon.h"
 #include "brisacontrolpointservice.h"
@@ -92,42 +99,43 @@ class BrisaControlPointDevice;
  *
  *  \sa setAttribute(xmlTags key, QString v), getAttribute(xmlTags key)
  */
-typedef enum {Start,
-              Root,
-              SpecVersion,
-              SpecVersionMajor,
-              SpecVersionMinor,
-              UrlBase,
-              Device,
-              DeviceType,
-              DeviceFriendlyName,
-              Manufacturer,
-              ManufacturerUrl,
-              ModelDescription,
-              ModelName,
-              ModelUrl,
-              SerialNumber,
-              Udn,
-              Upc,
-              IconList,
-              Icon,
-              IconMimetype,
-              IconWidth,
-              IconHeight,
-              IconDepth,
-              IconUrl,
-              PresentationUrl,
-              DeviceList,
-              ServiceList,
-              Service,
-              ServiceType,
-              ServiceId,
-              ServiceScpdUrl,
-              ServiceControlUrl,
-              ServiceEventSubUrl,
-              Finished,
-              Error = -1
-             } SaxParserState;
+typedef enum {
+	Start,
+	Root,
+	SpecVersion,
+	SpecVersionMajor,
+	SpecVersionMinor,
+	UrlBase,
+	Device,
+	DeviceType,
+	DeviceFriendlyName,
+	Manufacturer,
+	ManufacturerUrl,
+	ModelDescription,
+	ModelName,
+	ModelUrl,
+	SerialNumber,
+	Udn,
+	Upc,
+	IconList,
+	Icon,
+	IconMimetype,
+	IconWidth,
+	IconHeight,
+	IconDepth,
+	IconUrl,
+	PresentationUrl,
+	DeviceList,
+	ServiceList,
+	Service,
+	ServiceType,
+	ServiceId,
+	ServiceScpdUrl,
+	ServiceControlUrl,
+	ServiceEventSubUrl,
+	Finished,
+	Error = -1
+} SaxParserState;
 
 /*!
  *  \internal
@@ -136,153 +144,138 @@ typedef enum {Start,
  *
  *  Represents a parsing context, defined by a parent, a build target device, service and icon.
  */
-class BRISA_UPNP_EXPORT BrisaDeviceParserContext
-{
-    public:
+class BRISA_UPNP_EXPORT BrisaDeviceParserContext {
+public:
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::BrisaDeviceParserContext(BrisaDeviceParserContext *parent,
-         *                                                           BrisaControlPointDevice *target)
-         *
-         *  Constructor that receives the parser and the target that is going to be set.
-         */
-        BrisaDeviceParserContext(BrisaDeviceParserContext *parent=0, BrisaControlPointDevice *target=0)
-            : stateSkip(0), state(Root), parent(parent), device(target), service(0), icon(0) {}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::BrisaDeviceParserContext(BrisaDeviceParserContext *parent,
+	 *                                                           BrisaControlPointDevice *target)
+	 *  Constructor that receives the parser and the target that is going to be set.
+	 */
+	BrisaDeviceParserContext(BrisaDeviceParserContext *parent = 0,
+			BrisaControlPointDevice *target = 0) :
+		stateSkip(0), state(Root), parent(parent), device(target), service(0),
+				icon(0) {
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::getIcon()
-         *
-         *  \return context's icon.
-         */
-        inline BrisaIcon *getIcon(void) { return icon;}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::getIcon()
+	 *  \return context's icon.
+	 */
+	inline BrisaIcon *getIcon(void) {
+		return icon;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::getDevice()
-         *
-         *  \return context's device.
-         */
-        inline BrisaControlPointDevice *getDevice(void) { return device;}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::getDevice()
+	 *  \return context's device.
+	 */
+	inline BrisaControlPointDevice *getDevice(void) {
+		return device;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::getService()
-         *
-         *  \return context's service.
-         */
-        inline BrisaControlPointService *getService(void) { return service;}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::getService()
+	 *  \return context's service.
+	 */
+	inline BrisaControlPointService *getService(void) {
+		return service;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::setIcon(BrisaIcon *icon)
-         *
-         *  Sets context's icon to \a icon.
-         *
-         *  \param icon icon
-         */
-        inline void setIcon(BrisaIcon *icon) { this->icon = icon;}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::setIcon(BrisaIcon *icon)
+	 *  Sets context's icon to \a icon.
+	 *  \param icon icon
+	 */
+	inline void setIcon(BrisaIcon *icon) {
+		this->icon = icon;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::setDevice(BrisaControlPointDevice *device)
-         *
-         *  Sets context's device to \a device.
-         *
-         *  \param device device
-         */
-        inline void setDevice(BrisaControlPointDevice *device) { this->device = device;}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::setDevice(BrisaControlPointDevice *device)
+	 *  Sets context's device to \a device.
+	 *  \param device device
+	 */
+	inline void setDevice(BrisaControlPointDevice *device) {
+		this->device = device;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::setService(BrisaControlPointService *service)
-         *
-         *  Sets context's service to \a service.
-         *
-         *  \param service service
-         */
-        inline void setService(BrisaControlPointService *service) { this->service = service;}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::setService(BrisaControlPointService *service)
+	 *  Sets context's service to \a service.
+	 *  \param service service
+	 */
+	inline void setService(BrisaControlPointService *service) {
+		this->service = service;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::hasParent()
-         *
-         *  \return true if context's parent different than zero.
-         */
-        inline bool hasParent(void) { return (parent != 0);}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::hasParent()
+	 *  \return true if context's parent different than zero.
+	 */
+	inline bool hasParent(void) {
+		return (parent != 0);
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaDeviceParserContext::getParent()
-         *
-         *  \return context's parent.
-         */
-        inline BrisaDeviceParserContext *getParent(void) { return parent;}
+	/*!
+	 *  \internal
+	 *  \fn BrisaDeviceParserContext::getParent()
+	 *  \return context's parent.
+	 */
+	inline BrisaDeviceParserContext *getParent(void) {
+		return parent;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaDeviceParserContext::stateSkip
-         *
-         *  \brief incremented when a xml tag that isn't a recognized by UPnP architecture is find in xml.
-         */
-        int stateSkip;
+	/*!
+	 *  \internal
+	 *  \property BrisaDeviceParserContext::stateSkip
+	 *  \brief incremented when a xml tag that isn't a recognized by UPnP architecture is find in xml.
+	 */
+	int stateSkip;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaDeviceParserContext::state
-         *
-         *  \brief The actual state in the reading.
-         */
-        SaxParserState state;
+	/*!
+	 *  \internal
+	 *  \property BrisaDeviceParserContext::state
+	 *  \brief The actual state in the reading.
+	 */
+	SaxParserState state;
 
-    private:
-        /*!
-         *  \internal
-         *
-         *  \property BrisaDeviceParserContext::parent
-         *
-         *  \brief Same object, the parent of one context
-         */
-        BrisaDeviceParserContext *parent;
+private:
+	/*!
+	 *  \internal
+	 *  \property BrisaDeviceParserContext::parent
+	 *  \brief Same object, the parent of one context
+	 */
+	BrisaDeviceParserContext *parent;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaDeviceParserContext::device
-         *
-         *  \brief BrisaControlPointDevice that is going to have it's attributes set.
-         */
-        BrisaControlPointDevice *device;
+	/*!
+	 *  \internal
+	 *  \property BrisaDeviceParserContext::device
+	 *  \brief BrisaControlPointDevice that is going to have it's attributes set.
+	 */
+	BrisaControlPointDevice *device;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaDeviceParserContext::service
-         *
-         *  \brief Service that is going to be generated to be added by the device.
-         */
-        BrisaControlPointService *service;
+	/*!
+	 *  \internal
+	 *  \property BrisaDeviceParserContext::service
+	 *  \brief Service that is going to be generated to be added by the device.
+	 */
+	BrisaControlPointService *service;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaDeviceParserContext::icon
-         *
-         *  \brief Icon that is going to be generated to be added by the device.
-         */
-        BrisaIcon *icon;
+	/*!
+	 *  \internal
+	 *  \property BrisaDeviceParserContext::icon
+	 *  \brief Icon that is going to be generated to be added by the device.
+	 */
+	BrisaIcon *icon;
 };
 
 /*!
@@ -291,67 +284,66 @@ class BRISA_UPNP_EXPORT BrisaDeviceParserContext
  *  \brief BrisaDeviceXMLHandlerCP creates a device from a xml description file, with all it's
  *  attributes, it lets it ready to be used.
  */
-class BRISA_UPNP_EXPORT BrisaDeviceXMLHandlerCP : public QXmlDefaultHandler
-{
-    public:
-        /*!
-         *  Method that initializes device attributes from a temporary file.
-         *
-         *  \param device device
-         *  \param tmp temporary file
-         */
-        void parseDevice(BrisaControlPointDevice *device, QTemporaryFile *tmp);
+class BRISA_UPNP_EXPORT BrisaDeviceXMLHandlerCP: public QXmlDefaultHandler {
+public:
 
-    protected:
-        /*!
-         *  Method inherited from QXmlDefaultHandler it's called in every beginning tag, depending on tag
-         *  the context state passes to a different state so that it can process separately. It's
-         *  important to say that in each state it performs a different action.
-         */
-        bool startElement(const QString &namespaceURI,
-                          const QString &localName,
-                          const QString &qName,
-                          const QXmlAttributes &attributes);
+	/*!
+	 *  Method that initializes device attributes from a temporary file.
+	 *  \param device device
+	 *  \param tmp temporary file
+	 */
+	void parseDevice(BrisaControlPointDevice *device, QTemporaryFile *tmp);
 
-        /*!
-         *  Method that is called in the tag end, this method add the attribute to the device so that
-         *  attributes can be initialized in device. It's important to say that in each state it performs a
-         *  different action.
-         */
-        bool endElement(const QString &namespaceURI,
-                        const QString &localName,
-                        const QString &qName);
+protected:
 
-        /*!
-         *  Method that set properly the attribute value to \str value that it is the content between the
-         *  beginning tag and the finish one. It's important to say that in each state it performs a
-         *  different action.
-         */
-        bool characters(const QString &str);
+	/*!
+	 *  Method inherited from QXmlDefaultHandler it's called in every beginning tag, depending on tag
+	 *  the context state passes to a different state so that it can process separately. It's
+	 *  important to say that in each state it performs a different action.
+	 */
+	bool startElement(const QString &namespaceURI, const QString &localName,
+			const QString &qName, const QXmlAttributes &attributes);
 
-    private:
-        QXmlStreamWriter *writer;
+	/*!
+	 *  Method that is called in the tag end, this method add the attribute to the device so that
+	 *  attributes can be initialized in device. It's important to say that in each state it performs a
+	 *  different action.
+	 */
+	bool endElement(const QString &namespaceURI, const QString &localName,
+			const QString &qName);
 
-        /*!
-         *  \property reader
-         *
-         *  \brief Object that do the xml parse.
-         */
-        QXmlSimpleReader *reader;
+	/*!
+	 *  Method that set properly the attribute value to \str value that it is the content between the
+	 *  beginning tag and the finish one. It's important to say that in each state it performs a
+	 *  different action.
+	 */
+	bool characters(const QString &str);
 
-        /*!
-         *  \property input
-         *
-         *  \brief input source that reader is going to use in the parser.
-         */
-        QXmlInputSource *input;
+private:
 
-        /*!
-         *  \property context
-         *
-         *  \brief Used to see what reading is going to be done and set device's attributes.
-         */
-        BrisaDeviceParserContext *context;
+	/*!
+	 *  \property writer
+	 *  \brief Object that write changes to a xml file.
+	 */
+	QXmlStreamWriter *writer;
+
+	/*!
+	 *  \property reader
+	 *  \brief Object that do the xml parse.
+	 */
+	QXmlSimpleReader *reader;
+
+	/*!
+	 *  \property input
+	 *  \brief input source that reader is going to use in the parser.
+	 */
+	QXmlInputSource *input;
+
+	/*!
+	 *  \property context
+	 *  \brief Used to see what reading is going to be done and set device's attributes.
+	 */
+	BrisaDeviceParserContext *context;
 };
 
 /*!
@@ -362,150 +354,125 @@ class BRISA_UPNP_EXPORT BrisaDeviceXMLHandlerCP : public QXmlDefaultHandler
  *  \brief Class that generates the service by downloading the xml description file, reading,
  *  and initializing services attributes.
  */
-class BRISA_UPNP_EXPORT BrisaServiceFetcher : public QObject
-{
-    Q_OBJECT
+class BRISA_UPNP_EXPORT BrisaServiceFetcher: public QObject {
+Q_OBJECT
 
-    public:
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaServiceFetcher::BrisaServiceFetcher(BrisaControlPointService *service, QString location,
-         *                                               QObject *parent)
-         *
-         *  \brief BrisaServiceFetcher constructor, receives the \a service that is going to be set, the
-         *  \a location to download xml, and a QObject as parent.
-         */
-        BrisaServiceFetcher(BrisaControlPointService *service, QString location, QObject *parent=0)
-            : QObject(parent), location(location), service(service)
-        {
-            eventLoop = new QEventLoop();
-            downloader = new QNetworkAccessManager();
+public:
+	/*!
+	 *  \internal
+	 *  \fn BrisaServiceFetcher::BrisaServiceFetcher(BrisaControlPointService *service, QString location,
+	 *                                               QObject *parent)
+	 *  \brief BrisaServiceFetcher constructor, receives the \a service that is going to be set, the
+	 *  \a location to download xml, and a QObject as parent.
+	 */
+	BrisaServiceFetcher(BrisaControlPointService *service, QString location,
+			QObject *parent = 0) :
+		QObject(parent), location(location), service(service) {
+		eventLoop = new QEventLoop();
+		downloader = new QNetworkAccessManager();
 
-            connect(this, SIGNAL(fetchFinished()),
-                    eventLoop, SLOT(quit()));
-            connect(downloader, SIGNAL(finished(QNetworkReply*)),
-                    this, SLOT(downloadFinished(QNetworkReply*)));
-            service = NULL;
-            error = false;
-        }
+		connect(this, SIGNAL(fetchFinished()), eventLoop, SLOT(quit()));
+		connect(downloader, SIGNAL(finished(QNetworkReply*)), this,
+				SLOT(downloadFinished(QNetworkReply*)));
+		service = NULL;
+		error = false;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaServiceFetcher::~BrisaServiceFetcher()
-         *
-         *  \brief Destructor.
-         */
-        ~BrisaServiceFetcher()
-        {
-            delete downloader;
-            delete eventLoop;
-        }
+	/*!
+	 *  \internal
+	 *  \fn BrisaServiceFetcher::~BrisaServiceFetcher()
+	 *  \brief Destructor.
+	 */
+	~BrisaServiceFetcher() {
+		delete downloader;
+		delete eventLoop;
+	}
 
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaServiceFetcher::fetch()
-         *
-         *  \brief Start the xml download and initializes the event loop
-         *
-         *  \return true if any error occurred
-         */
-        bool fetch(void) {
-            downloader->get(QNetworkRequest(location));
-            eventLoop->exec();
+	/*!
+	 *  \internal
+	 *  \fn BrisaServiceFetcher::fetch()
+	 *  \brief Start the xml download and initializes the event loop
+	 *  \return true if any error occurred
+	 */
+	bool fetch(void) {
+		downloader->get(QNetworkRequest(location));
+		eventLoop->exec();
 
-            return error;
-        }
+		return error;
+	}
 
-    private:
-        /*!
-         *  \internal
-         *
-         *  \property BrisaServiceFetcher::eventLoop
-         *
-         *  \brief Guarantees that flow of execution will only continue after the xml download is finished.
-         */
-        QEventLoop *eventLoop;
+private:
+	/*!
+	 *  \internal
+	 *  \property BrisaServiceFetcher::eventLoop
+	 *  \brief Guarantees that flow of execution will only continue after the xml download is finished.
+	 */
+	QEventLoop *eventLoop;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaServiceFetcher::downloader
-         *
-         *  \brief Do the xml download from network.
-         */
-        QNetworkAccessManager *downloader;
+	/*!
+	 *  \internal
+	 *  \property BrisaServiceFetcher::downloader
+	 *  \brief Do the xml download from network.
+	 */
+	QNetworkAccessManager *downloader;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaServiceFetcher::location
-         *
-         *  \brief Location to download the xml file.
-         */
-        QString location;
+	/*!
+	 *  \internal
+	 *  \property BrisaServiceFetcher::location
+	 *  \brief Location to download the xml file.
+	 */
+	QString location;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaServiceFetcher::service
-         *
-         *  \brief service that is going to have the parameters set.
-         */
-        BrisaControlPointService *service;
+	/*!
+	 *  \internal
+	 *  \property BrisaServiceFetcher::service
+	 *  \brief service that is going to have the parameters set.
+	 */
+	BrisaControlPointService *service;
 
-        /*!
-         *  \internal
-         *
-         *  \property BrisaServiceFetcher::error
-         *
-         *  \brief Flag to detect a error in service fetch.
-         */
-        bool error;
+	/*!
+	 *  \internal
+	 *  \property BrisaServiceFetcher::error
+	 *  \brief Flag to detect a error in service fetch.
+	 */
+	bool error;
 
-    signals:
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaServiceFetcher::fetchFinished()
-         *
-         *  \brief Signal emitted when the service fetch is finished.
-         */
-        void fetchFinished(void);
+signals:
+	/*!
+	 *  \internal
+	 *  \fn BrisaServiceFetcher::fetchFinished()
+	 *  \brief Signal emitted when the service fetch is finished.
+	 */
+	void fetchFinished(void);
 
-    private slots:
-        /*!
-         *  \internal
-         *
-         *  \fn BrisaServiceFetcher::downloadFinished(QNetworkReply *reply)
-         *
-         *  \brief When download is finished, this slop write the download content into a temporary file
-         *  and tells the service parameter to be generate from it that means it initializes the service
-         *  too.
-         *
-         *  \param reply \a empty
-         */
-        void downloadFinished(QNetworkReply *reply)
-        {
-            QTemporaryFile *scpd = new QTemporaryFile();
+private slots:
+	/*!
+	 *  \internal
+	 *  \fn BrisaServiceFetcher::downloadFinished(QNetworkReply *reply)
+	 *  \brief When download is finished, this slop write the download content into a temporary file
+	 *  and tells the service parameter to be generate from it that means it initializes the service
+	 *  too.
+	 *  \param reply \a empty
+	 */
+	void downloadFinished(QNetworkReply *reply) {
+		QTemporaryFile *scpd = new QTemporaryFile();
 
-            if (!scpd->open()) {
-                qDebug() << "Failed to open scpd file for writing";
-                error = true;
-                emit fetchFinished();
-                return;
-            }
+		if (!scpd->open()) {
+			qDebug() << "Failed to open scpd file for writing";
+			error = true;
+			emit
+			fetchFinished();
+			return;
+		}
 
-            scpd->write(reply->readAll());
-            scpd->seek(0);
-            service->parseFromXml(scpd);
+		scpd->write(reply->readAll());
+		scpd->seek(0);
+		service->parseFromXml(scpd);
 
-            scpd->remove();
-            delete scpd;
-            emit fetchFinished();
-        }
+		scpd->remove();
+		delete scpd;
+		emit fetchFinished();
+	}
 
 };
 

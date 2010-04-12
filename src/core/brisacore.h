@@ -2,10 +2,10 @@
  * Universidade Federal de Campina Grande
  * Centro de Engenharia Elétrica e Informática
  * Laboratório de Sistemas Embarcados e Computação Pervasiva
- * BRisa / BRisa-Qt
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
  * Filename: brisaconfig.cpp
  * Created:
- * Description:
+ * Description: Define some includes of the BRisa core module.
  * Authors: Andre Dieb Martins <andre.dieb@gmail.com> @since 2009
  *
  *

@@ -2,7 +2,7 @@
  * Universidade Federal de Campina Grande
  * Centro de Engenharia Elétrica e Informática
  * Laboratório de Sistemas Embarcados e Computação Pervasiva
- * BRisa / BRisa-Qt
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
  * Filename: brisaconfig.cpp
  * Created:
  * Description: Implementation of BrisaConfigurationManager class.
@@ -34,125 +34,116 @@
 
 using namespace BrisaCore;
 
-
 BrisaConfigurationManager::BrisaConfigurationManager(const QString &configPath,
-                                                     const QHash<QString,QString> &state)
-{
-    this->state = state;
-    this->configPath = configPath;
-    this->directAccess = false;
+		const QHash<QString, QString> &state) {
+	this->state = state;
+	this->configPath = configPath;
+	this->directAccess = false;
 }
 
-void BrisaConfigurationManager::setDirectAccess(bool access)
-{
-    this->directAccess = access;
+void BrisaConfigurationManager::setDirectAccess(bool access) {
+	this->directAccess = access;
 }
 
-bool BrisaConfigurationManager::getDirectAccess()
-{
-    return this->directAccess;
+bool BrisaConfigurationManager::getDirectAccess() {
+	return this->directAccess;
 }
 
-void BrisaConfigurationManager::update()
-{
-    QFile file(this->configPath + "/file.dat");
-    file.open(QIODevice::ReadOnly);
+void BrisaConfigurationManager::update() {
+	QFile file(this->configPath + "/file.dat");
+	file.open(QIODevice::ReadOnly);
 
-    QDataStream in(&file);
-    in >> this->state;
+	QDataStream in(&file);
+	in >> this->state;
 }
 
-void BrisaConfigurationManager::save()
-{
-    QFile file(this->configPath + "/file.dat");
-    file.open(QIODevice::WriteOnly);
+void BrisaConfigurationManager::save() {
+	QFile file(this->configPath + "/file.dat");
+	file.open(QIODevice::WriteOnly);
 
-    QDataStream out(&file);
-    out << this->state;
+	QDataStream out(&file);
+	out << this->state;
 }
 
-QString BrisaConfigurationManager::getParameter(const QString &section, const QString &parameter)
-{
+QString BrisaConfigurationManager::getParameter(const QString &section,
+		const QString &parameter) {
 
-    if (getDirectAccess())
-        update();
+	if (getDirectAccess())
+		update();
 
-    QString str(section);
-    str.append("." + parameter);
-    if (this->state.contains(str))
-        return this->state.value(str);
+	QString str(section);
+	str.append("." + parameter);
+	if (this->state.contains(str))
+		return this->state.value(str);
 
-    return "";
+	return "";
 }
 
-void BrisaConfigurationManager::setParameter(const QString &section, const QString &parameter,
-                                             const QString &parValue)
-{
+void BrisaConfigurationManager::setParameter(const QString &section,
+		const QString &parameter, const QString &parValue) {
 
-    QString str(section);
-    str.append("." + parameter);
+	QString str(section);
+	str.append("." + parameter);
 
-    if( (parValue == "") and (this->state.contains(str)) ){
-        this->state.remove(str);
-    }else{
-        this->state[str] = parValue;
-    }
+	if ((parValue == "") and (this->state.contains(str))) {
+		this->state.remove(str);
+	} else {
+		this->state[str] = parValue;
+	}
 
-    if (getDirectAccess())
-        this->save();
+	if (getDirectAccess())
+		this->save();
 
 }
 
-QList<QString> BrisaConfigurationManager::getSectionNames()
-{
+QList<QString> BrisaConfigurationManager::getSectionNames() {
 
-    if(this->getDirectAccess())
-        this->update();
+	if (this->getDirectAccess())
+		this->update();
 
-    QList<QString> sections = this->state.keys();
+	QList<QString> sections = this->state.keys();
 
-    for (int i = 0; i < sections.size(); ++i) {
-        sections.replace(i,sections.at(i).split('.').value(0));
-    }
+	for (int i = 0; i < sections.size(); ++i) {
+		sections.replace(i, sections.at(i).split('.').value(0));
+	}
 
-    QSet<QString> set = sections.toSet();
-    QList<QString> auxList = set.toList();
-    qSort(auxList.begin(), auxList.end());
+	QSet<QString> set = sections.toSet();
+	QList<QString> auxList = set.toList();
+	qSort(auxList.begin(), auxList.end());
 
-    return auxList;
+	return auxList;
 }
 
-QHash<QString,QString> BrisaConfigurationManager::items(const QString &section)
-{
-    if (this->getDirectAccess())
-        this->update();
+QHash<QString, QString> BrisaConfigurationManager::items(const QString &section) {
+	if (this->getDirectAccess())
+		this->update();
 
-    QHash<QString, QString> items;
-    QList<QString> sections = this->state.keys();
+	QHash<QString, QString> items;
+	QList<QString> sections = this->state.keys();
 
-    for (int i = 0; i < sections.size(); ++i) {
-        if (sections[i].split('.').value(0) == section)
-            items[sections[i].split('.').at(1)] = this->state.value(sections[i]);
-    }
+	for (int i = 0; i < sections.size(); ++i) {
+		if (sections[i].split('.').value(0) == section)
+			items[sections[i].split('.').at(1)]
+					= this->state.value(sections[i]);
+	}
 
-    return items;
+	return items;
 }
 
-bool BrisaConfigurationManager::removeSection(const QString &section)
-{
-    QHash<QString, QString> items;
+bool BrisaConfigurationManager::removeSection(const QString &section) {
+	QHash<QString, QString> items;
 
-    QList<QString> sections = this->state.keys();
-    bool error = true;
-    for (int i = 0; i < sections.size(); ++i) {
-        if (sections[i].split('.').value(0) == section) {
-            this->state.remove(sections[i]);
-            error = false;
-        }
-    }
+	QList<QString> sections = this->state.keys();
+	bool error = true;
+	for (int i = 0; i < sections.size(); ++i) {
+		if (sections[i].split('.').value(0) == section) {
+			this->state.remove(sections[i]);
+			error = false;
+		}
+	}
 
-    if (this->getDirectAccess())
-        this->save();
+	if (this->getDirectAccess())
+		this->save();
 
-    return error;
+	return error;
 }

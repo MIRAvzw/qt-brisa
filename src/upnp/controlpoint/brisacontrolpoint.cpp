@@ -1,21 +1,29 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisacontrolpoint.cpp
+ * Created:
+ * Description: Implementation of BrisaControlPoint class.
+ * Authors: Andre Dieb Martins <andre.dieb@gmail.com>      @since 2009
+ *          Jeysibel de Sousa Dantas <jeysibel@gmail.com>  @since 06/04/2010
  *
- * Copyright (C) 2009 Andre Dieb Martins <andre.dieb@gmail.com>
  *
- * This file is part of brisa-c++.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -27,111 +35,6 @@
 #include "brisamsearchclientcp.h"
 
 using namespace BrisaUpnp;
-
-/*!
- *    \class BrisaUpnp::BrisaControlPoint brisacontrolpoint.h BrisaUpnp/BrisaControlPoint
- *
- *    \brief Class that implements the control part in UPnP Architecture
- *    \brief Create a ControlPoint and start(), then discover() devices will be found in network.
- *    \brief If you don't want to look for more devices then use stop().
- */
-
-/*!
- *    \fn void BrisaControlPoint::deviceFound(BrisaControlPointDevice *device)
- *
- *    This signal is emitted when a new device is find in network and all it's attributes are created
- *    by the xml reading.
- *
- *    \sa deviceGone(QString usn)
- */
-
-/*!
- *    \fn void BrisaControlPoint::deviceGone(QString usn)
- *
- *    This signal is emitted when a device leaves the network, that means that the the ssdp client
- *    received a "ssdp:byebye" message from the device and, to handle this, the control point emit
- *    a deviceGone event with the device's \a usn as parameter.
- *
- *    \sa deviceFound(BrisaControlPointDevice *device)
- */
-
-/*!
- *    \property http
- *
- *    \brief Do the http request in event subscription.
- */
-
-/*!
- *    \property downloader
- *
- *    \brief Downloads device's xml description file.
- */
-
-/*!
- *    \property ipAddress
- *
- *    \brief Creates the ControlPoint webServer in this ip.
- */
-
-/*!
- *    \property urlBase
- *
- *    \brief ControlPoint's urlBase.
- */
-
-/*!
- *    \property port
- *
- *    \brief ControlPoint's webserver port.
- */
-
-/*!
- *    \property running
- *
- *    \brief Bool to tell if it's running or not.
- */
-
-/*!
- *    \property webserver
- *
- *    \brief Webserver to receive event responses.
- */
-
-/*!
- *    \property ssdpClient
- *
- *    \brief Listen to notify/bye-bye messages.
- */
-
-/*!
- *    \property msearch
- *
- *    \brief Send msearch messages to network.
- */
-
-/*!
- *    \property deliveryPath
- *
- *    \brief Path to receive each event response.
- */
-
-/*!
- *    \property requests
- *
- *    \brief Map to identify each event proxy to a number.
- */
-
-/*!
- *    \property subscriptions
- *
- *    \brief Map to identify each subscription to an int.
- */
-
-/*!
- *    \property requestsMapping
- *
- *    \brief Map that identify each deliveryPath to a subscription.
- */
 
 
 BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st , int mx) : QObject(parent)

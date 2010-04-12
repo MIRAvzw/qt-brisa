@@ -1,22 +1,30 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisamsearchclientcp.cpp
+ * Created:
+ * Description: Implementation of BrisaSearchClientCP class.
+ * Authors: Name <email> @since 2009
  *
- * This file is part of brisa-c++.
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 #include <QtDebug>
 #include "brisamsearchclientcp.h"
 
@@ -38,113 +46,102 @@ using namespace BrisaUpnp;
                               "ST: %2\r\n"                    \
                               "\r\n"
 
-BrisaMSearchClientCP::BrisaMSearchClientCP(QObject *parent,const QString &serviceType,
-                                           int serviceMx) :
-    QObject(parent),
-    running(false),
-    type(serviceType),
-    mx(QByteArray::number(serviceMx)),
-    SSDP_ADDR("0.0.0.0"),
-    SSDP_PORT(1900),
-    S_SSDP_PORT("1900")
-{
-    udpListener = new QUdpSocket(this);
-    connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+BrisaMSearchClientCP::BrisaMSearchClientCP(QObject *parent,
+		const QString &serviceType, int serviceMx) :
+	QObject(parent), running(false), type(serviceType), mx(QByteArray::number(
+			serviceMx)), SSDP_ADDR("0.0.0.0"), SSDP_PORT(1900), S_SSDP_PORT(
+			"1900") {
+	udpListener = new QUdpSocket(this);
+	connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(discover()));
+	timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(discover()));
 }
 
-BrisaMSearchClientCP::~BrisaMSearchClientCP()
-{
-    if (isRunning())
-        stop();
+BrisaMSearchClientCP::~BrisaMSearchClientCP() {
+	if (isRunning())
+		stop();
 
-    delete udpListener;
-    delete timer;
+	delete udpListener;
+	delete timer;
 }
 
-void BrisaMSearchClientCP::discover()
-{
-    QString discoverMessage = QString(UPNP_MSEARCH_DISCOVER).arg(QString(mx)).arg(type);
+void BrisaMSearchClientCP::discover() {
+	QString discoverMessage =
+			QString(UPNP_MSEARCH_DISCOVER).arg(QString(mx)).arg(type);
 
-    qDebug() << "BrisaMSearch discover message sent";
+	qDebug() << "BrisaMSearch discover message sent";
 
-    udpListener->writeDatagram(discoverMessage.toUtf8(), QHostAddress("239.255.255.250"), 1900);
+	udpListener->writeDatagram(discoverMessage.toUtf8(), QHostAddress(
+			"239.255.255.250"), 1900);
 }
 
-void BrisaMSearchClientCP::doubleDiscover()
-{
-    discover();
-    discover();
+void BrisaMSearchClientCP::doubleDiscover() {
+	discover();
+	discover();
 }
 
-bool BrisaMSearchClientCP::isRunning() const
-{
-    return running;
+bool BrisaMSearchClientCP::isRunning() const {
+	return running;
 }
 
-void BrisaMSearchClientCP::start(int interval)
-{
-    if (!isRunning()) {
-        if(!udpListener->bind(QHostAddress(SSDP_ADDR), 1900)) {
-        	// TODO remove these magic numbers!
-            for(qint32 i = 49152; i < 65535; ++i) {
-                if(udpListener->bind(QHostAddress(SSDP_ADDR), i)) {
-                    break;
-                }
-            }
-        }
+void BrisaMSearchClientCP::start(int interval) {
+	if (!isRunning()) {
+		if (!udpListener->bind(QHostAddress(SSDP_ADDR), 1900)) {
+			// TODO remove these magic numbers!
+			for (qint32 i = 49152; i < 65535; ++i) {
+				if (udpListener->bind(QHostAddress(SSDP_ADDR), i)) {
+					break;
+				}
+			}
+		}
 
-        running = true;
-        timer->start(interval*1000);
+		running = true;
+		timer->start(interval * 1000);
 
-        qDebug() << "BrisaMSearch started - interval: " << interval << "";
+		qDebug() << "BrisaMSearch started - interval: " << interval << "";
 
-    } else {
-        qDebug() << "BrisaMSearch already started!";
-    }
+	} else {
+		qDebug() << "BrisaMSearch already started!";
+	}
 }
 
-void BrisaMSearchClientCP::stop()
-{
-    if (isRunning()) {
+void BrisaMSearchClientCP::stop() {
+	if (isRunning()) {
 
-        udpListener->disconnectFromHost();
-        running = false;
-        timer->stop();
+		udpListener->disconnectFromHost();
+		running = false;
+		timer->stop();
 
-        qDebug() << "BrisaMSearch stopped!";
+		qDebug() << "BrisaMSearch stopped!";
 
-    } else {
-        qDebug() << "BrisaMSearch already stopped!";
-    }
+	} else {
+		qDebug() << "BrisaMSearch already stopped!";
+	}
 }
 
-void BrisaMSearchClientCP::datagramReceived()
-{
-    while (udpListener->hasPendingDatagrams()) {
+void BrisaMSearchClientCP::datagramReceived() {
+	while (udpListener->hasPendingDatagrams()) {
 
-        QByteArray Datagram;
+		QByteArray Datagram;
 
-        Datagram.resize(udpListener->pendingDatagramSize());
-        udpListener->readDatagram(Datagram.data(), Datagram.size());
+		Datagram.resize(udpListener->pendingDatagramSize());
+		udpListener->readDatagram(Datagram.data(), Datagram.size());
 
-        QString Temp(Datagram);
-        QHttpResponseHeader *response = new QHttpResponseHeader(Temp);
+		QString Temp(Datagram);
+		QHttpResponseHeader *response = new QHttpResponseHeader(Temp);
 
-        if (response->statusCode() == 200) {
+		if (response->statusCode() == 200) {
 
-            qDebug() << "BrisaMSearch received MSearch answer from " << response->value("usn") << "";
+			qDebug() << "BrisaMSearch received MSearch answer from "
+					<< response->value("usn") << "";
 
-            emit msearchResponseReceived(response->value("usn"),
-                                         response->value("location"),
-                                         response->value("st"),
-                                         response->value("ext"),
-                                         response->value("server"),
-                                         response->value("cache-control"));
-        }
+			emit msearchResponseReceived(response->value("usn"),
+					response->value("location"), response->value("st"),
+					response->value("ext"), response->value("server"),
+					response->value("cache-control"));
+		}
 
-        delete response;
-    }
+		delete response;
+	}
 }

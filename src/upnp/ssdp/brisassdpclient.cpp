@@ -1,19 +1,28 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisassdpclient.cpp
+ * Created:
+ * Description: This File implements the BrisaSSDPClient class.
+ * Authors: Name <email> @since 2009
  *
- * This file is part of brisa-c++.
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -31,106 +40,96 @@
 
 using namespace BrisaUpnp;
 
-/*!
- *  Constructs a BrisaSSCPClient with the given parent.
- */
-BrisaSSDPClient::BrisaSSDPClient(QObject *parent)
-    : QObject(parent),
-      running(false),
-      SSDP_ADDR("239.255.255.250"),
-      SSDP_PORT(1900),
-      S_SSDP_PORT("1900")
-{
-    udpListener = new QUdpSocket(parent);
+BrisaSSDPClient::BrisaSSDPClient(QObject *parent) :
+	QObject(parent), running(false), SSDP_ADDR("239.255.255.250"), SSDP_PORT(
+			1900), S_SSDP_PORT("1900") {
+	udpListener = new QUdpSocket(parent);
 
-    connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+	connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
-BrisaSSDPClient::~BrisaSSDPClient()
-{
-    if(isRunning())
-        stop();
+BrisaSSDPClient::~BrisaSSDPClient() {
+	if (isRunning())
+		stop();
 
-    delete udpListener;
+	delete udpListener;
 }
 
-void BrisaSSDPClient::start()
-{
-    if (!isRunning()) {
-        int fd;
+void BrisaSSDPClient::start() {
+	if (!isRunning()) {
+		int fd;
 
-        if (!udpListener->bind(SSDP_PORT, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint))
-            qDebug() << "BrisaSSDPClient BIND FAIL!";
+		if (!udpListener->bind(SSDP_PORT, QUdpSocket::ShareAddress
+				| QUdpSocket::ReuseAddressHint))
+			qDebug() << "BrisaSSDPClient BIND FAIL!";
 
-        fd = udpListener->socketDescriptor();
-        struct ip_mreq mreq;
-        memset(&mreq, 0, sizeof(struct ip_mreq));
-        mreq.imr_multiaddr.s_addr = inet_addr(SSDP_ADDR.toUtf8());
-        mreq.imr_interface.s_addr = htonl(INADDR_ANY);
+		fd = udpListener->socketDescriptor();
+		struct ip_mreq mreq;
+		memset(&mreq, 0, sizeof(struct ip_mreq));
+		mreq.imr_multiaddr.s_addr = inet_addr(SSDP_ADDR.toUtf8());
+		mreq.imr_interface.s_addr = htonl(INADDR_ANY);
 
-        if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *)&mreq, sizeof(struct ip_mreq)) < 0) {
-            qDebug() << "BrisaSSDPClient could not join MULTICAST group";
-            return;
-        }
+		if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *) &mreq,
+				sizeof(struct ip_mreq)) < 0) {
+			qDebug() << "BrisaSSDPClient could not join MULTICAST group";
+			return;
+		}
 
-        running = true;
-    } else {
-        qDebug() << "BrisaSSDPClient already running!";
-    }
+		running = true;
+	} else {
+		qDebug() << "BrisaSSDPClient already running!";
+	}
 }
 
-void BrisaSSDPClient::stop()
-{
-    if (isRunning()) {
-        udpListener->disconnectFromHost();
-        running = false;
-    } else {
-        qDebug() << "BrisaSSDPClient already stopped!";
-    }
+void BrisaSSDPClient::stop() {
+	if (isRunning()) {
+		udpListener->disconnectFromHost();
+		running = false;
+	} else {
+		qDebug() << "BrisaSSDPClient already stopped!";
+	}
 }
 
-bool BrisaSSDPClient::isRunning() const
-{
-    return running;
+bool BrisaSSDPClient::isRunning() const {
+	return running;
 }
 
-void BrisaSSDPClient::datagramReceived()
-{
-    while (udpListener->hasPendingDatagrams()) {
-        QByteArray Datagram;
-        QList<QByteArray> cmd;
+void BrisaSSDPClient::datagramReceived() {
+	while (udpListener->hasPendingDatagrams()) {
+		QByteArray Datagram;
+		QList<QByteArray> cmd;
 
-        Datagram.resize(udpListener->pendingDatagramSize());
-        udpListener->readDatagram(Datagram.data(), Datagram.size());
+		Datagram.resize(udpListener->pendingDatagramSize());
+		udpListener->readDatagram(Datagram.data(), Datagram.size());
 
-        QString Temp(Datagram);
-        QHttpRequestHeader *Parser = new QHttpRequestHeader(Temp);
+		QString Temp(Datagram);
+		QHttpRequestHeader *Parser = new QHttpRequestHeader(Temp);
 
-        notifyReceived(Parser);
+		notifyReceived(Parser);
 
-        delete Parser;
-    }
+		delete Parser;
+	}
 }
 
-void BrisaSSDPClient::notifyReceived(QHttpRequestHeader *datagram)
-{
-    if (!datagram->hasKey("nts"))
-        return;
+void BrisaSSDPClient::notifyReceived(QHttpRequestHeader *datagram) {
+	if (!datagram->hasKey("nts"))
+		return;
 
-    if (datagram->value("nts") == "ssdp:alive") {
-        emit newDeviceEvent(datagram->value("usn"), datagram->value("location"),
-                            datagram->value("nt"), datagram->value("ext"),
-                            datagram->value("server"), datagram->value("cacheControl"));
+	if (datagram->value("nts") == "ssdp:alive") {
+		emit newDeviceEvent(datagram->value("usn"),
+				datagram->value("location"), datagram->value("nt"),
+				datagram->value("ext"), datagram->value("server"),
+				datagram->value("cacheControl"));
 
-        qDebug() << "BrisaSSDPClient received alive from " << datagram->value("usn") << "";
-    }
-    else if (datagram->value("nts") == "ssdp:byebye") {
-        emit removedDeviceEvent(datagram->value("usn"));
+		qDebug() << "BrisaSSDPClient received alive from " << datagram->value(
+				"usn") << "";
+	} else if (datagram->value("nts") == "ssdp:byebye") {
+		emit removedDeviceEvent(datagram->value("usn"));
 
-        qDebug() << "BrisaSSDPClient received byebye from " << datagram->value("usn") << "";
-    }
-    else {
-        qDebug() << "BrisaSSDPClient received unknown subtype: "
-                 << datagram->value("nts") << "";
-    }
+		qDebug() << "BrisaSSDPClient received byebye from " << datagram->value(
+				"usn") << "";
+	} else {
+		qDebug() << "BrisaSSDPClient received unknown subtype: "
+				<< datagram->value("nts") << "";
+	}
 }

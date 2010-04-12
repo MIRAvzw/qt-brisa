@@ -1,19 +1,28 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisaabstracteventsubscription.h
+ * Created:
+ * Description: This file defines the BrisaAbstractEventSubscription class.
+ * Authors: Name <email> @since 2009
  *
- * This file is part of brisa-c++.
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -31,34 +40,66 @@
 
 namespace BrisaUpnp {
 
-class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription : public QObject
-{
-    Q_OBJECT
+/*!
+ * \class BrisaUpnp::BrisaAbstractEventSubscription brisaabstracteventsubscription.h BrisaUpnp/BrisaAbstractEventSubscription
+ *
+ * \brief Abstract class that represents an event subscription
+ */
+class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: public QObject {
+Q_OBJECT
 
-    public:
-        BrisaAbstractEventSubscription(const QString &sid,
-                               const QStringList &callbackUrls,
-                               const int &timeout = -1, // <0 = infinite
-                               QObject *parent = 0);
+public:
 
-        virtual void renew(const int &newTimeout = -1) = 0; // <0 = infinite
-        bool hasExpired() const;
+	/*!
+	 * Construtcs an abstract event subscription with given \a sid, list of
+	 * \a callbackUrls, \a timeout and \a parent. \a timeout less than 0 means
+	 * infinite.
+	 */
+	BrisaAbstractEventSubscription(const QString &sid,
+			const QStringList &callbackUrls, const int &timeout = -1, // <0 = infinite
+			QObject *parent = 0);
 
-        quint32 getNextSeq();
-        QString getSid() const;
-        QStringList getCallbackUrls() const;
-        QUrl getUrl();
+	/*!
+	 * Renews the subscription for the given \a newTimeout.
+	 */
+	virtual void renew(const int &newTimeout = -1) = 0; // <0 = infinite
 
-    protected:
-        QString SID;
+	/*!
+	 * Checks if the subscription has already expired. Returns true if it has
+	 * expired, else returns false.
+	 */
+	bool hasExpired() const;
 
-        const QStringList CALLBACK_URLS;
+	/*!
+	 * Returns the next event key for this subscription.
+	 */
+	quint32 getNextSeq();
 
-        QDateTime date;
-        int timeout;
+	/*!
+	 * Returns this subscription's SID.
+	 */
+	QString getSid() const;
 
-        quint32 lastSeq;
-        bool firstMessageSent;
+	/*!
+	 * Returns this subscription's list of callback URLs.
+	 */
+	QStringList getCallbackUrls() const;
+
+	/*!
+	 * Returns this subscription's first callback URL.
+	 */
+	QUrl getUrl();
+
+protected:
+	QString SID;
+
+	const QStringList CALLBACK_URLS;
+
+	QDateTime date;
+	int timeout;
+
+	quint32 lastSeq;
+	bool firstMessageSent;
 };
 
 }

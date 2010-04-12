@@ -1,19 +1,29 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisacontrolpointdevice.cpp
+ * Created:
+ * Description: Implementation of BrisaControlPointDevice class.
+ * Authors:                                                 @since 2009
+ *           Jeysibel de Sousa Dantas <jeysibel@gmail.com>  @since 06/04/2010
  *
- * This file is part of brisa-c++.
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -263,7 +273,6 @@ void BrisaControlPointDevice::clear()
     this->iconList.clear();
     this->serviceList.clear();
     this->embeddedDeviceList.clear();
-
     this->major.clear();
     this->minor.clear();
     this->urlBase.clear();
@@ -279,7 +288,6 @@ void BrisaControlPointDevice::clear()
     this->udn.clear();
     this->upc.clear();
     this->presentationUrl.clear();
-
-    this->fileAddress.clear();
+	this->fileAddress.clear();
 }
 
