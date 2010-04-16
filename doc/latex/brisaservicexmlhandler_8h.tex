@@ -1,0 +1,65 @@
+\hypertarget{brisaservicexmlhandler_8h}{
+\section{src/upnp/brisaservicexmlhandler.h File Reference}
+\label{brisaservicexmlhandler_8h}\index{src/upnp/brisaservicexmlhandler.h@{src/upnp/brisaservicexmlhandler.h}}
+}
+{\ttfamily \#include \char`\"{}brisaaction.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}brisaargument.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}brisastatevariable.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}brisaglobal.h\char`\"{}}\par
+{\ttfamily \#include $<$QXmlDefaultHandler$>$}\par
+{\ttfamily \#include $<$QXmlSimpleReader$>$}\par
+{\ttfamily \#include $<$QXmlStreamWriter$>$}\par
+{\ttfamily \#include $<$QXmlInputSource$>$}\par
+{\ttfamily \#include $<$QXmlAttributes$>$}\par
+{\ttfamily \#include $<$QIODevice$>$}\par
+{\ttfamily \#include $<$QString$>$}\par
+Include dependency graph for brisaservicexmlhandler.h:This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaServiceParserContext}{BrisaUpnp::BrisaServiceParserContext}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaServiceXMLHandler}{BrisaUpnp::BrisaServiceXMLHandler}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceBrisaUpnp}{BrisaUpnp}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8}{BrisaUpnp::saxParserState} \{ \par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ac40a082a48bc1b43eef7933899410b92}{BrisaUpnp::ServiceStart}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a893531a42b66527d4b15f65e236945ce}{BrisaUpnp::Scpd}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a62ba51b20118a11b888717d46befaee9}{BrisaUpnp::ServiceSpecVersion}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4b3181a344c0d05ad3f79da4796d1e4a}{BrisaUpnp::ServiceSpecVersionMajor}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a18bb9d16de52c3eebb54d02c25e531e9}{BrisaUpnp::ServiceSpecVersionMinor}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a8e02342289c095edbaf9f32864d320b5}{BrisaUpnp::ActionList}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a39e9ccdc0a75910e69d5f475a584c0cf}{BrisaUpnp::Action}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a14939c320866c170bc8d52fa429dcdb7}{BrisaUpnp::ActionName}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a96132551b8175fc218b84467a3b0cd5d}{BrisaUpnp::ArgumentList}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a67b9c0690f015e6b8fae9d86bf09b3cc}{BrisaUpnp::Argument}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a1d6b633a3751d0ac91bc6f38b155ba82}{BrisaUpnp::ArgumentName}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a02aae7ce2b3ff9ad459bd5b73038923a}{BrisaUpnp::ArgumentDirection}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a269b2f4601f5883ee5f0ba25891c6baa}{BrisaUpnp::RelatedStateVariable}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ae860a5c22c53d6484692133dfd386d2b}{BrisaUpnp::ServiceStateTable}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a53947eaeb5673b5d5e3160f5b2962460}{BrisaUpnp::StateVariable}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ab0f83437b6ebc5a78aa970191bf7d1d3}{BrisaUpnp::StateVariableName}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8abf52d9d3880d5e29e20a5153ed3188d4}{BrisaUpnp::StateVariableDataType}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ad56d8c51edc50c38f25b884c093f1d31}{BrisaUpnp::StateVariableDefaultValue}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4619bdc9d53da1f60aef846ee4396c18}{BrisaUpnp::StateVariableAllowedValueList}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a89f60d96ac18643b4c3f46dce0ba73e8}{BrisaUpnp::StateVariableAllowedValue}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a88accadc3d1ba9fd231b78ad3adf4d5f}{BrisaUpnp::StateVariableAllowedValueRange}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8afd97175b3629100b48235ab947c5915d}{BrisaUpnp::StateVariableAllowedValueRangeMinimum}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a7a064492d64346eeba858b273eea2a3d}{BrisaUpnp::StateVariableAllowedValueRangeMaximum}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a3168b4dd475f4f0e738aa5959a456713}{BrisaUpnp::StateVariableAllowedValueRangeStep}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a564f5f0c4bfd48ad0983a912feda825b}{BrisaUpnp::ServiceFinished}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8aa3409c75deeedd661ddd2a9399c4be3a}{BrisaUpnp::ServiceError} =  -\/1
+ \}
+\end{DoxyCompactItemize}

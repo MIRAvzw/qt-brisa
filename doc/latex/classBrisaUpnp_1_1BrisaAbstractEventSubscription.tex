@@ -1,0 +1,158 @@
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription}{
+\section{BrisaUpnp::BrisaAbstractEventSubscription Class Reference}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription}\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+}
+
+
+Abstract class that represents an event subscription.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaAbstractEventSubscription$>$}Inheritance diagram for BrisaUpnp::BrisaAbstractEventSubscription:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a80c65fb0f14a6a1e38a89d3614bcc904}{BrisaAbstractEventSubscription} (const QString \&sid, const QStringList \&callbackUrls, const int \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb99d42e318e002acc44740a2ca7881a}{timeout}=-\/1, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Construtcs an abstract event subscription with given {\itshape sid\/}, list of {\itshape callbackUrls\/}, {\itshape timeout\/} and {\itshape parent\/}. \item\end{DoxyCompactList}\item 
+virtual void \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ae9da94244c6164b5759b8be21e03d42f}{renew} (const int \&newTimeout=-\/1)=0
+\begin{DoxyCompactList}\small\item\em Renews the subscription for the given {\itshape newTimeout\/}. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_aef4109da165b4a2120d92f2bc81ead16}{hasExpired} () const 
+\begin{DoxyCompactList}\small\item\em Checks if the subscription has already expired. \item\end{DoxyCompactList}\item 
+quint32 \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ad5d46adee5a94c6cd533f56b47aa9e18}{getNextSeq} ()
+\begin{DoxyCompactList}\small\item\em Returns the next event key for this subscription. \item\end{DoxyCompactList}\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a568db6180782a15620432fd163b87f63}{getSid} () const 
+\begin{DoxyCompactList}\small\item\em Returns this subscription's SID. \item\end{DoxyCompactList}\item 
+QStringList \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb94634112ce0e3813e48130f46afb1d}{getCallbackUrls} () const 
+\begin{DoxyCompactList}\small\item\em Returns this subscription's list of callback URLs. \item\end{DoxyCompactList}\item 
+QUrl \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a4d20b50a2d27923138d42d036a1416cd}{getUrl} ()
+\begin{DoxyCompactList}\small\item\em Returns this subscription's first callback URL. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a62a26b420298aeb1b184d9b25133d6c4}{SID}
+\item 
+const QStringList \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a976193e5caf8de65f6ca6efb1e4f5587}{CALLBACK\_\-URLS}
+\item 
+QDateTime \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ab85f792d439a9ae1f90aab4c7f3c9082}{date}
+\item 
+int \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb99d42e318e002acc44740a2ca7881a}{timeout}
+\item 
+quint32 \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afc8085c81885cf3bcbfa670453103f2c}{lastSeq}
+\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a82c9da7926d293e74f85e86ef039dd09}{firstMessageSent}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class that represents an event subscription. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a80c65fb0f14a6a1e38a89d3614bcc904}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!BrisaAbstractEventSubscription@{BrisaAbstractEventSubscription}}
+\index{BrisaAbstractEventSubscription@{BrisaAbstractEventSubscription}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{BrisaAbstractEventSubscription}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAbstractEventSubscription::BrisaAbstractEventSubscription (const QString \& {\em sid}, \/  const QStringList \& {\em callbackUrls}, \/  const int \& {\em timeout} = {\ttfamily -\/1}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a80c65fb0f14a6a1e38a89d3614bcc904}
+
+
+Construtcs an abstract event subscription with given {\itshape sid\/}, list of {\itshape callbackUrls\/}, {\itshape timeout\/} and {\itshape parent\/}. {\itshape timeout\/} less than 0 means infinite. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb94634112ce0e3813e48130f46afb1d}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!getCallbackUrls@{getCallbackUrls}}
+\index{getCallbackUrls@{getCallbackUrls}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{getCallbackUrls}]{\setlength{\rightskip}{0pt plus 5cm}QStringList BrisaAbstractEventSubscription::getCallbackUrls () const}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb94634112ce0e3813e48130f46afb1d}
+
+
+Returns this subscription's list of callback URLs. 
+
+Referenced by BrisaUpnp::BrisaEventMessage::getMessageHeader().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ad5d46adee5a94c6cd533f56b47aa9e18}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!getNextSeq@{getNextSeq}}
+\index{getNextSeq@{getNextSeq}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{getNextSeq}]{\setlength{\rightskip}{0pt plus 5cm}quint32 BrisaAbstractEventSubscription::getNextSeq ()}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ad5d46adee5a94c6cd533f56b47aa9e18}
+
+
+Returns the next event key for this subscription. \hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a568db6180782a15620432fd163b87f63}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!getSid@{getSid}}
+\index{getSid@{getSid}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{getSid}]{\setlength{\rightskip}{0pt plus 5cm}QString BrisaAbstractEventSubscription::getSid () const}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a568db6180782a15620432fd163b87f63}
+
+
+Returns this subscription's SID. 
+
+Referenced by BrisaUpnp::BrisaEventMessage::getMessageHeader(), and BrisaUpnp::BrisaEventController::subscribe().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a4d20b50a2d27923138d42d036a1416cd}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!getUrl@{getUrl}}
+\index{getUrl@{getUrl}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{getUrl}]{\setlength{\rightskip}{0pt plus 5cm}QUrl BrisaAbstractEventSubscription::getUrl ()}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a4d20b50a2d27923138d42d036a1416cd}
+
+
+Returns this subscription's first callback URL. 
+
+Referenced by BrisaUpnp::BrisaEventController::subscribe().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_aef4109da165b4a2120d92f2bc81ead16}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!hasExpired@{hasExpired}}
+\index{hasExpired@{hasExpired}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{hasExpired}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaAbstractEventSubscription::hasExpired () const}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_aef4109da165b4a2120d92f2bc81ead16}
+
+
+Checks if the subscription has already expired. Returns true if it has expired, else returns false. \hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ae9da94244c6164b5759b8be21e03d42f}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!renew@{renew}}
+\index{renew@{renew}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{renew}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAbstractEventSubscription::renew (const int \& {\em newTimeout} = {\ttfamily -\/1})\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ae9da94244c6164b5759b8be21e03d42f}
+
+
+Renews the subscription for the given {\itshape newTimeout\/}. 
+
+Implemented in \hyperlink{classBrisaUpnp_1_1BrisaEventProxy_a9f700f55e37b646bf2cb2c26b98707d8}{BrisaUpnp::BrisaEventProxy}, and \hyperlink{classBrisaUpnp_1_1BrisaEventSubscription_aa5b51ef428760a2f3e653e9b4b132f5a}{BrisaUpnp::BrisaEventSubscription}.
+
+\subsection{Member Data Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a976193e5caf8de65f6ca6efb1e4f5587}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!CALLBACK\_\-URLS@{CALLBACK\_\-URLS}}
+\index{CALLBACK\_\-URLS@{CALLBACK\_\-URLS}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{CALLBACK\_\-URLS}]{\setlength{\rightskip}{0pt plus 5cm}const QStringList {\bf BrisaUpnp::BrisaAbstractEventSubscription::CALLBACK\_\-URLS}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a976193e5caf8de65f6ca6efb1e4f5587}
+
+
+Referenced by getCallbackUrls(), and getUrl().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ab85f792d439a9ae1f90aab4c7f3c9082}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!date@{date}}
+\index{date@{date}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{date}]{\setlength{\rightskip}{0pt plus 5cm}QDateTime {\bf BrisaUpnp::BrisaAbstractEventSubscription::date}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ab85f792d439a9ae1f90aab4c7f3c9082}
+
+
+Referenced by hasExpired(), BrisaUpnp::BrisaEventSubscription::renew(), and renew().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a82c9da7926d293e74f85e86ef039dd09}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!firstMessageSent@{firstMessageSent}}
+\index{firstMessageSent@{firstMessageSent}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{firstMessageSent}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf BrisaUpnp::BrisaAbstractEventSubscription::firstMessageSent}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a82c9da7926d293e74f85e86ef039dd09}
+
+
+Referenced by getNextSeq().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afc8085c81885cf3bcbfa670453103f2c}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!lastSeq@{lastSeq}}
+\index{lastSeq@{lastSeq}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{lastSeq}]{\setlength{\rightskip}{0pt plus 5cm}quint32 {\bf BrisaUpnp::BrisaAbstractEventSubscription::lastSeq}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afc8085c81885cf3bcbfa670453103f2c}
+
+
+Referenced by getNextSeq().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a62a26b420298aeb1b184d9b25133d6c4}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!SID@{SID}}
+\index{SID@{SID}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{SID}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractEventSubscription::SID}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_a62a26b420298aeb1b184d9b25133d6c4}
+
+
+Referenced by BrisaUpnp::BrisaEventSubscription::getAcceptSubscriptionResponse(), and getSid().\hypertarget{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb99d42e318e002acc44740a2ca7881a}{
+\index{BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}!timeout@{timeout}}
+\index{timeout@{timeout}!BrisaUpnp::BrisaAbstractEventSubscription@{BrisaUpnp::BrisaAbstractEventSubscription}}
+\subsubsection[{timeout}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf BrisaUpnp::BrisaAbstractEventSubscription::timeout}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb99d42e318e002acc44740a2ca7881a}
+
+
+Referenced by BrisaUpnp::BrisaEventSubscription::getAcceptSubscriptionResponse(), hasExpired(), BrisaUpnp::BrisaEventSubscription::renew(), and renew().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/\hyperlink{brisaabstracteventsubscription_8h}{brisaabstracteventsubscription.h}\item 
+src/upnp/\hyperlink{brisaabstracteventsubscription_8cpp}{brisaabstracteventsubscription.cpp}\end{DoxyCompactItemize}

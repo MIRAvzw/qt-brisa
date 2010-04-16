@@ -1,0 +1,114 @@
+\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser}{
+\section{BrisaUpnp::BrisaActionXmlParser Class Reference}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser}\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+}
+
+
+XML parser for SOAP requests.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaActionXmlParser$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_aa5a6085184cf85e2a6e9f0227a448eb9}{BrisaActionXmlParser} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \item\end{DoxyCompactList}\item 
+virtual \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_a29d3e806481a99c1cfd9007bbf3f09c1}{$\sim$BrisaActionXmlParser} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_a95da43fde3ebe9601a08b6a2d8ca56ac}{parseSOAP} ()
+\begin{DoxyCompactList}\small\item\em Call this method to parse the SOAP request set by the setXmlContent method. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_a0e9a584388baa3a61d34a4adbcbf811b}{parseElement} (QDomElement \&element)
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_a39f1a93ab753a93974a649f590ff03d6}{setXmlContent} (const QByteArray \&content)
+\begin{DoxyCompactList}\small\item\em Sets the content to be parsed. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QMap$<$ QString, QString $>$ \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_a1bd26f5d3b9a6bb452973d420b6c8691}{args}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_a2b691349bfddc01bf27faa8f492496cd}{method}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser_adef5fd463e49e6e622ce1aa243fa34e2}{serviceType}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+XML parser for SOAP requests. \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser}{BrisaActionXmlParser} parses information coming from the webserver. If a action is detected, public class members args, method, serviceType will be filled with the parsed data.
+
+\hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser}{BrisaActionXmlParser} uses DOM. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_aa5a6085184cf85e2a6e9f0227a448eb9}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!BrisaActionXmlParser@{BrisaActionXmlParser}}
+\index{BrisaActionXmlParser@{BrisaActionXmlParser}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{BrisaActionXmlParser}]{\setlength{\rightskip}{0pt plus 5cm}BrisaActionXmlParser::BrisaActionXmlParser ()}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_aa5a6085184cf85e2a6e9f0227a448eb9}
+
+
+Constructor. \hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_a29d3e806481a99c1cfd9007bbf3f09c1}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!$\sim$BrisaActionXmlParser@{$\sim$BrisaActionXmlParser}}
+\index{$\sim$BrisaActionXmlParser@{$\sim$BrisaActionXmlParser}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{$\sim$BrisaActionXmlParser}]{\setlength{\rightskip}{0pt plus 5cm}BrisaActionXmlParser::$\sim$BrisaActionXmlParser ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_a29d3e806481a99c1cfd9007bbf3f09c1}
+
+
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_a0e9a584388baa3a61d34a4adbcbf811b}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!parseElement@{parseElement}}
+\index{parseElement@{parseElement}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{parseElement}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaActionXmlParser::parseElement (QDomElement \& {\em element})}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_a0e9a584388baa3a61d34a4adbcbf811b}
+
+
+Referenced by parseSOAP().\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_a95da43fde3ebe9601a08b6a2d8ca56ac}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!parseSOAP@{parseSOAP}}
+\index{parseSOAP@{parseSOAP}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{parseSOAP}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaActionXmlParser::parseSOAP ()}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_a95da43fde3ebe9601a08b6a2d8ca56ac}
+
+
+Call this method to parse the SOAP request set by the setXmlContent method. 
+
+Referenced by BrisaUpnp::BrisaService::parseGenericRequest().\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_a39f1a93ab753a93974a649f590ff03d6}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!setXmlContent@{setXmlContent}}
+\index{setXmlContent@{setXmlContent}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{setXmlContent}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaActionXmlParser::setXmlContent (const QByteArray \& {\em content})}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_a39f1a93ab753a93974a649f590ff03d6}
+
+
+Sets the content to be parsed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em content}]the content to be parsed \end{DoxyParams}
+
+
+Referenced by BrisaUpnp::BrisaService::parseGenericRequest().
+
+\subsection{Member Data Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_a1bd26f5d3b9a6bb452973d420b6c8691}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!args@{args}}
+\index{args@{args}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{args}]{\setlength{\rightskip}{0pt plus 5cm}QMap$<$QString, QString$>$ {\bf BrisaUpnp::BrisaActionXmlParser::args}}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_a1bd26f5d3b9a6bb452973d420b6c8691}
+
+
+Referenced by parseElement(), and BrisaUpnp::BrisaService::parseGenericRequest().\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_a2b691349bfddc01bf27faa8f492496cd}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!method@{method}}
+\index{method@{method}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{method}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaActionXmlParser::method}}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_a2b691349bfddc01bf27faa8f492496cd}
+
+
+Referenced by parseElement(), BrisaUpnp::BrisaService::parseGenericRequest(), and parseSOAP().\hypertarget{classBrisaUpnp_1_1BrisaActionXmlParser_adef5fd463e49e6e622ce1aa243fa34e2}{
+\index{BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}!serviceType@{serviceType}}
+\index{serviceType@{serviceType}!BrisaUpnp::BrisaActionXmlParser@{BrisaUpnp::BrisaActionXmlParser}}
+\subsubsection[{serviceType}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaActionXmlParser::serviceType}}}
+\label{classBrisaUpnp_1_1BrisaActionXmlParser_adef5fd463e49e6e622ce1aa243fa34e2}
+
+
+Referenced by parseElement(), BrisaUpnp::BrisaService::parseGenericRequest(), and parseSOAP().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/device/\hyperlink{brisaactionxmlparser_8h}{brisaactionxmlparser.h}\item 
+src/upnp/device/\hyperlink{brisaactionxmlparser_8cpp}{brisaactionxmlparser.cpp}\end{DoxyCompactItemize}

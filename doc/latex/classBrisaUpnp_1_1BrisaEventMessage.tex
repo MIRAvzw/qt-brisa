@@ -1,0 +1,50 @@
+\hypertarget{classBrisaUpnp_1_1BrisaEventMessage}{
+\section{BrisaUpnp::BrisaEventMessage Class Reference}
+\label{classBrisaUpnp_1_1BrisaEventMessage}\index{BrisaUpnp::BrisaEventMessage@{BrisaUpnp::BrisaEventMessage}}
+}
+
+
+{\ttfamily \#include $<$brisaeventmessage.h$>$}Collaboration diagram for BrisaUpnp::BrisaEventMessage:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaEventMessage_a66bde1d910078c764004d98bc20dc91e}{BrisaEventMessage} (\hyperlink{classBrisaUpnp_1_1BrisaEventSubscription}{BrisaEventSubscription} \&subscription, const QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$ $>$ $\ast$variables, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Contructs a new event message to the given {\itshape subscription\/} and related to the given {\itshape variables\/}, with the given {\itshape parent\/} object. \item\end{DoxyCompactList}\item 
+QHttpRequestHeader \hyperlink{classBrisaUpnp_1_1BrisaEventMessage_aa457aeb063c630875d09de44fe3f0ca5}{getMessageHeader} () const 
+\begin{DoxyCompactList}\small\item\em Returns this event message's http header. \item\end{DoxyCompactList}\item 
+QByteArray \hyperlink{classBrisaUpnp_1_1BrisaEventMessage_ab984d75c57d4641dec88f0c31bea1e48}{getMessageBody} () const 
+\begin{DoxyCompactList}\small\item\em Returns this event message's http body. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventMessage_a66bde1d910078c764004d98bc20dc91e}{
+\index{BrisaUpnp::BrisaEventMessage@{BrisaUpnp::BrisaEventMessage}!BrisaEventMessage@{BrisaEventMessage}}
+\index{BrisaEventMessage@{BrisaEventMessage}!BrisaUpnp::BrisaEventMessage@{BrisaUpnp::BrisaEventMessage}}
+\subsubsection[{BrisaEventMessage}]{\setlength{\rightskip}{0pt plus 5cm}BrisaEventMessage::BrisaEventMessage ({\bf BrisaEventSubscription} \& {\em subscription}, \/  const QList$<$ {\bf BrisaStateVariable} $\ast$ $>$ $\ast$ {\em variables}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaEventMessage_a66bde1d910078c764004d98bc20dc91e}
+
+
+Contructs a new event message to the given {\itshape subscription\/} and related to the given {\itshape variables\/}, with the given {\itshape parent\/} object. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventMessage_ab984d75c57d4641dec88f0c31bea1e48}{
+\index{BrisaUpnp::BrisaEventMessage@{BrisaUpnp::BrisaEventMessage}!getMessageBody@{getMessageBody}}
+\index{getMessageBody@{getMessageBody}!BrisaUpnp::BrisaEventMessage@{BrisaUpnp::BrisaEventMessage}}
+\subsubsection[{getMessageBody}]{\setlength{\rightskip}{0pt plus 5cm}QByteArray BrisaEventMessage::getMessageBody () const}}
+\label{classBrisaUpnp_1_1BrisaEventMessage_ab984d75c57d4641dec88f0c31bea1e48}
+
+
+Returns this event message's http body. 
+
+Referenced by getMessageHeader().\hypertarget{classBrisaUpnp_1_1BrisaEventMessage_aa457aeb063c630875d09de44fe3f0ca5}{
+\index{BrisaUpnp::BrisaEventMessage@{BrisaUpnp::BrisaEventMessage}!getMessageHeader@{getMessageHeader}}
+\index{getMessageHeader@{getMessageHeader}!BrisaUpnp::BrisaEventMessage@{BrisaUpnp::BrisaEventMessage}}
+\subsubsection[{getMessageHeader}]{\setlength{\rightskip}{0pt plus 5cm}QHttpRequestHeader BrisaEventMessage::getMessageHeader () const}}
+\label{classBrisaUpnp_1_1BrisaEventMessage_aa457aeb063c630875d09de44fe3f0ca5}
+
+
+Returns this event message's http header. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/device/\hyperlink{brisaeventmessage_8h}{brisaeventmessage.h}\item 
+src/upnp/device/\hyperlink{brisaeventmessage_8cpp}{brisaeventmessage.cpp}\end{DoxyCompactItemize}

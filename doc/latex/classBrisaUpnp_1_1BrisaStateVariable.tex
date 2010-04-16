@@ -1,0 +1,213 @@
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable}{
+\section{BrisaUpnp::BrisaStateVariable Class Reference}
+\label{classBrisaUpnp_1_1BrisaStateVariable}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+}
+
+
+Represents the service's state variables.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaStateVariable$>$}\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249}{BrisaStateVariableAttribute} \{ \par
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a69b2ecca63cfd9601887ccac7b8e5482}{Name}, 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249ab15cbdf7c7633f953d68acf00e581ab0}{SendEvents}, 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249afd0614c2fde35eb8467dc69168583783}{DataType}, 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a9f1906682237c18bdccba6e085b2ba5b}{DefaultValue}, 
+\par
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249afa7beed7754ad334dfb54dd5cc47afc7}{AllowedValue}, 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249aa3ff1c67ac1b88101fa617684fa61fcc}{Minimum}, 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a38a169ce5fe362a38da6b5d528e9f0c4}{Maximum}, 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a431b5870d1ecb0d44e5289e2eb8ddfcc}{Step}, 
+\par
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a23a2eccc2f06e56408e6d4af003e2e8d}{Value}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_a3d606a92019f38c88d6cb27afc21814c}{changed} (\hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_ad73ae0037a7032da20159fbc359a6a23}{BrisaStateVariable} (QString sendEvents=\char`\"{}\char`\"{}, QString name=\char`\"{}\char`\"{}, QString datatype=\char`\"{}\char`\"{}, QString defaultValue=\char`\"{}\char`\"{}, QString maximum=\char`\"{}\char`\"{}, QString minimum=\char`\"{}\char`\"{}, QString step=\char`\"{}\char`\"{}, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} that {\itshape sendEvents\/} with the given {\itshape name\/}, {\itshape datatype\/}, {\itshape defaultValue\/}, {\itshape maximum\/} value, {\itshape minimum\/} value, value {\itshape step\/}, and {\itshape parent\/}. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_a30a706c2b604a395af735b5f90400e11}{BrisaStateVariable} (const \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} \&)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} from the given {\itshape variable\/}. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} \& \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_ac8e1d86af0a88a9ed59e6cd679765317}{operator=} (const \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} \&)
+\begin{DoxyCompactList}\small\item\em Sets this variable equals to {\itshape variable\/}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_acdd6630338a3855a59e707b2095df677}{setAttribute} (\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249}{BrisaStateVariableAttribute} attr, QVariant value)
+\begin{DoxyCompactList}\small\item\em Sets its attribute {\itshape attr\/} to the given {\itshape value\/}. \item\end{DoxyCompactList}\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_ad653413985f270a34de1527638c8ef14}{getAttribute} (\hyperlink{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249}{BrisaStateVariableAttribute} attr, int index=0) const 
+\begin{DoxyCompactList}\small\item\em Returns {\itshape attr\/} value as a QString. \item\end{DoxyCompactList}\item 
+QVariant \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_a81c90483c7527267cf1c5835a72fbe2d}{getValue} () const 
+\begin{DoxyCompactList}\small\item\em Returns the stored value as a QVariant. \item\end{DoxyCompactList}\item 
+QVariant::Type \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_ab6b498fd30c4c2906befa82d92dc2846}{getDataType} () const 
+\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_a71040c4fb731b7c285d5fe1a4d625af6}{sendEvents} () const 
+\begin{DoxyCompactList}\small\item\em Returns true if the variable is set to send events. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_ae3acf52298795f54b76cd2de0731a6f2}{addAllowedValue} (QString allowedValue)
+\begin{DoxyCompactList}\small\item\em Adds a value to the list of values that can be set to its Value attribute. \item\end{DoxyCompactList}\item 
+QList$<$ QString $>$ \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_a47dbb6806ce07fc43d4a804f3ce68de3}{getAllowedValueList} ()
+\begin{DoxyCompactList}\small\item\em Returns the list of values that can be set to its Value attribute. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaStateVariable_a44e2e9d0545fddce098694a8d824b212}{clear} ()
+\begin{DoxyCompactList}\small\item\em Clears this variable's attributtes. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the service's state variables. 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!BrisaStateVariableAttribute@{BrisaStateVariableAttribute}}
+\index{BrisaStateVariableAttribute@{BrisaStateVariableAttribute}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{BrisaStateVariableAttribute}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf BrisaUpnp::BrisaStateVariable::BrisaStateVariableAttribute}}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{Name@{Name}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!Name@{Name}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a69b2ecca63cfd9601887ccac7b8e5482}{
+Name}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a69b2ecca63cfd9601887ccac7b8e5482}
+}]\index{SendEvents@{SendEvents}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!SendEvents@{SendEvents}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249ab15cbdf7c7633f953d68acf00e581ab0}{
+SendEvents}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249ab15cbdf7c7633f953d68acf00e581ab0}
+}]\index{DataType@{DataType}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!DataType@{DataType}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249afd0614c2fde35eb8467dc69168583783}{
+DataType}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249afd0614c2fde35eb8467dc69168583783}
+}]\index{DefaultValue@{DefaultValue}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!DefaultValue@{DefaultValue}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a9f1906682237c18bdccba6e085b2ba5b}{
+DefaultValue}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a9f1906682237c18bdccba6e085b2ba5b}
+}]\index{AllowedValue@{AllowedValue}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!AllowedValue@{AllowedValue}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249afa7beed7754ad334dfb54dd5cc47afc7}{
+AllowedValue}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249afa7beed7754ad334dfb54dd5cc47afc7}
+}]\index{Minimum@{Minimum}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!Minimum@{Minimum}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249aa3ff1c67ac1b88101fa617684fa61fcc}{
+Minimum}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249aa3ff1c67ac1b88101fa617684fa61fcc}
+}]\index{Maximum@{Maximum}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!Maximum@{Maximum}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a38a169ce5fe362a38da6b5d528e9f0c4}{
+Maximum}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a38a169ce5fe362a38da6b5d528e9f0c4}
+}]\index{Step@{Step}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!Step@{Step}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a431b5870d1ecb0d44e5289e2eb8ddfcc}{
+Step}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a431b5870d1ecb0d44e5289e2eb8ddfcc}
+}]\index{Value@{Value}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!Value@{Value}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a23a2eccc2f06e56408e6d4af003e2e8d}{
+Value}
+\label{classBrisaUpnp_1_1BrisaStateVariable_af6afe40d25c8990351bc7205dada3249a23a2eccc2f06e56408e6d4af003e2e8d}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_ad73ae0037a7032da20159fbc359a6a23}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!BrisaStateVariable@{BrisaStateVariable}}
+\index{BrisaStateVariable@{BrisaStateVariable}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{BrisaStateVariable}]{\setlength{\rightskip}{0pt plus 5cm}BrisaStateVariable::BrisaStateVariable (QString {\em sendEvents} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em name} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em datatype} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em defaultValue} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em maximum} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em minimum} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em step} = {\ttfamily \char`\"{}\char`\"{}}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_ad73ae0037a7032da20159fbc359a6a23}
+
+
+Constructs a \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} that {\itshape sendEvents\/} with the given {\itshape name\/}, {\itshape datatype\/}, {\itshape defaultValue\/}, {\itshape maximum\/} value, {\itshape minimum\/} value, value {\itshape step\/}, and {\itshape parent\/}. \hypertarget{classBrisaUpnp_1_1BrisaStateVariable_a30a706c2b604a395af735b5f90400e11}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!BrisaStateVariable@{BrisaStateVariable}}
+\index{BrisaStateVariable@{BrisaStateVariable}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{BrisaStateVariable}]{\setlength{\rightskip}{0pt plus 5cm}BrisaStateVariable::BrisaStateVariable (const {\bf BrisaStateVariable} \& {\em variable})}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_a30a706c2b604a395af735b5f90400e11}
+
+
+Constructs a \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} from the given {\itshape variable\/}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_ae3acf52298795f54b76cd2de0731a6f2}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!addAllowedValue@{addAllowedValue}}
+\index{addAllowedValue@{addAllowedValue}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{addAllowedValue}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaStateVariable::addAllowedValue (QString {\em allowedValue})}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_ae3acf52298795f54b76cd2de0731a6f2}
+
+
+Adds a value to the list of values that can be set to its Value attribute. 
+
+Referenced by BrisaUpnp::BrisaServiceXMLHandler::characters().\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_a3d606a92019f38c88d6cb27afc21814c}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!changed@{changed}}
+\index{changed@{changed}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{changed}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaStateVariable::changed ({\bf BrisaStateVariable} $\ast$)\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_a3d606a92019f38c88d6cb27afc21814c}
+
+
+Referenced by setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_a44e2e9d0545fddce098694a8d824b212}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!clear@{clear}}
+\index{clear@{clear}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaStateVariable::clear ()}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_a44e2e9d0545fddce098694a8d824b212}
+
+
+Clears this variable's attributtes. \hypertarget{classBrisaUpnp_1_1BrisaStateVariable_a47dbb6806ce07fc43d4a804f3ce68de3}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!getAllowedValueList@{getAllowedValueList}}
+\index{getAllowedValueList@{getAllowedValueList}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{getAllowedValueList}]{\setlength{\rightskip}{0pt plus 5cm}QList$<$ QString $>$ BrisaStateVariable::getAllowedValueList ()}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_a47dbb6806ce07fc43d4a804f3ce68de3}
+
+
+Returns the list of values that can be set to its Value attribute. \hypertarget{classBrisaUpnp_1_1BrisaStateVariable_ad653413985f270a34de1527638c8ef14}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!getAttribute@{getAttribute}}
+\index{getAttribute@{getAttribute}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{getAttribute}]{\setlength{\rightskip}{0pt plus 5cm}QString BrisaStateVariable::getAttribute ({\bf BrisaStateVariableAttribute} {\em attr}, \/  int {\em index} = {\ttfamily 0}) const}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_ad653413985f270a34de1527638c8ef14}
+
+
+Returns {\itshape attr\/} value as a QString. 
+
+Referenced by BrisaStateVariable(), and operator=().\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_ab6b498fd30c4c2906befa82d92dc2846}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!getDataType@{getDataType}}
+\index{getDataType@{getDataType}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{getDataType}]{\setlength{\rightskip}{0pt plus 5cm}QVariant::Type BrisaStateVariable::getDataType () const}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_ab6b498fd30c4c2906befa82d92dc2846}
+\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_a81c90483c7527267cf1c5835a72fbe2d}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!getValue@{getValue}}
+\index{getValue@{getValue}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{getValue}]{\setlength{\rightskip}{0pt plus 5cm}QVariant BrisaStateVariable::getValue () const}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_a81c90483c7527267cf1c5835a72fbe2d}
+
+
+Returns the stored value as a QVariant. 
+
+Referenced by BrisaStateVariable(), and operator=().\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_ac8e1d86af0a88a9ed59e6cd679765317}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!operator=@{operator=}}
+\index{operator=@{operator=}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BrisaStateVariable} \& BrisaStateVariable::operator= (const {\bf BrisaStateVariable} \& {\em variable})}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_ac8e1d86af0a88a9ed59e6cd679765317}
+
+
+Sets this variable equals to {\itshape variable\/}. \hypertarget{classBrisaUpnp_1_1BrisaStateVariable_a71040c4fb731b7c285d5fe1a4d625af6}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!sendEvents@{sendEvents}}
+\index{sendEvents@{sendEvents}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{sendEvents}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaStateVariable::sendEvents () const}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_a71040c4fb731b7c285d5fe1a4d625af6}
+
+
+Returns true if the variable is set to send events. 
+
+Referenced by BrisaStateVariable(), and operator=().\hypertarget{classBrisaUpnp_1_1BrisaStateVariable_acdd6630338a3855a59e707b2095df677}{
+\index{BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}!setAttribute@{setAttribute}}
+\index{setAttribute@{setAttribute}!BrisaUpnp::BrisaStateVariable@{BrisaUpnp::BrisaStateVariable}}
+\subsubsection[{setAttribute}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaStateVariable::setAttribute ({\bf BrisaStateVariableAttribute} {\em attr}, \/  QVariant {\em value})}}
+\label{classBrisaUpnp_1_1BrisaStateVariable_acdd6630338a3855a59e707b2095df677}
+
+
+Sets its attribute {\itshape attr\/} to the given {\itshape value\/}. 
+
+Referenced by BrisaUpnp::BrisaServiceXMLHandler::characters(), and BrisaUpnp::BrisaServiceXMLHandler::startElement().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/\hyperlink{brisastatevariable_8h}{brisastatevariable.h}\item 
+src/upnp/\hyperlink{brisastatevariable_8cpp}{brisastatevariable.cpp}\end{DoxyCompactItemize}

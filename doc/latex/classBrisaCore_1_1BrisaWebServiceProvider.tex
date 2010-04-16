@@ -1,0 +1,102 @@
+\hypertarget{classBrisaCore_1_1BrisaWebServiceProvider}{
+\section{BrisaCore::BrisaWebServiceProvider Class Reference}
+\label{classBrisaCore_1_1BrisaWebServiceProvider}\index{BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}}
+}
+
+
+The \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider} class works as web service manager for the web server.  
+
+
+{\ttfamily \#include $<$brisawebserver.h$>$}Collaboration diagram for BrisaCore::BrisaWebServiceProvider:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_adccc1ffe600411cd23ea2c3524711bfb}{BrisaWebServiceProvider} (QxtAbstractWebSessionManager $\ast$sm, QObject $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Constructor for \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider}. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_ae209fc22681c21cfc2745b6f177fe78f}{$\sim$BrisaWebServiceProvider} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_a2732014aacccc107547a651499482011}{addFile} (const QString path, QString filePath)
+\begin{DoxyCompactList}\small\item\em Call this method to add a \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile} to the web service. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_a916815911d9293464bf7a2545f46cbfd}{addContent} (const QString path, QString content)
+\begin{DoxyCompactList}\small\item\em Call this method to add a \hyperlink{classBrisaCore_1_1BrisaWebStaticContent}{BrisaWebStaticContent} to the web service. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_a21fbddc4ca395a0da441602857ae493e}{pageRequestedEvent} (QxtWebRequestEvent $\ast$event)
+\begin{DoxyCompactList}\small\item\em Reimplemented from libQxt. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_a7f2a7a7f9f22a29cb859478ca518129c}{indexRequested} (QxtWebRequestEvent $\ast$event)
+\begin{DoxyCompactList}\small\item\em Reimplemented from libQxt. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider} class works as web service manager for the web server. The \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider} has convenience methods for managing web services, like \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_a2732014aacccc107547a651499482011}{addFile()} and \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider_a916815911d9293464bf7a2545f46cbfd}{addContent()}. It also keeps track of all files and content stored into the web service. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebServiceProvider_adccc1ffe600411cd23ea2c3524711bfb}{
+\index{BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}!BrisaWebServiceProvider@{BrisaWebServiceProvider}}
+\index{BrisaWebServiceProvider@{BrisaWebServiceProvider}!BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}}
+\subsubsection[{BrisaWebServiceProvider}]{\setlength{\rightskip}{0pt plus 5cm}BrisaCore::BrisaWebServiceProvider::BrisaWebServiceProvider (QxtAbstractWebSessionManager $\ast$ {\em sm}, \/  QObject $\ast$ {\em parent})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebServiceProvider_adccc1ffe600411cd23ea2c3524711bfb}
+
+
+Constructor for \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em sm}]{\itshape empty\/} \item[{\em parent}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebServiceProvider_ae209fc22681c21cfc2745b6f177fe78f}{
+\index{BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}!$\sim$BrisaWebServiceProvider@{$\sim$BrisaWebServiceProvider}}
+\index{$\sim$BrisaWebServiceProvider@{$\sim$BrisaWebServiceProvider}!BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}}
+\subsubsection[{$\sim$BrisaWebServiceProvider}]{\setlength{\rightskip}{0pt plus 5cm}BrisaCore::BrisaWebServiceProvider::$\sim$BrisaWebServiceProvider ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebServiceProvider_ae209fc22681c21cfc2745b6f177fe78f}
+
+
+Destructor for \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebServiceProvider_a916815911d9293464bf7a2545f46cbfd}{
+\index{BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}!addContent@{addContent}}
+\index{addContent@{addContent}!BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}}
+\subsubsection[{addContent}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaWebServiceProvider::addContent (const QString {\em path}, \/  QString {\em content})}}
+\label{classBrisaCore_1_1BrisaWebServiceProvider_a916815911d9293464bf7a2545f46cbfd}
+
+
+Call this method to add a \hyperlink{classBrisaCore_1_1BrisaWebStaticContent}{BrisaWebStaticContent} to the web service. 
+\begin{DoxyParams}{Parameters}
+\item[{\em path}]{\itshape empty\/} \item[{\em content}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebServiceProvider_a2732014aacccc107547a651499482011}{
+\index{BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}!addFile@{addFile}}
+\index{addFile@{addFile}!BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}}
+\subsubsection[{addFile}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaWebServiceProvider::addFile (const QString {\em path}, \/  QString {\em filePath})}}
+\label{classBrisaCore_1_1BrisaWebServiceProvider_a2732014aacccc107547a651499482011}
+
+
+Call this method to add a \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile} to the web service. 
+\begin{DoxyParams}{Parameters}
+\item[{\em path}]{\itshape empty\/} \item[{\em filePath}]{\itshape empty\/} \end{DoxyParams}
+
+
+Referenced by BrisaUpnp::BrisaService::buildWebServiceTree(), and BrisaCore::BrisaWebserver::publishFile().\hypertarget{classBrisaCore_1_1BrisaWebServiceProvider_a7f2a7a7f9f22a29cb859478ca518129c}{
+\index{BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}!indexRequested@{indexRequested}}
+\index{indexRequested@{indexRequested}!BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}}
+\subsubsection[{indexRequested}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebServiceProvider::indexRequested (QxtWebRequestEvent $\ast$ {\em event})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebServiceProvider_a7f2a7a7f9f22a29cb859478ca518129c}
+
+
+Reimplemented from libQxt. This method calls the \hyperlink{classBrisaCore_1_1BrisaWebStaticContent}{BrisaWebStaticContent} {\itshape index()\/} method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]{\itshape empty\/} \end{DoxyParams}
+
+
+Referenced by pageRequestedEvent().\hypertarget{classBrisaCore_1_1BrisaWebServiceProvider_a21fbddc4ca395a0da441602857ae493e}{
+\index{BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}!pageRequestedEvent@{pageRequestedEvent}}
+\index{pageRequestedEvent@{pageRequestedEvent}!BrisaCore::BrisaWebServiceProvider@{BrisaCore::BrisaWebServiceProvider}}
+\subsubsection[{pageRequestedEvent}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaWebServiceProvider::pageRequestedEvent (QxtWebRequestEvent $\ast$ {\em event})}}
+\label{classBrisaCore_1_1BrisaWebServiceProvider_a21fbddc4ca395a0da441602857ae493e}
+
+
+Reimplemented from libQxt. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{brisawebserver_8h}{brisawebserver.h}\item 
+src/core/\hyperlink{brisawebserver_8cpp}{brisawebserver.cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,76 @@
+\hypertarget{brisassdpserver_8cpp}{
+\section{src/upnp/ssdp/brisassdpserver.cpp File Reference}
+\label{brisassdpserver_8cpp}\index{src/upnp/ssdp/brisassdpserver.cpp@{src/upnp/ssdp/brisassdpserver.cpp}}
+}
+{\ttfamily \#include \char`\"{}brisassdpserver.h\char`\"{}}\par
+{\ttfamily \#include $<$QtDebug$>$}\par
+{\ttfamily \#include $<$winsock2.h$>$}\par
+{\ttfamily \#include $<$ws2tcpip.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+Include dependency graph for brisassdpserver.cpp:\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{brisassdpserver_8cpp_a2ac72633367347ac7da129954ac8b43b}{UPNP\_\-ALIVE\_\-MESSAGE}
+\item 
+\#define \hyperlink{brisassdpserver_8cpp_abf84b50ad924bf7365b752d757e905d7}{UPNP\_\-BYEBYE\_\-MESSAGE}
+\item 
+\#define \hyperlink{brisassdpserver_8cpp_ab6f000145cd4adcfe0e3d3a06f3c7eac}{UPNP\_\-MSEARCH\_\-RESPONSE}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{brisassdpserver_8cpp_a2ac72633367347ac7da129954ac8b43b}{
+\index{brisassdpserver.cpp@{brisassdpserver.cpp}!UPNP\_\-ALIVE\_\-MESSAGE@{UPNP\_\-ALIVE\_\-MESSAGE}}
+\index{UPNP\_\-ALIVE\_\-MESSAGE@{UPNP\_\-ALIVE\_\-MESSAGE}!brisassdpserver.cpp@{brisassdpserver.cpp}}
+\subsubsection[{UPNP\_\-ALIVE\_\-MESSAGE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UPNP\_\-ALIVE\_\-MESSAGE}}
+\label{brisassdpserver_8cpp_a2ac72633367347ac7da129954ac8b43b}
+{\bfseries Value:}
+\begin{DoxyCode}
+"NOTIFY * HTTP/1.1\r\n"          \
+                           "HOST: 239.255.255.250:1900\r\n" \
+                           "CACHE-CONTROL: max-age=%1\r\n"  \
+                           "LOCATION: %2\r\n"               \
+                           "NT: %3\r\n"                     \
+                           "NTS: ssdp:alive\r\n"            \
+                           "SERVER: %4\r\n"                 \
+                           "USN: %5\r\n"                    \
+                           "\r\n"
+\end{DoxyCode}
+
+
+Referenced by BrisaUpnp::BrisaSSDPServer::doNotify().\hypertarget{brisassdpserver_8cpp_abf84b50ad924bf7365b752d757e905d7}{
+\index{brisassdpserver.cpp@{brisassdpserver.cpp}!UPNP\_\-BYEBYE\_\-MESSAGE@{UPNP\_\-BYEBYE\_\-MESSAGE}}
+\index{UPNP\_\-BYEBYE\_\-MESSAGE@{UPNP\_\-BYEBYE\_\-MESSAGE}!brisassdpserver.cpp@{brisassdpserver.cpp}}
+\subsubsection[{UPNP\_\-BYEBYE\_\-MESSAGE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UPNP\_\-BYEBYE\_\-MESSAGE}}
+\label{brisassdpserver_8cpp_abf84b50ad924bf7365b752d757e905d7}
+{\bfseries Value:}
+\begin{DoxyCode}
+"NOTIFY * HTTP/1.1\r\n"          \
+                            "HOST: 239.255.255.250:1900\r\n" \
+                            "NT: %1\r\n"                     \
+                            "NTS: ssdp:byebye\r\n"           \
+                            "USN: %2\r\n"                    \
+                            "\r\n"
+\end{DoxyCode}
+
+
+Referenced by BrisaUpnp::BrisaSSDPServer::doByeBye().\hypertarget{brisassdpserver_8cpp_ab6f000145cd4adcfe0e3d3a06f3c7eac}{
+\index{brisassdpserver.cpp@{brisassdpserver.cpp}!UPNP\_\-MSEARCH\_\-RESPONSE@{UPNP\_\-MSEARCH\_\-RESPONSE}}
+\index{UPNP\_\-MSEARCH\_\-RESPONSE@{UPNP\_\-MSEARCH\_\-RESPONSE}!brisassdpserver.cpp@{brisassdpserver.cpp}}
+\subsubsection[{UPNP\_\-MSEARCH\_\-RESPONSE}]{\setlength{\rightskip}{0pt plus 5cm}\#define UPNP\_\-MSEARCH\_\-RESPONSE}}
+\label{brisassdpserver_8cpp_ab6f000145cd4adcfe0e3d3a06f3c7eac}
+{\bfseries Value:}
+\begin{DoxyCode}
+"HTTP/1.1 200 OK\r\n"             \
+                              "CACHE-CONTROL: max-age = %1\r\n" \
+                              "DATE: %2\r\n"                    \
+                              "EXT: \r\n"                       \
+                              "LOCATION: %3\r\n"                \
+                              "SERVER: %4\r\n"                  \
+                              "ST: %5\r\n"                      \
+                              "USN: %6\r\n"                     \
+                              "\r\n"
+\end{DoxyCode}
+
+
+Referenced by BrisaUpnp::BrisaSSDPServer::respondMSearch().

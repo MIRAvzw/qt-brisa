@@ -1,0 +1,418 @@
+\hypertarget{namespaceBrisaUpnp}{
+\section{BrisaUpnp Namespace Reference}
+\label{namespaceBrisaUpnp}\index{BrisaUpnp@{BrisaUpnp}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription}{BrisaAbstractEventSubscription}
+\begin{DoxyCompactList}\small\item\em Abstract class that represents an event subscription. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaAbstractService}{BrisaAbstractService}
+\begin{DoxyCompactList}\small\item\em An abstract class for the control point side and device side service. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction}
+\begin{DoxyCompactList}\small\item\em Template method class that represents each service's action. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaArgument}{BrisaArgument}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaIcon}{BrisaIcon}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaServiceParserContext}{BrisaServiceParserContext}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaServiceXMLHandler}{BrisaServiceXMLHandler}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable}
+\begin{DoxyCompactList}\small\item\em Represents the service's state variables. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaControlPoint}{BrisaControlPoint}
+\begin{DoxyCompactList}\small\item\em Class that implements the control part in UPnP Architecture. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaControlPointDevice}{BrisaControlPointDevice}
+\begin{DoxyCompactList}\small\item\em Class that implements the devices that control point part is going to handle. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} is the class that implements action control in UPnP Architecture. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaDeviceParserContext}{BrisaDeviceParserContext}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}{BrisaDeviceXMLHandlerCP}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}{BrisaDeviceXMLHandlerCP} creates a device from a xml description file, with all it's attributes, it lets it ready to be used. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaServiceFetcher}{BrisaServiceFetcher}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaEventProxy}{BrisaEventProxy}
+\begin{DoxyCompactList}\small\item\em Class that implements the event part in control point side in Brisa Qt, this class makes the operations of subscribe, renew subscription and unsubscribe. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP}{BrisaMSearchClientCP}
+\begin{DoxyCompactList}\small\item\em SSDP MSearch implementation for UPnP control points. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaActionXmlParser}{BrisaActionXmlParser}
+\begin{DoxyCompactList}\small\item\em XML parser for SOAP requests. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaDevice}{BrisaDevice}
+\begin{DoxyCompactList}\small\item\em UPnP device implementation. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandler}{BrisaDeviceXMLHandler}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaEventController}{BrisaEventController}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaEventMessage}{BrisaEventMessage}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaEventSubscription}{BrisaEventSubscription}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService}
+\begin{DoxyCompactList}\small\item\em UPnP service abstraction. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient}{BrisaSSDPClient}
+\begin{DoxyCompactList}\small\item\em SSDP stack implementantion for UPnP control points. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer}
+\begin{DoxyCompactList}\small\item\em SSDP stack implementation for UPnP devices. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8}{saxParserState} \{ \par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ac40a082a48bc1b43eef7933899410b92}{ServiceStart}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a893531a42b66527d4b15f65e236945ce}{Scpd}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a62ba51b20118a11b888717d46befaee9}{ServiceSpecVersion}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4b3181a344c0d05ad3f79da4796d1e4a}{ServiceSpecVersionMajor}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a18bb9d16de52c3eebb54d02c25e531e9}{ServiceSpecVersionMinor}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a8e02342289c095edbaf9f32864d320b5}{ActionList}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a39e9ccdc0a75910e69d5f475a584c0cf}{Action}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a14939c320866c170bc8d52fa429dcdb7}{ActionName}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a96132551b8175fc218b84467a3b0cd5d}{ArgumentList}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a67b9c0690f015e6b8fae9d86bf09b3cc}{Argument}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a1d6b633a3751d0ac91bc6f38b155ba82}{ArgumentName}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a02aae7ce2b3ff9ad459bd5b73038923a}{ArgumentDirection}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a269b2f4601f5883ee5f0ba25891c6baa}{RelatedStateVariable}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ae860a5c22c53d6484692133dfd386d2b}{ServiceStateTable}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a53947eaeb5673b5d5e3160f5b2962460}{StateVariable}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ab0f83437b6ebc5a78aa970191bf7d1d3}{StateVariableName}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8abf52d9d3880d5e29e20a5153ed3188d4}{StateVariableDataType}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ad56d8c51edc50c38f25b884c093f1d31}{StateVariableDefaultValue}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4619bdc9d53da1f60aef846ee4396c18}{StateVariableAllowedValueList}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a89f60d96ac18643b4c3f46dce0ba73e8}{StateVariableAllowedValue}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a88accadc3d1ba9fd231b78ad3adf4d5f}{StateVariableAllowedValueRange}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8afd97175b3629100b48235ab947c5915d}{StateVariableAllowedValueRangeMinimum}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a7a064492d64346eeba858b273eea2a3d}{StateVariableAllowedValueRangeMaximum}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a3168b4dd475f4f0e738aa5959a456713}{StateVariableAllowedValueRangeStep}, 
+\par
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a564f5f0c4bfd48ad0983a912feda825b}{ServiceFinished}, 
+\hyperlink{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8aa3409c75deeedd661ddd2a9399c4be3a}{ServiceError} =  -\/1
+ \}
+\item 
+enum \hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0}{SaxParserState} \{ \par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3a2dd2c2d0e6a1a37322de15a3ae995e}{Start}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3152e9b757fc9a88f2a08add06051906}{Root}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a6556a90cbf8f18552cac97851c7c4ee8}{SpecVersion}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aaad220bb73789c920541df5dffeb0aae}{SpecVersionMajor}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2eb804565c471082835d7318f05ed10c}{SpecVersionMinor}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abad229d53aa1a40446099f3af49cd44d}{UrlBase}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4ce07e3ccb264a8a4254e7587a53987b}{Device}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb3d6ff740cfff6d426248694583cb47}{DeviceType}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa2699e628eaa0f22cdda0fc14c4a97de}{DeviceFriendlyName}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ad5f8be3fd06334af7d1d0a1ae816928b}{Manufacturer}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adcbd8ddaa6cbf9b6ce7f315b838df02c}{ManufacturerUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a58fa9f32ef7a830528cbebca19d2a870}{ModelDescription}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aef0fd95ebae7788f840df1d9663aa0db}{ModelName}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae7e9bea81a4d93ac4d0de8e3628c8589}{ModelUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a109c95a1c2eb025bba8d606cb6d2f403}{SerialNumber}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abcc0181a22add88a80f34d9772a95809}{Udn}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2715a3daadf193fc97fccd8f7b2fdf66}{Upc}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb402b957cc69c441fd845ce1acbd76f}{IconList}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adeb3a004ce53b08df43d258a3713882d}{Icon}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2d479c81847bb4c4e03dd01b073e61b9}{IconMimetype}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac69e6cedd40657ce8f55c6e87800cded}{IconWidth}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af41e012d1e1415b365193c601282fa5b}{IconHeight}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af530639a3bb7832a45f9b7b69dfc3bce}{IconDepth}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa9d8f03a0b8e044ff00630f239e67be2}{IconUrl}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a7917f59dcd1d806002d55ff32fb28847}{PresentationUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aea87d6c149183d6d25e5b42e3e1f56fc}{DeviceList}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4a2029f4c40ca414de1e34c429a3aa56}{ServiceList}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a16917cd6d200c28dbbfb4de4ed20987c}{Service}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4e0012fd6f9e795a30e98a22f6c93c28}{ServiceType}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adf1e5bafcf7b5df070d137af63d636de}{ServiceId}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a580f921f639dece042c834dc3b8184b6}{ServiceScpdUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae5724d4fa69f099e851645aaffe64db7}{ServiceControlUrl}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac5ae980de35641ce33db716a51c6e0a7}{ServiceEventSubUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae0722b492513d916e73e30da1841bac1}{Finished}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a73f59ae5f37fb8d81b012aa4f2ce57fa}{Error} =  -\/1
+ \}
+\begin{DoxyCompactList}\small\item\em This enum specifies the devices attributes that are going to be set/get. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0}{
+\index{BrisaUpnp@{BrisaUpnp}!SaxParserState@{SaxParserState}}
+\index{SaxParserState@{SaxParserState}!BrisaUpnp@{BrisaUpnp}}
+\subsubsection[{SaxParserState}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf BrisaUpnp::SaxParserState}}}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0}
+
+
+This enum specifies the devices attributes that are going to be set/get. 
+\begin{DoxyParams}{Parameters}
+\item[{\em Start}]Beginning state in the parser. \item[{\em Root}]Root tag in xml. \item[{\em SpecVersion}]Tag to start editing spec version in device. \item[{\em SpecVersionMajor}]Tag where the state is to edit the major spec version \item[{\em SpecVersionMinor}]Tag where the state is to edit the major spec version \item[{\em UrlBase}]Tag to edit urlBase. \item[{\em Device}]Tag to signal the edit begin of device's attributes. \item[{\em DeviceType}]Tag to edit device type. \item[{\em DeviceFriendlyName}]Tag to edit deviceFriendlyName \item[{\em Manufacturer}]Tag to edit Manufacturer's name. \item[{\em ManufacturerUrl}]Tag to edit Web site for Manufacturer. \item[{\em ModelDescription}]Tag to edit the long description for end user. \item[{\em ModelName}]Tag to edit Model name. \item[{\em ModelNumber}]Tag to edit Model number. \item[{\em ModelUrl}]Tag to edit Web site for model. \item[{\em SerialNumber}]Tag to edit Serial number. \item[{\em Udn}]Tag to edit Unique Device Name. \item[{\em Upc}]Tag to edit Universal Product Code. \item[{\em IconList}]Tag to signal the start the beginning of the addition of icons. \item[{\em Icon}]Tag to signal the start of icon's parameter edition. \item[{\em IconMimetype}]Tag to edit context's icon's myme type. \item[{\em IconWidth}]Tag to edit context's icon's width. \item[{\em IconHeight}]Tag to edit context's icon's height. \item[{\em IconDepth}]Tag to edit context's icon's depth. \item[{\em IconUrl}]Tag to edit context's icon's url. \item[{\em PresentationUrl}]Tag to edit URL to presentation for device. \item[{\em DeviceList}]Tag to signal the embedded devices addition. \item[{\em ServiceList}]Tag to signal services addition. \item[{\em Service}]Tag to start context's service's attributes edition. \item[{\em ServiceType}]Tag to edit the service's type. \item[{\em ServiceId}]Tag to edit the service's id. \item[{\em ServiceType}]Tag to edit the service's type. \item[{\em ServiceScpdUrl}]Tag to edit service's scpd url. \item[{\em ServiceControlUrl}]Tag to edit service's control url. \item[{\em ServiceEventSubUrl}]Tag to edit service's eventsub url. \item[{\em Finished}]Tag to signal the reading is done. \item[{\em Error}]Tag to signal an error in the parser.\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+setAttribute(xmlTags key, QString v), getAttribute(xmlTags key) 
+\end{DoxySeeAlso}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{Start@{Start}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Start@{Start}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3a2dd2c2d0e6a1a37322de15a3ae995e}{
+Start}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3a2dd2c2d0e6a1a37322de15a3ae995e}
+}]\index{Root@{Root}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Root@{Root}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3152e9b757fc9a88f2a08add06051906}{
+Root}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3152e9b757fc9a88f2a08add06051906}
+}]\index{SpecVersion@{SpecVersion}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!SpecVersion@{SpecVersion}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a6556a90cbf8f18552cac97851c7c4ee8}{
+SpecVersion}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a6556a90cbf8f18552cac97851c7c4ee8}
+}]\index{SpecVersionMajor@{SpecVersionMajor}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!SpecVersionMajor@{SpecVersionMajor}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aaad220bb73789c920541df5dffeb0aae}{
+SpecVersionMajor}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aaad220bb73789c920541df5dffeb0aae}
+}]\index{SpecVersionMinor@{SpecVersionMinor}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!SpecVersionMinor@{SpecVersionMinor}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2eb804565c471082835d7318f05ed10c}{
+SpecVersionMinor}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2eb804565c471082835d7318f05ed10c}
+}]\index{UrlBase@{UrlBase}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!UrlBase@{UrlBase}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abad229d53aa1a40446099f3af49cd44d}{
+UrlBase}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abad229d53aa1a40446099f3af49cd44d}
+}]\index{Device@{Device}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Device@{Device}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4ce07e3ccb264a8a4254e7587a53987b}{
+Device}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4ce07e3ccb264a8a4254e7587a53987b}
+}]\index{DeviceType@{DeviceType}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!DeviceType@{DeviceType}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb3d6ff740cfff6d426248694583cb47}{
+DeviceType}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb3d6ff740cfff6d426248694583cb47}
+}]\index{DeviceFriendlyName@{DeviceFriendlyName}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!DeviceFriendlyName@{DeviceFriendlyName}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa2699e628eaa0f22cdda0fc14c4a97de}{
+DeviceFriendlyName}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa2699e628eaa0f22cdda0fc14c4a97de}
+}]\index{Manufacturer@{Manufacturer}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Manufacturer@{Manufacturer}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ad5f8be3fd06334af7d1d0a1ae816928b}{
+Manufacturer}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ad5f8be3fd06334af7d1d0a1ae816928b}
+}]\index{ManufacturerUrl@{ManufacturerUrl}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ManufacturerUrl@{ManufacturerUrl}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adcbd8ddaa6cbf9b6ce7f315b838df02c}{
+ManufacturerUrl}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adcbd8ddaa6cbf9b6ce7f315b838df02c}
+}]\index{ModelDescription@{ModelDescription}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ModelDescription@{ModelDescription}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a58fa9f32ef7a830528cbebca19d2a870}{
+ModelDescription}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a58fa9f32ef7a830528cbebca19d2a870}
+}]\index{ModelName@{ModelName}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ModelName@{ModelName}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aef0fd95ebae7788f840df1d9663aa0db}{
+ModelName}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aef0fd95ebae7788f840df1d9663aa0db}
+}]\index{ModelUrl@{ModelUrl}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ModelUrl@{ModelUrl}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae7e9bea81a4d93ac4d0de8e3628c8589}{
+ModelUrl}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae7e9bea81a4d93ac4d0de8e3628c8589}
+}]\index{SerialNumber@{SerialNumber}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!SerialNumber@{SerialNumber}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a109c95a1c2eb025bba8d606cb6d2f403}{
+SerialNumber}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a109c95a1c2eb025bba8d606cb6d2f403}
+}]\index{Udn@{Udn}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Udn@{Udn}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abcc0181a22add88a80f34d9772a95809}{
+Udn}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abcc0181a22add88a80f34d9772a95809}
+}]\index{Upc@{Upc}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Upc@{Upc}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2715a3daadf193fc97fccd8f7b2fdf66}{
+Upc}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2715a3daadf193fc97fccd8f7b2fdf66}
+}]\index{IconList@{IconList}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!IconList@{IconList}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb402b957cc69c441fd845ce1acbd76f}{
+IconList}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb402b957cc69c441fd845ce1acbd76f}
+}]\index{Icon@{Icon}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Icon@{Icon}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adeb3a004ce53b08df43d258a3713882d}{
+Icon}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adeb3a004ce53b08df43d258a3713882d}
+}]\index{IconMimetype@{IconMimetype}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!IconMimetype@{IconMimetype}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2d479c81847bb4c4e03dd01b073e61b9}{
+IconMimetype}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2d479c81847bb4c4e03dd01b073e61b9}
+}]\index{IconWidth@{IconWidth}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!IconWidth@{IconWidth}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac69e6cedd40657ce8f55c6e87800cded}{
+IconWidth}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac69e6cedd40657ce8f55c6e87800cded}
+}]\index{IconHeight@{IconHeight}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!IconHeight@{IconHeight}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af41e012d1e1415b365193c601282fa5b}{
+IconHeight}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af41e012d1e1415b365193c601282fa5b}
+}]\index{IconDepth@{IconDepth}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!IconDepth@{IconDepth}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af530639a3bb7832a45f9b7b69dfc3bce}{
+IconDepth}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af530639a3bb7832a45f9b7b69dfc3bce}
+}]\index{IconUrl@{IconUrl}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!IconUrl@{IconUrl}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa9d8f03a0b8e044ff00630f239e67be2}{
+IconUrl}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa9d8f03a0b8e044ff00630f239e67be2}
+}]\index{PresentationUrl@{PresentationUrl}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!PresentationUrl@{PresentationUrl}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a7917f59dcd1d806002d55ff32fb28847}{
+PresentationUrl}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a7917f59dcd1d806002d55ff32fb28847}
+}]\index{DeviceList@{DeviceList}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!DeviceList@{DeviceList}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aea87d6c149183d6d25e5b42e3e1f56fc}{
+DeviceList}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aea87d6c149183d6d25e5b42e3e1f56fc}
+}]\index{ServiceList@{ServiceList}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceList@{ServiceList}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4a2029f4c40ca414de1e34c429a3aa56}{
+ServiceList}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4a2029f4c40ca414de1e34c429a3aa56}
+}]\index{Service@{Service}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Service@{Service}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a16917cd6d200c28dbbfb4de4ed20987c}{
+Service}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a16917cd6d200c28dbbfb4de4ed20987c}
+}]\index{ServiceType@{ServiceType}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceType@{ServiceType}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4e0012fd6f9e795a30e98a22f6c93c28}{
+ServiceType}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4e0012fd6f9e795a30e98a22f6c93c28}
+}]\index{ServiceId@{ServiceId}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceId@{ServiceId}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adf1e5bafcf7b5df070d137af63d636de}{
+ServiceId}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adf1e5bafcf7b5df070d137af63d636de}
+}]\index{ServiceScpdUrl@{ServiceScpdUrl}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceScpdUrl@{ServiceScpdUrl}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a580f921f639dece042c834dc3b8184b6}{
+ServiceScpdUrl}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a580f921f639dece042c834dc3b8184b6}
+}]\index{ServiceControlUrl@{ServiceControlUrl}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceControlUrl@{ServiceControlUrl}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae5724d4fa69f099e851645aaffe64db7}{
+ServiceControlUrl}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae5724d4fa69f099e851645aaffe64db7}
+}]\index{ServiceEventSubUrl@{ServiceEventSubUrl}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceEventSubUrl@{ServiceEventSubUrl}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac5ae980de35641ce33db716a51c6e0a7}{
+ServiceEventSubUrl}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac5ae980de35641ce33db716a51c6e0a7}
+}]\index{Finished@{Finished}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Finished@{Finished}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae0722b492513d916e73e30da1841bac1}{
+Finished}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae0722b492513d916e73e30da1841bac1}
+}]\index{Error@{Error}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Error@{Error}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a73f59ae5f37fb8d81b012aa4f2ce57fa}{
+Error}
+\label{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a73f59ae5f37fb8d81b012aa4f2ce57fa}
+}]\end{description}
+\end{Desc}
+
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8}{
+\index{BrisaUpnp@{BrisaUpnp}!saxParserState@{saxParserState}}
+\index{saxParserState@{saxParserState}!BrisaUpnp@{BrisaUpnp}}
+\subsubsection[{saxParserState}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf BrisaUpnp::saxParserState}}}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{ServiceStart@{ServiceStart}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceStart@{ServiceStart}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ac40a082a48bc1b43eef7933899410b92}{
+ServiceStart}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ac40a082a48bc1b43eef7933899410b92}
+}]\index{Scpd@{Scpd}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Scpd@{Scpd}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a893531a42b66527d4b15f65e236945ce}{
+Scpd}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a893531a42b66527d4b15f65e236945ce}
+}]\index{ServiceSpecVersion@{ServiceSpecVersion}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceSpecVersion@{ServiceSpecVersion}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a62ba51b20118a11b888717d46befaee9}{
+ServiceSpecVersion}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a62ba51b20118a11b888717d46befaee9}
+}]\index{ServiceSpecVersionMajor@{ServiceSpecVersionMajor}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceSpecVersionMajor@{ServiceSpecVersionMajor}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4b3181a344c0d05ad3f79da4796d1e4a}{
+ServiceSpecVersionMajor}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4b3181a344c0d05ad3f79da4796d1e4a}
+}]\index{ServiceSpecVersionMinor@{ServiceSpecVersionMinor}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceSpecVersionMinor@{ServiceSpecVersionMinor}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a18bb9d16de52c3eebb54d02c25e531e9}{
+ServiceSpecVersionMinor}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a18bb9d16de52c3eebb54d02c25e531e9}
+}]\index{ActionList@{ActionList}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ActionList@{ActionList}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a8e02342289c095edbaf9f32864d320b5}{
+ActionList}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a8e02342289c095edbaf9f32864d320b5}
+}]\index{Action@{Action}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Action@{Action}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a39e9ccdc0a75910e69d5f475a584c0cf}{
+Action}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a39e9ccdc0a75910e69d5f475a584c0cf}
+}]\index{ActionName@{ActionName}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ActionName@{ActionName}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a14939c320866c170bc8d52fa429dcdb7}{
+ActionName}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a14939c320866c170bc8d52fa429dcdb7}
+}]\index{ArgumentList@{ArgumentList}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ArgumentList@{ArgumentList}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a96132551b8175fc218b84467a3b0cd5d}{
+ArgumentList}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a96132551b8175fc218b84467a3b0cd5d}
+}]\index{Argument@{Argument}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!Argument@{Argument}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a67b9c0690f015e6b8fae9d86bf09b3cc}{
+Argument}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a67b9c0690f015e6b8fae9d86bf09b3cc}
+}]\index{ArgumentName@{ArgumentName}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ArgumentName@{ArgumentName}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a1d6b633a3751d0ac91bc6f38b155ba82}{
+ArgumentName}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a1d6b633a3751d0ac91bc6f38b155ba82}
+}]\index{ArgumentDirection@{ArgumentDirection}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ArgumentDirection@{ArgumentDirection}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a02aae7ce2b3ff9ad459bd5b73038923a}{
+ArgumentDirection}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a02aae7ce2b3ff9ad459bd5b73038923a}
+}]\index{RelatedStateVariable@{RelatedStateVariable}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!RelatedStateVariable@{RelatedStateVariable}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a269b2f4601f5883ee5f0ba25891c6baa}{
+RelatedStateVariable}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a269b2f4601f5883ee5f0ba25891c6baa}
+}]\index{ServiceStateTable@{ServiceStateTable}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceStateTable@{ServiceStateTable}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ae860a5c22c53d6484692133dfd386d2b}{
+ServiceStateTable}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ae860a5c22c53d6484692133dfd386d2b}
+}]\index{StateVariable@{StateVariable}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariable@{StateVariable}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a53947eaeb5673b5d5e3160f5b2962460}{
+StateVariable}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a53947eaeb5673b5d5e3160f5b2962460}
+}]\index{StateVariableName@{StateVariableName}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableName@{StateVariableName}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ab0f83437b6ebc5a78aa970191bf7d1d3}{
+StateVariableName}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ab0f83437b6ebc5a78aa970191bf7d1d3}
+}]\index{StateVariableDataType@{StateVariableDataType}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableDataType@{StateVariableDataType}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8abf52d9d3880d5e29e20a5153ed3188d4}{
+StateVariableDataType}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8abf52d9d3880d5e29e20a5153ed3188d4}
+}]\index{StateVariableDefaultValue@{StateVariableDefaultValue}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableDefaultValue@{StateVariableDefaultValue}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ad56d8c51edc50c38f25b884c093f1d31}{
+StateVariableDefaultValue}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8ad56d8c51edc50c38f25b884c093f1d31}
+}]\index{StateVariableAllowedValueList@{StateVariableAllowedValueList}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableAllowedValueList@{StateVariableAllowedValueList}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4619bdc9d53da1f60aef846ee4396c18}{
+StateVariableAllowedValueList}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a4619bdc9d53da1f60aef846ee4396c18}
+}]\index{StateVariableAllowedValue@{StateVariableAllowedValue}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableAllowedValue@{StateVariableAllowedValue}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a89f60d96ac18643b4c3f46dce0ba73e8}{
+StateVariableAllowedValue}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a89f60d96ac18643b4c3f46dce0ba73e8}
+}]\index{StateVariableAllowedValueRange@{StateVariableAllowedValueRange}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableAllowedValueRange@{StateVariableAllowedValueRange}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a88accadc3d1ba9fd231b78ad3adf4d5f}{
+StateVariableAllowedValueRange}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a88accadc3d1ba9fd231b78ad3adf4d5f}
+}]\index{StateVariableAllowedValueRangeMinimum@{StateVariableAllowedValueRangeMinimum}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableAllowedValueRangeMinimum@{StateVariableAllowedValueRangeMinimum}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8afd97175b3629100b48235ab947c5915d}{
+StateVariableAllowedValueRangeMinimum}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8afd97175b3629100b48235ab947c5915d}
+}]\index{StateVariableAllowedValueRangeMaximum@{StateVariableAllowedValueRangeMaximum}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableAllowedValueRangeMaximum@{StateVariableAllowedValueRangeMaximum}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a7a064492d64346eeba858b273eea2a3d}{
+StateVariableAllowedValueRangeMaximum}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a7a064492d64346eeba858b273eea2a3d}
+}]\index{StateVariableAllowedValueRangeStep@{StateVariableAllowedValueRangeStep}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!StateVariableAllowedValueRangeStep@{StateVariableAllowedValueRangeStep}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a3168b4dd475f4f0e738aa5959a456713}{
+StateVariableAllowedValueRangeStep}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a3168b4dd475f4f0e738aa5959a456713}
+}]\index{ServiceFinished@{ServiceFinished}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceFinished@{ServiceFinished}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a564f5f0c4bfd48ad0983a912feda825b}{
+ServiceFinished}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8a564f5f0c4bfd48ad0983a912feda825b}
+}]\index{ServiceError@{ServiceError}!BrisaUpnp@{BrisaUpnp}}\index{BrisaUpnp@{BrisaUpnp}!ServiceError@{ServiceError}}\item[{\em 
+\hypertarget{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8aa3409c75deeedd661ddd2a9399c4be3a}{
+ServiceError}
+\label{namespaceBrisaUpnp_aa5330e842f464b5365633a03ea39a9c8aa3409c75deeedd661ddd2a9399c4be3a}
+}]\end{description}
+\end{Desc}
+

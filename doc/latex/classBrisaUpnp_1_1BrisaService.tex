@@ -1,0 +1,115 @@
+\hypertarget{classBrisaUpnp_1_1BrisaService}{
+\section{BrisaUpnp::BrisaService Class Reference}
+\label{classBrisaUpnp_1_1BrisaService}\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+}
+
+
+UPnP service abstraction.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaService$>$}Inheritance diagram for BrisaUpnp::BrisaService:Collaboration diagram for BrisaUpnp::BrisaService:\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaService_a8c9ff2ebfd688a97c86139eefd706edc}{parseGenericRequest} (const QString \&method, const QMultiHash$<$ QString, QString $>$ \&headers, const QByteArray \&requestContent, int sessionId, int requestId)
+\begin{DoxyCompactList}\small\item\em Parses the genericRequestReceived() signal coming from the webservice. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaService_ac545cd7f0be250187f84fd26c9e58433}{BrisaService} (QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} with the given parent. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaService_a83a4522dce19621d62a4997ec8bcb89f}{BrisaService} (const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a670933cc6c8581e2f70f52a97d425e4c}{serviceType}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ad72b169651a6c617d27d51e7f706410d}{serviceId}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_aa254b466f38b49b921ed7a25aea7cc8c}{scpdUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_acc5a45e07d8da5d8e086b02f4a22cc78}{controlUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a81d2525c94d2b9572c962089c388f8f9}{eventSubUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a9033d7f9255f3a1b6d3540258bf2ade1}{host}=\char`\"{}\char`\"{}, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} with the given service information. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaService_a10bc466757f498d3948dd677ee7fb759}{BrisaService} (\hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} \&service)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaService_a46039d40b277bac4b50112d75d5f03c7}{$\sim$BrisaService} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$ \hyperlink{classBrisaUpnp_1_1BrisaService_a46f4663b0d7bd8f9b1d22820482afc59}{getVariable} (const QString \&variableName)
+\begin{DoxyCompactList}\small\item\em Returns the requested \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable}, if the variable doesn't exists it return 0. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider} $\ast$ \hyperlink{classBrisaUpnp_1_1BrisaService_a77c97c9c86a73401441b6d8a5749ce58}{getWebService} ()
+\begin{DoxyCompactList}\small\item\em Returns the web service. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaService_ae52e9285fd603cbf7f9e7d2d73d4a8b4}{buildWebServiceTree} (QxtAbstractWebSessionManager $\ast$sessionManager)
+\begin{DoxyCompactList}\small\item\em This method creates all the webservice related stuff. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaService_ad9e2b0c98932f656aee0c4f020955f97}{setDescriptionFile} (const QString \&scpdFilePath)
+\begin{DoxyCompactList}\small\item\em Sets the service file path. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+UPnP service abstraction. \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} provides a convinient way to create UPnP services. \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} itself contains a webservice, so integration with the webserver is simple. You can simply create your service actions with \hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction}, then create a new \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} with the proper information and simply call {\itshape \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a628800df3aed5b953316bb8e55257ea5}{addAction()}\/} with the previously created actions. The next step is to add your service to the device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaService_ac545cd7f0be250187f84fd26c9e58433}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!BrisaService@{BrisaService}}
+\index{BrisaService@{BrisaService}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{BrisaService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaService::BrisaService (QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaService_ac545cd7f0be250187f84fd26c9e58433}
+
+
+Constructs a \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} with the given parent. \hypertarget{classBrisaUpnp_1_1BrisaService_a83a4522dce19621d62a4997ec8bcb89f}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!BrisaService@{BrisaService}}
+\index{BrisaService@{BrisaService}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{BrisaService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaService::BrisaService (const QString \& {\em serviceType}, \/  const QString \& {\em serviceId} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em scpdUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em controlUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em eventSubUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em host} = {\ttfamily \char`\"{}\char`\"{}}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaService_a83a4522dce19621d62a4997ec8bcb89f}
+
+
+Constructs a \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} with the given service information. \hypertarget{classBrisaUpnp_1_1BrisaService_a10bc466757f498d3948dd677ee7fb759}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!BrisaService@{BrisaService}}
+\index{BrisaService@{BrisaService}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{BrisaService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaService::BrisaService ({\bf BrisaService} \& {\em service})}}
+\label{classBrisaUpnp_1_1BrisaService_a10bc466757f498d3948dd677ee7fb759}
+
+
+Copy constructor. \hypertarget{classBrisaUpnp_1_1BrisaService_a46039d40b277bac4b50112d75d5f03c7}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!$\sim$BrisaService@{$\sim$BrisaService}}
+\index{$\sim$BrisaService@{$\sim$BrisaService}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{$\sim$BrisaService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaService::$\sim$BrisaService ()}}
+\label{classBrisaUpnp_1_1BrisaService_a46039d40b277bac4b50112d75d5f03c7}
+
+
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaService_ae52e9285fd603cbf7f9e7d2d73d4a8b4}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!buildWebServiceTree@{buildWebServiceTree}}
+\index{buildWebServiceTree@{buildWebServiceTree}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{buildWebServiceTree}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaService::buildWebServiceTree (QxtAbstractWebSessionManager $\ast$ {\em sessionManager})}}
+\label{classBrisaUpnp_1_1BrisaService_ae52e9285fd603cbf7f9e7d2d73d4a8b4}
+
+
+This method creates all the webservice related stuff. It creates a URL for the control path, another url for the event path, and publishs the service description XML file. \hypertarget{classBrisaUpnp_1_1BrisaService_a46f4663b0d7bd8f9b1d22820482afc59}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!getVariable@{getVariable}}
+\index{getVariable@{getVariable}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{getVariable}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BrisaStateVariable} $\ast$ BrisaService::getVariable (const QString \& {\em variableName})}}
+\label{classBrisaUpnp_1_1BrisaService_a46f4663b0d7bd8f9b1d22820482afc59}
+
+
+Returns the requested \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable}, if the variable doesn't exists it return 0. 
+
+Referenced by BrisaUpnp::BrisaAction::getStateVariable().\hypertarget{classBrisaUpnp_1_1BrisaService_a77c97c9c86a73401441b6d8a5749ce58}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!getWebService@{getWebService}}
+\index{getWebService@{getWebService}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{getWebService}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BrisaWebServiceProvider} $\ast$ BrisaService::getWebService ()}}
+\label{classBrisaUpnp_1_1BrisaService_a77c97c9c86a73401441b6d8a5749ce58}
+
+
+Returns the web service. \hypertarget{classBrisaUpnp_1_1BrisaService_a8c9ff2ebfd688a97c86139eefd706edc}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!parseGenericRequest@{parseGenericRequest}}
+\index{parseGenericRequest@{parseGenericRequest}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{parseGenericRequest}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaService::parseGenericRequest (const QString \& {\em method}, \/  const QMultiHash$<$ QString, QString $>$ \& {\em headers}, \/  const QByteArray \& {\em requestContent}, \/  int {\em sessionId}, \/  int {\em requestId})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaService_a8c9ff2ebfd688a97c86139eefd706edc}
+
+
+Parses the genericRequestReceived() signal coming from the webservice. 
+
+Referenced by buildWebServiceTree().\hypertarget{classBrisaUpnp_1_1BrisaService_ad9e2b0c98932f656aee0c4f020955f97}{
+\index{BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}!setDescriptionFile@{setDescriptionFile}}
+\index{setDescriptionFile@{setDescriptionFile}!BrisaUpnp::BrisaService@{BrisaUpnp::BrisaService}}
+\subsubsection[{setDescriptionFile}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaService::setDescriptionFile (const QString \& {\em scpdFilePath})}}
+\label{classBrisaUpnp_1_1BrisaService_ad9e2b0c98932f656aee0c4f020955f97}
+
+
+Sets the service file path. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/device/\hyperlink{brisaservice_8h}{brisaservice.h}\item 
+src/upnp/device/\hyperlink{brisaservice_8cpp}{brisaservice.cpp}\end{DoxyCompactItemize}

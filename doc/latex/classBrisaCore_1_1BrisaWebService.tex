@@ -1,0 +1,154 @@
+\hypertarget{classBrisaCore_1_1BrisaWebService}{
+\section{BrisaCore::BrisaWebService Class Reference}
+\label{classBrisaCore_1_1BrisaWebService}\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+}
+
+
+Web service abstraction class.  
+
+
+{\ttfamily \#include $<$brisawebserver.h$>$}Inheritance diagram for BrisaCore::BrisaWebService:\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebService_afebcc6819b39a28ddd06bb78ec7d26a0}{pageRequestedEvent} (QxtWebRequestEvent $\ast$event)
+\begin{DoxyCompactList}\small\item\em This method receives all web service requests and emits a \hyperlink{classBrisaCore_1_1BrisaWebService_ad94a4a9cd45a90dc56559ac86728c61b}{genericRequestReceived()} signal. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{respond} (QByteArray response)
+\begin{DoxyCompactList}\small\item\em Responds {\itshape response\/} to the session and request ID currently stored in \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}, if using this method the response must be synchronous because the request and session ID can change quickly. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebService_ada638bec49ea1dcc3978120529265b60}{respond} (const QByteArray \&response, const int \&sessionId, const int \&requestId)
+\begin{DoxyCompactList}\small\item\em Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{respond()}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebService_a54a5f8ab170bc1e5f97cac6f508deb50}{respond} (const QHttpResponseHeader \&response)
+\begin{DoxyCompactList}\small\item\em Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{respond()} This method responds only a HTTP header to the session and request ID stored in \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebService_aa1cead2f4057de3dda2eb0e5dbc6efe2}{respond} (const QHttpResponseHeader \&response, const int \&sessionId, const int \&requestId)
+\begin{DoxyCompactList}\small\item\em Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{respond()}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebService_ad94a4a9cd45a90dc56559ac86728c61b}{genericRequestReceived} (const QString \&method, const QMultiHash$<$ QString, QString $>$ \&headers, const QByteArray \&requestContent, int sessionId, int requestId)
+\begin{DoxyCompactList}\small\item\em This signal is emmited when \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService} receives a request. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebService_a64f1eecefc1c36442dfa1fc63e4e4222}{genericRequestReceived} (\hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService} $\ast$service, QMultiHash$<$ QString, QString $>$, QString requestContent)
+\begin{DoxyCompactList}\small\item\em Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_ad94a4a9cd45a90dc56559ac86728c61b}{genericRequestReceived()} This signal is emmited when \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService} receives a request, the main difference is that this signal has a pointer to the class that is emmiting the signal. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaCore_1_1BrisaWebService_a0d19c4a676c24ebc3fd13e781ad2ae37}{BrisaWebService} (QxtAbstractWebSessionManager $\ast$sm, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructor for \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaCore_1_1BrisaWebService_a15cfdd76811cd0324163398d1220c693}{$\sim$BrisaWebService} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Web service abstraction class. \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService} is used to receive and respond UPnP action and event requests. Currently this class is used mostly with BrisaService and BrisaEventController.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaUpnp::BrisaService} , \hyperlink{classBrisaUpnp_1_1BrisaEventController}{BrisaUpnp::BrisaEventController} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebService_a0d19c4a676c24ebc3fd13e781ad2ae37}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!BrisaWebService@{BrisaWebService}}
+\index{BrisaWebService@{BrisaWebService}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{BrisaWebService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaCore::BrisaWebService::BrisaWebService (QxtAbstractWebSessionManager $\ast$ {\em sm}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_a0d19c4a676c24ebc3fd13e781ad2ae37}
+
+
+Constructor for \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em sm}]Session manager \item[{\em parent}]parent \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebService_a15cfdd76811cd0324163398d1220c693}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!$\sim$BrisaWebService@{$\sim$BrisaWebService}}
+\index{$\sim$BrisaWebService@{$\sim$BrisaWebService}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{$\sim$BrisaWebService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaCore::BrisaWebService::$\sim$BrisaWebService ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_a15cfdd76811cd0324163398d1220c693}
+
+
+Destructor for \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebService_a64f1eecefc1c36442dfa1fc63e4e4222}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!genericRequestReceived@{genericRequestReceived}}
+\index{genericRequestReceived@{genericRequestReceived}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{genericRequestReceived}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebService::genericRequestReceived ({\bf BrisaWebService} $\ast$ {\em service}, \/  QMultiHash$<$ QString, QString $>$, \/  QString {\em requestContent})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_a64f1eecefc1c36442dfa1fc63e4e4222}
+
+
+Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_ad94a4a9cd45a90dc56559ac86728c61b}{genericRequestReceived()} This signal is emmited when \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService} receives a request, the main difference is that this signal has a pointer to the class that is emmiting the signal. 
+\begin{DoxyParams}{Parameters}
+\item[{\em service}]{\itshape empty\/} \item[{\em ?}]? \item[{\em requestContent}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebService_ad94a4a9cd45a90dc56559ac86728c61b}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!genericRequestReceived@{genericRequestReceived}}
+\index{genericRequestReceived@{genericRequestReceived}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{genericRequestReceived}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebService::genericRequestReceived (const QString \& {\em method}, \/  const QMultiHash$<$ QString, QString $>$ \& {\em headers}, \/  const QByteArray \& {\em requestContent}, \/  int {\em sessionId}, \/  int {\em requestId})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_ad94a4a9cd45a90dc56559ac86728c61b}
+
+
+This signal is emmited when \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService} receives a request. 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]{\itshape empty\/} \item[{\em headers}]{\itshape empty\/} \item[{\em requestContent}]{\itshape empty\/} \item[{\em sessionId}]{\itshape empty\/} \item[{\em requestId}]{\itshape empty\/} \end{DoxyParams}
+
+
+Referenced by BrisaUpnp::BrisaEventController::BrisaEventController().\hypertarget{classBrisaCore_1_1BrisaWebService_afebcc6819b39a28ddd06bb78ec7d26a0}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!pageRequestedEvent@{pageRequestedEvent}}
+\index{pageRequestedEvent@{pageRequestedEvent}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{pageRequestedEvent}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebService::pageRequestedEvent (QxtWebRequestEvent $\ast$ {\em event})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, slot\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_afebcc6819b39a28ddd06bb78ec7d26a0}
+
+
+This method receives all web service requests and emits a \hyperlink{classBrisaCore_1_1BrisaWebService_ad94a4a9cd45a90dc56559ac86728c61b}{genericRequestReceived()} signal. If the request method is of \char`\"{}POST\char`\"{} type, the web service will reply a default message.
+
+Note: Reimplemented from libQxt.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebService_aa1cead2f4057de3dda2eb0e5dbc6efe2}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!respond@{respond}}
+\index{respond@{respond}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{respond}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebService::respond (const QHttpResponseHeader \& {\em response}, \/  const int \& {\em sessionId}, \/  const int \& {\em requestId})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, slot\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_aa1cead2f4057de3dda2eb0e5dbc6efe2}
+
+
+Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{respond()}. This method responds only a HTTP header using the given session and request ID.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em response}]{\itshape empty\/} \item[{\em sessionId}]{\itshape empty\/} \item[{\em requestId}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebService_a54a5f8ab170bc1e5f97cac6f508deb50}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!respond@{respond}}
+\index{respond@{respond}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{respond}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebService::respond (const QHttpResponseHeader \& {\em response})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, slot\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_a54a5f8ab170bc1e5f97cac6f508deb50}
+
+
+Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{respond()} This method responds only a HTTP header to the session and request ID stored in \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em response}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebService_ada638bec49ea1dcc3978120529265b60}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!respond@{respond}}
+\index{respond@{respond}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{respond}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebService::respond (const QByteArray \& {\em response}, \/  const int \& {\em sessionId}, \/  const int \& {\em requestId})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, slot\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_ada638bec49ea1dcc3978120529265b60}
+
+
+Reimplements \hyperlink{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{respond()}. We recommend using this method given the fact that it supports asynchronous requests.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em response}]{\itshape empty\/} \item[{\em sessionId}]{\itshape empty\/} \item[{\em requestId}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}{
+\index{BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}!respond@{respond}}
+\index{respond@{respond}!BrisaCore::BrisaWebService@{BrisaCore::BrisaWebService}}
+\subsubsection[{respond}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebService::respond (QByteArray {\em response})\hspace{0.3cm}{\ttfamily  \mbox{[}inline, slot\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebService_a4065f685234edf9f4c1bda00549060c7}
+
+
+Responds {\itshape response\/} to the session and request ID currently stored in \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaWebService}, if using this method the response must be synchronous because the request and session ID can change quickly. 
+\begin{DoxyParams}{Parameters}
+\item[{\em response}]{\itshape empty\/} \end{DoxyParams}
+
+
+Referenced by BrisaUpnp::BrisaEventController::subscribe(), and BrisaUpnp::BrisaEventController::unsubscribe().
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{brisawebserver_8h}{brisawebserver.h}\end{DoxyCompactItemize}

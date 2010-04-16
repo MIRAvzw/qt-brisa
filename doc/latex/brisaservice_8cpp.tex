@@ -1,0 +1,54 @@
+\hypertarget{brisaservice_8cpp}{
+\section{src/upnp/device/brisaservice.cpp File Reference}
+\label{brisaservice_8cpp}\index{src/upnp/device/brisaservice.cpp@{src/upnp/device/brisaservice.cpp}}
+}
+{\ttfamily \#include $<$QtDebug$>$}\par
+{\ttfamily \#include $<$QUrl$>$}\par
+{\ttfamily \#include \char`\"{}brisaservice.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}brisaservicexmlhandler.h\char`\"{}}\par
+Include dependency graph for brisaservice.cpp:\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{brisaservice_8cpp_a7d26340068942f296a960bf8ca62cf93}{SOAP\_\-ERROR\_\-TEMPLATE}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{brisaservice_8cpp_a7d26340068942f296a960bf8ca62cf93}{
+\index{brisaservice.cpp@{brisaservice.cpp}!SOAP\_\-ERROR\_\-TEMPLATE@{SOAP\_\-ERROR\_\-TEMPLATE}}
+\index{SOAP\_\-ERROR\_\-TEMPLATE@{SOAP\_\-ERROR\_\-TEMPLATE}!brisaservice.cpp@{brisaservice.cpp}}
+\subsubsection[{SOAP\_\-ERROR\_\-TEMPLATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define SOAP\_\-ERROR\_\-TEMPLATE}}
+\label{brisaservice_8cpp_a7d26340068942f296a960bf8ca62cf93}
+{\bfseries Value:}
+\begin{DoxyCode}
+"<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"                   \
+                            "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soa
+      p/envelope/\"" \
+                            "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/en
+      coding/\">\r\n"\
+                            "<s:Body>\r\n"                                       
+                     \
+                            "<s:Fault>\r\n"                                      
+                     \
+                            "<faultcode>s:Client</faultcode>\r\n"                
+                     \
+                            "<faultstring>UPnPError</faultstring>\r\n"           
+                     \
+                            "<detail>\r\n"                                       
+                     \
+                            "<UPnPError xmlns=\"urn:schemas-upnp-org:control-1-0\
+      ">\r\n"        \
+                            "<errorCode>%1</errorCode>\r\n"                      
+                     \
+                            "<errorDescription>%2</errorDescription>\r\n"        
+                     \
+                            "</UPnPError>\r\n"                                   
+                     \
+                            "</detail>\r\n"                                      
+                     \
+                            "</s:Fault>\r\n"                                     
+                     \
+                            "</s:Body>\r\n"                                      
+                     \
+                            "</s:Envelope>\r\n"
+\end{DoxyCode}

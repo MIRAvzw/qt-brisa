@@ -1,0 +1,166 @@
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer}{
+\section{BrisaUpnp::BrisaSSDPServer Class Reference}
+\label{classBrisaUpnp_1_1BrisaSSDPServer}\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+}
+
+
+SSDP stack implementation for UPnP devices.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaSSDPServer$>$}\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_ac6e15aabc0f27fbea5214b6eb134abc6}{isRunning} ()
+\begin{DoxyCompactList}\small\item\em Checks if \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer} is running. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a76ec5ae1f66a8ee27241c7b0a629d9a4}{start} ()
+\begin{DoxyCompactList}\small\item\em Joins the multicast group and starts listening for UPnP msearch responses. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a681a0e4e49df9c97862cda09d27642a7}{stop} ()
+\begin{DoxyCompactList}\small\item\em Stops the \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_ac1ea6c85983ed106c4dee300e7500b74}{doNotify} (const QString \&usn, const QString \&location, const QString \&st, const QString \&server, const QString \&cacheControl)
+\begin{DoxyCompactList}\small\item\em Sends a UPnP notify alive message to the multicast group with the given information. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_afe21b672caca021dbed29b7e0e7a9744}{doByeBye} (const QString \&usn, const QString \&st)
+\begin{DoxyCompactList}\small\item\em Sends a UPnP notify byebye message to the multicast group with the given information. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_abd6220bed881e7e33c6e49a84388996a}{respondMSearch} (const QString \&senderIp, quint16 senderPort, const QString \&cacheControl, const QString \&date, const QString \&location, const QString \&server, const QString \&st, const QString \&usn)
+\begin{DoxyCompactList}\small\item\em Sends a UPnP msearch response message to the given sender IP address and port. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a81aff8b072c5fe63f1b3011c5084866a}{msearchRequestReceived} (const QString \&st, const QString \&senderIp, quint16 senderPort)
+\begin{DoxyCompactList}\small\item\em This signal is emmited when the \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer} receives a valid UPnP msearch request. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_aab381a208bb65f63e4e10f6c4e5429b9}{BrisaSSDPServer} (QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer} with the given parent object. \item\end{DoxyCompactList}\item 
+virtual \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_adc16bda24aefcfddada56fedd69483f6}{$\sim$BrisaSSDPServer} ()
+\begin{DoxyCompactList}\small\item\em Destroys the Object. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+SSDP stack implementation for UPnP devices. Call {\itshape \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a76ec5ae1f66a8ee27241c7b0a629d9a4}{start()}\/} to begin listening for MSearch requests from control points. Whenever a new msearch request is parsed by the \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer}, a {\itshape \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a81aff8b072c5fe63f1b3011c5084866a}{msearchRequestReceived()}\/} signal is emmited containning all of the request information. You can connect this signal to some slot wich calls {\itshape \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_abd6220bed881e7e33c6e49a84388996a}{respondMSearch()}\/} and get a synchronous response to msearch requests.
+
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer} also implements SSDP notify messages. Call {\itshape \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_ac1ea6c85983ed106c4dee300e7500b74}{doNotify()}\/} or {\itshape \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_afe21b672caca021dbed29b7e0e7a9744}{doByeBye()}\/} when entering or leaving the multicast group. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_aab381a208bb65f63e4e10f6c4e5429b9}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!BrisaSSDPServer@{BrisaSSDPServer}}
+\index{BrisaSSDPServer@{BrisaSSDPServer}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{BrisaSSDPServer}]{\setlength{\rightskip}{0pt plus 5cm}BrisaSSDPServer::BrisaSSDPServer (QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_aab381a208bb65f63e4e10f6c4e5429b9}
+
+
+Constructs a \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer} with the given parent object. 
+\begin{DoxyParams}{Parameters}
+\item[{\em parent}]parent \end{DoxyParams}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_adc16bda24aefcfddada56fedd69483f6}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!$\sim$BrisaSSDPServer@{$\sim$BrisaSSDPServer}}
+\index{$\sim$BrisaSSDPServer@{$\sim$BrisaSSDPServer}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{$\sim$BrisaSSDPServer}]{\setlength{\rightskip}{0pt plus 5cm}BrisaSSDPServer::$\sim$BrisaSSDPServer ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_adc16bda24aefcfddada56fedd69483f6}
+
+
+Destroys the Object. Stops the server if running. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_afe21b672caca021dbed29b7e0e7a9744}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!doByeBye@{doByeBye}}
+\index{doByeBye@{doByeBye}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{doByeBye}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaSSDPServer::doByeBye (const QString \& {\em usn}, \/  const QString \& {\em st})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_afe21b672caca021dbed29b7e0e7a9744}
+
+
+Sends a UPnP notify byebye message to the multicast group with the given information. 
+\begin{DoxyParams}{Parameters}
+\item[{\em usn}]{\itshape empty\/} \item[{\em st}]{\itshape empty\/} \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_ac1ea6c85983ed106c4dee300e7500b74}{doNotify()} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaUpnp::BrisaDevice::doByeBye().\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_ac1ea6c85983ed106c4dee300e7500b74}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!doNotify@{doNotify}}
+\index{doNotify@{doNotify}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{doNotify}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaSSDPServer::doNotify (const QString \& {\em usn}, \/  const QString \& {\em location}, \/  const QString \& {\em st}, \/  const QString \& {\em server}, \/  const QString \& {\em cacheControl})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_ac1ea6c85983ed106c4dee300e7500b74}
+
+
+Sends a UPnP notify alive message to the multicast group with the given information. 
+\begin{DoxyParams}{Parameters}
+\item[{\em usn}]{\itshape empty\/} \item[{\em location}]{\itshape empty\/} \item[{\em st}]{\itshape empty\/} \item[{\em server}]{\itshape empty\/} \item[{\em cacheControl}]{\itshape empty\/} \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_afe21b672caca021dbed29b7e0e7a9744}{doByeBye()} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaUpnp::BrisaDevice::doNotify().\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_ac6e15aabc0f27fbea5214b6eb134abc6}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{isRunning}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaSSDPServer::isRunning ()\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_ac6e15aabc0f27fbea5214b6eb134abc6}
+
+
+Checks if \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer} is running. \begin{DoxyReturn}{Returns}
+true if is running 
+\end{DoxyReturn}
+
+
+Referenced by start(), stop(), and $\sim$BrisaSSDPServer().\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_a81aff8b072c5fe63f1b3011c5084866a}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!msearchRequestReceived@{msearchRequestReceived}}
+\index{msearchRequestReceived@{msearchRequestReceived}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{msearchRequestReceived}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaSSDPServer::msearchRequestReceived (const QString \& {\em st}, \/  const QString \& {\em senderIp}, \/  quint16 {\em senderPort})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_a81aff8b072c5fe63f1b3011c5084866a}
+
+
+This signal is emmited when the \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer} receives a valid UPnP msearch request. 
+\begin{DoxyParams}{Parameters}
+\item[{\em st}]{\itshape empty\/} \item[{\em senderIp}]{\itshape empty\/} \item[{\em senderPort}]{\itshape empty\/} \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_abd6220bed881e7e33c6e49a84388996a}{respondMSearch()} 
+\end{DoxySeeAlso}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_abd6220bed881e7e33c6e49a84388996a}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!respondMSearch@{respondMSearch}}
+\index{respondMSearch@{respondMSearch}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{respondMSearch}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaSSDPServer::respondMSearch (const QString \& {\em senderIp}, \/  quint16 {\em senderPort}, \/  const QString \& {\em cacheControl}, \/  const QString \& {\em date}, \/  const QString \& {\em location}, \/  const QString \& {\em server}, \/  const QString \& {\em st}, \/  const QString \& {\em usn})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_abd6220bed881e7e33c6e49a84388996a}
+
+
+Sends a UPnP msearch response message to the given sender IP address and port. Connect this slot to a proper signal to get synchronous response for msearch requests.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sender}]Ip {\itshape empty\/} \item[{\em senderPort}]{\itshape empty\/} \item[{\em cacheControl}]{\itshape empty\/} \item[{\em date}]{\itshape empty\/} \item[{\em location}]{\itshape empty\/} \item[{\em server}]{\itshape empty\/} \item[{\em st}]{\itshape empty\/} \item[{\em usn}]{\itshape empty\/} \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a81aff8b072c5fe63f1b3011c5084866a}{msearchRequestReceived()} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaUpnp::BrisaDevice::respondMSearch().\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_a76ec5ae1f66a8ee27241c7b0a629d9a4}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!start@{start}}
+\index{start@{start}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaSSDPServer::start ()\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_a76ec5ae1f66a8ee27241c7b0a629d9a4}
+
+
+Joins the multicast group and starts listening for UPnP msearch responses. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a681a0e4e49df9c97862cda09d27642a7}{stop()} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaUpnp::BrisaDevice::start().\hypertarget{classBrisaUpnp_1_1BrisaSSDPServer_a681a0e4e49df9c97862cda09d27642a7}{
+\index{BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}!stop@{stop}}
+\index{stop@{stop}!BrisaUpnp::BrisaSSDPServer@{BrisaUpnp::BrisaSSDPServer}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaSSDPServer::stop ()\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPServer_a681a0e4e49df9c97862cda09d27642a7}
+
+
+Stops the \hyperlink{classBrisaUpnp_1_1BrisaSSDPServer}{BrisaSSDPServer}. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPServer_a76ec5ae1f66a8ee27241c7b0a629d9a4}{start()} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaUpnp::BrisaDevice::stop(), and $\sim$BrisaSSDPServer().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/ssdp/\hyperlink{brisassdpserver_8h}{brisassdpserver.h}\item 
+src/upnp/ssdp/\hyperlink{brisassdpserver_8cpp}{brisassdpserver.cpp}\end{DoxyCompactItemize}

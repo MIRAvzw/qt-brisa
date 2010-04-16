@@ -1,0 +1,97 @@
+\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP}{
+\section{BrisaUpnp::BrisaMSearchClientCP Class Reference}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP}\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+}
+
+
+SSDP MSearch implementation for UPnP control points.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaMSearchClientCP$>$}\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_ade684c9716da9485cfa2027be173a29c}{discover} ()
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_abebd58a64a0cb18679d40ce2e0ca76a2}{msearchResponseReceived} (const QString \&usn, const QString \&location, const QString \&st, const QString \&ext, const QString \&server, const QString \&cacheControl)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_af2b7857c157d23ebe127ef44f64cce67}{BrisaMSearchClientCP} (QObject $\ast$parent=0, const QString \&type=DEFAULT\_\-SEARCH\_\-TYPE, int mx=5)
+\item 
+virtual \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_a6d337525aebcfd7a769905e4e28322ff}{$\sim$BrisaMSearchClientCP} ()
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_acfed2d3bba45be386220e6260bdec322}{doubleDiscover} ()
+\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_a2fe779dccea96c7df6acc5a82b4b79fd}{isRunning} () const 
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_a6b1b90d6f85a8fac4f90166c45524a26}{start} (int interval=DEFAULT\_\-SEARCH\_\-TIME)
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_af56138f5ec0f25a51662888132eef28e}{stop} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+SSDP MSearch implementation for UPnP control points. Create a new \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP}{BrisaMSearchClientCP} with the desired service type and mx values, and call \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_a6b1b90d6f85a8fac4f90166c45524a26}{start()} to begin sending discovery messages to possible devices in the multicast group. When a device responds to a msearch request, {\itshape \hyperlink{classBrisaUpnp_1_1BrisaMSearchClientCP_abebd58a64a0cb18679d40ce2e0ca76a2}{msearchResponseReceived()}\/} signal is emmited. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_af2b7857c157d23ebe127ef44f64cce67}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!BrisaMSearchClientCP@{BrisaMSearchClientCP}}
+\index{BrisaMSearchClientCP@{BrisaMSearchClientCP}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{BrisaMSearchClientCP}]{\setlength{\rightskip}{0pt plus 5cm}BrisaMSearchClientCP::BrisaMSearchClientCP (QObject $\ast$ {\em parent} = {\ttfamily 0}, \/  const QString \& {\em type} = {\ttfamily DEFAULT\_\-SEARCH\_\-TYPE}, \/  int {\em mx} = {\ttfamily 5})}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_af2b7857c157d23ebe127ef44f64cce67}
+\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_a6d337525aebcfd7a769905e4e28322ff}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!$\sim$BrisaMSearchClientCP@{$\sim$BrisaMSearchClientCP}}
+\index{$\sim$BrisaMSearchClientCP@{$\sim$BrisaMSearchClientCP}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{$\sim$BrisaMSearchClientCP}]{\setlength{\rightskip}{0pt plus 5cm}BrisaMSearchClientCP::$\sim$BrisaMSearchClientCP ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_a6d337525aebcfd7a769905e4e28322ff}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_ade684c9716da9485cfa2027be173a29c}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!discover@{discover}}
+\index{discover@{discover}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{discover}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaMSearchClientCP::discover ()\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_ade684c9716da9485cfa2027be173a29c}
+
+
+Referenced by BrisaMSearchClientCP(), BrisaUpnp::BrisaControlPoint::discover(), and doubleDiscover().\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_acfed2d3bba45be386220e6260bdec322}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!doubleDiscover@{doubleDiscover}}
+\index{doubleDiscover@{doubleDiscover}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{doubleDiscover}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaMSearchClientCP::doubleDiscover ()}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_acfed2d3bba45be386220e6260bdec322}
+\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_a2fe779dccea96c7df6acc5a82b4b79fd}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{isRunning}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaMSearchClientCP::isRunning () const}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_a2fe779dccea96c7df6acc5a82b4b79fd}
+
+
+Referenced by start(), stop(), and $\sim$BrisaMSearchClientCP().\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_abebd58a64a0cb18679d40ce2e0ca76a2}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!msearchResponseReceived@{msearchResponseReceived}}
+\index{msearchResponseReceived@{msearchResponseReceived}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{msearchResponseReceived}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaMSearchClientCP::msearchResponseReceived (const QString \& {\em usn}, \/  const QString \& {\em location}, \/  const QString \& {\em st}, \/  const QString \& {\em ext}, \/  const QString \& {\em server}, \/  const QString \& {\em cacheControl})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_abebd58a64a0cb18679d40ce2e0ca76a2}
+\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_a6b1b90d6f85a8fac4f90166c45524a26}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!start@{start}}
+\index{start@{start}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaMSearchClientCP::start (int {\em interval} = {\ttfamily DEFAULT\_\-SEARCH\_\-TIME})}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_a6b1b90d6f85a8fac4f90166c45524a26}
+
+
+Referenced by BrisaUpnp::BrisaControlPoint::start().\hypertarget{classBrisaUpnp_1_1BrisaMSearchClientCP_af56138f5ec0f25a51662888132eef28e}{
+\index{BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}!stop@{stop}}
+\index{stop@{stop}!BrisaUpnp::BrisaMSearchClientCP@{BrisaUpnp::BrisaMSearchClientCP}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaMSearchClientCP::stop ()}}
+\label{classBrisaUpnp_1_1BrisaMSearchClientCP_af56138f5ec0f25a51662888132eef28e}
+
+
+Referenced by BrisaUpnp::BrisaControlPoint::stop(), and $\sim$BrisaMSearchClientCP().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/controlpoint/\hyperlink{brisamsearchclientcp_8h}{brisamsearchclientcp.h}\item 
+src/upnp/controlpoint/\hyperlink{brisamsearchclientcp_8cpp}{brisamsearchclientcp.cpp}\end{DoxyCompactItemize}

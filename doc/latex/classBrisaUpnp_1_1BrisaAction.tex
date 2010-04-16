@@ -1,0 +1,185 @@
+\hypertarget{classBrisaUpnp_1_1BrisaAction}{
+\section{BrisaUpnp::BrisaAction Class Reference}
+\label{classBrisaUpnp_1_1BrisaAction}\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+}
+
+
+Template method class that represents each service's action.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaAction$>$}Collaboration diagram for BrisaUpnp::BrisaAction:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaAction_a34f7d8f1f02c5df7b280e00c0d66b785}{BrisaAction} (QString name=\char`\"{}\char`\"{}, \hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} $\ast$service=0, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs an action with given {\itshape name\/}, {\itshape parent\/} and {\itshape service\/} that it is related to. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaAction_ad8222e909463bcfc4257e7da4f5441e8}{BrisaAction} (const \hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction} \&action)
+\begin{DoxyCompactList}\small\item\em Constructs a new action based on {\itshape action\/}. \item\end{DoxyCompactList}\item 
+virtual \hyperlink{classBrisaUpnp_1_1BrisaAction_ab1cd52221450fe503694492fa1c352c4}{$\sim$BrisaAction} ()
+\begin{DoxyCompactList}\small\item\em Destroys the action. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAction_a16390c4f715a0169bc9fd25ac2845e26}{setName} (QString name)
+\begin{DoxyCompactList}\small\item\em Sets a new name to the action. \item\end{DoxyCompactList}\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAction_a409d834cfb64c57e4639d729a0885483}{getName} () const 
+\begin{DoxyCompactList}\small\item\em Returns the action's name. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAction_a81b762ee7bd271a83ccc06f6755b84d8}{setService} (\hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} $\ast$service)
+\begin{DoxyCompactList}\small\item\em Sets a new service for this action. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaService}{BrisaService} $\ast$ \hyperlink{classBrisaUpnp_1_1BrisaAction_a64e61dbdbffaa72111277c54b4b0aa65}{getService} () const 
+\begin{DoxyCompactList}\small\item\em Returns the service that this action is related to. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$ \hyperlink{classBrisaUpnp_1_1BrisaAction_a23fd74faf42b1008a6d924a3b3007797}{getStateVariable} (const QString \&name) const 
+\begin{DoxyCompactList}\small\item\em Returns the related service's state variable with the given {\itshape name\/}. \item\end{DoxyCompactList}\item 
+QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaArgument}{BrisaArgument} $\ast$ $>$ \hyperlink{classBrisaUpnp_1_1BrisaAction_a2879477a3ade3b8529266cbf602b16b5}{getArgumentList} () const 
+\begin{DoxyCompactList}\small\item\em Returns this action's list of arguments. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAction_a1a805cde62089c0c16a52c5ffd0c1370}{addArgument} (QString name=\char`\"{}\char`\"{}, QString direction=\char`\"{}\char`\"{}, QString relatedStateVariable=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Adds an argument with given {\itshape name\/}, {\itshape direction\/} and {\itshape relatedStateVariable\/} to this action's list of arguments. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAction_a991ec9631fdec0971575c0974e8a564b}{addArgument} (\hyperlink{classBrisaUpnp_1_1BrisaArgument}{BrisaArgument} $\ast$argumentA)
+\begin{DoxyCompactList}\small\item\em Adds given {\itshape argument\/} to this action's list of arguments. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAction_a006f4ddaab49e8935d531fef07e44129}{addArguments} (const QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaArgument}{BrisaArgument} $\ast$ $>$ argumentA)
+\begin{DoxyCompactList}\small\item\em Adds given list of {\itshape arguments\/} to this action's list of arguments. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAction_a21f3042b8aea2ab6e9ce0f4e5535be60}{clearArgumentList} ()
+\begin{DoxyCompactList}\small\item\em Clears this action's argument list. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaAction_a1a419879e79f7979377ef7a9ae1bfa9b}{call} (const QMap$<$ QString, QString $>$ \&inArguments, QMap$<$ QString, QString $>$ \&outArguments)
+\begin{DoxyCompactList}\small\item\em Validates {\itshape inArguments\/}, {\itshape outArguments\/} and runs the action. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual QMap$<$ QString, QString $>$ \hyperlink{classBrisaUpnp_1_1BrisaAction_aca2fe8881b0abe570222f31856040424}{run} (const QMap$<$ QString, QString $>$ \&inArguments)
+\begin{DoxyCompactList}\small\item\em The actual action. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Template method class that represents each service's action. Create a class derived from \hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction} and reimplement the method \hyperlink{classBrisaUpnp_1_1BrisaAction_aca2fe8881b0abe570222f31856040424}{run()}. That method is the one which is called when this action is invoked and defines the action's behavior.
+
+The method \hyperlink{classBrisaUpnp_1_1BrisaAction_aca2fe8881b0abe570222f31856040424}{run()} receives a QMap$<$QString, QString$>$ with the input arguments. They are organized as key -\/-\/ the argument name -\/-\/ and value -\/-\/ the argument value. It has to return a QMap$<$QString, QString$>$ with the output arguments organized the same way.
+
+If any of the returned output arguments is not defined in the service description file, \hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction} will show an error message at the debug output stream and send an error message to the control point. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAction_a34f7d8f1f02c5df7b280e00c0d66b785}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!BrisaAction@{BrisaAction}}
+\index{BrisaAction@{BrisaAction}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{BrisaAction}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAction::BrisaAction (QString {\em name} = {\ttfamily \char`\"{}\char`\"{}}, \/  {\bf BrisaService} $\ast$ {\em service} = {\ttfamily 0}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaAction_a34f7d8f1f02c5df7b280e00c0d66b785}
+
+
+Constructs an action with given {\itshape name\/}, {\itshape parent\/} and {\itshape service\/} that it is related to. \hypertarget{classBrisaUpnp_1_1BrisaAction_ad8222e909463bcfc4257e7da4f5441e8}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!BrisaAction@{BrisaAction}}
+\index{BrisaAction@{BrisaAction}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{BrisaAction}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAction::BrisaAction (const {\bf BrisaAction} \& {\em action})}}
+\label{classBrisaUpnp_1_1BrisaAction_ad8222e909463bcfc4257e7da4f5441e8}
+
+
+Constructs a new action based on {\itshape action\/}. \hypertarget{classBrisaUpnp_1_1BrisaAction_ab1cd52221450fe503694492fa1c352c4}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!$\sim$BrisaAction@{$\sim$BrisaAction}}
+\index{$\sim$BrisaAction@{$\sim$BrisaAction}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{$\sim$BrisaAction}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAction::$\sim$BrisaAction ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAction_ab1cd52221450fe503694492fa1c352c4}
+
+
+Destroys the action. It has to be overridden for properly destroying the derived actions when necessary. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAction_a991ec9631fdec0971575c0974e8a564b}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!addArgument@{addArgument}}
+\index{addArgument@{addArgument}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{addArgument}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAction::addArgument ({\bf BrisaArgument} $\ast$ {\em argumentA})}}
+\label{classBrisaUpnp_1_1BrisaAction_a991ec9631fdec0971575c0974e8a564b}
+
+
+Adds given {\itshape argument\/} to this action's list of arguments. \hypertarget{classBrisaUpnp_1_1BrisaAction_a1a805cde62089c0c16a52c5ffd0c1370}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!addArgument@{addArgument}}
+\index{addArgument@{addArgument}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{addArgument}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAction::addArgument (QString {\em name} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em direction} = {\ttfamily \char`\"{}\char`\"{}}, \/  QString {\em relatedStateVariable} = {\ttfamily \char`\"{}\char`\"{}})}}
+\label{classBrisaUpnp_1_1BrisaAction_a1a805cde62089c0c16a52c5ffd0c1370}
+
+
+Adds an argument with given {\itshape name\/}, {\itshape direction\/} and {\itshape relatedStateVariable\/} to this action's list of arguments. 
+
+Referenced by addArguments(), and BrisaUpnp::BrisaServiceXMLHandler::endElement().\hypertarget{classBrisaUpnp_1_1BrisaAction_a006f4ddaab49e8935d531fef07e44129}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!addArguments@{addArguments}}
+\index{addArguments@{addArguments}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{addArguments}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAction::addArguments (const QList$<$ {\bf BrisaArgument} $\ast$ $>$ {\em argumentA})}}
+\label{classBrisaUpnp_1_1BrisaAction_a006f4ddaab49e8935d531fef07e44129}
+
+
+Adds given list of {\itshape arguments\/} to this action's list of arguments. 
+
+Referenced by BrisaUpnp::BrisaServiceXMLHandler::endElement().\hypertarget{classBrisaUpnp_1_1BrisaAction_a1a419879e79f7979377ef7a9ae1bfa9b}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!call@{call}}
+\index{call@{call}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{call}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaAction::call (const QMap$<$ QString, QString $>$ \& {\em inArguments}, \/  QMap$<$ QString, QString $>$ \& {\em outArguments})}}
+\label{classBrisaUpnp_1_1BrisaAction_a1a419879e79f7979377ef7a9ae1bfa9b}
+
+
+Validates {\itshape inArguments\/}, {\itshape outArguments\/} and runs the action. {\itshape outArguments\/} is an output parameter. This method returns true in case of successful running of the action, else returns false. \hypertarget{classBrisaUpnp_1_1BrisaAction_a21f3042b8aea2ab6e9ce0f4e5535be60}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!clearArgumentList@{clearArgumentList}}
+\index{clearArgumentList@{clearArgumentList}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{clearArgumentList}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAction::clearArgumentList ()}}
+\label{classBrisaUpnp_1_1BrisaAction_a21f3042b8aea2ab6e9ce0f4e5535be60}
+
+
+Clears this action's argument list. 
+
+Referenced by BrisaUpnp::BrisaServiceXMLHandler::endElement().\hypertarget{classBrisaUpnp_1_1BrisaAction_a2879477a3ade3b8529266cbf602b16b5}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!getArgumentList@{getArgumentList}}
+\index{getArgumentList@{getArgumentList}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{getArgumentList}]{\setlength{\rightskip}{0pt plus 5cm}QList$<$ {\bf BrisaArgument} $\ast$ $>$ BrisaAction::getArgumentList () const}}
+\label{classBrisaUpnp_1_1BrisaAction_a2879477a3ade3b8529266cbf602b16b5}
+
+
+Returns this action's list of arguments. 
+
+Referenced by BrisaAction(), and BrisaUpnp::BrisaServiceXMLHandler::endElement().\hypertarget{classBrisaUpnp_1_1BrisaAction_a409d834cfb64c57e4639d729a0885483}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!getName@{getName}}
+\index{getName@{getName}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}QString BrisaAction::getName () const}}
+\label{classBrisaUpnp_1_1BrisaAction_a409d834cfb64c57e4639d729a0885483}
+
+
+Returns the action's name. 
+
+Referenced by BrisaUpnp::BrisaAbstractService::addAction(), call(), BrisaUpnp::BrisaServiceXMLHandler::endElement(), and getStateVariable().\hypertarget{classBrisaUpnp_1_1BrisaAction_a64e61dbdbffaa72111277c54b4b0aa65}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!getService@{getService}}
+\index{getService@{getService}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{getService}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BrisaService} $\ast$ BrisaAction::getService () const}}
+\label{classBrisaUpnp_1_1BrisaAction_a64e61dbdbffaa72111277c54b4b0aa65}
+
+
+Returns the service that this action is related to. 
+
+Referenced by getStateVariable().\hypertarget{classBrisaUpnp_1_1BrisaAction_a23fd74faf42b1008a6d924a3b3007797}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!getStateVariable@{getStateVariable}}
+\index{getStateVariable@{getStateVariable}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{getStateVariable}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BrisaStateVariable} $\ast$ BrisaAction::getStateVariable (const QString \& {\em name}) const}}
+\label{classBrisaUpnp_1_1BrisaAction_a23fd74faf42b1008a6d924a3b3007797}
+
+
+Returns the related service's state variable with the given {\itshape name\/}. If it cannot find its related service or the state variable, then it returns a null pointer. \hypertarget{classBrisaUpnp_1_1BrisaAction_aca2fe8881b0abe570222f31856040424}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!run@{run}}
+\index{run@{run}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}QMap$<$ QString, QString $>$ BrisaAction::run (const QMap$<$ QString, QString $>$ \& {\em inArguments})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAction_aca2fe8881b0abe570222f31856040424}
+
+
+The actual action. This method must be reimplemented for each user's action. It receives {\itshape inArguments\/} as input arguments and must return the right output arguments as described in the service's description file. 
+
+Referenced by call().\hypertarget{classBrisaUpnp_1_1BrisaAction_a16390c4f715a0169bc9fd25ac2845e26}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!setName@{setName}}
+\index{setName@{setName}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{setName}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAction::setName (QString {\em name})}}
+\label{classBrisaUpnp_1_1BrisaAction_a16390c4f715a0169bc9fd25ac2845e26}
+
+
+Sets a new name to the action. 
+
+Referenced by BrisaUpnp::BrisaServiceXMLHandler::characters().\hypertarget{classBrisaUpnp_1_1BrisaAction_a81b762ee7bd271a83ccc06f6755b84d8}{
+\index{BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}!setService@{setService}}
+\index{setService@{setService}!BrisaUpnp::BrisaAction@{BrisaUpnp::BrisaAction}}
+\subsubsection[{setService}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAction::setService ({\bf BrisaService} $\ast$ {\em service})}}
+\label{classBrisaUpnp_1_1BrisaAction_a81b762ee7bd271a83ccc06f6755b84d8}
+
+
+Sets a new service for this action. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/\hyperlink{brisaaction_8h}{brisaaction.h}\item 
+src/upnp/\hyperlink{brisaaction_8cpp}{brisaaction.cpp}\end{DoxyCompactItemize}

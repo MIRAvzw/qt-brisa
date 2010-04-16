@@ -1,0 +1,63 @@
+\hypertarget{classBrisaCore_1_1BrisaWebFile}{
+\section{BrisaCore::BrisaWebFile Class Reference}
+\label{classBrisaCore_1_1BrisaWebFile}\index{BrisaCore::BrisaWebFile@{BrisaCore::BrisaWebFile}}
+}
+
+
+Adds a file to the web server.  
+
+
+{\ttfamily \#include $<$brisawebserver.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaCore_1_1BrisaWebFile_af33e8bc81a9cd5e6e12563ec715446d2}{BrisaWebFile} (QxtAbstractWebSessionManager $\ast$sm, QString filePath, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructor for \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile}. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaCore_1_1BrisaWebFile_a6b9d26d429eb59e56d2bedffd3fded05}{$\sim$BrisaWebFile} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebFile_ae86d95d03f7d1d3c0acc4bc9cd7a3fac}{pageRequestedEvent} (QxtWebRequestEvent $\ast$event)
+\begin{DoxyCompactList}\small\item\em Reimplemented from libQxt. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Adds a file to the web server. Use this class to store a file into the web server. If the \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile} is stored using a \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider}, it's url path will be of \char`\"{}IP:PORT/SERVICENAME/yourfile\char`\"{}. if it's stored using the BrisaWebServer convenience method {\itshape \char`\"{}publishFile()\char`\"{}\/}, it's url path will be \char`\"{}IP:PORT/yourfile\char`\"{}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebFile_af33e8bc81a9cd5e6e12563ec715446d2}{
+\index{BrisaCore::BrisaWebFile@{BrisaCore::BrisaWebFile}!BrisaWebFile@{BrisaWebFile}}
+\index{BrisaWebFile@{BrisaWebFile}!BrisaCore::BrisaWebFile@{BrisaCore::BrisaWebFile}}
+\subsubsection[{BrisaWebFile}]{\setlength{\rightskip}{0pt plus 5cm}BrisaCore::BrisaWebFile::BrisaWebFile (QxtAbstractWebSessionManager $\ast$ {\em sm}, \/  QString {\em filePath}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebFile_af33e8bc81a9cd5e6e12563ec715446d2}
+
+
+Constructor for \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile}. It creates a QFile with the given file path.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sm}]{\itshape empty\/} \item[{\em filePath}]{\itshape empty\/} \item[{\em parent}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebFile_a6b9d26d429eb59e56d2bedffd3fded05}{
+\index{BrisaCore::BrisaWebFile@{BrisaCore::BrisaWebFile}!$\sim$BrisaWebFile@{$\sim$BrisaWebFile}}
+\index{$\sim$BrisaWebFile@{$\sim$BrisaWebFile}!BrisaCore::BrisaWebFile@{BrisaCore::BrisaWebFile}}
+\subsubsection[{$\sim$BrisaWebFile}]{\setlength{\rightskip}{0pt plus 5cm}BrisaCore::BrisaWebFile::$\sim$BrisaWebFile ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebFile_a6b9d26d429eb59e56d2bedffd3fded05}
+
+
+Destructor for \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebFile_ae86d95d03f7d1d3c0acc4bc9cd7a3fac}{
+\index{BrisaCore::BrisaWebFile@{BrisaCore::BrisaWebFile}!pageRequestedEvent@{pageRequestedEvent}}
+\index{pageRequestedEvent@{pageRequestedEvent}!BrisaCore::BrisaWebFile@{BrisaCore::BrisaWebFile}}
+\subsubsection[{pageRequestedEvent}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaCore::BrisaWebFile::pageRequestedEvent (QxtWebRequestEvent $\ast$ {\em event})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebFile_ae86d95d03f7d1d3c0acc4bc9cd7a3fac}
+
+
+Reimplemented from libQxt. When a request is received the \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaWebFile} will reply the stored file.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]{\itshape empty\/} \end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{brisawebserver_8h}{brisawebserver.h}\end{DoxyCompactItemize}

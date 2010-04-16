@@ -1,0 +1,66 @@
+\hypertarget{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}{
+\section{BrisaUpnp::BrisaDeviceXMLHandlerCP Class Reference}
+\label{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}\index{BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}}
+}
+
+
+\hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}{BrisaDeviceXMLHandlerCP} creates a device from a xml description file, with all it's attributes, it lets it ready to be used.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaDeviceXMLHandlerCP$>$}Collaboration diagram for BrisaUpnp::BrisaDeviceXMLHandlerCP:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a1d6d0b57a31c77b174c08e8ddaedea04}{parseDevice} (\hyperlink{classBrisaUpnp_1_1BrisaControlPointDevice}{BrisaControlPointDevice} $\ast$device, QTemporaryFile $\ast$tmp)
+\begin{DoxyCompactList}\small\item\em Method that initializes device attributes from a temporary file. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a5918cfec2377b9dbea98eeaaaeb0febd}{startElement} (const QString \&namespaceURI, const QString \&localName, const QString \&qName, const QXmlAttributes \&attributes)
+\begin{DoxyCompactList}\small\item\em Method inherited from QXmlDefaultHandler it's called in every beginning tag, depending on tag the context state passes to a different state so that it can process separately. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a9dfef9aec628dea7aed0fa9307579d98}{endElement} (const QString \&namespaceURI, const QString \&localName, const QString \&qName)
+\begin{DoxyCompactList}\small\item\em Method that is called in the tag end, this method add the attribute to the device so that attributes can be initialized in device. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a2454d1df1b1f929bbdce76a5ece2b696}{characters} (const QString \&str)
+\begin{DoxyCompactList}\small\item\em Method that set properly the attribute value to  value that it is the content between the beginning tag and the finish one. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}{BrisaDeviceXMLHandlerCP} creates a device from a xml description file, with all it's attributes, it lets it ready to be used. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a2454d1df1b1f929bbdce76a5ece2b696}{
+\index{BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}!characters@{characters}}
+\index{characters@{characters}!BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}}
+\subsubsection[{characters}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaDeviceXMLHandlerCP::characters (const QString \& {\em str})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a2454d1df1b1f929bbdce76a5ece2b696}
+
+
+Method that set properly the attribute value to  value that it is the content between the beginning tag and the finish one. It's important to say that in each state it performs a different action. \hypertarget{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a9dfef9aec628dea7aed0fa9307579d98}{
+\index{BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}!endElement@{endElement}}
+\index{endElement@{endElement}!BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}}
+\subsubsection[{endElement}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaDeviceXMLHandlerCP::endElement (const QString \& {\em namespaceURI}, \/  const QString \& {\em localName}, \/  const QString \& {\em qName})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a9dfef9aec628dea7aed0fa9307579d98}
+
+
+Method that is called in the tag end, this method add the attribute to the device so that attributes can be initialized in device. It's important to say that in each state it performs a different action. \hypertarget{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a1d6d0b57a31c77b174c08e8ddaedea04}{
+\index{BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}!parseDevice@{parseDevice}}
+\index{parseDevice@{parseDevice}!BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}}
+\subsubsection[{parseDevice}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaDeviceXMLHandlerCP::parseDevice ({\bf BrisaControlPointDevice} $\ast$ {\em device}, \/  QTemporaryFile $\ast$ {\em tmp})}}
+\label{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a1d6d0b57a31c77b174c08e8ddaedea04}
+
+
+Method that initializes device attributes from a temporary file. 
+\begin{DoxyParams}{Parameters}
+\item[{\em device}]device \item[{\em tmp}]temporary file \end{DoxyParams}
+\hypertarget{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a5918cfec2377b9dbea98eeaaaeb0febd}{
+\index{BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}!startElement@{startElement}}
+\index{startElement@{startElement}!BrisaUpnp::BrisaDeviceXMLHandlerCP@{BrisaUpnp::BrisaDeviceXMLHandlerCP}}
+\subsubsection[{startElement}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaDeviceXMLHandlerCP::startElement (const QString \& {\em namespaceURI}, \/  const QString \& {\em localName}, \/  const QString \& {\em qName}, \/  const QXmlAttributes \& {\em attributes})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP_a5918cfec2377b9dbea98eeaaaeb0febd}
+
+
+Method inherited from QXmlDefaultHandler it's called in every beginning tag, depending on tag the context state passes to a different state so that it can process separately. It's important to say that in each state it performs a different action. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/controlpoint/\hyperlink{brisadevicexmlhandlercp_8h}{brisadevicexmlhandlercp.h}\item 
+src/upnp/controlpoint/\hyperlink{brisadevicexmlhandlercp_8cpp}{brisadevicexmlhandlercp.cpp}\end{DoxyCompactItemize}

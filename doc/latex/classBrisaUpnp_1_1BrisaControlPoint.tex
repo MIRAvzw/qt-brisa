@@ -1,0 +1,139 @@
+\hypertarget{classBrisaUpnp_1_1BrisaControlPoint}{
+\section{BrisaUpnp::BrisaControlPoint Class Reference}
+\label{classBrisaUpnp_1_1BrisaControlPoint}\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+}
+
+
+Class that implements the control part in UPnP Architecture.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaControlPoint$>$}Collaboration diagram for BrisaUpnp::BrisaControlPoint:\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_aaef59f4a10f5e9d61eed30baba7903e3}{deviceFound} (\hyperlink{classBrisaUpnp_1_1BrisaControlPointDevice}{BrisaControlPointDevice} $\ast$device)
+\begin{DoxyCompactList}\small\item\em This signal is emitted when a new device is find in network and all it's attributes are created by the xml reading. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ae60f102af98193f08977fdcf9f051ab1}{deviceGone} (QString usn)
+\begin{DoxyCompactList}\small\item\em This signal is emitted when a device leaves the network, that means that the the ssdp client received a \char`\"{}ssdp:byebye\char`\"{} message from the device and, to handle this, the control point emit a deviceGone event with the device's {\itshape usn\/} as parameter. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a59c74d17b9fa93839e027bcc3affb54e}{BrisaControlPoint} (QObject $\ast$parent=0, QString st=\char`\"{}ssdp:all\char`\"{}, int mx=5)
+\begin{DoxyCompactList}\small\item\em Constructor. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a5614755c2d4c0b3dc00c97e601d10e1a}{$\sim$BrisaControlPoint} ()
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ab370001909d0f7b0ec059b693675d964}{start} ()
+\begin{DoxyCompactList}\small\item\em Starts the control point, the ssdpClient and the msearch. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a39876b0ff6901907710cd6f7782c4f52}{stop} ()
+\begin{DoxyCompactList}\small\item\em Stops the control point, the ssdpClient and the msearch. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ac42e2c437a1ced595f407d7ce386cf81}{isRunning} ()
+\begin{DoxyCompactList}\small\item\em Return if the control point is running. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a369ace207c8aeb4256e10248c0c31c35}{discover} ()
+\begin{DoxyCompactList}\small\item\em Starts the control point msearch discover. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaEventProxy}{BrisaEventProxy} $\ast$ \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_aa1e4c21f1bc2e492c3e4dc88c06b4f32}{getSubscriptionProxy} (\hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} $\ast$service)
+\begin{DoxyCompactList}\small\item\em Gets an event proxy to subscribe, usubscribe or renew the events from a {\itshape service\/}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that implements the control part in UPnP Architecture. Create a ControlPoint and \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ab370001909d0f7b0ec059b693675d964}{start()}, then \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a369ace207c8aeb4256e10248c0c31c35}{discover()} devices will be found in network. If you don't want to look for more devices then use \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a39876b0ff6901907710cd6f7782c4f52}{stop()}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_a59c74d17b9fa93839e027bcc3affb54e}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!BrisaControlPoint@{BrisaControlPoint}}
+\index{BrisaControlPoint@{BrisaControlPoint}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{BrisaControlPoint}]{\setlength{\rightskip}{0pt plus 5cm}BrisaControlPoint::BrisaControlPoint (QObject $\ast$ {\em parent} = {\ttfamily 0}, \/  QString {\em st} = {\ttfamily \char`\"{}ssdp:all\char`\"{}}, \/  int {\em mx} = {\ttfamily 5})}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_a59c74d17b9fa93839e027bcc3affb54e}
+
+
+Constructor. 
+\begin{DoxyParams}{Parameters}
+\item[{\em parent}]parent \item[{\em st}]service type \item[{\em mx}]interval \end{DoxyParams}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_a5614755c2d4c0b3dc00c97e601d10e1a}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!$\sim$BrisaControlPoint@{$\sim$BrisaControlPoint}}
+\index{$\sim$BrisaControlPoint@{$\sim$BrisaControlPoint}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{$\sim$BrisaControlPoint}]{\setlength{\rightskip}{0pt plus 5cm}BrisaControlPoint::$\sim$BrisaControlPoint ()}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_a5614755c2d4c0b3dc00c97e601d10e1a}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_aaef59f4a10f5e9d61eed30baba7903e3}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!deviceFound@{deviceFound}}
+\index{deviceFound@{deviceFound}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{deviceFound}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaControlPoint::deviceFound ({\bf BrisaControlPointDevice} $\ast$ {\em device})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_aaef59f4a10f5e9d61eed30baba7903e3}
+
+
+This signal is emitted when a new device is find in network and all it's attributes are created by the xml reading. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ae60f102af98193f08977fdcf9f051ab1}{deviceGone(QString usn)} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaControlPoint().\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_ae60f102af98193f08977fdcf9f051ab1}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!deviceGone@{deviceGone}}
+\index{deviceGone@{deviceGone}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{deviceGone}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaControlPoint::deviceGone (QString {\em usn})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_ae60f102af98193f08977fdcf9f051ab1}
+
+
+This signal is emitted when a device leaves the network, that means that the the ssdp client received a \char`\"{}ssdp:byebye\char`\"{} message from the device and, to handle this, the control point emit a deviceGone event with the device's {\itshape usn\/} as parameter. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaControlPoint_aaef59f4a10f5e9d61eed30baba7903e3}{deviceFound(BrisaControlPointDevice $\ast$device)} 
+\end{DoxySeeAlso}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_a369ace207c8aeb4256e10248c0c31c35}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!discover@{discover}}
+\index{discover@{discover}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{discover}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaControlPoint::discover ()}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_a369ace207c8aeb4256e10248c0c31c35}
+
+
+Starts the control point msearch discover. \hypertarget{classBrisaUpnp_1_1BrisaControlPoint_aa1e4c21f1bc2e492c3e4dc88c06b4f32}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!getSubscriptionProxy@{getSubscriptionProxy}}
+\index{getSubscriptionProxy@{getSubscriptionProxy}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{getSubscriptionProxy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BrisaEventProxy} $\ast$ BrisaControlPoint::getSubscriptionProxy ({\bf BrisaControlPointService} $\ast$ {\em service})}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_aa1e4c21f1bc2e492c3e4dc88c06b4f32}
+
+
+Gets an event proxy to subscribe, usubscribe or renew the events from a {\itshape service\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em service}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_ac42e2c437a1ced595f407d7ce386cf81}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{isRunning}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaControlPoint::isRunning ()}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_ac42e2c437a1ced595f407d7ce386cf81}
+
+
+Return if the control point is running. \begin{DoxyReturn}{Returns}
+true if the control point is running or false otherwise 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ab370001909d0f7b0ec059b693675d964}{start()}, \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a39876b0ff6901907710cd6f7782c4f52}{stop()} 
+\end{DoxySeeAlso}
+
+
+Referenced by start(), stop(), and $\sim$BrisaControlPoint().\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_ab370001909d0f7b0ec059b693675d964}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!start@{start}}
+\index{start@{start}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaControlPoint::start ()}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_ab370001909d0f7b0ec059b693675d964}
+
+
+Starts the control point, the ssdpClient and the msearch. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaControlPoint_a39876b0ff6901907710cd6f7782c4f52}{stop()}, \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ac42e2c437a1ced595f407d7ce386cf81}{isRunning()} 
+\end{DoxySeeAlso}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPoint_a39876b0ff6901907710cd6f7782c4f52}{
+\index{BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}!stop@{stop}}
+\index{stop@{stop}!BrisaUpnp::BrisaControlPoint@{BrisaUpnp::BrisaControlPoint}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaControlPoint::stop ()}}
+\label{classBrisaUpnp_1_1BrisaControlPoint_a39876b0ff6901907710cd6f7782c4f52}
+
+
+Stops the control point, the ssdpClient and the msearch. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ab370001909d0f7b0ec059b693675d964}{start()}, \hyperlink{classBrisaUpnp_1_1BrisaControlPoint_ac42e2c437a1ced595f407d7ce386cf81}{isRunning()} 
+\end{DoxySeeAlso}
+
+
+Referenced by $\sim$BrisaControlPoint().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/controlpoint/\hyperlink{brisacontrolpoint_8h}{brisacontrolpoint.h}\item 
+src/upnp/controlpoint/\hyperlink{brisacontrolpoint_8cpp}{brisacontrolpoint.cpp}\end{DoxyCompactItemize}

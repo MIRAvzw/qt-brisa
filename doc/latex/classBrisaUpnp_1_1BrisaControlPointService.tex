@@ -1,0 +1,91 @@
+\hypertarget{classBrisaUpnp_1_1BrisaControlPointService}{
+\section{BrisaUpnp::BrisaControlPointService Class Reference}
+\label{classBrisaUpnp_1_1BrisaControlPointService}\index{BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}}
+}
+
+
+\hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} is the class that implements action control in UPnP Architecture.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaControlPointService$>$}Inheritance diagram for BrisaUpnp::BrisaControlPointService:Collaboration diagram for BrisaUpnp::BrisaControlPointService:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaControlPointService_ae9ca99a1f186d2220cf1f52f2959715d}{BrisaControlPointService} (QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs an empty \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService}. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaControlPointService_a9186e4623236b8780fdc687725d974bb}{BrisaControlPointService} (const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a670933cc6c8581e2f70f52a97d425e4c}{serviceType}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ad72b169651a6c617d27d51e7f706410d}{serviceId}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_aa254b466f38b49b921ed7a25aea7cc8c}{scpdUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_acc5a45e07d8da5d8e086b02f4a22cc78}{controlUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a81d2525c94d2b9572c962089c388f8f9}{eventSubUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a9033d7f9255f3a1b6d3540258bf2ade1}{host}=\char`\"{}\char`\"{}, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} with the passed attributes. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaControlPointService_a6781dbf8732326e4db39e3e4c1744855}{BrisaControlPointService} (\hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} \&service)
+\begin{DoxyCompactList}\small\item\em Constructs a copy of {\itshape serv\/}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaControlPointService_af24bbef6116b25cd4dfb3433d6b18199}{parseFromXml} (QTemporaryFile $\ast$xml)
+\begin{DoxyCompactList}\small\item\em Initializes the \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} from the parse of {\itshape xml\/} that is a xml description file containing the service information. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaControlPointService_a2ceea746418759667ca7393abbb7a412}{call} (const QString \&method, const QMap$<$ QString, QString $>$ \&param)
+\begin{DoxyCompactList}\small\item\em Call the {\itshape method\/}, with the passed {\itshape param\/} from a service, this action is performed by a webservice request. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} is the class that implements action control in UPnP Architecture. It performs the action requests it's used in control point part, so that the user can make action calls.
+
+\hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} is a \hyperlink{classBrisaUpnp_1_1BrisaAbstractService}{BrisaAbstractService}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPointService_ae9ca99a1f186d2220cf1f52f2959715d}{
+\index{BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}!BrisaControlPointService@{BrisaControlPointService}}
+\index{BrisaControlPointService@{BrisaControlPointService}!BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}}
+\subsubsection[{BrisaControlPointService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaControlPointService::BrisaControlPointService (QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaControlPointService_ae9ca99a1f186d2220cf1f52f2959715d}
+
+
+Constructs an empty \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em parent}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPointService_a9186e4623236b8780fdc687725d974bb}{
+\index{BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}!BrisaControlPointService@{BrisaControlPointService}}
+\index{BrisaControlPointService@{BrisaControlPointService}!BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}}
+\subsubsection[{BrisaControlPointService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaControlPointService::BrisaControlPointService (const QString \& {\em serviceType}, \/  const QString \& {\em serviceId} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em scpdUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em controlUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em eventSubUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em host} = {\ttfamily \char`\"{}\char`\"{}}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaControlPointService_a9186e4623236b8780fdc687725d974bb}
+
+
+Constructs a \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} with the passed attributes. 
+\begin{DoxyParams}{Parameters}
+\item[{\em serviceType}]{\itshape empty\/} \item[{\em serviceId}]{\itshape empty\/} \item[{\em scpdUrl}]{\itshape empty\/} \item[{\em controlUrl}]{\itshape empty\/} \item[{\em eventSubUrl}]{\itshape empty\/} \item[{\em host}]{\itshape empty\/} \item[{\em parent}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPointService_a6781dbf8732326e4db39e3e4c1744855}{
+\index{BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}!BrisaControlPointService@{BrisaControlPointService}}
+\index{BrisaControlPointService@{BrisaControlPointService}!BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}}
+\subsubsection[{BrisaControlPointService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaControlPointService::BrisaControlPointService ({\bf BrisaControlPointService} \& {\em service})}}
+\label{classBrisaUpnp_1_1BrisaControlPointService_a6781dbf8732326e4db39e3e4c1744855}
+
+
+Constructs a copy of {\itshape serv\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em serv}]{\itshape empty\/} \end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaControlPointService_a2ceea746418759667ca7393abbb7a412}{
+\index{BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}!call@{call}}
+\index{call@{call}!BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}}
+\subsubsection[{call}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaControlPointService::call (const QString \& {\em method}, \/  const QMap$<$ QString, QString $>$ \& {\em param})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaControlPointService_a2ceea746418759667ca7393abbb7a412}
+
+
+Call the {\itshape method\/}, with the passed {\itshape param\/} from a service, this action is performed by a webservice request. 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]method to be called \item[{\em param}]map with the parameters to be passed \end{DoxyParams}
+
+
+Implements \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ade3461839c097933b60f5b8d8fba7290}{BrisaUpnp::BrisaAbstractService}.\hypertarget{classBrisaUpnp_1_1BrisaControlPointService_af24bbef6116b25cd4dfb3433d6b18199}{
+\index{BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}!parseFromXml@{parseFromXml}}
+\index{parseFromXml@{parseFromXml}!BrisaUpnp::BrisaControlPointService@{BrisaUpnp::BrisaControlPointService}}
+\subsubsection[{parseFromXml}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaControlPointService::parseFromXml (QTemporaryFile $\ast$ {\em xml})}}
+\label{classBrisaUpnp_1_1BrisaControlPointService_af24bbef6116b25cd4dfb3433d6b18199}
+
+
+Initializes the \hyperlink{classBrisaUpnp_1_1BrisaControlPointService}{BrisaControlPointService} from the parse of {\itshape xml\/} that is a xml description file containing the service information. 
+\begin{DoxyParams}{Parameters}
+\item[{\em xml}]{\itshape empty\/} \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/controlpoint/\hyperlink{brisacontrolpointservice_8h}{brisacontrolpointservice.h}\item 
+src/upnp/controlpoint/\hyperlink{brisacontrolpointservice_8cpp}{brisacontrolpointservice.cpp}\end{DoxyCompactItemize}

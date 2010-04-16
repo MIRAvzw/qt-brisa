@@ -1,0 +1,11 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{BrisaUpnp::BrisaAbstractService\n|# actionList\l# stateVariableList\l# controlUrl\l# eventSubUrl\l# fileAddress\l# major\l# minor\l# scpdUrl\l# serviceType\l# serviceId\l# host\l# port\l# http\l|+ BrisaAbstractService()\l+ BrisaAbstractService()\l+ BrisaAbstractService()\l+ ~BrisaAbstractService()\l+ setAttribute()\l+ getAttribute()\l+ addAction()\l+ addAction()\l+ getAction()\l+ getActionList()\l+ addStateVariable()\l+ addStateVariable()\l+ getStateVariableList()\l+ clear()\l# call()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",arrowtail="empty"];
+  Node2 [label="{BrisaUpnp::BrisaControlPointService\n|- lastMethod\l|+ BrisaControlPointService()\l+ BrisaControlPointService()\l+ BrisaControlPointService()\l+ parseFromXml()\l+ call()\l- getResponse()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaControlPointService.html",tooltip="BrisaControlPointService is the class that implements action control in UPnP Architecture..."];
+  Node1 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",arrowtail="empty"];
+  Node3 [label="{BrisaUpnp::BrisaService\n|- webService\l- childWebServices\l- scpdFilePath\l|+ BrisaService()\l+ BrisaService()\l+ BrisaService()\l+ ~BrisaService()\l+ getVariable()\l+ getWebService()\l+ buildWebServiceTree()\l+ setDescriptionFile()\l+ parseGenericRequest()\l- call()\l- respondAction()\l- respondError()\l- parseDescriptionFile()\l- connectVariablesEventSignals()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaService.html",tooltip="UPnP service abstraction."];
+}

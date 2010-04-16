@@ -1,0 +1,98 @@
+\hypertarget{classBrisaCore_1_1BrisaWebserver}{
+\section{BrisaCore::BrisaWebserver Class Reference}
+\label{classBrisaCore_1_1BrisaWebserver}\index{BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}}
+}
+
+
+The \hyperlink{classBrisaCore_1_1BrisaWebserver}{BrisaWebserver} class is a web server implementation.  
+
+
+{\ttfamily \#include $<$brisawebserver.h$>$}Collaboration diagram for BrisaCore::BrisaWebserver:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaCore_1_1BrisaWebserver_aee321e007a6eb0e338c2a74df3249cba}{BrisaWebserver} (const QHostAddress \&host, quint16 port)
+\begin{DoxyCompactList}\small\item\em Constructor for BrisaWebServer. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaCore_1_1BrisaWebserver_afae61d5b3a9ec359b865229d2c974be4}{$\sim$BrisaWebserver} ()
+\begin{DoxyCompactList}\small\item\em Destructor for BrisaWebServer. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebserver_aaf83aae563ea7640d79a3d216b0ac93a}{publishFile} (QString publishPath, QString filePath)
+\begin{DoxyCompactList}\small\item\em Publishes a file to the root. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebserver_aec1ac4b58fa38f7099e7d67a8b09b8ba}{addService} (QString path, QxtWebServiceDirectory $\ast$service)
+\begin{DoxyCompactList}\small\item\em Adds a service to the web server. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaCore_1_1BrisaWebserver_af40a4df2aef119afad2a6e9dc9bb28a0}{incomingRequest} (quint32 requestID, const QHttpRequestHeader \&header, QxtWebContent $\ast$deviceContent)
+\begin{DoxyCompactList}\small\item\em This method dumps request information to the screen. \item\end{DoxyCompactList}\item 
+int \hyperlink{classBrisaCore_1_1BrisaWebserver_aabf7fff7c7e876c2f7b98678d8cbcaf3}{newSession} ()
+\begin{DoxyCompactList}\small\item\em Creates a new session and returns the session number. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classBrisaCore_1_1BrisaWebserver}{BrisaWebserver} class is a web server implementation. BrisaWebServer implements a Web Server using libQxt. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebserver_aee321e007a6eb0e338c2a74df3249cba}{
+\index{BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}!BrisaWebserver@{BrisaWebserver}}
+\index{BrisaWebserver@{BrisaWebserver}!BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}}
+\subsubsection[{BrisaWebserver}]{\setlength{\rightskip}{0pt plus 5cm}BrisaWebserver::BrisaWebserver (const QHostAddress \& {\em host}, \/  quint16 {\em port})}}
+\label{classBrisaCore_1_1BrisaWebserver_aee321e007a6eb0e338c2a74df3249cba}
+
+
+Constructor for BrisaWebServer. 
+\begin{DoxyParams}{Parameters}
+\item[{\em host}]{\itshape empty\/} \item[{\em port}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebserver_afae61d5b3a9ec359b865229d2c974be4}{
+\index{BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}!$\sim$BrisaWebserver@{$\sim$BrisaWebserver}}
+\index{$\sim$BrisaWebserver@{$\sim$BrisaWebserver}!BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}}
+\subsubsection[{$\sim$BrisaWebserver}]{\setlength{\rightskip}{0pt plus 5cm}BrisaWebserver::$\sim$BrisaWebserver ()}}
+\label{classBrisaCore_1_1BrisaWebserver_afae61d5b3a9ec359b865229d2c974be4}
+
+
+Destructor for BrisaWebServer. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaCore_1_1BrisaWebserver_aec1ac4b58fa38f7099e7d67a8b09b8ba}{
+\index{BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}!addService@{addService}}
+\index{addService@{addService}!BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}}
+\subsubsection[{addService}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaWebserver::addService (QString {\em path}, \/  QxtWebServiceDirectory $\ast$ {\em service})}}
+\label{classBrisaCore_1_1BrisaWebserver_aec1ac4b58fa38f7099e7d67a8b09b8ba}
+
+
+Adds a service to the web server. The service url path will be added to the root of the server.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em path}]{\itshape empty\/} \item[{\em service}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebserver_af40a4df2aef119afad2a6e9dc9bb28a0}{
+\index{BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}!incomingRequest@{incomingRequest}}
+\index{incomingRequest@{incomingRequest}!BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}}
+\subsubsection[{incomingRequest}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaWebserver::incomingRequest (quint32 {\em requestID}, \/  const QHttpRequestHeader \& {\em header}, \/  QxtWebContent $\ast$ {\em deviceContent})\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebserver_af40a4df2aef119afad2a6e9dc9bb28a0}
+
+
+This method dumps request information to the screen. 
+\begin{DoxyParams}{Parameters}
+\item[{\em requestID}]{\itshape empty\/} \item[{\em header}]{\itshape empty\/} \item[{\em deviceContent}]{\itshape empty\/} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaWebserver_aabf7fff7c7e876c2f7b98678d8cbcaf3}{
+\index{BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}!newSession@{newSession}}
+\index{newSession@{newSession}!BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}}
+\subsubsection[{newSession}]{\setlength{\rightskip}{0pt plus 5cm}int BrisaWebserver::newSession ()\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaCore_1_1BrisaWebserver_aabf7fff7c7e876c2f7b98678d8cbcaf3}
+
+
+Creates a new session and returns the session number. \hypertarget{classBrisaCore_1_1BrisaWebserver_aaf83aae563ea7640d79a3d216b0ac93a}{
+\index{BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}!publishFile@{publishFile}}
+\index{publishFile@{publishFile}!BrisaCore::BrisaWebserver@{BrisaCore::BrisaWebserver}}
+\subsubsection[{publishFile}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaWebserver::publishFile (QString {\em publishPath}, \/  QString {\em filePath})}}
+\label{classBrisaCore_1_1BrisaWebserver_aaf83aae563ea7640d79a3d216b0ac93a}
+
+
+Publishes a file to the root. 
+\begin{DoxyParams}{Parameters}
+\item[{\em publishPath}]{\itshape empty\/} \item[{\em filePath}]{\itshape empty\/} \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{brisawebserver_8h}{brisawebserver.h}\item 
+src/core/\hyperlink{brisawebserver_8cpp}{brisawebserver.cpp}\end{DoxyCompactItemize}

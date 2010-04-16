@@ -1,0 +1,82 @@
+\hypertarget{classBrisaUpnp_1_1BrisaEventController}{
+\section{BrisaUpnp::BrisaEventController Class Reference}
+\label{classBrisaUpnp_1_1BrisaEventController}\index{BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}}
+}
+
+
+{\ttfamily \#include $<$brisaeventcontroller.h$>$}Inheritance diagram for BrisaUpnp::BrisaEventController:Collaboration diagram for BrisaUpnp::BrisaEventController:\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventController_a59db4e5d9646da37a2983840dad09485}{variableChanged} (\hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$variable)
+\begin{DoxyCompactList}\small\item\em Slot that shall be called when some service's state {\itshape variable\/} change. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventController_a3037ef7625561ca5576b70c56fe6bcb4}{subscribe} (const QMultiHash$<$ QString, QString $>$ \&subscriberInfo, int sessionId, int requestId)
+\begin{DoxyCompactList}\small\item\em Creates a subscription for the given {\itshape subscriberInfo\/}, {\itshape sessionId\/} and {\itshape requestId\/}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventController_a56b890f9eb211152063260f07d40f5f0}{unsubscribe} (const QMultiHash$<$ QString, QString $>$ \&subscriberInfo, int sessionId, int requestId)
+\begin{DoxyCompactList}\small\item\em Removes the subscription for the given {\itshape subscriberInfo\/}, {\itshape sessionId\/} and {\itshape requestId\/}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventController_a0324a5ff469a2ecdaa569dfbd6517111}{parseGenericRequest} (const QString \&method, const QMultiHash$<$ QString, QString $>$ \&headers, const QByteArray \&requestContent, int sessionId, int requestId)
+\begin{DoxyCompactList}\small\item\em Parses a generic request to web service and calls the local related methods as necessary. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaEventController_aeddb0395178668408dcb4bb7a5b9b4fe}{BrisaEventController} (QxtAbstractWebSessionManager $\ast$sessionManager, QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$ $>$ $\ast$stateVariableList, QObject $\ast$parent=0)
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaEventController_a4948b39364257de421eaff2a3d51b81b}{$\sim$BrisaEventController} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventController_aeddb0395178668408dcb4bb7a5b9b4fe}{
+\index{BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}!BrisaEventController@{BrisaEventController}}
+\index{BrisaEventController@{BrisaEventController}!BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}}
+\subsubsection[{BrisaEventController}]{\setlength{\rightskip}{0pt plus 5cm}BrisaEventController::BrisaEventController (QxtAbstractWebSessionManager $\ast$ {\em sessionManager}, \/  QList$<$ {\bf BrisaStateVariable} $\ast$ $>$ $\ast$ {\em stateVariableList}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaEventController_aeddb0395178668408dcb4bb7a5b9b4fe}
+\hypertarget{classBrisaUpnp_1_1BrisaEventController_a4948b39364257de421eaff2a3d51b81b}{
+\index{BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}!$\sim$BrisaEventController@{$\sim$BrisaEventController}}
+\index{$\sim$BrisaEventController@{$\sim$BrisaEventController}!BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}}
+\subsubsection[{$\sim$BrisaEventController}]{\setlength{\rightskip}{0pt plus 5cm}BrisaEventController::$\sim$BrisaEventController ()}}
+\label{classBrisaUpnp_1_1BrisaEventController_a4948b39364257de421eaff2a3d51b81b}
+
+
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventController_a0324a5ff469a2ecdaa569dfbd6517111}{
+\index{BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}!parseGenericRequest@{parseGenericRequest}}
+\index{parseGenericRequest@{parseGenericRequest}!BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}}
+\subsubsection[{parseGenericRequest}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventController::parseGenericRequest (const QString \& {\em method}, \/  const QMultiHash$<$ QString, QString $>$ \& {\em headers}, \/  const QByteArray \& {\em requestContent}, \/  int {\em sessionId}, \/  int {\em requestId})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventController_a0324a5ff469a2ecdaa569dfbd6517111}
+
+
+Parses a generic request to web service and calls the local related methods as necessary. 
+
+Referenced by BrisaEventController().\hypertarget{classBrisaUpnp_1_1BrisaEventController_a3037ef7625561ca5576b70c56fe6bcb4}{
+\index{BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}}
+\subsubsection[{subscribe}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventController::subscribe (const QMultiHash$<$ QString, QString $>$ \& {\em subscriberInfo}, \/  int {\em sessionId}, \/  int {\em requestId})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventController_a3037ef7625561ca5576b70c56fe6bcb4}
+
+
+Creates a subscription for the given {\itshape subscriberInfo\/}, {\itshape sessionId\/} and {\itshape requestId\/}. 
+
+Referenced by parseGenericRequest().\hypertarget{classBrisaUpnp_1_1BrisaEventController_a56b890f9eb211152063260f07d40f5f0}{
+\index{BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}!unsubscribe@{unsubscribe}}
+\index{unsubscribe@{unsubscribe}!BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}}
+\subsubsection[{unsubscribe}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventController::unsubscribe (const QMultiHash$<$ QString, QString $>$ \& {\em subscriberInfo}, \/  int {\em sessionId}, \/  int {\em requestId})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventController_a56b890f9eb211152063260f07d40f5f0}
+
+
+Removes the subscription for the given {\itshape subscriberInfo\/}, {\itshape sessionId\/} and {\itshape requestId\/}. 
+
+Referenced by parseGenericRequest().\hypertarget{classBrisaUpnp_1_1BrisaEventController_a59db4e5d9646da37a2983840dad09485}{
+\index{BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}!variableChanged@{variableChanged}}
+\index{variableChanged@{variableChanged}!BrisaUpnp::BrisaEventController@{BrisaUpnp::BrisaEventController}}
+\subsubsection[{variableChanged}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventController::variableChanged ({\bf BrisaStateVariable} $\ast$ {\em variable})\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventController_a59db4e5d9646da37a2983840dad09485}
+
+
+Slot that shall be called when some service's state {\itshape variable\/} change. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/device/\hyperlink{brisaeventcontroller_8h}{brisaeventcontroller.h}\item 
+src/upnp/device/\hyperlink{brisaeventcontroller_8cpp}{brisaeventcontroller.cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,105 @@
+\hypertarget{classBrisaUpnp_1_1BrisaEventProxy}{
+\section{BrisaUpnp::BrisaEventProxy Class Reference}
+\label{classBrisaUpnp_1_1BrisaEventProxy}\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+}
+
+
+Class that implements the event part in control point side in Brisa Qt, this class makes the operations of subscribe, renew subscription and unsubscribe.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaEventProxy$>$}Inheritance diagram for BrisaUpnp::BrisaEventProxy:Collaboration diagram for BrisaUpnp::BrisaEventProxy:\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventProxy_a3b25868182d81b6ac7a8d703c5777b42}{eventNotification} (\hyperlink{classBrisaUpnp_1_1BrisaEventProxy}{BrisaEventProxy} $\ast$subscription, QMap$<$ QString, QString $>$ eventingVariables)
+\begin{DoxyCompactList}\small\item\em Signal that is emitted when an event is received. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaEventProxy_aafe7f03d70c5dc570a2b5865c06996e5}{$\sim$BrisaEventProxy} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+int \hyperlink{classBrisaUpnp_1_1BrisaEventProxy_ab4e837e9edf3d2e12e5b4d0971deca04}{getId} ()
+\begin{DoxyCompactList}\small\item\em Gets the request id. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventProxy_a9f700f55e37b646bf2cb2c26b98707d8}{renew} (const int \&newTimeout=-\/1)
+\begin{DoxyCompactList}\small\item\em Renew the subscribe in a event for the {\itshape newTimeout\/} passed. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventProxy_ab22e72391031e2e388399065df45b609}{subscribe} (const int \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb99d42e318e002acc44740a2ca7881a}{timeout}=-\/1)
+\begin{DoxyCompactList}\small\item\em Subscribe for the events from a service subscriptions will last the {\itshape timeout\/} passed. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventProxy_ac106e076f6222480c676470cf51dc055}{unsubscribe} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribe the events from a service, using this the user won't receive more event responses. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaEventProxy_aa8c1b769cde2c022772b925c1bee3d20}{BrisaControlPoint}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that implements the event part in control point side in Brisa Qt, this class makes the operations of subscribe, renew subscription and unsubscribe. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventProxy_aafe7f03d70c5dc570a2b5865c06996e5}{
+\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}!$\sim$BrisaEventProxy@{$\sim$BrisaEventProxy}}
+\index{$\sim$BrisaEventProxy@{$\sim$BrisaEventProxy}!BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+\subsubsection[{$\sim$BrisaEventProxy}]{\setlength{\rightskip}{0pt plus 5cm}BrisaEventProxy::$\sim$BrisaEventProxy ()}}
+\label{classBrisaUpnp_1_1BrisaEventProxy_aafe7f03d70c5dc570a2b5865c06996e5}
+
+
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventProxy_a3b25868182d81b6ac7a8d703c5777b42}{
+\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}!eventNotification@{eventNotification}}
+\index{eventNotification@{eventNotification}!BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+\subsubsection[{eventNotification}]{\setlength{\rightskip}{0pt plus 5cm}BrisaEventProxy::void BrisaUpnp::BrisaEventProxy::eventNotification ({\bf BrisaEventProxy} $\ast$ {\em subscription}, \/  QMap$<$ QString, QString $>$ {\em eventingVariables})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventProxy_a3b25868182d81b6ac7a8d703c5777b42}
+
+
+Signal that is emitted when an event is received. \hypertarget{classBrisaUpnp_1_1BrisaEventProxy_ab4e837e9edf3d2e12e5b4d0971deca04}{
+\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}!getId@{getId}}
+\index{getId@{getId}!BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+\subsubsection[{getId}]{\setlength{\rightskip}{0pt plus 5cm}int BrisaEventProxy::getId ()}}
+\label{classBrisaUpnp_1_1BrisaEventProxy_ab4e837e9edf3d2e12e5b4d0971deca04}
+
+
+Gets the request id. \hypertarget{classBrisaUpnp_1_1BrisaEventProxy_a9f700f55e37b646bf2cb2c26b98707d8}{
+\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}!renew@{renew}}
+\index{renew@{renew}!BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+\subsubsection[{renew}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventProxy::renew (const int \& {\em newTimeout} = {\ttfamily -\/1})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventProxy_a9f700f55e37b646bf2cb2c26b98707d8}
+
+
+Renew the subscribe in a event for the {\itshape newTimeout\/} passed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em newTimeout}]new timeout. Less than 0 to infinite \end{DoxyParams}
+
+
+Implements \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ae9da94244c6164b5759b8be21e03d42f}{BrisaUpnp::BrisaAbstractEventSubscription}.\hypertarget{classBrisaUpnp_1_1BrisaEventProxy_ab22e72391031e2e388399065df45b609}{
+\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+\subsubsection[{subscribe}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventProxy::subscribe (const int {\em timeout} = {\ttfamily -\/1})}}
+\label{classBrisaUpnp_1_1BrisaEventProxy_ab22e72391031e2e388399065df45b609}
+
+
+Subscribe for the events from a service subscriptions will last the {\itshape timeout\/} passed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em timeout}]timeout \end{DoxyParams}
+\hypertarget{classBrisaUpnp_1_1BrisaEventProxy_ac106e076f6222480c676470cf51dc055}{
+\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}!unsubscribe@{unsubscribe}}
+\index{unsubscribe@{unsubscribe}!BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+\subsubsection[{unsubscribe}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventProxy::unsubscribe (void)}}
+\label{classBrisaUpnp_1_1BrisaEventProxy_ac106e076f6222480c676470cf51dc055}
+
+
+Unsubscribe the events from a service, using this the user won't receive more event responses. 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventProxy_aa8c1b769cde2c022772b925c1bee3d20}{
+\index{BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}!BrisaControlPoint@{BrisaControlPoint}}
+\index{BrisaControlPoint@{BrisaControlPoint}!BrisaUpnp::BrisaEventProxy@{BrisaUpnp::BrisaEventProxy}}
+\subsubsection[{BrisaControlPoint}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf BrisaControlPoint}\hspace{0.3cm}{\ttfamily  \mbox{[}friend\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventProxy_aa8c1b769cde2c022772b925c1bee3d20}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/controlpoint/\hyperlink{brisaeventproxy_8h}{brisaeventproxy.h}\item 
+src/upnp/controlpoint/\hyperlink{brisaeventproxy_8cpp}{brisaeventproxy.cpp}\end{DoxyCompactItemize}

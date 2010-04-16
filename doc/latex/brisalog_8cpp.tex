@@ -1,0 +1,96 @@
+\hypertarget{brisalog_8cpp}{
+\section{src/utils/brisalog.cpp File Reference}
+\label{brisalog_8cpp}\index{src/utils/brisalog.cpp@{src/utils/brisalog.cpp}}
+}
+{\ttfamily \#include $<$QtGlobal$>$}\par
+{\ttfamily \#include $<$QTime$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include \char`\"{}brisalog.h\char`\"{}}\par
+Include dependency graph for brisalog.cpp:\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{brisalog_8cpp_a2799f0e4fea941044c782585431e22cb}{COLOR\_\-DEBUG}~\char`\"{}$\backslash$033\mbox{[}32;1m\char`\"{}
+\item 
+\#define \hyperlink{brisalog_8cpp_a9a3ec041ae9dfe612f4702a85ecc738a}{COLOR\_\-WARN}~\char`\"{}$\backslash$033\mbox{[}33;1m\char`\"{}
+\item 
+\#define \hyperlink{brisalog_8cpp_a2982b4e115d6a55cb7245da0d157f387}{COLOR\_\-CRITICAL}~\char`\"{}$\backslash$033\mbox{[}31;1m\char`\"{}
+\item 
+\#define \hyperlink{brisalog_8cpp_ad064a90684be43b1446ac1a6e4a35997}{COLOR\_\-FATAL}~\char`\"{}$\backslash$033\mbox{[}33;1m\char`\"{}
+\item 
+\#define \hyperlink{brisalog_8cpp_a17f760256046df23dd0ab46602f04d02}{COLOR\_\-RESET}~\char`\"{}$\backslash$033\mbox{[}0m\char`\"{}
+\item 
+\#define \hyperlink{brisalog_8cpp_a952bc46c5a623a30a027f66e775699a5}{LOG\_\-WRITE}(OUTPUT, COLOR, LEVEL, MSG)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{brisalog_8cpp_a5a1be2484b7b71364a551614bc28174c}{brisaMessageWritter} (QtMsgType type, const char $\ast$msg)
+\item 
+void \hyperlink{brisalog_8cpp_ab6a2a06e77bbb3aa7065b44c7503fc90}{brisaLogInitialize} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{brisalog_8cpp_a2982b4e115d6a55cb7245da0d157f387}{
+\index{brisalog.cpp@{brisalog.cpp}!COLOR\_\-CRITICAL@{COLOR\_\-CRITICAL}}
+\index{COLOR\_\-CRITICAL@{COLOR\_\-CRITICAL}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{COLOR\_\-CRITICAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define COLOR\_\-CRITICAL~\char`\"{}$\backslash$033\mbox{[}31;1m\char`\"{}}}
+\label{brisalog_8cpp_a2982b4e115d6a55cb7245da0d157f387}
+
+
+Referenced by brisaMessageWritter().\hypertarget{brisalog_8cpp_a2799f0e4fea941044c782585431e22cb}{
+\index{brisalog.cpp@{brisalog.cpp}!COLOR\_\-DEBUG@{COLOR\_\-DEBUG}}
+\index{COLOR\_\-DEBUG@{COLOR\_\-DEBUG}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{COLOR\_\-DEBUG}]{\setlength{\rightskip}{0pt plus 5cm}\#define COLOR\_\-DEBUG~\char`\"{}$\backslash$033\mbox{[}32;1m\char`\"{}}}
+\label{brisalog_8cpp_a2799f0e4fea941044c782585431e22cb}
+
+
+Referenced by brisaMessageWritter().\hypertarget{brisalog_8cpp_ad064a90684be43b1446ac1a6e4a35997}{
+\index{brisalog.cpp@{brisalog.cpp}!COLOR\_\-FATAL@{COLOR\_\-FATAL}}
+\index{COLOR\_\-FATAL@{COLOR\_\-FATAL}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{COLOR\_\-FATAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define COLOR\_\-FATAL~\char`\"{}$\backslash$033\mbox{[}33;1m\char`\"{}}}
+\label{brisalog_8cpp_ad064a90684be43b1446ac1a6e4a35997}
+
+
+Referenced by brisaMessageWritter().\hypertarget{brisalog_8cpp_a17f760256046df23dd0ab46602f04d02}{
+\index{brisalog.cpp@{brisalog.cpp}!COLOR\_\-RESET@{COLOR\_\-RESET}}
+\index{COLOR\_\-RESET@{COLOR\_\-RESET}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{COLOR\_\-RESET}]{\setlength{\rightskip}{0pt plus 5cm}\#define COLOR\_\-RESET~\char`\"{}$\backslash$033\mbox{[}0m\char`\"{}}}
+\label{brisalog_8cpp_a17f760256046df23dd0ab46602f04d02}
+\hypertarget{brisalog_8cpp_a9a3ec041ae9dfe612f4702a85ecc738a}{
+\index{brisalog.cpp@{brisalog.cpp}!COLOR\_\-WARN@{COLOR\_\-WARN}}
+\index{COLOR\_\-WARN@{COLOR\_\-WARN}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{COLOR\_\-WARN}]{\setlength{\rightskip}{0pt plus 5cm}\#define COLOR\_\-WARN~\char`\"{}$\backslash$033\mbox{[}33;1m\char`\"{}}}
+\label{brisalog_8cpp_a9a3ec041ae9dfe612f4702a85ecc738a}
+
+
+Referenced by brisaMessageWritter().\hypertarget{brisalog_8cpp_a952bc46c5a623a30a027f66e775699a5}{
+\index{brisalog.cpp@{brisalog.cpp}!LOG\_\-WRITE@{LOG\_\-WRITE}}
+\index{LOG\_\-WRITE@{LOG\_\-WRITE}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{LOG\_\-WRITE}]{\setlength{\rightskip}{0pt plus 5cm}\#define LOG\_\-WRITE(OUTPUT, \/  COLOR, \/  LEVEL, \/  MSG)}}
+\label{brisalog_8cpp_a952bc46c5a623a30a027f66e775699a5}
+{\bfseries Value:}
+\begin{DoxyCode}
+OUTPUT << COLOR << \
+                        QTime::currentTime().toString("hhmmsszzz").toStdString() 
+      << \
+                        " " LEVEL " " << COLOR_RESET << MSG << "\n"
+\end{DoxyCode}
+
+
+Referenced by brisaMessageWritter().
+
+\subsection{Function Documentation}
+\hypertarget{brisalog_8cpp_ab6a2a06e77bbb3aa7065b44c7503fc90}{
+\index{brisalog.cpp@{brisalog.cpp}!brisaLogInitialize@{brisaLogInitialize}}
+\index{brisaLogInitialize@{brisaLogInitialize}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{brisaLogInitialize}]{\setlength{\rightskip}{0pt plus 5cm}void brisaLogInitialize (void)}}
+\label{brisalog_8cpp_ab6a2a06e77bbb3aa7065b44c7503fc90}
+\hypertarget{brisalog_8cpp_a5a1be2484b7b71364a551614bc28174c}{
+\index{brisalog.cpp@{brisalog.cpp}!brisaMessageWritter@{brisaMessageWritter}}
+\index{brisaMessageWritter@{brisaMessageWritter}!brisalog.cpp@{brisalog.cpp}}
+\subsubsection[{brisaMessageWritter}]{\setlength{\rightskip}{0pt plus 5cm}static void brisaMessageWritter (QtMsgType {\em type}, \/  const char $\ast$ {\em msg})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{brisalog_8cpp_a5a1be2484b7b71364a551614bc28174c}
+
+
+Referenced by brisaLogInitialize().

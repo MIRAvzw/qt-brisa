@@ -1,0 +1,356 @@
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService}{
+\section{BrisaUpnp::BrisaAbstractService Class Reference}
+\label{classBrisaUpnp_1_1BrisaAbstractService}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+}
+
+
+An abstract class for the control point side and device side service.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaAbstractService$>$}Inheritance diagram for BrisaUpnp::BrisaAbstractService:\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43}{xmlTags} \{ \par
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a50a17ad3bd5cf85af4faa94f085b960c}{Major}, 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43acce9853b50b9241c14302cf755322319}{Minor}, 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43aa92e41b4ede5e98a736e6bee64a630d9}{FileAddress}, 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43abbe7cfde83882a3e9fb52353503c5c4d}{ServiceType}, 
+\par
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43aa82d0f9f3bd19ac33af33b29a4e98b35}{ServiceId}, 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43addc2b7f03c7cc4d96bfa8452c0ddcdf7}{ScpdUrl}, 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a07ba26d7245d91cae689d6eb090f0c58}{ControlUrl}, 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43ad4107e564a096deec670b2b4a4d9b3c0}{EventSubUrl}, 
+\par
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a25db80572e607b6b5927cf5415e7dd8d}{Host}, 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a5a28d6df46d4d5e5bf3114301d4e52ef}{Port}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a122d9f06ff46be2a8fa97d9d749f026d}{requestFinished} (QString root, QString lastMethod)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a490898486e9a4c5df805c9af816a175b}{BrisaAbstractService} (QObject $\ast$parent=0)
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a1f94514c2e0215ef56c06eca6ae791d7}{BrisaAbstractService} (const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a670933cc6c8581e2f70f52a97d425e4c}{serviceType}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ad72b169651a6c617d27d51e7f706410d}{serviceId}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_aa254b466f38b49b921ed7a25aea7cc8c}{scpdUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_acc5a45e07d8da5d8e086b02f4a22cc78}{controlUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a81d2525c94d2b9572c962089c388f8f9}{eventSubUrl}=\char`\"{}\char`\"{}, const QString \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a9033d7f9255f3a1b6d3540258bf2ade1}{host}=\char`\"{}\char`\"{}, QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs an abstract service with given {\itshape serviceType\/}, {\itshape serviceId\/}, {\itshape scpdUrl\/}, {\itshape controlUrl\/}, {\itshape eventSubUrl\/}, {\itshape host\/} and {\itshape parent\/}. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a847e71975f507b24db48ba5520c1ebf1}{BrisaAbstractService} (\hyperlink{classBrisaUpnp_1_1BrisaAbstractService}{BrisaAbstractService} \&service)
+\item 
+virtual \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a19434b738a7074b9a0f8b5677011fa9e}{$\sim$BrisaAbstractService} ()
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a6a55bbf6efef5e3588b6dbd43a9feafd}{setAttribute} (\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43}{xmlTags} key, const QString \&value)
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a6e14662c2e901ce3bfd9ccd0646a3b06}{getAttribute} (\hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43}{xmlTags} key)
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a628800df3aed5b953316bb8e55257ea5}{addAction} (const QString \&name)
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ae4281e7bd63534372762f662c8a923d6}{addAction} (\hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction} $\ast$action)
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction} $\ast$ \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a25e82678349b2a96b59c83b205a1b965}{getAction} (const QString \&name)
+\item 
+QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction} $\ast$ $>$ \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a44420fad863b160c83ab07d87c2f87e5}{getActionList} ()
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_aa60cf051ff332d06991c9e394f75b372}{addStateVariable} (\hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$stateVariable)
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a6a43f76000d4e9a35f38cfa1b6505bd0}{addStateVariable} (const QString \&sendEvents, const QString \&name, const QString \&datatype, const QString \&defaultValue, const QString \&maximum, const QString \&minimum, const QString \&step)
+\item 
+const QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$ $>$ \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ac410ff9af341b30ed287e81418a9776b}{getStateVariableList} ()
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ab71b54a010710a00eac20e3ff0f4b216}{clear} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ade3461839c097933b60f5b8d8fba7290}{call} (const QString \&method, const QMap$<$ QString, QString $>$ \&param)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaAction}{BrisaAction} $\ast$ $>$ \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a58ee35d99146f1f3055dc4a0abfe7282}{actionList}
+\item 
+QList$<$ \hyperlink{classBrisaUpnp_1_1BrisaStateVariable}{BrisaStateVariable} $\ast$ $>$ \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a2c7ed42464b85970271105ca2c95417e}{stateVariableList}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_acc5a45e07d8da5d8e086b02f4a22cc78}{controlUrl}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a81d2525c94d2b9572c962089c388f8f9}{eventSubUrl}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a43e52fe6edbf817dd1aa7685ce9e8e92}{fileAddress}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a1301aa0d68ee3b45dc4158a17d3ab2e9}{major}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a5fedbc9b380612c7c4062b2e25ed3a1c}{minor}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_aa254b466f38b49b921ed7a25aea7cc8c}{scpdUrl}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a670933cc6c8581e2f70f52a97d425e4c}{serviceType}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_ad72b169651a6c617d27d51e7f706410d}{serviceId}
+\item 
+QString \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a9033d7f9255f3a1b6d3540258bf2ade1}{host}
+\item 
+int \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a12d4aea82a4296760ba3f7a27ace68e6}{port}
+\item 
+QtSoapHttpTransport \hyperlink{classBrisaUpnp_1_1BrisaAbstractService_a416381a60d5ea6dc4ee694272f91aebc}{http}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract class for the control point side and device side service. 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!xmlTags@{xmlTags}}
+\index{xmlTags@{xmlTags}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{xmlTags}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf BrisaUpnp::BrisaAbstractService::xmlTags}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{Major@{Major}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!Major@{Major}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a50a17ad3bd5cf85af4faa94f085b960c}{
+Major}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a50a17ad3bd5cf85af4faa94f085b960c}
+}]\index{Minor@{Minor}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!Minor@{Minor}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43acce9853b50b9241c14302cf755322319}{
+Minor}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43acce9853b50b9241c14302cf755322319}
+}]\index{FileAddress@{FileAddress}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!FileAddress@{FileAddress}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43aa92e41b4ede5e98a736e6bee64a630d9}{
+FileAddress}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43aa92e41b4ede5e98a736e6bee64a630d9}
+}]\index{ServiceType@{ServiceType}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!ServiceType@{ServiceType}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43abbe7cfde83882a3e9fb52353503c5c4d}{
+ServiceType}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43abbe7cfde83882a3e9fb52353503c5c4d}
+}]\index{ServiceId@{ServiceId}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!ServiceId@{ServiceId}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43aa82d0f9f3bd19ac33af33b29a4e98b35}{
+ServiceId}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43aa82d0f9f3bd19ac33af33b29a4e98b35}
+}]\index{ScpdUrl@{ScpdUrl}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!ScpdUrl@{ScpdUrl}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43addc2b7f03c7cc4d96bfa8452c0ddcdf7}{
+ScpdUrl}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43addc2b7f03c7cc4d96bfa8452c0ddcdf7}
+}]\index{ControlUrl@{ControlUrl}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!ControlUrl@{ControlUrl}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a07ba26d7245d91cae689d6eb090f0c58}{
+ControlUrl}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a07ba26d7245d91cae689d6eb090f0c58}
+}]\index{EventSubUrl@{EventSubUrl}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!EventSubUrl@{EventSubUrl}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43ad4107e564a096deec670b2b4a4d9b3c0}{
+EventSubUrl}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43ad4107e564a096deec670b2b4a4d9b3c0}
+}]\index{Host@{Host}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!Host@{Host}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a25db80572e607b6b5927cf5415e7dd8d}{
+Host}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a25db80572e607b6b5927cf5415e7dd8d}
+}]\index{Port@{Port}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!Port@{Port}}\item[{\em 
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a5a28d6df46d4d5e5bf3114301d4e52ef}{
+Port}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a411d13859b50b5bdb1f81e61861dbe43a5a28d6df46d4d5e5bf3114301d4e52ef}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a490898486e9a4c5df805c9af816a175b}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!BrisaAbstractService@{BrisaAbstractService}}
+\index{BrisaAbstractService@{BrisaAbstractService}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{BrisaAbstractService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAbstractService::BrisaAbstractService (QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a490898486e9a4c5df805c9af816a175b}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a1f94514c2e0215ef56c06eca6ae791d7}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!BrisaAbstractService@{BrisaAbstractService}}
+\index{BrisaAbstractService@{BrisaAbstractService}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{BrisaAbstractService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAbstractService::BrisaAbstractService (const QString \& {\em serviceType}, \/  const QString \& {\em serviceId} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em scpdUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em controlUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em eventSubUrl} = {\ttfamily \char`\"{}\char`\"{}}, \/  const QString \& {\em host} = {\ttfamily \char`\"{}\char`\"{}}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a1f94514c2e0215ef56c06eca6ae791d7}
+
+
+Constructs an abstract service with given {\itshape serviceType\/}, {\itshape serviceId\/}, {\itshape scpdUrl\/}, {\itshape controlUrl\/}, {\itshape eventSubUrl\/}, {\itshape host\/} and {\itshape parent\/}. \hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a847e71975f507b24db48ba5520c1ebf1}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!BrisaAbstractService@{BrisaAbstractService}}
+\index{BrisaAbstractService@{BrisaAbstractService}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{BrisaAbstractService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAbstractService::BrisaAbstractService ({\bf BrisaAbstractService} \& {\em service})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a847e71975f507b24db48ba5520c1ebf1}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a19434b738a7074b9a0f8b5677011fa9e}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!$\sim$BrisaAbstractService@{$\sim$BrisaAbstractService}}
+\index{$\sim$BrisaAbstractService@{$\sim$BrisaAbstractService}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{$\sim$BrisaAbstractService}]{\setlength{\rightskip}{0pt plus 5cm}BrisaAbstractService::$\sim$BrisaAbstractService ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a19434b738a7074b9a0f8b5677011fa9e}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_ae4281e7bd63534372762f662c8a923d6}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!addAction@{addAction}}
+\index{addAction@{addAction}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{addAction}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAbstractService::addAction ({\bf BrisaAction} $\ast$ {\em action})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_ae4281e7bd63534372762f662c8a923d6}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a628800df3aed5b953316bb8e55257ea5}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!addAction@{addAction}}
+\index{addAction@{addAction}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{addAction}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAbstractService::addAction (const QString \& {\em name})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a628800df3aed5b953316bb8e55257ea5}
+
+
+Referenced by BrisaUpnp::BrisaServiceXMLHandler::endElement().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a6a43f76000d4e9a35f38cfa1b6505bd0}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!addStateVariable@{addStateVariable}}
+\index{addStateVariable@{addStateVariable}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{addStateVariable}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAbstractService::addStateVariable (const QString \& {\em sendEvents}, \/  const QString \& {\em name}, \/  const QString \& {\em datatype}, \/  const QString \& {\em defaultValue}, \/  const QString \& {\em maximum}, \/  const QString \& {\em minimum}, \/  const QString \& {\em step})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a6a43f76000d4e9a35f38cfa1b6505bd0}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_aa60cf051ff332d06991c9e394f75b372}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!addStateVariable@{addStateVariable}}
+\index{addStateVariable@{addStateVariable}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{addStateVariable}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAbstractService::addStateVariable ({\bf BrisaStateVariable} $\ast$ {\em stateVariable})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_aa60cf051ff332d06991c9e394f75b372}
+
+
+Referenced by addStateVariable(), and BrisaUpnp::BrisaServiceXMLHandler::endElement().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_ade3461839c097933b60f5b8d8fba7290}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!call@{call}}
+\index{call@{call}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{call}]{\setlength{\rightskip}{0pt plus 5cm}virtual void BrisaUpnp::BrisaAbstractService::call (const QString \& {\em method}, \/  const QMap$<$ QString, QString $>$ \& {\em param})\hspace{0.3cm}{\ttfamily  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_ade3461839c097933b60f5b8d8fba7290}
+
+
+Implemented in \hyperlink{classBrisaUpnp_1_1BrisaControlPointService_a2ceea746418759667ca7393abbb7a412}{BrisaUpnp::BrisaControlPointService}.\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_ab71b54a010710a00eac20e3ff0f4b216}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!clear@{clear}}
+\index{clear@{clear}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAbstractService::clear ()}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_ab71b54a010710a00eac20e3ff0f4b216}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a25e82678349b2a96b59c83b205a1b965}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!getAction@{getAction}}
+\index{getAction@{getAction}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{getAction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BrisaAction} $\ast$ BrisaAbstractService::getAction (const QString \& {\em name})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a25e82678349b2a96b59c83b205a1b965}
+
+
+Referenced by addAction(), and BrisaUpnp::BrisaServiceXMLHandler::endElement().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a44420fad863b160c83ab07d87c2f87e5}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!getActionList@{getActionList}}
+\index{getActionList@{getActionList}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{getActionList}]{\setlength{\rightskip}{0pt plus 5cm}QList$<$ {\bf BrisaAction} $\ast$ $>$ BrisaAbstractService::getActionList ()}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a44420fad863b160c83ab07d87c2f87e5}
+
+
+Referenced by BrisaAbstractService().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a6e14662c2e901ce3bfd9ccd0646a3b06}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!getAttribute@{getAttribute}}
+\index{getAttribute@{getAttribute}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{getAttribute}]{\setlength{\rightskip}{0pt plus 5cm}QString BrisaAbstractService::getAttribute ({\bf xmlTags} {\em key})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a6e14662c2e901ce3bfd9ccd0646a3b06}
+
+
+Referenced by BrisaAbstractService(), BrisaUpnp::BrisaDeviceXMLHandlerCP::endElement(), BrisaUpnp::BrisaDevice::getServiceById(), BrisaUpnp::BrisaDevice::getServiceByType(), and BrisaUpnp::BrisaControlPoint::getSubscriptionProxy().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_ac410ff9af341b30ed287e81418a9776b}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!getStateVariableList@{getStateVariableList}}
+\index{getStateVariableList@{getStateVariableList}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{getStateVariableList}]{\setlength{\rightskip}{0pt plus 5cm}const QList$<$ {\bf BrisaStateVariable} $\ast$ $>$ BrisaAbstractService::getStateVariableList ()}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_ac410ff9af341b30ed287e81418a9776b}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a122d9f06ff46be2a8fa97d9d749f026d}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!requestFinished@{requestFinished}}
+\index{requestFinished@{requestFinished}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{requestFinished}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaAbstractService::requestFinished (QString {\em root}, \/  QString {\em lastMethod})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a122d9f06ff46be2a8fa97d9d749f026d}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a6a55bbf6efef5e3588b6dbd43a9feafd}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!setAttribute@{setAttribute}}
+\index{setAttribute@{setAttribute}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{setAttribute}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaAbstractService::setAttribute ({\bf xmlTags} {\em key}, \/  const QString \& {\em value})}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a6a55bbf6efef5e3588b6dbd43a9feafd}
+
+
+Referenced by BrisaUpnp::BrisaDeviceXMLHandlerCP::characters(), and BrisaUpnp::BrisaServiceXMLHandler::characters().
+
+\subsection{Member Data Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a58ee35d99146f1f3055dc4a0abfe7282}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!actionList@{actionList}}
+\index{actionList@{actionList}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{actionList}]{\setlength{\rightskip}{0pt plus 5cm}QList$<${\bf BrisaAction} $\ast$$>$ {\bf BrisaUpnp::BrisaAbstractService::actionList}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a58ee35d99146f1f3055dc4a0abfe7282}
+
+
+Referenced by addAction(), BrisaAbstractService(), getAction(), getActionList(), and $\sim$BrisaAbstractService().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_acc5a45e07d8da5d8e086b02f4a22cc78}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!controlUrl@{controlUrl}}
+\index{controlUrl@{controlUrl}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{controlUrl}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::controlUrl}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_acc5a45e07d8da5d8e086b02f4a22cc78}
+
+
+Referenced by BrisaUpnp::BrisaService::buildWebServiceTree(), BrisaUpnp::BrisaControlPointService::call(), clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a81d2525c94d2b9572c962089c388f8f9}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!eventSubUrl@{eventSubUrl}}
+\index{eventSubUrl@{eventSubUrl}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{eventSubUrl}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::eventSubUrl}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a81d2525c94d2b9572c962089c388f8f9}
+
+
+Referenced by BrisaUpnp::BrisaService::buildWebServiceTree(), clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a43e52fe6edbf817dd1aa7685ce9e8e92}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!fileAddress@{fileAddress}}
+\index{fileAddress@{fileAddress}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{fileAddress}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::fileAddress}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a43e52fe6edbf817dd1aa7685ce9e8e92}
+
+
+Referenced by clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a9033d7f9255f3a1b6d3540258bf2ade1}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!host@{host}}
+\index{host@{host}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{host}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::host}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a9033d7f9255f3a1b6d3540258bf2ade1}
+
+
+Referenced by clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a416381a60d5ea6dc4ee694272f91aebc}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!http@{http}}
+\index{http@{http}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{http}]{\setlength{\rightskip}{0pt plus 5cm}QtSoapHttpTransport {\bf BrisaUpnp::BrisaAbstractService::http}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a416381a60d5ea6dc4ee694272f91aebc}
+
+
+Referenced by BrisaAbstractService(), BrisaUpnp::BrisaControlPointService::BrisaControlPointService(), BrisaUpnp::BrisaControlPointService::call(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a1301aa0d68ee3b45dc4158a17d3ab2e9}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!major@{major}}
+\index{major@{major}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{major}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::major}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a1301aa0d68ee3b45dc4158a17d3ab2e9}
+
+
+Referenced by BrisaAbstractService(), clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a5fedbc9b380612c7c4062b2e25ed3a1c}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!minor@{minor}}
+\index{minor@{minor}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{minor}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::minor}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a5fedbc9b380612c7c4062b2e25ed3a1c}
+
+
+Referenced by BrisaAbstractService(), clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a12d4aea82a4296760ba3f7a27ace68e6}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!port@{port}}
+\index{port@{port}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{port}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf BrisaUpnp::BrisaAbstractService::port}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a12d4aea82a4296760ba3f7a27ace68e6}
+
+
+Referenced by BrisaAbstractService(), clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_aa254b466f38b49b921ed7a25aea7cc8c}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!scpdUrl@{scpdUrl}}
+\index{scpdUrl@{scpdUrl}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{scpdUrl}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::scpdUrl}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_aa254b466f38b49b921ed7a25aea7cc8c}
+
+
+Referenced by BrisaUpnp::BrisaService::buildWebServiceTree(), clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_ad72b169651a6c617d27d51e7f706410d}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!serviceId@{serviceId}}
+\index{serviceId@{serviceId}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{serviceId}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::serviceId}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_ad72b169651a6c617d27d51e7f706410d}
+
+
+Referenced by clear(), getAttribute(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a670933cc6c8581e2f70f52a97d425e4c}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!serviceType@{serviceType}}
+\index{serviceType@{serviceType}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{serviceType}]{\setlength{\rightskip}{0pt plus 5cm}QString {\bf BrisaUpnp::BrisaAbstractService::serviceType}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a670933cc6c8581e2f70f52a97d425e4c}
+
+
+Referenced by BrisaUpnp::BrisaControlPointService::call(), clear(), getAttribute(), BrisaUpnp::BrisaService::parseGenericRequest(), and setAttribute().\hypertarget{classBrisaUpnp_1_1BrisaAbstractService_a2c7ed42464b85970271105ca2c95417e}{
+\index{BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}!stateVariableList@{stateVariableList}}
+\index{stateVariableList@{stateVariableList}!BrisaUpnp::BrisaAbstractService@{BrisaUpnp::BrisaAbstractService}}
+\subsubsection[{stateVariableList}]{\setlength{\rightskip}{0pt plus 5cm}QList$<${\bf BrisaStateVariable} $\ast$$>$ {\bf BrisaUpnp::BrisaAbstractService::stateVariableList}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaAbstractService_a2c7ed42464b85970271105ca2c95417e}
+
+
+Referenced by addStateVariable(), BrisaUpnp::BrisaService::buildWebServiceTree(), getStateVariableList(), BrisaUpnp::BrisaService::getVariable(), and $\sim$BrisaAbstractService().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/\hyperlink{brisaabstractservice_8h}{brisaabstractservice.h}\item 
+src/upnp/\hyperlink{brisaabstractservice_8cpp}{brisaabstractservice.cpp}\end{DoxyCompactItemize}

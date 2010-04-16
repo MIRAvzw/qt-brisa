@@ -1,0 +1,119 @@
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPClient}{
+\section{BrisaUpnp::BrisaSSDPClient Class Reference}
+\label{classBrisaUpnp_1_1BrisaSSDPClient}\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+}
+
+
+SSDP stack implementantion for UPnP control points.  
+
+
+{\ttfamily \#include $<$BrisaUpnp/BrisaSSDPClient$>$}\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_a4cbb8b895e02598ad9a812822240b455}{start} ()
+\begin{DoxyCompactList}\small\item\em Connects to the MultiCast group and starts the client. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_aea1fe16f28140943d0abfd464b42a8b9}{stop} ()
+\begin{DoxyCompactList}\small\item\em Stops the client. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_ae2aebc6140ce5e88172f42c0c6958922}{isRunning} () const 
+\begin{DoxyCompactList}\small\item\em Checks if the client is running. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_adc61d6338504d3e47dc68712bbd77b23}{newDeviceEvent} (const QString \&usn, const QString \&location, const QString \&st, const QString \&ext, const QString \&server, const QString \&cacheControl)
+\begin{DoxyCompactList}\small\item\em This signal is emitted when the client receives a \char`\"{}ssdp:alive\char`\"{} message from a device joining the network. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_a332ac8038acc5271fb662239eca70599}{removedDeviceEvent} (const QString \&usn)
+\begin{DoxyCompactList}\small\item\em This signal is emitted when the client receives a \char`\"{}ssdp:byebye\char`\"{} message from a device leaving the network. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_ae4f2ffbb21c38ea917730898c976b45d}{BrisaSSDPClient} (QObject $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Constructs a BrisaSSCPClient with the given parent. \item\end{DoxyCompactList}\item 
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_a36f414fee62097836c79895460e330bc}{$\sim$BrisaSSDPClient} ()
+\begin{DoxyCompactList}\small\item\em Destroys the client. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+SSDP stack implementantion for UPnP control points. Create a new BrisaSSCPClient and call \char`\"{}start()\char`\"{} to connect to the multicast group and start listening to ssdp notification messages.
+
+When \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient}{BrisaSSDPClient} receives a notification message it emits {\itshape \char`\"{}newDeviceEvent()\char`\"{}\/} in case of \char`\"{}ssdp:alive\char`\"{} and {\itshape \char`\"{}removedDeviceEvent\char`\"{}\/} in case of \char`\"{}ssdp:byebye\char`\"{}. Other ssdp messages will be ignored. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPClient_ae4f2ffbb21c38ea917730898c976b45d}{
+\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}!BrisaSSDPClient@{BrisaSSDPClient}}
+\index{BrisaSSDPClient@{BrisaSSDPClient}!BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+\subsubsection[{BrisaSSDPClient}]{\setlength{\rightskip}{0pt plus 5cm}BrisaSSDPClient::BrisaSSDPClient (QObject $\ast$ {\em parent} = {\ttfamily 0})}}
+\label{classBrisaUpnp_1_1BrisaSSDPClient_ae4f2ffbb21c38ea917730898c976b45d}
+
+
+Constructs a BrisaSSCPClient with the given parent. \hypertarget{classBrisaUpnp_1_1BrisaSSDPClient_a36f414fee62097836c79895460e330bc}{
+\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}!$\sim$BrisaSSDPClient@{$\sim$BrisaSSDPClient}}
+\index{$\sim$BrisaSSDPClient@{$\sim$BrisaSSDPClient}!BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+\subsubsection[{$\sim$BrisaSSDPClient}]{\setlength{\rightskip}{0pt plus 5cm}BrisaSSDPClient::$\sim$BrisaSSDPClient ()}}
+\label{classBrisaUpnp_1_1BrisaSSDPClient_a36f414fee62097836c79895460e330bc}
+
+
+Destroys the client. Stops the client if it's running. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPClient_ae2aebc6140ce5e88172f42c0c6958922}{
+\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+\subsubsection[{isRunning}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaSSDPClient::isRunning () const\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPClient_ae2aebc6140ce5e88172f42c0c6958922}
+
+
+Checks if the client is running. \begin{DoxyReturn}{Returns}
+true if is running 
+\end{DoxyReturn}
+
+
+Referenced by start(), stop(), and $\sim$BrisaSSDPClient().\hypertarget{classBrisaUpnp_1_1BrisaSSDPClient_adc61d6338504d3e47dc68712bbd77b23}{
+\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}!newDeviceEvent@{newDeviceEvent}}
+\index{newDeviceEvent@{newDeviceEvent}!BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+\subsubsection[{newDeviceEvent}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaSSDPClient::newDeviceEvent (const QString \& {\em usn}, \/  const QString \& {\em location}, \/  const QString \& {\em st}, \/  const QString \& {\em ext}, \/  const QString \& {\em server}, \/  const QString \& {\em cacheControl})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPClient_adc61d6338504d3e47dc68712bbd77b23}
+
+
+This signal is emitted when the client receives a \char`\"{}ssdp:alive\char`\"{} message from a device joining the network. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_a332ac8038acc5271fb662239eca70599}{removedDeviceEvent()} 
+\end{DoxySeeAlso}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPClient_a332ac8038acc5271fb662239eca70599}{
+\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}!removedDeviceEvent@{removedDeviceEvent}}
+\index{removedDeviceEvent@{removedDeviceEvent}!BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+\subsubsection[{removedDeviceEvent}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaUpnp::BrisaSSDPClient::removedDeviceEvent (const QString \& {\em usn})\hspace{0.3cm}{\ttfamily  \mbox{[}signal\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPClient_a332ac8038acc5271fb662239eca70599}
+
+
+This signal is emitted when the client receives a \char`\"{}ssdp:byebye\char`\"{} message from a device leaving the network. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_adc61d6338504d3e47dc68712bbd77b23}{newDeviceEvent()} 
+\end{DoxySeeAlso}
+\hypertarget{classBrisaUpnp_1_1BrisaSSDPClient_a4cbb8b895e02598ad9a812822240b455}{
+\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}!start@{start}}
+\index{start@{start}!BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaSSDPClient::start ()\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPClient_a4cbb8b895e02598ad9a812822240b455}
+
+
+Connects to the MultiCast group and starts the client. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_ae2aebc6140ce5e88172f42c0c6958922}{isRunning()}, \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_aea1fe16f28140943d0abfd464b42a8b9}{stop()} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaUpnp::BrisaControlPoint::start().\hypertarget{classBrisaUpnp_1_1BrisaSSDPClient_aea1fe16f28140943d0abfd464b42a8b9}{
+\index{BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}!stop@{stop}}
+\index{stop@{stop}!BrisaUpnp::BrisaSSDPClient@{BrisaUpnp::BrisaSSDPClient}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaSSDPClient::stop ()\hspace{0.3cm}{\ttfamily  \mbox{[}slot\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaSSDPClient_aea1fe16f28140943d0abfd464b42a8b9}
+
+
+Stops the client. \begin{DoxySeeAlso}{See also}
+\hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_ae2aebc6140ce5e88172f42c0c6958922}{isRunning()}, \hyperlink{classBrisaUpnp_1_1BrisaSSDPClient_a4cbb8b895e02598ad9a812822240b455}{start()} 
+\end{DoxySeeAlso}
+
+
+Referenced by BrisaUpnp::BrisaControlPoint::stop(), and $\sim$BrisaSSDPClient().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/ssdp/\hyperlink{brisassdpclient_8h}{brisassdpclient.h}\item 
+src/upnp/ssdp/\hyperlink{brisassdpclient_8cpp}{brisassdpclient.cpp}\end{DoxyCompactItemize}

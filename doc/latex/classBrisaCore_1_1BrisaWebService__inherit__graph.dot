@@ -1,0 +1,9 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{BrisaCore::BrisaWebService\n|- sessionID\l- requestID\l|+ BrisaWebService()\l+ ~BrisaWebService()\l+ pageRequestedEvent()\l+ respond()\l+ respond()\l+ respond()\l+ respond()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",arrowtail="empty"];
+  Node2 [label="{BrisaUpnp::BrisaEventController\n|- subscriptions\l- variableList\l- httpClient\l|+ BrisaEventController()\l+ ~BrisaEventController()\l+ variableChanged()\l+ subscribe()\l+ unsubscribe()\l+ parseGenericRequest()\l- BrisaEventController()\l- sendEvent()\l- getEventUrls()\l- getTimeOut()\l- getUuid()\l- getErrorHeader()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaEventController.html"];
+}

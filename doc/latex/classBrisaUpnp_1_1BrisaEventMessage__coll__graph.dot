@@ -1,0 +1,11 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{BrisaUpnp::BrisaEventMessage\n|- VARIABLES\l- SEQ\l- subscription\l|+ BrisaEventMessage()\l+ getMessageHeader()\l+ getMessageBody()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="subscription",arrowtail="open"];
+  Node2 [label="{BrisaUpnp::BrisaEventSubscription\n||+ BrisaEventSubscription()\l+ renew()\l+ getAcceptSubscriptionResponse()\l+ getAcceptUnsubscriptionResponse()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaEventSubscription.html"];
+  Node3 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",arrowtail="empty"];
+  Node3 [label="{BrisaUpnp::BrisaAbstractEventSubscription\n|# SID\l# CALLBACK_URLS\l# date\l# timeout\l# lastSeq\l# firstMessageSent\l|+ BrisaAbstractEventSubscription()\l+ renew()\l+ hasExpired()\l+ getNextSeq()\l+ getSid()\l+ getCallbackUrls()\l+ getUrl()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaAbstractEventSubscription.html",tooltip="Abstract class that represents an event subscription."];
+}

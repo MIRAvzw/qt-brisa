@@ -1,0 +1,166 @@
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager}{
+\section{BrisaCore::BrisaConfigurationManager Class Reference}
+\label{classBrisaCore_1_1BrisaConfigurationManager}\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+}
+
+
+Class that provides an easy way of managing configurations.  
+
+
+{\ttfamily \#include $<$brisaconfig.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a4bc1f6a85872924f96d86ac4193a1363}{BrisaConfigurationManager} (const QString \&configPath, const QHash$<$ QString, QString $>$ \&state)
+\begin{DoxyCompactList}\small\item\em Constructor for the \hyperlink{classBrisaCore_1_1BrisaConfigurationManager}{BrisaConfigurationManager} class. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_add1eabc42cefd0aa066222a60b70df71}{setDirectAccess} (bool access)
+\begin{DoxyCompactList}\small\item\em Sets the direct access option of the ConfigurationManager. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_aa32b2a7e909192182c879c72c047d895}{getDirectAccess} ()
+\begin{DoxyCompactList}\small\item\em Returns False if the ConfigurationManager is currently working on the runtime state. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a0e3ce5560d14df248cd95338f83dbb2e}{update} ()
+\begin{DoxyCompactList}\small\item\em Updates the current state of the manager according to persistence data. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a3da3cd7739a19d536d763cef39d8adfa}{save} ()
+\begin{DoxyCompactList}\small\item\em Stores the state of the manager on the persistence. \item\end{DoxyCompactList}\item 
+QString \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_abdfdf034b2bd536aa85cf3ecfc2c5f07}{getParameter} (const QString \&section, const QString \&parameter)
+\begin{DoxyCompactList}\small\item\em Retrieves the value associated with the parameter in the section given. \item\end{DoxyCompactList}\item 
+void \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a739851682001ab3417779eaf39f646ec}{setParameter} (const QString \&section, const QString \&parameter, const QString \&parValue)
+\begin{DoxyCompactList}\small\item\em Sets a parameter's value in the given section. \item\end{DoxyCompactList}\item 
+QList$<$ QString $>$ \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a6a9e2549510762f81e592a51c805ab6e}{getSectionNames} ()
+\begin{DoxyCompactList}\small\item\em Returns the names of all sections. \item\end{DoxyCompactList}\item 
+QHash$<$ QString, QString $>$ \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_adac936cafe02d040a4a69fe96ec0e64d}{items} (const QString \&section)
+\begin{DoxyCompactList}\small\item\em Returns all the items of the given section. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a99863f30d930844f274e48d0ac289791}{removeSection} (const QString \&section)
+\begin{DoxyCompactList}\small\item\em Removes a section given the name. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that provides an easy way of managing configurations. Configuration is organized in sections, which may contain parameters. Each section has a name and a parameter has a name and a value.
+
+Concerning storage, the configuration can be saved on a sqlite database. Also, there's a feature called \char`\"{}direct access\char`\"{} that enables direct operations on the database. For example,a \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_abdfdf034b2bd536aa85cf3ecfc2c5f07}{getParameter()} call would retrieve the value of a parameter directly from the database, if the feature is enabled.
+
+When disabled, all methods apply to (what we call) the \char`\"{}state\char`\"{}. The state initially contains the same information that is on the database, but if the \char`\"{}direct access\char`\"{} feature is disabled, all get()'s and set()'s apply to the state. This means you can have a \char`\"{}runtime configuration\char`\"{} and a \char`\"{}static configuration\char`\"{}.
+
+By default, the \char`\"{}direct access\char`\"{} feature is disabled. To enable it, just call setDirectAccess(True).
+
+The state can be saved on the persistence by explicitly calling \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a3da3cd7739a19d536d763cef39d8adfa}{save()} It can also update its values by explicitly calling \hyperlink{classBrisaCore_1_1BrisaConfigurationManager_a0e3ce5560d14df248cd95338f83dbb2e}{update()}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_a4bc1f6a85872924f96d86ac4193a1363}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!BrisaConfigurationManager@{BrisaConfigurationManager}}
+\index{BrisaConfigurationManager@{BrisaConfigurationManager}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{BrisaConfigurationManager}]{\setlength{\rightskip}{0pt plus 5cm}BrisaConfigurationManager::BrisaConfigurationManager (const QString \& {\em configPath}, \/  const QHash$<$ QString, QString $>$ \& {\em state})}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_a4bc1f6a85872924f96d86ac4193a1363}
+
+
+Constructor for the \hyperlink{classBrisaCore_1_1BrisaConfigurationManager}{BrisaConfigurationManager} class. 
+\begin{DoxyParams}{Parameters}
+\item[{\em config\_\-path}]a QString that represents the path of the database to work on. If not supplied will work on a memory database. \item[{\em state,:}]hash as a dictionaryr with sections and parameters.$\backslash$ Keys are section.parameters format and values are the their respective values. \end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_aa32b2a7e909192182c879c72c047d895}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!getDirectAccess@{getDirectAccess}}
+\index{getDirectAccess@{getDirectAccess}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{getDirectAccess}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaConfigurationManager::getDirectAccess ()}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_aa32b2a7e909192182c879c72c047d895}
+
+
+Returns False if the ConfigurationManager is currently working on the runtime state. Otherwise, it will return True, which means it's working directly on the persistence. \begin{DoxyReturn}{Returns}
+The current status of the ConfigurationManager 
+\end{DoxyReturn}
+
+
+Referenced by getParameter(), getSectionNames(), items(), removeSection(), and setParameter().\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_abdfdf034b2bd536aa85cf3ecfc2c5f07}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!getParameter@{getParameter}}
+\index{getParameter@{getParameter}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{getParameter}]{\setlength{\rightskip}{0pt plus 5cm}QString BrisaConfigurationManager::getParameter (const QString \& {\em section}, \/  const QString \& {\em parameter})}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_abdfdf034b2bd536aa85cf3ecfc2c5f07}
+
+
+Retrieves the value associated with the parameter in the section given. 
+\begin{DoxyParams}{Parameters}
+\item[{\em section}]a section to find the parameter \item[{\em parameter}]a parameter to return the value \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value for the given parameter 
+\end{DoxyReturn}
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_a6a9e2549510762f81e592a51c805ab6e}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!getSectionNames@{getSectionNames}}
+\index{getSectionNames@{getSectionNames}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{getSectionNames}]{\setlength{\rightskip}{0pt plus 5cm}QList$<$ QString $>$ BrisaConfigurationManager::getSectionNames ()}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_a6a9e2549510762f81e592a51c805ab6e}
+
+
+Returns the names of all sections. \begin{DoxyReturn}{Returns}
+a QList with its parameters and values 
+\end{DoxyReturn}
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_adac936cafe02d040a4a69fe96ec0e64d}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!items@{items}}
+\index{items@{items}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{items}]{\setlength{\rightskip}{0pt plus 5cm}QHash$<$ QString, QString $>$ BrisaConfigurationManager::items (const QString \& {\em section})}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_adac936cafe02d040a4a69fe96ec0e64d}
+
+
+Returns all the items of the given section. 
+\begin{DoxyParams}{Parameters}
+\item[{\em section}]name \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a dictionary with all the items of the given section 
+\end{DoxyReturn}
+
+
+Referenced by removeSection().\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_a99863f30d930844f274e48d0ac289791}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!removeSection@{removeSection}}
+\index{removeSection@{removeSection}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{removeSection}]{\setlength{\rightskip}{0pt plus 5cm}bool BrisaConfigurationManager::removeSection (const QString \& {\em section})}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_a99863f30d930844f274e48d0ac289791}
+
+
+Removes a section given the name. 
+\begin{DoxyParams}{Parameters}
+\item[{\em section,:}]section name to be removed \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean. true whether is possible remove it 
+\end{DoxyReturn}
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_a3da3cd7739a19d536d763cef39d8adfa}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!save@{save}}
+\index{save@{save}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaConfigurationManager::save ()}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_a3da3cd7739a19d536d763cef39d8adfa}
+
+
+Stores the state of the manager on the persistence. 
+
+Referenced by removeSection(), and setParameter().\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_add1eabc42cefd0aa066222a60b70df71}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!setDirectAccess@{setDirectAccess}}
+\index{setDirectAccess@{setDirectAccess}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{setDirectAccess}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaConfigurationManager::setDirectAccess (bool {\em access})}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_add1eabc42cefd0aa066222a60b70df71}
+
+
+Sets the direct access option of the ConfigurationManager. When True, direct access makes all get and set methods work directly on the database, not on the current state. 
+\begin{DoxyParams}{Parameters}
+\item[{\em access}]a boolean argument to set direct access option of the \hyperlink{classBrisaCore_1_1BrisaConfigurationManager}{BrisaConfigurationManager} \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_a739851682001ab3417779eaf39f646ec}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!setParameter@{setParameter}}
+\index{setParameter@{setParameter}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{setParameter}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaConfigurationManager::setParameter (const QString \& {\em section}, \/  const QString \& {\em parameter}, \/  const QString \& {\em parValue})}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_a739851682001ab3417779eaf39f646ec}
+
+
+Sets a parameter's value in the given section. If the parameter does not exist, it gets created. 
+\begin{DoxyParams}{Parameters}
+\item[{\em section}]a section to set the parameter \item[{\em parameter}]a parameter to set the value \item[{\em parameter}]a value to be set \end{DoxyParams}
+\hypertarget{classBrisaCore_1_1BrisaConfigurationManager_a0e3ce5560d14df248cd95338f83dbb2e}{
+\index{BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}!update@{update}}
+\index{update@{update}!BrisaCore::BrisaConfigurationManager@{BrisaCore::BrisaConfigurationManager}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaConfigurationManager::update ()}}
+\label{classBrisaCore_1_1BrisaConfigurationManager_a0e3ce5560d14df248cd95338f83dbb2e}
+
+
+Updates the current state of the manager according to persistence data. 
+
+Referenced by getParameter(), getSectionNames(), and items().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/core/\hyperlink{brisaconfig_8h}{brisaconfig.h}\item 
+src/core/\hyperlink{brisaconfig_8cpp}{brisaconfig.cpp}\end{DoxyCompactItemize}

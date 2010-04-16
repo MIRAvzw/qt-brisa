@@ -1,0 +1,57 @@
+\hypertarget{classBrisaUpnp_1_1BrisaEventSubscription}{
+\section{BrisaUpnp::BrisaEventSubscription Class Reference}
+\label{classBrisaUpnp_1_1BrisaEventSubscription}\index{BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}}
+}
+
+
+{\ttfamily \#include $<$brisaeventsubscription.h$>$}Inheritance diagram for BrisaUpnp::BrisaEventSubscription:Collaboration diagram for BrisaUpnp::BrisaEventSubscription:\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBrisaUpnp_1_1BrisaEventSubscription_ae06a65973bacd60ed46c362ba5359b81}{BrisaEventSubscription} (const QString \&sid, const QStringList \&callbackUrls, const int \&\hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_afb99d42e318e002acc44740a2ca7881a}{timeout}=-\/1, QObject $\ast$parent=0)
+\item 
+void \hyperlink{classBrisaUpnp_1_1BrisaEventSubscription_aa5b51ef428760a2f3e653e9b4b132f5a}{renew} (const int \&newTimeout=-\/1)
+\begin{DoxyCompactList}\small\item\em Renews the subscription for the given {\itshape newTimeout\/}. \item\end{DoxyCompactList}\item 
+QHttpResponseHeader \hyperlink{classBrisaUpnp_1_1BrisaEventSubscription_ad5eab9edcfaf289688a67340d1fb0865}{getAcceptSubscriptionResponse} () const 
+\item 
+QHttpResponseHeader \hyperlink{classBrisaUpnp_1_1BrisaEventSubscription_a07a86edf216d8002832956465041f759}{getAcceptUnsubscriptionResponse} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventSubscription_ae06a65973bacd60ed46c362ba5359b81}{
+\index{BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}!BrisaEventSubscription@{BrisaEventSubscription}}
+\index{BrisaEventSubscription@{BrisaEventSubscription}!BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}}
+\subsubsection[{BrisaEventSubscription}]{\setlength{\rightskip}{0pt plus 5cm}BrisaUpnp::BrisaEventSubscription::BrisaEventSubscription (const QString \& {\em sid}, \/  const QStringList \& {\em callbackUrls}, \/  const int \& {\em timeout} = {\ttfamily -\/1}, \/  QObject $\ast$ {\em parent} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventSubscription_ae06a65973bacd60ed46c362ba5359b81}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBrisaUpnp_1_1BrisaEventSubscription_ad5eab9edcfaf289688a67340d1fb0865}{
+\index{BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}!getAcceptSubscriptionResponse@{getAcceptSubscriptionResponse}}
+\index{getAcceptSubscriptionResponse@{getAcceptSubscriptionResponse}!BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}}
+\subsubsection[{getAcceptSubscriptionResponse}]{\setlength{\rightskip}{0pt plus 5cm}QHttpResponseHeader BrisaEventSubscription::getAcceptSubscriptionResponse () const}}
+\label{classBrisaUpnp_1_1BrisaEventSubscription_ad5eab9edcfaf289688a67340d1fb0865}
+
+
+Referenced by BrisaUpnp::BrisaEventController::subscribe().\hypertarget{classBrisaUpnp_1_1BrisaEventSubscription_a07a86edf216d8002832956465041f759}{
+\index{BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}!getAcceptUnsubscriptionResponse@{getAcceptUnsubscriptionResponse}}
+\index{getAcceptUnsubscriptionResponse@{getAcceptUnsubscriptionResponse}!BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}}
+\subsubsection[{getAcceptUnsubscriptionResponse}]{\setlength{\rightskip}{0pt plus 5cm}QHttpResponseHeader BrisaEventSubscription::getAcceptUnsubscriptionResponse () const}}
+\label{classBrisaUpnp_1_1BrisaEventSubscription_a07a86edf216d8002832956465041f759}
+\hypertarget{classBrisaUpnp_1_1BrisaEventSubscription_aa5b51ef428760a2f3e653e9b4b132f5a}{
+\index{BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}!renew@{renew}}
+\index{renew@{renew}!BrisaUpnp::BrisaEventSubscription@{BrisaUpnp::BrisaEventSubscription}}
+\subsubsection[{renew}]{\setlength{\rightskip}{0pt plus 5cm}void BrisaEventSubscription::renew (const int \& {\em newTimeout} = {\ttfamily -\/1})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBrisaUpnp_1_1BrisaEventSubscription_aa5b51ef428760a2f3e653e9b4b132f5a}
+
+
+Renews the subscription for the given {\itshape newTimeout\/}. 
+
+Implements \hyperlink{classBrisaUpnp_1_1BrisaAbstractEventSubscription_ae9da94244c6164b5759b8be21e03d42f}{BrisaUpnp::BrisaAbstractEventSubscription}.
+
+Referenced by BrisaUpnp::BrisaEventController::subscribe().
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+src/upnp/device/\hyperlink{brisaeventsubscription_8h}{brisaeventsubscription.h}\item 
+src/upnp/device/\hyperlink{brisaeventsubscription_8cpp}{brisaeventsubscription.cpp}\end{DoxyCompactItemize}

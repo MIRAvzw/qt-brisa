@@ -1,0 +1,46 @@
+\hypertarget{brisawebserver_8h}{
+\section{src/core/brisawebserver.h File Reference}
+\label{brisawebserver_8h}\index{src/core/brisawebserver.h@{src/core/brisawebserver.h}}
+}
+{\ttfamily \#include $<$QtCore$>$}\par
+{\ttfamily \#include $<$QtNetwork$>$}\par
+{\ttfamily \#include \char`\"{}QxtHttpSessionManager\char`\"{}}\par
+{\ttfamily \#include $<$QxtWebServiceDirectory$>$}\par
+{\ttfamily \#include $<$QxtWebSlotService$>$}\par
+{\ttfamily \#include $<$QxtWebPageEvent$>$}\par
+{\ttfamily \#include $<$QxtWebContent$>$}\par
+{\ttfamily \#include \char`\"{}brisaglobal.h\char`\"{}}\par
+Include dependency graph for brisawebserver.h:This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classBrisaCore_1_1BrisaWebService}{BrisaCore::BrisaWebService}
+\begin{DoxyCompactList}\small\item\em Web service abstraction class. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaCore_1_1BrisaWebFile}{BrisaCore::BrisaWebFile}
+\begin{DoxyCompactList}\small\item\em Adds a file to the web server. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaCore_1_1BrisaWebStaticContent}{BrisaCore::BrisaWebStaticContent}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classBrisaCore_1_1BrisaWebStaticContent}{BrisaWebStaticContent} class stores a QString into the web server. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaCore::BrisaWebServiceProvider}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classBrisaCore_1_1BrisaWebServiceProvider}{BrisaWebServiceProvider} class works as web service manager for the web server. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaCore_1_1BrisaWebserver}{BrisaCore::BrisaWebserver}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classBrisaCore_1_1BrisaWebserver}{BrisaWebserver} class is a web server implementation. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceBrisaCore}{BrisaCore}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{brisawebserver_8h_acf0b0259d0bf12e5ae2256e192dcb69d}{DEFAULT\_\-PAGE}~\char`\"{}$<$html$>$$<$body$>$$<$h1$>$BRisa WebServer!$\backslash$n$<$/body$>$$<$/html$>$\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{brisawebserver_8h_acf0b0259d0bf12e5ae2256e192dcb69d}{
+\index{brisawebserver.h@{brisawebserver.h}!DEFAULT\_\-PAGE@{DEFAULT\_\-PAGE}}
+\index{DEFAULT\_\-PAGE@{DEFAULT\_\-PAGE}!brisawebserver.h@{brisawebserver.h}}
+\subsubsection[{DEFAULT\_\-PAGE}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEFAULT\_\-PAGE~\char`\"{}$<$html$>$$<$body$>$$<$h1$>$BRisa WebServer!$\backslash$n$<$/body$>$$<$/html$>$\char`\"{}}}
+\label{brisawebserver_8h_acf0b0259d0bf12e5ae2256e192dcb69d}
+
+
+Referenced by BrisaCore::BrisaWebServiceProvider::BrisaWebServiceProvider(), and BrisaCore::BrisaWebService::pageRequestedEvent().

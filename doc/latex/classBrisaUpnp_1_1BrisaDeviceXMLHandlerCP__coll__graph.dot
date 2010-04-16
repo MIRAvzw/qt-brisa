@@ -1,0 +1,18 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{BrisaUpnp::BrisaDeviceXMLHandlerCP\n|- writer\l- reader\l- input\l- context\l|+ parseDevice()\l# startElement()\l# endElement()\l# characters()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="context",arrowtail="open"];
+  Node2 [label="{BrisaUpnp::BrisaDeviceParserContext\n|+ stateSkip\l+ state\l- parent\l- device\l- service\l- icon\l|+ BrisaDeviceParserContext()\l+ getIcon()\l+ getDevice()\l+ getService()\l+ setIcon()\l+ setDevice()\l+ setService()\l+ hasParent()\l+ getParent()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaDeviceParserContext.html"];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="service",arrowtail="open"];
+  Node3 [label="{BrisaUpnp::BrisaControlPointService\n|- lastMethod\l|+ BrisaControlPointService()\l+ BrisaControlPointService()\l+ BrisaControlPointService()\l+ parseFromXml()\l+ call()\l- getResponse()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaControlPointService.html",tooltip="BrisaControlPointService is the class that implements action control in UPnP Architecture..."];
+  Node4 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",arrowtail="empty"];
+  Node4 [label="{BrisaUpnp::BrisaAbstractService\n|# actionList\l# stateVariableList\l# controlUrl\l# eventSubUrl\l# fileAddress\l# major\l# minor\l# scpdUrl\l# serviceType\l# serviceId\l# host\l# port\l# http\l|+ BrisaAbstractService()\l+ BrisaAbstractService()\l+ BrisaAbstractService()\l+ ~BrisaAbstractService()\l+ setAttribute()\l+ getAttribute()\l+ addAction()\l+ addAction()\l+ getAction()\l+ getActionList()\l+ addStateVariable()\l+ addStateVariable()\l+ getStateVariableList()\l+ clear()\l# call()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaAbstractService.html",tooltip="An abstract class for the control point side and device side service."];
+  Node5 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="icon",arrowtail="open"];
+  Node5 [label="{BrisaUpnp::BrisaIcon\n|- mimetype\l- width\l- height\l- depth\l- url\l- attribute\l|+ BrisaIcon()\l+ setAttribute()\l+ getAttribute()\l+ clear()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaIcon.html"];
+  Node6 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="device",arrowtail="open"];
+  Node6 [label="{BrisaUpnp::BrisaControlPointDevice\n|- iconList\l- serviceList\l- embeddedDeviceList\l- major\l- minor\l- urlBase\l- deviceType\l- friendlyName\l- manufacturer\l- manufacturerUrl\l- modelDescription\l- modelName\l- modelNumber\l- modelUrl\l- serialNumber\l- udn\l- upc\l- presentationUrl\l- fileAddress\l|+ BrisaControlPointDevice()\l+ BrisaControlPointDevice()\l+ BrisaControlPointDevice()\l+ BrisaControlPointDevice()\l+ ~BrisaControlPointDevice()\l+ getAttribute()\l+ setAttribute()\l+ addIcon()\l+ addService()\l+ addDevice()\l+ getIconList()\l+ getServiceList()\l+ getEmbeddedDeviceList()\l+ getServiceById()\l+ getServiceByType()\l+ clear()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaControlPointDevice.html",tooltip="Class that implements the devices that control point part is going to handle."];
+  Node2 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="parent",arrowtail="open"];
+}

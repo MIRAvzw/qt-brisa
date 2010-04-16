@@ -1,0 +1,15 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{BrisaUpnp::BrisaDevice\n|- iconList\l- serviceList\l- embeddedDeviceList\l- major\l- minor\l- urlBase\l- deviceType\l- friendlyName\l- manufacturer\l- manufacturerUrl\l- modelDescription\l- modelName\l- modelNumber\l- modelUrl\l- serialNumber\l- udn\l- upc\l- presentationUrl\l- location\l- server\l- ipAddress\l- port\l- attribute\l- fileAddress\l- descriptionFile\l- ssdp\l- webserver\l- running\l|+ BrisaDevice()\l+ BrisaDevice()\l+ BrisaDevice()\l+ ~BrisaDevice()\l+ operator=()\l+ setAttribute()\l+ getAttribute()\l+ addIcon()\l+ addService()\l+ addService()\l+ addEmbeddedDevice()\l+ addEmbeddedDevice()\l+ getIconList()\l+ getServiceList()\l+ getEmbeddedDeviceList()\l+ getServiceById()\l+ getServiceByType()\l+ clear()\l+ doNotify()\l+ doByeBye()\l+ start()\l+ stop()\l+ respondMSearch()\l- xmlGenerator()\l- buildUrlBase()\l- buildWebServerTree()\l- startWebServer()\l- respondMSearchAll()\l- isRunning()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="webserver",arrowtail="open"];
+  Node2 [label="{BrisaCore::BrisaWebserver\n|- rootService\l|+ BrisaWebserver()\l+ ~BrisaWebserver()\l+ publishFile()\l+ addService()\l# incomingRequest()\l# newSession()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebserver.html",tooltip="The BrisaWebserver class is a web server implementation."];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="rootService",arrowtail="open"];
+  Node3 [label="{BrisaCore::BrisaWebServiceProvider\n|- root\l- sessionManager\l- files\l- content\l|+ BrisaWebServiceProvider()\l+ ~BrisaWebServiceProvider()\l+ addFile()\l+ addContent()\l+ pageRequestedEvent()\l# indexRequested()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebServiceProvider.html",tooltip="The BrisaWebServiceProvider class works as web service manager for the web server..."];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="root",arrowtail="open"];
+  Node4 [label="{BrisaCore::BrisaWebStaticContent\n|- content\l|+ BrisaWebStaticContent()\l+ ~BrisaWebStaticContent()\l+ index()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebStaticContent.html",tooltip="The BrisaWebStaticContent class stores a QString into the web server."];
+  Node5 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="ssdp",arrowtail="open"];
+  Node5 [label="{BrisaUpnp::BrisaSSDPServer\n|- running\l- SSDP_ADDR\l- SSDP_PORT\l- S_SSDP_PORT\l- udpListener\l|+ BrisaSSDPServer()\l+ ~BrisaSSDPServer()\l+ isRunning()\l+ start()\l+ stop()\l+ doNotify()\l+ doByeBye()\l+ respondMSearch()\l- msearchReceived()\l- datagramReceived()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaSSDPServer.html",tooltip="SSDP stack implementation for UPnP devices."];
+}

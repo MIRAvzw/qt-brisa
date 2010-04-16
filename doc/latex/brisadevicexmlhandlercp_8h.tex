@@ -1,0 +1,85 @@
+\hypertarget{brisadevicexmlhandlercp_8h}{
+\section{src/upnp/controlpoint/brisadevicexmlhandlercp.h File Reference}
+\label{brisadevicexmlhandlercp_8h}\index{src/upnp/controlpoint/brisadevicexmlhandlercp.h@{src/upnp/controlpoint/brisadevicexmlhandlercp.h}}
+}
+{\ttfamily \#include $<$QXmlDefaultHandler$>$}\par
+{\ttfamily \#include $<$QXmlSimpleReader$>$}\par
+{\ttfamily \#include $<$QXmlStreamWriter$>$}\par
+{\ttfamily \#include $<$QXmlInputSource$>$}\par
+{\ttfamily \#include $<$QXmlAttributes$>$}\par
+{\ttfamily \#include $<$QMainWindow$>$}\par
+{\ttfamily \#include $<$QIODevice$>$}\par
+{\ttfamily \#include $<$QString$>$}\par
+{\ttfamily \#include $<$QtDebug$>$}\par
+{\ttfamily \#include $<$QtCore$>$}\par
+{\ttfamily \#include $<$QObject$>$}\par
+{\ttfamily \#include $<$QNetworkAccessManager$>$}\par
+{\ttfamily \#include $<$QNetworkReply$>$}\par
+{\ttfamily \#include $<$QNetworkRequest$>$}\par
+{\ttfamily \#include $<$QTemporaryFile$>$}\par
+{\ttfamily \#include \char`\"{}brisaicon.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}brisacontrolpointservice.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}brisaglobal.h\char`\"{}}\par
+Include dependency graph for brisadevicexmlhandlercp.h:This graph shows which files directly or indirectly include this file:\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaDeviceParserContext}{BrisaUpnp::BrisaDeviceParserContext}
+\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}{BrisaUpnp::BrisaDeviceXMLHandlerCP}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classBrisaUpnp_1_1BrisaDeviceXMLHandlerCP}{BrisaDeviceXMLHandlerCP} creates a device from a xml description file, with all it's attributes, it lets it ready to be used. \item\end{DoxyCompactList}\item 
+class \hyperlink{classBrisaUpnp_1_1BrisaServiceFetcher}{BrisaUpnp::BrisaServiceFetcher}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceBrisaUpnp}{BrisaUpnp}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0}{BrisaUpnp::SaxParserState} \{ \par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3a2dd2c2d0e6a1a37322de15a3ae995e}{BrisaUpnp::Start}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a3152e9b757fc9a88f2a08add06051906}{BrisaUpnp::Root}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a6556a90cbf8f18552cac97851c7c4ee8}{BrisaUpnp::SpecVersion}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aaad220bb73789c920541df5dffeb0aae}{BrisaUpnp::SpecVersionMajor}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2eb804565c471082835d7318f05ed10c}{BrisaUpnp::SpecVersionMinor}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abad229d53aa1a40446099f3af49cd44d}{BrisaUpnp::UrlBase}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4ce07e3ccb264a8a4254e7587a53987b}{BrisaUpnp::Device}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb3d6ff740cfff6d426248694583cb47}{BrisaUpnp::DeviceType}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa2699e628eaa0f22cdda0fc14c4a97de}{BrisaUpnp::DeviceFriendlyName}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ad5f8be3fd06334af7d1d0a1ae816928b}{BrisaUpnp::Manufacturer}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adcbd8ddaa6cbf9b6ce7f315b838df02c}{BrisaUpnp::ManufacturerUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a58fa9f32ef7a830528cbebca19d2a870}{BrisaUpnp::ModelDescription}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aef0fd95ebae7788f840df1d9663aa0db}{BrisaUpnp::ModelName}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae7e9bea81a4d93ac4d0de8e3628c8589}{BrisaUpnp::ModelUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a109c95a1c2eb025bba8d606cb6d2f403}{BrisaUpnp::SerialNumber}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0abcc0181a22add88a80f34d9772a95809}{BrisaUpnp::Udn}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2715a3daadf193fc97fccd8f7b2fdf66}{BrisaUpnp::Upc}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aeb402b957cc69c441fd845ce1acbd76f}{BrisaUpnp::IconList}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adeb3a004ce53b08df43d258a3713882d}{BrisaUpnp::Icon}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a2d479c81847bb4c4e03dd01b073e61b9}{BrisaUpnp::IconMimetype}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac69e6cedd40657ce8f55c6e87800cded}{BrisaUpnp::IconWidth}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af41e012d1e1415b365193c601282fa5b}{BrisaUpnp::IconHeight}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0af530639a3bb7832a45f9b7b69dfc3bce}{BrisaUpnp::IconDepth}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aa9d8f03a0b8e044ff00630f239e67be2}{BrisaUpnp::IconUrl}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a7917f59dcd1d806002d55ff32fb28847}{BrisaUpnp::PresentationUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0aea87d6c149183d6d25e5b42e3e1f56fc}{BrisaUpnp::DeviceList}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4a2029f4c40ca414de1e34c429a3aa56}{BrisaUpnp::ServiceList}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a16917cd6d200c28dbbfb4de4ed20987c}{BrisaUpnp::Service}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a4e0012fd6f9e795a30e98a22f6c93c28}{BrisaUpnp::ServiceType}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0adf1e5bafcf7b5df070d137af63d636de}{BrisaUpnp::ServiceId}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a580f921f639dece042c834dc3b8184b6}{BrisaUpnp::ServiceScpdUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae5724d4fa69f099e851645aaffe64db7}{BrisaUpnp::ServiceControlUrl}, 
+\par
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ac5ae980de35641ce33db716a51c6e0a7}{BrisaUpnp::ServiceEventSubUrl}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0ae0722b492513d916e73e30da1841bac1}{BrisaUpnp::Finished}, 
+\hyperlink{namespaceBrisaUpnp_a73e019fb9c2f13e86a645f4b2812eca0a73f59ae5f37fb8d81b012aa4f2ce57fa}{BrisaUpnp::Error} =  -\/1
+ \}
+\begin{DoxyCompactList}\small\item\em This enum specifies the devices attributes that are going to be set/get. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
