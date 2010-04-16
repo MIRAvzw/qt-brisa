@@ -1,0 +1,24 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="src/upnp/controlpoint/brisacontrolpointservice.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="src/upnp/controlpoint/brisacontrolpoint.h",height=0.2,width=0.4,color="black",URL="$brisacontrolpoint_8h.html"];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="src/upnp/controlpoint/brisacontrolpoint.cpp",height=0.2,width=0.4,color="black",URL="$brisacontrolpoint_8cpp.html"];
+  Node1 -> Node4 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="src/upnp/controlpoint/brisacontrolpointdevice.h",height=0.2,width=0.4,color="black",URL="$brisacontrolpointdevice_8h.html"];
+  Node4 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 -> Node5 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="src/upnp/controlpoint/brisacontrolpointdevice.cpp",height=0.2,width=0.4,color="black",URL="$brisacontrolpointdevice_8cpp.html"];
+  Node4 -> Node6 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="src/upnp/controlpoint/brisadevicexmlhandlercp.cpp",height=0.2,width=0.4,color="black",URL="$brisadevicexmlhandlercp_8cpp.html"];
+  Node1 -> Node7 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node7 [label="src/upnp/controlpoint/brisacontrolpointservice.cpp",height=0.2,width=0.4,color="black",URL="$brisacontrolpointservice_8cpp.html"];
+  Node1 -> Node8 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node8 [label="src/upnp/controlpoint/brisadevicexmlhandlercp.h",height=0.2,width=0.4,color="black",URL="$brisadevicexmlhandlercp_8h.html"];
+  Node8 -> Node4 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node8 -> Node6 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+}

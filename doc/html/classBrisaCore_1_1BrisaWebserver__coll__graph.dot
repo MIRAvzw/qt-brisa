@@ -1,0 +1,11 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{BrisaCore::BrisaWebserver\n|- rootService\l|+ BrisaWebserver()\l+ ~BrisaWebserver()\l+ publishFile()\l+ addService()\l# incomingRequest()\l# newSession()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="rootService",arrowtail="open",fontname="FreeSans"];
+  Node2 [label="{BrisaCore::BrisaWebServiceProvider\n|- root\l- sessionManager\l- files\l- content\l|+ BrisaWebServiceProvider()\l+ ~BrisaWebServiceProvider()\l+ addFile()\l+ addContent()\l+ pageRequestedEvent()\l# indexRequested()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebServiceProvider.html",tooltip="The BrisaWebServiceProvider class works as web service manager for the web server..."];
+  Node3 -> Node2 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="root",arrowtail="open",fontname="FreeSans"];
+  Node3 [label="{BrisaCore::BrisaWebStaticContent\n|- content\l|+ BrisaWebStaticContent()\l+ ~BrisaWebStaticContent()\l+ index()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebStaticContent.html",tooltip="The BrisaWebStaticContent class stores a QString into the web server."];
+}

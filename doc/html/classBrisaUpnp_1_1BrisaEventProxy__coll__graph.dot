@@ -1,0 +1,17 @@
+digraph G
+{
+  bgcolor="transparent";
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{BrisaUpnp::BrisaEventProxy\n|- requestId\l- deliveryPath\l- host\l- port\l- http\l- eventSub\l- webServer\l- eventService\l|+ ~BrisaEventProxy()\l+ getId()\l+ renew()\l+ subscribe()\l+ unsubscribe()\l- BrisaEventProxy()\l- getSubscriptionRequest()\l- getUnsubscriptionRequest()\l- getRenewRequest()\l- setSid()\l- eventReceived()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir=back,color="midnightblue",fontsize="10",style="solid",arrowtail="empty",fontname="FreeSans"];
+  Node2 [label="{BrisaUpnp::BrisaAbstractEventSubscription\n|# SID\l# CALLBACK_URLS\l# date\l# timeout\l# lastSeq\l# firstMessageSent\l|+ BrisaAbstractEventSubscription()\l+ renew()\l+ hasExpired()\l+ getNextSeq()\l+ getSid()\l+ getCallbackUrls()\l+ getUrl()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaUpnp_1_1BrisaAbstractEventSubscription.html",tooltip="Abstract class that represents an event subscription."];
+  Node3 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="webServer",arrowtail="open",fontname="FreeSans"];
+  Node3 [label="{BrisaCore::BrisaWebserver\n|- rootService\l|+ BrisaWebserver()\l+ ~BrisaWebserver()\l+ publishFile()\l+ addService()\l# incomingRequest()\l# newSession()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebserver.html",tooltip="The BrisaWebserver class is a web server implementation."];
+  Node4 -> Node3 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="rootService",arrowtail="open",fontname="FreeSans"];
+  Node4 [label="{BrisaCore::BrisaWebServiceProvider\n|- root\l- sessionManager\l- files\l- content\l|+ BrisaWebServiceProvider()\l+ ~BrisaWebServiceProvider()\l+ addFile()\l+ addContent()\l+ pageRequestedEvent()\l# indexRequested()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebServiceProvider.html",tooltip="The BrisaWebServiceProvider class works as web service manager for the web server..."];
+  Node5 -> Node4 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="root",arrowtail="open",fontname="FreeSans"];
+  Node5 [label="{BrisaCore::BrisaWebStaticContent\n|- content\l|+ BrisaWebStaticContent()\l+ ~BrisaWebStaticContent()\l+ index()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebStaticContent.html",tooltip="The BrisaWebStaticContent class stores a QString into the web server."];
+  Node6 -> Node1 [dir=back,color="darkorchid3",fontsize="10",style="dashed",label="eventService",arrowtail="open",fontname="FreeSans"];
+  Node6 [label="{BrisaCore::BrisaWebService\n|- sessionID\l- requestID\l|+ BrisaWebService()\l+ ~BrisaWebService()\l+ pageRequestedEvent()\l+ respond()\l+ respond()\l+ respond()\l+ respond()\l}",height=0.2,width=0.4,color="black",URL="$classBrisaCore_1_1BrisaWebService.html",tooltip="Web service abstraction class."];
+}
