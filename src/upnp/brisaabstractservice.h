@@ -38,14 +38,16 @@
 #include <QString>
 #include <QObject>
 
-namespace BrisaUpnp {
+namespace BrisaUpnp
+{
 
 /*!
  * \class BrisaUpnp::BrisaAbstractService brisaabstractservice.h BrisaUpnp/BrisaAbstractService
  *
  * \brief An abstract class for the control point side and device side service
  */
-class BRISA_UPNP_EXPORT BrisaAbstractService: public QObject {
+class BRISA_UPNP_EXPORT BrisaAbstractService: public QObject
+{
 Q_OBJECT
 
 public:

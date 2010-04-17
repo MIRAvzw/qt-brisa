@@ -46,7 +46,7 @@ BrisaAbstractService::BrisaAbstractService(const QString &serviceType, const QSt
     QObject(parent),
     controlUrl(controlUrl),
     eventSubUrl(eventSubUrl),
-    fileAddress(""),
+    fileAddress(),
     scpdUrl(scpdUrl),
     serviceType(serviceType),
     serviceId(serviceId),
@@ -181,7 +181,7 @@ QString BrisaAbstractService::getAttribute(xmlTags key)
             return QString::number(this->port);
             break;
         default:
-            return "";
+            return QString();
             break;
     }
 }

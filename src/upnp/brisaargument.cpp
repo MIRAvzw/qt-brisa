@@ -61,7 +61,7 @@ QString BrisaArgument::getAttribute(xmlArgument key) const {
 		return this->relatedStateVariable;
 		break;
 	default:
-		return "";
+                return QString();
 		break;
 	}
 }
