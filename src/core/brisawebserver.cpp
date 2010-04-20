@@ -172,6 +172,7 @@ void BrisaWebServiceProvider::indexRequested(QxtWebRequestEvent *event)
 }
 
 
+>>>>>>> .r1783
 BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port)
 {
     QxtHttpSessionManager(this);
