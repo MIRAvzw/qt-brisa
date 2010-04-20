@@ -63,13 +63,12 @@ namespace BrisaCore {
          *  \param sm Session manager
          *  \param parent parent
          */
-        BrisaWebService(QxtAbstractWebSessionManager *sm, QObject *parent = 0) :
-                QxtWebServiceDirectory(sm, parent) {}
+        BrisaWebService(QxtAbstractWebSessionManager *sm, QObject *parent = 0);
 
         /*!
          *  Destructor for BrisaWebService
          */
-        ~BrisaWebService() {}
+        ~BrisaWebService() { }
 
     public slots:
         /*!
@@ -81,26 +80,7 @@ namespace BrisaCore {
          *
          *  \param event \a empty
          */
-        void pageRequestedEvent(QxtWebRequestEvent *event)
-        {
-            this->sessionID = event->sessionID;
-            this->requestID = event->requestID;
-
-            QByteArray requestContent("");
-            if (event->content) {
-                event->content->waitForAllContent();
-                requestContent = event->content->readAll();
-            }
-            emit genericRequestReceived(event->method,
-                                        event->headers,
-                                        requestContent,
-                                        event->sessionID,
-                                        event->requestID);
-            emit genericRequestReceived(this, event->headers, requestContent);
-
-            if (event->method == "GET")
-                postEvent(new QxtWebPageEvent(event->sessionID, event->requestID, DEFAULT_PAGE));
-        }
+        void pageRequestedEvent(QxtWebRequestEvent *event);
 
         /*!
          *  Responds \a response to the session and request ID currently stored in BrisaWebService, if using
@@ -109,10 +89,7 @@ namespace BrisaCore {
          *
          *  \param response \a empty
          */
-        void respond(QByteArray response)
-        {
-            this->respond(response, this->sessionID, this->requestID);
-        }
+        void respond(QByteArray response);
 
         /*!
          *  Reimplements respond().
@@ -122,10 +99,7 @@ namespace BrisaCore {
          *  \param sessionId \a empty
          *  \param requestId \a empty
          */
-        void respond(const QByteArray &response, const int &sessionId, const int &requestId)
-        {
-            this->postEvent(new QxtWebPageEvent(sessionId, requestId, response));
-        }
+        void respond(const QByteArray &response, const int &sessionId, const int &requestId);
 
         /*!
          *  Reimplements respond()
@@ -133,10 +107,7 @@ namespace BrisaCore {
          *
          *  \param response \a empty
          */
-        void respond(const QHttpResponseHeader &response)
-        {
-            this->respond(response, this->sessionID, this->requestID);
-        }
+        void respond(const QHttpResponseHeader &response);
 
         /*!
          *  Reimplements respond().
@@ -147,23 +118,7 @@ namespace BrisaCore {
          *  \param requestId \a empty
          */
         void respond(const QHttpResponseHeader &response, const int &sessionId,
-                     const int &requestId)
-        {
-            QxtWebPageEvent *event = new QxtWebPageEvent(sessionId, requestId, "");
-
-            event->status = response.statusCode();
-            event->statusMessage = response.reasonPhrase().toAscii();
-
-            // Set key-value pairs from header to event's headers
-            // it is done because LibQxt's events cannot receive QHttpResponseHeaders
-            QList<QPair<QString, QString> > headerValues = response.values();
-            for (QList<QPair<QString, QString> >::iterator i = headerValues.begin();
-            i != headerValues.end(); ++i) {
-                event->headers.insertMulti(i->first, i->second);
-            }
-
-            this->postEvent(event);
-        }
+                     const int &requestId);
 
     signals:
         /*!
@@ -220,21 +175,12 @@ namespace BrisaCore {
          *  \param filePath \a empty
          *  \param parent \a empty
          */
-        BrisaWebFile(QxtAbstractWebSessionManager *sm, QString filePath, QObject *parent = 0) :
-                QxtAbstractWebService(sm, parent)
-        {
-            file = new QFile(filePath);
-            if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
-                throw "Could not open file for read.";
-        }
+        BrisaWebFile(QxtAbstractWebSessionManager *sm, QString filePath, QObject *parent = 0);
 
         /*!
          *  Destructor for BrisaWebFile.
          */
-        ~BrisaWebFile()
-        {
-            delete file;
-        }
+        ~BrisaWebFile();
 
         /*!
          *  Reimplemented from libQxt. When a request is received the BrisaWebFile will reply the stored
@@ -242,14 +188,7 @@ namespace BrisaCore {
          *
          *  \param event \a empty
          */
-        void pageRequestedEvent(QxtWebRequestEvent *event)
-        {
-            QxtWebPageEvent *c =
-                    new QxtWebPageEvent(event->sessionID, event->requestID, file->readAll());
-            c->contentType = "text/xml";
-            postEvent(c);
-            file->reset();
-        }
+        void pageRequestedEvent(QxtWebRequestEvent *event);
 
     private:
         QFile *file;
@@ -275,19 +214,12 @@ namespace BrisaCore {
          */
         BrisaWebStaticContent(QxtAbstractWebSessionManager *sm,
                               QString content,
-                              QObject *parent = 0) :
-        QxtWebSlotService(sm, parent)
-        {
-            this->content = new QString(content);
-        }
+                              QObject *parent = 0);
 
         /*!
          *  Destructor for BrisaWebStaticContent.
          */
-        ~BrisaWebStaticContent()
-        {
-            delete content;
-        }
+        ~BrisaWebStaticContent();
 
     public slots:
         /*!
@@ -295,10 +227,7 @@ namespace BrisaCore {
          *
          *  \param event \a empty
          */
-        void index(QxtWebRequestEvent *event)
-        {
-            postEvent(new QxtWebPageEvent(event->sessionID, event->requestID, content->toUtf8()));
-        }
+        void index(QxtWebRequestEvent *event);
 
     private:
         QString *content;
@@ -322,22 +251,12 @@ namespace BrisaCore {
          *  \param sm \a empty
          *  \param parent \a empty
          */
-        BrisaWebServiceProvider(QxtAbstractWebSessionManager *sm, QObject *parent) :
-                QxtWebServiceDirectory(sm, parent)
-        {
-            root = new BrisaWebStaticContent(sm, DEFAULT_PAGE, this);
-            sessionManager = sm;
-        }
+        BrisaWebServiceProvider(QxtAbstractWebSessionManager *sm, QObject *parent);
 
         /*!
          *  Destructor for BrisaWebServiceProvider.
          */
-        ~BrisaWebServiceProvider()
-        {
-            delete root;
-            while (!files.isEmpty())
-                delete files.takeFirst();
-        }
+        ~BrisaWebServiceProvider();
 
         /*!
          *  Call this method to add a BrisaWebFile to the web service.
@@ -366,11 +285,7 @@ namespace BrisaCore {
          *
          *  \param event \a empty
          */
-        void indexRequested(QxtWebRequestEvent *event)
-        {
-            //TODO: fix it
-            root->index(event);
-        }
+        void indexRequested(QxtWebRequestEvent *event);
 
     private:
         BrisaWebStaticContent *root;

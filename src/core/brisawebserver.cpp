@@ -35,6 +35,123 @@ using namespace BrisaCore;
  */
 inline QString extractPathLevel(QxtWebRequestEvent *event);
 
+BrisaWebService::BrisaWebService(QxtAbstractWebSessionManager *sm, QObject *parent) :
+                QxtWebServiceDirectory(sm, parent)
+{
+}
+
+void BrisaWebService::pageRequestedEvent(QxtWebRequestEvent *event)
+{
+    this->sessionID = event->sessionID;
+    this->requestID = event->requestID;
+
+    QByteArray requestContent("");
+    if (event->content) {
+         event->content->waitForAllContent();
+         requestContent = event->content->readAll();
+    }
+    emit genericRequestReceived(event->method,
+                                event->headers,
+                                requestContent,
+                                event->sessionID,
+                                event->requestID);
+    emit genericRequestReceived(this, event->headers, requestContent);
+
+    if (event->method == "GET")
+        postEvent(new QxtWebPageEvent(event->sessionID, event->requestID, DEFAULT_PAGE));
+}
+
+void BrisaWebService::respond(QByteArray response)
+{
+    this->respond(response, this->sessionID, this->requestID);
+}
+
+void BrisaWebService::respond(const QByteArray &response, const int &sessionId, const int &requestId)
+{
+    this->postEvent(new QxtWebPageEvent(sessionId, requestId, response));
+}
+
+void BrisaWebService::respond(const QHttpResponseHeader &response)
+{
+    this->respond(response, this->sessionID, this->requestID);
+}
+
+void BrisaWebService::respond(const QHttpResponseHeader &response, const int &sessionId,
+                     const int &requestId)
+{
+    QxtWebPageEvent *event = new QxtWebPageEvent(sessionId, requestId, "");
+
+    event->status = response.statusCode();
+    event->statusMessage = response.reasonPhrase().toAscii();
+
+    // Set key-value pairs from header to event's headers
+    // it is done because LibQxt's events cannot receive QHttpResponseHeaders
+    QList<QPair<QString, QString> > headerValues = response.values();
+    for (QList<QPair<QString, QString> >::iterator i = headerValues.begin();
+    i != headerValues.end(); ++i) {
+        event->headers.insertMulti(i->first, i->second);
+    }
+
+    this->postEvent(event);
+}
+
+
+BrisaWebFile::BrisaWebFile(QxtAbstractWebSessionManager *sm, QString filePath, QObject *parent) :
+        QxtAbstractWebService(sm, parent)
+{
+    file = new QFile(filePath);
+    if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
+        throw "Could not open file for read.";
+}
+
+BrisaWebFile::~BrisaWebFile()
+{
+    delete file;
+}
+
+void BrisaWebFile::pageRequestedEvent(QxtWebRequestEvent *event)
+{
+    QxtWebPageEvent *c =
+            new QxtWebPageEvent(event->sessionID, event->requestID, file->readAll());
+    c->contentType = "text/xml";
+    postEvent(c);
+    file->reset();
+}
+
+
+
+BrisaWebStaticContent::BrisaWebStaticContent(QxtAbstractWebSessionManager *sm,
+                              QString content,
+                              QObject *parent) :
+                            	  QxtWebSlotService(sm, parent)
+{
+    this->content = new QString(content);
+}
+
+BrisaWebStaticContent::~BrisaWebStaticContent()
+{
+    delete content;
+}
+
+void BrisaWebStaticContent::index(QxtWebRequestEvent *event)
+{
+    postEvent(new QxtWebPageEvent(event->sessionID, event->requestID, content->toUtf8()));
+}
+
+
+BrisaWebServiceProvider::BrisaWebServiceProvider(QxtAbstractWebSessionManager *sm, QObject *parent) :
+        QxtWebServiceDirectory(sm, parent)
+{
+    root = new BrisaWebStaticContent(sm, DEFAULT_PAGE, this);
+    sessionManager = sm;
+}
+
+BrisaWebServiceProvider::~BrisaWebServiceProvider()
+{
+    delete root;
+    while (!files.isEmpty())
+        delete files.takeFirst();
+}
 
 void BrisaWebServiceProvider::addFile(const QString path, QString filePath)
 {
@@ -48,6 +165,12 @@ void BrisaWebServiceProvider::addContent(const QString path, QString content)
     BrisaWebStaticContent *c = new BrisaWebStaticContent(sessionManager, content, this);
     this->content.append(c);
     addService(path, c);
+}
+
+void BrisaWebServiceProvider::indexRequested(QxtWebRequestEvent *event)
+{
+    //TODO: fix it
+    root->index(event);
 }
 
 
