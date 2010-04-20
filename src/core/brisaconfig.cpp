@@ -38,6 +38,8 @@ BrisaConfigurationManager::BrisaConfigurationManager(const QString &configPath,
 		const QHash<QString, QString> &state) {
 	this->state = state;
 	this->configPath = configPath;
+	this->fileName = "/file.dat";
+	this->parameterSeparator = ".";
 	this->directAccess = false;
 }
 
@@ -50,7 +52,7 @@ bool BrisaConfigurationManager::getDirectAccess() {
 }
 
 void BrisaConfigurationManager::update() {
-	QFile file(this->configPath + "/file.dat");
+	QFile file(this->configPath + this->fileName);
 	file.open(QIODevice::ReadOnly);
 
 	QDataStream in(&file);
@@ -58,7 +60,7 @@ void BrisaConfigurationManager::update() {
 }
 
 void BrisaConfigurationManager::save() {
-	QFile file(this->configPath + "/file.dat");
+	QFile file(this->configPath + this->fileName);
 	file.open(QIODevice::WriteOnly);
 
 	QDataStream out(&file);
@@ -72,7 +74,7 @@ QString BrisaConfigurationManager::getParameter(const QString &section,
 		update();
 
 	QString str(section);
-	str.append("." + parameter);
+	str.append(parameterSeparator + parameter);
 	if (this->state.contains(str))
 		return this->state.value(str);
 
@@ -83,7 +85,7 @@ void BrisaConfigurationManager::setParameter(const QString &section,
 		const QString &parameter, const QString &parValue) {
 
 	QString str(section);
-	str.append("." + parameter);
+	str.append(parameterSeparator + parameter);
 
 	if ((parValue == "") and (this->state.contains(str))) {
 		this->state.remove(str);
@@ -122,8 +124,8 @@ QHash<QString, QString> BrisaConfigurationManager::items(const QString &section)
 	QList<QString> sections = this->state.keys();
 
 	for (int i = 0; i < sections.size(); ++i) {
-		if (sections[i].split('.').value(0) == section)
-			items[sections[i].split('.').at(1)]
+		if (sections[i].split(parameterSeparator).value(0) == section)
+			items[sections[i].split(parameterSeparator).at(1)]
 					= this->state.value(sections[i]);
 	}
 
@@ -136,7 +138,7 @@ bool BrisaConfigurationManager::removeSection(const QString &section) {
 	QList<QString> sections = this->state.keys();
 	bool error = true;
 	for (int i = 0; i < sections.size(); ++i) {
-		if (sections[i].split('.').value(0) == section) {
+		if (sections[i].split(parameterSeparator).value(0) == section) {
 			this->state.remove(sections[i]);
 			error = false;
 		}

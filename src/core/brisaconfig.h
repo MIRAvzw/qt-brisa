@@ -135,6 +135,8 @@ namespace BrisaCore {
     private:
         QHash<QString,QString> state;
         QString configPath;
+        QString fileName;
+        QString parameterSeparator;
         bool directAccess;
     };
 }

@@ -35,7 +35,6 @@ BrisaStateVariable::BrisaStateVariable(QString sendEvents, QString name,
 		QString minimum, QString step, QObject *parent) :
 	QObject(parent) {
 	this->events = (sendEvents == "yes");
-
 	this->name = name;
 	this->dataType = datatype;
 	this->defaultValue = defaultValue;

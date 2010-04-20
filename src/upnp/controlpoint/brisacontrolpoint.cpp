@@ -167,6 +167,7 @@ void BrisaControlPoint::deviceRemoved(const QString usn)
     emit deviceGone(usn);
 }
 
+
 void BrisaControlPoint::buildUrlBase()
 {
     QString sPort;

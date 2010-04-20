@@ -118,8 +118,6 @@ void BrisaWebFile::pageRequestedEvent(QxtWebRequestEvent *event)
     file->reset();
 }
 
-
-
 BrisaWebStaticContent::BrisaWebStaticContent(QxtAbstractWebSessionManager *sm,
                               QString content,
                               QObject *parent) :

@@ -109,7 +109,6 @@ bool BrisaServiceXMLHandler::startElement(const QString &, const QString & , con
     case Argument:
         if (!context->getArgument())
             context->setArgument(new BrisaArgument());
-
         if (qName == "name")
             context->state = ArgumentName;
         else if (qName == "direction")
