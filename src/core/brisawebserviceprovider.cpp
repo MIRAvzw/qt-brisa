@@ -2,6 +2,11 @@
 
 using namespace BrisaCore;
 
+/*
+ * Reimplemented from libQxt.
+ */
+inline QString extractPathLevel(QxtWebRequestEvent *event);
+
 BrisaWebServiceProvider::BrisaWebServiceProvider(QxtAbstractWebSessionManager *sm, QObject *parent) :
         QxtWebServiceDirectory(sm, parent)
 {
@@ -34,4 +39,31 @@ void BrisaWebServiceProvider::indexRequested(QxtWebRequestEvent *event)
 {
     //TODO: fix it
     root->index(event);
+}
+
+void BrisaWebServiceProvider::pageRequestedEvent(QxtWebRequestEvent *event)
+{
+    QString path = extractPathLevel(event);
+    if (path.isEmpty()) {
+        indexRequested(event);
+    }
+    else if (!service(path)) {
+        unknownServiceRequested(event, path);
+    }
+    else {
+        service(path)->pageRequestedEvent(event);
+    }
+}
+
+inline QString extractPathLevel(QxtWebRequestEvent *event)
+{
+    QString path = event->url.path();
+    // the path always starts with /
+    int pos = path.indexOf("/", 1);
+    if (pos == -1)
+        // cue to redirect to /service/
+        event->url.setPath("");
+    else
+        event->url.setPath(path.mid(pos));
+    return path.mid(1, pos - 1);
 }

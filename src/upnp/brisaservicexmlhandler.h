@@ -30,11 +30,6 @@
 #ifndef _BRISAABSTRACTSERVICEXMLHANDLER_H
 #define _BRISAABSTRACTSERVICEXMLHANDLER_H
 
-#include "brisaaction.h"
-#include "brisaargument.h"
-#include "brisastatevariable.h"
-#include "brisaglobal.h"
-
 #include <QXmlDefaultHandler>
 #include <QXmlSimpleReader>
 #include <QXmlStreamWriter>
@@ -43,70 +38,9 @@
 #include <QIODevice>
 #include <QString>
 
+#include "brisaserviceparsercontext.h"
+
 namespace BrisaUpnp {
-
-class BrisaAbstractService;
-
-typedef enum {ServiceStart,
-              Scpd,
-              ServiceSpecVersion,
-              ServiceSpecVersionMajor,
-              ServiceSpecVersionMinor,
-              ActionList,
-              Action,
-              ActionName,
-              ArgumentList,
-              Argument,
-              ArgumentName,
-              ArgumentDirection,
-              RelatedStateVariable,
-              ServiceStateTable,
-              StateVariable,
-              StateVariableName,
-              StateVariableDataType,
-              StateVariableDefaultValue,
-              StateVariableAllowedValueList,
-              StateVariableAllowedValue,
-              StateVariableAllowedValueRange,
-              StateVariableAllowedValueRangeMinimum,
-              StateVariableAllowedValueRangeMaximum,
-              StateVariableAllowedValueRangeStep,
-              ServiceFinished,
-              ServiceError = -1
-             } saxParserState;
-
-class BRISA_UPNP_EXPORT BrisaServiceParserContext
-{
-    public:
-        BrisaServiceParserContext(BrisaServiceParserContext *parent = 0,
-                                  BrisaAbstractService *target = 0)
-            : stateSkip(0), state(Scpd), parent(parent), service(target), action(0), stateVariable(0),
-            argument(0) {}
-
-        BrisaAction *getAction(void) { return action; }
-        BrisaAbstractService *getService(void) { return service; }
-        BrisaStateVariable *getStateVariable(void) { return stateVariable; }
-        BrisaArgument *getArgument(void) { return argument; }
-
-        void setAction(BrisaAction *action) { this->action = action; }
-        void setService(BrisaAbstractService *service) { this->service = service; }
-        void setStateVariable(BrisaStateVariable *stateVariable) { this->stateVariable = stateVariable; }
-        void setArgument(BrisaArgument *argument) { this->argument = argument; }
-
-        bool hasParent(void) { return (parent != 0); }
-        BrisaServiceParserContext *getParent(void) { return parent; }
-
-        int stateSkip;
-        saxParserState state;
-
-    private:
-        BrisaServiceParserContext *parent;
-        BrisaAbstractService *service;
-        BrisaAction *action;
-        BrisaStateVariable *stateVariable;
-        BrisaArgument *argument;
-};
-
 
 class BRISA_UPNP_EXPORT BrisaServiceXMLHandler : public QXmlDefaultHandler
 {
