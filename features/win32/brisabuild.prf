@@ -1,4 +1,4 @@
-BRISAINSTALLDIR = C:\brisa-qt
+BRISAINSTALLDIR = C:\qt-brisa
 include(../../config.pri)
 isEmpty(target.path):  target.path   = $${BRISAINSTALLDIR}/lib
 isEmpty(include.path): include.path  = $${BRISAINSTALLDIR}/include/Brisa
