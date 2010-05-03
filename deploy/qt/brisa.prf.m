@@ -1,18 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
-
 isEmpty(BRISAbase){
     unix:!macx: BRISAbase = /usr/local/
-    win32:      BRISAbase = C:/brisa-qt
+    win32:      BRISAbase = C:/qt-brisa
     macx :
 }
 

@@ -52,7 +52,7 @@ goto end
     echo Installation options:
     echo.
     echo -prefix (dir) ....... This will install everything relative to (dir)
-    echo                       default: C:\brisa-qt
+    echo                       default: C:\qt-brisa
     echo -libdir (dir) ....... Libraries will be installed to (dir)
     echo                       default: PREFIX/lib
     echo -docdir (dir) ....... Documentation will be installed to (dir)
