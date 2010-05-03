@@ -31,7 +31,6 @@ include(upnp.pri)
 include(controlpoint/controlpoint.pri)
 include(ssdp/ssdp.pri)
 include(device/device.pri)
-include(services/services.pri)
 
 # Deps
 include(../../config.pri)
