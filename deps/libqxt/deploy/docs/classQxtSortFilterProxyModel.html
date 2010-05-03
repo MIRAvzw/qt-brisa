@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtSortFilterProxyModel</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtSortFilterProxyModel Class Reference<br/>
+            <sup><sup>[<a href="<?=module_link?>"><?=module_name?></a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtSortFilterProxyModel&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qsortfilterproxymodel.html">QSortFilterProxyModel</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtSortFilterProxyModel-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtSortFilterProxyModel.html#1caf9aa94aadd029fc7888c5e70bcc32e">QxtSortFilterProxyModel</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> virtual bool <a href="classQxtSortFilterProxyModel.html#1e0fa3aa867f6e42a655e4a74daa4647f">filterAcceptsRow</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">source_row</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">source_parent</span>     )  const </li>
+            <li>void <a href="classQxtSortFilterProxyModel.html#1ed9d7acfa357bec84ba07df45034c284">beginDeclareFilter</a>  (  ) </li>
+            <li>void <a href="classQxtSortFilterProxyModel.html#117ba119b09788b58bcc08211fa6c3b81">endDeclareFilter</a>  (  ) </li>
+            <li>void <a href="classQxtSortFilterProxyModel.html#1b256bfa0285cd326e6e6dbf6b4474b06">setFilter</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a> &</span>    <span class="memberdef_declname">value</span>    ,   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">role</span>  <span class="memberdef_defval">= Qt::DisplayRole</span>  ,   <span class="memberdef_type">Qt::MatchFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= Qt::MatchContains</span>   ) </li>
+            <li>void <a href="classQxtSortFilterProxyModel.html#15ac90e29d8d7fb33639bacff6a3670ab">setFilterValue</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a> &</span>    <span class="memberdef_declname">value</span>     ) </li>
+            <li>void <a href="classQxtSortFilterProxyModel.html#1abc785fb421ce1edbf9f4f02d3c64138">setFilterRole</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">role</span>  <span class="memberdef_defval">= Qt::DisplayRole</span>   ) </li>
+            <li>void <a href="classQxtSortFilterProxyModel.html#1e4e4542e6964f5921ebeac67b9e31a7c">setFilterFlags</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const Qt::MatchFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= Qt::MatchContains</span>   ) </li>
+            <li>void <a href="classQxtSortFilterProxyModel.html#1a60c8b0497e71073be692a2a0a9f4fd2">removeFilter</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     ) </li>
+            <li>QVariant <a href="classQxtSortFilterProxyModel.html#1d8d5631a6c27604771d7160b37089714">filterValue</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     )  const </li>
+            <li>int <a href="classQxtSortFilterProxyModel.html#1ef83983c69105f947db1ab890e963382">filterRole</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     )  const </li>
+            <li>Qt::MatchFlags <a href="classQxtSortFilterProxyModel.html#1e014d83b798aaaca91853a93f55b010c">filterFlags</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     )  const </li>
+            <li>bool <a href="classQxtSortFilterProxyModel.html#1f06b946226bde50f9d57056b2f61ba77">isFiltered</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>a multi column filter model The <a class="reflink" href="classQxtSortFilterProxyModel.html">QxtSortFilterProxyModel</a> makes it possible to filter over multiple columns. <div class="code"><span class="highlight_normal"  > *<a class="reflink" href="classQxtSortFilterProxyModel.html">QxtSortFilterProxyModel</a> * filterModel = </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="classQxtSortFilterProxyModel.html">QxtSortFilterProxyModel</a>(parent);</span><br/>
+        <span class="highlight_normal"  > *filterModel-&gt;setSourceModel(sourceModel);</span><br/>
+        <span class="highlight_normal"  > *filterModel-&gt;<a class="reflink" href="classQxtSortFilterProxyModel.html#1ed9d7acfa357bec84ba07df45034c284">beginDeclareFilter</a>();</span><br/>
+        <span class="highlight_normal"  > *filterModel-&gt;<a class="reflink" href="classQxtSortFilterProxyModel.html#1b256bfa0285cd326e6e6dbf6b4474b06">setFilter</a>(1,<a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>(</span><span class="highlight_stringliteral"  >"SomeStringValue"</span><span class="highlight_normal"  >),Qt::DisplayRole,Qt::MatchExactly);</span><br/>
+        <span class="highlight_normal"  > </span><span class="highlight_comment"  >//remove some old filter</span><span class="highlight_normal"  ></span><br/>
+        <span class="highlight_normal"  > *filterModel-&gt;<a class="reflink" href="classQxtSortFilterProxyModel.html#1a60c8b0497e71073be692a2a0a9f4fd2">removeFilter</a>(2);</span><br/>
+        <span class="highlight_normal"  > *filterModel-&gt;<a class="reflink" href="classQxtSortFilterProxyModel.html#1b256bfa0285cd326e6e6dbf6b4474b06">setFilter</a>(5,<a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>(1234),Qt::DisplayRole,Qt::MatchExactly);</span><br/>
+        <span class="highlight_normal"  > *filterModel-&gt;endDeclateFilter();</span><br/>
+        <span class="highlight_normal"  > *</span><br/>
+        </div> Now the model will filter column 1 and 5, to be accepted by the filtermodel a row needs to pass all filters </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1caf9aa94aadd029fc7888c5e70bcc32e"></a>
+         QxtSortFilterProxyModel  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e0fa3aa867f6e42a655e4a74daa4647f"></a>
+         virtual bool filterAcceptsRow  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">source_row</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">source_parent</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ed9d7acfa357bec84ba07df45034c284"></a>
+        void beginDeclareFilter  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>tells the model you want to declare a new filter If you have a lot of data in your model it can be slow to declare more than one filter, because the model will always rebuild itself. If you call this member before setting the new filters the model will invalidate its contents not before you call <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtSortFilterProxyModel.html#117ba119b09788b58bcc08211fa6c3b81">endDeclareFilter()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="117ba119b09788b58bcc08211fa6c3b81"></a>
+        void endDeclareFilter  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>stops the filter declaration and invalidates the filter <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtSortFilterProxyModel.html#1ed9d7acfa357bec84ba07df45034c284">beginDeclareFilter</a> ( ) </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b256bfa0285cd326e6e6dbf6b4474b06"></a>
+        void setFilter  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a> &</span>    <span class="memberdef_declname">value</span>    ,   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">role</span>  <span class="memberdef_defval">= Qt::DisplayRole</span>  ,   <span class="memberdef_type">Qt::MatchFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= Qt::MatchContains</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15ac90e29d8d7fb33639bacff6a3670ab"></a>
+        void setFilterValue  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a> &</span>    <span class="memberdef_declname">value</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1abc785fb421ce1edbf9f4f02d3c64138"></a>
+        void setFilterRole  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">role</span>  <span class="memberdef_defval">= Qt::DisplayRole</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e4e4542e6964f5921ebeac67b9e31a7c"></a>
+        void setFilterFlags  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>    ,   <span class="memberdef_type">const Qt::MatchFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= Qt::MatchContains</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a60c8b0497e71073be692a2a0a9f4fd2"></a>
+        void removeFilter  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d8d5631a6c27604771d7160b37089714"></a>
+        QVariant filterValue  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ef83983c69105f947db1ab890e963382"></a>
+        int filterRole  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e014d83b798aaaca91853a93f55b010c"></a>
+        Qt::MatchFlags filterFlags  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the filter flags for the given column <div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> if the column is not filtered it will return the default value </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f06b946226bde50f9d57056b2f61ba77"></a>
+        bool isFiltered  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">column</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p><div class="simplesect" ><img src="return.png" alt="return" /> <strong></strong> true if the column is filtered </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

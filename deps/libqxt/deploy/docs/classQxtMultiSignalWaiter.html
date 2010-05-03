@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtMultiSignalWaiter</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtMultiSignalWaiter Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        Block and process events until a group of signals is emitted. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtMultiSignalWaiter&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtMultiSignalWaiter-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtMultiSignalWaiter.html#19d3bb76060caefad867a480280b06d45">QxtMultiSignalWaiter</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>bool <a href="classQxtMultiSignalWaiter.html#141aabd817915f343ecde6505c6ccf55d">waitForAny</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">msec</span>  <span class="memberdef_defval">= -1</span>  ,   <span class="memberdef_type">QEventLoop::ProcessEventsFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= QEventLoop::AllEvents</span>   ) </li>
+            <li>bool <a href="classQxtMultiSignalWaiter.html#16cb02fd64ef57ab7bbf6a5e81c4147c9">waitForAll</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">msec</span>  <span class="memberdef_defval">= -1</span>  ,   <span class="memberdef_type">QEventLoop::ProcessEventsFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= QEventLoop::AllEvents</span>   ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>Code written in a synchronous style will sometimes need to block until any of several conditions are met, or until all of a set of conditions are met. This class allows a group of signals to be defined and waited upon in a simple AND or OR fashion. More complex Boolean relationships can be written by connecting together multiple <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a> objects and waiting for all or any of these groups to emit one of their signals.</p><p>Bug<p><a class="reflink" href="classQxtMultiSignalWaiter.html">QxtMultiSignalWaiter</a> is subject to the same reentrancy problems as <a class="reflink" href="classQxtSignalWaiter.html">QxtSignalWaiter</a>.</p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtSignalWaiter.html">QxtSignalWaiter</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="19d3bb76060caefad867a480280b06d45"></a>
+         QxtMultiSignalWaiter  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a <a class="reflink" href="classQxtMultiSignalWaiter.html">QxtMultiSignalWaiter</a> with the specified parent. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="141aabd817915f343ecde6505c6ccf55d"></a>
+        bool waitForAny  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">msec</span>  <span class="memberdef_defval">= -1</span>  ,   <span class="memberdef_type">QEventLoop::ProcessEventsFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= QEventLoop::AllEvents</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Blocks the current function until any of the signals in the group are emitted. If msec is not -1, <a class="reflink" href="classQxtMultiSignalWaiter.html#141aabd817915f343ecde6505c6ccf55d">waitForAny()</a> will return before a signal is emitted if the specified number of milliseconds have elapsed. Returns true if a signal was caught, or false if the timeout elapsed. Note that <a class="reflink" href="classQxtMultiSignalWaiter.html#141aabd817915f343ecde6505c6ccf55d">waitForAny()</a> may continue to block after a signal is emitted or the timeout elapses; the function only guarantees that it will not return BEFORE one of these conditions has occurred. This function is not reentrant.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtSignalGroup.html#137c04aa272510dc36ccf33b8ea8b687a">QxtSignalGroup::addSignal</a>QxtSignalGroup::firstSignalEmitted </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16cb02fd64ef57ab7bbf6a5e81c4147c9"></a>
+        bool waitForAll  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">msec</span>  <span class="memberdef_defval">= -1</span>  ,   <span class="memberdef_type">QEventLoop::ProcessEventsFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= QEventLoop::AllEvents</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Blocks the current function until all of the signals in the group have been emitted. If msec is not -1, <a class="reflink" href="classQxtMultiSignalWaiter.html#16cb02fd64ef57ab7bbf6a5e81c4147c9">waitForAll()</a> will return before all of the signals are emitted if the specified number of milliseconds have elapsed. Returns true if each signal was caught at least once, or false if the timeout elapsed. Note that <a class="reflink" href="classQxtMultiSignalWaiter.html#16cb02fd64ef57ab7bbf6a5e81c4147c9">waitForAll()</a> may continue to block after the last signal is emitted or the timeout elapses; the function only guarantees that it will not return BEFORE one of these conditions has occurred. This function is not reentrant.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtSignalGroup.html#137c04aa272510dc36ccf33b8ea8b687a">QxtSignalGroup::addSignal</a>QxtSignalGroup::allSignalsEmitted </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

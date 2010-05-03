@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtFuture</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtFuture Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        Reference to a future result of a QxtSlotJob. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtFuture&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtFuture-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li>QVariant <a href="classQxtFuture.html#158eb4615eb20b0ddf4a9d57a33040cee">delayedResult</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">msec</span>  <span class="memberdef_defval">= -1</span>   ) </li>
+            <li>QVariant <a href="classQxtFuture.html#13e160ab1ebbbc957233ffe7c337cc224">joinedResult</a>  (  ) </li>
+            <li> <a href="classQxtFuture.html#101d6c807023b7b38e044d7c1edf2eb29">QxtFuture</a>  (   <span class="memberdef_type">const <a class="reflink" href="classQxtFuture.html">QxtFuture</a> &</span>    <span class="memberdef_declname">other</span>     ) </li>
+            <li> <a href="classQxtFuture.html#1227ebddc0c997bc3c6663a3231907f9d">~QxtFuture</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtFuture.html#1af95d390e7b66b3f7fbaecbfa71ea84e">done</a>  (  ) </li>
+            <li>void <a href="classQxtFuture.html#1d4d92c3d13f657a1ae1add7a72878022">done</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a></span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="158eb4615eb20b0ddf4a9d57a33040cee"></a>
+        QVariant delayedResult  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">msec</span>  <span class="memberdef_defval">= -1</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>asks for the result of the execution. <br/>
+            
+             waits until the done() signal occurred or return a QVariant() if the timout ocures earlier <br/>
+            
+             This uses <a class="reflink" href="classQxtSignalWaiter.html">QxtSignalWaiter</a> so it will _not_ block your current thread. <div class="simplesect" ><img src="warning.png" alt="warning" /> <strong>Warning:</strong> this function is not reentrant. You have been warned </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13e160ab1ebbbc957233ffe7c337cc224"></a>
+        QVariant joinedResult  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>asks for the result of the execution. <br/>
+            
+             This calls <a class="reflink" href="classQxtJob.html#1a66a6b989a32d13393dbd904b885cc3a">QxtJob::join()</a> means it will _block_ the current thread untill the Slot has finished execution </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="101d6c807023b7b38e044d7c1edf2eb29"></a>
+         QxtFuture  (   <span class="memberdef_type">const <a class="reflink" href="classQxtFuture.html">QxtFuture</a> &</span>    <span class="memberdef_declname">other</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1227ebddc0c997bc3c6663a3231907f9d"></a>
+         ~QxtFuture  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1af95d390e7b66b3f7fbaecbfa71ea84e"></a>
+        void done  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d4d92c3d13f657a1ae1add7a72878022"></a>
+        void done  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a></span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

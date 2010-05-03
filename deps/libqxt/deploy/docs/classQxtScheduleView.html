@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtScheduleView</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtScheduleView Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        The QxtScheduleView provides an iCal like view to plan events. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtScheduleView&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qabstractscrollarea.html">QAbstractScrollArea</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtScheduleView-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-type"></a>
+    <h3>Public Types</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtScheduleView.html#1c4a79a5a6631b96d95a4f83e9f873a60">ViewMode</a>  { MinuteView  , HourView  , DayView  , CustomView   } </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Types inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtScheduleView.html#16f33a00a5bc76b2cb94ee351379b85c6">QxtScheduleView</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>void <a href="classQxtScheduleView.html#13db99dc584f4e0b6fe1340a6f1ba437c">setModel</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qabstractitemmodel.html">QAbstractItemModel</a> *</span>    <span class="memberdef_declname">model</span>     ) </li>
+            <li>QAbstractItemModel * <a href="classQxtScheduleView.html#17490bdcc9b3b8f902436e948ff6c8897">model</a>  (  )  const </li>
+            <li>void <a href="classQxtScheduleView.html#17fd4cd03ade11c55453870944df1679f">setViewMode</a>  (   <span class="memberdef_type">const QxtScheduleView::ViewMode</span>    <span class="memberdef_declname">mode</span>     ) </li>
+            <li>QxtScheduleView::ViewMode <a href="classQxtScheduleView.html#1cafa5cb07f284d74574f83a68a60cee4">viewMode</a>  (  )  const </li>
+            <li>void <a href="classQxtScheduleView.html#1e05b77c77c53a92b6d57ed138f0359e9">setDateRange</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdate.html">QDate</a> &</span>    <span class="memberdef_declname">fromDate</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdate.html">QDate</a> &</span>    <span class="memberdef_declname">toDate</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#13c21a439e0ce8e9ed492ff9d1865377f">setTimeRange</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> &</span>    <span class="memberdef_declname">fromDateTime</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> &</span>    <span class="memberdef_declname">toTime</span>  toDateTime   ) </li>
+            <li>QxtScheduleItemDelegate * <a href="classQxtScheduleView.html#15ebc3f4a9bb0bf5ed11ee02f26775bb8">delegate</a>  (  )  const </li>
+            <li>void <a href="classQxtScheduleView.html#1ee911d2ee254194c669a625e99939632">setItemDelegate</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtScheduleItemDelegate.html">QxtScheduleItemDelegate</a> *</span>    <span class="memberdef_declname">delegate</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#199c699af13e800f79e5192540abe2998">setZoomStepWidth</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">zoomWidth</span>    ,   <span class="memberdef_type">const Qxt::Timeunit</span>    <span class="memberdef_declname">unit</span>  <span class="memberdef_defval">= Qxt::Second</span>   ) </li>
+            <li>void <a href="classQxtScheduleView.html#13755f30f9b62f8d0f7ee095c5df06583">setCurrentZoomDepth</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">depth</span>    ,   <span class="memberdef_type">const Qxt::Timeunit</span>    <span class="memberdef_declname">unit</span>  <span class="memberdef_defval">= Qxt::Second</span>   ) </li>
+            <li>int <a href="classQxtScheduleView.html#1cf31c73809fafd8521bd1e6da295af05">currentZoomDepth</a>  (   <span class="memberdef_type">const Qxt::Timeunit</span>    <span class="memberdef_declname">unit</span>  <span class="memberdef_defval">= Qxt::Second</span>   ) </li>
+            <li>QPoint <a href="classQxtScheduleView.html#1c787ddfc383891647e89a969c1434e3c">mapFromViewport</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">point</span>     )  const </li>
+            <li>QPoint <a href="classQxtScheduleView.html#105d6a1b34ec33aee70379fa34d7fdb92">mapToViewport</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">point</span>     )  const </li>
+            <li>QModelIndex <a href="classQxtScheduleView.html#1cdfcea81f0e47180b0ab4d9191c54aeb">indexAt</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">pt</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#1f5f93456a6d8d9c92593226e35f8b62c">raiseItem</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#10ca51be10191c3afa761dd2f5925fb81">handleItemConcurrency</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>QModelIndex <a href="classQxtScheduleView.html#1279f87dc5b35decdbe5c533365e73fa0">currentIndex</a>  (  ) </li>
+            <li>int <a href="classQxtScheduleView.html#1969bba536414f77f1dec58ac5138ef6c">rows</a>  (  )  const </li>
+            <li>int <a href="classQxtScheduleView.html#152a9face314b459610810987740bbd44">cols</a>  (  )  const </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtScheduleView.html#1722ee60cd575cf860bf0d7962aae3eeb">itemMoved</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">rows</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">cols</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#16b24c0295703507b999aee0f161333dc">indexSelected</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#18f6e8f48bc47cfd7a73d0a64228832ac">indexDoubleClicked</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#11c7c396d8ac29797ad6878a967bea3e3">contextMenuRequested</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#13f2287899a4511e94e27b7f496b23e62">newZoomDepth</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">newDepthInSeconds</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#1fb8b5fe704e3666463ec4b2f0db3503e">viewModeChanged</a>  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">newViewMode</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-func"></a>
+    <h3>Protected Functions</h3>
+    <ul class="sectionlist">
+            <li> virtual int <a href="classQxtScheduleView.html#17930f1999f07088813554247cd7acee7">timePerColumn</a>  (  )  const </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1c27562bad8b04bb78a3cc455e103a10e">adjustRangeToViewMode</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> *</span>    <span class="memberdef_declname">startTime</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> *</span>    <span class="memberdef_declname">endTime</span>     )  const </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1ee04266a32ffbc9992bd9e268c74c4ce">scrollContentsBy</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">dx</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">dy</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1d8522d31914a6426e9a73072f05bdad2">paintEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qpaintevent.html">QPaintEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#166cc33d01f18bce290b8be027aab57e6">mouseMoveEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1356ddf233d16be80e6312b0f0e0011f4">mousePressEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#19de860b7a297a4b5a0cdac5704dcc36a">mouseReleaseEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1f82fe7b5d272414b66f9408681c8553d">mouseDoubleClickEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1be42a8cfb17adee7a41b9b121375ccbd">resizeEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qresizeevent.html">QResizeEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1fd493ff4c651b3c10998224e7f5f5d74">wheelEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwheelevent.html">QWheelEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Protected Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtScheduleView.html#171d1a84581afb3099857bb640adc1c6a">dataChanged</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">topLeft</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">bottomRight</span>     ) </li>
+            <li>void <a href="classQxtScheduleView.html#1b4a041167277ea9e2697df1534b243e9">updateGeometries</a>  (  ) </li>
+            <li>void <a href="classQxtScheduleView.html#1f649c3b890527e362c3c3fa0fd986f48">zoomIn</a>  (  ) </li>
+            <li>void <a href="classQxtScheduleView.html#10c37abd1da27d410d1b53e0425cdb603">zoomOut</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-slot"></a>
+    <h3>protected-slot</h3>
+    <ul class="sectionlist">
+            <li> virtual void <a href="classQxtScheduleView.html#181610ed09b24970aeffab96b6d24bcf0">rowsAboutToBeRemoved</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1173b84c5a999261e70bbe4a73391f96c">rowsAboutToBeInserted</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#14f081700877813eb99198a6692bb137e">rowsRemoved</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) </li>
+            <li> virtual void <a href="classQxtScheduleView.html#1084daec1b60fa475b2d2831c8ca37049">rowsInserted</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> protected-slot inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtScheduleView.html">QxtScheduleView</a> is a item based View,inspired by iCal, that makes it possible to visualize event planning.<br/>
+        
+         It's time based and can show the events in different modes:<br/>
+        <ul>
+        <li><p><strong>DayMode</strong> : Every column in the view shows one day </p></li>
+        <li><p><strong>HourMode</strong> : Every column in the view shows one hour </p></li>
+        <li><p><strong>MinuteMode</strong> : Every column in the view shows one minute&gt; </p></li>
+        
+        </ul>
+        
+        In addition you can adjust how much time every cell represents in the view. The default value is 900 seconds or 15 minutes and DayMode. </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1c4a79a5a6631b96d95a4f83e9f873a60"></a>
+         ViewMode  { MinuteView  , HourView  , DayView  , CustomView   } 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <table border="1px" class="desctable">
+            <tr><th>Constant</th><th>Description</th></tr>
+            <tr><td>MinuteView</td><td></td></tr>
+            <tr><td>HourView</td><td></td></tr>
+            <tr><td>DayView</td><td></td></tr>
+            <tr><td>CustomView</td><td></td></tr>
+            </table>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16f33a00a5bc76b2cb94ee351379b85c6"></a>
+         QxtScheduleView  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13db99dc584f4e0b6fe1340a6f1ba437c"></a>
+        void setModel  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qabstractitemmodel.html">QAbstractItemModel</a> *</span>    <span class="memberdef_declname">model</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>sets the model for <a class="reflink" href="classQxtScheduleView.html">QxtScheduleView</a></p><p>model<p></p></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17490bdcc9b3b8f902436e948ff6c8897"></a>
+        QAbstractItemModel * model  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17fd4cd03ade11c55453870944df1679f"></a>
+        void setViewMode  (   <span class="memberdef_type">const QxtScheduleView::ViewMode</span>    <span class="memberdef_declname">mode</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>changes the current ViewMode The <a class="reflink" href="classQxtScheduleView.html">QxtScheduleView</a> supports some different viewmodes. A viewmode defines how much time a column holds. It is also possible to define custom viewmodes. To do that you have to set the currentView mode to Custom and reimplement timePerColumn</p><p>QxtScheduleView::ViewMode<p>mode the new ViewMode</p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtScheduleView.html#17930f1999f07088813554247cd7acee7">timePerColumn()</a><a class="reflink" href="classQxtScheduleView.html#1cafa5cb07f284d74574f83a68a60cee4">viewMode()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cafa5cb07f284d74574f83a68a60cee4"></a>
+        QxtScheduleView::ViewMode viewMode  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current ViewMode</p><p><div class="simplesect" ><img src="return.png" alt="return" /> <strong></strong> QxtScheduleView::ViewMode </div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtScheduleView.html#17fd4cd03ade11c55453870944df1679f">setViewMode()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e05b77c77c53a92b6d57ed138f0359e9"></a>
+        void setDateRange  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdate.html">QDate</a> &</span>    <span class="memberdef_declname">fromDate</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdate.html">QDate</a> &</span>    <span class="memberdef_declname">toDate</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>sets the timerange This function will set a Timerange from fromDate 00:00am to toDate 23:59pm </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13c21a439e0ce8e9ed492ff9d1865377f"></a>
+        void setTimeRange  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> &</span>    <span class="memberdef_declname">fromDateTime</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> &</span>    <span class="memberdef_declname">toTime</span>  toDateTime   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>sets the timerange This function will set the passed timerange, but may adjust it to the current viewmode. e.g You cannot start at 1:30am in a DayMode, this gets adjusted to 00:00am </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15ebc3f4a9bb0bf5ed11ee02f26775bb8"></a>
+        QxtScheduleItemDelegate * delegate  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current used delegate </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ee911d2ee254194c669a625e99939632"></a>
+        void setItemDelegate  (   <span class="memberdef_type"><a class="reflink" href="classQxtScheduleItemDelegate.html">QxtScheduleItemDelegate</a> *</span>    <span class="memberdef_declname">delegate</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the item delegate for this view and its model to delegate. This is useful if you want complete control over the editing and display of items. Any existing delegate will be removed, but not deleted. <a class="reflink" href="classQxtScheduleView.html">QxtScheduleView</a> does not take ownership of delegate. Passing a 0 pointer will restore the view to use the default delegate.  You should not share the same instance of a delegate between views. Doing so can cause incorrect or unintuitive behavior. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="199c699af13e800f79e5192540abe2998"></a>
+        void setZoomStepWidth  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">zoomWidth</span>    ,   <span class="memberdef_type">const Qxt::Timeunit</span>    <span class="memberdef_declname">unit</span>  <span class="memberdef_defval">= Qxt::Second</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>changes the current Zoom step width Changes the current Zoom step width. Zooming in <a class="reflink" href="classQxtScheduleView.html">QxtScheduleView</a> means to change the amount of time one cell holds. For example 5 Minutes. The zoom step width defines how many time is added / removed from the cell when zooming the view.</p><p>int<p>zoomWidth the new zoom step width </p>Qxt::Timeunit<p>unit the unit of the new step width (Minutes , Seconds , Hours)</p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtScheduleView.html#1f649c3b890527e362c3c3fa0fd986f48">zoomIn()</a><a class="reflink" href="classQxtScheduleView.html#10c37abd1da27d410d1b53e0425cdb603">zoomOut()</a><a class="reflink" href="classQxtScheduleView.html#13755f30f9b62f8d0f7ee095c5df06583">setCurrentZoomDepth()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13755f30f9b62f8d0f7ee095c5df06583"></a>
+        void setCurrentZoomDepth  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">depth</span>    ,   <span class="memberdef_type">const Qxt::Timeunit</span>    <span class="memberdef_declname">unit</span>  <span class="memberdef_defval">= Qxt::Second</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>changes the current zoom depth The current zoom depth in <a class="reflink" href="classQxtScheduleView.html">QxtScheduleView</a> defines how many time one cell holds in the view. If the new depth does not fit in the view the next possible value is used. If no possible value can be found nothing changes. Normally this is used only to initialize the view, later you want to use zoomIn and zoomOut</p><p>int<p>depth </p>Qxt::Timeunit<p>unit</p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtScheduleView.html#1f649c3b890527e362c3c3fa0fd986f48">zoomIn()</a><a class="reflink" href="classQxtScheduleView.html#10c37abd1da27d410d1b53e0425cdb603">zoomOut()</a><a class="reflink" href="classQxtScheduleView.html#13755f30f9b62f8d0f7ee095c5df06583">setCurrentZoomDepth()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cf31c73809fafd8521bd1e6da295af05"></a>
+        int currentZoomDepth  (   <span class="memberdef_type">const Qxt::Timeunit</span>    <span class="memberdef_declname">unit</span>  <span class="memberdef_defval">= Qxt::Second</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current zoom depth </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c787ddfc383891647e89a969c1434e3c"></a>
+        QPoint mapFromViewport  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">point</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="105d6a1b34ec33aee70379fa34d7fdb92"></a>
+        QPoint mapToViewport  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">point</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cdfcea81f0e47180b0ab4d9191c54aeb"></a>
+        QModelIndex indexAt  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">pt</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f5f93456a6d8d9c92593226e35f8b62c"></a>
+        void raiseItem  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>raises the item belonging to index </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="10ca51be10191c3afa761dd2f5925fb81"></a>
+        void handleItemConcurrency  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>triggers the view to relayout the items that are concurrent to index </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1279f87dc5b35decdbe5c533365e73fa0"></a>
+        QModelIndex currentIndex  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current selected index </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1969bba536414f77f1dec58ac5138ef6c"></a>
+        int rows  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current row count of the view </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="152a9face314b459610810987740bbd44"></a>
+        int cols  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current column count of the view </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1722ee60cd575cf860bf0d7962aae3eeb"></a>
+        void itemMoved  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">rows</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">cols</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16b24c0295703507b999aee0f161333dc"></a>
+        void indexSelected  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="18f6e8f48bc47cfd7a73d0a64228832ac"></a>
+        void indexDoubleClicked  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11c7c396d8ac29797ad6878a967bea3e3"></a>
+        void contextMenuRequested  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a></span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13f2287899a4511e94e27b7f496b23e62"></a>
+        void newZoomDepth  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">newDepthInSeconds</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1fb8b5fe704e3666463ec4b2f0db3503e"></a>
+        void viewModeChanged  (   <span class="memberdef_type">const int</span>    <span class="memberdef_declname">newViewMode</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17930f1999f07088813554247cd7acee7"></a>
+         virtual int timePerColumn  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>reimplement this to support custom view modes <div class="simplesect" ><img src="return.png" alt="return" /> <strong></strong> the time per column in seconds </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c27562bad8b04bb78a3cc455e103a10e"></a>
+         virtual void adjustRangeToViewMode  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> *</span>    <span class="memberdef_declname">startTime</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qdatetime.html">QDateTime</a> *</span>    <span class="memberdef_declname">endTime</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>reimplement this to support custom view modes This function has to adjust the given start and end time to the current view mode: For example, the DayMode always adjust to time 0:00:00am for startTime and 11:59:59pm for endTime </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ee04266a32ffbc9992bd9e268c74c4ce"></a>
+         virtual void scrollContentsBy  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">dx</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">dy</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d8522d31914a6426e9a73072f05bdad2"></a>
+         virtual void paintEvent  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qpaintevent.html">QPaintEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="166cc33d01f18bce290b8be027aab57e6"></a>
+         virtual void mouseMoveEvent  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1356ddf233d16be80e6312b0f0e0011f4"></a>
+         virtual void mousePressEvent  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="19de860b7a297a4b5a0cdac5704dcc36a"></a>
+         virtual void mouseReleaseEvent  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f82fe7b5d272414b66f9408681c8553d"></a>
+         virtual void mouseDoubleClickEvent  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmouseevent.html">QMouseEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1be42a8cfb17adee7a41b9b121375ccbd"></a>
+         virtual void resizeEvent  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qresizeevent.html">QResizeEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1fd493ff4c651b3c10998224e7f5f5d74"></a>
+         virtual void wheelEvent  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwheelevent.html">QWheelEvent</a> *</span>    <span class="memberdef_declname">e</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="171d1a84581afb3099857bb640adc1c6a"></a>
+        void dataChanged  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">topLeft</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">bottomRight</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b4a041167277ea9e2697df1534b243e9"></a>
+        void updateGeometries  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f649c3b890527e362c3c3fa0fd986f48"></a>
+        void zoomIn  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>zooms one step in</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtScheduleView.html#10c37abd1da27d410d1b53e0425cdb603">zoomOut()</a><a class="reflink" href="classQxtScheduleView.html#13755f30f9b62f8d0f7ee095c5df06583">setCurrentZoomDepth()</a><a class="reflink" href="classQxtScheduleView.html#199c699af13e800f79e5192540abe2998">setZoomStepWidth()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="10c37abd1da27d410d1b53e0425cdb603"></a>
+        void zoomOut  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>zooms one step out</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtScheduleView.html#1f649c3b890527e362c3c3fa0fd986f48">zoomIn()</a><a class="reflink" href="classQxtScheduleView.html#13755f30f9b62f8d0f7ee095c5df06583">setCurrentZoomDepth()</a><a class="reflink" href="classQxtScheduleView.html#199c699af13e800f79e5192540abe2998">setZoomStepWidth()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="181610ed09b24970aeffab96b6d24bcf0"></a>
+         virtual void rowsAboutToBeRemoved  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1173b84c5a999261e70bbe4a73391f96c"></a>
+         virtual void rowsAboutToBeInserted  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14f081700877813eb99198a6692bb137e"></a>
+         virtual void rowsRemoved  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1084daec1b60fa475b2d2831c8ca37049"></a>
+         virtual void rowsInserted  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">parent</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">end</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

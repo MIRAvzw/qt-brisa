@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtBdb</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtBdb Class Reference<br/>
+            <sup><sup>[<a href="<?=module_link?>"><?=module_name?></a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtBdb&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtBdb-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-type"></a>
+    <h3>Public Types</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtBdb.html#15ad90b31cad64fcaa2664bf456c694e0">OpenFlag</a>  { CreateDatabase  , ReadOnly  , LockFree   } </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Types inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-attrib"></a>
+    <h3>Public Attributes</h3>
+    <ul class="sectionlist">
+            <li>BerkeleyDB::DB * <a href="classQxtBdb.html#18584fa41987b8ac6a01e428f507e0d16">db</a> </li>
+            <li>bool <a href="classQxtBdb.html#1b03f345a4070f46d60b940f637b7ecf0">isOpen</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Attributes inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtBdb.html#15ac25a3634147fb3028089a8c1fc94b2">Q_DECLARE_FLAGS</a>  (   <span class="memberdef_type">OpenFlags</span>    ,   <span class="memberdef_type">OpenFlag</span>     ) </li>
+            <li> <a href="classQxtBdb.html#1790c662b841f3f0073ea556071bf7160">QxtBdb</a>  (  ) </li>
+            <li> <a href="classQxtBdb.html#1f9a017916007f97fbe601ceb5743b5b3">~QxtBdb</a>  (  ) </li>
+            <li>bool <a href="classQxtBdb.html#1add0a190dd205aea02f6ae55005a2914">get</a>  (   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">key</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">keytype</span>    ,   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">value</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">valuetype</span>    ,   <span class="memberdef_type">BerkeleyDB::u_int32_t</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= NULL</span>  ,   <span class="memberdef_type">BerkeleyDB::DBC *</span>    <span class="memberdef_declname">cursor</span>  <span class="memberdef_defval">= 0</span>   )  const </li>
+            <li>bool <a href="classQxtBdb.html#17c61963379e0b92f8b0d00f0a46fb81c">get</a>  (   <span class="memberdef_type">const void *</span>    <span class="memberdef_declname">key</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">keytype</span>    ,   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">value</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">valuetype</span>    ,   <span class="memberdef_type">BerkeleyDB::u_int32_t</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= NULL</span>  ,   <span class="memberdef_type">BerkeleyDB::DBC *</span>    <span class="memberdef_declname">cursor</span>  <span class="memberdef_defval">= 0</span>   )  const </li>
+            <li>bool <a href="classQxtBdb.html#19049c1f74fb871f4cc804871a66cd0f5">open</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>    <span class="memberdef_declname">path</span>    ,   <span class="memberdef_type">OpenFlags</span>    <span class="memberdef_declname">f</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>OpenFlags <a href="classQxtBdb.html#11b854c2a33e31a9a2b03610c0d8b461e">openFlags</a>  (  ) </li>
+            <li>bool <a href="classQxtBdb.html#1b34f1dae679ea9465df93e1ec7b95c48">flush</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-static-func"></a>
+    <h3>Public Static Functions</h3>
+    <ul class="sectionlist">
+            <li>QString <a href="classQxtBdb.html#141630ef9d1adeb157e90bc645014ddec">dbErrorCodeToString</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">e</span>     )  static </li>
+            <li>T <a href="classQxtBdb.html#1131c1a26dba3012b57e41c21bb722aa4">qxtMetaLoad</a>  (   <span class="memberdef_type">const void *</span>    <span class="memberdef_declname">data</span>    ,   <span class="memberdef_type">size_t</span>    <span class="memberdef_declname">size</span>     )  static </li>
+            <li>void * <a href="classQxtBdb.html#12f0bcad0f2a2de525873ee7af8876cd0">qxtMetaLoad</a>  (   <span class="memberdef_type">const void *</span>    <span class="memberdef_declname">data</span>    ,   <span class="memberdef_type">size_t</span>    <span class="memberdef_declname">size</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">type</span>     )  static </li>
+            <li>QByteArray <a href="classQxtBdb.html#1744fcaa533c1e43835e4a3cc2f609b49">qxtMetaSave</a>  (   <span class="memberdef_type">const T &</span>    <span class="memberdef_declname">t</span>     )  static </li>
+            <li>void * <a href="classQxtBdb.html#1a77852815da418ec1c49d497397ff9e1">qxtMetaSave</a>  (   <span class="memberdef_type">size_t *</span>    <span class="memberdef_declname">size</span>    ,   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">t</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">type</span>     )  static </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Static Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="15ad90b31cad64fcaa2664bf456c694e0"></a>
+         OpenFlag  { CreateDatabase  , ReadOnly  , LockFree   } 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <table border="1px" class="desctable">
+            <tr><th>Constant</th><th>Description</th></tr>
+            <tr><td>CreateDatabase</td><td></td></tr>
+            <tr><td>ReadOnly</td><td></td></tr>
+            <tr><td>LockFree</td><td></td></tr>
+            </table>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="18584fa41987b8ac6a01e428f507e0d16"></a>
+        BerkeleyDB::DB * db 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b03f345a4070f46d60b940f637b7ecf0"></a>
+        bool isOpen 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15ac25a3634147fb3028089a8c1fc94b2"></a>
+         Q_DECLARE_FLAGS  (   <span class="memberdef_type">OpenFlags</span>    ,   <span class="memberdef_type">OpenFlag</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1790c662b841f3f0073ea556071bf7160"></a>
+         QxtBdb  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f9a017916007f97fbe601ceb5743b5b3"></a>
+         ~QxtBdb  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1add0a190dd205aea02f6ae55005a2914"></a>
+        bool get  (   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">key</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">keytype</span>    ,   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">value</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">valuetype</span>    ,   <span class="memberdef_type">BerkeleyDB::u_int32_t</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= NULL</span>  ,   <span class="memberdef_type">BerkeleyDB::DBC *</span>    <span class="memberdef_declname">cursor</span>  <span class="memberdef_defval">= 0</span>   )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>low level get function. <br/>
+            
+             serialised key and value with the given meta ids. <br/>
+            
+             always reads <strong>and</strong> writes both key and value, if given.<br/>
+            
+             use this when doing operations that require the key to be read out of the db. <br/>
+            </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17c61963379e0b92f8b0d00f0a46fb81c"></a>
+        bool get  (   <span class="memberdef_type">const void *</span>    <span class="memberdef_declname">key</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">keytype</span>    ,   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">value</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">valuetype</span>    ,   <span class="memberdef_type">BerkeleyDB::u_int32_t</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= NULL</span>  ,   <span class="memberdef_type">BerkeleyDB::DBC *</span>    <span class="memberdef_declname">cursor</span>  <span class="memberdef_defval">= 0</span>   )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>low level get function. <br/>
+            
+             serialised key and value with the given meta ids. <br/>
+            
+             doesn't write to the key. use this when doing operations that require the key to be passed. <br/>
+            </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="19049c1f74fb871f4cc804871a66cd0f5"></a>
+        bool open  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>    <span class="memberdef_declname">path</span>    ,   <span class="memberdef_type">OpenFlags</span>    <span class="memberdef_declname">f</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11b854c2a33e31a9a2b03610c0d8b461e"></a>
+        OpenFlags openFlags  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b34f1dae679ea9465df93e1ec7b95c48"></a>
+        bool flush  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="141630ef9d1adeb157e90bc645014ddec"></a>
+        QString dbErrorCodeToString  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">e</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1131c1a26dba3012b57e41c21bb722aa4"></a>
+        T qxtMetaLoad  (   <span class="memberdef_type">const void *</span>    <span class="memberdef_declname">data</span>    ,   <span class="memberdef_type">size_t</span>    <span class="memberdef_declname">size</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12f0bcad0f2a2de525873ee7af8876cd0"></a>
+        void * qxtMetaLoad  (   <span class="memberdef_type">const void *</span>    <span class="memberdef_declname">data</span>    ,   <span class="memberdef_type">size_t</span>    <span class="memberdef_declname">size</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">type</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1744fcaa533c1e43835e4a3cc2f609b49"></a>
+        QByteArray qxtMetaSave  (   <span class="memberdef_type">const T &</span>    <span class="memberdef_declname">t</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a77852815da418ec1c49d497397ff9e1"></a>
+        void * qxtMetaSave  (   <span class="memberdef_type">size_t *</span>    <span class="memberdef_declname">size</span>    ,   <span class="memberdef_type">void *</span>    <span class="memberdef_declname">t</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">type</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtSqlPackage</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtSqlPackage Class Reference<br/>
+            <sup><sup>[<a href="group__QxtSql.html">QxtSql</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        full serialiseable QSqlQuery storage 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtSqlPackage&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtSqlPackage-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtSqlPackage.html#1396a7c2accc2306ef4580eeffe87575d">QxtSqlPackage</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> <a href="classQxtSqlPackage.html#1e299548003b9f1ba63b17321695f65fe">QxtSqlPackage</a>  (   <span class="memberdef_type">const <a class="reflink" href="classQxtSqlPackage.html">QxtSqlPackage</a> &</span>    <span class="memberdef_declname">other</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>bool <a href="classQxtSqlPackage.html#115c930583d93fab0d46dc102ae4b696c">isValid</a>  (  ) </li>
+            <li>int <a href="classQxtSqlPackage.html#1876d5f178adf89c1f47197a526aa38fe">at</a>  (  ) </li>
+            <li>bool <a href="classQxtSqlPackage.html#13c53546ad9510ff1e37aa042d8277594">next</a>  (  ) </li>
+            <li>bool <a href="classQxtSqlPackage.html#12db1b2f59c2b7a96fe0ac28db3a5bcab">last</a>  (  ) </li>
+            <li>bool <a href="classQxtSqlPackage.html#1e85d2a6bede4163e0d33acfac4ce3fef">first</a>  (  ) </li>
+            <li>QString <a href="classQxtSqlPackage.html#16b0d004f679ee988b13f3b45588f789a">value</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">key</span>     ) </li>
+            <li>void <a href="classQxtSqlPackage.html#18cb821ede737fb9c783aaf9c4af661a9">insert</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a></span>    <span class="memberdef_declname">query</span>     ) </li>
+            <li>int <a href="classQxtSqlPackage.html#1aa2f9f5f1eccaa7141fa61e8c049331f">count</a>  (  )  const </li>
+            <li>QByteArray <a href="classQxtSqlPackage.html#1bfed3d86a288985559b5bd161989545b">data</a>  (  )  const </li>
+            <li>void <a href="classQxtSqlPackage.html#13963e060e2e3a32138ea28381c982044">setData</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a> &</span>    <span class="memberdef_declname">data</span>     ) </li>
+            <li>QHash< QString, QString > <a href="classQxtSqlPackage.html#1c326ae46d86a4cc8653fccdb298650d8">hash</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>QHash< QString, QString > <a href="classQxtSqlPackage.html#1ce82302355c58b7876bf31e7fccf7a88">hash</a>  (  ) </li>
+            <li>QxtSqlPackage & <a href="classQxtSqlPackage.html#1ec80092db969a1070622f1c7f61afa5b">operator=</a>  (   <span class="memberdef_type">const <a class="reflink" href="classQxtSqlPackage.html">QxtSqlPackage</a> &</span>    <span class="memberdef_declname">other</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>Sometimes you want to send sql results over network or store them into files. <br/>
+        <a class="reflink" href="classQxtSqlPackage.html">QxtSqlPackage</a> can provide you a storage that is still valid after the actual <a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a> has been destroyed. <br/>
+        
+         for confidence the interface is similar to <a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a>. </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1396a7c2accc2306ef4580eeffe87575d"></a>
+         QxtSqlPackage  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e299548003b9f1ba63b17321695f65fe"></a>
+         QxtSqlPackage  (   <span class="memberdef_type">const <a class="reflink" href="classQxtSqlPackage.html">QxtSqlPackage</a> &</span>    <span class="memberdef_declname">other</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="115c930583d93fab0d46dc102ae4b696c"></a>
+        bool isValid  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>determinates if the package curently points to a valid row </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1876d5f178adf89c1f47197a526aa38fe"></a>
+        int at  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>curent pointer position </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13c53546ad9510ff1e37aa042d8277594"></a>
+        bool next  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>point to next entry </p></em>
+        </p>
+        <p class="member_desc">
+            <p>returns false if there is no next entry.<br/>
+            
+             provided for easy porting from <a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a>.</p><p><div class="code"><span class="highlight_keywordflow"  >while</span><span class="highlight_normal"  > (query.next())</span><br/>
+            <span class="highlight_normal"  >    {</span><br/>
+            <span class="highlight_normal"  >    }</span><br/>
+            </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12db1b2f59c2b7a96fe0ac28db3a5bcab"></a>
+        bool last  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>point to last entry in storage </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e85d2a6bede4163e0d33acfac4ce3fef"></a>
+        bool first  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>point to first entry in storage </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16b0d004f679ee988b13f3b45588f789a"></a>
+        QString value  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">key</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>return a column in curent row in contrast to <a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a> you have to provide the name of the key. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>the entry is returned as <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> becouse in most cases you need <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> anyway, and converting to needed data type is easy. <div class="code"><span class="highlight_normal"  ><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html#name">name</a> = query.value(</span><span class="highlight_stringliteral"  >"name"</span><span class="highlight_normal"  >);</span><br/>
+            </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="18cb821ede737fb9c783aaf9c4af661a9"></a>
+        void insert  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a></span>    <span class="memberdef_declname">query</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>read from <a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a></p></em>
+        </p>
+        <p class="member_desc">
+            <p>read out a <a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html">QSqlQuery</a> and store the result. you may close the query after reading, the data will stay.</p><p><div class="code"><span class="highlight_normal"  >QxSqlPackage::insert(<a class="reflink" href="http://doc.trolltech.com/latest/qsqlquery.html#exec-2">QSqlQuery::exec</a>(</span><span class="highlight_stringliteral"  >"select name,foo,bar from table;"</span><span class="highlight_normal"  >));</span><br/>
+            </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1aa2f9f5f1eccaa7141fa61e8c049331f"></a>
+        int count  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>Returns the number of rows stored. </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1bfed3d86a288985559b5bd161989545b"></a>
+        QByteArray data  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>serialise Data </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13963e060e2e3a32138ea28381c982044"></a>
+        void setData  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a> &</span>    <span class="memberdef_declname">data</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>deserialise data </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c326ae46d86a4cc8653fccdb298650d8"></a>
+        QHash< QString, QString > hash  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>return a specific row as Hash </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ce82302355c58b7876bf31e7fccf7a88"></a>
+        QHash< QString, QString > hash  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>return the curent row as Hash </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ec80092db969a1070622f1c7f61afa5b"></a>
+        QxtSqlPackage & operator=  (   <span class="memberdef_type">const <a class="reflink" href="classQxtSqlPackage.html">QxtSqlPackage</a> &</span>    <span class="memberdef_declname">other</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>copy </p></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

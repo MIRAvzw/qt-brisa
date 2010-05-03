@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtProxyStyle</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtProxyStyle Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        A proxy style. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtProxyStyle&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qstyle.html">QStyle</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtProxyStyle-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> explicit  <a href="classQxtProxyStyle.html#1baf2879916f0cae9d90aea8caedeb5f7">QxtProxyStyle</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">baseStyle</span>     ) </li>
+            <li> virtual  <a href="classQxtProxyStyle.html#1a0fa2a8509bd90acf844736d73dff9ec">~QxtProxyStyle</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>A technique called "proxy style" is a common way for creating cross-platform custom styles. Developers often want to do slight adjustments in some specific values returned by <a class="reflink" href="http://doc.trolltech.com/latest/qstyle.html">QStyle</a>. A proxy style is the solution to avoid subclassing any platform specific style (eg. <a class="reflink" href="http://doc.trolltech.com/latest/qplastiquestyle.html">QPlastiqueStyle</a>, <a class="reflink" href="http://doc.trolltech.com/latest/qwindowsxpstyle.html">QWindowsXPStyle</a>, or <a class="reflink" href="http://doc.trolltech.com/latest/qmacstyle.html">QMacStyle</a>) and to retain the native look on all supported platforms.</p><p>The subject has been discussed in Qt Quarterly 9: http://doc.trolltech.com/qq/qq09-q-and-a.html#style (just notice that there are a few noteworthy spelling mistakes in the article).</p><p>Proxy styles are becoming obsolete thanks to style sheets introduced in Qt 4.2. However, style sheets still is a new concept and only a portion of features are supported yet. Both - style sheets and proxy styles - have their pros and cons.</p>Usage<p>Implement the custom behaviour in a subclass of <a class="reflink" href="classQxtProxyStyle.html">QxtProxyStyle</a>: <div class="code"><span class="highlight_normal"  >    </span><span class="highlight_keyword"  >class </span><span class="highlight_normal"  >MyCustomStyle : </span><span class="highlight_keyword"  >public</span><span class="highlight_normal"  > <a class="reflink" href="classQxtProxyStyle.html">QxtProxyStyle</a></span><br/>
+        <span class="highlight_normal"  >    {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >       </span><span class="highlight_keyword"  >public</span><span class="highlight_normal"  >:</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >          MyCustomStyle(</span><span class="highlight_keyword"  >const</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a>& baseStyle) : <a class="reflink" href="classQxtProxyStyle.html">QxtProxyStyle</a>(baseStyle)</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >          {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >          }</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  ></span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >          </span><span class="highlight_keywordtype"  >int</span><span class="highlight_normal"  > <a class="reflink" href="classQxtProxyStyle.html#114fd21c337d2406c05338b43bc59e9b7">pixelMetric</a>(PixelMetric metric, </span><span class="highlight_keyword"  >const</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qstyleoption.html">QStyleOption</a>* option = 0, </span><span class="highlight_keyword"  >const</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a>* widget = 0)</span><span class="highlight_keyword"  > const</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_keyword"  >          </span><span class="highlight_normal"  >{</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >             </span><span class="highlight_keywordflow"  >if</span><span class="highlight_normal"  > (metric == QStyle::PM_ButtonMargin)</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                </span><span class="highlight_keywordflow"  >return</span><span class="highlight_normal"  > 6;</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >             </span><span class="highlight_keywordflow"  >return</span><span class="highlight_normal"  > <a class="reflink" href="classQxtProxyStyle.html#114fd21c337d2406c05338b43bc59e9b7">QxtProxyStyle::pixelMetric</a>(metric, option, widget);</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >          }</span><br/>
+        <span class="highlight_normal"  >    };</span><br/>
+        </div></p><p>Using the custom style for the whole application: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> defaultStyle = <a class="reflink" href="http://doc.trolltech.com/latest/qapplication.html#style">QApplication::style</a>()-&gt;objectName();</span><br/>
+        <span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qapplication.html#setStyle">QApplication::setStyle</a>(</span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > MyCustomStyle(defaultStyle));</span><br/>
+        </div></p><p>Using the custom style for a single widget: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> defaultStyle = widget-&gt;style()-&gt;objectName();</span><br/>
+        <span class="highlight_normal"  >    widget-&gt;setStyle(</span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > MyCustomStyle(defaultStyle));</span><br/>
+        </div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1baf2879916f0cae9d90aea8caedeb5f7"></a>
+         explicit  QxtProxyStyle  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">baseStyle</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtProxyStyle.html">QxtProxyStyle</a> for <em>style</em>. See <a class="reflink" href="http://doc.trolltech.com/latest/qstylefactory.html#keys">QStyleFactory::keys()</a> for supported styles.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qstylefactory.html#keys">QStyleFactory::keys()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a0fa2a8509bd90acf844736d73dff9ec"></a>
+         virtual  ~QxtProxyStyle  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructs the proxy style. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

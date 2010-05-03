@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtSemaphore</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtSemaphore Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        system wide semaphore (former QxtSingleInstance) 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtSemaphore&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtSemaphore-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtSemaphore.html#1dd31ab4c31d099d536c3fd151fc7d771">QxtSemaphore</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>  uniqueID   ) </li>
+            <li> <a href="classQxtSemaphore.html#1bb4c562a27a85236bb697a3824692cd5">~QxtSemaphore</a>  (  ) </li>
+            <li>bool <a href="classQxtSemaphore.html#153e701d48f22e71dc93bf8de685cbc6d">trylock</a>  (  ) </li>
+            <li>bool <a href="classQxtSemaphore.html#1f98d0a67e306a19b4c30e399b64f0066">unlock</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><div class="code"><span class="highlight_normal"  > <a class="reflink" href="classQxtSemaphore.html">QxtSemaphore</a> instance(</span><span class="highlight_stringliteral"  >"com.mycompany.foobla.uniquestring"</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  > </span><span class="highlight_keywordflow"  >if</span><span class="highlight_normal"  >(!instance.trylock())</span><br/>
+        <span class="highlight_normal"  >  {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >  qDebug(</span><span class="highlight_stringliteral"  >"already started"</span><span class="highlight_normal"  >)</span><br/>
+        <span class="highlight_normal"  >  }</span><br/>
+        </div></p><p>Note that the semaphore is autoaticly unlocked on destruction, but not on segfault,sigkill,etc...! </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1dd31ab4c31d099d536c3fd151fc7d771"></a>
+         QxtSemaphore  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>  uniqueID   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1bb4c562a27a85236bb697a3824692cd5"></a>
+         ~QxtSemaphore  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="153e701d48f22e71dc93bf8de685cbc6d"></a>
+        bool trylock  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f98d0a67e306a19b4c30e399b64f0066"></a>
+        bool unlock  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

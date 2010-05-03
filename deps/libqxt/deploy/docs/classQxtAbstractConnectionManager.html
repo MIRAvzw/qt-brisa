@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtAbstractConnectionManager</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtAbstractConnectionManager Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        Interface for classes that maintain connection pools. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtAbstractConnectionManager&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtAbstractConnectionManager-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtAbstractConnectionManager.html#10ad19cdd2902dd3311591cb9e8b7bff3">QxtAbstractConnectionManager</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>     ) </li>
+            <li>int <a href="classQxtAbstractConnectionManager.html#16acccf8371202b1cd74992dbda272bed">clientCount</a>  (  )  const </li>
+            <li>QList< quint64 > <a href="classQxtAbstractConnectionManager.html#13f56af8280c20210a4694d79a206d2bb">clients</a>  (  )  const </li>
+            <li>QIODevice * <a href="classQxtAbstractConnectionManager.html#1c2c475e0e4dcf2431f20eaabbb44fd9c">client</a>  (   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     )  const </li>
+            <li> virtual bool <a href="classQxtAbstractConnectionManager.html#1c16a3f73a5f26ce75ef7967dfc9c6e25">isAcceptingConnections</a>  (  )  const  =0 </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtAbstractConnectionManager.html#16088737547b42b28b29e4f7719c3e0fc">newConnection</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) </li>
+            <li>void <a href="classQxtAbstractConnectionManager.html#106913132eb9270d7037c26a8a045ee90">disconnected</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtAbstractConnectionManager.html#1906c87d49b2b465d06854d7eaf29be97">disconnect</a>  (   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-func"></a>
+    <h3>Protected Functions</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtAbstractConnectionManager.html#1e384843778af5ec30cba82870bfef5ee">addConnection</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) </li>
+            <li> virtual void <a href="classQxtAbstractConnectionManager.html#1796c43f7c8996d21111a9e35141e0078">removeConnection</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     )  =0 </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Protected Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtAbstractConnectionManager.html">QxtAbstractConnectionManager</a> is a standardized interface for accepting and tracking incoming connections.</p><p>Each incoming connection is assigned an arbitrary, opaque client ID number. This number can be used to retrieve the <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> associated with it. A list of IDs for all current connections can be retrieved with the <a class="reflink" href="classQxtAbstractConnectionManager.html#13f56af8280c20210a4694d79a206d2bb">clients()</a> function.</p><p>As an abstract class, <a class="reflink" href="classQxtAbstractConnectionManager.html">QxtAbstractConnectionManager</a> cannot be used on its own. Subclasses must implement <a class="reflink" href="classQxtAbstractConnectionManager.html#1c16a3f73a5f26ce75ef7967dfc9c6e25">isAcceptingConnections()</a> to indicate the current listening status of the connection manager and <a class="reflink" href="classQxtAbstractConnectionManager.html#1796c43f7c8996d21111a9e35141e0078">removeConnection()</a> to perform necessary clean-up of an established connection before disconnecting. Finally, a subclass must invoke <a class="reflink" href="classQxtAbstractConnectionManager.html#1e384843778af5ec30cba82870bfef5ee">addConnection()</a> after a new incoming connection has been established and prepared.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTcpConnectionManager.html">QxtTcpConnectionManager</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="10ad19cdd2902dd3311591cb9e8b7bff3"></a>
+         QxtAbstractConnectionManager  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a QxtAbstractConnection object with the specified parent. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16acccf8371202b1cd74992dbda272bed"></a>
+        int clientCount  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the number of connected clients. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13f56af8280c20210a4694d79a206d2bb"></a>
+        QList< quint64 > clients  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns a list of client IDs for all connected clients. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c2c475e0e4dcf2431f20eaabbb44fd9c"></a>
+        QIODevice * client  (   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> for the requested client ID. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c16a3f73a5f26ce75ef7967dfc9c6e25"></a>
+         virtual bool isAcceptingConnections  (  )  const  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns true if the connection manager is currently accepting connections. Returns false otherwise. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16088737547b42b28b29e4f7719c3e0fc"></a>
+        void newConnection  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Indicates that the specified device, with the specified client ID, is ready for use. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="106913132eb9270d7037c26a8a045ee90"></a>
+        void disconnected  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Indicates that the device with the specified client ID has been disconnected. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1906c87d49b2b465d06854d7eaf29be97"></a>
+        void disconnect  (   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Disconnects the connection with the specified client ID.</p><p>Implementations should invoke this function when the connection should no longer be used; for instance, when the <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> object is destroyed or the connection has been closed. Code that uses the connection manager service should invoke this function to close a connection on demand. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e384843778af5ec30cba82870bfef5ee"></a>
+        void addConnection  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Begins managing a connection. Each device must have a unique, non-zero client ID, but beyond this constraint implementations may use any convenient value. Implementations should invoke this function after establishing a usable connection and performing any desired initial negotiation.</p><p>This function will emit the newConnection signal after the internal data structures have been suitably updated. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1796c43f7c8996d21111a9e35141e0078"></a>
+         virtual void removeConnection  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>    ,   <span class="memberdef_type">quint64</span>    <span class="memberdef_declname">clientID</span>     )  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Stops managing a connection. This function is invoked by <a class="reflink" href="classQxtAbstractConnectionManager.html#1906c87d49b2b465d06854d7eaf29be97">disconnect()</a>. Implementations should perform whatever steps are necessary to close the connection and clean up any internal data structures, including deleting the <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> object. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

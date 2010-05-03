@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtProgressLabel</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtProgressLabel Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        A label showing progress related time values. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtProgressLabel&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qlabel.html">QLabel</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtProgressLabel-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="property"></a>
+    <h3>Properties</h3>
+    <ul class="sectionlist">
+            <li>QString <a href="classQxtProgressLabel.html#1a00f4ec65fa776a0d36c5fbea8e0b342">contentFormat</a> </li>
+            <li>QString <a href="classQxtProgressLabel.html#1ca179b6b690f7aa0f0a1d269728e672a">timeFormat</a> </li>
+            <li>int <a href="classQxtProgressLabel.html#1271b8d30364ae3bc2160c7be4ea7fd41">updateInterval</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Properties inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> explicit  <a href="classQxtProgressLabel.html#1ca4098ba84a53fa4b8ed26953c5f0e39">QxtProgressLabel</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>  ,   <span class="memberdef_type">Qt::WindowFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> explicit  <a href="classQxtProgressLabel.html#1a8d006342f299789ed6eb751ab14fb66">QxtProgressLabel</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>  ,   <span class="memberdef_type">Qt::WindowFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> virtual  <a href="classQxtProgressLabel.html#1e493ba1114d88c923cb8db988856aebf">~QxtProgressLabel</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtProgressLabel.html#18d96e47266a92c24eddef75ca8646705">setValue</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">value</span>     ) </li>
+            <li>void <a href="classQxtProgressLabel.html#136a9733ae436adf2deb008e58c222e9a">refresh</a>  (  ) </li>
+            <li>void <a href="classQxtProgressLabel.html#1f982958423b15ed99ba2c32fa6d51973">restart</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtProgressLabel.html">QxtProgressLabel</a> is a label widget able to show elapsed and remaining time of a progress. Usage is as simple as connecting signal <strong><a class="reflink" href="http://doc.trolltech.com/latest/qprogressbar.html#valueChanged">QProgressBar::valueChanged()</a></strong> to slot <a class="reflink" href="classQxtProgressLabel.html#18d96e47266a92c24eddef75ca8646705">QxtProgressLabel::setValue()</a>.</p><p>Example usage: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qprogressbar.html">QProgressBar</a>* bar = </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qprogressbar.html">QProgressBar</a>(</span><span class="highlight_keyword"  >this</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  >    <a class="reflink" href="classQxtProgressLabel.html">QxtProgressLabel</a>* label = </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="classQxtProgressLabel.html#1ca4098ba84a53fa4b8ed26953c5f0e39">QxtProgressLabel</a>(</span><span class="highlight_keyword"  >this</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  >    connect(bar, SIGNAL(valueChanged(</span><span class="highlight_keywordtype"  >int</span><span class="highlight_normal"  >)), label, SLOT(<a class="reflink" href="classQxtProgressLabel.html#18d96e47266a92c24eddef75ca8646705">setValue</a>(</span><span class="highlight_keywordtype"  >int</span><span class="highlight_normal"  >)));</span><br/>
+        </div></p><p><table class="descimg" ><tr><td><img alt="QxtProgressLabel in action." src="qxtprogresslabel.png"></td></tr><tr><td><sup>QxtProgressLabel in action.</sup></td></tr></table></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1a00f4ec65fa776a0d36c5fbea8e0b342"></a>
+        QString contentFormat 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the content format of the progress label. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The content of the label is formatted according to this property. The default value is an empty string which defaults to <strong>"ETA: %r"</strong>.</p><p>The following variables may be used in the format string: <table  border="1px" class="desctable">
+            <tr>
+            <td><p><strong>Variable</strong></p></td><td><p><strong>Output</strong></p></td>
+            </tr>
+            <tr>
+            <td><p>%e</p></td><td><p>elapsed time </p></td>
+            </tr>
+            <tr>
+            <td><p>%r</p></td><td><p>remaining time </p></td>
+            </tr>
+            
+            </table>
+            </p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtProgressLabel.html#1ca179b6b690f7aa0f0a1d269728e672a">timeFormat</a></div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>QString contentFormat  (  )  const </li><li><strong>write: </strong>void setContentFormat  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">format</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ca179b6b690f7aa0f0a1d269728e672a"></a>
+        QString timeFormat 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the time format of the progress label. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Time values are formatted according to this property. The default value is an empty string which defaults to <strong>"mm:ss"</strong>.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtProgressLabel.html#1a00f4ec65fa776a0d36c5fbea8e0b342">contentFormat</a>, <a class="reflink" href="http://doc.trolltech.com/latest/qtime.html#toString">QTime::toString()</a></div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>QString timeFormat  (  )  const </li><li><strong>write: </strong>void setTimeFormat  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">format</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1271b8d30364ae3bc2160c7be4ea7fd41"></a>
+        int updateInterval 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the update interval of the progress label. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The content of the progress label is updated according to this interval. A negative interval makes the content to update only during value changes. The default value is <strong>-1</strong>. </p><p>Access Functions:<ul>
+            <li><strong>read: </strong>int updateInterval  (  )  const </li><li><strong>write: </strong>void setUpdateInterval  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">msecs</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ca4098ba84a53fa4b8ed26953c5f0e39"></a>
+         explicit  QxtProgressLabel  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>  ,   <span class="memberdef_type">Qt::WindowFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtProgressLabel.html">QxtProgressLabel</a> with <em>parent</em> and <em>flags</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a8d006342f299789ed6eb751ab14fb66"></a>
+         explicit  QxtProgressLabel  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>  ,   <span class="memberdef_type">Qt::WindowFlags</span>    <span class="memberdef_declname">flags</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtProgressLabel.html">QxtProgressLabel</a> with <em>text</em>, <em>parent</em> and <em>flags</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e493ba1114d88c923cb8db988856aebf"></a>
+         virtual  ~QxtProgressLabel  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructs the progress label. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="18d96e47266a92c24eddef75ca8646705"></a>
+        void setValue  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">value</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the current value to <em>value</em>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> Calling this slot by hand has no effect. Connect this slot to <strong>QProgressBar::valueChange()</strong>. </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="136a9733ae436adf2deb008e58c222e9a"></a>
+        void refresh  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Refreshes the content. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f982958423b15ed99ba2c32fa6d51973"></a>
+        void restart  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Restarts the calculation of elapsed and remaining times. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

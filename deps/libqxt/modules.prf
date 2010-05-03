@@ -1,0 +1,8 @@
+QXT_MODULES+=core
+QXT_MODULES+=gui
+QXT_MODULES+=designer
+QXT_MODULES+=network
+QXT_MODULES+=sql
+QXT_MODULES+=berkeley
+QXT_MODULES+=web
+QXT_MODULES+=crypto

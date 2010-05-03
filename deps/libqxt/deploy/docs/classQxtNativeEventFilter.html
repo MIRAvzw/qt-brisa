@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtNativeEventFilter</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtNativeEventFilter Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        A native event filter to access platform specific events. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtNativeEventFilter&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtNativeEventFilter-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> virtual  <a href="classQxtNativeEventFilter.html#11bbd7814790399bd94fbd881614e26f7">~QxtNativeEventFilter</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtNativeEventFilter.html">QxtNativeEventFilter</a> provides access to platform specific native events without the need of subclassing <a class="reflink" href="http://doc.trolltech.com/latest/qapplication.html">QApplication</a>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> <a class="reflink" href="classQxtNativeEventFilter.html">QxtNativeEventFilter</a> requires <a class="reflink" href="classQxtApplication.html">QxtApplication</a>.</div>
+        Example usage: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/group.html">qxtApp</a>-&gt;installNativeEventFilter(myObject);</span><br/>
+        <span class="highlight_normal"  ></span><br/>
+        <span class="highlight_normal"  >    </span><span class="highlight_keyword"  >class </span><span class="highlight_normal"  >MyObject : </span><span class="highlight_keyword"  >public</span><span class="highlight_normal"  > <a class="reflink" href="classQxtNativeEventFilter.html">QxtNativeEventFilter</a> {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >        </span><span class="highlight_keyword"  >public</span><span class="highlight_normal"  >:</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            ...</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  ></span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            </span><span class="highlight_keywordtype"  >bool</span><span class="highlight_normal"  > x11EventFilter(XEvent* event) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                </span><span class="highlight_keywordflow"  >if</span><span class="highlight_normal"  > (event-&gt;type == ...) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                    ...</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                }</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                </span><span class="highlight_keywordflow"  >return</span><span class="highlight_normal"  > </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >;</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            }</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  ></span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            </span><span class="highlight_keywordtype"  >bool</span><span class="highlight_normal"  > winEventFilter(MSG* msg, </span><span class="highlight_keywordtype"  >long</span><span class="highlight_normal"  >* result) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                </span><span class="highlight_keywordflow"  >if</span><span class="highlight_normal"  > (msg-&gt;message == ...) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                    ...</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                }</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                </span><span class="highlight_keywordflow"  >return</span><span class="highlight_normal"  > </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >;</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            }</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  ></span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            </span><span class="highlight_keywordtype"  >bool</span><span class="highlight_normal"  > macEventFilter(EventHandlerCallRef caller, EventRef event) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                </span><span class="highlight_keywordflow"  >if</span><span class="highlight_normal"  > (GetEventClass(event) == ...) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                    ...</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                }</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                </span><span class="highlight_keywordflow"  >return</span><span class="highlight_normal"  > </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >;</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            }</span><br/>
+        <span class="highlight_normal"  >    };</span><br/>
+        </div></p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtApplication.html#17f50170dc00d4246573ca70db9273277">QxtApplication::installNativeEventFilter()</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="11bbd7814790399bd94fbd881614e26f7"></a>
+         virtual  ~QxtNativeEventFilter  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

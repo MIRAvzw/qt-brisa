@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtWindowSystem</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtWindowSystem Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        QxtWindowSystem provides means for accessing native windows. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtWindowSystem&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtWindowSystem-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-static-func"></a>
+    <h3>Public Static Functions</h3>
+    <ul class="sectionlist">
+            <li>WindowList <a href="classQxtWindowSystem.html#185949d6946e65ec035b3cabbd98760d8">windows</a>  (  )  static </li>
+            <li>WId <a href="classQxtWindowSystem.html#14a7d3cdda9eb2205c97592e528c6724d">activeWindow</a>  (  )  static </li>
+            <li>WId <a href="classQxtWindowSystem.html#1d32e4d0efdbd592f0902192aedad9da6">findWindow</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">title</span>     )  static </li>
+            <li>WId <a href="classQxtWindowSystem.html#133854010bd2d0b678caf6d6277b57690">windowAt</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">pos</span>     )  static </li>
+            <li>QString <a href="classQxtWindowSystem.html#1539106c49b2eca630e8df41982e6728d">windowTitle</a>  (   <span class="memberdef_type">WId</span>    <span class="memberdef_declname">window</span>     )  static </li>
+            <li>QStringList <a href="classQxtWindowSystem.html#1755ec1f32d774d67a92cbe01a1a7158a">windowTitles</a>  (  )  static </li>
+            <li>QRect <a href="classQxtWindowSystem.html#1c9554ae83f1046cf4745a70d8c4e1fca">windowGeometry</a>  (   <span class="memberdef_type">WId</span>    <span class="memberdef_declname">window</span>     )  static </li>
+            <li>uint <a href="classQxtWindowSystem.html#1b58261f49fd45a7363d1abd7dfea831f">idleTime</a>  (  )  static </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Static Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> The underlying window system might or might not allow one to alter states of windows belonging to other processes.</div><div class="simplesect" ><img src="warning.png" alt="warning" /> <strong>Warning:</strong> <a class="reflink" href="classQxtWindowSystem.html">QxtWindowSystem</a> is portable in principle, but be careful while using it since you are probably about to do something non-portable.</div></p><p>Advanced example usage: <div class="code"><span class="highlight_normal"  >    </span><span class="highlight_keyword"  >class </span><span class="highlight_normal"  >NativeWindow : </span><span class="highlight_keyword"  >public</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >        </span><span class="highlight_keyword"  >public</span><span class="highlight_normal"  >:</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            NativeWindow(WId wid) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                <a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html#create">QWidget::create</a>(wid, </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >, </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >); </span><span class="highlight_comment"  >// window, initializeWindow, destroyOldWindow</span><span class="highlight_normal"  ></span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            }</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            ~NativeWindow() {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >                <a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html#destroy">QWidget::destroy</a>(</span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >, </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >); </span><span class="highlight_comment"  >// destroyWindow, destroySubWindows</span><span class="highlight_normal"  ></span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            }</span><br/>
+        <span class="highlight_normal"  >    };</span><br/>
+        </div></p><p><div class="code"><span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">WindowList</a> <a class="reflink" href="classQxtWindowSystem.html#185949d6946e65ec035b3cabbd98760d8">windows</a> = <a class="reflink" href="classQxtWindowSystem.html#185949d6946e65ec035b3cabbd98760d8">QxtWindowSystem::windows</a>();</span><br/>
+        <span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qstringlist.html">QStringList</a> titles = <a class="reflink" href="classQxtWindowSystem.html#1755ec1f32d774d67a92cbe01a1a7158a">QxtWindowSystem::windowTitles</a>();</span><br/>
+        <span class="highlight_normal"  >    </span><span class="highlight_keywordtype"  >bool</span><span class="highlight_normal"  > ok = </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >;</span><br/>
+        <span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> title = <a class="reflink" href="http://doc.trolltech.com/latest/qinputdialog.html#getItem">QInputDialog::getItem</a>(0, </span><span class="highlight_stringliteral"  >"Choose Window"</span><span class="highlight_normal"  >, </span><span class="highlight_stringliteral"  >"Choose a window to be hid:"</span><span class="highlight_normal"  >, titles, 0, </span><span class="highlight_keyword"  >false</span><span class="highlight_normal"  >, &ok);</span><br/>
+        <span class="highlight_normal"  >    </span><span class="highlight_keywordflow"  >if</span><span class="highlight_normal"  > (ok)</span><br/>
+        <span class="highlight_normal"  >    {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >        </span><span class="highlight_keywordtype"  >int</span><span class="highlight_normal"  > index = titles.<a class="reflink" href="http://doc.trolltech.com/latest/qstringlist.html#indexOf">indexOf</a>(title);</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >        </span><span class="highlight_keywordflow"  >if</span><span class="highlight_normal"  > (index != -1)</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >        {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            NativeWindow window(windows.<a class="reflink" href="http://doc.trolltech.com/latest/qlist.html#at">at</a>(index));</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >            window.hide();</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >        }</span><br/>
+        <span class="highlight_normal"  >    }</span><br/>
+        </div></p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> Currently supported platforms are <strong>X11</strong> and <strong>Windows</strong>. </div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="185949d6946e65ec035b3cabbd98760d8"></a>
+        WindowList windows  (  )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the list of native window system identifiers.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qapplication.html#topLevelWidgets">QApplication::topLevelWidgets()</a>, <a class="reflink" href="classQxtWindowSystem.html#1755ec1f32d774d67a92cbe01a1a7158a">windowTitles()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14a7d3cdda9eb2205c97592e528c6724d"></a>
+        WId activeWindow  (  )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the native window system identifier of the active window if any.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qapplication.html#activeWindow">QApplication::activeWindow()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d32e4d0efdbd592f0902192aedad9da6"></a>
+        WId findWindow  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">title</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the native window system identifier of the window if any with given <em>title</em>.</p><p>Example usage: <div class="code"><span class="highlight_normal"  >    WId wid = <a class="reflink" href="classQxtWindowSystem.html#1d32e4d0efdbd592f0902192aedad9da6">QxtWindowSystem::findWindow</a>(</span><span class="highlight_stringliteral"  >"Mail - Kontact"</span><span class="highlight_normal"  >);</span><br/>
+            <span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qpixmap.html">QPixmap</a> screenshot = <a class="reflink" href="http://doc.trolltech.com/latest/qpixmap.html#grabWindow">QPixmap::grabWindow</a>(wid);</span><br/>
+            </div></p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html#find">QWidget::find()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="133854010bd2d0b678caf6d6277b57690"></a>
+        WId windowAt  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">pos</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the native window system identifier of the window if any at <em>pos</em>.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qapplication.html#widgetAt">QApplication::widgetAt()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1539106c49b2eca630e8df41982e6728d"></a>
+        QString windowTitle  (   <span class="memberdef_type">WId</span>    <span class="memberdef_declname">window</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the title of the native <em>window</em>.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> QWidget::windowTitle(), <a class="reflink" href="classQxtWindowSystem.html#1755ec1f32d774d67a92cbe01a1a7158a">windowTitles()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1755ec1f32d774d67a92cbe01a1a7158a"></a>
+        QStringList windowTitles  (  )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns a list of native window titles.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> QWidget::windowTitle(), <a class="reflink" href="classQxtWindowSystem.html#1539106c49b2eca630e8df41982e6728d">windowTitle()</a>, <a class="reflink" href="classQxtWindowSystem.html#185949d6946e65ec035b3cabbd98760d8">windows()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c9554ae83f1046cf4745a70d8c4e1fca"></a>
+        QRect windowGeometry  (   <span class="memberdef_type">WId</span>    <span class="memberdef_declname">window</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the geometry of the native <em>window</em>.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> QWidget::frameGeometry() </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b58261f49fd45a7363d1abd7dfea831f"></a>
+        uint idleTime  (  )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the system "idle time" ie. the time since last user input in milliseconds. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

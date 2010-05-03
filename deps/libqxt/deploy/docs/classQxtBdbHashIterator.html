@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtBdbHashIterator</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtBdbHashIterator Class Reference<br/>
+            <sup><sup>[<a href="group__QxtBerkeley.html">QxtBerkeley</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        provides a fast iterator over a QxtBdbHash
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtBdbHashIterator&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtBdbHashIterator-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtBdbHashIterator.html#1c7fef3e6248b4f7a56280ee4e477f235">QxtBdbHashIterator</a>  (  ) </li>
+            <li> <a href="classQxtBdbHashIterator.html#1c6179e339acfe49eb1863b3ff2607e13">QxtBdbHashIterator</a>  (   <span class="memberdef_type">const <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a>&lt; KEY, VAL &gt; &</span>    <span class="memberdef_declname">other</span>     ) </li>
+            <li>QxtBdbHashIterator & <a href="classQxtBdbHashIterator.html#1a1987322da3330354c2f8c6b0782f91a">operator=</a>  (   <span class="memberdef_type">const <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a>&lt; KEY, VAL &gt; &</span>    <span class="memberdef_declname">other</span>     ) </li>
+            <li>bool <a href="classQxtBdbHashIterator.html#1b6cc51437fe9a4b050b942e02a450503">isValid</a>  (  )  const </li>
+            <li> <a href="classQxtBdbHashIterator.html#1c0e459b77770c1510ea4df18c47f789f">operator KEY</a>  (  )  const </li>
+            <li>KEY <a href="classQxtBdbHashIterator.html#127e2ee3d87f03e7ba412d4034fcc121b">key</a>  (  )  const </li>
+            <li>VAL <a href="classQxtBdbHashIterator.html#15c36d90173e6ed493201fd1f507f5d52">value</a>  (  )  const </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHashIterator.html#1c5e7da87855dd697b8a5b0365d3de7a7">operator+</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     )  const </li>
+            <li>QxtBdbHashIterator< KEY, VAL > & <a href="classQxtBdbHashIterator.html#10dade2186fee645096d530887d3fb641">operator++</a>  (  ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHashIterator.html#1abdef638b048b4def867a9cb23bbb365">operator++</a>  (   <span class="memberdef_type">int</span>     ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > & <a href="classQxtBdbHashIterator.html#1aa562686169295ae0baa5eb465123208">operator+=</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHashIterator.html#11ee93ac403d3d258c9e46fc6e2aedf48">operator-</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     )  const </li>
+            <li>QxtBdbHashIterator< KEY, VAL > & <a href="classQxtBdbHashIterator.html#1c30cb1a6c783c424bad9c2fc89fb4959">operator--</a>  (  ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHashIterator.html#1f6a4f62c191aebc6fdfd373ef88fae38">operator--</a>  (   <span class="memberdef_type">int</span>     ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > & <a href="classQxtBdbHashIterator.html#16347c08c4f1ea7e088d02b1281667dc7">operator-=</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHashIterator.html#1ace6df192ee6a972143a3a37e765d141">erase</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHash.html">QxtBdbHash</a></div>
+        <div class="simplesect" ><img src="implicitshared.png" alt="implicit shared" /> <strong>This class is implicit shared.</strong></div> </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1c7fef3e6248b4f7a56280ee4e477f235"></a>
+         QxtBdbHashIterator  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs an invalid <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c6179e339acfe49eb1863b3ff2607e13"></a>
+         QxtBdbHashIterator  (   <span class="memberdef_type">const <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a>&lt; KEY, VAL &gt; &</span>    <span class="memberdef_declname">other</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>copy Constructor </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a1987322da3330354c2f8c6b0782f91a"></a>
+        QxtBdbHashIterator & operator=  (   <span class="memberdef_type">const <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a>&lt; KEY, VAL &gt; &</span>    <span class="memberdef_declname">other</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>copy assign </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b6cc51437fe9a4b050b942e02a450503"></a>
+        bool isValid  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>return true if the iterator is valid. Invalid iterators are unusable and accessing any function will fail. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c0e459b77770c1510ea4df18c47f789f"></a>
+         operator KEY  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>conversation operator to the current value.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHashIterator.html#127e2ee3d87f03e7ba412d4034fcc121b">key()</a>; </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="127e2ee3d87f03e7ba412d4034fcc121b"></a>
+        KEY key  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current key.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHashIterator.html#15c36d90173e6ed493201fd1f507f5d52">value()</a>; </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15c36d90173e6ed493201fd1f507f5d52"></a>
+        VAL value  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the current value.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHashIterator.html#127e2ee3d87f03e7ba412d4034fcc121b">key()</a>; </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c5e7da87855dd697b8a5b0365d3de7a7"></a>
+        QxtBdbHashIterator< KEY, VAL > operator+  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns an iterator to the item at j positions forward from this iterator. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="10dade2186fee645096d530887d3fb641"></a>
+        QxtBdbHashIterator< KEY, VAL > & operator++  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>The prefix ++ operator (++i) advances the iterator to the next item in the hash and returns an iterator to the new current item. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1abdef638b048b4def867a9cb23bbb365"></a>
+        QxtBdbHashIterator< KEY, VAL > operator++  (   <span class="memberdef_type">int</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>The postfix ++ operator (i++) advances the iterator to the next item in the hash and returns an iterator to the previously current item. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1aa562686169295ae0baa5eb465123208"></a>
+        QxtBdbHashIterator< KEY, VAL > & operator+=  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Advances the iterator by j items. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11ee93ac403d3d258c9e46fc6e2aedf48"></a>
+        QxtBdbHashIterator< KEY, VAL > operator-  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns an iterator to the item at j positions backward from this iterator. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c30cb1a6c783c424bad9c2fc89fb4959"></a>
+        QxtBdbHashIterator< KEY, VAL > & operator--  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>The prefix -- operator (--i) makes the preceding item current and returns an iterator pointing to the new current item. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f6a4f62c191aebc6fdfd373ef88fae38"></a>
+        QxtBdbHashIterator< KEY, VAL > operator--  (   <span class="memberdef_type">int</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>The postfix -- operator (i--) makes the preceding item current and returns an iterator pointing to the previously current item. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16347c08c4f1ea7e088d02b1281667dc7"></a>
+        QxtBdbHashIterator< KEY, VAL > & operator-=  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">j</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Makes the iterator go back by j items. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ace6df192ee6a972143a3a37e765d141"></a>
+        QxtBdbHashIterator< KEY, VAL > erase  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Removes the (key, value) pair associated with the iterator from the hash, and returns an iterator to the next item in the hash.</p><p>This instance is invalid then, and cannot be used further. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

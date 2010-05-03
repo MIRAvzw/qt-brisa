@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtPipe</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtPipe Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        a pipeable QIODevice
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtPipe&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtPipe-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtPipe.html#1ecb1af8e53eceb7329606520ea012efc">QxtPipe</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>bool <a href="classQxtPipe.html#10666edfec8e321db742b1db943fae486">connect</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtPipe.html">QxtPipe</a> *</span>    <span class="memberdef_declname">other</span>    ,   <span class="memberdef_type">QIODevice::OpenMode</span>    <span class="memberdef_declname">mode</span>  <span class="memberdef_defval">= QIODevice::ReadWrite</span>  ,   <span class="memberdef_type">Qt::ConnectionType</span>    <span class="memberdef_declname">connectionTyp</span>  connectionType<span class="memberdef_defval">= Qt::AutoConnection</span>   ) </li>
+            <li>bool <a href="classQxtPipe.html#146272022ea1afac8c01f0143256069af">disconnect</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtPipe.html">QxtPipe</a> *</span>    <span class="memberdef_declname">other</span>     ) </li>
+            <li>QxtPipe & <a href="classQxtPipe.html#11c459857a3f24f5ea404d72342abd87d">operator|</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtPipe.html">QxtPipe</a> &</span>    <span class="memberdef_declname">target</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-func"></a>
+    <h3>Protected Functions</h3>
+    <ul class="sectionlist">
+            <li> virtual void <a href="classQxtPipe.html#166cbf5da29c3e305c93e7d982e03d1dc">receiveData</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a></span>    <span class="memberdef_declname">data</span>  datab  ,   <span class="memberdef_type">const <a class="reflink" href="classQxtPipe.html">QxtPipe</a> *</span>    <span class="memberdef_declname">sender</span>     ) </li>
+            <li>void <a href="classQxtPipe.html#1cf5e5d34b045a037820ea2afa849f42b">sendData</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a></span>    <span class="memberdef_declname">data</span>     )  const </li>
+            <li>void <a href="classQxtPipe.html#1cb361157ddcd0530126ff7c4ebcec7f1">enqueData</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a></span>    <span class="memberdef_declname">data</span>  datab   ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Protected Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>pipes can be connected to other pipes, to exchange data <br/>
+        
+         The default implementation uses a buffer. <br/>
+        
+         Reimplement to make your custom class able to be connected into a pipe chain. <br/>
+        </p><p>Example usage: <div class="code"><span class="highlight_normal"  > <a class="reflink" href="classQxtPipe.html">QxtPipe</a> p1;</span><br/>
+        <span class="highlight_normal"  > <a class="reflink" href="classQxtPipe.html">QxtPipe</a> p2;</span><br/>
+        <span class="highlight_normal"  > <a class="reflink" href="classQxtPipe.html">QxtPipe</a> p3;</span><br/>
+        <span class="highlight_normal"  > p1|p2|p3;</span><br/>
+        <span class="highlight_normal"  > p1.<a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#write">write</a>(</span><span class="highlight_stringliteral"  >"hi. how are you?"</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  > qDebug()&lt;&lt;p3.<a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#readAll">readAll</a>();</span><br/>
+        <span class="highlight_normal"  > p3.<a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#write">write</a>(</span><span class="highlight_stringliteral"  >"I'm fine, thanks."</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  > qDebug()&lt;&lt;p1.<a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#readAll">readAll</a>();</span><br/>
+        </div></p><p><h4>Subclassing</h4></p><p>When implementing your own pipe element, like a de/encoder or something, you have to reimplement <a class="reflink" href="classQxtPipe.html#166cbf5da29c3e305c93e7d982e03d1dc">receiveData()</a> and call <a class="reflink" href="classQxtPipe.html#1cf5e5d34b045a037820ea2afa849f42b">sendData()</a> whenever you have something to send to the pipe network.</p><p>If you want to the user to be able to read from the device directly via the <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> facility you have to call enqueuData() too</p><p>If you don't want to the user to be able to write to the device directly via the <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> facility (that would be fatal for a decoder, for example), then reimplement the functions <a class="reflink" href="classQxtPipe.html#1412c30a3d710e204879651a95a15b09d">readData()</a> and <a class="reflink" href="classQxtPipe.html#148b0a21c464d5d9d3cacb8b90a7cf244">writeData()</a> and return 0.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtDeplex.html">QxtDeplex</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1ecb1af8e53eceb7329606520ea012efc"></a>
+         QxtPipe  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Contructs a new <a class="reflink" href="classQxtPipe.html">QxtPipe</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="10666edfec8e321db742b1db943fae486"></a>
+        bool connect  (   <span class="memberdef_type"><a class="reflink" href="classQxtPipe.html">QxtPipe</a> *</span>    <span class="memberdef_declname">other</span>    ,   <span class="memberdef_type">QIODevice::OpenMode</span>    <span class="memberdef_declname">mode</span>  <span class="memberdef_defval">= QIODevice::ReadWrite</span>  ,   <span class="memberdef_type">Qt::ConnectionType</span>    <span class="memberdef_declname">connectionTyp</span>  connectionType<span class="memberdef_defval">= Qt::AutoConnection</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>pipes the output of this instance to the other<a class="reflink" href="classQxtPipe.html">QxtPipe</a> using the given mode and connectiontype <br/>
+            
+             connection pipes with this function can be considered thread safe <br/>
+            </p><p>Example usage: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="classQxtPipe.html">QxtPipe</a> p1;</span><br/>
+            <span class="highlight_normal"  >    <a class="reflink" href="classQxtPipe.html">QxtPipe</a> p2;</span><br/>
+            <span class="highlight_normal"  >    p1.<a class="reflink" href="classQxtPipe.html#10666edfec8e321db742b1db943fae486">connect</a>(&p2,QIODevice::ReadOnly);</span><br/>
+            <span class="highlight_normal"  ></span><br/>
+            <span class="highlight_normal"  >    </span><span class="highlight_comment"  >//this data will go nowhere. p2 is connected to p1, but not p2 to p1.</span><span class="highlight_normal"  ></span><br/>
+            <span class="highlight_normal"  >    p1.<a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#write">write</a>(</span><span class="highlight_stringliteral"  >"hello"</span><span class="highlight_normal"  >);</span><br/>
+            <span class="highlight_normal"  ></span><br/>
+            <span class="highlight_normal"  >    </span><span class="highlight_comment"  >//while this data will end up in p1</span><span class="highlight_normal"  ></span><br/>
+            <span class="highlight_normal"  >    p2.<a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#write">write</a>(</span><span class="highlight_stringliteral"  >"world"</span><span class="highlight_normal"  >);</span><br/>
+            <span class="highlight_normal"  ></span><br/>
+            <span class="highlight_normal"  >    qDebug()&lt;&lt;p1.<a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#readAll">readAll</a>();</span><br/>
+            </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="146272022ea1afac8c01f0143256069af"></a>
+        bool disconnect  (   <span class="memberdef_type"><a class="reflink" href="classQxtPipe.html">QxtPipe</a> *</span>    <span class="memberdef_declname">other</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>cuts the connection to the other<a class="reflink" href="classQxtPipe.html">QxtPipe</a></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11c459857a3f24f5ea404d72342abd87d"></a>
+        QxtPipe & operator|  (   <span class="memberdef_type"><a class="reflink" href="classQxtPipe.html">QxtPipe</a> &</span>    <span class="memberdef_declname">target</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>convinence function for <a class="reflink" href="classQxtPipe.html#10666edfec8e321db742b1db943fae486">QxtPipe::connect</a>. pipes the output of this instance to the other<a class="reflink" href="classQxtPipe.html">QxtPipe</a> in readwrite mode with autoconnection </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="166cbf5da29c3e305c93e7d982e03d1dc"></a>
+         virtual void receiveData  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a></span>    <span class="memberdef_declname">data</span>  datab  ,   <span class="memberdef_type">const <a class="reflink" href="classQxtPipe.html">QxtPipe</a> *</span>    <span class="memberdef_declname">sender</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>receiveData is called from any connected pipe to input data into this instance. reimplement this function to handle data from the pipe network.</p><p>The default implementation calls enqueData and sendData </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cf5e5d34b045a037820ea2afa849f42b"></a>
+        void sendData  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a></span>    <span class="memberdef_declname">data</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>call this from your subclass to write data to the pipe network. All write connected pipes will be invoked with receiveData In this case this is called from receiveData, the sender will be excluded from the receiver list. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cb361157ddcd0530126ff7c4ebcec7f1"></a>
+        void enqueData  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a></span>    <span class="memberdef_declname">data</span>  datab   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>call this from your subclass to make data available to the <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html#read">QIODevice::read</a> facility </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

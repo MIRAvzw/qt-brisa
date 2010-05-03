@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtBdbHash</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtBdbHash Class Reference<br/>
+            <sup><sup>[<a href="group__QxtBerkeley.html">QxtBerkeley</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        template class that provides key/value access to a berkeley db file 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtBdbHash&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtBdbHash-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtBdbHash.html#18b2c05b466ad89632cc59faee7c51951">QxtBdbHash</a>  (  ) </li>
+            <li> <a href="classQxtBdbHash.html#1869c12fd002d11d1f147149aea6c04af">QxtBdbHash</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>    <span class="memberdef_declname">file</span>     ) </li>
+            <li>bool <a href="classQxtBdbHash.html#1d5cbf60bd04c339d2904ba6cde243a3d">open</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>    <span class="memberdef_declname">file</span>     ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHash.html#12268d9caeab4e7071389fe84f95637ae">begin</a>  (  ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHash.html#1de09ce8fc64a197406af247601a9ff07">end</a>  (  ) </li>
+            <li>QxtBdbHashIterator< KEY, VAL > <a href="classQxtBdbHash.html#16e4dab3a24a037406af101b50c87b73f">find</a>  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     ) </li>
+            <li>void <a href="classQxtBdbHash.html#1c95a03bc90a10197c09416ae21129cfe">clear</a>  (  ) </li>
+            <li>bool <a href="classQxtBdbHash.html#15c3455be00aef9bd384162b10e8dd36d">contains</a>  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     )  const </li>
+            <li>bool <a href="classQxtBdbHash.html#1f5857965c6845d31ace9cbdf6055d57d">remove</a>  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     ) </li>
+            <li>bool <a href="classQxtBdbHash.html#1a816325e53496fdcdb6eba49b9486469">insert</a>  (   <span class="memberdef_type">KEY</span>    <span class="memberdef_declname">k</span>    ,   <span class="memberdef_type">VAL</span>    <span class="memberdef_declname">v</span>     ) </li>
+            <li>const VAL <a href="classQxtBdbHash.html#1345afc11b2cdca29f8705854d0ed15a0">value</a>  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     )  const </li>
+            <li>const VAL <a href="classQxtBdbHash.html#11a7f545b56389b3667e23069bbd55c82">operator[]</a>  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     )  const </li>
+            <li>bool <a href="classQxtBdbHash.html#1124dd2b65f23469274a9627d7af2c897">flush</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>both value and key must be registered with the qt meta system.<br/>
+        
+         You may not touch the file while a <a class="reflink" href="classQxtBdbHash.html">QxtBdbHash</a> instance is running on it.</p><p>examples usage: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="classQxtBdbHash.html">QxtBdbHash&lt;qreal,QStringList&gt;</a> db(</span><span class="highlight_stringliteral"  >"test.db"</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  >    db.insert(344.4,<a class="reflink" href="http://doc.trolltech.com/latest/qstringlist.html">QStringList</a>&lt;&lt;</span><span class="highlight_stringliteral"  >"HI"</span><span class="highlight_normal"  >&lt;&lt;</span><span class="highlight_stringliteral"  >":)"</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  >    qDebug()&lt;&lt;db[344.4];</span><br/>
+        </div></p><p>There is an extensive example in /examples/berkeley/adressbook</p><p>All functions of this class are thread safe. Calling <a class="reflink" href="classQxtBdbHash.html#1d5cbf60bd04c339d2904ba6cde243a3d">open()</a> multiple times is undefined. An Iterator may only be used from one thread at once, but you can have multiple iterators.</p><p><div class="simplesect" ><img src="implicitshared.png" alt="implicit shared" /> <strong>This class is implicit shared.</strong></div> <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="18b2c05b466ad89632cc59faee7c51951"></a>
+         QxtBdbHash  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs an invalid <a class="reflink" href="classQxtBdbHash.html">QxtBdbHash</a></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1869c12fd002d11d1f147149aea6c04af"></a>
+         QxtBdbHash  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>    <span class="memberdef_declname">file</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a <a class="reflink" href="classQxtBdbHash.html">QxtBdbHash</a>, and opens the file specified as its database. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d5cbf60bd04c339d2904ba6cde243a3d"></a>
+        bool open  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a></span>    <span class="memberdef_declname">file</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>opens the specified file.</p><p>returns true on success and false on failure. <br/>
+            
+             Note that a sanity check is performed before opening the file. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12268d9caeab4e7071389fe84f95637ae"></a>
+        QxtBdbHashIterator< KEY, VAL > begin  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Erase all records. This does not delete the unerlieing file.</p><p>return an iterator to the first key,value pair <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1de09ce8fc64a197406af247601a9ff07"></a>
+        QxtBdbHashIterator< KEY, VAL > end  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>return an iterator to the last key,value pair <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16e4dab3a24a037406af101b50c87b73f"></a>
+        QxtBdbHashIterator< KEY, VAL > find  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>return an iterator to the position of the pair identified by <em>key</em><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtBdbHashIterator.html">QxtBdbHashIterator</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c95a03bc90a10197c09416ae21129cfe"></a>
+        void clear  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15c3455be00aef9bd384162b10e8dd36d"></a>
+        bool contains  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns true if there is a record for the specified key. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f5857965c6845d31ace9cbdf6055d57d"></a>
+        bool remove  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>removes all records with the specified key. returns true on success and false on failure. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a816325e53496fdcdb6eba49b9486469"></a>
+        bool insert  (   <span class="memberdef_type">KEY</span>    <span class="memberdef_declname">k</span>    ,   <span class="memberdef_type">VAL</span>    <span class="memberdef_declname">v</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>inserts a record with the specified key/value combination. replaces any record with the same key. <div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> when working with iterators, keep in mind that inserting pairs, works reverse to the iteration. </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1345afc11b2cdca29f8705854d0ed15a0"></a>
+        const VAL value  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns the value associated with the specified key, or a default contructed value, if no such key exists. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11a7f545b56389b3667e23069bbd55c82"></a>
+        const VAL operator[]  (   <span class="memberdef_type">const KEY &</span>    <span class="memberdef_declname">key</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>same as <a class="reflink" href="classQxtBdbHash.html#1345afc11b2cdca29f8705854d0ed15a0">value()</a>; </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1124dd2b65f23469274a9627d7af2c897"></a>
+        bool flush  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>flushes the unerlieing DB file. all changes are synced to disk. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

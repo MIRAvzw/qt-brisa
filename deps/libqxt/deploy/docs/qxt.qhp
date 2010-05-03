@@ -1,0 +1,1459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+     <namespace>org.qxt.libqxt.0.5</namespace>
+     <virtualFolder>doc</virtualFolder>
+     <customFilter name="Qt Extension Library 0.5">
+         <filterAttribute>Qt Extension Library</filterAttribute>
+         <filterAttribute>0.5</filterAttribute>
+     </customFilter>
+     <filterSection>
+         <filterAttribute>Qt Extension Library</filterAttribute>
+         <filterAttribute>0.5</filterAttribute>
+         <toc>
+             <section title="Qxt Reference Manual" ref="index.html">
+                <section title="Classes" ref="classes.html">
+                     <section title="QxtAbstractConnectionManager"  ref="classQxtAbstractConnectionManager.html"/>
+                     <section title="QxtAbstractFileLoggerEngine"  ref="classQxtAbstractFileLoggerEngine.html"/>
+                     <section title="QxtAbstractHttpConnector"  ref="classQxtAbstractHttpConnector.html"/>
+                     <section title="QxtAbstractIOLoggerEngine"  ref="classQxtAbstractIOLoggerEngine.html"/>
+                     <section title="QxtAbstractWebService"  ref="classQxtAbstractWebService.html"/>
+                     <section title="QxtAbstractWebSessionManager"  ref="classQxtAbstractWebSessionManager.html"/>
+                     <section title="QxtApplication"  ref="classQxtApplication.html"/>
+                     <section title="QxtBaseSpinBox"  ref="classQxtBaseSpinBox.html"/>
+                     <section title="QxtBasicFileLoggerEngine"  ref="classQxtBasicFileLoggerEngine.html"/>
+                     <section title="QxtBasicSTDLoggerEngine"  ref="classQxtBasicSTDLoggerEngine.html"/>
+                     <section title="QxtBdbHash"  ref="classQxtBdbHash.html"/>
+                     <section title="QxtBdbHashIterator"  ref="classQxtBdbHashIterator.html"/>
+                     <section title="QxtBdbTree"  ref="classQxtBdbTree.html"/>
+                     <section title="QxtBdbTreeIterator"  ref="classQxtBdbTreeIterator.html"/>
+                     <section title="QxtBlowfish"  ref="classQxtBlowfish.html"/>
+                     <section title="QxtCheckComboBox"  ref="classQxtCheckComboBox.html"/>
+                     <section title="QxtCommandOptions"  ref="classQxtCommandOptions.html"/>
+                     <section title="QxtConfigDialog"  ref="classQxtConfigDialog.html"/>
+                     <section title="QxtConfirmationMessage"  ref="classQxtConfirmationMessage.html"/>
+                     <section title="QxtCountryComboBox"  ref="classQxtCountryComboBox.html"/>
+                     <section title="QxtCountryModel"  ref="classQxtCountryModel.html"/>
+                     <section title="QxtCsvModel"  ref="classQxtCsvModel.html"/>
+                     <section title="QxtDaemon"  ref="classQxtDaemon.html"/>
+                     <section title="QxtDeplex"  ref="classQxtDeplex.html"/>
+                     <section title="QxtDockWidget"  ref="classQxtDockWidget.html"/>
+                     <section title="QxtError"  ref="classQxtError.html"/>
+                     <section title="QxtFifo"  ref="classQxtFifo.html"/>
+                     <section title="QxtFileLock"  ref="classQxtFileLock.html"/>
+                     <section title="QxtFlowView"  ref="classQxtFlowView.html"/>
+                     <section title="QxtFuture"  ref="classQxtFuture.html"/>
+                     <section title="QxtGlobalShortcut"  ref="classQxtGlobalShortcut.html"/>
+                     <section title="QxtGroupBox"  ref="classQxtGroupBox.html"/>
+                     <section title="QxtHash"  ref="classQxtHash.html"/>
+                     <section title="QxtHeaderView"  ref="classQxtHeaderView.html"/>
+                     <section title="QxtHtmlTemplate"  ref="classQxtHtmlTemplate.html"/>
+                     <section title="QxtHttpServerConnector"  ref="classQxtHttpServerConnector.html"/>
+                     <section title="QxtHttpSessionManager"  ref="classQxtHttpSessionManager.html"/>
+                     <section title="QxtItemDelegate"  ref="classQxtItemDelegate.html"/>
+                     <section title="QxtItemEditorCreator"  ref="classQxtItemEditorCreator.html"/>
+                     <section title="QxtItemEditorCreatorBase"  ref="classQxtItemEditorCreatorBase.html"/>
+                     <section title="QxtJob"  ref="classQxtJob.html"/>
+                     <section title="QxtLabel"  ref="classQxtLabel.html"/>
+                     <section title="QxtLanguageComboBox"  ref="classQxtLanguageComboBox.html"/>
+                     <section title="QxtLetterBoxWidget"  ref="classQxtLetterBoxWidget.html"/>
+                     <section title="QxtLineSocket"  ref="classQxtLineSocket.html"/>
+                     <section title="QxtLinkedTree"  ref="classQxtLinkedTree.html"/>
+                     <section title="QxtLinkedTreeIterator"  ref="classQxtLinkedTreeIterator.html"/>
+                     <section title="QxtListWidget"  ref="classQxtListWidget.html"/>
+                     <section title="QxtListWidgetItem"  ref="classQxtListWidgetItem.html"/>
+                     <section title="QxtLocale"  ref="classQxtLocale.html"/>
+                     <section title="QxtLogStream"  ref="classQxtLogStream.html"/>
+                     <section title="QxtLogger"  ref="classQxtLogger.html"/>
+                     <section title="QxtLoggerEngine"  ref="classQxtLoggerEngine.html"/>
+                     <section title="QxtMail"  ref="classQxtMail.html"/>
+                     <section title="QxtMetaObject"  ref="classQxtMetaObject.html"/>
+                     <section title="QxtMultiSignalWaiter"  ref="classQxtMultiSignalWaiter.html"/>
+                     <section title="QxtNativeEventFilter"  ref="classQxtNativeEventFilter.html"/>
+                     <section title="QxtNull"  ref="structQxtNull.html"/>
+                     <section title="QxtNullable"  ref="classQxtNullable.html"/>
+                     <section title="QxtPimpl"  ref="classQxtPimpl.html"/>
+                     <section title="QxtPipe"  ref="classQxtPipe.html"/>
+                     <section title="QxtPointerList"  ref="classQxtPointerList.html"/>
+                     <section title="QxtProgressLabel"  ref="classQxtProgressLabel.html"/>
+                     <section title="QxtProxyStyle"  ref="classQxtProxyStyle.html"/>
+                     <section title="QxtPushButton"  ref="classQxtPushButton.html"/>
+                     <section title="QxtRPCPeer"  ref="classQxtRPCPeer.html"/>
+                     <section title="QxtRPCService"  ref="classQxtRPCService.html"/>
+                     <section title="QxtScgiServerConnector"  ref="classQxtScgiServerConnector.html"/>
+                     <section title="QxtScheduleView"  ref="classQxtScheduleView.html"/>
+                     <section title="QxtSemaphore"  ref="classQxtSemaphore.html"/>
+                     <section title="QxtSendmail"  ref="classQxtSendmail.html"/>
+                     <section title="QxtSharedPrivate"  ref="classQxtSharedPrivate.html"/>
+                     <section title="QxtSignalGroup"  ref="classQxtSignalGroup.html"/>
+                     <section title="QxtSignalWaiter"  ref="classQxtSignalWaiter.html"/>
+                     <section title="QxtSlotJob"  ref="classQxtSlotJob.html"/>
+                     <section title="QxtSlotMapper"  ref="classQxtSlotMapper.html"/>
+                     <section title="QxtSpanSlider"  ref="classQxtSpanSlider.html"/>
+                     <section title="QxtSqlPackage"  ref="classQxtSqlPackage.html"/>
+                     <section title="QxtSqlPackageModel"  ref="classQxtSqlPackageModel.html"/>
+                     <section title="QxtStandardItemEditorCreator"  ref="classQxtStandardItemEditorCreator.html"/>
+                     <section title="QxtStars"  ref="classQxtStars.html"/>
+                     <section title="QxtStdStreambufDevice"  ref="classQxtStdStreambufDevice.html"/>
+                     <section title="QxtStdio"  ref="classQxtStdio.html"/>
+                     <section title="QxtStringSpinBox"  ref="classQxtStringSpinBox.html"/>
+                     <section title="QxtStringValidator"  ref="classQxtStringValidator.html"/>
+                     <section title="QxtTabBar"  ref="classQxtTabBar.html"/>
+                     <section title="QxtTabWidget"  ref="classQxtTabWidget.html"/>
+                     <section title="QxtTableWidget"  ref="classQxtTableWidget.html"/>
+                     <section title="QxtTableWidgetItem"  ref="classQxtTableWidgetItem.html"/>
+                     <section title="QxtTcpConnectionManager"  ref="classQxtTcpConnectionManager.html"/>
+                     <section title="QxtToolTip"  ref="classQxtToolTip.html"/>
+                     <section title="QxtTreeWidget"  ref="classQxtTreeWidget.html"/>
+                     <section title="QxtTreeWidgetItem"  ref="classQxtTreeWidgetItem.html"/>
+                     <section title="QxtWebCgiService"  ref="classQxtWebCgiService.html"/>
+                     <section title="QxtWebContent"  ref="classQxtWebContent.html"/>
+                     <section title="QxtWebErrorEvent"  ref="classQxtWebErrorEvent.html"/>
+                     <section title="QxtWebEvent"  ref="classQxtWebEvent.html"/>
+                     <section title="QxtWebPageEvent"  ref="classQxtWebPageEvent.html"/>
+                     <section title="QxtWebRedirectEvent"  ref="classQxtWebRedirectEvent.html"/>
+                     <section title="QxtWebRemoveCookieEvent"  ref="classQxtWebRemoveCookieEvent.html"/>
+                     <section title="QxtWebRequestEvent"  ref="classQxtWebRequestEvent.html"/>
+                     <section title="QxtWebServiceDirectory"  ref="classQxtWebServiceDirectory.html"/>
+                     <section title="QxtWebSlotService"  ref="classQxtWebSlotService.html"/>
+                     <section title="QxtWebStoreCookieEvent"  ref="classQxtWebStoreCookieEvent.html"/>
+                     <section title="QxtWindowSystem"  ref="classQxtWindowSystem.html"/>
+                     <section title="QxtXmlFileLoggerEngine"  ref="classQxtXmlFileLoggerEngine.html"/>
+                     
+                </section>
+             </section>
+         </toc>
+         <keywords>
+                <keyword name="QxtAbstractConnectionManager" id="class:QxtAbstractConnectionManager" ref="classQxtAbstractConnectionManager.html" />
+                <keyword name="clientCount" id="class:QxtAbstractConnectionManager::clientCount" ref="classQxtAbstractConnectionManager.html#16acccf8371202b1cd74992dbda272bed" />
+                <keyword name="clients" id="class:QxtAbstractConnectionManager::clients" ref="classQxtAbstractConnectionManager.html#13f56af8280c20210a4694d79a206d2bb" />
+                <keyword name="client" id="class:QxtAbstractConnectionManager::client" ref="classQxtAbstractConnectionManager.html#1c2c475e0e4dcf2431f20eaabbb44fd9c" />
+                <keyword name="isAcceptingConnections" id="class:QxtAbstractConnectionManager::isAcceptingConnections" ref="classQxtAbstractConnectionManager.html#1c16a3f73a5f26ce75ef7967dfc9c6e25" />
+                <keyword name="newConnection" id="class:QxtAbstractConnectionManager::newConnection" ref="classQxtAbstractConnectionManager.html#16088737547b42b28b29e4f7719c3e0fc" />
+                <keyword name="disconnected" id="class:QxtAbstractConnectionManager::disconnected" ref="classQxtAbstractConnectionManager.html#106913132eb9270d7037c26a8a045ee90" />
+                <keyword name="disconnect" id="class:QxtAbstractConnectionManager::disconnect" ref="classQxtAbstractConnectionManager.html#1906c87d49b2b465d06854d7eaf29be97" />
+                <keyword name="addConnection" id="class:QxtAbstractConnectionManager::addConnection" ref="classQxtAbstractConnectionManager.html#1e384843778af5ec30cba82870bfef5ee" />
+                <keyword name="removeConnection" id="class:QxtAbstractConnectionManager::removeConnection" ref="classQxtAbstractConnectionManager.html#1796c43f7c8996d21111a9e35141e0078" />
+                <keyword name="QxtAbstractFileLoggerEngine" id="class:QxtAbstractFileLoggerEngine" ref="classQxtAbstractFileLoggerEngine.html" />
+                <keyword name="~QxtAbstractFileLoggerEngine" id="class:QxtAbstractFileLoggerEngine::~QxtAbstractFileLoggerEngine" ref="classQxtAbstractFileLoggerEngine.html#184697e12d6b56c7dbea4c509820e0b72" />
+                <keyword name="setLogFileName" id="class:QxtAbstractFileLoggerEngine::setLogFileName" ref="classQxtAbstractFileLoggerEngine.html#1a1ef6f1a5331404fa1c570179299fe03" />
+                <keyword name="logFileName" id="class:QxtAbstractFileLoggerEngine::logFileName" ref="classQxtAbstractFileLoggerEngine.html#17af0aa523efea4a9c5b693b9cc8e3e2f" />
+                <keyword name="writeToFile" id="class:QxtAbstractFileLoggerEngine::writeToFile" ref="classQxtAbstractFileLoggerEngine.html#1d6eb59b9c89a04e5f583b217b0ff3c89" />
+                <keyword name="QxtAbstractHttpConnector" id="class:QxtAbstractHttpConnector" ref="classQxtAbstractHttpConnector.html" />
+                <keyword name="listen" id="class:QxtAbstractHttpConnector::listen" ref="classQxtAbstractHttpConnector.html#1cda112d498fcb274bd843aca5deea365" />
+                <keyword name="sessionManager" id="class:QxtAbstractHttpConnector::sessionManager" ref="classQxtAbstractHttpConnector.html#188f33edf3ad21adaf195ecf846d3f5e6" />
+                <keyword name="addConnection" id="class:QxtAbstractHttpConnector::addConnection" ref="classQxtAbstractHttpConnector.html#10aec454f20271be6c9c087b2e12fbb2c" />
+                <keyword name="canParseRequest" id="class:QxtAbstractHttpConnector::canParseRequest" ref="classQxtAbstractHttpConnector.html#149d287a799d4f07fb78803adc76032c4" />
+                <keyword name="parseRequest" id="class:QxtAbstractHttpConnector::parseRequest" ref="classQxtAbstractHttpConnector.html#1efaa71fed3832100acf8bbf432968d4f" />
+                <keyword name="writeHeaders" id="class:QxtAbstractHttpConnector::writeHeaders" ref="classQxtAbstractHttpConnector.html#1ecd487f983357c571dc287a64cf3422c" />
+                <keyword name="QxtAbstractIOLoggerEngine" id="class:QxtAbstractIOLoggerEngine" ref="classQxtAbstractIOLoggerEngine.html" />
+                <keyword name="setDevice" id="class:QxtAbstractIOLoggerEngine::setDevice" ref="classQxtAbstractIOLoggerEngine.html#1e5933dea7e8aa7e09cfc98dbbbbe1ca1" />
+                <keyword name="device" id="class:QxtAbstractIOLoggerEngine::device" ref="classQxtAbstractIOLoggerEngine.html#14077bae7eb54ca06546f05df69512837" />
+                <keyword name="QxtAbstractWebService" id="class:QxtAbstractWebService" ref="classQxtAbstractWebService.html" />
+                <keyword name="sessionManager" id="class:QxtAbstractWebService::sessionManager" ref="classQxtAbstractWebService.html#11ef5bf24883bea3dea78d567d57bda46" />
+                <keyword name="postEvent" id="class:QxtAbstractWebService::postEvent" ref="classQxtAbstractWebService.html#15487b2135d56fd87a50c058e4a5317d7" />
+                <keyword name="pageRequestedEvent" id="class:QxtAbstractWebService::pageRequestedEvent" ref="classQxtAbstractWebService.html#1ca8a326b48edd775ea52ec9c3dc8daba" />
+                <keyword name="QxtAbstractWebSessionManager" id="class:QxtAbstractWebSessionManager" ref="classQxtAbstractWebSessionManager.html" />
+                <keyword name="ServiceFactory" id="class:QxtAbstractWebSessionManager::ServiceFactory" ref="classQxtAbstractWebSessionManager.html#1c4ccda126fbf15b43b7d0fa6a3f8ffae" />
+                <keyword name="start" id="class:QxtAbstractWebSessionManager::start" ref="classQxtAbstractWebSessionManager.html#17073788d4579dea02455bab7fcd45aff" />
+                <keyword name="postEvent" id="class:QxtAbstractWebSessionManager::postEvent" ref="classQxtAbstractWebSessionManager.html#139940ff7c93e5694b979a494b9516f3c" />
+                <keyword name="setServiceFactory" id="class:QxtAbstractWebSessionManager::setServiceFactory" ref="classQxtAbstractWebSessionManager.html#1b59cd674e389d9a1322a1772a2659012" />
+                <keyword name="serviceFactory" id="class:QxtAbstractWebSessionManager::serviceFactory" ref="classQxtAbstractWebSessionManager.html#1a8ce3b712f665b03313a57c015b670fa" />
+                <keyword name="session" id="class:QxtAbstractWebSessionManager::session" ref="classQxtAbstractWebSessionManager.html#11474f40e016fdab2d0e5d1d70c632104" />
+                <keyword name="createService" id="class:QxtAbstractWebSessionManager::createService" ref="classQxtAbstractWebSessionManager.html#11d426f4d98a80c7150caccd2a06a80f7" />
+                <keyword name="processEvents" id="class:QxtAbstractWebSessionManager::processEvents" ref="classQxtAbstractWebSessionManager.html#175fdfab7ef3652d726f7506a6785e3ee" />
+                <keyword name="QxtApplication" id="class:QxtApplication" ref="classQxtApplication.html" />
+                <keyword name="~QxtApplication" id="class:QxtApplication::~QxtApplication" ref="classQxtApplication.html#1ca31c8f0e72d25ffc5881989c7393963" />
+                <keyword name="installNativeEventFilter" id="class:QxtApplication::installNativeEventFilter" ref="classQxtApplication.html#17f50170dc00d4246573ca70db9273277" />
+                <keyword name="removeNativeEventFilter" id="class:QxtApplication::removeNativeEventFilter" ref="classQxtApplication.html#16bed271219655e5c1bc42b7e2f9d9f2f" />
+                <keyword name="instance" id="class:QxtApplication::instance" ref="classQxtApplication.html#1938c7a60e2cf0642f1d808af3f02e50e" />
+                <keyword name="QxtBaseSpinBox" id="class:QxtBaseSpinBox" ref="classQxtBaseSpinBox.html" />
+                <keyword name="base" id="class:QxtBaseSpinBox::base" ref="classQxtBaseSpinBox.html#15e0205b0d5ddee430a22eb38d35db426" />
+                <keyword name="upperCase" id="class:QxtBaseSpinBox::upperCase" ref="classQxtBaseSpinBox.html#15712812ae4985cf8ecda2b4a7f30dd80" />
+                <keyword name="~QxtBaseSpinBox" id="class:QxtBaseSpinBox::~QxtBaseSpinBox" ref="classQxtBaseSpinBox.html#18afd77f94522cf2b59a49e8934378556" />
+                <keyword name="setBase" id="class:QxtBaseSpinBox::setBase" ref="classQxtBaseSpinBox.html#11d0a11f5541272aef85d94f3962727c1" />
+                <keyword name="baseChanged" id="class:QxtBaseSpinBox::baseChanged" ref="classQxtBaseSpinBox.html#1f8cc57085db6d17dd82bdcb01bb01057" />
+                <keyword name="QxtBasicFileLoggerEngine" id="class:QxtBasicFileLoggerEngine" ref="classQxtBasicFileLoggerEngine.html" />
+                <keyword name="QxtBasicSTDLoggerEngine" id="class:QxtBasicSTDLoggerEngine" ref="classQxtBasicSTDLoggerEngine.html" />
+                <keyword name="~QxtBasicSTDLoggerEngine" id="class:QxtBasicSTDLoggerEngine::~QxtBasicSTDLoggerEngine" ref="classQxtBasicSTDLoggerEngine.html#132ff1247bf92d9a8e8326bcdf8646c22" />
+                <keyword name="stdErrStream" id="class:QxtBasicSTDLoggerEngine::stdErrStream" ref="classQxtBasicSTDLoggerEngine.html#1e66bd7515c27088a72cb7d83c74c4ef5" />
+                <keyword name="stdOutStream" id="class:QxtBasicSTDLoggerEngine::stdOutStream" ref="classQxtBasicSTDLoggerEngine.html#1222db724e31f26c41ef2fcb4d2f1a43d" />
+                <keyword name="writeToStdErr" id="class:QxtBasicSTDLoggerEngine::writeToStdErr" ref="classQxtBasicSTDLoggerEngine.html#1012038102fefc38e53a89ee48ee17dd2" />
+                <keyword name="writeToStdOut" id="class:QxtBasicSTDLoggerEngine::writeToStdOut" ref="classQxtBasicSTDLoggerEngine.html#1f1b4ff58645eb75c53ed64d5047d30ec" />
+                <keyword name="QxtBdbHash" id="class:QxtBdbHash" ref="classQxtBdbHash.html" />
+                <keyword name="open" id="class:QxtBdbHash::open" ref="classQxtBdbHash.html#1d5cbf60bd04c339d2904ba6cde243a3d" />
+                <keyword name="begin" id="class:QxtBdbHash::begin" ref="classQxtBdbHash.html#12268d9caeab4e7071389fe84f95637ae" />
+                <keyword name="end" id="class:QxtBdbHash::end" ref="classQxtBdbHash.html#1de09ce8fc64a197406af247601a9ff07" />
+                <keyword name="find" id="class:QxtBdbHash::find" ref="classQxtBdbHash.html#16e4dab3a24a037406af101b50c87b73f" />
+                <keyword name="clear" id="class:QxtBdbHash::clear" ref="classQxtBdbHash.html#1c95a03bc90a10197c09416ae21129cfe" />
+                <keyword name="contains" id="class:QxtBdbHash::contains" ref="classQxtBdbHash.html#15c3455be00aef9bd384162b10e8dd36d" />
+                <keyword name="remove" id="class:QxtBdbHash::remove" ref="classQxtBdbHash.html#1f5857965c6845d31ace9cbdf6055d57d" />
+                <keyword name="insert" id="class:QxtBdbHash::insert" ref="classQxtBdbHash.html#1a816325e53496fdcdb6eba49b9486469" />
+                <keyword name="value" id="class:QxtBdbHash::value" ref="classQxtBdbHash.html#1345afc11b2cdca29f8705854d0ed15a0" />
+                <keyword name="operator[]" id="class:QxtBdbHash::operator[]" ref="classQxtBdbHash.html#11a7f545b56389b3667e23069bbd55c82" />
+                <keyword name="flush" id="class:QxtBdbHash::flush" ref="classQxtBdbHash.html#1124dd2b65f23469274a9627d7af2c897" />
+                <keyword name="QxtBdbHashIterator" id="class:QxtBdbHashIterator" ref="classQxtBdbHashIterator.html" />
+                <keyword name="operator=" id="class:QxtBdbHashIterator::operator=" ref="classQxtBdbHashIterator.html#1a1987322da3330354c2f8c6b0782f91a" />
+                <keyword name="isValid" id="class:QxtBdbHashIterator::isValid" ref="classQxtBdbHashIterator.html#1b6cc51437fe9a4b050b942e02a450503" />
+                <keyword name="operator KEY" id="class:QxtBdbHashIterator::operator KEY" ref="classQxtBdbHashIterator.html#1c0e459b77770c1510ea4df18c47f789f" />
+                <keyword name="key" id="class:QxtBdbHashIterator::key" ref="classQxtBdbHashIterator.html#127e2ee3d87f03e7ba412d4034fcc121b" />
+                <keyword name="value" id="class:QxtBdbHashIterator::value" ref="classQxtBdbHashIterator.html#15c36d90173e6ed493201fd1f507f5d52" />
+                <keyword name="operator+" id="class:QxtBdbHashIterator::operator+" ref="classQxtBdbHashIterator.html#1c5e7da87855dd697b8a5b0365d3de7a7" />
+                <keyword name="operator++" id="class:QxtBdbHashIterator::operator++" ref="classQxtBdbHashIterator.html#10dade2186fee645096d530887d3fb641" />
+                <keyword name="operator++" id="class:QxtBdbHashIterator::operator++" ref="classQxtBdbHashIterator.html#1abdef638b048b4def867a9cb23bbb365" />
+                <keyword name="operator+=" id="class:QxtBdbHashIterator::operator+=" ref="classQxtBdbHashIterator.html#1aa562686169295ae0baa5eb465123208" />
+                <keyword name="operator-" id="class:QxtBdbHashIterator::operator-" ref="classQxtBdbHashIterator.html#11ee93ac403d3d258c9e46fc6e2aedf48" />
+                <keyword name="operator--" id="class:QxtBdbHashIterator::operator--" ref="classQxtBdbHashIterator.html#1c30cb1a6c783c424bad9c2fc89fb4959" />
+                <keyword name="operator--" id="class:QxtBdbHashIterator::operator--" ref="classQxtBdbHashIterator.html#1f6a4f62c191aebc6fdfd373ef88fae38" />
+                <keyword name="operator-=" id="class:QxtBdbHashIterator::operator-=" ref="classQxtBdbHashIterator.html#16347c08c4f1ea7e088d02b1281667dc7" />
+                <keyword name="erase" id="class:QxtBdbHashIterator::erase" ref="classQxtBdbHashIterator.html#1ace6df192ee6a972143a3a37e765d141" />
+                <keyword name="QxtBdbTree" id="class:QxtBdbTree" ref="classQxtBdbTree.html" />
+                <keyword name="open" id="class:QxtBdbTree::open" ref="classQxtBdbTree.html#132daaad953219b5bf3c5620711e7159b" />
+                <keyword name="clear" id="class:QxtBdbTree::clear" ref="classQxtBdbTree.html#13620f72f72e43f13b21944ddbc498ace" />
+                <keyword name="flush" id="class:QxtBdbTree::flush" ref="classQxtBdbTree.html#1ba88a7a64f5923fdf03b889c3b7087c2" />
+                <keyword name="root" id="class:QxtBdbTree::root" ref="classQxtBdbTree.html#12fa944b6d32264d0a90c58574bad4d4f" />
+                <keyword name="dumpTree" id="class:QxtBdbTree::dumpTree" ref="classQxtBdbTree.html#1e83610a22960b12db697062d4871d5b7" />
+                <keyword name="QxtBdbTreeIterator" id="class:QxtBdbTreeIterator" ref="classQxtBdbTreeIterator.html" />
+                <keyword name="~QxtBdbTreeIterator" id="class:QxtBdbTreeIterator::~QxtBdbTreeIterator" ref="classQxtBdbTreeIterator.html#1ffdde181a957f478bdfab78c752ca959" />
+                <keyword name="operator=" id="class:QxtBdbTreeIterator::operator=" ref="classQxtBdbTreeIterator.html#1c2483a96e15b3810622c324504789117" />
+                <keyword name="isValid" id="class:QxtBdbTreeIterator::isValid" ref="classQxtBdbTreeIterator.html#1ac782b406552cbfea15fff75c0db60fe" />
+                <keyword name="operator T" id="class:QxtBdbTreeIterator::operator T" ref="classQxtBdbTreeIterator.html#16a48808acef8a601f7376dbb94fcc06b" />
+                <keyword name="value" id="class:QxtBdbTreeIterator::value" ref="classQxtBdbTreeIterator.html#1d863436017b87f99307bb84d18887536" />
+                <keyword name="setValue" id="class:QxtBdbTreeIterator::setValue" ref="classQxtBdbTreeIterator.html#1b44488ffd1d987dd0c054d84918ec4ec" />
+                <keyword name="parent" id="class:QxtBdbTreeIterator::parent" ref="classQxtBdbTreeIterator.html#13193a686508549dea0d169d7cd1099ae" />
+                <keyword name="next" id="class:QxtBdbTreeIterator::next" ref="classQxtBdbTreeIterator.html#11fbedd0b6d710c7b999477a51ebbcdc8" />
+                <keyword name="previous" id="class:QxtBdbTreeIterator::previous" ref="classQxtBdbTreeIterator.html#1e284739ef9e3f009b900723d6f581bc0" />
+                <keyword name="child" id="class:QxtBdbTreeIterator::child" ref="classQxtBdbTreeIterator.html#1300c2f5e494b3c784aca5dfd2f70ce42" />
+                <keyword name="operator+" id="class:QxtBdbTreeIterator::operator+" ref="classQxtBdbTreeIterator.html#1f870acf3290bf49866c13aa7d84faa2d" />
+                <keyword name="operator++" id="class:QxtBdbTreeIterator::operator++" ref="classQxtBdbTreeIterator.html#19da864f3b97ef278e2bfa717929fe81a" />
+                <keyword name="operator++" id="class:QxtBdbTreeIterator::operator++" ref="classQxtBdbTreeIterator.html#153c7f0077d4badbf4462b0198184892d" />
+                <keyword name="operator+=" id="class:QxtBdbTreeIterator::operator+=" ref="classQxtBdbTreeIterator.html#186c96db3b0f5676138149a2048e2a395" />
+                <keyword name="operator-" id="class:QxtBdbTreeIterator::operator-" ref="classQxtBdbTreeIterator.html#1c122d0b7dfa3444cd96487a045e4e74c" />
+                <keyword name="operator--" id="class:QxtBdbTreeIterator::operator--" ref="classQxtBdbTreeIterator.html#1ed32e703b3f981d7604f6590ced7be82" />
+                <keyword name="operator--" id="class:QxtBdbTreeIterator::operator--" ref="classQxtBdbTreeIterator.html#1d9ebea96cd8b93f733600e2f07489338" />
+                <keyword name="operator-=" id="class:QxtBdbTreeIterator::operator-=" ref="classQxtBdbTreeIterator.html#1a1a7b3a39d8687e7e36954b5fcd4972e" />
+                <keyword name="append" id="class:QxtBdbTreeIterator::append" ref="classQxtBdbTreeIterator.html#12c359c8470d9c25e9ebbda79d73e4f3d" />
+                <keyword name="prepend" id="class:QxtBdbTreeIterator::prepend" ref="classQxtBdbTreeIterator.html#144478c3e66bace25274f8957beeecd6a" />
+                <keyword name="erase" id="class:QxtBdbTreeIterator::erase" ref="classQxtBdbTreeIterator.html#13f9488535580700bdb242e64c68c3f25" />
+                <keyword name="level" id="class:QxtBdbTreeIterator::level" ref="classQxtBdbTreeIterator.html#1c8b1ff3e677e89059d2f70f20ab0144c" />
+                <keyword name="invalidate" id="class:QxtBdbTreeIterator::invalidate" ref="classQxtBdbTreeIterator.html#12893f329f4651ccf021ec05f47768321" />
+                <keyword name="QxtBlowfish" id="class:QxtBlowfish" ref="classQxtBlowfish.html" />
+                <keyword name="~QxtBlowfish" id="class:QxtBlowfish::~QxtBlowfish" ref="classQxtBlowfish.html#1dc078e778439249ac99f7eb4896ca6dd" />
+                <keyword name="key" id="class:QxtBlowfish::key" ref="classQxtBlowfish.html#1c1f204651a5d787fd80484e139942f5e" />
+                <keyword name="setKey" id="class:QxtBlowfish::setKey" ref="classQxtBlowfish.html#1f5eaa85c3bfd5c30c0329fda972bea28" />
+                <keyword name="encrypt" id="class:QxtBlowfish::encrypt" ref="classQxtBlowfish.html#176551c3c14fc521599012066d0907d11" />
+                <keyword name="decrypt" id="class:QxtBlowfish::decrypt" ref="classQxtBlowfish.html#105539c9f6b97c1262fdbcff0bef24a7b" />
+                <keyword name="encrypted" id="class:QxtBlowfish::encrypted" ref="classQxtBlowfish.html#1b235a40d63227d5fd3817fdf5b9701ba" />
+                <keyword name="decrypted" id="class:QxtBlowfish::decrypted" ref="classQxtBlowfish.html#1371f8926334b21edd25c01285fed5dbf" />
+                <keyword name="QxtCheckComboBox" id="class:QxtCheckComboBox" ref="classQxtCheckComboBox.html" />
+                <keyword name="separator" id="class:QxtCheckComboBox::separator" ref="classQxtCheckComboBox.html#1656f5a7488c6f8b71d653596799a9281" />
+                <keyword name="defaultText" id="class:QxtCheckComboBox::defaultText" ref="classQxtCheckComboBox.html#16ddab98d38c229412a060321f1640a3f" />
+                <keyword name="checkedItems" id="class:QxtCheckComboBox::checkedItems" ref="classQxtCheckComboBox.html#16a59cb8c831df353da849273131b3d0a" />
+                <keyword name="~QxtCheckComboBox" id="class:QxtCheckComboBox::~QxtCheckComboBox" ref="classQxtCheckComboBox.html#1dc6c67fe288f48125849e8e2b79cdb3b" />
+                <keyword name="itemCheckState" id="class:QxtCheckComboBox::itemCheckState" ref="classQxtCheckComboBox.html#1e3a6a7dec06db4cdf7793572d3aae4dc" />
+                <keyword name="setItemCheckState" id="class:QxtCheckComboBox::setItemCheckState" ref="classQxtCheckComboBox.html#147e17f263a7b4c443172355e73c39802" />
+                <keyword name="setCheckedItems" id="class:QxtCheckComboBox::setCheckedItems" ref="classQxtCheckComboBox.html#1ad012b000d82a66ee34cf3908acdc520" />
+                <keyword name="checkedItemsChanged" id="class:QxtCheckComboBox::checkedItemsChanged" ref="classQxtCheckComboBox.html#1c3c7d2e38bb500b0276e23537e9c664d" />
+                <keyword name="QxtCommandOptions" id="class:QxtCommandOptions" ref="classQxtCommandOptions.html" />
+                <keyword name="FlagStyle" id="class:QxtCommandOptions::FlagStyle" ref="classQxtCommandOptions.html#1b98df55f7a3c31cc344eb62a9d1da987" />
+                <keyword name="ParamStyle" id="class:QxtCommandOptions::ParamStyle" ref="classQxtCommandOptions.html#183cc759ff004f1679e65b5c5fb5b4156" />
+                <keyword name="ParamType" id="class:QxtCommandOptions::ParamType" ref="classQxtCommandOptions.html#1f42d6739d40cddc0ad76ee9eac6bf6de" />
+                <keyword name="setFlagStyle" id="class:QxtCommandOptions::setFlagStyle" ref="classQxtCommandOptions.html#1ee0e55fb999ea249d14299bd4ddcc6d3" />
+                <keyword name="flagStyle" id="class:QxtCommandOptions::flagStyle" ref="classQxtCommandOptions.html#1860e62d559ab5cb31309d6c478f7964b" />
+                <keyword name="setParamStyle" id="class:QxtCommandOptions::setParamStyle" ref="classQxtCommandOptions.html#1f4c1caa2e2c5a47b5ed27aefaabe6655" />
+                <keyword name="paramStyle" id="class:QxtCommandOptions::paramStyle" ref="classQxtCommandOptions.html#115e99a0782c4654a26f2e6b0076c709e" />
+                <keyword name="setScreenWidth" id="class:QxtCommandOptions::setScreenWidth" ref="classQxtCommandOptions.html#1b1ed395d9921eb723a685a05a513d6af" />
+                <keyword name="screenWidth" id="class:QxtCommandOptions::screenWidth" ref="classQxtCommandOptions.html#1d262c7f3767194b568da87566f73badf" />
+                <keyword name="addSection" id="class:QxtCommandOptions::addSection" ref="classQxtCommandOptions.html#16de265a36c3a78edf294ad4ea81b39cc" />
+                <keyword name="add" id="class:QxtCommandOptions::add" ref="classQxtCommandOptions.html#1eb3fea634fbbb9bdfde26ed7faa31a42" />
+                <keyword name="alias" id="class:QxtCommandOptions::alias" ref="classQxtCommandOptions.html#1eacb0c89b55e8b8815ee585a093f0bdc" />
+                <keyword name="positional" id="class:QxtCommandOptions::positional" ref="classQxtCommandOptions.html#139c5e9abc7fa620d669f06bf2640fee9" />
+                <keyword name="unrecognized" id="class:QxtCommandOptions::unrecognized" ref="classQxtCommandOptions.html#18c60e3ec7aed8bf2d57dba84eb1c6faa" />
+                <keyword name="count" id="class:QxtCommandOptions::count" ref="classQxtCommandOptions.html#13d21c99724e4a44dcb8a2e3fb5a77664" />
+                <keyword name="value" id="class:QxtCommandOptions::value" ref="classQxtCommandOptions.html#175fa2e6f1e41f5c91c823bab730f3557" />
+                <keyword name="parameters" id="class:QxtCommandOptions::parameters" ref="classQxtCommandOptions.html#1b73a963514ac912a9b0e2068af887d8d" />
+                <keyword name="parse" id="class:QxtCommandOptions::parse" ref="classQxtCommandOptions.html#1270f8ca6840b82b19dd7a129d62938d0" />
+                <keyword name="parse" id="class:QxtCommandOptions::parse" ref="classQxtCommandOptions.html#166c23d52f8afcd7e013cde50f41b0682" />
+                <keyword name="showUsage" id="class:QxtCommandOptions::showUsage" ref="classQxtCommandOptions.html#13d24c6dcfde669ab434fd0b30ae8a4f2" />
+                <keyword name="showUsage" id="class:QxtCommandOptions::showUsage" ref="classQxtCommandOptions.html#167e2f54a80683bd768beff7af1ee26ba" />
+                <keyword name="getUsage" id="class:QxtCommandOptions::getUsage" ref="classQxtCommandOptions.html#138433d6e54ae929c171d76a9d6a4c4c8" />
+                <keyword name="showUnrecognizedWarning" id="class:QxtCommandOptions::showUnrecognizedWarning" ref="classQxtCommandOptions.html#105d5ff33e3b4706d0a052629ae166521" />
+                <keyword name="showUnrecognizedWarning" id="class:QxtCommandOptions::showUnrecognizedWarning" ref="classQxtCommandOptions.html#12a8f58913a487bbd3a444403d5b9cc13" />
+                <keyword name="getUnrecognizedWarning" id="class:QxtCommandOptions::getUnrecognizedWarning" ref="classQxtCommandOptions.html#150f1cb0654a31203f750522cdbf42eaa" />
+                <keyword name="QxtConfigDialog" id="class:QxtConfigDialog" ref="classQxtConfigDialog.html" />
+                <keyword name="IconPosition" id="class:QxtConfigDialog::IconPosition" ref="classQxtConfigDialog.html#1fb46c455dbfe128a2c0d7a9aa4ae87bf" />
+                <keyword name="count" id="class:QxtConfigDialog::count" ref="classQxtConfigDialog.html#131f816a4ba4b548ada9c5ef1c53b3a5c" />
+                <keyword name="currentIndex" id="class:QxtConfigDialog::currentIndex" ref="classQxtConfigDialog.html#1921a0158cd59ee1020f605a13aa0d610" />
+                <keyword name="hoverEffect" id="class:QxtConfigDialog::hoverEffect" ref="classQxtConfigDialog.html#1d3b60daee59cc4f56ad2b4bc1cefa341" />
+                <keyword name="iconPosition" id="class:QxtConfigDialog::iconPosition" ref="classQxtConfigDialog.html#153029dfbc3fb34a85f9bf959ff1108af" />
+                <keyword name="iconSize" id="class:QxtConfigDialog::iconSize" ref="classQxtConfigDialog.html#128ffb796a48d1eb76995a87cfc4037ba" />
+                <keyword name="~QxtConfigDialog" id="class:QxtConfigDialog::~QxtConfigDialog" ref="classQxtConfigDialog.html#1fbad10d63be1672c5ff7ece1d041753b" />
+                <keyword name="dialogButtonBox" id="class:QxtConfigDialog::dialogButtonBox" ref="classQxtConfigDialog.html#157782ac22854c8d11e8ce61f83cfa541" />
+                <keyword name="setDialogButtonBox" id="class:QxtConfigDialog::setDialogButtonBox" ref="classQxtConfigDialog.html#12c8d0439801e3423ebbc454d1ac70b88" />
+                <keyword name="addPage" id="class:QxtConfigDialog::addPage" ref="classQxtConfigDialog.html#1757f257f7c29d644d66b842bccc7ef6a" />
+                <keyword name="insertPage" id="class:QxtConfigDialog::insertPage" ref="classQxtConfigDialog.html#13c348da9223fc9f2c767f27376a716ef" />
+                <keyword name="takePage" id="class:QxtConfigDialog::takePage" ref="classQxtConfigDialog.html#1ac8575e4cf5041972c882efc44552b3b" />
+                <keyword name="currentPage" id="class:QxtConfigDialog::currentPage" ref="classQxtConfigDialog.html#12611d66558b1e511c3eefc90f022222d" />
+                <keyword name="indexOf" id="class:QxtConfigDialog::indexOf" ref="classQxtConfigDialog.html#14a0eae141f67b27c2262a24d17f1f216" />
+                <keyword name="page" id="class:QxtConfigDialog::page" ref="classQxtConfigDialog.html#1302cdbb9571ff98951c4a39b43c7789b" />
+                <keyword name="isPageEnabled" id="class:QxtConfigDialog::isPageEnabled" ref="classQxtConfigDialog.html#1d2767127e4402668a7fd159686a6ac0f" />
+                <keyword name="setPageEnabled" id="class:QxtConfigDialog::setPageEnabled" ref="classQxtConfigDialog.html#14cb4f0b4edc82c91188b413613fd7aae" />
+                <keyword name="isPageHidden" id="class:QxtConfigDialog::isPageHidden" ref="classQxtConfigDialog.html#12372a328233fd0f452e410fcaf9dd71c" />
+                <keyword name="setPageHidden" id="class:QxtConfigDialog::setPageHidden" ref="classQxtConfigDialog.html#14ec6e20380f1709e60e7ffad2226af0a" />
+                <keyword name="pageIcon" id="class:QxtConfigDialog::pageIcon" ref="classQxtConfigDialog.html#1ea09a1c149fdf05321001a62ca1b8bc9" />
+                <keyword name="setPageIcon" id="class:QxtConfigDialog::setPageIcon" ref="classQxtConfigDialog.html#14e723acd281147346cfbaa4db05bd56a" />
+                <keyword name="pageTitle" id="class:QxtConfigDialog::pageTitle" ref="classQxtConfigDialog.html#18f4130cc99d66242be9c25a54ae6955a" />
+                <keyword name="setPageTitle" id="class:QxtConfigDialog::setPageTitle" ref="classQxtConfigDialog.html#1a62e57beca853057af4a3fe08a9eb29f" />
+                <keyword name="pageToolTip" id="class:QxtConfigDialog::pageToolTip" ref="classQxtConfigDialog.html#1683c9a82384338ae510c8b93631e6212" />
+                <keyword name="setPageToolTip" id="class:QxtConfigDialog::setPageToolTip" ref="classQxtConfigDialog.html#117f8bd3d9df8a783143e8e1c724de6c8" />
+                <keyword name="pageWhatsThis" id="class:QxtConfigDialog::pageWhatsThis" ref="classQxtConfigDialog.html#1cecc4d91e5e0109b5b87fe9959f0dda3" />
+                <keyword name="setPageWhatsThis" id="class:QxtConfigDialog::setPageWhatsThis" ref="classQxtConfigDialog.html#142c52f07e851ebfede6849f0c6bc94f0" />
+                <keyword name="setCurrentIndex" id="class:QxtConfigDialog::setCurrentIndex" ref="classQxtConfigDialog.html#12c783ae6041904e97aab72530396fb71" />
+                <keyword name="setCurrentPage" id="class:QxtConfigDialog::setCurrentPage" ref="classQxtConfigDialog.html#116b7588e1b93dfdc6bb991d2667407e6" />
+                <keyword name="accept" id="class:QxtConfigDialog::accept" ref="classQxtConfigDialog.html#18be444973ce9341e10610beb1cf7327d" />
+                <keyword name="reject" id="class:QxtConfigDialog::reject" ref="classQxtConfigDialog.html#148076a45465b0249fe7e31301e6953e2" />
+                <keyword name="currentIndexChanged" id="class:QxtConfigDialog::currentIndexChanged" ref="classQxtConfigDialog.html#16c970641003999796e3fd0b0d67e4709" />
+                <keyword name="tableWidget" id="class:QxtConfigDialog::tableWidget" ref="classQxtConfigDialog.html#1b76fb752bada6f5283c32d0c07b9692d" />
+                <keyword name="stackedWidget" id="class:QxtConfigDialog::stackedWidget" ref="classQxtConfigDialog.html#101e52ffe2f09455bee2ada0302419d34" />
+                <keyword name="cleanupPage" id="class:QxtConfigDialog::cleanupPage" ref="classQxtConfigDialog.html#181ee87861cb6f8f5b1360aafe1d0b48f" />
+                <keyword name="initializePage" id="class:QxtConfigDialog::initializePage" ref="classQxtConfigDialog.html#12c8520802c0625b9b10064bece37f1c7" />
+                <keyword name="QxtConfirmationMessage" id="class:QxtConfirmationMessage" ref="classQxtConfirmationMessage.html" />
+                <keyword name="confirmationText" id="class:QxtConfirmationMessage::confirmationText" ref="classQxtConfirmationMessage.html#12006266d8affe781174cf585ff8d4abc" />
+                <keyword name="overrideSettingsApplication" id="class:QxtConfirmationMessage::overrideSettingsApplication" ref="classQxtConfirmationMessage.html#1dac301504c435f115da8bae29dbdbed3" />
+                <keyword name="overrideSettingsKey" id="class:QxtConfirmationMessage::overrideSettingsKey" ref="classQxtConfirmationMessage.html#1c5b303c6c57e75fdc1aab1d7c3923d8c" />
+                <keyword name="overrideSettingsOrganization" id="class:QxtConfirmationMessage::overrideSettingsOrganization" ref="classQxtConfirmationMessage.html#106871a999293732ad97e7171f607e378" />
+                <keyword name="rememberOnReject" id="class:QxtConfirmationMessage::rememberOnReject" ref="classQxtConfirmationMessage.html#1722f01709c47e136efa41bf5806aa674" />
+                <keyword name="~QxtConfirmationMessage" id="class:QxtConfirmationMessage::~QxtConfirmationMessage" ref="classQxtConfirmationMessage.html#1d21d1294b50eca61c8de11e17a68f190" />
+                <keyword name="settingsFormat" id="class:QxtConfirmationMessage::settingsFormat" ref="classQxtConfirmationMessage.html#11779500d9def4521d2054b8bb994bbb6" />
+                <keyword name="setSettingsFormat" id="class:QxtConfirmationMessage::setSettingsFormat" ref="classQxtConfirmationMessage.html#1310ffa8250c8aeea795239051dbc6b63" />
+                <keyword name="settingsScope" id="class:QxtConfirmationMessage::settingsScope" ref="classQxtConfirmationMessage.html#1bd20351810a77e45608f3a2c59867e1b" />
+                <keyword name="setSettingsScope" id="class:QxtConfirmationMessage::setSettingsScope" ref="classQxtConfirmationMessage.html#130b3ff7b28881cf97d20b179632106ee" />
+                <keyword name="settingsPath" id="class:QxtConfirmationMessage::settingsPath" ref="classQxtConfirmationMessage.html#1da0fbd70b86b73e36857391297224019" />
+                <keyword name="setSettingsPath" id="class:QxtConfirmationMessage::setSettingsPath" ref="classQxtConfirmationMessage.html#1d6873100e70647724cd1e2d7c0da2adf" />
+                <keyword name="exec" id="class:QxtConfirmationMessage::exec" ref="classQxtConfirmationMessage.html#1cf11a522244c7ffd61634178a70c56e0" />
+                <keyword name="reset" id="class:QxtConfirmationMessage::reset" ref="classQxtConfirmationMessage.html#10e1dc468babf30c170d5771a58b8134e" />
+                <keyword name="QxtCountryComboBox" id="class:QxtCountryComboBox" ref="classQxtCountryComboBox.html" />
+                <keyword name="currentCountryName" id="class:QxtCountryComboBox::currentCountryName" ref="classQxtCountryComboBox.html#173ed0ae8ea794ee7f350d47958489281" />
+                <keyword name="~QxtCountryComboBox" id="class:QxtCountryComboBox::~QxtCountryComboBox" ref="classQxtCountryComboBox.html#1ba8e2c2fb509bd2cea9a9cf7e02a470a" />
+                <keyword name="currentCountry" id="class:QxtCountryComboBox::currentCountry" ref="classQxtCountryComboBox.html#19599d4bc295412fc315434d8a324903c" />
+                <keyword name="setCurrentCountry" id="class:QxtCountryComboBox::setCurrentCountry" ref="classQxtCountryComboBox.html#1e20207f6fef945ed75fd66581b4209c7" />
+                <keyword name="currentCountryChanged" id="class:QxtCountryComboBox::currentCountryChanged" ref="classQxtCountryComboBox.html#1f58f6e1c956ebff0519cc12b657b3459" />
+                <keyword name="currentCountryNameChanged" id="class:QxtCountryComboBox::currentCountryNameChanged" ref="classQxtCountryComboBox.html#11857a7cbf7d0ce1aabc582a03c40cad3" />
+                <keyword name="QxtCountryModel" id="class:QxtCountryModel" ref="classQxtCountryModel.html" />
+                <keyword name="QXT_DECLARE_PRIVATE" id="class:QxtCountryModel::QXT_DECLARE_PRIVATE" ref="classQxtCountryModel.html#17eda4e86ed6e0f41923e91013e0f4d16" />
+                <keyword name="~QxtCountryModel" id="class:QxtCountryModel::~QxtCountryModel" ref="classQxtCountryModel.html#1aa7d5e1487fb8802800142416df8f6fd" />
+                <keyword name="rowCount" id="class:QxtCountryModel::rowCount" ref="classQxtCountryModel.html#14c4777c44986875a161f61699377b40c" />
+                <keyword name="columnCount" id="class:QxtCountryModel::columnCount" ref="classQxtCountryModel.html#18575309ebb749cf25d6e80d2f76772f1" />
+                <keyword name="data" id="class:QxtCountryModel::data" ref="classQxtCountryModel.html#16f1f6c93bfb96a4ec53173bf1a950fe9" />
+                <keyword name="headerData" id="class:QxtCountryModel::headerData" ref="classQxtCountryModel.html#1d6e85c2370de2f6efa0e4f48c38ee1d6" />
+                <keyword name="QxtCsvModel" id="class:QxtCsvModel" ref="classQxtCsvModel.html" />
+                <keyword name="~QxtCsvModel" id="class:QxtCsvModel::~QxtCsvModel" ref="classQxtCsvModel.html#1020d5314289b05df0a0f0ead546bfbcc" />
+                <keyword name="rowCount" id="class:QxtCsvModel::rowCount" ref="classQxtCsvModel.html#1124d7162c7e54ebcd5e0412eddf26cdf" />
+                <keyword name="columnCount" id="class:QxtCsvModel::columnCount" ref="classQxtCsvModel.html#14724dac13f4846f0a267f972cbbf6232" />
+                <keyword name="data" id="class:QxtCsvModel::data" ref="classQxtCsvModel.html#141e56375b9feed3286f4038056409be9" />
+                <keyword name="setData" id="class:QxtCsvModel::setData" ref="classQxtCsvModel.html#131f44c022e93bd7c4aed50e694cd42f7" />
+                <keyword name="headerData" id="class:QxtCsvModel::headerData" ref="classQxtCsvModel.html#142544aa44336b4b6d4f0c69c2f010310" />
+                <keyword name="setHeaderData" id="class:QxtCsvModel::setHeaderData" ref="classQxtCsvModel.html#15788519db182175584c73582f943ea93" />
+                <keyword name="insertRow" id="class:QxtCsvModel::insertRow" ref="classQxtCsvModel.html#179d2eb0cc646860b273cb9107e1638bb" />
+                <keyword name="insertRows" id="class:QxtCsvModel::insertRows" ref="classQxtCsvModel.html#1bd89f279815c4f55515540a6b893fa35" />
+                <keyword name="removeRow" id="class:QxtCsvModel::removeRow" ref="classQxtCsvModel.html#1702949bc62aef09a4489b69ae4c55f3d" />
+                <keyword name="removeRows" id="class:QxtCsvModel::removeRows" ref="classQxtCsvModel.html#1062dc1da9a6ce5d2e7308b47e12854a9" />
+                <keyword name="insertColumn" id="class:QxtCsvModel::insertColumn" ref="classQxtCsvModel.html#135f440fdc31a490d8c49fd0cd1327e70" />
+                <keyword name="insertColumns" id="class:QxtCsvModel::insertColumns" ref="classQxtCsvModel.html#1972e7b7021f61359360b46e7b0acff23" />
+                <keyword name="removeColumn" id="class:QxtCsvModel::removeColumn" ref="classQxtCsvModel.html#1585df5622551f1c43f6fad1d37ef671f" />
+                <keyword name="removeColumns" id="class:QxtCsvModel::removeColumns" ref="classQxtCsvModel.html#1e53f7a456c8e01b4e622585b1a02d402" />
+                <keyword name="setSource" id="class:QxtCsvModel::setSource" ref="classQxtCsvModel.html#1161072a199ca5e6388500de99d73c3e8" />
+                <keyword name="setSource" id="class:QxtCsvModel::setSource" ref="classQxtCsvModel.html#1faf5e74bda9f44a90df9d95e367aac27" />
+                <keyword name="toCSV" id="class:QxtCsvModel::toCSV" ref="classQxtCsvModel.html#1ca35cec85bc21181d89004990930948e" />
+                <keyword name="toCSV" id="class:QxtCsvModel::toCSV" ref="classQxtCsvModel.html#1e9563638e903e3644b0245ddb5b56fc5" />
+                <keyword name="flags" id="class:QxtCsvModel::flags" ref="classQxtCsvModel.html#1cfe9b5cc0f1caefb4bb39cb45e6a3e4c" />
+                <keyword name="QxtDaemon" id="class:QxtDaemon" ref="classQxtDaemon.html" />
+                <keyword name="daemonize" id="class:QxtDaemon::daemonize" ref="classQxtDaemon.html#1d5e1756e2ebfad6d344ff86d49ca3c13" />
+                <keyword name="changeUser" id="class:QxtDaemon::changeUser" ref="classQxtDaemon.html#1c950e321e84c84a1dbcdee0420edb5fb" />
+                <keyword name="pid" id="class:QxtDaemon::pid" ref="classQxtDaemon.html#1b4790ba784d8eb2e423e7dbabec5bc03" />
+                <keyword name="signal" id="class:QxtDaemon::signal" ref="classQxtDaemon.html#103ffe1c00a69e54853b48c3829db4d34" />
+                <keyword name="hangup" id="class:QxtDaemon::hangup" ref="classQxtDaemon.html#1912d272cb41fbfad20202e88378861c3" />
+                <keyword name="terminate" id="class:QxtDaemon::terminate" ref="classQxtDaemon.html#145197ebaf2faf3764ba2fd1649890e91" />
+                <keyword name="QxtDeplex" id="class:QxtDeplex" ref="classQxtDeplex.html" />
+                <keyword name="setDevice" id="class:QxtDeplex::setDevice" ref="classQxtDeplex.html#1179252f9e59c44ffeb211df015b48c8b" />
+                <keyword name="device" id="class:QxtDeplex::device" ref="classQxtDeplex.html#1b8d05200c926de13f2a69abee19217a6" />
+                <keyword name="QxtDockWidget" id="class:QxtDockWidget" ref="classQxtDockWidget.html" />
+                <keyword name="~QxtDockWidget" id="class:QxtDockWidget::~QxtDockWidget" ref="classQxtDockWidget.html#1ad9956e140af851a5ecc450ab901759f" />
+                <keyword name="QxtError" id="class:QxtError" ref="classQxtError.html" />
+                <keyword name="errorCode" id="class:QxtError::errorCode" ref="classQxtError.html#197a79dce758176592a7f6bded97fdbb4" />
+                <keyword name="line" id="class:QxtError::line" ref="classQxtError.html#130d639a6eb246276ab6dd774a78750fd" />
+                <keyword name="file" id="class:QxtError::file" ref="classQxtError.html#19aa5d31db2ccf3102467be7f5e41a939" />
+                <keyword name="errorString" id="class:QxtError::errorString" ref="classQxtError.html#1dbdaf1c7ca68c79fc7838d39806e6296" />
+                <keyword name="operator Qxt::ErrorCode" id="class:QxtError::operator Qxt::ErrorCode" ref="classQxtError.html#130748abf8104123fd84aaa92fb1a73ec" />
+                <keyword name="QXT_DROP" id="class:QxtError::QXT_DROP" ref="classQxtError.html#1087a3a27b63706cc6e4acf9a049a9bf1" />
+                <keyword name="QXT_DROP_S" id="class:QxtError::QXT_DROP_S" ref="classQxtError.html#1ad2b0de584ccbde70d5a1ea41e4f2378" />
+                <keyword name="QXT_DROP_OK" id="class:QxtError::QXT_DROP_OK" ref="classQxtError.html#10c7157688eaaf716e11139ebe8399d29" />
+                <keyword name="QXT_DROP_F" id="class:QxtError::QXT_DROP_F" ref="classQxtError.html#14811fd4f65715c65eb42a9b61852c247" />
+                <keyword name="QXT_DROP_SCOPE" id="class:QxtError::QXT_DROP_SCOPE" ref="classQxtError.html#17fefce4f1fd4d823799f1afc36f46aab" />
+                <keyword name="QxtFifo" id="class:QxtFifo" ref="classQxtFifo.html" />
+                <keyword name="clear" id="class:QxtFifo::clear" ref="classQxtFifo.html#19df8163b0a3d85519da7f53f8b43f4a6" />
+                <keyword name="QxtFileLock" id="class:QxtFileLock" ref="classQxtFileLock.html" />
+                <keyword name="Mode" id="class:QxtFileLock::Mode" ref="classQxtFileLock.html#198ad3e1055038fd611ad64755f794835" />
+                <keyword name="~QxtFileLock" id="class:QxtFileLock::~QxtFileLock" ref="classQxtFileLock.html#1314341b3e163001bffa6066d093e8898" />
+                <keyword name="offset" id="class:QxtFileLock::offset" ref="classQxtFileLock.html#17b674bb5093f84389b4ed542d9c359d4" />
+                <keyword name="length" id="class:QxtFileLock::length" ref="classQxtFileLock.html#17ad141d709ef8637e6ff9b16e1c6474e" />
+                <keyword name="isActive" id="class:QxtFileLock::isActive" ref="classQxtFileLock.html#10272626fd8af9ac7b5808fcd27f21260" />
+                <keyword name="file" id="class:QxtFileLock::file" ref="classQxtFileLock.html#1feaea618cc084130c70c6b6f93b4b2f3" />
+                <keyword name="mode" id="class:QxtFileLock::mode" ref="classQxtFileLock.html#14ce56493f542690f3eefa8ec25d293bf" />
+                <keyword name="lock" id="class:QxtFileLock::lock" ref="classQxtFileLock.html#184af0691c49c83fb6d3c3352c56ba48f" />
+                <keyword name="unlock" id="class:QxtFileLock::unlock" ref="classQxtFileLock.html#1e9e31b41e41520c29cf64634d099cf05" />
+                <keyword name="QxtFlowView" id="class:QxtFlowView" ref="classQxtFlowView.html" />
+                <keyword name="ReflectionEffect" id="class:QxtFlowView::ReflectionEffect" ref="classQxtFlowView.html#12ee8cd7abf0a22121f7659f929a71ee3" />
+                <keyword name="backgroundColor" id="class:QxtFlowView::backgroundColor" ref="classQxtFlowView.html#14c6fe7297ccfcefe51ca6b3d0fba8046" />
+                <keyword name="slideSize" id="class:QxtFlowView::slideSize" ref="classQxtFlowView.html#1b0e7f4857f70488c32562f64a00979fd" />
+                <keyword name="currentIndex" id="class:QxtFlowView::currentIndex" ref="classQxtFlowView.html#13be6ca711aafd73ce054a33058a53a3f" />
+                <keyword name="pictureRole" id="class:QxtFlowView::pictureRole" ref="classQxtFlowView.html#15ccde7223fc2d457f05e12b78d2a3ac2" />
+                <keyword name="picureColumn" id="class:QxtFlowView::picureColumn" ref="classQxtFlowView.html#1e1f9d1a5d681d381018fefac869b6d1a" />
+                <keyword name="rootIndex" id="class:QxtFlowView::rootIndex" ref="classQxtFlowView.html#128518cd1681b38850bef799fb30e5fad" />
+                <keyword name="~QxtFlowView" id="class:QxtFlowView::~QxtFlowView" ref="classQxtFlowView.html#1e21bf86509327a84d89a2403110b7aaa" />
+                <keyword name="setModel" id="class:QxtFlowView::setModel" ref="classQxtFlowView.html#11bf30d9c20b3836b5b9daa9f78207ed1" />
+                <keyword name="model" id="class:QxtFlowView::model" ref="classQxtFlowView.html#136fc8208a5fb318c57880046d5abdc40" />
+                <keyword name="reflectionEffect" id="class:QxtFlowView::reflectionEffect" ref="classQxtFlowView.html#1c7051911ce95fa662f719763f2dc1f3e" />
+                <keyword name="setReflectionEffect" id="class:QxtFlowView::setReflectionEffect" ref="classQxtFlowView.html#14e122a400755973f817062d37dd00769" />
+                <keyword name="setCurrentIndex" id="class:QxtFlowView::setCurrentIndex" ref="classQxtFlowView.html#186a52757eda584014c263079f9a5fc3c" />
+                <keyword name="showPrevious" id="class:QxtFlowView::showPrevious" ref="classQxtFlowView.html#1dac54dbf435157ed5fa43c68790c331e" />
+                <keyword name="showNext" id="class:QxtFlowView::showNext" ref="classQxtFlowView.html#18871638c6114a921fc218aad143ac7c7" />
+                <keyword name="showSlide" id="class:QxtFlowView::showSlide" ref="classQxtFlowView.html#1163bb085e48837aabb5801dc027ef968" />
+                <keyword name="render" id="class:QxtFlowView::render" ref="classQxtFlowView.html#1ad13bf3b19541393ea193ba156263546" />
+                <keyword name="triggerRender" id="class:QxtFlowView::triggerRender" ref="classQxtFlowView.html#1e10a67c846bda48de274a93e6d6aedfe" />
+                <keyword name="currentIndexChanged" id="class:QxtFlowView::currentIndexChanged" ref="classQxtFlowView.html#10983d4391bb7525265079aac6a643ac3" />
+                <keyword name="paintEvent" id="class:QxtFlowView::paintEvent" ref="classQxtFlowView.html#18c12a6acd4c90bcf698c80b69aaa2148" />
+                <keyword name="keyPressEvent" id="class:QxtFlowView::keyPressEvent" ref="classQxtFlowView.html#17e61b46547b39c27678962c088324680" />
+                <keyword name="mousePressEvent" id="class:QxtFlowView::mousePressEvent" ref="classQxtFlowView.html#17bc32365e94d88bb21f63970c6478ae1" />
+                <keyword name="mouseMoveEvent" id="class:QxtFlowView::mouseMoveEvent" ref="classQxtFlowView.html#10a2e6bced823a5c1611836e3b4d2133f" />
+                <keyword name="mouseReleaseEvent" id="class:QxtFlowView::mouseReleaseEvent" ref="classQxtFlowView.html#1a7e3b6dd3d5f896d088ea9b14b513509" />
+                <keyword name="resizeEvent" id="class:QxtFlowView::resizeEvent" ref="classQxtFlowView.html#186e70d0f95908058d9490164ba370ff9" />
+                <keyword name="wheelEvent" id="class:QxtFlowView::wheelEvent" ref="classQxtFlowView.html#1798714df45766658e16d0c5625317096" />
+                <keyword name="QxtFuture" id="class:QxtFuture" ref="classQxtFuture.html" />
+                <keyword name="delayedResult" id="class:QxtFuture::delayedResult" ref="classQxtFuture.html#158eb4615eb20b0ddf4a9d57a33040cee" />
+                <keyword name="joinedResult" id="class:QxtFuture::joinedResult" ref="classQxtFuture.html#13e160ab1ebbbc957233ffe7c337cc224" />
+                <keyword name="~QxtFuture" id="class:QxtFuture::~QxtFuture" ref="classQxtFuture.html#1227ebddc0c997bc3c6663a3231907f9d" />
+                <keyword name="done" id="class:QxtFuture::done" ref="classQxtFuture.html#1af95d390e7b66b3f7fbaecbfa71ea84e" />
+                <keyword name="done" id="class:QxtFuture::done" ref="classQxtFuture.html#1d4d92c3d13f657a1ae1add7a72878022" />
+                <keyword name="QxtGlobalShortcut" id="class:QxtGlobalShortcut" ref="classQxtGlobalShortcut.html" />
+                <keyword name="enabled" id="class:QxtGlobalShortcut::enabled" ref="classQxtGlobalShortcut.html#117f3d22d85b98f39e85f66183f8d918f" />
+                <keyword name="shortcut" id="class:QxtGlobalShortcut::shortcut" ref="classQxtGlobalShortcut.html#10960dc6bbc7d3d102d0bf80c3aac7f14" />
+                <keyword name="~QxtGlobalShortcut" id="class:QxtGlobalShortcut::~QxtGlobalShortcut" ref="classQxtGlobalShortcut.html#18912da8209848b30a911302ddb133436" />
+                <keyword name="setEnabled" id="class:QxtGlobalShortcut::setEnabled" ref="classQxtGlobalShortcut.html#1470a6799146d1693a23140ca55edbea6" />
+                <keyword name="setDisabled" id="class:QxtGlobalShortcut::setDisabled" ref="classQxtGlobalShortcut.html#1fd5563a5b2b9b63b18ed7e3e7b67e048" />
+                <keyword name="activated" id="class:QxtGlobalShortcut::activated" ref="classQxtGlobalShortcut.html#1e5048554f63055a79bc708e231cb8818" />
+                <keyword name="QxtGroupBox" id="class:QxtGroupBox" ref="classQxtGroupBox.html" />
+                <keyword name="collapsive" id="class:QxtGroupBox::collapsive" ref="classQxtGroupBox.html#15a396c2364ecde7977f8e311f77ee340" />
+                <keyword name="~QxtGroupBox" id="class:QxtGroupBox::~QxtGroupBox" ref="classQxtGroupBox.html#1905b57fa17fe59f444d54abd6ced543f" />
+                <keyword name="setCollapsed" id="class:QxtGroupBox::setCollapsed" ref="classQxtGroupBox.html#1ba496a650834bd948eab93cb7a2fad1d" />
+                <keyword name="setExpanded" id="class:QxtGroupBox::setExpanded" ref="classQxtGroupBox.html#1722b3ebd3b3bcadc8f5054c47b0d2fe1" />
+                <keyword name="QxtHash" id="class:QxtHash" ref="classQxtHash.html" />
+                <keyword name="Algorithm" id="class:QxtHash::Algorithm" ref="classQxtHash.html#10dcaa0ea5da1a1156463f5e7a92b98dc" />
+                <keyword name="append" id="class:QxtHash::append" ref="classQxtHash.html#1007fe68e0472c7dfee3aa01338414774" />
+                <keyword name="operator+=" id="class:QxtHash::operator+=" ref="classQxtHash.html#18d2aaa6045bf5f0f7c1d9ae92dd38b4d" />
+                <keyword name="reset" id="class:QxtHash::reset" ref="classQxtHash.html#1584d89c0e3bc69efcc29e94d886989f1" />
+                <keyword name="hash" id="class:QxtHash::hash" ref="classQxtHash.html#1c20d686170e1d6da4ac617e2d7fa56ab" />
+                <keyword name="QxtHeaderView" id="class:QxtHeaderView" ref="classQxtHeaderView.html" />
+                <keyword name="proportionalSectionSizes" id="class:QxtHeaderView::proportionalSectionSizes" ref="classQxtHeaderView.html#19fad81fce10b2b8d5e28989e913d1675" />
+                <keyword name="sectionStretchFactor" id="class:QxtHeaderView::sectionStretchFactor" ref="classQxtHeaderView.html#17349a21537ee7fe401bae9a31037ae22" />
+                <keyword name="setSectionStretchFactor" id="class:QxtHeaderView::setSectionStretchFactor" ref="classQxtHeaderView.html#104b05f85d1ed6321907bb7f4ed944f6d" />
+                <keyword name="QxtHtmlTemplate" id="class:QxtHtmlTemplate" ref="classQxtHtmlTemplate.html" />
+                <keyword name="open" id="class:QxtHtmlTemplate::open" ref="classQxtHtmlTemplate.html#12021a270d66b4a390aa15d4bf94955ce" />
+                <keyword name="load" id="class:QxtHtmlTemplate::load" ref="classQxtHtmlTemplate.html#14313905469efe6fb46a238da6df1a774" />
+                <keyword name="render" id="class:QxtHtmlTemplate::render" ref="classQxtHtmlTemplate.html#11deb4b005644aea13e001713335606b3" />
+                <keyword name="QxtHttpServerConnector" id="class:QxtHttpServerConnector" ref="classQxtHttpServerConnector.html" />
+                <keyword name="QxtHttpSessionManager" id="class:QxtHttpSessionManager" ref="classQxtHttpSessionManager.html" />
+                <keyword name="Connector" id="class:QxtHttpSessionManager::Connector" ref="classQxtHttpSessionManager.html#1b2d71d18915557dfea9d009f7af4f9ca" />
+                <keyword name="listenInterface" id="class:QxtHttpSessionManager::listenInterface" ref="classQxtHttpSessionManager.html#14a9aef668ca865f93a205a6a9d9ea3d7" />
+                <keyword name="setListenInterface" id="class:QxtHttpSessionManager::setListenInterface" ref="classQxtHttpSessionManager.html#114cedbca64308c161836b9df5989a070" />
+                <keyword name="port" id="class:QxtHttpSessionManager::port" ref="classQxtHttpSessionManager.html#121e74646ca644ac633a49ff8b10f10a4" />
+                <keyword name="setPort" id="class:QxtHttpSessionManager::setPort" ref="classQxtHttpSessionManager.html#16493c537ab1f5c17d1dee38239c226ef" />
+                <keyword name="sessionCookieName" id="class:QxtHttpSessionManager::sessionCookieName" ref="classQxtHttpSessionManager.html#14e796d3c34faeb8095e735a46c21d77a" />
+                <keyword name="setSessionCookieName" id="class:QxtHttpSessionManager::setSessionCookieName" ref="classQxtHttpSessionManager.html#17151bc280725d5b8e1dc8719217cbab1" />
+                <keyword name="autoCreateSession" id="class:QxtHttpSessionManager::autoCreateSession" ref="classQxtHttpSessionManager.html#17a684af0adc9612b10d92806c090d31e" />
+                <keyword name="setAutoCreateSession" id="class:QxtHttpSessionManager::setAutoCreateSession" ref="classQxtHttpSessionManager.html#1ac59da27448b44f30c9956fd56fb9ad9" />
+                <keyword name="staticContentService" id="class:QxtHttpSessionManager::staticContentService" ref="classQxtHttpSessionManager.html#1b79d2b8a0c7e89fd869799e6382f6d17" />
+                <keyword name="setStaticContentService" id="class:QxtHttpSessionManager::setStaticContentService" ref="classQxtHttpSessionManager.html#12fbe3f7c2bbe85c90deca2843b5b8610" />
+                <keyword name="setConnector" id="class:QxtHttpSessionManager::setConnector" ref="classQxtHttpSessionManager.html#1a4365b77750d34b5edd38a0729ec028e" />
+                <keyword name="setConnector" id="class:QxtHttpSessionManager::setConnector" ref="classQxtHttpSessionManager.html#16fb6d4d9ead55218b6c76c1f7cbbcf61" />
+                <keyword name="connector" id="class:QxtHttpSessionManager::connector" ref="classQxtHttpSessionManager.html#19d6ec979fb50b26120ca11e9dfdb7c2b" />
+                <keyword name="newSession" id="class:QxtHttpSessionManager::newSession" ref="classQxtHttpSessionManager.html#1c7f39616d3082155f9a9467ec750a092" />
+                <keyword name="incomingRequest" id="class:QxtHttpSessionManager::incomingRequest" ref="classQxtHttpSessionManager.html#15a21b13209f7dbc2b206191e4bd890a7" />
+                <keyword name="QxtItemDelegate" id="class:QxtItemDelegate" ref="classQxtItemDelegate.html" />
+                <keyword name="Role" id="class:QxtItemDelegate::Role" ref="classQxtItemDelegate.html#1f1ca2590a2e3f49305e682fb6dee0071" />
+                <keyword name="decorationStyle" id="class:QxtItemDelegate::decorationStyle" ref="classQxtItemDelegate.html#1164f51dc565c77b9751d903551242bcb" />
+                <keyword name="elideMode" id="class:QxtItemDelegate::elideMode" ref="classQxtItemDelegate.html#1aad15b615b46a7be400ed22a46c329b9" />
+                <keyword name="progressTextFormat" id="class:QxtItemDelegate::progressTextFormat" ref="classQxtItemDelegate.html#14a72e90eb63966705440e9e853a3f857" />
+                <keyword name="progressTextVisible" id="class:QxtItemDelegate::progressTextVisible" ref="classQxtItemDelegate.html#16e9b763493051927cfaab07b3cb5f793" />
+                <keyword name="~QxtItemDelegate" id="class:QxtItemDelegate::~QxtItemDelegate" ref="classQxtItemDelegate.html#15a7313c4c5b9ef91624b655ba8258794" />
+                <keyword name="editingStarted" id="class:QxtItemDelegate::editingStarted" ref="classQxtItemDelegate.html#13b3068865e5185d6eb4348c2dcce99d7" />
+                <keyword name="editingFinished" id="class:QxtItemDelegate::editingFinished" ref="classQxtItemDelegate.html#1593c068bb974266241f9a48c28200d26" />
+                <keyword name="QxtItemEditorCreator" id="class:QxtItemEditorCreator" ref="classQxtItemEditorCreator.html" />
+                <keyword name="QxtItemEditorCreatorBase" id="class:QxtItemEditorCreatorBase" ref="classQxtItemEditorCreatorBase.html" />
+                <keyword name="defaultPropertyValue" id="class:QxtItemEditorCreatorBase::defaultPropertyValue" ref="classQxtItemEditorCreatorBase.html#1f9343345c82d268d5e42e4e15172b50b" />
+                <keyword name="setDefaultPropertyValue" id="class:QxtItemEditorCreatorBase::setDefaultPropertyValue" ref="classQxtItemEditorCreatorBase.html#12864edf86fe3807916d7db88db899f13" />
+                <keyword name="initializeEditor" id="class:QxtItemEditorCreatorBase::initializeEditor" ref="classQxtItemEditorCreatorBase.html#14fba37c4a27d5c4a404e0bf73f75f509" />
+                <keyword name="QxtJob" id="class:QxtJob" ref="classQxtJob.html" />
+                <keyword name="~QxtJob" id="class:QxtJob::~QxtJob" ref="classQxtJob.html#14e5abf66f16adf2f69967636dbdae1ba" />
+                <keyword name="exec" id="class:QxtJob::exec" ref="classQxtJob.html#13f40018ec07223afd23681c182f1fc12" />
+                <keyword name="join" id="class:QxtJob::join" ref="classQxtJob.html#1a66a6b989a32d13393dbd904b885cc3a" />
+                <keyword name="run" id="class:QxtJob::run" ref="classQxtJob.html#1e2c258e0bfaf487d0939bd1696e64402" />
+                <keyword name="done" id="class:QxtJob::done" ref="classQxtJob.html#1f1a1c02165b6c4ca27181a79028cb389" />
+                <keyword name="QxtLabel" id="class:QxtLabel" ref="classQxtLabel.html" />
+                <keyword name="text" id="class:QxtLabel::text" ref="classQxtLabel.html#162d0ce110fe3e51ea6ea82cd8e60d430" />
+                <keyword name="alignment" id="class:QxtLabel::alignment" ref="classQxtLabel.html#1567b7e5e6a5ef51f72369198fd29b80f" />
+                <keyword name="elideMode" id="class:QxtLabel::elideMode" ref="classQxtLabel.html#11af8965c7a5ca2605fdeb7c99cb41ad1" />
+                <keyword name="rotation" id="class:QxtLabel::rotation" ref="classQxtLabel.html#1fac17750ce1b4f63bf868dd239aeb2f2" />
+                <keyword name="~QxtLabel" id="class:QxtLabel::~QxtLabel" ref="classQxtLabel.html#18af8301d8b4915ca05226c880a8579da" />
+                <keyword name="setText" id="class:QxtLabel::setText" ref="classQxtLabel.html#199165b510e6b49a2b586f72545ff146e" />
+                <keyword name="clicked" id="class:QxtLabel::clicked" ref="classQxtLabel.html#1fd3f9137d5f3287c32786395c485f203" />
+                <keyword name="textChanged" id="class:QxtLabel::textChanged" ref="classQxtLabel.html#189f45ddd4d87942903ddb36bd5975e77" />
+                <keyword name="QxtLanguageComboBox" id="class:QxtLanguageComboBox" ref="classQxtLanguageComboBox.html" />
+                <keyword name="DisplayMode" id="class:QxtLanguageComboBox::DisplayMode" ref="classQxtLanguageComboBox.html#179576c034f3add253fbcf4d3ed4cbd19" />
+                <keyword name="currentLanguageName" id="class:QxtLanguageComboBox::currentLanguageName" ref="classQxtLanguageComboBox.html#1b297ddc0096b6732eadb2472f47e5c70" />
+                <keyword name="displayMode" id="class:QxtLanguageComboBox::displayMode" ref="classQxtLanguageComboBox.html#1b68fc57a5180ca7a17aa388f3e4576fe" />
+                <keyword name="translationPath" id="class:QxtLanguageComboBox::translationPath" ref="classQxtLanguageComboBox.html#17ee3d5a9705c1687b3e2fe56ade8d8c6" />
+                <keyword name="~QxtLanguageComboBox" id="class:QxtLanguageComboBox::~QxtLanguageComboBox" ref="classQxtLanguageComboBox.html#13c1a555c4027329f8c45c92e457c360b" />
+                <keyword name="Q_ENUMS" id="class:QxtLanguageComboBox::Q_ENUMS" ref="classQxtLanguageComboBox.html#1304f576a9bbd73ba186faf231aeecabd" />
+                <keyword name="currentLanguage" id="class:QxtLanguageComboBox::currentLanguage" ref="classQxtLanguageComboBox.html#18607eb0b92842a7165bbd62a0feacfa3" />
+                <keyword name="setCurrentLanguage" id="class:QxtLanguageComboBox::setCurrentLanguage" ref="classQxtLanguageComboBox.html#17e1b7116a9586f304de18a942216f0fd" />
+                <keyword name="setDisplayMode" id="class:QxtLanguageComboBox::setDisplayMode" ref="classQxtLanguageComboBox.html#11d6e4ae97b0fb98c55c7574c1035bcdf" />
+                <keyword name="setTranslationPath" id="class:QxtLanguageComboBox::setTranslationPath" ref="classQxtLanguageComboBox.html#1a254f2fb0316aa46905a4a893b1a041e" />
+                <keyword name="currentLanguageChanged" id="class:QxtLanguageComboBox::currentLanguageChanged" ref="classQxtLanguageComboBox.html#1d9795a0173b088467204755f738186aa" />
+                <keyword name="currentLanguageNameChanged" id="class:QxtLanguageComboBox::currentLanguageNameChanged" ref="classQxtLanguageComboBox.html#1068edf82a7da546c485eb061ee94abbe" />
+                <keyword name="QxtLetterBoxWidget" id="class:QxtLetterBoxWidget" ref="classQxtLetterBoxWidget.html" />
+                <keyword name="backgroundColor" id="class:QxtLetterBoxWidget::backgroundColor" ref="classQxtLetterBoxWidget.html#1655d095558c4ff4dbc5c769cf1be03ff" />
+                <keyword name="margin" id="class:QxtLetterBoxWidget::margin" ref="classQxtLetterBoxWidget.html#1eb01ef4db579c2f601358ba7f7e54535" />
+                <keyword name="resizeDelay" id="class:QxtLetterBoxWidget::resizeDelay" ref="classQxtLetterBoxWidget.html#19064e89fecb56ca9d64a601647c58265" />
+                <keyword name="~QxtLetterBoxWidget" id="class:QxtLetterBoxWidget::~QxtLetterBoxWidget" ref="classQxtLetterBoxWidget.html#141b76a0f3f85554182d2d87b80681f85" />
+                <keyword name="clearBackgroundColor" id="class:QxtLetterBoxWidget::clearBackgroundColor" ref="classQxtLetterBoxWidget.html#1f5f95a545c54269a904b9a7650c9206c" />
+                <keyword name="widget" id="class:QxtLetterBoxWidget::widget" ref="classQxtLetterBoxWidget.html#1fe975f02564132f3061621fa43fbe279" />
+                <keyword name="setWidget" id="class:QxtLetterBoxWidget::setWidget" ref="classQxtLetterBoxWidget.html#12948db6ec83452056fdd96736168f977" />
+                <keyword name="resizeWidget" id="class:QxtLetterBoxWidget::resizeWidget" ref="classQxtLetterBoxWidget.html#15d7336b89543cf6942f6e69cdd516708" />
+                <keyword name="QxtLineSocket" id="class:QxtLineSocket" ref="classQxtLineSocket.html" />
+                <keyword name="setSocket" id="class:QxtLineSocket::setSocket" ref="classQxtLineSocket.html#1a508613c62a6c2cf4abee0099c206fcb" />
+                <keyword name="socket" id="class:QxtLineSocket::socket" ref="classQxtLineSocket.html#1614f041caa5be6ea64b16b4a5e84f21b" />
+                <keyword name="sendLine" id="class:QxtLineSocket::sendLine" ref="classQxtLineSocket.html#19f0c8a5450b44f1cb55c7b1ce6d37a63" />
+                <keyword name="newLineReceived" id="class:QxtLineSocket::newLineReceived" ref="classQxtLineSocket.html#1a4ce11bf3ad6d9c0d836f41a6f2b5dbe" />
+                <keyword name="newLine" id="class:QxtLineSocket::newLine" ref="classQxtLineSocket.html#17cf90c1f9b03bce211da67de07c32940" />
+                <keyword name="QxtLinkedTree" id="class:QxtLinkedTree" ref="classQxtLinkedTree.html" />
+                <keyword name="~QxtLinkedTree" id="class:QxtLinkedTree::~QxtLinkedTree" ref="classQxtLinkedTree.html#1beb7af48424a243f2d27783220311767" />
+                <keyword name="clear" id="class:QxtLinkedTree::clear" ref="classQxtLinkedTree.html#180bafd467908ef1ed3f41d15d299d9a2" />
+                <keyword name="root" id="class:QxtLinkedTree::root" ref="classQxtLinkedTree.html#19cbfc5713ced469ec42864255675d020" />
+                <keyword name="fromVoid" id="class:QxtLinkedTree::fromVoid" ref="classQxtLinkedTree.html#13b66fda568121c7aaa08481f25aad206" />
+                <keyword name="toVoid" id="class:QxtLinkedTree::toVoid" ref="classQxtLinkedTree.html#152912acd545c24d7971a57cef4a2285b" />
+                <keyword name="QxtLinkedTreeIterator" id="class:QxtLinkedTreeIterator" ref="classQxtLinkedTreeIterator.html" />
+                <keyword name="operator=" id="class:QxtLinkedTreeIterator::operator=" ref="classQxtLinkedTreeIterator.html#172352f38f0693f5643150bbf8f5f4b60" />
+                <keyword name="parent" id="class:QxtLinkedTreeIterator::parent" ref="classQxtLinkedTreeIterator.html#1da79b2424c062d5a0928566e82650d3b" />
+                <keyword name="next" id="class:QxtLinkedTreeIterator::next" ref="classQxtLinkedTreeIterator.html#1860eaaa7ac71bae9f8d4b4c97e48014c" />
+                <keyword name="previous" id="class:QxtLinkedTreeIterator::previous" ref="classQxtLinkedTreeIterator.html#1147d18143015fa3389c1b1e4144f38e0" />
+                <keyword name="child" id="class:QxtLinkedTreeIterator::child" ref="classQxtLinkedTreeIterator.html#1ffa0700ff1b86d2db1edf8fa74514022" />
+                <keyword name="isValid" id="class:QxtLinkedTreeIterator::isValid" ref="classQxtLinkedTreeIterator.html#1831357ab68239391e31650f1725a7fc6" />
+                <keyword name="children" id="class:QxtLinkedTreeIterator::children" ref="classQxtLinkedTreeIterator.html#127f72ca408bb5b78e285be5a52cd8385" />
+                <keyword name="operator*" id="class:QxtLinkedTreeIterator::operator*" ref="classQxtLinkedTreeIterator.html#138db2c6b4219a4c336dd1d3d11efd94f" />
+                <keyword name="operator-&gt;" id="class:QxtLinkedTreeIterator::operator-&gt;" ref="classQxtLinkedTreeIterator.html#1aa0ccbe2220c72feda5531fc44f06c6f" />
+                <keyword name="operator T" id="class:QxtLinkedTreeIterator::operator T" ref="classQxtLinkedTreeIterator.html#1d5ec4622e356f6d9157b324379e75eda" />
+                <keyword name="operator+" id="class:QxtLinkedTreeIterator::operator+" ref="classQxtLinkedTreeIterator.html#1201c56c712812566ffca2b37cc66c671" />
+                <keyword name="operator++" id="class:QxtLinkedTreeIterator::operator++" ref="classQxtLinkedTreeIterator.html#1ebebd391d2714645b50360d43f4f0577" />
+                <keyword name="operator++" id="class:QxtLinkedTreeIterator::operator++" ref="classQxtLinkedTreeIterator.html#1474cb59bd3067d19dfde18fff7ef40b2" />
+                <keyword name="operator+=" id="class:QxtLinkedTreeIterator::operator+=" ref="classQxtLinkedTreeIterator.html#1f62b6bfbd4b068ef39baf2b5432797d9" />
+                <keyword name="operator-" id="class:QxtLinkedTreeIterator::operator-" ref="classQxtLinkedTreeIterator.html#1439e807a61a1c40d93d4b765ad58c57f" />
+                <keyword name="operator--" id="class:QxtLinkedTreeIterator::operator--" ref="classQxtLinkedTreeIterator.html#12be835e96c873514d343d8a5ef39749e" />
+                <keyword name="operator--" id="class:QxtLinkedTreeIterator::operator--" ref="classQxtLinkedTreeIterator.html#13352f2a6c3c4045712009651ad6f7865" />
+                <keyword name="operator-=" id="class:QxtLinkedTreeIterator::operator-=" ref="classQxtLinkedTreeIterator.html#17743887784eed99509cd3cc2635e390e" />
+                <keyword name="operator==" id="class:QxtLinkedTreeIterator::operator==" ref="classQxtLinkedTreeIterator.html#16322e988227a45aa4ba12deb16b7354e" />
+                <keyword name="operator!=" id="class:QxtLinkedTreeIterator::operator!=" ref="classQxtLinkedTreeIterator.html#10563422b418e3b488718ef7c5ae2460d" />
+                <keyword name="erase" id="class:QxtLinkedTreeIterator::erase" ref="classQxtLinkedTreeIterator.html#168a8cbb554637dc68f0d45f699bb76d0" />
+                <keyword name="append" id="class:QxtLinkedTreeIterator::append" ref="classQxtLinkedTreeIterator.html#122a373e968f0d2d8d6c9632a8760ddea" />
+                <keyword name="insert" id="class:QxtLinkedTreeIterator::insert" ref="classQxtLinkedTreeIterator.html#16e0bd91a0420c0fc9e98af5aef4958e1" />
+                <keyword name="QxtListWidget" id="class:QxtListWidget" ref="classQxtListWidget.html" />
+                <keyword name="~QxtListWidget" id="class:QxtListWidget::~QxtListWidget" ref="classQxtListWidget.html#13fa762bafe48b3d09b3e1f6bae05a650" />
+                <keyword name="itemEditingStarted" id="class:QxtListWidget::itemEditingStarted" ref="classQxtListWidget.html#171aec78eda7abb733fbb2cce006a6b99" />
+                <keyword name="itemEditingFinished" id="class:QxtListWidget::itemEditingFinished" ref="classQxtListWidget.html#141f46cde9f615200cafa140bcd8d1d48" />
+                <keyword name="itemCheckStateChanged" id="class:QxtListWidget::itemCheckStateChanged" ref="classQxtListWidget.html#1eb44b3168d349b046b5c4ad351faa442" />
+                <keyword name="QxtListWidgetItem" id="class:QxtListWidgetItem" ref="classQxtListWidgetItem.html" />
+                <keyword name="~QxtListWidgetItem" id="class:QxtListWidgetItem::~QxtListWidgetItem" ref="classQxtListWidgetItem.html#15551d94a3619d21f2b43dd4598e6e3ac" />
+                <keyword name="testFlag" id="class:QxtListWidgetItem::testFlag" ref="classQxtListWidgetItem.html#1181b60f0c1c69568f5760b8dbe99e83d" />
+                <keyword name="setFlag" id="class:QxtListWidgetItem::setFlag" ref="classQxtListWidgetItem.html#19c84f101b3b4f8e36e34204170069ff7" />
+                <keyword name="QxtLocale" id="class:QxtLocale" ref="classQxtLocale.html" />
+                <keyword name="Currency" id="class:QxtLocale::Currency" ref="classQxtLocale.html#14a196a5ad32c44b37f68ba224a496dcd" />
+                <keyword name="Continent" id="class:QxtLocale::Continent" ref="classQxtLocale.html#1346459078fba1511cdb05971c1484a1a" />
+                <keyword name="Q_ENUMS" id="class:QxtLocale::Q_ENUMS" ref="classQxtLocale.html#11f8175dccbd2347b90926011dafff343" />
+                <keyword name="Q_ENUMS" id="class:QxtLocale::Q_ENUMS" ref="classQxtLocale.html#1176f0c2037498e2b1d947618507ef15b" />
+                <keyword name="countryToISO2Letter" id="class:QxtLocale::countryToISO2Letter" ref="classQxtLocale.html#14e07361183fc10206709ac713fadcfbc" />
+                <keyword name="countryToISO3Letter" id="class:QxtLocale::countryToISO3Letter" ref="classQxtLocale.html#1781f27805f1c3c5c1d1215f92e0991a3" />
+                <keyword name="currencyForCountry" id="class:QxtLocale::currencyForCountry" ref="classQxtLocale.html#1dd92463018dd65b97d48b866a75c5323" />
+                <keyword name="currencyToCode" id="class:QxtLocale::currencyToCode" ref="classQxtLocale.html#1e202986cb93bb166a0e374aa6c208cb4" />
+                <keyword name="currencyToName" id="class:QxtLocale::currencyToName" ref="classQxtLocale.html#12e55c8254226c4ebc4a19bae9f10f408" />
+                <keyword name="currencyToSymbol" id="class:QxtLocale::currencyToSymbol" ref="classQxtLocale.html#1ebb1f6b83881620683c2ae543c572248" />
+                <keyword name="continentToName" id="class:QxtLocale::continentToName" ref="classQxtLocale.html#1ec53af63c2a490a018318a7d38fa9ff5" />
+                <keyword name="continentForCountry" id="class:QxtLocale::continentForCountry" ref="classQxtLocale.html#18a4c023f9ef921af199bbfb90799b90f" />
+                <keyword name="QxtLogStream" id="class:QxtLogStream" ref="classQxtLogStream.html" />
+                <keyword name="~QxtLogStream" id="class:QxtLogStream::~QxtLogStream" ref="classQxtLogStream.html#1c9036a9d1baf79f4fb106f70907b48ff" />
+                <keyword name="operator&lt;&lt;" id="class:QxtLogStream::operator&lt;&lt;" ref="classQxtLogStream.html#1d5709b5c5173f3bd0d6c253fd6723753" />
+                <keyword name="QxtLogger" id="class:QxtLogger" ref="classQxtLogger.html" />
+                <keyword name="LogLevel" id="class:QxtLogger::LogLevel" ref="classQxtLogger.html#1c2071072628aa786466124cc32a324e7" />
+                <keyword name="logLevelToString" id="class:QxtLogger::logLevelToString" ref="classQxtLogger.html#1f3773a22b7d4ae0a9e10e2ce5b3d492c" />
+                <keyword name="stringToLogLevel" id="class:QxtLogger::stringToLogLevel" ref="classQxtLogger.html#1041933ae8f3280b4ae3b87353360c576" />
+                <keyword name="getInstance" id="class:QxtLogger::getInstance" ref="classQxtLogger.html#16103bf4f639e41e7fb522c110991fa22" />
+                <keyword name="initLoggerEngine" id="class:QxtLogger::initLoggerEngine" ref="classQxtLogger.html#120cd6ec9a3515187a3f297e4e5f4d579" />
+                <keyword name="killLoggerEngine" id="class:QxtLogger::killLoggerEngine" ref="classQxtLogger.html#1f04df8651b85f90634e94ae63ca5600a" />
+                <keyword name="installAsMessageHandler" id="class:QxtLogger::installAsMessageHandler" ref="classQxtLogger.html#193f57140562dadebfb7cd53eab41a64a" />
+                <keyword name="removeAsMessageHandler" id="class:QxtLogger::removeAsMessageHandler" ref="classQxtLogger.html#154ae0257f8a90576ef449d04d4db5577" />
+                <keyword name="addLoggerEngine" id="class:QxtLogger::addLoggerEngine" ref="classQxtLogger.html#19203eda8144d21753be22073384f3d24" />
+                <keyword name="removeLoggerEngine" id="class:QxtLogger::removeLoggerEngine" ref="classQxtLogger.html#1c3f2f94905b6da0d645025b3f964ad72" />
+                <keyword name="removeLoggerEngine" id="class:QxtLogger::removeLoggerEngine" ref="classQxtLogger.html#1e4b3db05c60afe94c018f0d532e60bc3" />
+                <keyword name="takeLoggerEngine" id="class:QxtLogger::takeLoggerEngine" ref="classQxtLogger.html#16d4edb3ef4e43e2d06af8f7286f0ee55" />
+                <keyword name="engine" id="class:QxtLogger::engine" ref="classQxtLogger.html#1dd68d45798d759b9b96824e1f6b86967" />
+                <keyword name="allLoggerEngines" id="class:QxtLogger::allLoggerEngines" ref="classQxtLogger.html#1ca0a902d6704bcc7628cba8fc961427c" />
+                <keyword name="allEnabledLoggerEngines" id="class:QxtLogger::allEnabledLoggerEngines" ref="classQxtLogger.html#150904e6730399d5acc894f020baf1b45" />
+                <keyword name="allEnabledLoggerEngines" id="class:QxtLogger::allEnabledLoggerEngines" ref="classQxtLogger.html#1d51599c63821adaabdf6d19570e26ac7" />
+                <keyword name="allDisabledLoggerEngines" id="class:QxtLogger::allDisabledLoggerEngines" ref="classQxtLogger.html#1960e595f7acb8877d9d9f0697409a180" />
+                <keyword name="isLogLevelEnabled" id="class:QxtLogger::isLogLevelEnabled" ref="classQxtLogger.html#14e907a38bfa5d9e3f3f107289df131a0" />
+                <keyword name="isLoggerEngine" id="class:QxtLogger::isLoggerEngine" ref="classQxtLogger.html#1c9f1ab74e1392d6000a77770c7a664cc" />
+                <keyword name="isLoggerEngineEnabled" id="class:QxtLogger::isLoggerEngineEnabled" ref="classQxtLogger.html#17bb353e22c306565f649cca5f32e13fc" />
+                <keyword name="stream" id="class:QxtLogger::stream" ref="classQxtLogger.html#1fa1a7a7f0c76c6ac798dec69296ba19a" />
+                <keyword name="trace" id="class:QxtLogger::trace" ref="classQxtLogger.html#1b4a26caa39351ab2455ae78619ed28e1" />
+                <keyword name="debug" id="class:QxtLogger::debug" ref="classQxtLogger.html#1e345628e323fcf2a208839b715c10acf" />
+                <keyword name="info" id="class:QxtLogger::info" ref="classQxtLogger.html#1a5f536eac253b8d2cc0d878656f00d20" />
+                <keyword name="warning" id="class:QxtLogger::warning" ref="classQxtLogger.html#1626773e279a23900e078ea308956b298" />
+                <keyword name="error" id="class:QxtLogger::error" ref="classQxtLogger.html#1d5a1c26a3bcd9649badd8d0038e94e59" />
+                <keyword name="critical" id="class:QxtLogger::critical" ref="classQxtLogger.html#179869cad074c4d85e35ce0b5f1ea0458" />
+                <keyword name="fatal" id="class:QxtLogger::fatal" ref="classQxtLogger.html#11b8e6e6c804011db81b59656d0a55081" />
+                <keyword name="write" id="class:QxtLogger::write" ref="classQxtLogger.html#1c01dffce7f7f018f434c70e9557f95f1" />
+                <keyword name="enableLogLevels" id="class:QxtLogger::enableLogLevels" ref="classQxtLogger.html#184d81e3625ab75fec30a33610ccedc8a" />
+                <keyword name="enableLogLevels" id="class:QxtLogger::enableLogLevels" ref="classQxtLogger.html#186ee83d843731a17b386268d35b21f53" />
+                <keyword name="enableAllLogLevels" id="class:QxtLogger::enableAllLogLevels" ref="classQxtLogger.html#1890a710dd1a2b429a8df158402eff800" />
+                <keyword name="enableAllLogLevels" id="class:QxtLogger::enableAllLogLevels" ref="classQxtLogger.html#1f827eaf97ea04e41ca44796e59027354" />
+                <keyword name="enableLoggerEngine" id="class:QxtLogger::enableLoggerEngine" ref="classQxtLogger.html#164e9e1eb9f37ec64df6f3c2421c73128" />
+                <keyword name="disableLogLevels" id="class:QxtLogger::disableLogLevels" ref="classQxtLogger.html#18d073c9bcec5dc538db4acbc32bd0080" />
+                <keyword name="disableLogLevels" id="class:QxtLogger::disableLogLevels" ref="classQxtLogger.html#1e186e868646558166d9e7466d569b6ef" />
+                <keyword name="disableAllLogLevels" id="class:QxtLogger::disableAllLogLevels" ref="classQxtLogger.html#1d6c8842f366ceba102696ebffa880c02" />
+                <keyword name="disableAllLogLevels" id="class:QxtLogger::disableAllLogLevels" ref="classQxtLogger.html#1468bc6387ded325a9c2cd0b63ba16581" />
+                <keyword name="disableLoggerEngine" id="class:QxtLogger::disableLoggerEngine" ref="classQxtLogger.html#1310f8cba964fa9ac1062569629578cb2" />
+                <keyword name="setMinimumLevel" id="class:QxtLogger::setMinimumLevel" ref="classQxtLogger.html#145fa02b7756edeff832c09ad94db959a" />
+                <keyword name="setMinimumLevel" id="class:QxtLogger::setMinimumLevel" ref="classQxtLogger.html#14143c3d70add1fd8eb345b16a7a75816" />
+                <keyword name="info" id="class:QxtLogger::info" ref="classQxtLogger.html#14a58f3cb4c09722eaa8d4779f57082aa" />
+                <keyword name="trace" id="class:QxtLogger::trace" ref="classQxtLogger.html#188f8e777ac73e35bb1a9a76956a2970b" />
+                <keyword name="warning" id="class:QxtLogger::warning" ref="classQxtLogger.html#14bedc4fcc67a6765c89e39db00481df7" />
+                <keyword name="error" id="class:QxtLogger::error" ref="classQxtLogger.html#1d8be6cb1bc20df36559530406e9d0053" />
+                <keyword name="debug" id="class:QxtLogger::debug" ref="classQxtLogger.html#1d169b060f921b21e92de0ace3718093f" />
+                <keyword name="critical" id="class:QxtLogger::critical" ref="classQxtLogger.html#185f37e17b7d89f5aa480ead9a9c9e8d4" />
+                <keyword name="fatal" id="class:QxtLogger::fatal" ref="classQxtLogger.html#1ed55f44d6c49d9b6a43ab640a6e1912a" />
+                <keyword name="write" id="class:QxtLogger::write" ref="classQxtLogger.html#1ff3ef14556d97992bec9a68e3e1e1315" />
+                <keyword name="info" id="class:QxtLogger::info" ref="classQxtLogger.html#108dbbd28154fe8a2dc004e4f79b73e72" />
+                <keyword name="trace" id="class:QxtLogger::trace" ref="classQxtLogger.html#10e3cb81604678ba9a53dafaca9a9929d" />
+                <keyword name="warning" id="class:QxtLogger::warning" ref="classQxtLogger.html#14a37de2b0b7d4fd19ac081159e240f17" />
+                <keyword name="error" id="class:QxtLogger::error" ref="classQxtLogger.html#11d9193b18cdc2a44f944f3c075644753" />
+                <keyword name="debug" id="class:QxtLogger::debug" ref="classQxtLogger.html#1dabd79c853615379f97333f38d961245" />
+                <keyword name="critical" id="class:QxtLogger::critical" ref="classQxtLogger.html#1f83a0cd75a7188ef7501f17fddfae286" />
+                <keyword name="fatal" id="class:QxtLogger::fatal" ref="classQxtLogger.html#1bb1b81f9a839f5f04ae86d0e8dfb0c64" />
+                <keyword name="write" id="class:QxtLogger::write" ref="classQxtLogger.html#1bc171eb3c9a4f8a4b170b1204979977f" />
+                <keyword name="log" id="class:QxtLogger::log" ref="classQxtLogger.html#1a21d1a9fb5ccd542168fe526e26caea4" />
+                <keyword name="loggerEngineAdded" id="class:QxtLogger::loggerEngineAdded" ref="classQxtLogger.html#1c91bc1c3b969456929498e82f6457c20" />
+                <keyword name="loggerEngineRemoved" id="class:QxtLogger::loggerEngineRemoved" ref="classQxtLogger.html#1f5b68e137d47ac9c16e8c21178d66aeb" />
+                <keyword name="loggerEngineEnabled" id="class:QxtLogger::loggerEngineEnabled" ref="classQxtLogger.html#1f1d2c5abd8388df08c67b448735c86b6" />
+                <keyword name="loggerEngineDisabled" id="class:QxtLogger::loggerEngineDisabled" ref="classQxtLogger.html#1bc4b1ba1c9e127938e4bd899c7b119d0" />
+                <keyword name="QxtLoggerEngine" id="class:QxtLoggerEngine" ref="classQxtLoggerEngine.html" />
+                <keyword name="~QxtLoggerEngine" id="class:QxtLoggerEngine::~QxtLoggerEngine" ref="classQxtLoggerEngine.html#1d5af913dc2636c18b97991d7b5625e35" />
+                <keyword name="initLoggerEngine" id="class:QxtLoggerEngine::initLoggerEngine" ref="classQxtLoggerEngine.html#13cfd91fc7ebc820b9e36280586d29806" />
+                <keyword name="killLoggerEngine" id="class:QxtLoggerEngine::killLoggerEngine" ref="classQxtLoggerEngine.html#12068086d51d68c4a64f7aefa559af6f1" />
+                <keyword name="isInitialized" id="class:QxtLoggerEngine::isInitialized" ref="classQxtLoggerEngine.html#1fd59f71812dc58077814de76cc852934" />
+                <keyword name="writeFormatted" id="class:QxtLoggerEngine::writeFormatted" ref="classQxtLoggerEngine.html#1e60088f38c4ef043290f759ed95283cd" />
+                <keyword name="setLoggingEnabled" id="class:QxtLoggerEngine::setLoggingEnabled" ref="classQxtLoggerEngine.html#1a4a5e4d406b40e6f55bc914415106c90" />
+                <keyword name="isLoggingEnabled" id="class:QxtLoggerEngine::isLoggingEnabled" ref="classQxtLoggerEngine.html#1b10622ba4d7a117c7b408cb45bf43baa" />
+                <keyword name="enableLogging" id="class:QxtLoggerEngine::enableLogging" ref="classQxtLoggerEngine.html#1f3090ebe3b97bbda8b337aa4227227f3" />
+                <keyword name="disableLogging" id="class:QxtLoggerEngine::disableLogging" ref="classQxtLoggerEngine.html#1fd817a6ae228e8236cf608535f012dc5" />
+                <keyword name="setLogLevelsEnabled" id="class:QxtLoggerEngine::setLogLevelsEnabled" ref="classQxtLoggerEngine.html#1e1804e91b1aca27b91533cc3d06b2494" />
+                <keyword name="isLogLevelEnabled" id="class:QxtLoggerEngine::isLogLevelEnabled" ref="classQxtLoggerEngine.html#103dc1334ea4e7aab22665e020e5ca296" />
+                <keyword name="enableLogLevels" id="class:QxtLoggerEngine::enableLogLevels" ref="classQxtLoggerEngine.html#1c8123ab2f4789d5d58978c3a796b0575" />
+                <keyword name="disableLogLevels" id="class:QxtLoggerEngine::disableLogLevels" ref="classQxtLoggerEngine.html#12c698480fecafc32a89528b6d980c936" />
+                <keyword name="QxtMail" id="class:QxtMail" ref="classQxtMail.html" />
+                <keyword name="recipients" id="class:QxtMail::recipients" ref="classQxtMail.html#15538ea2c04ded32e2ec75d7e9a5c1f66" />
+                <keyword name="sender" id="class:QxtMail::sender" ref="classQxtMail.html#1e61b739392ebddc86e6dccdded3d31e3" />
+                <keyword name="subject" id="class:QxtMail::subject" ref="classQxtMail.html#177bed12bcddc005b8b28d408fc298dbd" />
+                <keyword name="body" id="class:QxtMail::body" ref="classQxtMail.html#142904e172d8bec7b675493a47af283c3" />
+                <keyword name="extraHeaders" id="class:QxtMail::extraHeaders" ref="classQxtMail.html#1ea296ed957495b4b6b363598acb2ecf9" />
+                <keyword name="setRecipients" id="class:QxtMail::setRecipients" ref="classQxtMail.html#1d63c5ff0755f5a2e707637b477120b97" />
+                <keyword name="setSender" id="class:QxtMail::setSender" ref="classQxtMail.html#19e690237162a1fa19f4176446c0bd592" />
+                <keyword name="setSubject" id="class:QxtMail::setSubject" ref="classQxtMail.html#189cd36030e3617bb0776c7a96f8add78" />
+                <keyword name="setBody" id="class:QxtMail::setBody" ref="classQxtMail.html#144c18cd0caaebc34336818e870e75dfb" />
+                <keyword name="setExtraHeaders" id="class:QxtMail::setExtraHeaders" ref="classQxtMail.html#1b5ffb335ca7330fd0c459e5af34a7b5e" />
+                <keyword name="rfc822" id="class:QxtMail::rfc822" ref="classQxtMail.html#1197b8a834de621ebc23a08b10c3ae56d" />
+                <keyword name="QxtMetaObject" id="class:QxtMetaObject" ref="classQxtMetaObject.html" />
+                <keyword name="bind" id="class:QxtMetaObject::bind" ref="classQxtMetaObject.html#16a4e1dc20ba9478fd244031d76518fc3" />
+                <keyword name="bind" id="class:QxtMetaObject::bind" ref="classQxtMetaObject.html#193e1d55f77cac352f53f765b043154c9" />
+                <keyword name="methodName" id="class:QxtMetaObject::methodName" ref="classQxtMetaObject.html#1d5dc3f9735acfbaa57c87aa5469ddc74" />
+                <keyword name="methodSignature" id="class:QxtMetaObject::methodSignature" ref="classQxtMetaObject.html#108b2c37846aa9d2b36d93744f8b82889" />
+                <keyword name="isSignalOrSlot" id="class:QxtMetaObject::isSignalOrSlot" ref="classQxtMetaObject.html#117869c73b9170eed104ac03237395aff" />
+                <keyword name="bind" id="class:QxtMetaObject::bind" ref="classQxtMetaObject.html#1c3ae4a2ab8be48b311706e37d0a550df" />
+                <keyword name="bind" id="class:QxtMetaObject::bind" ref="classQxtMetaObject.html#1d94a8bd822d23f2816c68ad9130c6fd0" />
+                <keyword name="connect" id="class:QxtMetaObject::connect" ref="classQxtMetaObject.html#10672fb5917d321762dfd192f229469d5" />
+                <keyword name="QXT_BIND" id="class:QxtMetaObject::QXT_BIND" ref="classQxtMetaObject.html#183319dee22cac5d7cd6f64783be4b8b5" />
+                <keyword name="QxtMultiSignalWaiter" id="class:QxtMultiSignalWaiter" ref="classQxtMultiSignalWaiter.html" />
+                <keyword name="waitForAny" id="class:QxtMultiSignalWaiter::waitForAny" ref="classQxtMultiSignalWaiter.html#141aabd817915f343ecde6505c6ccf55d" />
+                <keyword name="waitForAll" id="class:QxtMultiSignalWaiter::waitForAll" ref="classQxtMultiSignalWaiter.html#16cb02fd64ef57ab7bbf6a5e81c4147c9" />
+                <keyword name="QxtNativeEventFilter" id="class:QxtNativeEventFilter" ref="classQxtNativeEventFilter.html" />
+                <keyword name="~QxtNativeEventFilter" id="class:QxtNativeEventFilter::~QxtNativeEventFilter" ref="classQxtNativeEventFilter.html#11bbd7814790399bd94fbd881614e26f7" />
+                <keyword name="QxtNull" id="class:QxtNull" ref="structQxtNull.html" />
+                <keyword name="operator int" id="class:QxtNull::operator int" ref="structQxtNull.html#1481fef6fbeb12143dff84dcc33f59934" />
+                <keyword name="QXT_NULL" id="class:QxtNull::QXT_NULL" ref="structQxtNull.html#1a80fa78e12057b65d076663dfa857dce" />
+                <keyword name="QxtNullable" id="class:QxtNullable" ref="classQxtNullable.html" />
+                <keyword name="isNull" id="class:QxtNullable::isNull" ref="classQxtNullable.html#169eab17adef45e953e1eb2a11e8304e5" />
+                <keyword name="nullify" id="class:QxtNullable::nullify" ref="classQxtNullable.html#10e7d77f807c44a181f2d109e7f2ae28a" />
+                <keyword name="value" id="class:QxtNullable::value" ref="classQxtNullable.html#1e42cbd2d9f2a5eaa3a2263679e2733bc" />
+                <keyword name="operator T" id="class:QxtNullable::operator T" ref="classQxtNullable.html#1d09bf6b53683e0f3a4cee773ca4297c8" />
+                <keyword name="operator=" id="class:QxtNullable::operator=" ref="classQxtNullable.html#1c2311c9b9893d6a04cb3804762e3a3fd" />
+                <keyword name="qxtNull" id="class:QxtNullable::qxtNull" ref="classQxtNullable.html#1756f8a1a930df1dbb59f813a541d3c44" />
+                <keyword name="QxtPimpl" id="class:QxtPimpl" ref="classQxtPimpl.html" />
+                <keyword name="QXT_DECLARE_PRIVATE" id="class:QxtPimpl::QXT_DECLARE_PRIVATE" ref="classQxtPimpl.html#1e70baf9930ff230cd030697ad6e1ed2e" />
+                <keyword name="QXT_DECLARE_PUBLIC" id="class:QxtPimpl::QXT_DECLARE_PUBLIC" ref="classQxtPimpl.html#13b24f59fff4ac3f4bf045fc5840c21c9" />
+                <keyword name="QXT_INIT_PRIVATE" id="class:QxtPimpl::QXT_INIT_PRIVATE" ref="classQxtPimpl.html#1cd3d3fee0ca06d8bd81463ecd5b7d50c" />
+                <keyword name="QXT_D" id="class:QxtPimpl::QXT_D" ref="classQxtPimpl.html#19a67ea55e3102d9759873297f86aefb5" />
+                <keyword name="QXT_P" id="class:QxtPimpl::QXT_P" ref="classQxtPimpl.html#129f5f620a2d22bb59d314fa753d91fe9" />
+                <keyword name="qxt_d" id="class:QxtPimpl::qxt_d" ref="classQxtPimpl.html#16780f1d0194ebc891614c72b59d5693c" />
+                <keyword name="qxt_p" id="class:QxtPimpl::qxt_p" ref="classQxtPimpl.html#16b19167222479c38f892a58588b351e7" />
+                <keyword name="QxtPipe" id="class:QxtPipe" ref="classQxtPipe.html" />
+                <keyword name="connect" id="class:QxtPipe::connect" ref="classQxtPipe.html#10666edfec8e321db742b1db943fae486" />
+                <keyword name="disconnect" id="class:QxtPipe::disconnect" ref="classQxtPipe.html#146272022ea1afac8c01f0143256069af" />
+                <keyword name="operator|" id="class:QxtPipe::operator|" ref="classQxtPipe.html#11c459857a3f24f5ea404d72342abd87d" />
+                <keyword name="receiveData" id="class:QxtPipe::receiveData" ref="classQxtPipe.html#166cbf5da29c3e305c93e7d982e03d1dc" />
+                <keyword name="sendData" id="class:QxtPipe::sendData" ref="classQxtPipe.html#1cf5e5d34b045a037820ea2afa849f42b" />
+                <keyword name="enqueData" id="class:QxtPipe::enqueData" ref="classQxtPipe.html#1cb361157ddcd0530126ff7c4ebcec7f1" />
+                <keyword name="QxtPointerList" id="class:QxtPointerList" ref="classQxtPointerList.html" />
+                <keyword name="~QxtPointerList" id="class:QxtPointerList::~QxtPointerList" ref="classQxtPointerList.html#1ceee9745857605abad1c6d234cf08c88" />
+                <keyword name="removeThisObject" id="class:QxtPointerList::removeThisObject" ref="classQxtPointerList.html#14b925e3e159629e876f4a35628a6be3c" />
+                <keyword name="addThisObject" id="class:QxtPointerList::addThisObject" ref="classQxtPointerList.html#13dd2eccc32e990a3590a8402763d5f22" />
+                <keyword name="QxtProgressLabel" id="class:QxtProgressLabel" ref="classQxtProgressLabel.html" />
+                <keyword name="contentFormat" id="class:QxtProgressLabel::contentFormat" ref="classQxtProgressLabel.html#1a00f4ec65fa776a0d36c5fbea8e0b342" />
+                <keyword name="timeFormat" id="class:QxtProgressLabel::timeFormat" ref="classQxtProgressLabel.html#1ca179b6b690f7aa0f0a1d269728e672a" />
+                <keyword name="updateInterval" id="class:QxtProgressLabel::updateInterval" ref="classQxtProgressLabel.html#1271b8d30364ae3bc2160c7be4ea7fd41" />
+                <keyword name="~QxtProgressLabel" id="class:QxtProgressLabel::~QxtProgressLabel" ref="classQxtProgressLabel.html#1e493ba1114d88c923cb8db988856aebf" />
+                <keyword name="setValue" id="class:QxtProgressLabel::setValue" ref="classQxtProgressLabel.html#18d96e47266a92c24eddef75ca8646705" />
+                <keyword name="refresh" id="class:QxtProgressLabel::refresh" ref="classQxtProgressLabel.html#136a9733ae436adf2deb008e58c222e9a" />
+                <keyword name="restart" id="class:QxtProgressLabel::restart" ref="classQxtProgressLabel.html#1f982958423b15ed99ba2c32fa6d51973" />
+                <keyword name="QxtProxyStyle" id="class:QxtProxyStyle" ref="classQxtProxyStyle.html" />
+                <keyword name="~QxtProxyStyle" id="class:QxtProxyStyle::~QxtProxyStyle" ref="classQxtProxyStyle.html#1a0fa2a8509bd90acf844736d73dff9ec" />
+                <keyword name="QxtPushButton" id="class:QxtPushButton" ref="classQxtPushButton.html" />
+                <keyword name="rotation" id="class:QxtPushButton::rotation" ref="classQxtPushButton.html#120239aa208659a80277421c00829a040" />
+                <keyword name="textFormat" id="class:QxtPushButton::textFormat" ref="classQxtPushButton.html#1509b0691de19c693a96ee41d96bd22ce" />
+                <keyword name="~QxtPushButton" id="class:QxtPushButton::~QxtPushButton" ref="classQxtPushButton.html#14be5345ab8f27d15b1416b42d7b7a661" />
+                <keyword name="QxtRPCPeer" id="class:QxtRPCPeer" ref="classQxtRPCPeer.html" />
+                <keyword name="connect" id="class:QxtRPCPeer::connect" ref="classQxtRPCPeer.html#1e0c492f74829b363831bb4ce75a1d21f" />
+                <keyword name="connect" id="class:QxtRPCPeer::connect" ref="classQxtRPCPeer.html#19964cffb5cb5aa0d01242e25f795b5d3" />
+                <keyword name="listen" id="class:QxtRPCPeer::listen" ref="classQxtRPCPeer.html#1ae7fcd6b1720ea10f08859a8d896a110" />
+                <keyword name="stopListening" id="class:QxtRPCPeer::stopListening" ref="classQxtRPCPeer.html#12656eda811259c6c75702d3952f49afd" />
+                <keyword name="connectedToServer" id="class:QxtRPCPeer::connectedToServer" ref="classQxtRPCPeer.html#15d62761c1dc7620ee7dc5b73d808a1f7" />
+                <keyword name="disconnectedFromServer" id="class:QxtRPCPeer::disconnectedFromServer" ref="classQxtRPCPeer.html#10f854addfc6077692d9e76cef662c54c" />
+                <keyword name="serverError" id="class:QxtRPCPeer::serverError" ref="classQxtRPCPeer.html#17f3d0bda11e08ba5dbf5861315d1ff90" />
+                <keyword name="QxtRPCService" id="class:QxtRPCService" ref="classQxtRPCService.html" />
+                <keyword name="~QxtRPCService" id="class:QxtRPCService::~QxtRPCService" ref="classQxtRPCService.html#1caa67772390551273cdf421a60448606" />
+                <keyword name="isServer" id="class:QxtRPCService::isServer" ref="classQxtRPCService.html#1fa257d10a02bd602d1994ef33027448e" />
+                <keyword name="isClient" id="class:QxtRPCService::isClient" ref="classQxtRPCService.html#17e98c261583ad87bf80c3783756af0c8" />
+                <keyword name="clients" id="class:QxtRPCService::clients" ref="classQxtRPCService.html#1f01a9230c41db79851937a34484dd75b" />
+                <keyword name="device" id="class:QxtRPCService::device" ref="classQxtRPCService.html#14eb4de0d4d04cadb92e469eed75bf7e8" />
+                <keyword name="setDevice" id="class:QxtRPCService::setDevice" ref="classQxtRPCService.html#1ad1934ec252605d8543a940d4ca8238d" />
+                <keyword name="takeDevice" id="class:QxtRPCService::takeDevice" ref="classQxtRPCService.html#1492fe2088fdb58b8d9dc6d497df6a2de" />
+                <keyword name="serializer" id="class:QxtRPCService::serializer" ref="classQxtRPCService.html#134dd27cfe4af223c4cc5335168a9c203" />
+                <keyword name="setSerializer" id="class:QxtRPCService::setSerializer" ref="classQxtRPCService.html#14f9f712dd948aed4a65837ab19111305" />
+                <keyword name="connectionManager" id="class:QxtRPCService::connectionManager" ref="classQxtRPCService.html#1c86d1c59f3552bcbc88559f2c23edc7c" />
+                <keyword name="setConnectionManager" id="class:QxtRPCService::setConnectionManager" ref="classQxtRPCService.html#1e4246182fe7a84119fb37e90eb9cccf7" />
+                <keyword name="attachSignal" id="class:QxtRPCService::attachSignal" ref="classQxtRPCService.html#1dc5ae895c4fc3194254af52eda31aa6d" />
+                <keyword name="attachSlot" id="class:QxtRPCService::attachSlot" ref="classQxtRPCService.html#16166ed6737dba6215aa5093656bbe37d" />
+                <keyword name="detachSignals" id="class:QxtRPCService::detachSignals" ref="classQxtRPCService.html#168a87fe3f5491baa1c745e9680881eea" />
+                <keyword name="detachSlots" id="class:QxtRPCService::detachSlots" ref="classQxtRPCService.html#188ca491af26eb487d6bbe3a15e210642" />
+                <keyword name="detachObject" id="class:QxtRPCService::detachObject" ref="classQxtRPCService.html#1f8c18776b34e4da35df553aa0618d6bf" />
+                <keyword name="disconnectClient" id="class:QxtRPCService::disconnectClient" ref="classQxtRPCService.html#11c97516152b02be1a303e38bb2fa22da" />
+                <keyword name="disconnectServer" id="class:QxtRPCService::disconnectServer" ref="classQxtRPCService.html#1a7aaebcdc571455f9a04abce87ca79d1" />
+                <keyword name="disconnectAll" id="class:QxtRPCService::disconnectAll" ref="classQxtRPCService.html#1931a2118af9363ec236dcfa49483681f" />
+                <keyword name="call" id="class:QxtRPCService::call" ref="classQxtRPCService.html#15a0cb803d5f0dbadc102cc33cef612a3" />
+                <keyword name="call" id="class:QxtRPCService::call" ref="classQxtRPCService.html#1f63e5956c301b51e9007baf0ed8c6b51" />
+                <keyword name="call" id="class:QxtRPCService::call" ref="classQxtRPCService.html#1b105ef15a085758e05d3dd9ab329ad29" />
+                <keyword name="callExcept" id="class:QxtRPCService::callExcept" ref="classQxtRPCService.html#129735715edb6be280733d774d02bb3ab" />
+                <keyword name="detachSender" id="class:QxtRPCService::detachSender" ref="classQxtRPCService.html#16e9b1bbfe00e384025a58e70fa0e10de" />
+                <keyword name="clientConnected" id="class:QxtRPCService::clientConnected" ref="classQxtRPCService.html#19b2af33db0cebccc82ecc2b9d21c8843" />
+                <keyword name="clientDisconnected" id="class:QxtRPCService::clientDisconnected" ref="classQxtRPCService.html#1aaa2a3cb64b4e59dbfefd7c68bf8c305" />
+                <keyword name="QxtScgiServerConnector" id="class:QxtScgiServerConnector" ref="classQxtScgiServerConnector.html" />
+                <keyword name="QxtScheduleView" id="class:QxtScheduleView" ref="classQxtScheduleView.html" />
+                <keyword name="ViewMode" id="class:QxtScheduleView::ViewMode" ref="classQxtScheduleView.html#1c4a79a5a6631b96d95a4f83e9f873a60" />
+                <keyword name="setModel" id="class:QxtScheduleView::setModel" ref="classQxtScheduleView.html#13db99dc584f4e0b6fe1340a6f1ba437c" />
+                <keyword name="model" id="class:QxtScheduleView::model" ref="classQxtScheduleView.html#17490bdcc9b3b8f902436e948ff6c8897" />
+                <keyword name="setViewMode" id="class:QxtScheduleView::setViewMode" ref="classQxtScheduleView.html#17fd4cd03ade11c55453870944df1679f" />
+                <keyword name="viewMode" id="class:QxtScheduleView::viewMode" ref="classQxtScheduleView.html#1cafa5cb07f284d74574f83a68a60cee4" />
+                <keyword name="setDateRange" id="class:QxtScheduleView::setDateRange" ref="classQxtScheduleView.html#1e05b77c77c53a92b6d57ed138f0359e9" />
+                <keyword name="setTimeRange" id="class:QxtScheduleView::setTimeRange" ref="classQxtScheduleView.html#13c21a439e0ce8e9ed492ff9d1865377f" />
+                <keyword name="delegate" id="class:QxtScheduleView::delegate" ref="classQxtScheduleView.html#15ebc3f4a9bb0bf5ed11ee02f26775bb8" />
+                <keyword name="setItemDelegate" id="class:QxtScheduleView::setItemDelegate" ref="classQxtScheduleView.html#1ee911d2ee254194c669a625e99939632" />
+                <keyword name="setZoomStepWidth" id="class:QxtScheduleView::setZoomStepWidth" ref="classQxtScheduleView.html#199c699af13e800f79e5192540abe2998" />
+                <keyword name="setCurrentZoomDepth" id="class:QxtScheduleView::setCurrentZoomDepth" ref="classQxtScheduleView.html#13755f30f9b62f8d0f7ee095c5df06583" />
+                <keyword name="currentZoomDepth" id="class:QxtScheduleView::currentZoomDepth" ref="classQxtScheduleView.html#1cf31c73809fafd8521bd1e6da295af05" />
+                <keyword name="mapFromViewport" id="class:QxtScheduleView::mapFromViewport" ref="classQxtScheduleView.html#1c787ddfc383891647e89a969c1434e3c" />
+                <keyword name="mapToViewport" id="class:QxtScheduleView::mapToViewport" ref="classQxtScheduleView.html#105d6a1b34ec33aee70379fa34d7fdb92" />
+                <keyword name="indexAt" id="class:QxtScheduleView::indexAt" ref="classQxtScheduleView.html#1cdfcea81f0e47180b0ab4d9191c54aeb" />
+                <keyword name="raiseItem" id="class:QxtScheduleView::raiseItem" ref="classQxtScheduleView.html#1f5f93456a6d8d9c92593226e35f8b62c" />
+                <keyword name="handleItemConcurrency" id="class:QxtScheduleView::handleItemConcurrency" ref="classQxtScheduleView.html#10ca51be10191c3afa761dd2f5925fb81" />
+                <keyword name="currentIndex" id="class:QxtScheduleView::currentIndex" ref="classQxtScheduleView.html#1279f87dc5b35decdbe5c533365e73fa0" />
+                <keyword name="rows" id="class:QxtScheduleView::rows" ref="classQxtScheduleView.html#1969bba536414f77f1dec58ac5138ef6c" />
+                <keyword name="cols" id="class:QxtScheduleView::cols" ref="classQxtScheduleView.html#152a9face314b459610810987740bbd44" />
+                <keyword name="itemMoved" id="class:QxtScheduleView::itemMoved" ref="classQxtScheduleView.html#1722ee60cd575cf860bf0d7962aae3eeb" />
+                <keyword name="indexSelected" id="class:QxtScheduleView::indexSelected" ref="classQxtScheduleView.html#16b24c0295703507b999aee0f161333dc" />
+                <keyword name="indexDoubleClicked" id="class:QxtScheduleView::indexDoubleClicked" ref="classQxtScheduleView.html#18f6e8f48bc47cfd7a73d0a64228832ac" />
+                <keyword name="contextMenuRequested" id="class:QxtScheduleView::contextMenuRequested" ref="classQxtScheduleView.html#11c7c396d8ac29797ad6878a967bea3e3" />
+                <keyword name="newZoomDepth" id="class:QxtScheduleView::newZoomDepth" ref="classQxtScheduleView.html#13f2287899a4511e94e27b7f496b23e62" />
+                <keyword name="viewModeChanged" id="class:QxtScheduleView::viewModeChanged" ref="classQxtScheduleView.html#1fb8b5fe704e3666463ec4b2f0db3503e" />
+                <keyword name="timePerColumn" id="class:QxtScheduleView::timePerColumn" ref="classQxtScheduleView.html#17930f1999f07088813554247cd7acee7" />
+                <keyword name="adjustRangeToViewMode" id="class:QxtScheduleView::adjustRangeToViewMode" ref="classQxtScheduleView.html#1c27562bad8b04bb78a3cc455e103a10e" />
+                <keyword name="scrollContentsBy" id="class:QxtScheduleView::scrollContentsBy" ref="classQxtScheduleView.html#1ee04266a32ffbc9992bd9e268c74c4ce" />
+                <keyword name="paintEvent" id="class:QxtScheduleView::paintEvent" ref="classQxtScheduleView.html#1d8522d31914a6426e9a73072f05bdad2" />
+                <keyword name="mouseMoveEvent" id="class:QxtScheduleView::mouseMoveEvent" ref="classQxtScheduleView.html#166cc33d01f18bce290b8be027aab57e6" />
+                <keyword name="mousePressEvent" id="class:QxtScheduleView::mousePressEvent" ref="classQxtScheduleView.html#1356ddf233d16be80e6312b0f0e0011f4" />
+                <keyword name="mouseReleaseEvent" id="class:QxtScheduleView::mouseReleaseEvent" ref="classQxtScheduleView.html#19de860b7a297a4b5a0cdac5704dcc36a" />
+                <keyword name="mouseDoubleClickEvent" id="class:QxtScheduleView::mouseDoubleClickEvent" ref="classQxtScheduleView.html#1f82fe7b5d272414b66f9408681c8553d" />
+                <keyword name="resizeEvent" id="class:QxtScheduleView::resizeEvent" ref="classQxtScheduleView.html#1be42a8cfb17adee7a41b9b121375ccbd" />
+                <keyword name="wheelEvent" id="class:QxtScheduleView::wheelEvent" ref="classQxtScheduleView.html#1fd493ff4c651b3c10998224e7f5f5d74" />
+                <keyword name="dataChanged" id="class:QxtScheduleView::dataChanged" ref="classQxtScheduleView.html#171d1a84581afb3099857bb640adc1c6a" />
+                <keyword name="updateGeometries" id="class:QxtScheduleView::updateGeometries" ref="classQxtScheduleView.html#1b4a041167277ea9e2697df1534b243e9" />
+                <keyword name="zoomIn" id="class:QxtScheduleView::zoomIn" ref="classQxtScheduleView.html#1f649c3b890527e362c3c3fa0fd986f48" />
+                <keyword name="zoomOut" id="class:QxtScheduleView::zoomOut" ref="classQxtScheduleView.html#10c37abd1da27d410d1b53e0425cdb603" />
+                <keyword name="rowsAboutToBeRemoved" id="class:QxtScheduleView::rowsAboutToBeRemoved" ref="classQxtScheduleView.html#181610ed09b24970aeffab96b6d24bcf0" />
+                <keyword name="rowsAboutToBeInserted" id="class:QxtScheduleView::rowsAboutToBeInserted" ref="classQxtScheduleView.html#1173b84c5a999261e70bbe4a73391f96c" />
+                <keyword name="rowsRemoved" id="class:QxtScheduleView::rowsRemoved" ref="classQxtScheduleView.html#14f081700877813eb99198a6692bb137e" />
+                <keyword name="rowsInserted" id="class:QxtScheduleView::rowsInserted" ref="classQxtScheduleView.html#1084daec1b60fa475b2d2831c8ca37049" />
+                <keyword name="QxtSemaphore" id="class:QxtSemaphore" ref="classQxtSemaphore.html" />
+                <keyword name="~QxtSemaphore" id="class:QxtSemaphore::~QxtSemaphore" ref="classQxtSemaphore.html#1bb4c562a27a85236bb697a3824692cd5" />
+                <keyword name="trylock" id="class:QxtSemaphore::trylock" ref="classQxtSemaphore.html#153e701d48f22e71dc93bf8de685cbc6d" />
+                <keyword name="unlock" id="class:QxtSemaphore::unlock" ref="classQxtSemaphore.html#1f98d0a67e306a19b4c30e399b64f0066" />
+                <keyword name="QxtSendmail" id="class:QxtSendmail" ref="classQxtSendmail.html" />
+                <keyword name="send" id="class:QxtSendmail::send" ref="classQxtSendmail.html#13eb8076f3d3ca32db29809180fbcf463" />
+                <keyword name="QxtSharedPrivate" id="class:QxtSharedPrivate" ref="classQxtSharedPrivate.html" />
+                <keyword name="operator=" id="class:QxtSharedPrivate::operator=" ref="classQxtSharedPrivate.html#1f5fa87ca5f85b4c07a245f5f2f60d613" />
+                <keyword name="operator()" id="class:QxtSharedPrivate::operator()" ref="classQxtSharedPrivate.html#178fe54903459c778d1c66ea8fbac0f34" />
+                <keyword name="operator()" id="class:QxtSharedPrivate::operator()" ref="classQxtSharedPrivate.html#1feecd8a6a40e52c3590f9d7feee425bd" />
+                <keyword name="QxtSignalGroup" id="class:QxtSignalGroup" ref="classQxtSignalGroup.html" />
+                <keyword name="addSignal" id="class:QxtSignalGroup::addSignal" ref="classQxtSignalGroup.html#137c04aa272510dc36ccf33b8ea8b687a" />
+                <keyword name="removeSignal" id="class:QxtSignalGroup::removeSignal" ref="classQxtSignalGroup.html#1f070249093d515c246acd04919615b49" />
+                <keyword name="clear" id="class:QxtSignalGroup::clear" ref="classQxtSignalGroup.html#1a36113e4d3ab7b513f04e7cd48e01301" />
+                <keyword name="hasReceivedFirstSignal" id="class:QxtSignalGroup::hasReceivedFirstSignal" ref="classQxtSignalGroup.html#134fa8ec6c0e60b1d9894b0d5acdf08cc" />
+                <keyword name="hasReceivedAllSignals" id="class:QxtSignalGroup::hasReceivedAllSignals" ref="classQxtSignalGroup.html#1c75508f2cd0d80cdcf6717f253edc0e3" />
+                <keyword name="reset" id="class:QxtSignalGroup::reset" ref="classQxtSignalGroup.html#1ad35385388040895c7cf21bfe9a753b3" />
+                <keyword name="firstSignalReceived" id="class:QxtSignalGroup::firstSignalReceived" ref="classQxtSignalGroup.html#17399023c039399d4eb540c0d58c6afc2" />
+                <keyword name="allSignalsReceived" id="class:QxtSignalGroup::allSignalsReceived" ref="classQxtSignalGroup.html#14c51ee7c10d27da5c3b086a40a711c61" />
+                <keyword name="QxtSignalWaiter" id="class:QxtSignalWaiter" ref="classQxtSignalWaiter.html" />
+                <keyword name="wait" id="class:QxtSignalWaiter::wait" ref="classQxtSignalWaiter.html#1faf3cb833a88fb63462acdb4eb1e6834" />
+                <keyword name="hasCapturedSignal" id="class:QxtSignalWaiter::hasCapturedSignal" ref="classQxtSignalWaiter.html#16e1971d71fbc6d6d2c0bcc8530b1d78a" />
+                <keyword name="wait" id="class:QxtSignalWaiter::wait" ref="classQxtSignalWaiter.html#13a6c2355841368e97f30eb4c8c340c3d" />
+                <keyword name="signalCaught" id="class:QxtSignalWaiter::signalCaught" ref="classQxtSignalWaiter.html#1a5f700c2e9911622eb61c1f4a085c32a" />
+                <keyword name="cancelWait" id="class:QxtSignalWaiter::cancelWait" ref="classQxtSignalWaiter.html#105305b289fc5a73e289f53730d4fb187" />
+                <keyword name="QxtSlotJob" id="class:QxtSlotJob" ref="classQxtSlotJob.html" />
+                <keyword name="detach" id="class:QxtSlotJob::detach" ref="classQxtSlotJob.html#135612d7b823cfb367d589a0d8853ee5f" />
+                <keyword name="result" id="class:QxtSlotJob::result" ref="classQxtSlotJob.html#1e9c117eeb58b9540de0dd6a558035fbb" />
+                <keyword name="exec" id="class:QxtSlotJob::exec" ref="classQxtSlotJob.html#1970621e9cd6abcc570722027320f4695" />
+                <keyword name="run" id="class:QxtSlotJob::run" ref="classQxtSlotJob.html#121381e735239353e74c69b825a216d26" />
+                <keyword name="done" id="class:QxtSlotJob::done" ref="classQxtSlotJob.html#1607be9fb720f32052a970ec94a95dc5e" />
+                <keyword name="QxtSlotMapper" id="class:QxtSlotMapper" ref="classQxtSlotMapper.html" />
+                <keyword name="~QxtSlotMapper" id="class:QxtSlotMapper::~QxtSlotMapper" ref="classQxtSlotMapper.html#1442af9dd2c43168f4fb191c4f4e8b987" />
+                <keyword name="addMapping" id="class:QxtSlotMapper::addMapping" ref="classQxtSlotMapper.html#154d24071f942b921e5294112dba90b58" />
+                <keyword name="removeMapping" id="class:QxtSlotMapper::removeMapping" ref="classQxtSlotMapper.html#1858de3dbd71cfbf83f9d74441b0852f0" />
+                <keyword name="connect" id="class:QxtSlotMapper::connect" ref="classQxtSlotMapper.html#18632ab531357783b9ff11ef735bbc029" />
+                <keyword name="QxtSpanSlider" id="class:QxtSpanSlider" ref="classQxtSpanSlider.html" />
+                <keyword name="HandleMovementMode" id="class:QxtSpanSlider::HandleMovementMode" ref="classQxtSpanSlider.html#16dabb5d033accfd402d1542405175ac1" />
+                <keyword name="lowerValue" id="class:QxtSpanSlider::lowerValue" ref="classQxtSpanSlider.html#1e2c130ff27659483db0b749a24a5bdb9" />
+                <keyword name="upperValue" id="class:QxtSpanSlider::upperValue" ref="classQxtSpanSlider.html#1dbef852408f0429f8fa7550cd528a5dc" />
+                <keyword name="lowerPosition" id="class:QxtSpanSlider::lowerPosition" ref="classQxtSpanSlider.html#1f2f098b7e81fcc569954d6f81b3abd34" />
+                <keyword name="upperPosition" id="class:QxtSpanSlider::upperPosition" ref="classQxtSpanSlider.html#15351cf909d25845b3faf14b2776c8932" />
+                <keyword name="handleMovementMode" id="class:QxtSpanSlider::handleMovementMode" ref="classQxtSpanSlider.html#12b4477cccfd8d851bec945410f28ca7a" />
+                <keyword name="~QxtSpanSlider" id="class:QxtSpanSlider::~QxtSpanSlider" ref="classQxtSpanSlider.html#1c368255787b1c162969c360a6a155557" />
+                <keyword name="setLowerValue" id="class:QxtSpanSlider::setLowerValue" ref="classQxtSpanSlider.html#161c59417faf46c042b2af6a641bacc44" />
+                <keyword name="setUpperValue" id="class:QxtSpanSlider::setUpperValue" ref="classQxtSpanSlider.html#19c450417490fdc20f96a0f64ffa1ad85" />
+                <keyword name="setSpan" id="class:QxtSpanSlider::setSpan" ref="classQxtSpanSlider.html#17fc6e87a5ec80c01579157f4893d0117" />
+                <keyword name="setLowerPosition" id="class:QxtSpanSlider::setLowerPosition" ref="classQxtSpanSlider.html#14f3d32d35cdbaa7fd4034eff2144bc7c" />
+                <keyword name="setUpperPosition" id="class:QxtSpanSlider::setUpperPosition" ref="classQxtSpanSlider.html#1f30253753b948b4f7999b84961ad663b" />
+                <keyword name="spanChanged" id="class:QxtSpanSlider::spanChanged" ref="classQxtSpanSlider.html#1c0b68f434b781977c856ab0c14efe84f" />
+                <keyword name="lowerValueChanged" id="class:QxtSpanSlider::lowerValueChanged" ref="classQxtSpanSlider.html#16706d537da77862af4cfa81ed9226dff" />
+                <keyword name="upperValueChanged" id="class:QxtSpanSlider::upperValueChanged" ref="classQxtSpanSlider.html#1c2573b58ea0e48029663a70d88df53dc" />
+                <keyword name="lowerPositionChanged" id="class:QxtSpanSlider::lowerPositionChanged" ref="classQxtSpanSlider.html#10c3f83bb7535973c56df5f5eaf5e5303" />
+                <keyword name="upperPositionChanged" id="class:QxtSpanSlider::upperPositionChanged" ref="classQxtSpanSlider.html#166b0f02140fc7713e604cfd2d667f702" />
+                <keyword name="QxtSqlPackage" id="class:QxtSqlPackage" ref="classQxtSqlPackage.html" />
+                <keyword name="isValid" id="class:QxtSqlPackage::isValid" ref="classQxtSqlPackage.html#115c930583d93fab0d46dc102ae4b696c" />
+                <keyword name="at" id="class:QxtSqlPackage::at" ref="classQxtSqlPackage.html#1876d5f178adf89c1f47197a526aa38fe" />
+                <keyword name="next" id="class:QxtSqlPackage::next" ref="classQxtSqlPackage.html#13c53546ad9510ff1e37aa042d8277594" />
+                <keyword name="last" id="class:QxtSqlPackage::last" ref="classQxtSqlPackage.html#12db1b2f59c2b7a96fe0ac28db3a5bcab" />
+                <keyword name="first" id="class:QxtSqlPackage::first" ref="classQxtSqlPackage.html#1e85d2a6bede4163e0d33acfac4ce3fef" />
+                <keyword name="value" id="class:QxtSqlPackage::value" ref="classQxtSqlPackage.html#16b0d004f679ee988b13f3b45588f789a" />
+                <keyword name="insert" id="class:QxtSqlPackage::insert" ref="classQxtSqlPackage.html#18cb821ede737fb9c783aaf9c4af661a9" />
+                <keyword name="count" id="class:QxtSqlPackage::count" ref="classQxtSqlPackage.html#1aa2f9f5f1eccaa7141fa61e8c049331f" />
+                <keyword name="data" id="class:QxtSqlPackage::data" ref="classQxtSqlPackage.html#1bfed3d86a288985559b5bd161989545b" />
+                <keyword name="setData" id="class:QxtSqlPackage::setData" ref="classQxtSqlPackage.html#13963e060e2e3a32138ea28381c982044" />
+                <keyword name="hash" id="class:QxtSqlPackage::hash" ref="classQxtSqlPackage.html#1c326ae46d86a4cc8653fccdb298650d8" />
+                <keyword name="hash" id="class:QxtSqlPackage::hash" ref="classQxtSqlPackage.html#1ce82302355c58b7876bf31e7fccf7a88" />
+                <keyword name="operator=" id="class:QxtSqlPackage::operator=" ref="classQxtSqlPackage.html#1ec80092db969a1070622f1c7f61afa5b" />
+                <keyword name="QxtSqlPackageModel" id="class:QxtSqlPackageModel" ref="classQxtSqlPackageModel.html" />
+                <keyword name="setQuery" id="class:QxtSqlPackageModel::setQuery" ref="classQxtSqlPackageModel.html#1f2178db1f14cf5e5811c7d901a34045a" />
+                <keyword name="QxtStandardItemEditorCreator" id="class:QxtStandardItemEditorCreator" ref="classQxtStandardItemEditorCreator.html" />
+                <keyword name="QxtStars" id="class:QxtStars" ref="classQxtStars.html" />
+                <keyword name="readOnly" id="class:QxtStars::readOnly" ref="classQxtStars.html#128f69c41ee4741352e3b13c048cea8b7" />
+                <keyword name="starSize" id="class:QxtStars::starSize" ref="classQxtStars.html#10e9f0b8970f9276d4e15485536cae041" />
+                <keyword name="~QxtStars" id="class:QxtStars::~QxtStars" ref="classQxtStars.html#1a56bb26b50c4c70967bc9a588fdefc4e" />
+                <keyword name="QxtStdStreambufDevice" id="class:QxtStdStreambufDevice" ref="classQxtStdStreambufDevice.html" />
+                <keyword name="QxtStdio" id="class:QxtStdio" ref="classQxtStdio.html" />
+                <keyword name="waitForReadyRead" id="class:QxtStdio::waitForReadyRead" ref="classQxtStdio.html#1c194de4c69699debb35f46a6fccb37b0" />
+                <keyword name="waitForEOF" id="class:QxtStdio::waitForEOF" ref="classQxtStdio.html#1abc84f461781092a4aafed6b657e0b78" />
+                <keyword name="QxtStringSpinBox" id="class:QxtStringSpinBox" ref="classQxtStringSpinBox.html" />
+                <keyword name="strings" id="class:QxtStringSpinBox::strings" ref="classQxtStringSpinBox.html#1dc245d0299ae0dc3a62c35b606ed343b" />
+                <keyword name="~QxtStringSpinBox" id="class:QxtStringSpinBox::~QxtStringSpinBox" ref="classQxtStringSpinBox.html#109da84b2ceb17568055adf9a9ee20ec0" />
+                <keyword name="QxtStringValidator" id="class:QxtStringValidator" ref="classQxtStringValidator.html" />
+                <keyword name="~QxtStringValidator" id="class:QxtStringValidator::~QxtStringValidator" ref="classQxtStringValidator.html#1300a80f0e498179ecf0e3d14a1536bc9" />
+                <keyword name="fixup" id="class:QxtStringValidator::fixup" ref="classQxtStringValidator.html#1c5242af047f72f4d9366f4e100097a7e" />
+                <keyword name="validate" id="class:QxtStringValidator::validate" ref="classQxtStringValidator.html#1d9dcf6851e9e0b975059498fe8ba7de8" />
+                <keyword name="caseSensitivity" id="class:QxtStringValidator::caseSensitivity" ref="classQxtStringValidator.html#1b1d92c166d6d47e9fc523a1332da126a" />
+                <keyword name="setCaseSensitivity" id="class:QxtStringValidator::setCaseSensitivity" ref="classQxtStringValidator.html#11ec428ef079b1106e63a7ce82bc1d729" />
+                <keyword name="setStartModelIndex" id="class:QxtStringValidator::setStartModelIndex" ref="classQxtStringValidator.html#121506876031f02333fcbbbb3be11eea6" />
+                <keyword name="setStringList" id="class:QxtStringValidator::setStringList" ref="classQxtStringValidator.html#1c675d147b68cc34db4158e3bb795a969" />
+                <keyword name="setRecursiveLookup" id="class:QxtStringValidator::setRecursiveLookup" ref="classQxtStringValidator.html#1bce48dd314cfcf28bfc1573f41008970" />
+                <keyword name="setWrappingLookup" id="class:QxtStringValidator::setWrappingLookup" ref="classQxtStringValidator.html#1dafd55f64cd3151051301f5dff3c88a8" />
+                <keyword name="setLookupModel" id="class:QxtStringValidator::setLookupModel" ref="classQxtStringValidator.html#1f4f8ae1c5d49960a33498efeaa8fbe29" />
+                <keyword name="setLookupRole" id="class:QxtStringValidator::setLookupRole" ref="classQxtStringValidator.html#1a256cc6fdb54c2c0bdcc4267427447f2" />
+                <keyword name="startModelIndex" id="class:QxtStringValidator::startModelIndex" ref="classQxtStringValidator.html#1214d8c8baf9be99d7e8b8cbc3d15a78a" />
+                <keyword name="recursiveLookup" id="class:QxtStringValidator::recursiveLookup" ref="classQxtStringValidator.html#15a51e107f75ea86be9ba7800ad23ce1b" />
+                <keyword name="wrappingLookup" id="class:QxtStringValidator::wrappingLookup" ref="classQxtStringValidator.html#1c9c731697512114a368257d9c9ac5a39" />
+                <keyword name="lookupModel" id="class:QxtStringValidator::lookupModel" ref="classQxtStringValidator.html#12d6ddfb5229f15dbc1a37bb8417241f5" />
+                <keyword name="lookupRole" id="class:QxtStringValidator::lookupRole" ref="classQxtStringValidator.html#16613800b8ba951262a6ef1e1903f5d53" />
+                <keyword name="QxtTabBar" id="class:QxtTabBar" ref="classQxtTabBar.html" />
+                <keyword name="TabMovementMode" id="class:QxtTabBar::TabMovementMode" ref="classQxtTabBar.html#1872f61388beaa06ec5662a96e5f7daf6" />
+                <keyword name="tabMovementMode" id="class:QxtTabBar::tabMovementMode" ref="classQxtTabBar.html#16c5839a3b11f59d012abc357a587894f" />
+                <keyword name="~QxtTabBar" id="class:QxtTabBar::~QxtTabBar" ref="classQxtTabBar.html#163975539ba959a01cc5e1017b0a14350" />
+                <keyword name="dragMoveEvent" id="class:QxtTabBar::dragMoveEvent" ref="classQxtTabBar.html#1e4fcfeafebc27a7e607effeec5f8e3f0" />
+                <keyword name="tabMoved" id="class:QxtTabBar::tabMoved" ref="classQxtTabBar.html#12f33be7932716f37a6bd5b3c3d0befd4" />
+                <keyword name="QxtTabWidget" id="class:QxtTabWidget" ref="classQxtTabWidget.html" />
+                <keyword name="TabMovementMode" id="class:QxtTabWidget::TabMovementMode" ref="classQxtTabWidget.html#1eefbc538528c9cad600e9c211feed491" />
+                <keyword name="alwaysShowTabBar" id="class:QxtTabWidget::alwaysShowTabBar" ref="classQxtTabWidget.html#15cee461f63f635aeaa5139b4674d085c" />
+                <keyword name="tabContextMenuPolicy" id="class:QxtTabWidget::tabContextMenuPolicy" ref="classQxtTabWidget.html#17e940acaabc0104aa37b3a1478e1d2d0" />
+                <keyword name="tabMovementMode" id="class:QxtTabWidget::tabMovementMode" ref="classQxtTabWidget.html#1cac13b34096e0dfa9abbeb152337d5fc" />
+                <keyword name="~QxtTabWidget" id="class:QxtTabWidget::~QxtTabWidget" ref="classQxtTabWidget.html#16b5f66b03699bc99c8a0cb997e526e1f" />
+                <keyword name="addTabAction" id="class:QxtTabWidget::addTabAction" ref="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e" />
+                <keyword name="addTabAction" id="class:QxtTabWidget::addTabAction" ref="classQxtTabWidget.html#14e3740229241e301283b5f56a8407f28" />
+                <keyword name="addTabAction" id="class:QxtTabWidget::addTabAction" ref="classQxtTabWidget.html#1cf1d5b3b4fe9b614a76a74a290913a59" />
+                <keyword name="addTabAction" id="class:QxtTabWidget::addTabAction" ref="classQxtTabWidget.html#184ede12e07bcac80281ccfee3e0c3fbd" />
+                <keyword name="addTabAction" id="class:QxtTabWidget::addTabAction" ref="classQxtTabWidget.html#1a501e41ca01d328dcd8dcaa6a31f85cc" />
+                <keyword name="addTabActions" id="class:QxtTabWidget::addTabActions" ref="classQxtTabWidget.html#13b1a8ef96e696d7af28642d5b53d653b" />
+                <keyword name="clearTabActions" id="class:QxtTabWidget::clearTabActions" ref="classQxtTabWidget.html#1e71cc919250be0a74be547cc4f726a6f" />
+                <keyword name="insertTabAction" id="class:QxtTabWidget::insertTabAction" ref="classQxtTabWidget.html#1133ea0f8a7ec3450f4fbaab71edb257f" />
+                <keyword name="insertTabActions" id="class:QxtTabWidget::insertTabActions" ref="classQxtTabWidget.html#18b187b30f9bbfeeff27505828bd8e4da" />
+                <keyword name="removeTabAction" id="class:QxtTabWidget::removeTabAction" ref="classQxtTabWidget.html#1a325cfa3ca44b5fb65a8eb3daa368328" />
+                <keyword name="tabActions" id="class:QxtTabWidget::tabActions" ref="classQxtTabWidget.html#112b7d412916b1964772dd10a14a5764a" />
+                <keyword name="tabAnimation" id="class:QxtTabWidget::tabAnimation" ref="classQxtTabWidget.html#14cfa44c6e8b39bbcf4859f16fa024503" />
+                <keyword name="setTabAnimation" id="class:QxtTabWidget::setTabAnimation" ref="classQxtTabWidget.html#1729deb9177bf607f24f2047248803109" />
+                <keyword name="setTabAnimation" id="class:QxtTabWidget::setTabAnimation" ref="classQxtTabWidget.html#1dca0cd59683deae934b2f67c84e3379d" />
+                <keyword name="takeTabAnimation" id="class:QxtTabWidget::takeTabAnimation" ref="classQxtTabWidget.html#1823a5340a6d3eff69f2c079a8eb2e975" />
+                <keyword name="tabContextMenuRequested" id="class:QxtTabWidget::tabContextMenuRequested" ref="classQxtTabWidget.html#1d522fb334c56aa2e865508e042c74137" />
+                <keyword name="tabBar" id="class:QxtTabWidget::tabBar" ref="classQxtTabWidget.html#191e5403a560a54a737a44bdf69a0f1db" />
+                <keyword name="tabContextMenuEvent" id="class:QxtTabWidget::tabContextMenuEvent" ref="classQxtTabWidget.html#1ddd8f604888b15c79a54c1b9b049c35c" />
+                <keyword name="QxtTableWidget" id="class:QxtTableWidget" ref="classQxtTableWidget.html" />
+                <keyword name="~QxtTableWidget" id="class:QxtTableWidget::~QxtTableWidget" ref="classQxtTableWidget.html#108c7263211c40ae50cec93c8f0b2fe99" />
+                <keyword name="itemEditingStarted" id="class:QxtTableWidget::itemEditingStarted" ref="classQxtTableWidget.html#1196ac7e06d1b525647132ff3e747aa3d" />
+                <keyword name="itemEditingFinished" id="class:QxtTableWidget::itemEditingFinished" ref="classQxtTableWidget.html#1f6be318df1d9d94e18bd5acffdc33ebd" />
+                <keyword name="itemCheckStateChanged" id="class:QxtTableWidget::itemCheckStateChanged" ref="classQxtTableWidget.html#16fca4e12204367ed2a3f62aafc8b1b90" />
+                <keyword name="QxtTableWidgetItem" id="class:QxtTableWidgetItem" ref="classQxtTableWidgetItem.html" />
+                <keyword name="~QxtTableWidgetItem" id="class:QxtTableWidgetItem::~QxtTableWidgetItem" ref="classQxtTableWidgetItem.html#191d8a9e2a4a48e78a2cd4bb03bddad74" />
+                <keyword name="testFlag" id="class:QxtTableWidgetItem::testFlag" ref="classQxtTableWidgetItem.html#17b0a09ff7307f7e9172b3eb64070e375" />
+                <keyword name="setFlag" id="class:QxtTableWidgetItem::setFlag" ref="classQxtTableWidgetItem.html#17ff4affc5325e76187052a2d34789f14" />
+                <keyword name="QxtTcpConnectionManager" id="class:QxtTcpConnectionManager" ref="classQxtTcpConnectionManager.html" />
+                <keyword name="listen" id="class:QxtTcpConnectionManager::listen" ref="classQxtTcpConnectionManager.html#13ffb3c21084c7f690d6a39f340663129" />
+                <keyword name="stopListening" id="class:QxtTcpConnectionManager::stopListening" ref="classQxtTcpConnectionManager.html#12d30ce42c06cd0031602bcbf9822a78b" />
+                <keyword name="setProxy" id="class:QxtTcpConnectionManager::setProxy" ref="classQxtTcpConnectionManager.html#1cc70bd503b8830c173cc05216af71497" />
+                <keyword name="proxy" id="class:QxtTcpConnectionManager::proxy" ref="classQxtTcpConnectionManager.html#195e4aa212c2f8512d99478eb6002d48d" />
+                <keyword name="incomingConnection" id="class:QxtTcpConnectionManager::incomingConnection" ref="classQxtTcpConnectionManager.html#16134bf18757992452f83296b71c66ac3" />
+                <keyword name="QxtToolTip" id="class:QxtToolTip" ref="classQxtToolTip.html" />
+                <keyword name="show" id="class:QxtToolTip::show" ref="classQxtToolTip.html#1c2b0b69670b345dcb522bea6e89917a4" />
+                <keyword name="hide" id="class:QxtToolTip::hide" ref="classQxtToolTip.html#11a4e47ed91629ee291118e12e81f3824" />
+                <keyword name="toolTip" id="class:QxtToolTip::toolTip" ref="classQxtToolTip.html#1cbd030657ab04e9dde5917fc7a89c32c" />
+                <keyword name="setToolTip" id="class:QxtToolTip::setToolTip" ref="classQxtToolTip.html#1a26c6f6bfc1c7c098bb03f554bd6ba66" />
+                <keyword name="toolTipRect" id="class:QxtToolTip::toolTipRect" ref="classQxtToolTip.html#1b82fa1126c2829361b37c24e666ff477" />
+                <keyword name="setToolTipRect" id="class:QxtToolTip::setToolTipRect" ref="classQxtToolTip.html#10e89b465ec096c5b1a1dae26bb3c3aaf" />
+                <keyword name="margin" id="class:QxtToolTip::margin" ref="classQxtToolTip.html#102e39847e0227fa95fdb9015157f8993" />
+                <keyword name="setMargin" id="class:QxtToolTip::setMargin" ref="classQxtToolTip.html#18594a699126f87df2abb177332372032" />
+                <keyword name="opacity" id="class:QxtToolTip::opacity" ref="classQxtToolTip.html#17fc43fbf59f367e443c7728e5bfb1066" />
+                <keyword name="setOpacity" id="class:QxtToolTip::setOpacity" ref="classQxtToolTip.html#113393aef69cbd0ea4fa4160c498c8be2" />
+                <keyword name="QxtTreeWidget" id="class:QxtTreeWidget" ref="classQxtTreeWidget.html" />
+                <keyword name="decorationStyle" id="class:QxtTreeWidget::decorationStyle" ref="classQxtTreeWidget.html#1d82d41a765acac120ab12eb5f6f80c06" />
+                <keyword name="elideMode" id="class:QxtTreeWidget::elideMode" ref="classQxtTreeWidget.html#16b84eee5c85d3065c0271ff6444eef9a" />
+                <keyword name="~QxtTreeWidget" id="class:QxtTreeWidget::~QxtTreeWidget" ref="classQxtTreeWidget.html#104aa2645e8ac62f89d7d95e4c2fa937d" />
+                <keyword name="itemEditingStarted" id="class:QxtTreeWidget::itemEditingStarted" ref="classQxtTreeWidget.html#12f80d0770ff2ad1904e26ed236d8e4ee" />
+                <keyword name="itemEditingFinished" id="class:QxtTreeWidget::itemEditingFinished" ref="classQxtTreeWidget.html#1614beb6b5c7a272c30823eb4b3b408ca" />
+                <keyword name="itemCheckStateChanged" id="class:QxtTreeWidget::itemCheckStateChanged" ref="classQxtTreeWidget.html#119b8f33f02812013b0362caca1a2be68" />
+                <keyword name="QxtTreeWidgetItem" id="class:QxtTreeWidgetItem" ref="classQxtTreeWidgetItem.html" />
+                <keyword name="~QxtTreeWidgetItem" id="class:QxtTreeWidgetItem::~QxtTreeWidgetItem" ref="classQxtTreeWidgetItem.html#1e5e1e7d03af83a998077cc59781cebfb" />
+                <keyword name="testFlag" id="class:QxtTreeWidgetItem::testFlag" ref="classQxtTreeWidgetItem.html#1cdb14e37aa975304faf3411bfd9bc757" />
+                <keyword name="setFlag" id="class:QxtTreeWidgetItem::setFlag" ref="classQxtTreeWidgetItem.html#1a1bbe7c560845660de10e821da344add" />
+                <keyword name="QxtWebCgiService" id="class:QxtWebCgiService" ref="classQxtWebCgiService.html" />
+                <keyword name="binary" id="class:QxtWebCgiService::binary" ref="classQxtWebCgiService.html#11f591d6e1a2d78f576046f983b778c85" />
+                <keyword name="setBinary" id="class:QxtWebCgiService::setBinary" ref="classQxtWebCgiService.html#15156f6b23c2966f700b15af2b709b4bd" />
+                <keyword name="timeout" id="class:QxtWebCgiService::timeout" ref="classQxtWebCgiService.html#1bf4b6a35e5b8df70de532f60306d51ad" />
+                <keyword name="setTimeout" id="class:QxtWebCgiService::setTimeout" ref="classQxtWebCgiService.html#133d4eec39877d21eea2f62610d617bc9" />
+                <keyword name="timeoutOverride" id="class:QxtWebCgiService::timeoutOverride" ref="classQxtWebCgiService.html#110d54c7422b9069b523974b9b6ac5c74" />
+                <keyword name="setTimeoutOverride" id="class:QxtWebCgiService::setTimeoutOverride" ref="classQxtWebCgiService.html#16931deb479791ab1be40b82bc63494db" />
+                <keyword name="QxtWebContent" id="class:QxtWebContent" ref="classQxtWebContent.html" />
+                <keyword name="unreadBytes" id="class:QxtWebContent::unreadBytes" ref="classQxtWebContent.html#16fbebd100adfc2e8d88efee1bb51a23e" />
+                <keyword name="waitForAllContent" id="class:QxtWebContent::waitForAllContent" ref="classQxtWebContent.html#1b2cbb4ed59f43e058f3a2539bf7a451f" />
+                <keyword name="parseUrlEncodedQuery" id="class:QxtWebContent::parseUrlEncodedQuery" ref="classQxtWebContent.html#19434aa40d18095d8dfb5bbcbaa54f86f" />
+                <keyword name="ignoreRemainingContent" id="class:QxtWebContent::ignoreRemainingContent" ref="classQxtWebContent.html#17f55815b734af2fb41f050bc2077e43c" />
+                <keyword name="QxtWebErrorEvent" id="class:QxtWebErrorEvent" ref="classQxtWebErrorEvent.html" />
+                <keyword name="QxtWebEvent" id="class:QxtWebEvent" ref="classQxtWebEvent.html" />
+                <keyword name="EventType" id="class:QxtWebEvent::EventType" ref="classQxtWebEvent.html#1bb938625cf49e454f9840a40f3fc4a3c" />
+                <keyword name="sessionID" id="class:QxtWebEvent::sessionID" ref="classQxtWebEvent.html#13fdb1d80c46e535c2c79a06269a5d307" />
+                <keyword name="~QxtWebEvent" id="class:QxtWebEvent::~QxtWebEvent" ref="classQxtWebEvent.html#18f1975abba44ce2dc536748e5a69ae49" />
+                <keyword name="type" id="class:QxtWebEvent::type" ref="classQxtWebEvent.html#1354ff1e6b3262f438f13f6f90d86edb0" />
+                <keyword name="QxtWebPageEvent" id="class:QxtWebPageEvent" ref="classQxtWebPageEvent.html" />
+                <keyword name="dataSource" id="class:QxtWebPageEvent::dataSource" ref="classQxtWebPageEvent.html#150edb4f24f33b869aa67e44a0a7cfe16" />
+                <keyword name="chunked" id="class:QxtWebPageEvent::chunked" ref="classQxtWebPageEvent.html#106310e86eecb41b64ea256acd0e0ff3b" />
+                <keyword name="streaming" id="class:QxtWebPageEvent::streaming" ref="classQxtWebPageEvent.html#17e523943475e8db70ddadc3b6303fe34" />
+                <keyword name="requestID" id="class:QxtWebPageEvent::requestID" ref="classQxtWebPageEvent.html#1144c8010cc1c9d239bf5de4c72d09f7a" />
+                <keyword name="status" id="class:QxtWebPageEvent::status" ref="classQxtWebPageEvent.html#13faa95fe00502400daa87a3a88e50d86" />
+                <keyword name="statusMessage" id="class:QxtWebPageEvent::statusMessage" ref="classQxtWebPageEvent.html#14462b06516d2a680530b57dd37610da6" />
+                <keyword name="contentType" id="class:QxtWebPageEvent::contentType" ref="classQxtWebPageEvent.html#110814905111a438f0a568e873b4aa6f1" />
+                <keyword name="~QxtWebPageEvent" id="class:QxtWebPageEvent::~QxtWebPageEvent" ref="classQxtWebPageEvent.html#1596bea65a52f50f2e5a2a9e02ebfe15d" />
+                <keyword name="QxtWebRedirectEvent" id="class:QxtWebRedirectEvent" ref="classQxtWebRedirectEvent.html" />
+                <keyword name="destination" id="class:QxtWebRedirectEvent::destination" ref="classQxtWebRedirectEvent.html#190be909646cd7df01a88058cdb3cbb8a" />
+                <keyword name="QxtWebRemoveCookieEvent" id="class:QxtWebRemoveCookieEvent" ref="classQxtWebRemoveCookieEvent.html" />
+                <keyword name="name" id="class:QxtWebRemoveCookieEvent::name" ref="classQxtWebRemoveCookieEvent.html#1843824ad7369eb86af7c966dc0048657" />
+                <keyword name="QxtWebRequestEvent" id="class:QxtWebRequestEvent" ref="classQxtWebRequestEvent.html" />
+                <keyword name="requestID" id="class:QxtWebRequestEvent::requestID" ref="classQxtWebRequestEvent.html#179e20dd1cbc06f8cf1abe47bf6360277" />
+                <keyword name="url" id="class:QxtWebRequestEvent::url" ref="classQxtWebRequestEvent.html#17478ca98a01fddf7b22b4c0f79c9d0a8" />
+                <keyword name="originalUrl" id="class:QxtWebRequestEvent::originalUrl" ref="classQxtWebRequestEvent.html#194e558df576c7fa63885bf9d0083c67a" />
+                <keyword name="contentType" id="class:QxtWebRequestEvent::contentType" ref="classQxtWebRequestEvent.html#17be4586ea32c7e6a968f824f4618bdd7" />
+                <keyword name="content" id="class:QxtWebRequestEvent::content" ref="classQxtWebRequestEvent.html#103a7474a43bce81cd3a995a8022e4d42" />
+                <keyword name="method" id="class:QxtWebRequestEvent::method" ref="classQxtWebRequestEvent.html#1e8871184cd34444c8bbc76fd58f46333" />
+                <keyword name="remoteAddress" id="class:QxtWebRequestEvent::remoteAddress" ref="classQxtWebRequestEvent.html#1730040f4ccb8843787bd590f1de6f047" />
+                <keyword name="cookies" id="class:QxtWebRequestEvent::cookies" ref="classQxtWebRequestEvent.html#164ed8c59844d82b65dee0f182fa4ec8d" />
+                <keyword name="headers" id="class:QxtWebRequestEvent::headers" ref="classQxtWebRequestEvent.html#14902a20ebe3f972abd407899dc82e475" />
+                <keyword name="~QxtWebRequestEvent" id="class:QxtWebRequestEvent::~QxtWebRequestEvent" ref="classQxtWebRequestEvent.html#172b33b2123de75c4cc4f550182634f0c" />
+                <keyword name="QxtWebServiceDirectory" id="class:QxtWebServiceDirectory" ref="classQxtWebServiceDirectory.html" />
+                <keyword name="addService" id="class:QxtWebServiceDirectory::addService" ref="classQxtWebServiceDirectory.html#1296db6823177ac67fb9dfdb079ec9d2c" />
+                <keyword name="removeService" id="class:QxtWebServiceDirectory::removeService" ref="classQxtWebServiceDirectory.html#1986a33319b57447044b3ef2075205818" />
+                <keyword name="service" id="class:QxtWebServiceDirectory::service" ref="classQxtWebServiceDirectory.html#14692f2bb045fb0f391b96128a2066fb7" />
+                <keyword name="defaultRedirect" id="class:QxtWebServiceDirectory::defaultRedirect" ref="classQxtWebServiceDirectory.html#1b61356b17ef544c2869e15dbad8de289" />
+                <keyword name="setDefaultRedirect" id="class:QxtWebServiceDirectory::setDefaultRedirect" ref="classQxtWebServiceDirectory.html#1cda443b6ab3499c2ae5682cbe2a15937" />
+                <keyword name="indexRequested" id="class:QxtWebServiceDirectory::indexRequested" ref="classQxtWebServiceDirectory.html#1eae51d5b5607ba5a4db37c97567f10ff" />
+                <keyword name="QxtWebSlotService" id="class:QxtWebSlotService" ref="classQxtWebSlotService.html" />
+                <keyword name="self" id="class:QxtWebSlotService::self" ref="classQxtWebSlotService.html#1f49031fa6f7d37edc3f5894565ba2acb" />
+                <keyword name="QxtWebStoreCookieEvent" id="class:QxtWebStoreCookieEvent" ref="classQxtWebStoreCookieEvent.html" />
+                <keyword name="name" id="class:QxtWebStoreCookieEvent::name" ref="classQxtWebStoreCookieEvent.html#17959bd008a7e8d50b7b44451ff7bc0c7" />
+                <keyword name="data" id="class:QxtWebStoreCookieEvent::data" ref="classQxtWebStoreCookieEvent.html#1e0a064ada0cec351fa94632c6d0b8482" />
+                <keyword name="expiration" id="class:QxtWebStoreCookieEvent::expiration" ref="classQxtWebStoreCookieEvent.html#1f6639c461349865d17bcb1329467fe85" />
+                <keyword name="QxtWindowSystem" id="class:QxtWindowSystem" ref="classQxtWindowSystem.html" />
+                <keyword name="windows" id="class:QxtWindowSystem::windows" ref="classQxtWindowSystem.html#185949d6946e65ec035b3cabbd98760d8" />
+                <keyword name="activeWindow" id="class:QxtWindowSystem::activeWindow" ref="classQxtWindowSystem.html#14a7d3cdda9eb2205c97592e528c6724d" />
+                <keyword name="findWindow" id="class:QxtWindowSystem::findWindow" ref="classQxtWindowSystem.html#1d32e4d0efdbd592f0902192aedad9da6" />
+                <keyword name="windowAt" id="class:QxtWindowSystem::windowAt" ref="classQxtWindowSystem.html#133854010bd2d0b678caf6d6277b57690" />
+                <keyword name="windowTitle" id="class:QxtWindowSystem::windowTitle" ref="classQxtWindowSystem.html#1539106c49b2eca630e8df41982e6728d" />
+                <keyword name="windowTitles" id="class:QxtWindowSystem::windowTitles" ref="classQxtWindowSystem.html#1755ec1f32d774d67a92cbe01a1a7158a" />
+                <keyword name="windowGeometry" id="class:QxtWindowSystem::windowGeometry" ref="classQxtWindowSystem.html#1c9554ae83f1046cf4745a70d8c4e1fca" />
+                <keyword name="idleTime" id="class:QxtWindowSystem::idleTime" ref="classQxtWindowSystem.html#1b58261f49fd45a7363d1abd7dfea831f" />
+                <keyword name="QxtXmlFileLoggerEngine" id="class:QxtXmlFileLoggerEngine" ref="classQxtXmlFileLoggerEngine.html" />
+                <keyword name="toXmlSafeString" id="class:QxtXmlFileLoggerEngine::toXmlSafeString" ref="classQxtXmlFileLoggerEngine.html#100c81a18fd0365ccdd0453bc24511e43" />
+                
+         </keywords>
+         <files>
+                <file>.</file>
+                <file>..</file>
+                <file>classes.html</file>
+                <file>classLanguage-members.html</file>
+                <file>classLanguage.html</file>
+                <file>classLanguageModel-members.html</file>
+                <file>classLanguageModel.html</file>
+                <file>classQxtAbstractConnectionManager-members.html</file>
+                <file>classQxtAbstractConnectionManager.html</file>
+                <file>classQxtAbstractConnectionManagerPrivate-members.html</file>
+                <file>classQxtAbstractConnectionManagerPrivate.html</file>
+                <file>classQxtAbstractFileLoggerEngine-members.html</file>
+                <file>classQxtAbstractFileLoggerEngine.html</file>
+                <file>classQxtAbstractFileLoggerEnginePrivate-members.html</file>
+                <file>classQxtAbstractFileLoggerEnginePrivate.html</file>
+                <file>classQxtAbstractHttpConnector-members.html</file>
+                <file>classQxtAbstractHttpConnector.html</file>
+                <file>classQxtAbstractIOLoggerEngine-members.html</file>
+                <file>classQxtAbstractIOLoggerEngine.html</file>
+                <file>classQxtAbstractIOLoggerEnginePrivate-members.html</file>
+                <file>classQxtAbstractIOLoggerEnginePrivate.html</file>
+                <file>classQxtAbstractSignalSerializer-members.html</file>
+                <file>classQxtAbstractSignalSerializer.html</file>
+                <file>classQxtAbstractWebService-members.html</file>
+                <file>classQxtAbstractWebService.html</file>
+                <file>classQxtAbstractWebSessionManager-members.html</file>
+                <file>classQxtAbstractWebSessionManager.html</file>
+                <file>classQxtApplication-members.html</file>
+                <file>classQxtApplication.html</file>
+                <file>classQxtBaseSpinBox-members.html</file>
+                <file>classQxtBaseSpinBox.html</file>
+                <file>classQxtBaseSpinBoxPlugin-members.html</file>
+                <file>classQxtBaseSpinBoxPlugin.html</file>
+                <file>classQxtBaseSpinBoxPrivate-members.html</file>
+                <file>classQxtBaseSpinBoxPrivate.html</file>
+                <file>classQxtBasicFileLoggerEngine-members.html</file>
+                <file>classQxtBasicFileLoggerEngine.html</file>
+                <file>classQxtBasicSTDLoggerEngine-members.html</file>
+                <file>classQxtBasicSTDLoggerEngine.html</file>
+                <file>classQxtBasicSTDLoggerEnginePrivate-members.html</file>
+                <file>classQxtBasicSTDLoggerEnginePrivate.html</file>
+                <file>classQxtBdb-members.html</file>
+                <file>classQxtBdb.html</file>
+                <file>classQxtBdbHash-members.html</file>
+                <file>classQxtBdbHash.html</file>
+                <file>classQxtBdbHashIterator-members.html</file>
+                <file>classQxtBdbHashIterator.html</file>
+                <file>classQxtBdbHashIteratorPrivate-members.html</file>
+                <file>classQxtBdbHashIteratorPrivate.html</file>
+                <file>classQxtBdbTree-members.html</file>
+                <file>classQxtBdbTree.html</file>
+                <file>classQxtBdbTreeIterator-members.html</file>
+                <file>classQxtBdbTreeIterator.html</file>
+                <file>classQxtBlowfish-members.html</file>
+                <file>classQxtBlowfish.html</file>
+                <file>classQxtBlowfishPrivate-members.html</file>
+                <file>classQxtBlowfishPrivate.html</file>
+                <file>classQxtBoundArgument-members.html</file>
+                <file>classQxtBoundArgument.html</file>
+                <file>classQxtBoundSlot-members.html</file>
+                <file>classQxtBoundSlot.html</file>
+                <file>classQxtCheckComboBox-members.html</file>
+                <file>classQxtCheckComboBox.html</file>
+                <file>classQxtCheckComboBoxPlugin-members.html</file>
+                <file>classQxtCheckComboBoxPlugin.html</file>
+                <file>classQxtCommandOptions-members.html</file>
+                <file>classQxtCommandOptions.html</file>
+                <file>classQxtCommandOptionsPrivate-members.html</file>
+                <file>classQxtCommandOptionsPrivate.html</file>
+                <file>classQxtConfigDialog-members.html</file>
+                <file>classQxtConfigDialog.html</file>
+                <file>classQxtConfirmationMessage-members.html</file>
+                <file>classQxtConfirmationMessage.html</file>
+                <file>classQxtConfirmationMessagePrivate-members.html</file>
+                <file>classQxtConfirmationMessagePrivate.html</file>
+                <file>classQxtCountry-members.html</file>
+                <file>classQxtCountry.html</file>
+                <file>classQxtCountryComboBox-members.html</file>
+                <file>classQxtCountryComboBox.html</file>
+                <file>classQxtCountryComboBoxPlugin-members.html</file>
+                <file>classQxtCountryComboBoxPlugin.html</file>
+                <file>classQxtCountryModel-members.html</file>
+                <file>classQxtCountryModel.html</file>
+                <file>classQxtCrumbView-members.html</file>
+                <file>classQxtCrumbView.html</file>
+                <file>classQxtCrumbViewButton-members.html</file>
+                <file>classQxtCrumbViewButton.html</file>
+                <file>classQxtCrumbViewDelegate-members.html</file>
+                <file>classQxtCrumbViewDelegate.html</file>
+                <file>classQxtCrumbViewList-members.html</file>
+                <file>classQxtCrumbViewList.html</file>
+                <file>classQxtCsvModel-members.html</file>
+                <file>classQxtCsvModel.html</file>
+                <file>classQxtCsvModelPrivate-members.html</file>
+                <file>classQxtCsvModelPrivate.html</file>
+                <file>classQxtDaemon-members.html</file>
+                <file>classQxtDaemon.html</file>
+                <file>classQxtDataStreamSignalSerializer-members.html</file>
+                <file>classQxtDataStreamSignalSerializer.html</file>
+                <file>classQxtDeplex-members.html</file>
+                <file>classQxtDeplex.html</file>
+                <file>classQxtDesignerPlugin-members.html</file>
+                <file>classQxtDesignerPlugin.html</file>
+                <file>classQxtDesignerPlugins-members.html</file>
+                <file>classQxtDesignerPlugins.html</file>
+                <file>classQxtDockWidget-members.html</file>
+                <file>classQxtDockWidget.html</file>
+                <file>classQxtDockWidgetPrivate-members.html</file>
+                <file>classQxtDockWidgetPrivate.html</file>
+                <file>classQxtError-members.html</file>
+                <file>classQxtError.html</file>
+                <file>classQxtFifo-members.html</file>
+                <file>classQxtFifo.html</file>
+                <file>classQxtFifoPrivate-members.html</file>
+                <file>classQxtFifoPrivate.html</file>
+                <file>classQxtFileLock-members.html</file>
+                <file>classQxtFileLock.html</file>
+                <file>classQxtFileLockRegistry-members.html</file>
+                <file>classQxtFileLockRegistry.html</file>
+                <file>classQxtFlowView-members.html</file>
+                <file>classQxtFlowView.html</file>
+                <file>classQxtFlowViewPlugin-members.html</file>
+                <file>classQxtFlowViewPlugin.html</file>
+                <file>classQxtFuture-members.html</file>
+                <file>classQxtFuture.html</file>
+                <file>classQxtGenericFunctionPointer-members.html</file>
+                <file>classQxtGenericFunctionPointer.html</file>
+                <file>classQxtGlobalShortcut-members.html</file>
+                <file>classQxtGlobalShortcut.html</file>
+                <file>classQxtGroupBox-members.html</file>
+                <file>classQxtGroupBox.html</file>
+                <file>classQxtGroupBoxPlugin-members.html</file>
+                <file>classQxtGroupBoxPlugin.html</file>
+                <file>classQxtGroupBoxPrivate-members.html</file>
+                <file>classQxtGroupBoxPrivate.html</file>
+                <file>classQxtHash-members.html</file>
+                <file>classQxtHash.html</file>
+                <file>classQxtHeaderView-members.html</file>
+                <file>classQxtHeaderView.html</file>
+                <file>classQxtHeaderViewPrivate-members.html</file>
+                <file>classQxtHeaderViewPrivate.html</file>
+                <file>classQxtHtmlTemplate-members.html</file>
+                <file>classQxtHtmlTemplate.html</file>
+                <file>classQxtHttpServerConnector-members.html</file>
+                <file>classQxtHttpServerConnector.html</file>
+                <file>classQxtHttpSessionManager-members.html</file>
+                <file>classQxtHttpSessionManager.html</file>
+                <file>classQxtItemDelegate-members.html</file>
+                <file>classQxtItemDelegate.html</file>
+                <file>classQxtItemEditorCreator-members.html</file>
+                <file>classQxtItemEditorCreator.html</file>
+                <file>classQxtItemEditorCreatorBase-members.html</file>
+                <file>classQxtItemEditorCreatorBase.html</file>
+                <file>classQxtJob-members.html</file>
+                <file>classQxtJob.html</file>
+                <file>classQxtLabel-members.html</file>
+                <file>classQxtLabel.html</file>
+                <file>classQxtLabelPlugin-members.html</file>
+                <file>classQxtLabelPlugin.html</file>
+                <file>classQxtLabelPrivate-members.html</file>
+                <file>classQxtLabelPrivate.html</file>
+                <file>classQxtLanguageComboBox-members.html</file>
+                <file>classQxtLanguageComboBox.html</file>
+                <file>classQxtLanguageComboBoxPlugin-members.html</file>
+                <file>classQxtLanguageComboBoxPlugin.html</file>
+                <file>classQxtLetterBoxWidget-members.html</file>
+                <file>classQxtLetterBoxWidget.html</file>
+                <file>classQxtLetterBoxWidgetPlugin-members.html</file>
+                <file>classQxtLetterBoxWidgetPlugin.html</file>
+                <file>classQxtLineSocket-members.html</file>
+                <file>classQxtLineSocket.html</file>
+                <file>classQxtLinkedTree-members.html</file>
+                <file>classQxtLinkedTree.html</file>
+                <file>classQxtLinkedTreeItem-members.html</file>
+                <file>classQxtLinkedTreeItem.html</file>
+                <file>classQxtLinkedTreeIterator-members.html</file>
+                <file>classQxtLinkedTreeIterator.html</file>
+                <file>classQxtListWidget-members.html</file>
+                <file>classQxtListWidget.html</file>
+                <file>classQxtListWidgetItem-members.html</file>
+                <file>classQxtListWidgetItem.html</file>
+                <file>classQxtListWidgetPlugin-members.html</file>
+                <file>classQxtListWidgetPlugin.html</file>
+                <file>classQxtLocale-members.html</file>
+                <file>classQxtLocale.html</file>
+                <file>classQxtLogger-members.html</file>
+                <file>classQxtLogger.html</file>
+                <file>classQxtLoggerEngine-members.html</file>
+                <file>classQxtLoggerEngine.html</file>
+                <file>classQxtLoggerEnginePrivate-members.html</file>
+                <file>classQxtLoggerEnginePrivate.html</file>
+                <file>classQxtLogStream-members.html</file>
+                <file>classQxtLogStream.html</file>
+                <file>classQxtMail-members.html</file>
+                <file>classQxtMail.html</file>
+                <file>classQxtMetaObject-members.html</file>
+                <file>classQxtMetaObject.html</file>
+                <file>classQxtMetaType-members.html</file>
+                <file>classQxtMetaType.html</file>
+                <file>classQxtMetaType_3_01void_01_4-members.html</file>
+                <file>classQxtMetaType_3_01void_01_4.html</file>
+                <file>classQxtModelFilterPrivate-members.html</file>
+                <file>classQxtModelFilterPrivate.html</file>
+                <file>classQxtMultiSignalWaiter-members.html</file>
+                <file>classQxtMultiSignalWaiter.html</file>
+                <file>classQxtNativeEventFilter-members.html</file>
+                <file>classQxtNativeEventFilter.html</file>
+                <file>classQxtNullable-members.html</file>
+                <file>classQxtNullable.html</file>
+                <file>classQxtPairList-members.html</file>
+                <file>classQxtPairList.html</file>
+                <file>classQxtPimpl-members.html</file>
+                <file>classQxtPimpl.html</file>
+                <file>classQxtPipe-members.html</file>
+                <file>classQxtPipe.html</file>
+                <file>classQxtPointerList-members.html</file>
+                <file>classQxtPointerList.html</file>
+                <file>classQxtPointerListDeleter-members.html</file>
+                <file>classQxtPointerListDeleter.html</file>
+                <file>classQxtProgressLabel-members.html</file>
+                <file>classQxtProgressLabel.html</file>
+                <file>classQxtProgressLabelPlugin-members.html</file>
+                <file>classQxtProgressLabelPlugin.html</file>
+                <file>classQxtProgressLabelPrivate-members.html</file>
+                <file>classQxtProgressLabelPrivate.html</file>
+                <file>classQxtProxyStyle-members.html</file>
+                <file>classQxtProxyStyle.html</file>
+                <file>classQxtPushButton-members.html</file>
+                <file>classQxtPushButton.html</file>
+                <file>classQxtPushButtonPlugin-members.html</file>
+                <file>classQxtPushButtonPlugin.html</file>
+                <file>classQxtPushButtonPrivate-members.html</file>
+                <file>classQxtPushButtonPrivate.html</file>
+                <file>classQxtRPCPeer-members.html</file>
+                <file>classQxtRPCPeer.html</file>
+                <file>classQxtRPCPeerPrivate-members.html</file>
+                <file>classQxtRPCPeerPrivate.html</file>
+                <file>classQxtRPCService-members.html</file>
+                <file>classQxtRPCService.html</file>
+                <file>classQxtRPCServiceIntrospector-members.html</file>
+                <file>classQxtRPCServiceIntrospector.html</file>
+                <file>classQxtScgiServerConnector-members.html</file>
+                <file>classQxtScgiServerConnector.html</file>
+                <file>classQxtScheduleHeaderWidget-members.html</file>
+                <file>classQxtScheduleHeaderWidget.html</file>
+                <file>classQxtScheduleItemDelegate-members.html</file>
+                <file>classQxtScheduleItemDelegate.html</file>
+                <file>classQxtScheduleView-members.html</file>
+                <file>classQxtScheduleView.html</file>
+                <file>classQxtSemaphore-members.html</file>
+                <file>classQxtSemaphore.html</file>
+                <file>classQxtSemaphorePrivate-members.html</file>
+                <file>classQxtSemaphorePrivate.html</file>
+                <file>classQxtSendmail-members.html</file>
+                <file>classQxtSendmail.html</file>
+                <file>classQxtSerialDevice-members.html</file>
+                <file>classQxtSerialDevice.html</file>
+                <file>classQxtSharedPrivate-members.html</file>
+                <file>classQxtSharedPrivate.html</file>
+                <file>classQxtSignalGroup-members.html</file>
+                <file>classQxtSignalGroup.html</file>
+                <file>classQxtSignalGroupPrivate-members.html</file>
+                <file>classQxtSignalGroupPrivate.html</file>
+                <file>classQxtSignalWaiter-members.html</file>
+                <file>classQxtSignalWaiter.html</file>
+                <file>classQxtSignalWaiterPrivate-members.html</file>
+                <file>classQxtSignalWaiterPrivate.html</file>
+                <file>classQxtSlotJob-members.html</file>
+                <file>classQxtSlotJob.html</file>
+                <file>classQxtSlotMapper-members.html</file>
+                <file>classQxtSlotMapper.html</file>
+                <file>classQxtSlotMapperPrivate-members.html</file>
+                <file>classQxtSlotMapperPrivate.html</file>
+                <file>classQxtSortFilterProxyModel-members.html</file>
+                <file>classQxtSortFilterProxyModel.html</file>
+                <file>classQxtSortFilterProxyModelPrivate-members.html</file>
+                <file>classQxtSortFilterProxyModelPrivate.html</file>
+                <file>classQxtSpanSlider-members.html</file>
+                <file>classQxtSpanSlider.html</file>
+                <file>classQxtSpanSliderPlugin-members.html</file>
+                <file>classQxtSpanSliderPlugin.html</file>
+                <file>classQxtSqlPackage-members.html</file>
+                <file>classQxtSqlPackage.html</file>
+                <file>classQxtSqlPackageModel-members.html</file>
+                <file>classQxtSqlPackageModel.html</file>
+                <file>classQxtStandardItemEditorCreator-members.html</file>
+                <file>classQxtStandardItemEditorCreator.html</file>
+                <file>classQxtStars-members.html</file>
+                <file>classQxtStars.html</file>
+                <file>classQxtStarsPlugin-members.html</file>
+                <file>classQxtStarsPlugin.html</file>
+                <file>classQxtStarsPrivate-members.html</file>
+                <file>classQxtStarsPrivate.html</file>
+                <file>classQxtStdio-members.html</file>
+                <file>classQxtStdio.html</file>
+                <file>classQxtStdStreambufDevice-members.html</file>
+                <file>classQxtStdStreambufDevice.html</file>
+                <file>classQxtStringSpinBox-members.html</file>
+                <file>classQxtStringSpinBox.html</file>
+                <file>classQxtStringSpinBoxPlugin-members.html</file>
+                <file>classQxtStringSpinBoxPlugin.html</file>
+                <file>classQxtStringSpinBoxPrivate-members.html</file>
+                <file>classQxtStringSpinBoxPrivate.html</file>
+                <file>classQxtStringValidator-members.html</file>
+                <file>classQxtStringValidator.html</file>
+                <file>classQxtStyleOptionScheduleViewItem-members.html</file>
+                <file>classQxtStyleOptionScheduleViewItem.html</file>
+                <file>classQxtTabBar-members.html</file>
+                <file>classQxtTabBar.html</file>
+                <file>classQxtTabBarPrivate-members.html</file>
+                <file>classQxtTabBarPrivate.html</file>
+                <file>classQxtTableWidget-members.html</file>
+                <file>classQxtTableWidget.html</file>
+                <file>classQxtTableWidgetItem-members.html</file>
+                <file>classQxtTableWidgetItem.html</file>
+                <file>classQxtTableWidgetPlugin-members.html</file>
+                <file>classQxtTableWidgetPlugin.html</file>
+                <file>classQxtTabWidget-members.html</file>
+                <file>classQxtTabWidget.html</file>
+                <file>classQxtTcpConnectionManager-members.html</file>
+                <file>classQxtTcpConnectionManager.html</file>
+                <file>classQxtToolTip-members.html</file>
+                <file>classQxtToolTip.html</file>
+                <file>classQxtTreeWidget-members.html</file>
+                <file>classQxtTreeWidget.html</file>
+                <file>classQxtTreeWidgetItem-members.html</file>
+                <file>classQxtTreeWidgetItem.html</file>
+                <file>classQxtTreeWidgetPlugin-members.html</file>
+                <file>classQxtTreeWidgetPlugin.html</file>
+                <file>classQxtWebCgiService-members.html</file>
+                <file>classQxtWebCgiService.html</file>
+                <file>classQxtWebContent-members.html</file>
+                <file>classQxtWebContent.html</file>
+                <file>classQxtWebErrorEvent-members.html</file>
+                <file>classQxtWebErrorEvent.html</file>
+                <file>classQxtWebEvent-members.html</file>
+                <file>classQxtWebEvent.html</file>
+                <file>classQxtWebPageEvent-members.html</file>
+                <file>classQxtWebPageEvent.html</file>
+                <file>classQxtWebRedirectEvent-members.html</file>
+                <file>classQxtWebRedirectEvent.html</file>
+                <file>classQxtWebRemoveCookieEvent-members.html</file>
+                <file>classQxtWebRemoveCookieEvent.html</file>
+                <file>classQxtWebRequestEvent-members.html</file>
+                <file>classQxtWebRequestEvent.html</file>
+                <file>classQxtWebServiceDirectory-members.html</file>
+                <file>classQxtWebServiceDirectory.html</file>
+                <file>classQxtWebSlotService-members.html</file>
+                <file>classQxtWebSlotService.html</file>
+                <file>classQxtWebStoreCookieEvent-members.html</file>
+                <file>classQxtWebStoreCookieEvent.html</file>
+                <file>classQxtWindowSystem-members.html</file>
+                <file>classQxtWindowSystem.html</file>
+                <file>classQxtXmlFileLoggerEngine-members.html</file>
+                <file>classQxtXmlFileLoggerEngine.html</file>
+                <file>classQxtXmlFileLoggerEnginePrivate-members.html</file>
+                <file>classQxtXmlFileLoggerEnginePrivate.html</file>
+                <file>classThread-members.html</file>
+                <file>classThread.html</file>
+                <file>group__QxtBerkeley.html</file>
+                <file>group__QxtCore.html</file>
+                <file>group__QxtCrypto.html</file>
+                <file>group__QxtGui.html</file>
+                <file>group__QxtNetwork.html</file>
+                <file>group__QxtSql.html</file>
+                <file>group__QxtWeb.html</file>
+                <file>implicitshared.png</file>
+                <file>index.dcf</file>
+                <file>index.html</file>
+                <file>logo.png</file>
+                <file>modules.html</file>
+                <file>note.png</file>
+                <file>qxt.qhcp</file>
+                <file>qxt.qhp</file>
+                <file>qxtbasespinbox.png</file>
+                <file>qxtcheckcombobox.png</file>
+                <file>qxtconfigdialog.png</file>
+                <file>qxtconfirmationmessage.png</file>
+                <file>qxtcountrycombobox.png</file>
+                <file>qxtcountrymodel.png</file>
+                <file>qxtflowview.png</file>
+                <file>qxtgroupbox.png</file>
+                <file>qxtlabel.png</file>
+                <file>qxtlanguagecombobox.png</file>
+                <file>qxtlistwidget.png</file>
+                <file>qxtprogresslabel.png</file>
+                <file>qxtpushbutton.png</file>
+                <file>qxtslotmapper.png</file>
+                <file>qxtspanslider.png</file>
+                <file>qxtstars.png</file>
+                <file>qxtstringspinbox.png</file>
+                <file>qxttablewidget.png</file>
+                <file>qxttabwidget.png</file>
+                <file>qxttooltip.png</file>
+                <file>qxttreewidget.png</file>
+                <file>see.png</file>
+                <file>structQxtNull-members.html</file>
+                <file>structQxtNull.html</file>
+                <file>stylesheet.css</file>
+                <file>warning.png</file>
+                
+         </files>
+     </filterSection>
+</QtHelpProject>

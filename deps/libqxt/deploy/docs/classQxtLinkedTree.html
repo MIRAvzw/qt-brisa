@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtLinkedTree</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtLinkedTree Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        fast Container for tree structured data 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtLinkedTree&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtLinkedTree-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtLinkedTree.html#1d158f409027096b14e072f8904db4ba6">QxtLinkedTree</a>  (  ) </li>
+            <li> <a href="classQxtLinkedTree.html#19fbff531f2a9a859ac3f6075efbf977f">QxtLinkedTree</a>  (   <span class="memberdef_type">T</span>    <span class="memberdef_declname">t</span>     ) </li>
+            <li> <a href="classQxtLinkedTree.html#1beb7af48424a243f2d27783220311767">~QxtLinkedTree</a>  (  ) </li>
+            <li>void <a href="classQxtLinkedTree.html#180bafd467908ef1ed3f41d15d299d9a2">clear</a>  (  ) </li>
+            <li>QxtLinkedTreeIterator< T > <a href="classQxtLinkedTree.html#19cbfc5713ced469ec42864255675d020">root</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-static-func"></a>
+    <h3>Public Static Functions</h3>
+    <ul class="sectionlist">
+            <li>QxtLinkedTreeIterator< T > <a href="classQxtLinkedTree.html#13b66fda568121c7aaa08481f25aad206">fromVoid</a>  (   <span class="memberdef_type">void *</span>  d   )  static </li>
+            <li>void * <a href="classQxtLinkedTree.html#152912acd545c24d7971a57cef4a2285b">toVoid</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtLinkedTreeIterator.html">QxtLinkedTreeIterator</a>&lt; T &gt;</span>  n   )  static </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Static Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>this template class can be used to store data easily in a tree structure. <br/>
+        
+         Internally it uses the doublelinked list scheme, but adds client/parent links. <br/>
+        <br/>
+        </p><p>There are no random access functions, you have to use QxtLinkedTree::iterator to access the data. <br/>
+        
+         This is very fast and efficient. <br/>
+        <br/>
+        </p><p><div class="code"><span class="highlight_normal"  ><a class="reflink" href="classQxtLinkedTree.html">QxtLinkedTree&lt;int&gt;</a> tree(1);</span><br/>
+        <span class="highlight_normal"  ></span><br/>
+        <span class="highlight_normal"  ><a class="reflink" href="classQxtLinkedTreeIterator.html">QxtLinkedTreeIterator&lt;int&gt;</a> it= tree.root();</span><br/>
+        <span class="highlight_normal"  >it.<a class="reflink" href="classQxtLinkedTreeIterator.html#122a373e968f0d2d8d6c9632a8760ddea">append</a>(34);</span><br/>
+        <span class="highlight_normal"  >qDebug()&lt;&lt;it&lt;&lt;it.<a class="reflink" href="classQxtLinkedTreeIterator.html#1ffa0700ff1b86d2db1edf8fa74514022">child</a>(); </span><span class="highlight_comment"  >//returns "1 34"</span><br/>
+        </div></p><p>In order to be able to store an iterator into other data structures (eg. for <a class="reflink" href="http://doc.trolltech.com/latest/qabstractitemmodel.html">QAbstractItemModel</a> or QAbstractXmlNodeModel) functions are provided to create and store a linked item from and into a void pointer. <br/>
+        </p><p><div class="code"><span class="highlight_keywordtype"  >void</span><span class="highlight_normal"  > * <a class="reflink" href="classQxtLinkedTree.html#19cbfc5713ced469ec42864255675d020">root</a>= tree.toVoid(tree.root());</span><br/>
+        <span class="highlight_normal"  ><a class="reflink" href="classQxtLinkedTreeIterator.html">QxtLinkedTreeIterator&lt;int&gt;</a> it= tree.fromVoid(root);</span><br/>
+        </div></p><p><div class="simplesect" ><img src="implicitshared.png" alt="implicit shared" /> <strong>This class is implicit shared.</strong></div> </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1d158f409027096b14e072f8904db4ba6"></a>
+         QxtLinkedTree  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>constructs a <a class="reflink" href="classQxtLinkedTree.html">QxtLinkedTree</a> with a default constructed root node. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="19fbff531f2a9a859ac3f6075efbf977f"></a>
+         QxtLinkedTree  (   <span class="memberdef_type">T</span>    <span class="memberdef_declname">t</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>constructs a <a class="reflink" href="classQxtLinkedTree.html">QxtLinkedTree</a>. sets the rootnode to t</p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1beb7af48424a243f2d27783220311767"></a>
+         ~QxtLinkedTree  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>the destructor deletes all items, when they are no longer referenced by any other instance. <br/>
+            </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="180bafd467908ef1ed3f41d15d299d9a2"></a>
+        void clear  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>deletes all nodes recursively. this might take forever depending on the size of your tree. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="19cbfc5713ced469ec42864255675d020"></a>
+        QxtLinkedTreeIterator< T > root  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns an iterator on the root node </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13b66fda568121c7aaa08481f25aad206"></a>
+        QxtLinkedTreeIterator< T > fromVoid  (   <span class="memberdef_type">void *</span>  d   )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>returns an iterator pre positioned on the item specified with toVoid. <br/>
+            
+             passing anything that has not being created by <a class="reflink" href="classQxtLinkedTree.html#152912acd545c24d7971a57cef4a2285b">toVoid()</a> will crash. <br/>
+            
+             also note that passing invalidated nodes will crash too. <br/>
+            
+             Be extremly carefull. It is easy to currupt your data with this! </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="152912acd545c24d7971a57cef4a2285b"></a>
+        void * toVoid  (   <span class="memberdef_type"><a class="reflink" href="classQxtLinkedTreeIterator.html">QxtLinkedTreeIterator</a>&lt; T &gt;</span>  n   )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>get an unique void pointer to be able to stuff an iterator into other structures.<br/>
+            
+             You must not do anything else but pass this to <a class="reflink" href="classQxtLinkedTree.html#13b66fda568121c7aaa08481f25aad206">fromVoid()</a>. the pointer is invalid when the actual data has been removed and passing it to fromVoid will crash. You have been warned. <br/>
+            </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

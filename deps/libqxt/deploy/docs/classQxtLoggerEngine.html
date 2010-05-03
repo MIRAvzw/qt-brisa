@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtLoggerEngine</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtLoggerEngine Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        The parent class of all extended Engine Plugins. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtLoggerEngine&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtLoggerEngine-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtLoggerEngine.html#17ccf7cb5624c5b91e1b12a8a82fac790">QxtLoggerEngine</a>  (  ) </li>
+            <li> virtual  <a href="classQxtLoggerEngine.html#1d5af913dc2636c18b97991d7b5625e35">~QxtLoggerEngine</a>  (  ) </li>
+            <li> virtual void <a href="classQxtLoggerEngine.html#13cfd91fc7ebc820b9e36280586d29806">initLoggerEngine</a>  (  )  =0 </li>
+            <li> virtual void <a href="classQxtLoggerEngine.html#12068086d51d68c4a64f7aefa559af6f1">killLoggerEngine</a>  (  )  =0 </li>
+            <li> virtual bool <a href="classQxtLoggerEngine.html#1fd59f71812dc58077814de76cc852934">isInitialized</a>  (  )  const  =0 </li>
+            <li> virtual void <a href="classQxtLoggerEngine.html#1e60088f38c4ef043290f759ed95283cd">writeFormatted</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtLogger.html#1c2071072628aa786466124cc32a324e7">QxtLogger::LogLevel</a></span>    <span class="memberdef_declname">level</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList</a>&lt; <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a> &gt; &</span>    <span class="memberdef_declname">messages</span>     )  =0 </li>
+            <li> virtual void <a href="classQxtLoggerEngine.html#1a4a5e4d406b40e6f55bc914415106c90">setLoggingEnabled</a>  (   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">enable</span>  <span class="memberdef_defval">= true</span>   ) </li>
+            <li>bool <a href="classQxtLoggerEngine.html#1b10622ba4d7a117c7b408cb45bf43baa">isLoggingEnabled</a>  (  )  const </li>
+            <li>void <a href="classQxtLoggerEngine.html#1f3090ebe3b97bbda8b337aa4227227f3">enableLogging</a>  (  ) </li>
+            <li>void <a href="classQxtLoggerEngine.html#1fd817a6ae228e8236cf608535f012dc5">disableLogging</a>  (  ) </li>
+            <li> virtual void <a href="classQxtLoggerEngine.html#1e1804e91b1aca27b91533cc3d06b2494">setLogLevelsEnabled</a>  (   <span class="memberdef_type">QxtLogger::LogLevels</span>    <span class="memberdef_declname">levels</span>    ,   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">enable</span>  <span class="memberdef_defval">= true</span>   ) </li>
+            <li>bool <a href="classQxtLoggerEngine.html#103dc1334ea4e7aab22665e020e5ca296">isLogLevelEnabled</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtLogger.html#1c2071072628aa786466124cc32a324e7">QxtLogger::LogLevel</a></span>    <span class="memberdef_declname">level</span>     )  const </li>
+            <li>void <a href="classQxtLoggerEngine.html#1c8123ab2f4789d5d58978c3a796b0575">enableLogLevels</a>  (   <span class="memberdef_type">QxtLogger::LogLevels</span>    <span class="memberdef_declname">levels</span>     ) </li>
+            <li>void <a href="classQxtLoggerEngine.html#12c698480fecafc32a89528b6d980c936">disableLogLevels</a>  (   <span class="memberdef_type">QxtLogger::LogLevels</span>    <span class="memberdef_declname">levels</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        Overview<p><a class="reflink" href="classQxtLoggerEngine.html">QxtLoggerEngine</a> is what gives the <a class="reflink" href="classQxtLogger.html">QxtLogger</a> it's power. While the Logger itself manages memory, logic, and log levels, it is the various Engine Plugins that do the actual work of logging the data. </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="17ccf7cb5624c5b91e1b12a8a82fac790"></a>
+         QxtLoggerEngine  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructor </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d5af913dc2636c18b97991d7b5625e35"></a>
+         virtual  ~QxtLoggerEngine  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructor </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13cfd91fc7ebc820b9e36280586d29806"></a>
+         virtual void initLoggerEngine  (  )  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Initializes the logger engine.</p><p>This function is called by <a class="reflink" href="classQxtLogger.html">QxtLogger</a>. Reimplement this function when creating a subclass of <a class="reflink" href="classQxtLoggerEngine.html">QxtLoggerEngine</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12068086d51d68c4a64f7aefa559af6f1"></a>
+         virtual void killLoggerEngine  (  )  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Kills the logger engine.</p><p>This function is called by <a class="reflink" href="classQxtLogger.html">QxtLogger</a>. Reimplement this function when creating a subclass of <a class="reflink" href="classQxtLoggerEngine.html">QxtLoggerEngine</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1fd59f71812dc58077814de76cc852934"></a>
+         virtual bool isInitialized  (  )  const  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns true if the logger engine is initialized.</p><p>This function is called by <a class="reflink" href="classQxtLogger.html">QxtLogger</a>. Reimplement this function when creating a subclass of <a class="reflink" href="classQxtLoggerEngine.html">QxtLoggerEngine</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e60088f38c4ef043290f759ed95283cd"></a>
+         virtual void writeFormatted  (   <span class="memberdef_type"><a class="reflink" href="classQxtLogger.html#1c2071072628aa786466124cc32a324e7">QxtLogger::LogLevel</a></span>    <span class="memberdef_declname">level</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList</a>&lt; <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a> &gt; &</span>    <span class="memberdef_declname">messages</span>     )  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Writes a formatted message.</p><p>This function is called by <a class="reflink" href="classQxtLogger.html">QxtLogger</a>. Reimplement this function when creating a subclass of <a class="reflink" href="classQxtLoggerEngine.html">QxtLoggerEngine</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a4a5e4d406b40e6f55bc914415106c90"></a>
+         virtual void setLoggingEnabled  (   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">enable</span>  <span class="memberdef_defval">= true</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets logging enabled or disabled. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b10622ba4d7a117c7b408cb45bf43baa"></a>
+        bool isLoggingEnabled  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns true if logging is enabled and false otherwise. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f3090ebe3b97bbda8b337aa4227227f3"></a>
+        void enableLogging  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Enables logging. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1fd817a6ae228e8236cf608535f012dc5"></a>
+        void disableLogging  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Disables logging. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e1804e91b1aca27b91533cc3d06b2494"></a>
+         virtual void setLogLevelsEnabled  (   <span class="memberdef_type">QxtLogger::LogLevels</span>    <span class="memberdef_declname">levels</span>    ,   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">enable</span>  <span class="memberdef_defval">= true</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets log levels enabled or disables. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="103dc1334ea4e7aab22665e020e5ca296"></a>
+        bool isLogLevelEnabled  (   <span class="memberdef_type"><a class="reflink" href="classQxtLogger.html#1c2071072628aa786466124cc32a324e7">QxtLogger::LogLevel</a></span>    <span class="memberdef_declname">level</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns true if log level is enabled and false otherwise. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c8123ab2f4789d5d58978c3a796b0575"></a>
+        void enableLogLevels  (   <span class="memberdef_type">QxtLogger::LogLevels</span>    <span class="memberdef_declname">levels</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Enables log levels. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12c698480fecafc32a89528b6d980c936"></a>
+        void disableLogLevels  (   <span class="memberdef_type">QxtLogger::LogLevels</span>    <span class="memberdef_declname">levels</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Disables log levels. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

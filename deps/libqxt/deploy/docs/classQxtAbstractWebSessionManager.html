@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtAbstractWebSessionManager</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtAbstractWebSessionManager Class Reference<br/>
+            <sup><sup>[<a href="group__QxtWeb.html">QxtWeb</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        Base class for QxtWeb session managers. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtAbstractWebSessionManager&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtAbstractWebSessionManager-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li>typedef QxtAbstractWebService * <a href="classQxtAbstractWebSessionManager.html#1c4ccda126fbf15b43b7d0fa6a3f8ffae">ServiceFactory</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a> *</span>    ,   <span class="memberdef_type">int</span>     ) </li>
+            <li> <a href="classQxtAbstractWebSessionManager.html#1d8b875265f32a81bc2b3b2af3c24f0d8">QxtAbstractWebSessionManager</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> virtual bool <a href="classQxtAbstractWebSessionManager.html#17073788d4579dea02455bab7fcd45aff">start</a>  (  )  =0 </li>
+            <li> virtual void <a href="classQxtAbstractWebSessionManager.html#139940ff7c93e5694b979a494b9516f3c">postEvent</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtWebEvent.html">QxtWebEvent</a> *</span>    <span class="memberdef_declname">event</span>     )  =0 </li>
+            <li>void <a href="classQxtAbstractWebSessionManager.html#1b59cd674e389d9a1322a1772a2659012">setServiceFactory</a>  (   <span class="memberdef_type">ServiceFactory *</span>    <span class="memberdef_declname">factory</span>     ) </li>
+            <li>ServiceFactory * <a href="classQxtAbstractWebSessionManager.html#1a8ce3b712f665b03313a57c015b670fa">serviceFactory</a>  (  )  const </li>
+            <li>QxtAbstractWebService * <a href="classQxtAbstractWebSessionManager.html#11474f40e016fdab2d0e5d1d70c632104">session</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">sessionID</span>     )  const </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-func"></a>
+    <h3>Protected Functions</h3>
+    <ul class="sectionlist">
+            <li>int <a href="classQxtAbstractWebSessionManager.html#11d426f4d98a80c7150caccd2a06a80f7">createService</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Protected Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-slot"></a>
+    <h3>protected-slot</h3>
+    <ul class="sectionlist">
+            <li> virtual void <a href="classQxtAbstractWebSessionManager.html#175fdfab7ef3652d726f7506a6785e3ee">processEvents</a>  (  )  =0 </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> protected-slot inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a> is the base class for all QxtWeb session managers.</p><p>Session managers are responsible for managing connections between web browsers and web services, for creating sessions and their corresponding service objects, and for managing and dispatching events between browsers and services.</p><p>Note that the session manager is not responsible for destroying service objects. A service object that wishes to end its corresponding session may destroy itself (see <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html#deleteLater">QObject::deleteLater()</a>) and <a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a> will automatically clean up its internal session tracking data.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1c4ccda126fbf15b43b7d0fa6a3f8ffae"></a>
+        typedef QxtAbstractWebService * ServiceFactory  (   <span class="memberdef_type"><a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a> *</span>    ,   <span class="memberdef_type">int</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>Pointer to a function that generates <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a> objects. </p></em>
+        </p>
+        <p class="member_desc">
+            <p><strong>TYPEDEF:</strong> The ServiceFactory type represents a pointer to a function that takes two parameters -- a QxtAbstractWebSessionManager* pointer and an int session ID. The function must return a QxtAbstractWebService* pointer.</p><p>Usually, an application providing web services will instantiate one <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a> object for each session. For services that do not require session management, such as those that serve only static pages, a single service object may be shared for all requests, or it may use some more exotic scheme. See <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a> for more details. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d8b875265f32a81bc2b3b2af3c24f0d8"></a>
+         QxtAbstractWebSessionManager  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Creates a <a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a> with the specified parent.</p><p>Note that this is an abstract class and cannot be instantiated directly. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17073788d4579dea02455bab7fcd45aff"></a>
+         virtual bool start  (  )  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Starts the session manager.</p><p>Session managers should not create sessions before <a class="reflink" href="classQxtAbstractWebSessionManager.html#17073788d4579dea02455bab7fcd45aff">start()</a> is invoked. Subclasses are encouraged to refrain from accepting connections until the session manager is started. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="139940ff7c93e5694b979a494b9516f3c"></a>
+         virtual void postEvent  (   <span class="memberdef_type"><a class="reflink" href="classQxtWebEvent.html">QxtWebEvent</a> *</span>    <span class="memberdef_declname">event</span>     )  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Adds the event to the event queue for its associated session.</p><p>Since different protocols may require different event processing behavior, there is no default implementation in <a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a>. Subclasses are responsible for maintaining event queues and deciding when and where to dispatch events.</p><p>Depending on the subclass's implementation posted events may not be dispatched for some time, and is is possible that an event may never be dispatched if the session is terminated before the event is handled.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebEvent.html">QxtWebEvent</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b59cd674e389d9a1322a1772a2659012"></a>
+        void setServiceFactory  (   <span class="memberdef_type">ServiceFactory *</span>    <span class="memberdef_declname">factory</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the service factory for the session manager.</p><p>The service factory is invoked every time the session manager creates a new session. Usually, an application providing web services will instantiate one <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a> object for each session. For services that do not require separate sessions, such as those that serve only static pages, the factory may return a pointer to the same object for multiple requests.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtAbstractWebSessionManager.html#1c4ccda126fbf15b43b7d0fa6a3f8ffae">QxtAbstractWebSessionManager::ServiceFactory</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a8ce3b712f665b03313a57c015b670fa"></a>
+        ServiceFactory * serviceFactory  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the service factory in use by the session manager.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtAbstractWebSessionManager.html#1b59cd674e389d9a1322a1772a2659012">setServiceFactory(ServiceFactory*)</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11474f40e016fdab2d0e5d1d70c632104"></a>
+        QxtAbstractWebService * session  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">sessionID</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the service object corresponding to the provided session ID. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11d426f4d98a80c7150caccd2a06a80f7"></a>
+        int createService  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Creates a new session and returns its session ID.</p><p>This function uses the <a class="reflink" href="classQxtAbstractWebSessionManager.html#1a8ce3b712f665b03313a57c015b670fa">serviceFactory()</a> to request an instance of the web service. <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtAbstractWebSessionManager.html#1a8ce3b712f665b03313a57c015b670fa">serviceFactory()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="175fdfab7ef3652d726f7506a6785e3ee"></a>
+         virtual void processEvents  (  )  =0 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Processes pending events for all sessions.</p><p>Since different protocols may require different event processing behavior, there is no default implementation in <a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a>. Subclasses are responsible for maintaining event queues and deciding when and where to dispatch events.</p><p><a class="reflink" href="classQxtAbstractWebSessionManager.html#175fdfab7ef3652d726f7506a6785e3ee">processEvents()</a> is not required to dispatch all events immediately. In particular, some events may require certain conditions to be met before they may be fully processed. (For example, because HTTP cookies are sent as response headers, <a class="reflink" href="classQxtHttpServerConnector.html">QxtHttpServerConnector</a> may not dispatch a <a class="reflink" href="classQxtWebStoreCookieEvent.html">QxtWebStoreCookieEvent</a> until a <a class="reflink" href="classQxtWebPageEvent.html">QxtWebPageEvent</a> for the same session is available.) Unprocessed events may remain in the event queue.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebEvent.html">QxtWebEvent</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

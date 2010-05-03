@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtTabWidget</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtTabWidget Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        An extended QTabWidget. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtTabWidget&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qtabwidget.html">QTabWidget</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtTabWidget-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-type"></a>
+    <h3>Public Types</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtTabWidget.html#1eefbc538528c9cad600e9c211feed491">TabMovementMode</a>  { NoMovement  , InPlaceMovement  , DragDropMovement   } </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Types inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="property"></a>
+    <h3>Properties</h3>
+    <ul class="sectionlist">
+            <li>bool <a href="classQxtTabWidget.html#15cee461f63f635aeaa5139b4674d085c">alwaysShowTabBar</a> </li>
+            <li>Qt::ContextMenuPolicy <a href="classQxtTabWidget.html#17e940acaabc0104aa37b3a1478e1d2d0">tabContextMenuPolicy</a> </li>
+            <li>TabMovementMode <a href="classQxtTabWidget.html#1cac13b34096e0dfa9abbeb152337d5fc">tabMovementMode</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Properties inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> explicit  <a href="classQxtTabWidget.html#16b8c718aaa0b22efb166803cba77b471">QxtTabWidget</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> virtual  <a href="classQxtTabWidget.html#16b5f66b03699bc99c8a0cb997e526e1f">~QxtTabWidget</a>  (  ) </li>
+            <li>void <a href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">action</span>     ) </li>
+            <li>QAction * <a href="classQxtTabWidget.html#14e3740229241e301283b5f56a8407f28">addTabAction</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>     ) </li>
+            <li>QAction * <a href="classQxtTabWidget.html#1cf1d5b3b4fe9b614a76a74a290913a59">addTabAction</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qicon.html">QIcon</a> &</span>    <span class="memberdef_declname">icon</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>     ) </li>
+            <li>QAction * <a href="classQxtTabWidget.html#184ede12e07bcac80281ccfee3e0c3fbd">addTabAction</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">receiver</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">member</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qkeysequence.html">QKeySequence</a> &</span>    <span class="memberdef_declname">shortcut</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>QAction * <a href="classQxtTabWidget.html#1a501e41ca01d328dcd8dcaa6a31f85cc">addTabAction</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qicon.html">QIcon</a> &</span>    <span class="memberdef_declname">icon</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">receiver</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">member</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qkeysequence.html">QKeySequence</a> &</span>    <span class="memberdef_declname">shortcut</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>void <a href="classQxtTabWidget.html#13b1a8ef96e696d7af28642d5b53d653b">addTabActions</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList</a>&lt; <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> * &gt;</span>    <span class="memberdef_declname">actions</span>     ) </li>
+            <li>void <a href="classQxtTabWidget.html#1e71cc919250be0a74be547cc4f726a6f">clearTabActions</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>void <a href="classQxtTabWidget.html#1133ea0f8a7ec3450f4fbaab71edb257f">insertTabAction</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">before</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">action</span>     ) </li>
+            <li>void <a href="classQxtTabWidget.html#18b187b30f9bbfeeff27505828bd8e4da">insertTabActions</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">before</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList</a>&lt; <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> * &gt;</span>    <span class="memberdef_declname">actions</span>     ) </li>
+            <li>void <a href="classQxtTabWidget.html#1a325cfa3ca44b5fb65a8eb3daa368328">removeTabAction</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">action</span>     ) </li>
+            <li>QList< QAction * > <a href="classQxtTabWidget.html#112b7d412916b1964772dd10a14a5764a">tabActions</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     )  const </li>
+            <li>QMovie * <a href="classQxtTabWidget.html#14cfa44c6e8b39bbcf4859f16fa024503">tabAnimation</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     )  const </li>
+            <li>void <a href="classQxtTabWidget.html#1729deb9177bf607f24f2047248803109">setTabAnimation</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmovie.html">QMovie</a> *</span>    <span class="memberdef_declname">animation</span>    ,   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">start</span>  <span class="memberdef_defval">= true</span>   ) </li>
+            <li>void <a href="classQxtTabWidget.html#1dca0cd59683deae934b2f67c84e3379d">setTabAnimation</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">fileName</span>    ,   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">start</span>  <span class="memberdef_defval">= true</span>   ) </li>
+            <li>QMovie * <a href="classQxtTabWidget.html#1823a5340a6d3eff69f2c079a8eb2e975">takeTabAnimation</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtTabWidget.html#1d522fb334c56aa2e865508e042c74137">tabContextMenuRequested</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">globalPos</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-func"></a>
+    <h3>Protected Functions</h3>
+    <ul class="sectionlist">
+            <li>QxtTabBar * <a href="classQxtTabWidget.html#191e5403a560a54a737a44bdf69a0f1db">tabBar</a>  (  )  const </li>
+            <li> virtual void <a href="classQxtTabWidget.html#1ddd8f604888b15c79a54c1b9b049c35c">tabContextMenuEvent</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qcontextmenuevent.html">QContextMenuEvent</a> *</span>    <span class="memberdef_declname">event</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Protected Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtTabWidget.html">QxtTabWidget</a> provides some convenience for handling tab specific context menus and animations.</p><p>Example usage: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="classQxtTabWidget.html">QxtTabWidget</a>* tabWidget = </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="classQxtTabWidget.html#16b8c718aaa0b22efb166803cba77b471">QxtTabWidget</a>();</span><br/>
+        <span class="highlight_normal"  >    tabWidget-&gt;<a class="reflink" href="http://doc.trolltech.com/latest/qtabwidget.html#addTab">addTab</a>(tab0, </span><span class="highlight_stringliteral"  >"1"</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  >    tabWidget-&gt;<a class="reflink" href="http://doc.trolltech.com/latest/qtabwidget.html#addTab">addTab</a>(tab1, </span><span class="highlight_stringliteral"  >"2"</span><span class="highlight_normal"  >);</span><br/>
+        <span class="highlight_normal"  ></span><br/>
+        <span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList&lt;QAction*&gt;</a> actions0;</span><br/>
+        <span class="highlight_normal"  >    actions0 &lt;&lt; </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a>(</span><span class="highlight_stringliteral"  >"Quisque"</span><span class="highlight_normal"  >, tab0) &lt;&lt; </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a>(</span><span class="highlight_stringliteral"  >"Aenean"</span><span class="highlight_normal"  >, tab0);</span><br/>
+        <span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList&lt;QAction*&gt;</a> actions1;</span><br/>
+        <span class="highlight_normal"  >    actions1 &lt;&lt; </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a>(</span><span class="highlight_stringliteral"  >"Phasellus"</span><span class="highlight_normal"  >, tab1) &lt;&lt; </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a>(</span><span class="highlight_stringliteral"  >"Maecenas"</span><span class="highlight_normal"  >, tab1);</span><br/>
+        <span class="highlight_normal"  ></span><br/>
+        <span class="highlight_normal"  >    tabWidget-&gt;<a class="reflink" href="classQxtTabWidget.html#1707a9d27875f0c2a30e2e2a8be05aacd">setTabContextMenuPolicy</a>(Qt::ActionsContextMenu);</span><br/>
+        <span class="highlight_normal"  >    tabWidget-&gt;<a class="reflink" href="classQxtTabWidget.html#13b1a8ef96e696d7af28642d5b53d653b">addTabActions</a>(0, actions0);</span><br/>
+        <span class="highlight_normal"  >    tabWidget-&gt;<a class="reflink" href="classQxtTabWidget.html#13b1a8ef96e696d7af28642d5b53d653b">addTabActions</a>(1, actions1);</span><br/>
+        </div></p><p><table class="descimg" ><tr><td><img alt="QxtTabWidget in WindowsXP style." src="qxttabwidget.png"></td></tr><tr><td><sup>QxtTabWidget in WindowsXP style.</sup></td></tr></table><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> http://www.trolltech.com/developer/task-tracker/index_html?method=entry&amp;id=137891</div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1eefbc538528c9cad600e9c211feed491"></a>
+         TabMovementMode  { NoMovement  , InPlaceMovement  , DragDropMovement   } 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <table border="1px" class="desctable">
+            <tr><th>Constant</th><th>Description</th></tr>
+            <tr><td>NoMovement</td><td></td></tr>
+            <tr><td>InPlaceMovement</td><td></td></tr>
+            <tr><td>DragDropMovement</td><td></td></tr>
+            </table>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15cee461f63f635aeaa5139b4674d085c"></a>
+        bool alwaysShowTabBar 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds whether the tab bar is shown always regardless of how many tabs there are. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The default value of this property is <strong>true</strong>.</p><p>Set this property to <strong>false</strong> if you want to show the tab bar only in case there are more than one tabs. </p><p>Access Functions:<ul>
+            <li><strong>read: </strong>bool alwaysShowTabBar  (  )  const </li><li><strong>write: </strong>void setAlwaysShowTabBar  (   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">always</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17e940acaabc0104aa37b3a1478e1d2d0"></a>
+        Qt::ContextMenuPolicy tabContextMenuPolicy 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds how the tab specific context menus are handled. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The default value of this property is <strong>Qt::DefaultContextMenu</strong>, which means that the <a class="reflink" href="classQxtTabWidget.html#1ddd8f604888b15c79a54c1b9b049c35c">tabContextMenuEvent()</a> handler is called. Other values are <strong>Qt::NoContextMenu</strong>, <strong>Qt::PreventContextMenu</strong> (since Qt 4.2), <strong>Qt::ActionsContextMenu</strong>, and <strong>Qt::CustomContextMenu</strong>. With <strong>Qt::CustomContextMenu</strong>, the signal <a class="reflink" href="classQxtTabWidget.html#1d522fb334c56aa2e865508e042c74137">tabContextMenuRequested()</a> is emitted.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1ddd8f604888b15c79a54c1b9b049c35c">tabContextMenuEvent()</a>, <a class="reflink" href="classQxtTabWidget.html#1d522fb334c56aa2e865508e042c74137">tabContextMenuRequested()</a>, <a class="reflink" href="classQxtTabWidget.html#112b7d412916b1964772dd10a14a5764a">tabActions()</a></div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>Qt::ContextMenuPolicy tabContextMenuPolicy  (  )  const </li><li><strong>write: </strong>void setTabContextMenuPolicy  (   <span class="memberdef_type">Qt::ContextMenuPolicy</span>    <span class="memberdef_declname">policy</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cac13b34096e0dfa9abbeb152337d5fc"></a>
+        TabMovementMode tabMovementMode 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>TabMovementMode tabMovementMode  (  )  const </li><li><strong>write: </strong>void setTabMovementMode  (   <span class="memberdef_type">TabMovementMode</span>    <span class="memberdef_declname">mode</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16b8c718aaa0b22efb166803cba77b471"></a>
+         explicit  QxtTabWidget  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtTabWidget.html">QxtTabWidget</a> with <em>parent</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16b5f66b03699bc99c8a0cb997e526e1f"></a>
+         virtual  ~QxtTabWidget  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructs the tab widget. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1483d0d48f8c3c787c65a2cdd24e95b3e"></a>
+        void addTabAction  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">action</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Appends the <em>action</em> to the list of actions of the tab at <em>index</em>.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1a325cfa3ca44b5fb65a8eb3daa368328">removeTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#1133ea0f8a7ec3450f4fbaab71edb257f">insertTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#112b7d412916b1964772dd10a14a5764a">tabActions()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14e3740229241e301283b5f56a8407f28"></a>
+        QAction * addTabAction  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This convenience function creates a new action with <em>text</em>. The function adds the newly created action to the list of actions of the tab at <em>index</em>, and returns it.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cf1d5b3b4fe9b614a76a74a290913a59"></a>
+        QAction * addTabAction  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qicon.html">QIcon</a> &</span>    <span class="memberdef_declname">icon</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This convenience function creates a new action with <em>icon</em> and <em>text</em>. The function adds the newly created action to the list of actions of the tab at <em>index</em>, and returns it.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="184ede12e07bcac80281ccfee3e0c3fbd"></a>
+        QAction * addTabAction  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">receiver</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">member</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qkeysequence.html">QKeySequence</a> &</span>    <span class="memberdef_declname">shortcut</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This convenience function creates a new action with <em>text</em> and an optional <em>shortcut</em>. The action's triggered() signal is connected to the <em>receiver's</em><em>member</em> slot. The function adds the newly created action to the list of actions of the tab at <em>index</em>, and returns it.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> In order to make it possible for the shortcut to work even when the context menu is not open, the action must be added to a visible widget. The corresponding tab is a good alternative.</div><div class="code"><span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a>* tab = createNewTab();</span><br/>
+            <span class="highlight_normal"  >    tabWidget-&gt;addTab(tab, title);</span><br/>
+            <span class="highlight_normal"  >    <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a>* action = tabWidget-&gt;addTabAction(index, tr(</span><span class="highlight_stringliteral"  >"Close"</span><span class="highlight_normal"  >), </span><span class="highlight_keyword"  >this</span><span class="highlight_normal"  >, SLOT(closeCurrentTab()), tr(</span><span class="highlight_stringliteral"  >"Ctrl+W"</span><span class="highlight_normal"  >));</span><br/>
+            <span class="highlight_normal"  >    tab-&gt;<a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html#addAction">addAction</a>(act);</span><br/>
+            </div></p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction()</a>, <a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html#addAction">QWidget::addAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a501e41ca01d328dcd8dcaa6a31f85cc"></a>
+        QAction * addTabAction  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qicon.html">QIcon</a> &</span>    <span class="memberdef_declname">icon</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">text</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">receiver</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">member</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qkeysequence.html">QKeySequence</a> &</span>    <span class="memberdef_declname">shortcut</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This convenience function creates a new action with <em>icon</em>, <em>text</em> and an optional <em>shortcut</em>. The action's triggered() signal is connected to the <em>receiver's</em><em>member</em> slot. The function adds the newly created action to the list of actions of the tab at <em>index</em>, and returns it.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13b1a8ef96e696d7af28642d5b53d653b"></a>
+        void addTabActions  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList</a>&lt; <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> * &gt;</span>    <span class="memberdef_declname">actions</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Appends the <em>actions</em> to the list of actions of the tab at <em>index</em>.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1a325cfa3ca44b5fb65a8eb3daa368328">removeTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e71cc919250be0a74be547cc4f726a6f"></a>
+        void clearTabActions  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Clears the list of actions of the tab at <em>index</em>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> Only actions owned by the tab widget are deleted.</div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1a325cfa3ca44b5fb65a8eb3daa368328">removeTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1133ea0f8a7ec3450f4fbaab71edb257f"></a>
+        void insertTabAction  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">before</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">action</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Inserts the <em>action</em> to the list of actions of the tab at <em>index</em>, before the action <em>before</em>. It appends the action if <em>before</em> is 0.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1a325cfa3ca44b5fb65a8eb3daa368328">removeTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#1483d0d48f8c3c787c65a2cdd24e95b3e">addTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#17e940acaabc0104aa37b3a1478e1d2d0">tabContextMenuPolicy</a>, <a class="reflink" href="classQxtTabWidget.html#112b7d412916b1964772dd10a14a5764a">tabActions()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="18b187b30f9bbfeeff27505828bd8e4da"></a>
+        void insertTabActions  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">before</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qlist.html">QList</a>&lt; <a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> * &gt;</span>    <span class="memberdef_declname">actions</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Inserts the <em>actions</em> to the list of actions of the tab at <em>index</em>, before the action <em>before</em>. It appends the action if <em>before</em> is 0.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> removeAction(), <a class="reflink" href="http://doc.trolltech.com/latest/qmenu.html">QMenu</a>, insertAction(), contextMenuPolicy </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a325cfa3ca44b5fb65a8eb3daa368328"></a>
+        void removeTabAction  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qaction.html">QAction</a> *</span>    <span class="memberdef_declname">action</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Removes the action <em>action</em> from the list of actions of the tab at <em>index</em>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> The removed action is not deleted.</div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1133ea0f8a7ec3450f4fbaab71edb257f">insertTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#112b7d412916b1964772dd10a14a5764a">tabActions()</a>, <a class="reflink" href="classQxtTabWidget.html#1133ea0f8a7ec3450f4fbaab71edb257f">insertTabAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="112b7d412916b1964772dd10a14a5764a"></a>
+        QList< QAction * > tabActions  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the (possibly empty) list of actions for the tab at <em>index</em>.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#17e940acaabc0104aa37b3a1478e1d2d0">tabContextMenuPolicy</a>, <a class="reflink" href="classQxtTabWidget.html#1133ea0f8a7ec3450f4fbaab71edb257f">insertTabAction()</a>, <a class="reflink" href="classQxtTabWidget.html#1a325cfa3ca44b5fb65a8eb3daa368328">removeTabAction()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14cfa44c6e8b39bbcf4859f16fa024503"></a>
+        QMovie * tabAnimation  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the animation of the tab at <em>index</em> or <strong>0</strong> if no animation has been set.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1729deb9177bf607f24f2047248803109">setTabAnimation()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1729deb9177bf607f24f2047248803109"></a>
+        void setTabAnimation  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qmovie.html">QMovie</a> *</span>    <span class="memberdef_declname">animation</span>    ,   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">start</span>  <span class="memberdef_defval">= true</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the <em>animation</em> of the tab at <em>index</em> and optionally <em>start</em> the animation.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#14cfa44c6e8b39bbcf4859f16fa024503">tabAnimation()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1dca0cd59683deae934b2f67c84e3379d"></a>
+        void setTabAnimation  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">fileName</span>    ,   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">start</span>  <span class="memberdef_defval">= true</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This is an overloaded member function, provided for convenience.</p><p>The <a class="reflink" href="http://doc.trolltech.com/latest/qmovie.html">QMovie</a> animation is constructed as <strong>this</strong> as parent.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#1729deb9177bf607f24f2047248803109">setTabAnimation()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1823a5340a6d3eff69f2c079a8eb2e975"></a>
+        QMovie * takeTabAnimation  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Removes the animation of the tab at <em>index</em> and returns it.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#14cfa44c6e8b39bbcf4859f16fa024503">tabAnimation()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d522fb334c56aa2e865508e042c74137"></a>
+        void tabContextMenuRequested  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qpoint.html">QPoint</a> &</span>    <span class="memberdef_declname">globalPos</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted whenever the context menu is requested over tab at <em>index</em> at <em>globalPos</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="191e5403a560a54a737a44bdf69a0f1db"></a>
+        QxtTabBar * tabBar  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ddd8f604888b15c79a54c1b9b049c35c"></a>
+         virtual void tabContextMenuEvent  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">index</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qcontextmenuevent.html">QContextMenuEvent</a> *</span>    <span class="memberdef_declname">event</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This event handler, for event <em>event</em>, can be reimplemented in a subclass to receive context menu events for the tab at <em>index</em>.</p><p>The handler is called when <strong>tabContextMenuPolicy</strong> is <strong>Qt::DefaultContextMenu</strong>.</p><p>The default implementation ignores the context menu event.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtTabWidget.html#17e940acaabc0104aa37b3a1478e1d2d0">tabContextMenuPolicy</a>, <a class="reflink" href="classQxtTabWidget.html#1d522fb334c56aa2e865508e042c74137">tabContextMenuRequested()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

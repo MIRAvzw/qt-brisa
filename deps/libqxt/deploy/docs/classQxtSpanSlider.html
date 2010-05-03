@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtSpanSlider</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtSpanSlider Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        A QSlider with two handles. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtSpanSlider&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qslider.html">QSlider</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtSpanSlider-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-type"></a>
+    <h3>Public Types</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtSpanSlider.html#16dabb5d033accfd402d1542405175ac1">HandleMovementMode</a>  { FreeMovement  , NoCrossing  , NoOverlapping   } </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Types inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="property"></a>
+    <h3>Properties</h3>
+    <ul class="sectionlist">
+            <li>int <a href="classQxtSpanSlider.html#1e2c130ff27659483db0b749a24a5bdb9">lowerValue</a> </li>
+            <li>int <a href="classQxtSpanSlider.html#1dbef852408f0429f8fa7550cd528a5dc">upperValue</a> </li>
+            <li>int <a href="classQxtSpanSlider.html#1f2f098b7e81fcc569954d6f81b3abd34">lowerPosition</a> </li>
+            <li>int <a href="classQxtSpanSlider.html#15351cf909d25845b3faf14b2776c8932">upperPosition</a> </li>
+            <li>HandleMovementMode <a href="classQxtSpanSlider.html#12b4477cccfd8d851bec945410f28ca7a">handleMovementMode</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Properties inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> explicit  <a href="classQxtSpanSlider.html#1bde2b3b4b0acbd77dd52e08ad4bf2bfb">QxtSpanSlider</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> explicit  <a href="classQxtSpanSlider.html#18d00d77eae05c43ebcb569c081285abf">QxtSpanSlider</a>  (   <span class="memberdef_type">Qt::Orientation</span>    <span class="memberdef_declname">orientation</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> virtual  <a href="classQxtSpanSlider.html#1c368255787b1c162969c360a6a155557">~QxtSpanSlider</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtSpanSlider.html#161c59417faf46c042b2af6a641bacc44">setLowerValue</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#19c450417490fdc20f96a0f64ffa1ad85">setUpperValue</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#17fc6e87a5ec80c01579157f4893d0117">setSpan</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#14f3d32d35cdbaa7fd4034eff2144bc7c">setLowerPosition</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#1f30253753b948b4f7999b84961ad663b">setUpperPosition</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtSpanSlider.html#1c0b68f434b781977c856ab0c14efe84f">spanChanged</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#16706d537da77862af4cfa81ed9226dff">lowerValueChanged</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#1c2573b58ea0e48029663a70d88df53dc">upperValueChanged</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#10c3f83bb7535973c56df5f5eaf5e5303">lowerPositionChanged</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) </li>
+            <li>void <a href="classQxtSpanSlider.html#166b0f02140fc7713e604cfd2d667f702">upperPositionChanged</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtSpanSlider.html">QxtSpanSlider</a> is a slider with two handles. <a class="reflink" href="classQxtSpanSlider.html">QxtSpanSlider</a> is handy for letting user to choose an span between min/max.</p><p>The span color is calculated based on <strong>QPalette::Highlight</strong>.</p><p>The keys are bound according to the following table: <table  border="1px" class="desctable">
+        <tr>
+        <td><p><strong>Orientation</strong></p></td><td><p><strong>Key</strong></p></td><td><p><strong>Handle</strong></p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Horizontal</p></td><td><p>Qt::Key_Left</p></td><td><p>lower </p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Horizontal</p></td><td><p>Qt::Key_Right</p></td><td><p>lower </p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Horizontal</p></td><td><p>Qt::Key_Up</p></td><td><p>upper </p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Horizontal</p></td><td><p>Qt::Key_Down</p></td><td><p>upper </p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Vertical</p></td><td><p>Qt::Key_Up</p></td><td><p>lower </p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Vertical</p></td><td><p>Qt::Key_Down</p></td><td><p>lower </p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Vertical</p></td><td><p>Qt::Key_Left</p></td><td><p>upper </p></td>
+        </tr>
+        <tr>
+        <td><p>Qt::Vertical</p></td><td><p>Qt::Key_Right</p></td><td><p>upper </p></td>
+        </tr>
+        
+        </table>
+        </p><p>Keys are bound by the time the slider is created. A key is bound to same handle for the lifetime of the slider. So even if the handle representation might change from lower to upper, the same key binding remains.</p><p><table class="descimg" ><tr><td><img alt="QxtSpanSlider in Plastique style." src="qxtspanslider.png"></td></tr><tr><td><sup>QxtSpanSlider in Plastique style.</sup></td></tr></table><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> <a class="reflink" href="classQxtSpanSlider.html">QxtSpanSlider</a> inherits <strong><a class="reflink" href="http://doc.trolltech.com/latest/qslider.html">QSlider</a></strong> for implementation specific reasons. Adjusting any single handle specific properties like <ul>
+        <li><p><strong>QAbstractSlider::sliderPosition</strong></p></li>
+        <li><p><strong>QAbstractSlider::value</strong></p></li>
+        
+        </ul>
+        
+        has no effect. However, all slider specific properties like <ul>
+        <li><p><strong>QAbstractSlider::invertedAppearance</strong></p></li>
+        <li><p><strong>QAbstractSlider::invertedControls</strong></p></li>
+        <li><p><strong>QAbstractSlider::minimum</strong></p></li>
+        <li><p><strong>QAbstractSlider::maximum</strong></p></li>
+        <li><p><strong>QAbstractSlider::orientation</strong></p></li>
+        <li><p><strong>QAbstractSlider::pageStep</strong></p></li>
+        <li><p><strong>QAbstractSlider::singleStep</strong></p></li>
+        <li><p><strong>QSlider::tickInterval</strong></p></li>
+        <li><p><strong>QSlider::tickPosition</strong></p></li>
+        
+        </ul>
+        
+        are taken into consideration. </div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="16dabb5d033accfd402d1542405175ac1"></a>
+         HandleMovementMode  { FreeMovement  , NoCrossing  , NoOverlapping   } 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <table border="1px" class="desctable">
+            <tr><th>Constant</th><th>Description</th></tr>
+            <tr><td>FreeMovement</td><td><p>The handles can be moved freely. </p></td></tr>
+            <tr><td>NoCrossing</td><td><p>The handles cannot cross, but they can still overlap each other. The lower and upper values can be the same. </p></td></tr>
+            <tr><td>NoOverlapping</td><td><p>The handles cannot overlap each other. The lower and upper values cannot be the same. </p></td></tr>
+            </table>
+            <p>This enum describes the available handle movement modes. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1e2c130ff27659483db0b749a24a5bdb9"></a>
+        int lowerValue 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the lower value of the span. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>int lowerValue  (  )  const </li><li><strong>write: </strong>void setLowerValue  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1dbef852408f0429f8fa7550cd528a5dc"></a>
+        int upperValue 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the upper value of the span. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>int upperValue  (  )  const </li><li><strong>write: </strong>void setUpperValue  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f2f098b7e81fcc569954d6f81b3abd34"></a>
+        int lowerPosition 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the lower position of the span. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>int lowerPosition  (  )  const </li><li><strong>write: </strong>void setLowerPosition  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15351cf909d25845b3faf14b2776c8932"></a>
+        int upperPosition 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the upper position of the span. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>int upperPosition  (  )  const </li><li><strong>write: </strong>void setUpperPosition  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12b4477cccfd8d851bec945410f28ca7a"></a>
+        HandleMovementMode handleMovementMode 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the handle movement mode. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>HandleMovementMode handleMovementMode  (  )  const </li><li><strong>write: </strong>void setHandleMovementMode  (   <span class="memberdef_type"><a class="reflink" href="classQxtSpanSlider.html#16dabb5d033accfd402d1542405175ac1">HandleMovementMode</a></span>    <span class="memberdef_declname">mode</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1bde2b3b4b0acbd77dd52e08ad4bf2bfb"></a>
+         explicit  QxtSpanSlider  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtSpanSlider.html">QxtSpanSlider</a> with <em>parent</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="18d00d77eae05c43ebcb569c081285abf"></a>
+         explicit  QxtSpanSlider  (   <span class="memberdef_type">Qt::Orientation</span>    <span class="memberdef_declname">orientation</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtSpanSlider.html">QxtSpanSlider</a> with <em>orientation</em> and <em>parent</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c368255787b1c162969c360a6a155557"></a>
+         virtual  ~QxtSpanSlider  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructs the slider. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="161c59417faf46c042b2af6a641bacc44"></a>
+        void setLowerValue  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="19c450417490fdc20f96a0f64ffa1ad85"></a>
+        void setUpperValue  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17fc6e87a5ec80c01579157f4893d0117"></a>
+        void setSpan  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the span from <em>lower</em> to <em>upper</em>. <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtSpanSlider.html#1dbef852408f0429f8fa7550cd528a5dc">upperValue</a>, <a class="reflink" href="classQxtSpanSlider.html#1e2c130ff27659483db0b749a24a5bdb9">lowerValue</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14f3d32d35cdbaa7fd4034eff2144bc7c"></a>
+        void setLowerPosition  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f30253753b948b4f7999b84961ad663b"></a>
+        void setUpperPosition  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c0b68f434b781977c856ab0c14efe84f"></a>
+        void spanChanged  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>    ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted whenever the span has changed. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16706d537da77862af4cfa81ed9226dff"></a>
+        void lowerValueChanged  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted whenever the lower value has changed. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c2573b58ea0e48029663a70d88df53dc"></a>
+        void upperValueChanged  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted whenever the upper value has changed. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="10c3f83bb7535973c56df5f5eaf5e5303"></a>
+        void lowerPositionChanged  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">lower</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted whenever the lower position has changed. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="166b0f02140fc7713e604cfd2d667f702"></a>
+        void upperPositionChanged  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">upper</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted whenever the upper position has changed. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

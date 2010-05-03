@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtWebCgiService</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtWebCgiService Class Reference<br/>
+            <sup><sup>[<a href="group__QxtWeb.html">QxtWeb</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        CGI/1.1 gateway for QxtWeb. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtWebCgiService&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtWebCgiService-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtWebCgiService.html#11fcea59fb3a8da588486637b16ddd0f9">QxtWebCgiService</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">binary</span>    ,   <span class="memberdef_type"><a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a> *</span>    <span class="memberdef_declname">manager</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>QString <a href="classQxtWebCgiService.html#11f591d6e1a2d78f576046f983b778c85">binary</a>  (  )  const </li>
+            <li>void <a href="classQxtWebCgiService.html#15156f6b23c2966f700b15af2b709b4bd">setBinary</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">bin</span>     ) </li>
+            <li>int <a href="classQxtWebCgiService.html#1bf4b6a35e5b8df70de532f60306d51ad">timeout</a>  (  )  const </li>
+            <li>void <a href="classQxtWebCgiService.html#133d4eec39877d21eea2f62610d617bc9">setTimeout</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">time</span>     ) </li>
+            <li>bool <a href="classQxtWebCgiService.html#110d54c7422b9069b523974b9b6ac5c74">timeoutOverride</a>  (  )  const </li>
+            <li>void <a href="classQxtWebCgiService.html#16931deb479791ab1be40b82bc63494db">setTimeoutOverride</a>  (   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">enable</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>TODO: write docs TODO: implement timeout </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="11fcea59fb3a8da588486637b16ddd0f9"></a>
+         QxtWebCgiService  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">binary</span>    ,   <span class="memberdef_type"><a class="reflink" href="classQxtAbstractWebSessionManager.html">QxtAbstractWebSessionManager</a> *</span>    <span class="memberdef_declname">manager</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a <a class="reflink" href="classQxtWebCgiService.html">QxtWebCgiService</a> object with the specified session manager and parent. This service will invoke the specified binary to handle incoming requests.</p><p>Often, the session manager will also be the parent, but this is not a requirement. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11f591d6e1a2d78f576046f983b778c85"></a>
+        QString binary  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the path to the CGI script that will be executed to handle requests.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebCgiService.html#15156f6b23c2966f700b15af2b709b4bd">setBinary</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15156f6b23c2966f700b15af2b709b4bd"></a>
+        void setBinary  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">bin</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the path to the CGI script that will be executed to handle requests.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebCgiService.html#11f591d6e1a2d78f576046f983b778c85">binary</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1bf4b6a35e5b8df70de532f60306d51ad"></a>
+        int timeout  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the maximum time a CGI script may execute, in milliseconds.</p><p>The default value is 0, which indicates that CGI scripts will not be terminated due to long running times.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebCgiService.html#133d4eec39877d21eea2f62610d617bc9">setTimeout</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="133d4eec39877d21eea2f62610d617bc9"></a>
+        void setTimeout  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">time</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the maximum time a CGI script may execute, in milliseconds.</p><p>The timer is started when the script is launched. After the timeout elapses once, the script will be asked to stop, as <a class="reflink" href="http://doc.trolltech.com/latest/qprocess.html#terminate">QProcess::terminate()</a>. (That is, the script will receive WM_CLOSE on Windows or SIGTERM on UNIX.) If the process has still failed to terminate after another timeout, it will be forcibly terminated, as <a class="reflink" href="http://doc.trolltech.com/latest/qprocess.html#kill">QProcess::kill()</a>. (That is, the script will receive TerminateProcess on Windows or SIGKILL on UNIX.)</p><p>Set the timeout to 0 to disable this behavior; scripts will not be terminated due to excessive run time. This is the default behavior.</p><p>CAUTION: Keep in mind that the timeout applies to the real running time of the script, not processor time used. A script that initiates a lengthy download may be interrupted while transferring data to the web browser. To avoid this behavior, see the <em>timeoutOverride</em> property to allow the script to request an extended timeout, or use a different <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a> object for serving streaming content or large files.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebCgiService.html#1bf4b6a35e5b8df70de532f60306d51ad">timeout</a><a class="reflink" href="classQxtWebCgiService.html#110d54c7422b9069b523974b9b6ac5c74">timeoutOverride</a><a class="reflink" href="classQxtWebCgiService.html#16931deb479791ab1be40b82bc63494db">setTimeoutOverride</a><a class="reflink" href="http://doc.trolltech.com/latest/qprocess.html#terminate">QProcess::terminate</a><a class="reflink" href="http://doc.trolltech.com/latest/qprocess.html#kill">QProcess::kill</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="110d54c7422b9069b523974b9b6ac5c74"></a>
+        bool timeoutOverride  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns whether or not to allow scripts to override the timeout.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebCgiService.html#16931deb479791ab1be40b82bc63494db">setTimeoutOverride</a><a class="reflink" href="classQxtWebCgiService.html#133d4eec39877d21eea2f62610d617bc9">setTimeout</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16931deb479791ab1be40b82bc63494db"></a>
+        void setTimeoutOverride  (   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">enable</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets whether or not to allow scripts to override the timeout.</p><p>As an extension to the CGI/1.1 gateway specification, a CGI script may output a "X-QxtWeb-Timeout" header to change the termination timeout on a per-script basis. Only enable this option if you trust the scripts being executed.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtWebCgiService.html#110d54c7422b9069b523974b9b6ac5c74">timeoutOverride</a><a class="reflink" href="classQxtWebCgiService.html#133d4eec39877d21eea2f62610d617bc9">setTimeout</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

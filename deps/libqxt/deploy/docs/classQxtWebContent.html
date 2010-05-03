@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtWebContent</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtWebContent Class Reference<br/>
+            <sup><sup>[<a href="group__QxtWeb.html">QxtWeb</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        I/O device for data sent by the web browser. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtWebContent&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtWebContent-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtWebContent.html#1f595133f85abc4133aed059084caa9f7">QxtWebContent</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">contentLength</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a> &</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>     ) </li>
+            <li> <a href="classQxtWebContent.html#14b90c84b5d6750fcf6f48d4ac3e4d5d2">QxtWebContent</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">contentLength</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>     ) </li>
+            <li> explicit  <a href="classQxtWebContent.html#1b883b55b2584f6bbd470e48c97f68f31">QxtWebContent</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a> &</span>    <span class="memberdef_declname">content</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>qint64 <a href="classQxtWebContent.html#16fbebd100adfc2e8d88efee1bb51a23e">unreadBytes</a>  (  )  const </li>
+            <li>void <a href="classQxtWebContent.html#1b2cbb4ed59f43e058f3a2539bf7a451f">waitForAllContent</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-static-func"></a>
+    <h3>Public Static Functions</h3>
+    <ul class="sectionlist">
+            <li>QHash< QString, QString > <a href="classQxtWebContent.html#19434aa40d18095d8dfb5bbcbaa54f86f">parseUrlEncodedQuery</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">data</span>     )  static </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Static Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtWebContent.html#17f55815b734af2fb41f050bc2077e43c">ignoreRemainingContent</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtWebContent.html">QxtWebContent</a> is a read-only <a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> subclass that encapsulates data sent from the web browser, for instance in a POST or PUT request.</p><p>In order to avoid delays while reading content sent from the client, and to insulate multiple pipelined requests on the same connection from each other, QxtWeb uses <a class="reflink" href="classQxtWebContent.html">QxtWebContent</a> as an abstraction for streaming data.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtAbstractWebService.html">QxtAbstractWebService</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1f595133f85abc4133aed059084caa9f7"></a>
+         QxtWebContent  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">contentLength</span>    ,   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a> &</span>    <span class="memberdef_declname">start</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a <a class="reflink" href="classQxtWebContent.html">QxtWebContent</a> object.</p><p>The content provided by this constructor is the data contained in <em>start</em>, followed by enough data read from the provided device to fill the desired <em>contentLength</em>.</p><p>The <a class="reflink" href="classQxtWebContent.html">QxtWebContent</a> object is parented to the device. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14b90c84b5d6750fcf6f48d4ac3e4d5d2"></a>
+         QxtWebContent  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">contentLength</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qiodevice.html">QIODevice</a> *</span>    <span class="memberdef_declname">device</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a <a class="reflink" href="classQxtWebContent.html">QxtWebContent</a> object.</p><p>The content provided by this constructor is the first <em>contentLength</em> bytes read from the provided device.</p><p>The <a class="reflink" href="classQxtWebContent.html">QxtWebContent</a> object is parented to the device. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b883b55b2584f6bbd470e48c97f68f31"></a>
+         explicit  QxtWebContent  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a> &</span>    <span class="memberdef_declname">content</span>    ,   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a <a class="reflink" href="classQxtWebContent.html">QxtWebContent</a> object with the specified parent.</p><p>The content provided by this constructor is exactly the data contained in <em>content</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16fbebd100adfc2e8d88efee1bb51a23e"></a>
+        qint64 unreadBytes  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the number of bytes of content that have not yet been read.</p><p>Note that not all of the remaining content may be immediately available for reading. This function returns the content length, minus the number of bytes that have already been read. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b2cbb4ed59f43e058f3a2539bf7a451f"></a>
+        void waitForAllContent  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Blocks until all of the streaming data has been read from the browser.</p><p>Note that this function will block events for the thread on which it is called. If the main thread is blocked, QxtWeb will be unable to process additional requests until the content has been received. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="19434aa40d18095d8dfb5bbcbaa54f86f"></a>
+        QHash< QString, QString > parseUrlEncodedQuery  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">data</span>     )  static 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Extracts the key/value pairs from application/x-www-form-urlencoded data, such as the query string from the URL or the form data from a POST request. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17f55815b734af2fb41f050bc2077e43c"></a>
+        void ignoreRemainingContent  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Discards any data not yet read.</p><p>After invoking this function, any further data received from the browser is silently discarded. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

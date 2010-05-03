@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtMetaObject</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtMetaObject Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        provides extensions to QMetaObject
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtMetaObject&gt;</pre>
+    
+    
+    
+    <ul><li><a href="classQxtMetaObject-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="related"></a>
+    <h3>related</h3>
+    <ul class="sectionlist">
+            <li>QxtBoundFunction * <a href="classQxtMetaObject.html#16a4e1dc20ba9478fd244031d76518fc3">bind</a>  (   <span class="memberdef_type">QxtGenericFunctionPointer</span>    <span class="memberdef_declname">funcPointer</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qgenericargument.html">QGenericArgument</a>)</span>     ) </li>
+            <li>QxtBoundFunction * <a href="classQxtMetaObject.html#193e1d55f77cac352f53f765b043154c9">bind</a>  (   <span class="memberdef_type">QxtGenericFunctionPointer</span>    <span class="memberdef_declname">funcPointer</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>)</span>     ) </li>
+            <li> <a href="classQxtMetaObject.html#1d5dc3f9735acfbaa57c87aa5469ddc74">methodName</a>  (   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">method</span>     ) </li>
+            <li> <a href="classQxtMetaObject.html#108b2c37846aa9d2b36d93744f8b82889">methodSignature</a>  (   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">method</span>     ) </li>
+            <li>bool <a href="classQxtMetaObject.html#117869c73b9170eed104ac03237395aff">isSignalOrSlot</a>  (   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">method</span>     ) </li>
+            <li>QxtBoundFunction * <a href="classQxtMetaObject.html#1c3ae4a2ab8be48b311706e37d0a550df">bind</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">recv</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">invokable</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>)</span>     ) </li>
+            <li>QxtBoundFunction * <a href="classQxtMetaObject.html#1d94a8bd822d23f2816c68ad9130c6fd0">bind</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">recv</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">invokable</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qgenericargument.html">QGenericArgument</a>)</span>     ) </li>
+            <li> <a href="classQxtMetaObject.html#10672fb5917d321762dfd192f229469d5">connect</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">sender</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">signal</span>    ,   <span class="memberdef_type">QxtBoundFunction *</span>    <span class="memberdef_declname">slot</span>    ,   <span class="memberdef_type">Qt::ConnectionType</span>    <span class="memberdef_declname">type</span>     ) </li>
+            <li> <a href="classQxtMetaObject.html#183319dee22cac5d7cd6f64783be4b8b5">QXT_BIND</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> related inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>including <a class="reflink" href="classQxtMetaObject.html#16a4e1dc20ba9478fd244031d76518fc3">QxtMetaObject::bind</a><br/>
+        </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="16a4e1dc20ba9478fd244031d76518fc3"></a>
+        QxtBoundFunction * bind  (   <span class="memberdef_type">QxtGenericFunctionPointer</span>    <span class="memberdef_declname">funcPointer</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qgenericargument.html">QGenericArgument</a>)</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtMetaObject.html#10672fb5917d321762dfd192f229469d5">QxtMetaObject::connect</a>qxtFuncPtr QxtBoundFunction <a class="reflink" href="classQxtMetaObject.html#183319dee22cac5d7cd6f64783be4b8b5">QXT_BIND</a></div>
+            Creates a binding to the provided C/C++ function using the provided parameter list. Use the qxtFuncPtr function to wrap a bare function pointer for use in this function. Use the Q_ARG macro to specify constant parameters, or use the QXT_BIND macro to relay a parameter from a connected signal or passed via the QxtBoundFunction::invoke() method.</p><p>The first template parameter must match the return type of the function, or void if the function does not return a value. The remaining template parameters must match the types of the function's parameters. If any type does not match, this function returns NULL.</p><p>The returned QxtBoundFunction will not have a parent. Assigning a parent using <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html#setParent">QObject::setParent()</a> is strongly recommended to avoid memory leaks. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="193e1d55f77cac352f53f765b043154c9"></a>
+        QxtBoundFunction * bind  (   <span class="memberdef_type">QxtGenericFunctionPointer</span>    <span class="memberdef_declname">funcPointer</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>)</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtMetaObject.html#10672fb5917d321762dfd192f229469d5">QxtMetaObject::connect</a>qxtFuncPtr QxtBoundFunction</div>
+            Creates a binding to the provided C/C++ function using the provided parameter list. Use the qxtFuncPtr function to wrap a bare function pointer for use in this function. The type of each argument is deduced from the type of the <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>. This function cannot bind positional arguments; see the overload using <a class="reflink" href="http://doc.trolltech.com/latest/qgenericargument.html">QGenericArgument</a>.</p><p>The first template parameter must match the return type of the function, or void if the function does not return a value. The remaining template parameters must match the types of the function's parameters. If any type does not match, this function returns NULL.</p><p>The returned QxtBoundFunction will not have a parent. Assigning a parent using <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html#setParent">QObject::setParent()</a> is strongly recommended to avoid memory leaks. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d5dc3f9735acfbaa57c87aa5469ddc74"></a>
+         methodName  (   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">method</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the name of the given method.</p><p>Example usage: <div class="code"><span class="highlight_normal"  >        <a class="reflink" href="http://doc.trolltech.com/latest/qbytearray.html">QByteArray</a> method = <a class="reflink" href="classQxtMetaObject.html#1d5dc3f9735acfbaa57c87aa5469ddc74">QxtMetaObject::methodName</a>(</span><span class="highlight_stringliteral"  >" int foo ( int bar, double baz )"</span><span class="highlight_normal"  >);</span><br/>
+            <span class="highlight_normal"  >        </span><span class="highlight_comment"  >// method is now "foo"</span><br/>
+            </div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="108b2c37846aa9d2b36d93744f8b82889"></a>
+         methodSignature  (   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">method</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the signature of the given method. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="117869c73b9170eed104ac03237395aff"></a>
+        bool isSignalOrSlot  (   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">method</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>checks if method contains parentheses and begins with 1 or 2 </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c3ae4a2ab8be48b311706e37d0a550df"></a>
+        QxtBoundFunction * bind  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">recv</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">invokable</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>)</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtMetaObject.html#10672fb5917d321762dfd192f229469d5">QxtMetaObject::connect</a>QxtBoundFunction</div>
+            Creates a binding to the provided signal, slot, or Q_INVOKABLE method using the provided parameter list. The type of each argument is deduced from the type of the <a class="reflink" href="http://doc.trolltech.com/latest/qvariant.html">QVariant</a>. This function cannot bind positional arguments; see the overload using <a class="reflink" href="http://doc.trolltech.com/latest/qgenericargument.html">QGenericArgument</a>.</p><p>If the provided <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> does not implement the requested method, or if the argument list is incompatible with the method's function signature, this function returns NULL.</p><p>The returned QxtBoundFunction is created as a child of the receiver. Changing the parent will result in undefined behavior. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d94a8bd822d23f2816c68ad9130c6fd0"></a>
+        QxtBoundFunction * bind  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">recv</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">invokable</span>    ,   <span class="memberdef_type">QXT_IMPL_10ARGS(<a class="reflink" href="http://doc.trolltech.com/latest/qgenericargument.html">QGenericArgument</a>)</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtMetaObject.html#10672fb5917d321762dfd192f229469d5">QxtMetaObject::connect</a>QxtBoundFunction <a class="reflink" href="classQxtMetaObject.html#183319dee22cac5d7cd6f64783be4b8b5">QXT_BIND</a></div>
+            Creates a binding to the provided signal, slot, or Q_INVOKABLE method using the provided parameter list. Use the Q_ARG macro to specify constant parameters, or use the QXT_BIND macro to relay a parameter from a connected signal or passed via the QxtBoundFunction::invoke() method.</p><p>If the provided <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> does not implement the requested method, or if the argument list is incompatible with the method's function signature, this function returns NULL.</p><p>The returned QxtBoundFunction is created as a child of the receiver. Changing the parent will result in undefined behavior. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="10672fb5917d321762dfd192f229469d5"></a>
+         connect  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">sender</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">signal</span>    ,   <span class="memberdef_type">QxtBoundFunction *</span>    <span class="memberdef_declname">slot</span>    ,   <span class="memberdef_type">Qt::ConnectionType</span>    <span class="memberdef_declname">type</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>connects a signal to a QxtBoundFunction <br/>
+            </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="183319dee22cac5d7cd6f64783be4b8b5"></a>
+         QXT_BIND 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Refers to the n'th parameter of QxtBoundFunction::invoke() or of a signal connected to a QxtBoundFunction. <div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtMetaObject.html#16a4e1dc20ba9478fd244031d76518fc3">QxtMetaObject::bind</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

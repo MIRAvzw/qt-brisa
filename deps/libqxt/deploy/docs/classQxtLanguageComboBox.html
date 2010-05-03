@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtLanguageComboBox</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtLanguageComboBox Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        An extended QComboBox to display langauges. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtLanguageComboBox&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qcombobox.html">QComboBox</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtLanguageComboBox-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-type"></a>
+    <h3>Public Types</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtLanguageComboBox.html#179576c034f3add253fbcf4d3ed4cbd19">DisplayMode</a>  { AllLanguages  , AvailableTranslations   } </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Types inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="property"></a>
+    <h3>Properties</h3>
+    <ul class="sectionlist">
+            <li>QString <a href="classQxtLanguageComboBox.html#1b297ddc0096b6732eadb2472f47e5c70">currentLanguageName</a> </li>
+            <li>DisplayMode <a href="classQxtLanguageComboBox.html#1b68fc57a5180ca7a17aa388f3e4576fe">displayMode</a> </li>
+            <li>QString <a href="classQxtLanguageComboBox.html#17ee3d5a9705c1687b3e2fe56ade8d8c6">translationPath</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Properties inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> explicit  <a href="classQxtLanguageComboBox.html#1b40cf1d1052841e3f0de686dbb63f976">QxtLanguageComboBox</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> virtual  <a href="classQxtLanguageComboBox.html#13c1a555c4027329f8c45c92e457c360b">~QxtLanguageComboBox</a>  (  ) </li>
+            <li> <a href="classQxtLanguageComboBox.html#1304f576a9bbd73ba186faf231aeecabd">Q_ENUMS</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtLanguageComboBox.html#179576c034f3add253fbcf4d3ed4cbd19">DisplayMode</a></span>     ) </li>
+            <li>QLocale::Language <a href="classQxtLanguageComboBox.html#18607eb0b92842a7165bbd62a0feacfa3">currentLanguage</a>  (  )  const </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtLanguageComboBox.html#17e1b7116a9586f304de18a942216f0fd">setCurrentLanguage</a>  (   <span class="memberdef_type">QLocale::Language</span>    <span class="memberdef_declname">lang</span>     ) </li>
+            <li>void <a href="classQxtLanguageComboBox.html#11d6e4ae97b0fb98c55c7574c1035bcdf">setDisplayMode</a>  (   <span class="memberdef_type"><a class="reflink" href="classQxtLanguageComboBox.html#179576c034f3add253fbcf4d3ed4cbd19">DisplayMode</a></span>    <span class="memberdef_declname">mode</span>     ) </li>
+            <li>void <a href="classQxtLanguageComboBox.html#1a254f2fb0316aa46905a4a893b1a041e">setTranslationPath</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">path</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtLanguageComboBox.html#1d9795a0173b088467204755f738186aa">currentLanguageChanged</a>  (   <span class="memberdef_type">QLocale::Language</span>    <span class="memberdef_declname">country</span>     ) </li>
+            <li>void <a href="classQxtLanguageComboBox.html#1068edf82a7da546c485eb061ee94abbe">currentLanguageNameChanged</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">name</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtLanguageComboBox.html">QxtLanguageComboBox</a> is a specialized combo box to display spoken languages. The languages are taken from QLocale::Language.</p><p><table class="descimg" ><tr><td><img alt="QxtLanguageComboBox in Plastique style." src="qxtlanguagecombobox.png"></td></tr><tr><td><sup>QxtLanguageComboBox in Plastique style.</sup></td></tr></table></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="179576c034f3add253fbcf4d3ed4cbd19"></a>
+         DisplayMode  { AllLanguages  , AvailableTranslations   } 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <table border="1px" class="desctable">
+            <tr><th>Constant</th><th>Description</th></tr>
+            <tr><td>AllLanguages</td><td></td></tr>
+            <tr><td>AvailableTranslations</td><td></td></tr>
+            </table>
+            <p>This enum describes the displayed languages.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtLanguageComboBox.html#1b68fc57a5180ca7a17aa388f3e4576fe">QxtLanguageComboBox::displayMode</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b297ddc0096b6732eadb2472f47e5c70"></a>
+        QString currentLanguageName 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the name of the current selected language. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>QString currentLanguageName  (  )  const </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b68fc57a5180ca7a17aa388f3e4576fe"></a>
+        DisplayMode displayMode 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the display mode of the widget. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>DisplayMode displayMode  (  )  const </li><li><strong>write: </strong>void setDisplayMode  (   <span class="memberdef_type"><a class="reflink" href="classQxtLanguageComboBox.html#179576c034f3add253fbcf4d3ed4cbd19">DisplayMode</a></span>    <span class="memberdef_declname">mode</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17ee3d5a9705c1687b3e2fe56ade8d8c6"></a>
+        QString translationPath 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the path to the translation files. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Access Functions:<ul>
+            <li><strong>read: </strong>QString translationPath  (  )  const </li><li><strong>write: </strong>void setTranslationPath  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">path</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1b40cf1d1052841e3f0de686dbb63f976"></a>
+         explicit  QxtLanguageComboBox  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtCountryComboBox.html">QxtCountryComboBox</a> with <em>parent</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13c1a555c4027329f8c45c92e457c360b"></a>
+         virtual  ~QxtLanguageComboBox  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructs the combo box. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1304f576a9bbd73ba186faf231aeecabd"></a>
+         Q_ENUMS  (   <span class="memberdef_type"><a class="reflink" href="classQxtLanguageComboBox.html#179576c034f3add253fbcf4d3ed4cbd19">DisplayMode</a></span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="18607eb0b92842a7165bbd62a0feacfa3"></a>
+        QLocale::Language currentLanguage  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17e1b7116a9586f304de18a942216f0fd"></a>
+        void setCurrentLanguage  (   <span class="memberdef_type">QLocale::Language</span>    <span class="memberdef_declname">lang</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="11d6e4ae97b0fb98c55c7574c1035bcdf"></a>
+        void setDisplayMode  (   <span class="memberdef_type"><a class="reflink" href="classQxtLanguageComboBox.html#179576c034f3add253fbcf4d3ed4cbd19">DisplayMode</a></span>    <span class="memberdef_declname">mode</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a254f2fb0316aa46905a4a893b1a041e"></a>
+        void setTranslationPath  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">path</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1d9795a0173b088467204755f738186aa"></a>
+        void currentLanguageChanged  (   <span class="memberdef_type">QLocale::Language</span>    <span class="memberdef_declname">country</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1068edf82a7da546c485eb061ee94abbe"></a>
+        void currentLanguageNameChanged  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">name</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted whenever the current selected language has been changed. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

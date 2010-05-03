@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtItemDelegate</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtItemDelegate Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        An extended QItemDelegate with additional signals and optional decoration. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtItemDelegate&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qitemdelegate.html">QItemDelegate</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtItemDelegate-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-type"></a>
+    <h3>Public Types</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtItemDelegate.html#1f1ca2590a2e3f49305e682fb6dee0071">Role</a>  { ProgressValueRole  , ProgressMinimumRole  , ProgressMaximumRole   } </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Types inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="property"></a>
+    <h3>Properties</h3>
+    <ul class="sectionlist">
+            <li>Qxt::DecorationStyle <a href="classQxtItemDelegate.html#1164f51dc565c77b9751d903551242bcb">decorationStyle</a> </li>
+            <li>Qt::TextElideMode <a href="classQxtItemDelegate.html#1aad15b615b46a7be400ed22a46c329b9">elideMode</a> </li>
+            <li>QString <a href="classQxtItemDelegate.html#14a72e90eb63966705440e9e853a3f857">progressTextFormat</a> </li>
+            <li>bool <a href="classQxtItemDelegate.html#16e9b763493051927cfaab07b3cb5f793">progressTextVisible</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Properties inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> explicit  <a href="classQxtItemDelegate.html#12caf5f8173ffb4ae092a91547160c9fe">QxtItemDelegate</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> virtual  <a href="classQxtItemDelegate.html#15a7313c4c5b9ef91624b655ba8258794">~QxtItemDelegate</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtItemDelegate.html#13b3068865e5185d6eb4348c2dcce99d7">editingStarted</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) </li>
+            <li>void <a href="classQxtItemDelegate.html#1593c068bb974266241f9a48c28200d26">editingFinished</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtItemDelegate.html">QxtItemDelegate</a> provides signals for starting and finishing of editing and an optional decoration for top level indices in a <a class="reflink" href="http://doc.trolltech.com/latest/qtreeview.html">QTreeView</a>.</p><p><a class="reflink" href="classQxtItemDelegate.html">QxtItemDelegate</a> can also draw a progress bar for indices providing appropriate progress data. Just like <a class="reflink" href="http://doc.trolltech.com/latest/qprogressbar.html">QProgressBar</a>, <a class="reflink" href="classQxtItemDelegate.html">QxtItemDelegate</a> can show a busy indicator. If minimum and maximum both are set to <strong>0</strong>, a busy indicator is shown instead of a percentage of steps. </p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1f1ca2590a2e3f49305e682fb6dee0071"></a>
+         Role  { ProgressValueRole  , ProgressMinimumRole  , ProgressMaximumRole   } 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <table border="1px" class="desctable">
+            <tr><th>Constant</th><th>Description</th></tr>
+            <tr><td>ProgressValueRole</td><td><p>The progress value. </p></td></tr>
+            <tr><td>ProgressMinimumRole</td><td><p>The minimum progress value. The default value <strong>0</strong> is used if no value is provided for ProgressMinimumRole. </p></td></tr>
+            <tr><td>ProgressMaximumRole</td><td><p>The maximum progress value. The default value <strong>100</strong> is used if no value is provided for ProgressMaximumRole. </p></td></tr>
+            </table>
+            <p>This enum defines custom roles used by <a class="reflink" href="classQxtItemDelegate.html">QxtItemDelegate</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1164f51dc565c77b9751d903551242bcb"></a>
+        Qxt::DecorationStyle decorationStyle 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the top level index decoration style. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>Top level indices are decorated according to this property. The default value is <strong>Qxt::NoDecoration</strong>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> The property has effect only in case the delegate is installed on a <a class="reflink" href="http://doc.trolltech.com/latest/qtreeview.html">QTreeView</a>. The view must be the parent of the delegate.Set <strong>QTreeView::rootIsDecorated</strong> to <strong>false</strong> to avoid multiple branch indicators.</div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> Qxt::DecorationStyle, QTreeView::rootIsDecorated </div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>Qxt::DecorationStyle decorationStyle  (  )  const </li><li><strong>write: </strong>void setDecorationStyle  (   <span class="memberdef_type">Qxt::DecorationStyle</span>    <span class="memberdef_declname">style</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1aad15b615b46a7be400ed22a46c329b9"></a>
+        Qt::TextElideMode elideMode 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the text elide mode. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The text of a decorated top level index is elided according to this property. The default value is <strong>Qt::ElideMiddle</strong>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> The property has effect only for decorated top level indices.</div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtItemDelegate.html#1164f51dc565c77b9751d903551242bcb">decorationStyle</a>, Qt::TextElideMode </div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>Qt::TextElideMode elideMode  (  )  const </li><li><strong>write: </strong>void setElideMode  (   <span class="memberdef_type">Qt::TextElideMode</span>    <span class="memberdef_declname">mode</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14a72e90eb63966705440e9e853a3f857"></a>
+        QString progressTextFormat 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the format of optional progress text. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The progress text is formatted according to this property. The default value is <strong>"%1%"</strong>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> Progress bar is rendered for indices providing valid numerical data for <strong>ProgressValueRole</strong>.<strong>%1</strong> is replaced by the progress percent.</div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtItemDelegate.html#16e9b763493051927cfaab07b3cb5f793">progressTextVisible</a>, <a class="reflink" href="classQxtItemDelegate.html#1f1ca2590a2e3f49305e682fb6dee0071">Role</a></div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>QString progressTextFormat  (  )  const </li><li><strong>write: </strong>void setProgressTextFormat  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qstring.html">QString</a> &</span>    <span class="memberdef_declname">format</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16e9b763493051927cfaab07b3cb5f793"></a>
+        bool progressTextVisible 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds whether progress text is visible. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The default value is <strong>true</strong>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> Progress bar is rendered for indices providing valid numerical data for <strong>ProgressValueRole</strong>.</div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtItemDelegate.html#14a72e90eb63966705440e9e853a3f857">progressTextFormat</a>, <a class="reflink" href="classQxtItemDelegate.html#1f1ca2590a2e3f49305e682fb6dee0071">QxtItemDelegate::Role</a></div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>bool isProgressTextVisible  (  )  const </li><li><strong>write: </strong>void setProgressTextVisible  (   <span class="memberdef_type">bool</span>    <span class="memberdef_declname">visible</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12caf5f8173ffb4ae092a91547160c9fe"></a>
+         explicit  QxtItemDelegate  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtItemDelegate.html">QxtItemDelegate</a> with <em>parent</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15a7313c4c5b9ef91624b655ba8258794"></a>
+         virtual  ~QxtItemDelegate  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructs the item delegate. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13b3068865e5185d6eb4348c2dcce99d7"></a>
+        void editingStarted  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted after the editing of <em>index</em> has been started.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtItemDelegate.html#1593c068bb974266241f9a48c28200d26">editingFinished()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1593c068bb974266241f9a48c28200d26"></a>
+        void editingFinished  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qmodelindex.html">QModelIndex</a> &</span>    <span class="memberdef_declname">index</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted after the editing of <em>index</em> has been finished.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtItemDelegate.html#13b3068865e5185d6eb4348c2dcce99d7">editingStarted()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

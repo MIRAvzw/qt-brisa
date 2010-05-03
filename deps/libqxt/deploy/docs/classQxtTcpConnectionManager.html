@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtTcpConnectionManager</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtTcpConnectionManager Class Reference<br/>
+            <sup><sup>[<a href="group__QxtNetwork.html">QxtNetwork</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        Accepts TCP connections and maintains a connection pool. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtTcpConnectionManager&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="classQxtAbstractConnectionManager.html">QxtAbstractConnectionManager</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtTcpConnectionManager-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtTcpConnectionManager.html#1abe701bb16057da03f2e070299225995">QxtTcpConnectionManager</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>     ) </li>
+            <li>bool <a href="classQxtTcpConnectionManager.html#13ffb3c21084c7f690d6a39f340663129">listen</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qhostaddress.html">QHostAddress</a></span>    <span class="memberdef_declname">iface</span>  <span class="memberdef_defval">= QHostAddress::Any</span>  ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">port</span>  <span class="memberdef_defval">= 80</span>   ) </li>
+            <li>void <a href="classQxtTcpConnectionManager.html#12d30ce42c06cd0031602bcbf9822a78b">stopListening</a>  (  ) </li>
+            <li>void <a href="classQxtTcpConnectionManager.html#1cc70bd503b8830c173cc05216af71497">setProxy</a>  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qnetworkproxy.html">QNetworkProxy</a> &</span>    <span class="memberdef_declname">proxy</span>     ) </li>
+            <li>QNetworkProxy <a href="classQxtTcpConnectionManager.html#195e4aa212c2f8512d99478eb6002d48d">proxy</a>  (  )  const </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="protected-func"></a>
+    <h3>Protected Functions</h3>
+    <ul class="sectionlist">
+            <li> virtual QIODevice * <a href="classQxtTcpConnectionManager.html#16134bf18757992452f83296b71c66ac3">incomingConnection</a>  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">socketDescriptor</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Protected Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtTcpConnectionManager.html">QxtTcpConnectionManager</a> is a standardized interface for accepting and tracking incoming TCP connections.</p><p>Each incoming connection is assigned an arbitrary, opaque client ID number. This number can be used to retrieve the <a class="reflink" href="http://doc.trolltech.com/latest/qtcpsocket.html">QTcpSocket</a> associated with it. A list of IDs for all current connections can be retrieved with the <a class="reflink" href="classQxtAbstractConnectionManager.html#13f56af8280c20210a4694d79a206d2bb">clients()</a> function.</p><p>Like <a class="reflink" href="http://doc.trolltech.com/latest/qtcpserver.html">QTcpServer</a>, <a class="reflink" href="classQxtTcpConnectionManager.html">QxtTcpConnectionManager</a> can listen for incoming connections on a specified interface and port, and like <a class="reflink" href="http://doc.trolltech.com/latest/qtcpserver.html">QTcpServer</a> you may override the <a class="reflink" href="classQxtTcpConnectionManager.html#16134bf18757992452f83296b71c66ac3">incomingConnection()</a> function to change the handling of new connections. This is, for instance, where you would create a <a class="reflink" href="http://doc.trolltech.com/latest/qsslsocket.html">QSslSocket</a> to encrypt communications.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qtcpserver.html">QTcpServer</a></div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1abe701bb16057da03f2e070299225995"></a>
+         QxtTcpConnectionManager  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtTcpConnectionManager.html">QxtTcpConnectionManager</a> object with the specified parent. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="13ffb3c21084c7f690d6a39f340663129"></a>
+        bool listen  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qhostaddress.html">QHostAddress</a></span>    <span class="memberdef_declname">iface</span>  <span class="memberdef_defval">= QHostAddress::Any</span>  ,   <span class="memberdef_type">int</span>    <span class="memberdef_declname">port</span>  <span class="memberdef_defval">= 80</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Listens on the specified interface on the specified port for connections. If <em>address</em> is QHostAddress::Any, listens on all interfaces.</p><p>Returns true on success; otherwise returns false. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12d30ce42c06cd0031602bcbf9822a78b"></a>
+        void stopListening  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Stops listening for connections. Any connections still open will remain connected. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1cc70bd503b8830c173cc05216af71497"></a>
+        void setProxy  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qnetworkproxy.html">QNetworkProxy</a> &</span>    <span class="memberdef_declname">proxy</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets an explicit network proxy for the connection manager.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qtcpserver.html#setProxy">QTcpServer::setProxy</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="195e4aa212c2f8512d99478eb6002d48d"></a>
+        QNetworkProxy proxy  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the proxy in use for the connection manager.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="http://doc.trolltech.com/latest/qtcpserver.html#proxy">QTcpServer::proxy</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="16134bf18757992452f83296b71c66ac3"></a>
+         virtual QIODevice * incomingConnection  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">socketDescriptor</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This function is called when a new TCP connection becomes available. The parameter is the native socket descriptor for the connection, suitable for use in QTcpSocket::setSocketDescriptor.</p><p>The default implementation returns a new <a class="reflink" href="http://doc.trolltech.com/latest/qtcpsocket.html">QTcpSocket</a> with the specified descriptor. Subclasses may return <a class="reflink" href="http://doc.trolltech.com/latest/qtcpsocket.html">QTcpSocket</a> subclasses, such as <a class="reflink" href="http://doc.trolltech.com/latest/qsslsocket.html">QSslSocket</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

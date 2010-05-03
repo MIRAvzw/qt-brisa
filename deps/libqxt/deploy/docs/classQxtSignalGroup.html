@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtSignalGroup</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtSignalGroup Class Reference<br/>
+            <sup><sup>[<a href="group__QxtCore.html">QxtCore</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        Groups signals together in a Boolean fashion. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtSignalGroup&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtSignalGroup-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtSignalGroup.html#1cc1e7e92f561c0266ec6d56edc0ff6ea">QxtSignalGroup</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>void <a href="classQxtSignalGroup.html#137c04aa272510dc36ccf33b8ea8b687a">addSignal</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">sender</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">sig</span>     ) </li>
+            <li>void <a href="classQxtSignalGroup.html#1f070249093d515c246acd04919615b49">removeSignal</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">sender</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">sig</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li>void <a href="classQxtSignalGroup.html#1a36113e4d3ab7b513f04e7cd48e01301">clear</a>  (  ) </li>
+            <li>bool <a href="classQxtSignalGroup.html#134fa8ec6c0e60b1d9894b0d5acdf08cc">hasReceivedFirstSignal</a>  (  )  const </li>
+            <li>bool <a href="classQxtSignalGroup.html#1c75508f2cd0d80cdcf6717f253edc0e3">hasReceivedAllSignals</a>  (  )  const </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtSignalGroup.html#1ad35385388040895c7cf21bfe9a753b3">reset</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="signal"></a>
+    <h3>Signals</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtSignalGroup.html#17399023c039399d4eb540c0d58c6afc2">firstSignalReceived</a>  (  ) </li>
+            <li>void <a href="classQxtSignalGroup.html#14c51ee7c10d27da5c3b086a40a711c61">allSignalsReceived</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Signals inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p>When carrying out multiple tasks in parallel, it can be useful to know when any or all of the tasks have emitted a signal. This class allows a group of signals to be defined and re-signalled in a simple AND or OR fashion. More complex Boolean relationships can be written by connecting together multiple <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a> objects.</p><p>For a simple example, suppose you have four <a class="reflink" href="http://doc.trolltech.com/latest/qhttp.html">QHttp</a> requests pending and you want to know when the last request has completed. A <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a> defined like this will emit its <a class="reflink" href="classQxtSignalGroup.html#14c51ee7c10d27da5c3b086a40a711c61">allSignalsReceived()</a> signal after each request has emitted its done() signal. <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a>* group = </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a>;</span><br/>
+        <span class="highlight_normal"  >    </span><span class="highlight_keywordflow"  >for</span><span class="highlight_normal"  >(</span><span class="highlight_keywordtype"  >int</span><span class="highlight_normal"  > i = 0; i &lt; 4; i++) {</span><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight_normal"  >        group-&gt;<a class="reflink" href="classQxtSignalGroup.html#137c04aa272510dc36ccf33b8ea8b687a">addSignal</a>(http[i], SIGNAL(done()));</span><br/>
+        <span class="highlight_normal"  >    }</span><br/>
+        </div></p><p>For a more complex example, suppose you have two such batches of requests, and you want a signal to be emitted when the first batch is completed. Create two <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a> objects (perhaps group1 and group2) and add their signals to a third group. This third group will emit its <a class="reflink" href="classQxtSignalGroup.html#17399023c039399d4eb540c0d58c6afc2">firstSignalReceived()</a> signal when the first batch is completed and its <a class="reflink" href="classQxtSignalGroup.html#14c51ee7c10d27da5c3b086a40a711c61">allSignalsReceived()</a> signal when all batches are finished. <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a>* batches = </span><span class="highlight_keyword"  >new</span><span class="highlight_normal"  > <a class="reflink" href="classQxtSignalGroup.html">QxtSignalGroup</a>;</span><br/>
+        <span class="highlight_normal"  >    batches-&gt;<a class="reflink" href="classQxtSignalGroup.html#137c04aa272510dc36ccf33b8ea8b687a">addSignal</a>(group1, SIGNAL(<a class="reflink" href="classQxtSignalGroup.html#14c51ee7c10d27da5c3b086a40a711c61">allSignalsReceived</a>()));</span><br/>
+        <span class="highlight_normal"  >    batches-&gt;<a class="reflink" href="classQxtSignalGroup.html#137c04aa272510dc36ccf33b8ea8b687a">addSignal</a>(group2, SIGNAL(<a class="reflink" href="classQxtSignalGroup.html#14c51ee7c10d27da5c3b086a40a711c61">allSignalsReceived</a>()));</span><br/>
+        </div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1cc1e7e92f561c0266ec6d56edc0ff6ea"></a>
+         QxtSignalGroup  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a <a class="reflink" href="classQxtSignalWaiter.html">QxtSignalWaiter</a> with the specified parent. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="137c04aa272510dc36ccf33b8ea8b687a"></a>
+        void addSignal  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">sender</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">sig</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Add a signal to the group. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f070249093d515c246acd04919615b49"></a>
+        void removeSignal  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qobject.html">QObject</a> *</span>    <span class="memberdef_declname">sender</span>    ,   <span class="memberdef_type">const char *</span>    <span class="memberdef_declname">sig</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Remove a signal from the group. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1a36113e4d3ab7b513f04e7cd48e01301"></a>
+        void clear  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Removes all signals from the group and resets the signal tracking. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="134fa8ec6c0e60b1d9894b0d5acdf08cc"></a>
+        bool hasReceivedFirstSignal  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns true if at least one attached signal has been emitted since the last <a class="reflink" href="classQxtSignalGroup.html#1ad35385388040895c7cf21bfe9a753b3">reset()</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1c75508f2cd0d80cdcf6717f253edc0e3"></a>
+        bool hasReceivedAllSignals  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns true if every attached signal has been emitted at least once since the last <a class="reflink" href="classQxtSignalGroup.html#1ad35385388040895c7cf21bfe9a753b3">reset()</a>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1ad35385388040895c7cf21bfe9a753b3"></a>
+        void reset  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Reset the signal tracking, that is, after calling <a class="reflink" href="classQxtSignalGroup.html#1ad35385388040895c7cf21bfe9a753b3">reset()</a> no signals are considered to have been caught. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="17399023c039399d4eb540c0d58c6afc2"></a>
+        void firstSignalReceived  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted the first time a signal in the group is emitted. After this signal is emitted once, you must call <a class="reflink" href="classQxtSignalGroup.html#1ad35385388040895c7cf21bfe9a753b3">reset()</a> before it can be emitted again. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="14c51ee7c10d27da5c3b086a40a711c61"></a>
+        void allSignalsReceived  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>This signal is emitted after every signal in the group has been emitted at least once. After this signal is emitted once, you must call <a class="reflink" href="classQxtSignalGroup.html#1ad35385388040895c7cf21bfe9a753b3">reset()</a> before it can be emitted again. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

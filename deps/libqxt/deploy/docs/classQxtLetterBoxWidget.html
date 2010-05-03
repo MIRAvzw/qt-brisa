@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>Qxt 0.5:QxtLetterBoxWidget</title>
+  <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="menu">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="left" valign="top" width="32">
+                <a href="http://www.libqxt.org">
+                    <img src="logo.png" align="left" width="32" height="32" border="0" />
+                </a>
+            </td>
+            <td width="1">&nbsp;&nbsp;</td>
+            <td class="postheader" valign="center">
+                <a href="index.html">Home</a>&nbsp;&middot; 
+                <a href="classes.html">All&nbsp;Classes</a>&nbsp;&middot; 
+                <a href="modules.html">Modules</a>&nbsp;&middot; 
+            </td>
+
+        </tr>
+        </table>
+    </div>
+
+
+
+
+    <center>
+        <h1> 
+            QxtLetterBoxWidget Class Reference<br/>
+            <sup><sup>[<a href="group__QxtGui.html">QxtGui</a> module]</sup></sup>
+        </h1>
+    </center>
+    
+    
+    <p>
+        A letter box widget. 
+        <a href="#details">More...</a>
+    </p>
+    
+    <pre> #include &lt;QxtLetterBoxWidget&gt;</pre>
+    
+    <p>Inherits <a class="reflink" href="http://doc.trolltech.com/latest/qframe.html">QFrame</a>.</p>
+    
+    
+    
+    <ul><li><a href="classQxtLetterBoxWidget-members.html">List of all members, including inherited members</a></li></ul>
+    
+    <a name="property"></a>
+    <h3>Properties</h3>
+    <ul class="sectionlist">
+            <li>QColor <a href="classQxtLetterBoxWidget.html#1655d095558c4ff4dbc5c769cf1be03ff">backgroundColor</a> </li>
+            <li>int <a href="classQxtLetterBoxWidget.html#1eb01ef4db579c2f601358ba7f7e54535">margin</a> </li>
+            <li>uint <a href="classQxtLetterBoxWidget.html#19064e89fecb56ca9d64a601647c58265">resizeDelay</a> </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Properties inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-func"></a>
+    <h3>Public Functions</h3>
+    <ul class="sectionlist">
+            <li> <a href="classQxtLetterBoxWidget.html#1f0128c6045423a8d57dd7a0d1e000190">QxtLetterBoxWidget</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) </li>
+            <li> <a href="classQxtLetterBoxWidget.html#141b76a0f3f85554182d2d87b80681f85">~QxtLetterBoxWidget</a>  (  ) </li>
+            <li>void <a href="classQxtLetterBoxWidget.html#1f5f95a545c54269a904b9a7650c9206c">clearBackgroundColor</a>  (  ) </li>
+            <li>QWidget * <a href="classQxtLetterBoxWidget.html#1fe975f02564132f3061621fa43fbe279">widget</a>  (  )  const </li>
+            <li>void <a href="classQxtLetterBoxWidget.html#12948db6ec83452056fdd96736168f977">setWidget</a>  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">widget</span>     ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Functions inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    <a name="public-slot"></a>
+    <h3>Public Slots</h3>
+    <ul class="sectionlist">
+            <li>void <a href="classQxtLetterBoxWidget.html#15d7336b89543cf6942f6e69cdd516708">resizeWidget</a>  (  ) </li>
+            
+    </ul>
+    <!--<ul>
+        <li><?=inherited_num?> Public Slots inherited from <a href="<?=inherited_link?>"><?=inherited_name?></a></li>
+    </ul>-->
+    
+    
+    <hr />
+    
+    <a name="details"></a>
+    <h2>Detailed Description</h2>
+    <p>
+        <p><a class="reflink" href="classQxtLetterBoxWidget.html">QxtLetterBoxWidget</a> preserves the aspect ratio of its content widget.</p><p>Use <strong>QWidget::sizeIncrement</strong> to define the aspect ratio: <div class="code"><span class="highlight_normal"  >    <a class="reflink" href="classQxtLetterBoxWidget.html">QxtLetterBoxWidget</a> letterBox;</span><br/>
+        <span class="highlight_normal"  >    <a class="reflink" href="classQxtLetterBoxWidget.html#1fe975f02564132f3061621fa43fbe279">widget</a>-&gt;setSizeIncrement(16, 9);</span><br/>
+        <span class="highlight_normal"  >    letterBox.<a class="reflink" href="classQxtLetterBoxWidget.html#12948db6ec83452056fdd96736168f977">setWidget</a>(<a class="reflink" href="classQxtLetterBoxWidget.html#1fe975f02564132f3061621fa43fbe279">widget</a>);</span><br/>
+        <span class="highlight_normal"  >    letterBox.show();</span><br/>
+        </div></p>
+    </p>
+    
+    <h2>Member Documentation</h2>
+    <h3 class="fn">
+        <a name="1655d095558c4ff4dbc5c769cf1be03ff"></a>
+        QColor backgroundColor 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the background color. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>This property is provided for convenience. This property corresponds to <strong>QPalette::Window</strong>.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> Setting or clearing the property also sets the property <strong>QWidget::autoFillBackground</strong> as <strong>true</strong> or <strong>false</strong>, respectively. </div></p><p>Access Functions:<ul>
+            <li><strong>read: </strong>QColor backgroundColor  (  )  const </li><li><strong>write: </strong>void setBackgroundColor  (   <span class="memberdef_type">const <a class="reflink" href="http://doc.trolltech.com/latest/qcolor.html">QColor</a> &</span>    <span class="memberdef_declname">color</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1eb01ef4db579c2f601358ba7f7e54535"></a>
+        int margin 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the margin. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The default value is <strong>0</strong>. </p><p>Access Functions:<ul>
+            <li><strong>read: </strong>int margin  (  )  const </li><li><strong>write: </strong>void setMargin  (   <span class="memberdef_type">int</span>    <span class="memberdef_declname">margin</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="19064e89fecb56ca9d64a601647c58265"></a>
+        uint resizeDelay 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em><p>This property holds the delay of resize. </p></em>
+        </p>
+        <p class="member_desc">
+            <p>The default value is <strong>0</strong> which means immediate resize.</p><p>Using a short resize delay might be useful if the widget is complex and resizing it is expensive. </p><p>Access Functions:<ul>
+            <li><strong>read: </strong>uint resizeDelay  (  )  const </li><li><strong>write: </strong>void setResizeDelay  (   <span class="memberdef_type">uint</span>    <span class="memberdef_declname">delay</span>     ) </li></ul></p>
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f0128c6045423a8d57dd7a0d1e000190"></a>
+         QxtLetterBoxWidget  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">parent</span>  <span class="memberdef_defval">= 0</span>   ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Constructs a new <a class="reflink" href="classQxtLetterBoxWidget.html">QxtLetterBoxWidget</a> with <em>parent</em>. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="141b76a0f3f85554182d2d87b80681f85"></a>
+         ~QxtLetterBoxWidget  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Destructs the group box. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1f5f95a545c54269a904b9a7650c9206c"></a>
+        void clearBackgroundColor  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="1fe975f02564132f3061621fa43fbe279"></a>
+        QWidget * widget  (  )  const 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Returns the widget for the letter box. This function returns zero if the widget has not been set.</p><p><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtLetterBoxWidget.html#12948db6ec83452056fdd96736168f977">setWidget()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="12948db6ec83452056fdd96736168f977"></a>
+        void setWidget  (   <span class="memberdef_type"><a class="reflink" href="http://doc.trolltech.com/latest/qwidget.html">QWidget</a> *</span>    <span class="memberdef_declname">widget</span>     ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Sets the given widget to be the letter box's widget.</p><p><div class="simplesect" ><img src="note.png" alt="note" /> <strong>Note:</strong> QxtLetterBox takes ownership of the widget pointer and deletes it at the appropriate time.</div><div class="simplesect" ><img src="see.png" alt="see" /> <strong>See also:</strong> <a class="reflink" href="classQxtLetterBoxWidget.html#1fe975f02564132f3061621fa43fbe279">widget()</a></div></p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant --><h3 class="fn">
+        <a name="15d7336b89543cf6942f6e69cdd516708"></a>
+        void resizeWidget  (  ) 
+    </h3>
+    
+    <div class="member">
+    
+    
+        <p class="member_brief">
+            <em></em>
+        </p>
+        <p class="member_desc">
+            <p>Resizes the content widget. </p>
+        </p>
+    
+    </div>
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    <br/> <!--  i hate assistant -->
+    
+
+
+
+    <br/>
+    <hr />
+    <div align="center">
+        <table width="100%" cellspacing="0" border="0">
+            <tr class="address">
+                <td width="30%">Copyright &copy; 2007 <a href="http://libqxt.org">Qxt Foundation</a></td>
+                <td width="40%" align="center"><a href="http://doc.trolltech.com/latest/trademarks.html">Trademarks </a></td>
+                <td width="30%" align="right"><div align="right">Qt Extension Library 0.5</div></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
