@@ -31,8 +31,8 @@
 
 using namespace BrisaUpnp;
 
-void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device, QTemporaryFile *tmp)
-{
+void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device,
+        QTemporaryFile *tmp) {
     context = new BrisaDeviceParserContext(NULL, device);
     input = new QXmlInputSource(tmp);
     reader = new QXmlSimpleReader();
@@ -47,9 +47,8 @@ void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device, QTemp
     delete reader;
 }
 
-bool BrisaDeviceXMLHandlerCP::startElement(const QString &, const QString & , const QString &qName,
-                                           const QXmlAttributes &)
-{
+bool BrisaDeviceXMLHandlerCP::startElement(const QString &, const QString &,
+        const QString &qName, const QXmlAttributes &) {
     switch (context->state) {
     case Start:
         if (qName == "root")
@@ -102,14 +101,14 @@ bool BrisaDeviceXMLHandlerCP::startElement(const QString &, const QString & , co
             context->state = PresentationUrl;
         else if (qName == "deviceList") {
             // Create new parsing context
-            BrisaDeviceParserContext *newContext = new BrisaDeviceParserContext(context);
+            BrisaDeviceParserContext *newContext =
+                    new BrisaDeviceParserContext(context);
 
             // Switch context
             context = newContext;
 
-           break;
-        }
-        else if (qName == "serviceList")
+            break;
+        } else if (qName == "serviceList")
             context->state = ServiceList;
         else if (qName == "UPC")
             context->state = Upc;
@@ -156,9 +155,9 @@ bool BrisaDeviceXMLHandlerCP::startElement(const QString &, const QString & , co
 
     case ServiceList:
         if (qName == "service")
-           context->state = Service;
+            context->state = Service;
         else
-           context->stateSkip++;
+            context->stateSkip++;
         break;
 
     case Service:
@@ -186,8 +185,7 @@ bool BrisaDeviceXMLHandlerCP::startElement(const QString &, const QString & , co
     return true;
 }
 
-bool BrisaDeviceXMLHandlerCP::characters(const QString &str)
-{
+bool BrisaDeviceXMLHandlerCP::characters(const QString &str) {
     switch (context->state) {
 
     case SpecVersionMajor:
@@ -199,39 +197,48 @@ bool BrisaDeviceXMLHandlerCP::characters(const QString &str)
         break;
 
     case UrlBase:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::UrlBase, str);
+        context->getDevice()->setAttribute(BrisaControlPointDevice::UrlBase,
+                str);
         break;
 
     case DeviceType:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::DeviceType, str);
+        context->getDevice()->setAttribute(BrisaControlPointDevice::DeviceType,
+                str);
         break;
 
     case DeviceFriendlyName:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::FriendlyName, str);
+        context->getDevice()->setAttribute(
+                BrisaControlPointDevice::FriendlyName, str);
         break;
 
     case Manufacturer:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::Manufacturer, str);
+        context->getDevice()->setAttribute(
+                BrisaControlPointDevice::Manufacturer, str);
         break;
 
     case ManufacturerUrl:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::ManufacturerUrl, str);
+        context->getDevice()->setAttribute(
+                BrisaControlPointDevice::ManufacturerUrl, str);
         break;
 
     case ModelDescription:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::ModelDescription, str);
+        context->getDevice()->setAttribute(
+                BrisaControlPointDevice::ModelDescription, str);
         break;
 
     case ModelName:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::ModelName, str);
+        context->getDevice()->setAttribute(BrisaControlPointDevice::ModelName,
+                str);
         break;
 
     case ModelUrl:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::ModelUrl, str);
+        context->getDevice()->setAttribute(BrisaControlPointDevice::ModelUrl,
+                str);
         break;
 
     case SerialNumber:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::SerialNumber, str);
+        context->getDevice()->setAttribute(
+                BrisaControlPointDevice::SerialNumber, str);
         break;
 
     case Upc:
@@ -243,7 +250,8 @@ bool BrisaDeviceXMLHandlerCP::characters(const QString &str)
         break;
 
     case PresentationUrl:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::PresentationUrl, str);
+        context->getDevice()->setAttribute(
+                BrisaControlPointDevice::PresentationUrl, str);
         break;
 
     case IconMimetype:
@@ -267,28 +275,33 @@ bool BrisaDeviceXMLHandlerCP::characters(const QString &str)
         break;
 
     case ServiceType:
-        context->getService()->setAttribute(BrisaControlPointService::ServiceType, str);
+        context->getService()->setAttribute(
+                BrisaControlPointService::ServiceType, str);
         break;
 
     case ServiceId:
-        context->getService()->setAttribute(BrisaControlPointService::ServiceId, str);
+        context->getService()->setAttribute(
+                BrisaControlPointService::ServiceId, str);
         break;
 
     case ServiceScpdUrl:
-        context->getService()->setAttribute(BrisaControlPointService::ScpdUrl, str);
+        context->getService()->setAttribute(BrisaControlPointService::ScpdUrl,
+                str);
         break;
 
     case ServiceEventSubUrl:
-        context->getService()->setAttribute(BrisaControlPointService::EventSubUrl, str);
+        context->getService()->setAttribute(
+                BrisaControlPointService::EventSubUrl, str);
         break;
 
     case ServiceControlUrl:
-        context->getService()->setAttribute(BrisaControlPointService::ControlUrl, str);
+        context->getService()->setAttribute(
+                BrisaControlPointService::ControlUrl, str);
         break;
 
-    /*
-     * Shut up compiler warnings
-     */
+        /*
+         * Shut up compiler warnings
+         */
     case Start:
     case Root:
     case SpecVersion:
@@ -306,8 +319,8 @@ bool BrisaDeviceXMLHandlerCP::characters(const QString &str)
     return true;
 }
 
-bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &, const QString &)
-{
+bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &,
+        const QString &) {
 
     if (context->stateSkip) {
         context->stateSkip--;
@@ -328,8 +341,7 @@ bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &, const
              */
             context->getParent()->getDevice()->addDevice(context->getDevice());
             context->state = DeviceList;
-        }
-        else {
+        } else {
             /*
              * Finished building the root device.
              */
@@ -396,12 +408,13 @@ bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &, const
         context->setIcon(NULL);
         break;
 
-    case Service:
-        {
+    case Service: {
         context->state = ServiceList;
         BrisaServiceFetcher *f = new BrisaServiceFetcher(context->getService(),
-                                                         context->getDevice()->getAttribute(BrisaControlPointDevice::UrlBase) +
-                                                         context->getService()->getAttribute(BrisaControlPointService::ScpdUrl));
+                context->getDevice()->getAttribute(
+                        BrisaControlPointDevice::UrlBase)
+                        + context->getService()->getAttribute(
+                                BrisaControlPointService::ScpdUrl));
 
         if (!f->fetch()) {
             context->getDevice()->addService(context->getService());
@@ -413,7 +426,7 @@ bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &, const
 
         delete f;
         break;
-        }
+    }
 
     case ServiceType:
     case ServiceId:
@@ -423,9 +436,9 @@ bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &, const
         context->state = Service;
         break;
 
-    /*
-     * Shut up compiler warnings
-     */
+        /*
+         * Shut up compiler warnings
+         */
     case Start:
     case Finished:
     case Error:

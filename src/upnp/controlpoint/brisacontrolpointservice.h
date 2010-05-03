@@ -37,72 +37,71 @@ namespace BrisaUpnp {
  *
  *  BrisaControlPointService is a BrisaAbstractService.
  */
-class BRISA_UPNP_EXPORT BrisaControlPointService : public BrisaAbstractService
-{
-    Q_OBJECT
+class BRISA_UPNP_EXPORT BrisaControlPointService: public BrisaAbstractService {
+Q_OBJECT
 
-    public:
+public:
 
-        /*!
-         *  Constructs an empty BrisaControlPointService
-         *
-         *  \param parent \a empty
-         */
-        BrisaControlPointService(QObject *parent = 0);
+    /*!
+     *  Constructs an empty BrisaControlPointService
+     *
+     *  \param parent \a empty
+     */
+    BrisaControlPointService(QObject *parent = 0);
 
-        /*!
-         *  Constructs a BrisaControlPointService with the passed attributes.
-         *
-         *  \param serviceType \a empty
-         *  \param serviceId \a empty
-         *  \param scpdUrl \a empty
-         *  \param controlUrl \a empty
-         *  \param eventSubUrl \a empty
-         *  \param host \a empty
-         *  \param parent \a empty
-         */
-        BrisaControlPointService(const QString &serviceType, const QString &serviceId = "",
-                                 const QString &scpdUrl = "", const QString &controlUrl = "",
-                                 const QString &eventSubUrl = "", const QString &host = "",
-                                 QObject *parent = 0);
+    /*!
+     *  Constructs a BrisaControlPointService with the passed attributes.
+     *
+     *  \param serviceType \a empty
+     *  \param serviceId \a empty
+     *  \param scpdUrl \a empty
+     *  \param controlUrl \a empty
+     *  \param eventSubUrl \a empty
+     *  \param host \a empty
+     *  \param parent \a empty
+     */
+    BrisaControlPointService(const QString &serviceType,
+            const QString &serviceId = "", const QString &scpdUrl = "",
+            const QString &controlUrl = "", const QString &eventSubUrl = "",
+            const QString &host = "", QObject *parent = 0);
 
-        /*!
-         *  Constructs a copy of \a serv.
-         *
-         *  \param serv \a empty
-         */
-        BrisaControlPointService(BrisaControlPointService &service);
+    /*!
+     *  Constructs a copy of \a serv.
+     *
+     *  \param serv \a empty
+     */
+    BrisaControlPointService(BrisaControlPointService &service);
 
-        /*!
-         *  Initializes the BrisaControlPointService from the parse of \a xml that is a xml description
-         *  file containing the service information.
-         *
-         *  \param xml \a empty
-         */
-        void parseFromXml(QTemporaryFile *xml);
+    /*!
+     *  Initializes the BrisaControlPointService from the parse of \a xml that is a xml description
+     *  file containing the service information.
+     *
+     *  \param xml \a empty
+     */
+    void parseFromXml(QTemporaryFile *xml);
 
-        /*!
-         *  Call the \a method, with the passed \a param from a service, this action is performed by a
-         *  webservice request.
-         *
-         *  \param method method to be called
-         *  \param param map with the parameters to be passed
-         */
-        void call(const QString &method, const QMap<QString, QString> &param);
+    /*!
+     *  Call the \a method, with the passed \a param from a service, this action is performed by a
+     *  webservice request.
+     *
+     *  \param method method to be called
+     *  \param param map with the parameters to be passed
+     */
+    void call(const QString &method, const QMap<QString, QString> &param);
 
-    private slots:
-        /*!
-         *  Gets the method return and emits the returned value and the lastMethod called.
-         */
-        void getResponse();
+private slots:
+    /*!
+     *  Gets the method return and emits the returned value and the lastMethod called.
+     */
+    void getResponse();
 
-    private:
-        /*!
-         *  \property lastMethod
-         *
-         *  \brief String representing the method that was called to emit to the user.
-         */
-        QString lastMethod;
+private:
+    /*!
+     *  \property lastMethod
+     *
+     *  \brief String representing the method that was called to emit to the user.
+     */
+    QString lastMethod;
 };
 
 }

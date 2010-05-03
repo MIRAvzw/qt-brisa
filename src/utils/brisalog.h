@@ -30,8 +30,6 @@
 #ifndef _BRISALOG_H
 #define _BRISALOG_H
 
-
 BRISA_UTILS_EXPORT void brisaLogInitialize(void);
-
 
 #endif /* _BRISALOG_H */

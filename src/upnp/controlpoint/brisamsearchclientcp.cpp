@@ -47,101 +47,101 @@ using namespace BrisaUpnp;
                               "\r\n"
 
 BrisaMSearchClientCP::BrisaMSearchClientCP(QObject *parent,
-		const QString &serviceType, int serviceMx) :
-	QObject(parent), running(false), type(serviceType), mx(QByteArray::number(
-			serviceMx)), SSDP_ADDR("0.0.0.0"), SSDP_PORT(1900), S_SSDP_PORT(
-			"1900") {
-	udpListener = new QUdpSocket(this);
-	connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+        const QString &serviceType, int serviceMx) :
+    QObject(parent), running(false), type(serviceType), mx(QByteArray::number(
+            serviceMx)), SSDP_ADDR("0.0.0.0"), SSDP_PORT(1900), S_SSDP_PORT(
+            "1900") {
+    udpListener = new QUdpSocket(this);
+    connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 
-	timer = new QTimer(this);
-	connect(timer, SIGNAL(timeout()), this, SLOT(discover()));
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(discover()));
 }
 
 BrisaMSearchClientCP::~BrisaMSearchClientCP() {
-	if (isRunning())
-		stop();
+    if (isRunning())
+        stop();
 
-	delete udpListener;
-	delete timer;
+    delete udpListener;
+    delete timer;
 }
 
 void BrisaMSearchClientCP::discover() {
-	QString discoverMessage =
-			QString(UPNP_MSEARCH_DISCOVER).arg(QString(mx)).arg(type);
+    QString discoverMessage =
+            QString(UPNP_MSEARCH_DISCOVER).arg(QString(mx)).arg(type);
 
-	qDebug() << "BrisaMSearch discover message sent";
+    qDebug() << "BrisaMSearch discover message sent";
 
-	udpListener->writeDatagram(discoverMessage.toUtf8(), QHostAddress(
-			"239.255.255.250"), 1900);
+    udpListener->writeDatagram(discoverMessage.toUtf8(), QHostAddress(
+            "239.255.255.250"), 1900);
 }
 
 void BrisaMSearchClientCP::doubleDiscover() {
-	discover();
-	discover();
+    discover();
+    discover();
 }
 
 bool BrisaMSearchClientCP::isRunning() const {
-	return running;
+    return running;
 }
 
 void BrisaMSearchClientCP::start(int interval) {
-	if (!isRunning()) {
-		if (!udpListener->bind(QHostAddress(SSDP_ADDR), 1900)) {
-			// TODO remove these magic numbers!
-			for (qint32 i = 49152; i < 65535; ++i) {
-				if (udpListener->bind(QHostAddress(SSDP_ADDR), i)) {
-					break;
-				}
-			}
-		}
+    if (!isRunning()) {
+        if (!udpListener->bind(QHostAddress(SSDP_ADDR), 1900)) {
+            // TODO remove these magic numbers!
+            for (qint32 i = 49152; i < 65535; ++i) {
+                if (udpListener->bind(QHostAddress(SSDP_ADDR), i)) {
+                    break;
+                }
+            }
+        }
 
-		running = true;
-		timer->start(interval * 1000);
+        running = true;
+        timer->start(interval * 1000);
 
-		qDebug() << "BrisaMSearch started - interval: " << interval << "";
+        qDebug() << "BrisaMSearch started - interval: " << interval << "";
 
-	} else {
-		qDebug() << "BrisaMSearch already started!";
-	}
+    } else {
+        qDebug() << "BrisaMSearch already started!";
+    }
 }
 
 void BrisaMSearchClientCP::stop() {
-	if (isRunning()) {
+    if (isRunning()) {
 
-		udpListener->disconnectFromHost();
-		running = false;
-		timer->stop();
+        udpListener->disconnectFromHost();
+        running = false;
+        timer->stop();
 
-		qDebug() << "BrisaMSearch stopped!";
+        qDebug() << "BrisaMSearch stopped!";
 
-	} else {
-		qDebug() << "BrisaMSearch already stopped!";
-	}
+    } else {
+        qDebug() << "BrisaMSearch already stopped!";
+    }
 }
 
 void BrisaMSearchClientCP::datagramReceived() {
-	while (udpListener->hasPendingDatagrams()) {
+    while (udpListener->hasPendingDatagrams()) {
 
-		QByteArray Datagram;
+        QByteArray Datagram;
 
-		Datagram.resize(udpListener->pendingDatagramSize());
-		udpListener->readDatagram(Datagram.data(), Datagram.size());
+        Datagram.resize(udpListener->pendingDatagramSize());
+        udpListener->readDatagram(Datagram.data(), Datagram.size());
 
-		QString Temp(Datagram);
-		QHttpResponseHeader *response = new QHttpResponseHeader(Temp);
+        QString Temp(Datagram);
+        QHttpResponseHeader *response = new QHttpResponseHeader(Temp);
 
-		if (response->statusCode() == 200) {
+        if (response->statusCode() == 200) {
 
-			qDebug() << "BrisaMSearch received MSearch answer from "
-					<< response->value("usn") << "";
+            qDebug() << "BrisaMSearch received MSearch answer from "
+                    << response->value("usn") << "";
 
-			emit msearchResponseReceived(response->value("usn"),
-					response->value("location"), response->value("st"),
-					response->value("ext"), response->value("server"),
-					response->value("cache-control"));
-		}
+            emit msearchResponseReceived(response->value("usn"),
+                    response->value("location"), response->value("st"),
+                    response->value("ext"), response->value("server"),
+                    response->value("cache-control"));
+        }
 
-		delete response;
-	}
+        delete response;
+    }
 }

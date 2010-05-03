@@ -3,19 +3,16 @@
 using namespace BrisaCore;
 
 BrisaWebStaticContent::BrisaWebStaticContent(QxtAbstractWebSessionManager *sm,
-                              QString content,
-                              QObject *parent) :
-                            	  QxtWebSlotService(sm, parent)
-{
+        QString content, QObject *parent) :
+    QxtWebSlotService(sm, parent) {
     this->content = new QString(content);
 }
 
-BrisaWebStaticContent::~BrisaWebStaticContent()
-{
+BrisaWebStaticContent::~BrisaWebStaticContent() {
     delete content;
 }
 
-void BrisaWebStaticContent::index(QxtWebRequestEvent *event)
-{
-    postEvent(new QxtWebPageEvent(event->sessionID, event->requestID, content->toUtf8()));
+void BrisaWebStaticContent::index(QxtWebRequestEvent *event) {
+    postEvent(new QxtWebPageEvent(event->sessionID, event->requestID,
+            content->toUtf8()));
 }

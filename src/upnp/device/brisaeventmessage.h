@@ -51,21 +51,21 @@ class BRISA_UPNP_EXPORT BrisaEventMessage: public QObject {
 Q_OBJECT
 
 public:
-	/*!
-	 * Contructs a new event message to the given \a subscription and related to the
-	 * given \a variables, with the given \a parent object.
-	 */
-	BrisaEventMessage(BrisaEventSubscription &subscription, const QList<
-			BrisaStateVariable *> *variables, QObject *parent = 0);
+    /*!
+     * Contructs a new event message to the given \a subscription and related to the
+     * given \a variables, with the given \a parent object.
+     */
+    BrisaEventMessage(BrisaEventSubscription &subscription, const QList<
+            BrisaStateVariable *> *variables, QObject *parent = 0);
 
-	/*!
-	 * Returns this event message's http header.
-	 */
-	QHttpRequestHeader getMessageHeader() const;
-	/*!
-	 * Returns this event message's http body.
-	 */
-	QByteArray getMessageBody() const;
+    /*!
+     * Returns this event message's http header.
+     */
+    QHttpRequestHeader getMessageHeader() const;
+    /*!
+     * Returns this event message's http body.
+     */
+    QByteArray getMessageBody() const;
 
 public slots:
 
@@ -74,24 +74,24 @@ signals:
 private slots:
 
 private:
-	/*!
-	 * \property VARIABLES
-	 *
-	 * \brief the list of state variables related to the event
-	 */
-	const QList<BrisaStateVariable *> *VARIABLES;
-	/*!
-	 * \property SEQ
-	 *
-	 * \brief its event key
-	 */
-	const int SEQ;
-	/*!
-	 * \property subscription
-	 *
-	 * \brief the subscription for which the message will be sent
-	 */
-	BrisaEventSubscription &subscription;
+    /*!
+     * \property VARIABLES
+     *
+     * \brief the list of state variables related to the event
+     */
+    const QList<BrisaStateVariable *> *VARIABLES;
+    /*!
+     * \property SEQ
+     *
+     * \brief its event key
+     */
+    const int SEQ;
+    /*!
+     * \property subscription
+     *
+     * \brief the subscription for which the message will be sent
+     */
+    BrisaEventSubscription &subscription;
 };
 
 }

@@ -46,41 +46,41 @@ namespace BrisaUpnp {
 class BRISA_UPNP_EXPORT BrisaActionXmlParser {
 public:
 
-	/*!
-	 * Constructor.
-	 */
-	BrisaActionXmlParser();
+    /*!
+     * Constructor.
+     */
+    BrisaActionXmlParser();
 
-	/*!
-	 * Destructor.
-	 */
-	virtual ~BrisaActionXmlParser();
+    /*!
+     * Destructor.
+     */
+    virtual ~BrisaActionXmlParser();
 
-	/*!
-	 * Call this method to parse the SOAP request set by the setXmlContent method.
-	 */
-	bool parseSOAP();
+    /*!
+     * Call this method to parse the SOAP request set by the setXmlContent method.
+     */
+    bool parseSOAP();
 
-	/*!
-	 * \internal
-	 * Parses each DOM element.
-	 * \param element element to be parsed
-	 */
-	void parseElement(QDomElement &element);
+    /*!
+     * \internal
+     * Parses each DOM element.
+     * \param element element to be parsed
+     */
+    void parseElement(QDomElement &element);
 
-	/*!
-	 * Sets  the content to be parsed.
-	 * \param content the content to be parsed
-	 */
-	void setXmlContent(const QByteArray &content);
+    /*!
+     * Sets  the content to be parsed.
+     * \param content the content to be parsed
+     */
+    void setXmlContent(const QByteArray &content);
 
-	QMap<QString, QString> args;
-	QString method;
-	QString serviceType;
+    QMap<QString, QString> args;
+    QString method;
+    QString serviceType;
 
 private:
-	QDomDocument *reader;
-	QDomNodeList domArgList;
+    QDomDocument *reader;
+    QDomNodeList domArgList;
 };
 
 }

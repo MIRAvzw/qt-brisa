@@ -26,12 +26,10 @@
  *
  */
 
-
 #include "brisawebserver.h"
 using namespace BrisaCore;
 
-BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port)
-{
+BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) {
     QxtHttpSessionManager(this);
     rootService = new BrisaWebServiceProvider(this, this);
 
@@ -41,31 +39,27 @@ BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port)
     setStaticContentService(rootService);
 }
 
-BrisaWebserver::~BrisaWebserver()
-{
+BrisaWebserver::~BrisaWebserver() {
     delete rootService;
 }
 
-int BrisaWebserver::newSession()
-{
+int BrisaWebserver::newSession() {
     return QxtHttpSessionManager::newSession();
 }
 
-void BrisaWebserver::addService(QString path, QxtWebServiceDirectory *service)
-{
+void BrisaWebserver::addService(QString path, QxtWebServiceDirectory *service) {
     rootService->addService(path, service);
 }
 
-void BrisaWebserver::incomingRequest(quint32 requestID, const QHttpRequestHeader &header, QxtWebContent *deviceContent)
-{
+void BrisaWebserver::incomingRequest(quint32 requestID,
+        const QHttpRequestHeader &header, QxtWebContent *deviceContent) {
     QxtHttpSessionManager::incomingRequest(requestID, header, deviceContent);
     qDebug() << requestID << " Request";
     qDebug() << "Method: " << header.method();
     qDebug() << "URI: " << header.path();
 }
 
-void BrisaWebserver::publishFile(QString publishPath, QString filePath)
-{
+void BrisaWebserver::publishFile(QString publishPath, QString filePath) {
     // Publishing a file to the root
     rootService->addFile(publishPath, filePath);
 }

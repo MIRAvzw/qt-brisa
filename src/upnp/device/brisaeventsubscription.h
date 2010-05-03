@@ -47,15 +47,15 @@ class BRISA_UPNP_EXPORT BrisaEventSubscription: public BrisaAbstractEventSubscri
 Q_OBJECT
 
 public:
-	BrisaEventSubscription(const QString &sid, const QStringList &callbackUrls,
-			const int &timeout = -1, // <0 = infinite
-			QObject *parent = 0) :
-		BrisaAbstractEventSubscription(sid, callbackUrls, timeout, parent) {
-	}
+    BrisaEventSubscription(const QString &sid, const QStringList &callbackUrls,
+            const int &timeout = -1, // <0 = infinite
+            QObject *parent = 0) :
+        BrisaAbstractEventSubscription(sid, callbackUrls, timeout, parent) {
+    }
 
-	void renew(const int &newTimeout = -1); // <0 = infinite
-	QHttpResponseHeader getAcceptSubscriptionResponse() const;
-	QHttpResponseHeader getAcceptUnsubscriptionResponse() const;
+    void renew(const int &newTimeout = -1); // <0 = infinite
+    QHttpResponseHeader getAcceptSubscriptionResponse() const;
+    QHttpResponseHeader getAcceptUnsubscriptionResponse() const;
 };
 
 }

@@ -26,56 +26,55 @@
 
 using namespace BrisaUpnp;
 
-BrisaControlPointService::BrisaControlPointService(QObject *parent) : BrisaAbstractService(parent)
-{
+BrisaControlPointService::BrisaControlPointService(QObject *parent) :
+    BrisaAbstractService(parent) {
     connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
 BrisaControlPointService::BrisaControlPointService(const QString &serviceType,
-                                                   const QString &serviceId, const QString &scpdUrl,
-                                                   const QString &controlUrl,
-                                                   const QString &eventSubUrl, const QString &host,
-                                                   QObject *parent) : 
-    BrisaAbstractService(serviceType, serviceId, scpdUrl, controlUrl, eventSubUrl, host, parent)
-{
+        const QString &serviceId, const QString &scpdUrl,
+        const QString &controlUrl, const QString &eventSubUrl,
+        const QString &host, QObject *parent) :
+    BrisaAbstractService(serviceType, serviceId, scpdUrl, controlUrl,
+            eventSubUrl, host, parent) {
     connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
-BrisaControlPointService::BrisaControlPointService(BrisaControlPointService &serv) :
-    BrisaAbstractService(serv)
-{
+BrisaControlPointService::BrisaControlPointService(
+        BrisaControlPointService &serv) :
+    BrisaAbstractService(serv) {
     connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
-void BrisaControlPointService::parseFromXml(QTemporaryFile *xml)
-{
+void BrisaControlPointService::parseFromXml(QTemporaryFile *xml) {
     BrisaServiceXMLHandler handler;
     handler.parseService(this, xml);
 }
 
-void BrisaControlPointService::call(const QString &method, const QMap<QString, QString> &param)
-{
+void BrisaControlPointService::call(const QString &method, const QMap<QString,
+        QString> &param) {
     QtSoapMessage request;
 
     http.setAction("\"" + serviceType + "#" + method + "\"");
 
     request.setMethod(method, serviceType);
 
-    foreach(QString s, param.keys()) {
-        request.addMethodArgument(s, "", param.value(s));
-    }
+    foreach(QString s, param.keys())
+        {
+            request.addMethodArgument(s, "", param.value(s));
+        }
 
     lastMethod = method;
     this->http.submitRequest(request, this->controlUrl);
 }
 
-void BrisaControlPointService::getResponse()
-{
+void BrisaControlPointService::getResponse() {
     const QtSoapMessage &message = http.getResponse();
 
     if (message.isFault()) {
-        emit requestFinished("Error: " + message.faultString().toString(), lastMethod);
-        return ;
+        emit requestFinished("Error: " + message.faultString().toString(),
+                lastMethod);
+        return;
     }
 
     emit requestFinished(message.returnValue().toString(), lastMethod);

@@ -47,99 +47,99 @@ Q_OBJECT
 
 public:
 
-	/*!
-	 * Constructs a BrisaStateVariable that \a sendEvents with the given \a name,
-	 * \a datatype, \a defaultValue, \a maximum value, \a minimum value, value
-	 * \a step, and \a parent.
-	 */
-	BrisaStateVariable(QString sendEvents = "", QString name = "",
-			QString datatype = "", QString defaultValue = "", QString maximum =
-					"", QString minimum = "", QString step = "",
-			QObject *parent = 0);
+    /*!
+     * Constructs a BrisaStateVariable that \a sendEvents with the given \a name,
+     * \a datatype, \a defaultValue, \a maximum value, \a minimum value, value
+     * \a step, and \a parent.
+     */
+    BrisaStateVariable(QString sendEvents = "", QString name = "",
+            QString datatype = "", QString defaultValue = "", QString maximum =
+                    "", QString minimum = "", QString step = "",
+            QObject *parent = 0);
 
-	/*!
-	 * Constructs a BrisaStateVariable from the given \a variable.
-	 */
-	BrisaStateVariable(const BrisaStateVariable &);
+    /*!
+     * Constructs a BrisaStateVariable from the given \a variable.
+     */
+    BrisaStateVariable(const BrisaStateVariable &);
 
-	/*!
-	 * Sets this variable equals to \a variable.
-	 */
-	BrisaStateVariable &operator=(const BrisaStateVariable &);
+    /*!
+     * Sets this variable equals to \a variable.
+     */
+    BrisaStateVariable &operator=(const BrisaStateVariable &);
 
-	typedef enum {
-		Name,
-		SendEvents,
-		DataType,
-		DefaultValue,
-		AllowedValue,
-		Minimum,
-		Maximum,
-		Step,
-		Value
-	} BrisaStateVariableAttribute;
+    typedef enum {
+        Name,
+        SendEvents,
+        DataType,
+        DefaultValue,
+        AllowedValue,
+        Minimum,
+        Maximum,
+        Step,
+        Value
+    } BrisaStateVariableAttribute;
 
-	/*!
-	 * Sets its attribute \a attr to the given \a value.
-	 */
-	void setAttribute(BrisaStateVariableAttribute attr, QVariant value);
+    /*!
+     * Sets its attribute \a attr to the given \a value.
+     */
+    void setAttribute(BrisaStateVariableAttribute attr, QVariant value);
 
-	/*!
-	 * Returns \a attr value as a QString.
-	 */
-	QString getAttribute(BrisaStateVariableAttribute attr, int index = 0) const;
+    /*!
+     * Returns \a attr value as a QString.
+     */
+    QString getAttribute(BrisaStateVariableAttribute attr, int index = 0) const;
 
-	/*!
-	 * Returns the stored value as a QVariant.
-	 */
-	QVariant getValue() const;
+    /*!
+     * Returns the stored value as a QVariant.
+     */
+    QVariant getValue() const;
 
-	/*!
-	 *  \internal
-	 *  Returns the stored type as a valid UPnP type represented as a QVariant::Type.
-	 */
-	QVariant::Type getDataType() const;
+    /*!
+     *  \internal
+     *  Returns the stored type as a valid UPnP type represented as a QVariant::Type.
+     */
+    QVariant::Type getDataType() const;
 
-	/*!
-	 * Returns true if the variable is set to send events.
-	 */
-	bool sendEvents() const;
+    /*!
+     * Returns true if the variable is set to send events.
+     */
+    bool sendEvents() const;
 
-	/*!
-	 * Adds a value to the list of values that can be set to its Value attribute.
-	 */
-	void addAllowedValue(QString allowedValue);
+    /*!
+     * Adds a value to the list of values that can be set to its Value attribute.
+     */
+    void addAllowedValue(QString allowedValue);
 
-	/*!
-	 * Returns the list of values that can be set to its Value attribute.
-	 */
-	QList<QString> getAllowedValueList();
+    /*!
+     * Returns the list of values that can be set to its Value attribute.
+     */
+    QList<QString> getAllowedValueList();
 
-	/*!
-	 * Clears this variable's attributtes.
-	 */
-	void clear();
+    /*!
+     * Clears this variable's attributtes.
+     */
+    void clear();
 
 signals:
-	void changed(BrisaStateVariable *);
+    void changed(BrisaStateVariable *);
 
 private:
 
-	/*!
-	 * \internal
-	 * Returns true if the given value is valid.
-	 */
-	bool validateNewValue(const QVariant &value);
+    /*!
+     * \internal
+     * Returns true if the given value is valid.
+     */
+    bool validateNewValue(const QVariant &value);
 
-	bool events;
-	QList<QString> allowedValueList;
-	QString name;
-	QString defaultValue;
-	QString maximum;
-	QString minimum;
-	QString step;
-	QString dataType;
-	QVariant value;
+    bool events;
+    QList<QString> allowedValueList;
+    QString name;
+    QString defaultValue;
+    QString maximum;
+    QString minimum;
+    QString step;
+    QString dataType;
+    QVariant value;
 
 };
 

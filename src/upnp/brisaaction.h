@@ -64,125 +64,125 @@ class BRISA_UPNP_EXPORT BrisaAction: public QObject {
 Q_OBJECT
 
 public:
-	/*!
-	 * Constructs an action with given \a name, \a parent and \a service that it is related to.
-	 */
-	BrisaAction(QString name = "", BrisaService *service = 0, QObject *parent =
-			0);
-	/*!
-	 * Constructs a new action based on \a action.
-	 */
-	BrisaAction(const BrisaAction &action);
-	/*!
-	 * Destroys the action. It has to be overridden for properly destroying the
-	 * derived actions when necessary.
-	 */
-	virtual ~BrisaAction();
+    /*!
+     * Constructs an action with given \a name, \a parent and \a service that it is related to.
+     */
+    BrisaAction(QString name = "", BrisaService *service = 0, QObject *parent =
+            0);
+    /*!
+     * Constructs a new action based on \a action.
+     */
+    BrisaAction(const BrisaAction &action);
+    /*!
+     * Destroys the action. It has to be overridden for properly destroying the
+     * derived actions when necessary.
+     */
+    virtual ~BrisaAction();
 
-	/*!
-	 * Sets a new name to the action.
-	 */
-	void setName(QString name);
-	/*!
-	 * Returns the action's name.
-	 */
-	QString getName() const;
+    /*!
+     * Sets a new name to the action.
+     */
+    void setName(QString name);
+    /*!
+     * Returns the action's name.
+     */
+    QString getName() const;
 
-	/*!
-	 * Sets a new service for this action.
-	 */
-	void setService(BrisaService *service);
-	/*!
-	 * Returns the service that this action is related to.
-	 */
-	BrisaService *getService() const;
+    /*!
+     * Sets a new service for this action.
+     */
+    void setService(BrisaService *service);
+    /*!
+     * Returns the service that this action is related to.
+     */
+    BrisaService *getService() const;
 
-	/*!
-	 * Returns the related service's state variable with the given \a name. If it cannot find its
-	 * related service or the state variable, then it returns a null pointer.
-	 */
-	BrisaStateVariable *getStateVariable(const QString &name) const;
+    /*!
+     * Returns the related service's state variable with the given \a name. If it cannot find its
+     * related service or the state variable, then it returns a null pointer.
+     */
+    BrisaStateVariable *getStateVariable(const QString &name) const;
 
-	/*!
-	 * Returns this action's list of arguments.
-	 */
-	QList<BrisaArgument*> getArgumentList() const;
+    /*!
+     * Returns this action's list of arguments.
+     */
+    QList<BrisaArgument*> getArgumentList() const;
 
-	/*!
-	 * Adds an argument with given \a name, \a direction and \a relatedStateVariable
-	 * to this action's list of arguments.
-	 */
-	void addArgument(QString name = "", QString direction = "",
-			QString relatedStateVariable = "");
-	/*!
-	 * Adds given \a argument to this action's list of arguments.
-	 */
-	void addArgument(BrisaArgument *argumentA);
-	/*!
-	 * Adds given list of \a arguments to this action's list of arguments.
-	 */
-	void addArguments(const QList<BrisaArgument*> argumentA);
+    /*!
+     * Adds an argument with given \a name, \a direction and \a relatedStateVariable
+     * to this action's list of arguments.
+     */
+    void addArgument(QString name = "", QString direction = "",
+            QString relatedStateVariable = "");
+    /*!
+     * Adds given \a argument to this action's list of arguments.
+     */
+    void addArgument(BrisaArgument *argumentA);
+    /*!
+     * Adds given list of \a arguments to this action's list of arguments.
+     */
+    void addArguments(const QList<BrisaArgument*> argumentA);
 
-	/*!
-	 * Clears this action's argument list.
-	 */
-	void clearArgumentList();
+    /*!
+     * Clears this action's argument list.
+     */
+    void clearArgumentList();
 
-	/*!
-	 * Validates \a inArguments, \a outArguments and runs the action. \a outArguments
-	 * is an output parameter. This method returns true in case of successful
-	 * running of the action, else returns false.
-	 */
-	bool call(const QMap<QString, QString> &inArguments,
-			QMap<QString, QString> &outArguments);
+    /*!
+     * Validates \a inArguments, \a outArguments and runs the action. \a outArguments
+     * is an output parameter. This method returns true in case of successful
+     * running of the action, else returns false.
+     */
+    bool call(const QMap<QString, QString> &inArguments,
+            QMap<QString, QString> &outArguments);
 
 protected:
 
-	/*!
-	 * The actual action. This method must be reimplemented for each user's action.
-	 * It receives \a inArguments as input arguments and must return the right
-	 * output arguments as described in the service's description file.
-	 */
-	virtual QMap<QString, QString> run(
-			const QMap<QString, QString> &inArguments);
+    /*!
+     * The actual action. This method must be reimplemented for each user's action.
+     * It receives \a inArguments as input arguments and must return the right
+     * output arguments as described in the service's description file.
+     */
+    virtual QMap<QString, QString> run(
+            const QMap<QString, QString> &inArguments);
 
 private:
 
-	/*!
-	 * Returns the related input argument with the given \a name.
-	 */
-	BrisaArgument *getInArgument(const QString &name);
+    /*!
+     * Returns the related input argument with the given \a name.
+     */
+    BrisaArgument *getInArgument(const QString &name);
 
-	/*!
-	 * Returns the related output argument with the given \a name.
-	 */
-	BrisaArgument *getOutArgument(const QString &name);
+    /*!
+     * Returns the related output argument with the given \a name.
+     */
+    BrisaArgument *getOutArgument(const QString &name);
 
-	/*!
-	 * Returns the related argument with the given \a name and \a direction.
-	 */
-	BrisaArgument *getArgument(const QString &name, const QString &direction);
+    /*!
+     * Returns the related argument with the given \a name and \a direction.
+     */
+    BrisaArgument *getArgument(const QString &name, const QString &direction);
 
-	/*!
-	 * \property argumentList
-	 *
-	 * \brief list of related arguments
-	 */
-	QList<BrisaArgument*> argumentList;
+    /*!
+     * \property argumentList
+     *
+     * \brief list of related arguments
+     */
+    QList<BrisaArgument*> argumentList;
 
-	/*!
-	 * \property name
-	 *
-	 * \brief action's name
-	 */
-	QString name;
+    /*!
+     * \property name
+     *
+     * \brief action's name
+     */
+    QString name;
 
-	/*!
-	 * \property service
-	 *
-	 * \brief the service that this action is related to
-	 */
-	BrisaService *service;
+    /*!
+     * \property service
+     *
+     * \brief the service that this action is related to
+     */
+    BrisaService *service;
 };
 
 }

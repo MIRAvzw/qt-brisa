@@ -26,7 +26,6 @@
  *
  */
 
-
 #ifndef _BRISAGLOBAL
 #define _BRISAGLOBAL
 
@@ -54,6 +53,5 @@
 #if defined BUILD_BRISA_CORE || defined BUILD_BRISA_UTILS || defined BUILD_BRISA_UPNP
 #    define BUILD_BRISA
 #endif
-
 
 #endif /* _BRISAGLOBAL */

@@ -30,29 +30,29 @@
 using namespace BrisaUpnp;
 
 void BrisaEventSubscription::renew(const int &newTimeout) {
-	this->date = QDateTime::currentDateTime();
-	this->timeout = newTimeout;
+    this->date = QDateTime::currentDateTime();
+    this->timeout = newTimeout;
 }
 
 QHttpResponseHeader BrisaEventSubscription::getAcceptSubscriptionResponse() const {
-	QHttpResponseHeader header(200, "OK");
+    QHttpResponseHeader header(200, "OK");
 
-	header.addValue("DATE", QDateTime::currentDateTime().toUTC().toString(
-			"ddd, dd MMM yyyy HH:mm:ss") + " GMT");
+    header.addValue("DATE", QDateTime::currentDateTime().toUTC().toString(
+            "ddd, dd MMM yyyy HH:mm:ss") + " GMT");
 
-	//FIXME: use system information
-	header.addValue("SERVER", QString("OS/version") + QString(" UPnP/1.0 ")
-			+ QString("product/version"));
+    //FIXME: use system information
+    header.addValue("SERVER", QString("OS/version") + QString(" UPnP/1.0 ")
+            + QString("product/version"));
 
-	header.addValue("SID", QString("uuid:") + this->SID);
+    header.addValue("SID", QString("uuid:") + this->SID);
 
-	header.addValue("TIMEOUT", (timeout >= 0) ? QString("Second-")
-			+ QString::number(this->timeout) : "infinite");
+    header.addValue("TIMEOUT", (timeout >= 0) ? QString("Second-")
+            + QString::number(this->timeout) : "infinite");
 
-	return header;
+    return header;
 }
 
 QHttpResponseHeader BrisaEventSubscription::getAcceptUnsubscriptionResponse() const {
-	return QHttpResponseHeader(200, "OK");
+    return QHttpResponseHeader(200, "OK");
 }
 

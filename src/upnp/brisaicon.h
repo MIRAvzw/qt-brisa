@@ -37,24 +37,24 @@ namespace BrisaUpnp {
 
 class BRISA_UPNP_EXPORT BrisaIcon {
 public:
-	BrisaIcon(QString mimetype = "", QString width = "", QString height = "",
-			QString depth = "", QString url = "");
+    BrisaIcon(QString mimetype = "", QString width = "", QString height = "",
+            QString depth = "", QString url = "");
 
-	typedef enum {
-		Mimetype, Width, Height, Depth, Url
-	} xmlIconTags;
+    typedef enum {
+        Mimetype, Width, Height, Depth, Url
+    } xmlIconTags;
 
-	void setAttribute(xmlIconTags key, QString v);
-	QString getAttribute(xmlIconTags key);
-	void clear();
+    void setAttribute(xmlIconTags key, QString v);
+    QString getAttribute(xmlIconTags key);
+    void clear();
 
 private:
-	QString mimetype;
-	QString width;
-	QString height;
-	QString depth;
-	QString url;
-	QString attribute;
+    QString mimetype;
+    QString width;
+    QString height;
+    QString depth;
+    QString url;
+    QString attribute;
 };
 
 }

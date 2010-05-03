@@ -26,13 +26,11 @@
  *
  */
 
-
 #ifndef _BRISACORE_H
 #define _BRISACORE_H
 
 #include "brisawebserver.h"
 #include "brisaconfig.h"
 #include "brisaglobal.h"
-
 
 #endif /* _BRISACORE_H */

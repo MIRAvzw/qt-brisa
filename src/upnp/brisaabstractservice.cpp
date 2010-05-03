@@ -29,29 +29,19 @@
 
 using namespace BrisaUpnp;
 
-
 BrisaAbstractService::BrisaAbstractService(QObject *parent) :
-    QObject(parent),
-    http(this)
-{
+    QObject(parent), http(this) {
     this->major = "1";
     this->minor = "0";
 }
 
-
-BrisaAbstractService::BrisaAbstractService(const QString &serviceType, const QString &serviceId,
-                                           const QString &scpdUrl, const QString &controlUrl,
-                                           const QString &eventSubUrl, const QString &host,
-                                           QObject *parent) :
-    QObject(parent),
-    controlUrl(controlUrl),
-    eventSubUrl(eventSubUrl),
-    fileAddress(),
-    scpdUrl(scpdUrl),
-    serviceType(serviceType),
-    serviceId(serviceId),
-    http(this)
-{
+BrisaAbstractService::BrisaAbstractService(const QString &serviceType,
+        const QString &serviceId, const QString &scpdUrl,
+        const QString &controlUrl, const QString &eventSubUrl,
+        const QString &host, QObject *parent) :
+    QObject(parent), controlUrl(controlUrl), eventSubUrl(eventSubUrl),
+            fileAddress(), scpdUrl(scpdUrl), serviceType(serviceType),
+            serviceId(serviceId), http(this) {
     this->major = "1";
     this->minor = "0";
 
@@ -62,139 +52,125 @@ BrisaAbstractService::BrisaAbstractService(const QString &serviceType, const QSt
     this->http.setHost(host, port);
 }
 
-
 BrisaAbstractService::BrisaAbstractService(BrisaAbstractService &serv) :
     QObject(serv.parent()),
 
     stateVariableList(serv.getStateVariableList()),
 
     controlUrl(serv.getAttribute(BrisaAbstractService::ControlUrl)),
-    eventSubUrl(serv.getAttribute(BrisaAbstractService::EventSubUrl)),
-    fileAddress(serv.getAttribute(BrisaAbstractService::FileAddress)),
-    scpdUrl(serv.getAttribute(BrisaAbstractService::ScpdUrl)),
-    serviceType(serv.getAttribute(BrisaAbstractService::ServiceType)),
-    serviceId(serv.getAttribute(BrisaAbstractService::ServiceId)),
+            eventSubUrl(serv.getAttribute(BrisaAbstractService::EventSubUrl)),
+            fileAddress(serv.getAttribute(BrisaAbstractService::FileAddress)),
+            scpdUrl(serv.getAttribute(BrisaAbstractService::ScpdUrl)),
+            serviceType(serv.getAttribute(BrisaAbstractService::ServiceType)),
+            serviceId(serv.getAttribute(BrisaAbstractService::ServiceId)),
 
-    host(serv.getAttribute(BrisaAbstractService::Host)),
-    port(serv.getAttribute(BrisaAbstractService::Port).toInt())
-{
+            host(serv.getAttribute(BrisaAbstractService::Host)), port(
+                    serv.getAttribute(BrisaAbstractService::Port).toInt()) {
     this->major = serv.getAttribute(BrisaAbstractService::Major);
     this->minor = serv.getAttribute(BrisaAbstractService::Minor);
 
     this->actionList = serv.getActionList();
     // Copy serv's actions
-    for (QList<BrisaAction *>::iterator it = this->actionList.begin();
-         it != this->actionList.end(); ++it) {
+    for (QList<BrisaAction *>::iterator it = this->actionList.begin(); it
+            != this->actionList.end(); ++it) {
         *it = new BrisaAction(*(*it));
     }
 }
 
-
-BrisaAbstractService::~BrisaAbstractService()
-{
-    for (QList<BrisaAction *>::iterator i = this->actionList.begin();
-         i != this->actionList.end(); ++i) {
+BrisaAbstractService::~BrisaAbstractService() {
+    for (QList<BrisaAction *>::iterator i = this->actionList.begin(); i
+            != this->actionList.end(); ++i) {
         delete *i;
     }
     this->actionList.clear();
 
-    for (QList<BrisaStateVariable *>::iterator i = this->stateVariableList.begin();
-         i != this->stateVariableList.end(); ++i) {
+    for (QList<BrisaStateVariable *>::iterator i =
+            this->stateVariableList.begin(); i != this->stateVariableList.end(); ++i) {
         delete *i;
     }
     this->stateVariableList.clear();
 }
 
-
-void BrisaAbstractService::setAttribute(xmlTags key, const QString &value)
-{
-    switch(key)
-    {
-        case Major:
-            this->major = value;
-            break;
-        case Minor:
-            this->minor = value;
-            break;
-        case FileAddress:
-            this->fileAddress = value;
-            break;
-        case ServiceType:
-            this->serviceType = value;
-            break;
-        case ServiceId:
-            this->serviceId = value;
-            break;
-        case ScpdUrl:
-            this->scpdUrl = value;
-            break;
-        case ControlUrl:
-            this->controlUrl = value;
-            break;
-        case EventSubUrl:
-            this->eventSubUrl = value;
-            break;
-        case Host:
-            this->host = value;
-            this->http.setHost(host, port);
-            break;
-        case Port:
-            this->port = value.toInt();
-            this->http.setHost(host, port);
-            break;
+void BrisaAbstractService::setAttribute(xmlTags key, const QString &value) {
+    switch (key) {
+    case Major:
+        this->major = value;
+        break;
+    case Minor:
+        this->minor = value;
+        break;
+    case FileAddress:
+        this->fileAddress = value;
+        break;
+    case ServiceType:
+        this->serviceType = value;
+        break;
+    case ServiceId:
+        this->serviceId = value;
+        break;
+    case ScpdUrl:
+        this->scpdUrl = value;
+        break;
+    case ControlUrl:
+        this->controlUrl = value;
+        break;
+    case EventSubUrl:
+        this->eventSubUrl = value;
+        break;
+    case Host:
+        this->host = value;
+        this->http.setHost(host, port);
+        break;
+    case Port:
+        this->port = value.toInt();
+        this->http.setHost(host, port);
+        break;
     }
 }
 
-
-QString BrisaAbstractService::getAttribute(xmlTags key)
-{
-    switch(key)
-    {
-        case Major:
-            return major;
-            break;
-        case Minor:
-            return minor;
-            break;
-        case FileAddress:
-            return this->fileAddress;
-            break;
-        case ServiceType:
-            return this->serviceType;
-            break;
-        case ServiceId:
-            return this->serviceId;
-            break;
-        case ScpdUrl:
-            return this->scpdUrl;
-            break;
-        case ControlUrl:
-            return this->controlUrl;
-            break;
-        case EventSubUrl:
-            return this->eventSubUrl;
-            break;
-        case Host:
-            return this->host;
-            break;
-        case Port:
-            return QString::number(this->port);
-            break;
-        default:
-            return QString();
-            break;
+QString BrisaAbstractService::getAttribute(xmlTags key) {
+    switch (key) {
+    case Major:
+        return major;
+        break;
+    case Minor:
+        return minor;
+        break;
+    case FileAddress:
+        return this->fileAddress;
+        break;
+    case ServiceType:
+        return this->serviceType;
+        break;
+    case ServiceId:
+        return this->serviceId;
+        break;
+    case ScpdUrl:
+        return this->scpdUrl;
+        break;
+    case ControlUrl:
+        return this->controlUrl;
+        break;
+    case EventSubUrl:
+        return this->eventSubUrl;
+        break;
+    case Host:
+        return this->host;
+        break;
+    case Port:
+        return QString::number(this->port);
+        break;
+    default:
+        return QString();
+        break;
     }
 }
 
-
-void BrisaAbstractService::addAction(const QString &name)
-{
+void BrisaAbstractService::addAction(const QString &name) {
     this->addAction(new BrisaAction(name));
 }
 
-
-void BrisaAbstractService::addAction(BrisaAction *action)
-{
+void BrisaAbstractService::addAction(BrisaAction *action) {
     // must not add actions named as an already added action
     if (this->getAction(action->getName()))
         return;
@@ -202,11 +178,9 @@ void BrisaAbstractService::addAction(BrisaAction *action)
     this->actionList.append(action);
 }
 
-
-BrisaAction *BrisaAbstractService::getAction(const QString &name)
-{
-    for (QList<BrisaAction *>::iterator i = this->actionList.begin();
-         i != this->actionList.end(); ++i) {
+BrisaAction *BrisaAbstractService::getAction(const QString &name) {
+    for (QList<BrisaAction *>::iterator i = this->actionList.begin(); i
+            != this->actionList.end(); ++i) {
         if ((*i)->getName() == name)
             return *i;
     }
@@ -214,39 +188,28 @@ BrisaAction *BrisaAbstractService::getAction(const QString &name)
     return 0;
 }
 
-
-QList<BrisaAction *> BrisaAbstractService::getActionList()
-{
+QList<BrisaAction *> BrisaAbstractService::getActionList() {
     return this->actionList;
 }
 
-
-void BrisaAbstractService::addStateVariable(BrisaStateVariable *stateVariable)
-{
+void BrisaAbstractService::addStateVariable(BrisaStateVariable *stateVariable) {
     this->stateVariableList.append(stateVariable);
 }
 
-
-void BrisaAbstractService::addStateVariable(const QString &sendEvents, const QString &name,
-                                            const QString &datatype, const QString &defaultValue,
-                                            const QString &maximum, const QString &minimum,
-                                            const QString &step)
-{
-    BrisaStateVariable *stateVariableSwap = new BrisaStateVariable(sendEvents, name, datatype,
-                                                                   defaultValue, maximum, minimum,
-                                                                   step);
+void BrisaAbstractService::addStateVariable(const QString &sendEvents,
+        const QString &name, const QString &datatype,
+        const QString &defaultValue, const QString &maximum,
+        const QString &minimum, const QString &step) {
+    BrisaStateVariable *stateVariableSwap = new BrisaStateVariable(sendEvents,
+            name, datatype, defaultValue, maximum, minimum, step);
     this->addStateVariable(stateVariableSwap);
 }
 
-
-const QList<BrisaStateVariable *> BrisaAbstractService::getStateVariableList()
-{
+const QList<BrisaStateVariable *> BrisaAbstractService::getStateVariableList() {
     return this->stateVariableList;
 }
 
-
-void BrisaAbstractService::clear()
-{
+void BrisaAbstractService::clear() {
     this->controlUrl.clear();
     this->eventSubUrl.clear();
     this->fileAddress.clear();

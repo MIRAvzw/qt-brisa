@@ -67,130 +67,130 @@ using namespace BrisaUpnp;
                               "\r\n"
 
 BrisaSSDPServer::BrisaSSDPServer(QObject *parent) :
-	QObject(parent), running(false), SSDP_ADDR("239.255.255.250"), SSDP_PORT(
-			1900), S_SSDP_PORT("1900") {
-	udpListener = new QUdpSocket();
+    QObject(parent), running(false), SSDP_ADDR("239.255.255.250"), SSDP_PORT(
+            1900), S_SSDP_PORT("1900") {
+    udpListener = new QUdpSocket();
 
-	connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+    connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
 BrisaSSDPServer::~BrisaSSDPServer() {
-	if (isRunning())
-		stop();
+    if (isRunning())
+        stop();
 
-	delete udpListener;
+    delete udpListener;
 }
 
 void BrisaSSDPServer::start() {
-	if (!isRunning()) {
-		if (!udpListener->bind(QHostAddress(SSDP_ADDR), SSDP_PORT,
-				QUdpSocket::ShareAddress))
-			qDebug() << "BrisaSSDPServer NOT LISTENING!";
+    if (!isRunning()) {
+        if (!udpListener->bind(QHostAddress(SSDP_ADDR), SSDP_PORT,
+                QUdpSocket::ShareAddress))
+            qDebug() << "BrisaSSDPServer NOT LISTENING!";
 
-		int fd;
-		fd = udpListener->socketDescriptor();
+        int fd;
+        fd = udpListener->socketDescriptor();
 
-		struct ip_mreq mreq;
-		memset(&mreq, 0, sizeof(ip_mreq));
-		mreq.imr_multiaddr.s_addr = inet_addr(SSDP_ADDR.toUtf8());
-		mreq.imr_interface.s_addr = htonl(INADDR_ANY);
+        struct ip_mreq mreq;
+        memset(&mreq, 0, sizeof(ip_mreq));
+        mreq.imr_multiaddr.s_addr = inet_addr(SSDP_ADDR.toUtf8());
+        mreq.imr_interface.s_addr = htonl(INADDR_ANY);
 
-		if (::setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
-				(const char *) &mreq, sizeof(struct ip_mreq)) < 0) {
-			qDebug() << "BrisaSSDPServer could not join MULTICAST group";
-			return;
-		}
+        if (::setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
+                (const char *) &mreq, sizeof(struct ip_mreq)) < 0) {
+            qDebug() << "BrisaSSDPServer could not join MULTICAST group";
+            return;
+        }
 
-		qDebug() << "BrisaSSDPServer Started!";
-		running = true;
-	} else {
-		qDebug() << "BrisaSSDPServer already running!";
-	}
+        qDebug() << "BrisaSSDPServer Started!";
+        running = true;
+    } else {
+        qDebug() << "BrisaSSDPServer already running!";
+    }
 }
 
 void BrisaSSDPServer::stop() {
-	if (isRunning()) {
-		udpListener->disconnectFromHost();
-		running = false;
-	} else {
-		qDebug() << "BrisaSSDPServer already stopped!";
-	}
+    if (isRunning()) {
+        udpListener->disconnectFromHost();
+        running = false;
+    } else {
+        qDebug() << "BrisaSSDPServer already stopped!";
+    }
 }
 
 bool BrisaSSDPServer::isRunning() {
-	return running;
+    return running;
 }
 
 void BrisaSSDPServer::doNotify(const QString &usn, const QString &location,
-		const QString &st, const QString &server, const QString &cacheControl) {
-	QString message = QString(UPNP_ALIVE_MESSAGE).arg(cacheControl).arg(
-			location).arg(st).arg(server).arg(usn);
+        const QString &st, const QString &server, const QString &cacheControl) {
+    QString message = QString(UPNP_ALIVE_MESSAGE).arg(cacheControl).arg(
+            location).arg(st).arg(server).arg(usn);
 
-	udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-			SSDP_PORT);
-	udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-			SSDP_PORT);
+    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
+            SSDP_PORT);
+    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
+            SSDP_PORT);
 
-	qDebug() << "BrisaSSDPServer writing Notify alive for: " << usn << "";
+    qDebug() << "BrisaSSDPServer writing Notify alive for: " << usn << "";
 }
 
 void BrisaSSDPServer::doByeBye(const QString &usn, const QString &st) {
-	QString message = QString(UPNP_BYEBYE_MESSAGE).arg(st).arg(usn);
+    QString message = QString(UPNP_BYEBYE_MESSAGE).arg(st).arg(usn);
 
-	udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-			SSDP_PORT);
-	udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-			SSDP_PORT);
+    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
+            SSDP_PORT);
+    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
+            SSDP_PORT);
 
-	qDebug() << "BrisaSSDPServer writing notify byebye for: " << usn << "";
+    qDebug() << "BrisaSSDPServer writing notify byebye for: " << usn << "";
 }
 
 void BrisaSSDPServer::datagramReceived() {
-	while (udpListener->hasPendingDatagrams()) {
-		QByteArray Datagram;
-		QHostAddress *senderIP = new QHostAddress();
-		quint16 senderPort;
+    while (udpListener->hasPendingDatagrams()) {
+        QByteArray Datagram;
+        QHostAddress *senderIP = new QHostAddress();
+        quint16 senderPort;
 
-		Datagram.resize(udpListener->pendingDatagramSize());
-		udpListener->readDatagram(Datagram.data(), Datagram.size(), senderIP,
-				&senderPort);
+        Datagram.resize(udpListener->pendingDatagramSize());
+        udpListener->readDatagram(Datagram.data(), Datagram.size(), senderIP,
+                &senderPort);
 
-		QString Temp(Datagram);
-		QHttpRequestHeader *parser = new QHttpRequestHeader(Temp);
+        QString Temp(Datagram);
+        QHttpRequestHeader *parser = new QHttpRequestHeader(Temp);
 
-		msearchReceived(parser, senderIP, senderPort);
+        msearchReceived(parser, senderIP, senderPort);
 
-		delete senderIP;
-		delete parser;
-	}
+        delete senderIP;
+        delete parser;
+    }
 }
 
 void BrisaSSDPServer::msearchReceived(QHttpRequestHeader *datagram,
-		QHostAddress *senderIp, quint16 senderPort) {
-	if (!datagram->hasKey("man"))
-		return;
+        QHostAddress *senderIp, quint16 senderPort) {
+    if (!datagram->hasKey("man"))
+        return;
 
-	if (datagram->value("man") == "\"ssdp:discover\"") {
-		qDebug() << "BrisaSSDPServer Received msearch from "
-				<< senderIp->toString() << ":" << senderPort
-				<< " Search target: " << datagram->value("st");
+    if (datagram->value("man") == "\"ssdp:discover\"") {
+        qDebug() << "BrisaSSDPServer Received msearch from "
+                << senderIp->toString() << ":" << senderPort
+                << " Search target: " << datagram->value("st");
 
-		emit msearchRequestReceived(datagram->value("st"),
-				senderIp->toString(), senderPort);
-	}
+        emit msearchRequestReceived(datagram->value("st"),
+                senderIp->toString(), senderPort);
+    }
 }
 
 void BrisaSSDPServer::respondMSearch(const QString &senderIp,
-		quint16 senderPort, const QString &cacheControl, const QString &date,
-		const QString &location, const QString &server, const QString &st,
-		const QString &usn) {
-	QString message =
-			QString(UPNP_MSEARCH_RESPONSE).arg(cacheControl).arg(date).arg(
-					location).arg(server).arg(st).arg(usn);
+        quint16 senderPort, const QString &cacheControl, const QString &date,
+        const QString &location, const QString &server, const QString &st,
+        const QString &usn) {
+    QString message =
+            QString(UPNP_MSEARCH_RESPONSE).arg(cacheControl).arg(date).arg(
+                    location).arg(server).arg(st).arg(usn);
 
-	udpListener->writeDatagram(message.toUtf8(), QHostAddress(senderIp),
-			senderPort);
+    udpListener->writeDatagram(message.toUtf8(), QHostAddress(senderIp),
+            senderPort);
 
-	qDebug() << "BrisaSSDPServer writing msearch response for: " << senderIp
-			<< ":" << senderPort;
+    qDebug() << "BrisaSSDPServer writing msearch response for: " << senderIp
+            << ":" << senderPort;
 }

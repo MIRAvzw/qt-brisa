@@ -54,91 +54,91 @@ Q_OBJECT
 
 public:
 
-	/*!
-	 *  Constructs a BrisaService with the given parent.
-	 */
-	BrisaService(QObject *parent = 0);
+    /*!
+     *  Constructs a BrisaService with the given parent.
+     */
+    BrisaService(QObject *parent = 0);
 
-	/*!
-	 *  Constructs a BrisaService with the given service information.
-	 */
-	BrisaService(const QString &serviceType, const QString &serviceId = "",
-			const QString &scpdUrl = "", const QString &controlUrl = "",
-			const QString &eventSubUrl = "", const QString &host = "",
-			QObject *parent = 0);
+    /*!
+     *  Constructs a BrisaService with the given service information.
+     */
+    BrisaService(const QString &serviceType, const QString &serviceId = "",
+            const QString &scpdUrl = "", const QString &controlUrl = "",
+            const QString &eventSubUrl = "", const QString &host = "",
+            QObject *parent = 0);
 
-	/*!
-	 *  Copy constructor.
-	 */
-	BrisaService(BrisaService &service);
+    /*!
+     *  Copy constructor.
+     */
+    BrisaService(BrisaService &service);
 
-	/*!
-	 * Destructor.
-	 */
-	~BrisaService();
+    /*!
+     * Destructor.
+     */
+    ~BrisaService();
 
-	/*!
-	 *  Returns the requested BrisaStateVariable, if the variable doesn't exists it return 0.
-	 */
-	BrisaStateVariable *getVariable(const QString &variableName);
+    /*!
+     *  Returns the requested BrisaStateVariable, if the variable doesn't exists it return 0.
+     */
+    BrisaStateVariable *getVariable(const QString &variableName);
 
-	/*!
-	 *  Returns the web service.
-	 */
-	BrisaWebServiceProvider *getWebService();
+    /*!
+     *  Returns the web service.
+     */
+    BrisaWebServiceProvider *getWebService();
 
-	/*!
-	 *  This method creates all the webservice related stuff. It creates a URL for the control path,
-	 *  another url for the event path, and publishs the service description XML file.
-	 */
-	void buildWebServiceTree(QxtAbstractWebSessionManager *sessionManager);
+    /*!
+     *  This method creates all the webservice related stuff. It creates a URL for the control path,
+     *  another url for the event path, and publishs the service description XML file.
+     */
+    void buildWebServiceTree(QxtAbstractWebSessionManager *sessionManager);
 
-	/*!
-	 * Sets the service file path.
-	 */
-	void setDescriptionFile(const QString &scpdFilePath);
+    /*!
+     * Sets the service file path.
+     */
+    void setDescriptionFile(const QString &scpdFilePath);
 
 public slots:
-	/*!
-	 * Parses the genericRequestReceived() signal coming from the webservice.
-	 */
-	void parseGenericRequest(const QString &method, const QMultiHash<QString,
-			QString> &headers, const QByteArray &requestContent, int sessionId,
-			int requestId);
+    /*!
+     * Parses the genericRequestReceived() signal coming from the webservice.
+     */
+    void parseGenericRequest(const QString &method, const QMultiHash<QString,
+            QString> &headers, const QByteArray &requestContent, int sessionId,
+            int requestId);
 
 private:
 
-	/*!
-	 *  This method is called when a valid SOAP action request is parsed by a BrisaActionXmlParser.
-	 */
-	void call(const QString &method, const QMap<QString, QString> &param);
+    /*!
+     *  This method is called when a valid SOAP action request is parsed by a BrisaActionXmlParser.
+     */
+    void call(const QString &method, const QMap<QString, QString> &param);
 
-	/*!
-	 *  This method is called when a action is executed with no problems.
-	 */
-	void respondAction(const QString &actionName,
-			const QMap<QString, QString> &outArgs);
+    /*!
+     *  This method is called when a action is executed with no problems.
+     */
+    void respondAction(const QString &actionName,
+            const QMap<QString, QString> &outArgs);
 
-	/*!
-	 * Responds a SOAP error message in case of a problem occuring while performing the action.
-	 */
-	void respondError(int errorCode, const QString &errorString);
+    /*!
+     * Responds a SOAP error message in case of a problem occuring while performing the action.
+     */
+    void respondError(int errorCode, const QString &errorString);
 
-	/*!
-	 *  Parses the service description file.
-	 */
-	void parseDescriptionFile();
+    /*!
+     *  Parses the service description file.
+     */
+    void parseDescriptionFile();
 
-	/*!
-	 *  Connects the changed signals for event controlling purposes.
-	 */
-	void connectVariablesEventSignals();
+    /*!
+     *  Connects the changed signals for event controlling purposes.
+     */
+    void connectVariablesEventSignals();
 
-	BrisaWebServiceProvider *webService;
+    BrisaWebServiceProvider *webService;
 
-	QMap<QString, BrisaWebService *> childWebServices;
+    QMap<QString, BrisaWebService *> childWebServices;
 
-	QString scpdFilePath;
+    QString scpdFilePath;
 };
 
 }

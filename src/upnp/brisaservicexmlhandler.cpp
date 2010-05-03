@@ -31,8 +31,8 @@
 
 using namespace BrisaUpnp;
 
-void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service, QIODevice *scpd)
-{
+void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
+        QIODevice *scpd) {
     context = new BrisaServiceParserContext(NULL, service);
     input = new QXmlInputSource(scpd);
     reader = new QXmlSimpleReader();
@@ -48,9 +48,8 @@ void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service, QIODevi
     delete reader;
 }
 
-bool BrisaServiceXMLHandler::startElement(const QString &, const QString & , const QString &qName,
-                                            const QXmlAttributes &attribute)
-{
+bool BrisaServiceXMLHandler::startElement(const QString &, const QString &,
+        const QString &qName, const QXmlAttributes &attribute) {
     switch (context->state) {
     case ServiceStart:
         if (qName == "scpd")
@@ -82,8 +81,7 @@ bool BrisaServiceXMLHandler::startElement(const QString &, const QString & , con
     case ActionList:
         if (qName == "action") {
             context->state = Action;
-        }
-        else
+        } else
             context->stateSkip++;
         break;
 
@@ -93,7 +91,7 @@ bool BrisaServiceXMLHandler::startElement(const QString &, const QString & , con
 
         if (qName == "name")
             context->state = ActionName;
-        else if(qName == "argumentList")
+        else if (qName == "argumentList")
             context->state = ArgumentList;
         else
             context->stateSkip++;
@@ -120,14 +118,14 @@ bool BrisaServiceXMLHandler::startElement(const QString &, const QString & , con
         break;
 
     case ServiceStateTable:
-        if(qName == "stateVariable")
+        if (qName == "stateVariable")
             context->state = StateVariable;
-            if (!context->getStateVariable()) {
-                        context->setStateVariable(new BrisaStateVariable());
-                        context->getStateVariable()->setAttribute(BrisaStateVariable::SendEvents,
-                                attribute.value("sendEvents"));
-            }
-        else
+        if (!context->getStateVariable()) {
+            context->setStateVariable(new BrisaStateVariable());
+            context->getStateVariable()->setAttribute(
+                    BrisaStateVariable::SendEvents, attribute.value(
+                            "sendEvents"));
+        } else
             context->stateSkip++;
         break;
 
@@ -187,8 +185,7 @@ bool BrisaServiceXMLHandler::startElement(const QString &, const QString & , con
     return true;
 }
 
-bool BrisaServiceXMLHandler::characters(const QString &str)
-{
+bool BrisaServiceXMLHandler::characters(const QString &str) {
     switch (context->state) {
     case ServiceSpecVersionMajor:
         context->getService()->setAttribute(BrisaAbstractService::Major, str);
@@ -211,7 +208,8 @@ bool BrisaServiceXMLHandler::characters(const QString &str)
         break;
 
     case RelatedStateVariable:
-        context->getArgument()->setAttribute(BrisaArgument::RelatedStateVariable, str);
+        context->getArgument()->setAttribute(
+                BrisaArgument::RelatedStateVariable, str);
         break;
 
     case StateVariableName:
@@ -219,11 +217,13 @@ bool BrisaServiceXMLHandler::characters(const QString &str)
         break;
 
     case StateVariableDataType:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::DataType, str);
+        context->getStateVariable()->setAttribute(BrisaStateVariable::DataType,
+                str);
         break;
 
     case StateVariableDefaultValue:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::DefaultValue, str);
+        context->getStateVariable()->setAttribute(
+                BrisaStateVariable::DefaultValue, str);
         break;
 
     case StateVariableAllowedValue:
@@ -231,12 +231,13 @@ bool BrisaServiceXMLHandler::characters(const QString &str)
         break;
 
     case StateVariableAllowedValueRangeMinimum:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::Minimum, str);
+        context->getStateVariable()->setAttribute(BrisaStateVariable::Minimum,
+                str);
         break;
     case StateVariableAllowedValueRangeMaximum:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::Maximum, str);
+        context->getStateVariable()->setAttribute(BrisaStateVariable::Maximum,
+                str);
         break;
-
 
     case ServiceStart:
     case Scpd:
@@ -258,8 +259,8 @@ bool BrisaServiceXMLHandler::characters(const QString &str)
     return true;
 }
 
-bool BrisaServiceXMLHandler::endElement(const QString &, const QString &, const QString &qName)
-{
+bool BrisaServiceXMLHandler::endElement(const QString &, const QString &,
+        const QString &qName) {
     Q_UNUSED(qName);
 
     if (context->stateSkip) {
@@ -288,7 +289,8 @@ bool BrisaServiceXMLHandler::endElement(const QString &, const QString &, const 
         // check if there is another action with the same name of this one
         BrisaAction *contextAction = context->getAction();
         BrisaAbstractService *contextService = context->getService();
-        BrisaAction *actionLikeThis = contextService->getAction(contextAction->getName());
+        BrisaAction *actionLikeThis = contextService->getAction(
+                contextAction->getName());
 
         if (actionLikeThis) {
             actionLikeThis->addArguments(contextAction->getArgumentList());
@@ -298,13 +300,13 @@ bool BrisaServiceXMLHandler::endElement(const QString &, const QString &, const 
             //during its destruction
             delete contextAction;
         } else {
-        context->getService()->addAction(contextAction);
+            context->getService()->addAction(contextAction);
         }
 
         context->setAction(NULL);
         context->state = ActionList;
         break;
-        }
+    }
 
     case ActionName:
     case ArgumentList:

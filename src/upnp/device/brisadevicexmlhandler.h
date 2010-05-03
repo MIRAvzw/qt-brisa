@@ -40,15 +40,14 @@ namespace BrisaUpnp {
 
 class BrisaDevice;
 
-class BRISA_UPNP_EXPORT BrisaDeviceXMLHandler
-{
-    public:
-        void xmlGenerator(BrisaDevice *device, QFile *file);
+class BRISA_UPNP_EXPORT BrisaDeviceXMLHandler {
+public:
+    void xmlGenerator(BrisaDevice *device, QFile *file);
 
-    private:
-        void writeDevice(BrisaDevice *device);
+private:
+    void writeDevice(BrisaDevice *device);
 
-        QXmlStreamWriter *writer;
+    QXmlStreamWriter *writer;
 };
 
 }

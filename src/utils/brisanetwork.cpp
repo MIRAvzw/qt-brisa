@@ -31,20 +31,20 @@
 
 #include "brisanetwork.h"
 
-QString getIp(QString networkInterface)
-{
-    foreach( QNetworkInterface interface, QNetworkInterface::allInterfaces() ){
-            foreach( QNetworkAddressEntry addressEntry, interface.addressEntries() ){
-                if(interface.name() == networkInterface)
-                    return QHostAddress( addressEntry.ip() ).toString();
+QString getIp(QString networkInterface) {
+    foreach( QNetworkInterface interface, QNetworkInterface::allInterfaces() )
+        {
+            foreach( QNetworkAddressEntry addressEntry, interface.addressEntries() )
+                {
+                    if (interface.name() == networkInterface)
+                        return QHostAddress(addressEntry.ip()).toString();
                 }
-     }
+        }
     return "";
 }
 
-quint16 getPort()
-{
-    srand((unsigned)time(NULL));
+quint16 getPort() {
+    srand((unsigned) time(NULL));
     return (49152 + rand() / (RAND_MAX / (65535 - 49152 + 1) + 1));
 }
 

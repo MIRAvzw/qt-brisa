@@ -53,142 +53,142 @@ class BRISA_UPNP_EXPORT BrisaEventProxy: public BrisaAbstractEventSubscription {
 Q_OBJECT
 
 public:
-	friend class BrisaControlPoint;
+    friend class BrisaControlPoint;
 
-	/*!
-	 *  Destructor
-	 */
-	~BrisaEventProxy();
+    /*!
+     *  Destructor
+     */
+    ~BrisaEventProxy();
 
-	/*!
-	 *  Gets the request id.
-	 */
-	int getId();
+    /*!
+     *  Gets the request id.
+     */
+    int getId();
 
-	/*!
-	 *  Renew the subscribe in a event for the \a newTimeout passed
-	 *  \param newTimeout new timeout. Less than 0 to infinite
-	 */
-	void renew(const int &newTimeout = -1);
+    /*!
+     *  Renew the subscribe in a event for the \a newTimeout passed
+     *  \param newTimeout new timeout. Less than 0 to infinite
+     */
+    void renew(const int &newTimeout = -1);
 
-	/*!
-	 *  Subscribe for the events from a service subscriptions will last the \a timeout passed.
-	 *  \param timeout timeout
-	 */
-	void subscribe(const int timeout = -1);
+    /*!
+     *  Subscribe for the events from a service subscriptions will last the \a timeout passed.
+     *  \param timeout timeout
+     */
+    void subscribe(const int timeout = -1);
 
-	/*!
-	 *  Unsubscribe the events from a service, using this the user won't receive more event responses.
-	 */
-	void unsubscribe();
+    /*!
+     *  Unsubscribe the events from a service, using this the user won't receive more event responses.
+     */
+    void unsubscribe();
 
 signals:
-	/*!
-	 *  \fn BrisaEventProxy::void eventNotification(BrisaEventProxy *subscription,
-	 *                           QMap<QString, QString> eventingVariables);
-	 *
-	 *  \brief Signal that is emitted when an event is received.
-	 */
-	void eventNotification(BrisaEventProxy *subscription,
-			QMap<QString, QString> eventingVariables);
+    /*!
+     *  \fn BrisaEventProxy::void eventNotification(BrisaEventProxy *subscription,
+     *                           QMap<QString, QString> eventingVariables);
+     *
+     *  \brief Signal that is emitted when an event is received.
+     */
+    void eventNotification(BrisaEventProxy *subscription,
+            QMap<QString, QString> eventingVariables);
 
 protected:
 
 private:
-	/*!
-	 *  BrisaEventProxy constructor, prepare all the attribute and starts the webServer and the
-	 *  webService.
-	 */
-	BrisaEventProxy(const QStringList &callbackUrls, BrisaWebserver *webserver,
-			int &deliveryPath, QString host, int port, QHttp *http,
-			QString eventSub, QObject *parent = 0);
+    /*!
+     *  BrisaEventProxy constructor, prepare all the attribute and starts the webServer and the
+     *  webService.
+     */
+    BrisaEventProxy(const QStringList &callbackUrls, BrisaWebserver *webserver,
+            int &deliveryPath, QString host, int port, QHttp *http,
+            QString eventSub, QObject *parent = 0);
 
-	/*!
-	 *  \property requestId
-	 *  \brief id that identifies the request.
-	 */
-	int requestId;
+    /*!
+     *  \property requestId
+     *  \brief id that identifies the request.
+     */
+    int requestId;
 
-	/*!
-	 *  \property deliveryPath
-	 *  \brief path to receive in webserver the event notifications.
-	 */
-	int deliveryPath;
+    /*!
+     *  \property deliveryPath
+     *  \brief path to receive in webserver the event notifications.
+     */
+    int deliveryPath;
 
-	/*!
-	 *  \property host
-	 *  \brief host to subscribe events.
-	 */
-	QString host;
+    /*!
+     *  \property host
+     *  \brief host to subscribe events.
+     */
+    QString host;
 
-	/*!
-	 *  \property port
-	 *  \brief  port of the host to subscribe events.
-	 */
-	int port;
+    /*!
+     *  \property port
+     *  \brief  port of the host to subscribe events.
+     */
+    int port;
 
-	/*!
-	 *  \property http
-	 *  \brief http object to send the event notification(subscribe i.e.)
-	 */
-	QHttp *http;
+    /*!
+     *  \property http
+     *  \brief http object to send the event notification(subscribe i.e.)
+     */
+    QHttp *http;
 
-	/*!
-	 *  \property eventSub
-	 *  \brief path in service to subscribe events.
-	 */
-	QString eventSub;
+    /*!
+     *  \property eventSub
+     *  \brief path in service to subscribe events.
+     */
+    QString eventSub;
 
-	/*!
-	 *  \property webServer
-	 *  \brief Webserver to receive event responses.
-	 */
-	BrisaWebserver *webServer;
+    /*!
+     *  \property webServer
+     *  \brief Webserver to receive event responses.
+     */
+    BrisaWebserver *webServer;
 
-	/*!
-	 *  \property eventService
-	 *  \brief Webservice that is going to be add to web server, and will properly receive the event
-	 *  responses.
-	 */
-	BrisaWebService *eventService;
+    /*!
+     *  \property eventService
+     *  \brief Webservice that is going to be add to web server, and will properly receive the event
+     *  responses.
+     */
+    BrisaWebService *eventService;
 
-	/*!
-	 *  Creates and returns a Http subscription header with the passed \a timeout
-	 *  \param timeout timeout
-	 *  \return Http subscription header with passed timeout
-	 */
-	QHttpRequestHeader *getSubscriptionRequest(const int timeout);
+    /*!
+     *  Creates and returns a Http subscription header with the passed \a timeout
+     *  \param timeout timeout
+     *  \return Http subscription header with passed timeout
+     */
+    QHttpRequestHeader *getSubscriptionRequest(const int timeout);
 
-	/*!
-	 *    Creates and returns an unsubscription Http header.
-	 *    \param unsubscription Http header
-	 */
-	QHttpRequestHeader *getUnsubscriptionRequest() const;
+    /*!
+     *    Creates and returns an unsubscription Http header.
+     *    \param unsubscription Http header
+     */
+    QHttpRequestHeader *getUnsubscriptionRequest() const;
 
-	/*!
-	 *  Creates and returns a Http renew subscription header with the passed \a timeout
-	 *  \param timeout timeout
-	 *  \return Http renew subscription header with passed timeout
-	 */
-	QHttpRequestHeader *getRenewRequest(const int timeout) const;
+    /*!
+     *  Creates and returns a Http renew subscription header with the passed \a timeout
+     *  \param timeout timeout
+     *  \return Http renew subscription header with passed timeout
+     */
+    QHttpRequestHeader *getRenewRequest(const int timeout) const;
 
-	/*!
-	 *  Sets the subscription sid.
-	 *  \param sid sid
-	 */
-	void setSid(QString &sid);
+    /*!
+     *  Sets the subscription sid.
+     *  \param sid sid
+     */
+    void setSid(QString &sid);
 
 private slots:
 
-	/*!
-	 *  Slot to receive and treat the events that are received from \a service with the following
-	 *  \a headers and the \a rawData.
-	 *  \param service service
-	 *  \param headers headers
-	 *  \param rawData rawData
-	 */
-	void eventReceived(BrisaWebService *service,
-			QMultiHash<QString, QString> headers, QString rawData);
+    /*!
+     *  Slot to receive and treat the events that are received from \a service with the following
+     *  \a headers and the \a rawData.
+     *  \param service service
+     *  \param headers headers
+     *  \param rawData rawData
+     */
+    void eventReceived(BrisaWebService *service,
+            QMultiHash<QString, QString> headers, QString rawData);
 };
 
 }

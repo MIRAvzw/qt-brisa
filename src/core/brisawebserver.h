@@ -26,7 +26,6 @@
  *
  */
 
-
 #ifndef _BRISAWEBSERVER_H
 #define _BRISAWEBSERVER_H
 
@@ -45,64 +44,64 @@
 
 namespace BrisaCore {
 
+/*!
+ *  \brief The BrisaWebserver class is a web server implementation.
+ *
+ *  BrisaWebServer implements a Web Server using libQxt.
+ */
+class BRISA_CORE_EXPORT BrisaWebserver: public QxtHttpSessionManager {
+Q_OBJECT
+
+public:
     /*!
-     *  \brief The BrisaWebserver class is a web server implementation.
+     *  Constructor for BrisaWebServer
      *
-     *  BrisaWebServer implements a Web Server using libQxt.
+     *  \param host \a empty
+     *  \param port \a empty
      */
-    class BRISA_CORE_EXPORT BrisaWebserver : public QxtHttpSessionManager
-    {
-        Q_OBJECT
+    BrisaWebserver(const QHostAddress &host, quint16 port);
 
-    public:
-        /*!
-         *  Constructor for BrisaWebServer
-         *
-         *  \param host \a empty
-         *  \param port \a empty
-         */
-        BrisaWebserver(const QHostAddress &host, quint16 port);
+    /*!
+     *  Destructor for BrisaWebServer
+     */
+    ~BrisaWebserver();
 
-        /*!
-         *  Destructor for BrisaWebServer
-         */
-        ~BrisaWebserver();
+    /*!
+     *  Publishes a file to the root.
+     *
+     *  \param publishPath \a empty
+     *  \param filePath \a empty
+     */
+    void publishFile(QString publishPath, QString filePath);
 
-        /*!
-         *  Publishes a file to the root.
-         *
-         *  \param publishPath \a empty
-         *  \param filePath \a empty
-         */
-        void publishFile(QString publishPath, QString filePath);
+    /*!
+     *  Adds a service to the web server. The service url path will be added to the root of the server.
+     *
+     *  \param path \a empty
+     *  \param service \a empty
+     */
+    void addService(QString path, QxtWebServiceDirectory *service);
 
-        /*!
-         *  Adds a service to the web server. The service url path will be added to the root of the server.
-         *
-         *  \param path \a empty
-         *  \param service \a empty
-         */
-        void addService(QString path, QxtWebServiceDirectory *service);
+protected:
+    /*!
+     *  This method dumps request information to the screen.
+     *
+     *  \param requestID \a empty
+     *  \param header \a empty
+     *  \param deviceContent \a empty
+     */
+    void incomingRequest(quint32 requestID, const QHttpRequestHeader &header,
+            QxtWebContent *deviceContent);
+    /*!
+     *  Creates a new session and returns the session number.
+     */
+    int newSession();
 
-    protected:
-        /*!
-         *  This method dumps request information to the screen.
-         *
-         *  \param requestID \a empty
-         *  \param header \a empty
-         *  \param deviceContent \a empty
-         */
-        void incomingRequest(quint32 requestID, const QHttpRequestHeader &header,
-                             QxtWebContent *deviceContent);
-        /*!
-         *  Creates a new session and returns the session number.
-         */
-        int newSession();
-
-    private:
-        BrisaWebServiceProvider *rootService;
-    };
-
+private:
+    BrisaWebServiceProvider *rootService;
 };
+
+}
+;
 
 #endif /* _BRISAWEBSERVER_H */

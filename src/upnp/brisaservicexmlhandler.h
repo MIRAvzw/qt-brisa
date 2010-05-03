@@ -42,35 +42,31 @@
 
 namespace BrisaUpnp {
 
-class BRISA_UPNP_EXPORT BrisaServiceXMLHandler : public QXmlDefaultHandler
-{
-    public:
-        void parseService(BrisaAbstractService *service, QIODevice *scpd);
+class BRISA_UPNP_EXPORT BrisaServiceXMLHandler: public QXmlDefaultHandler {
+public:
+    void parseService(BrisaAbstractService *service, QIODevice *scpd);
 
-    protected:
-        bool startElement(const QString &namespaceURI,
-                          const QString &localName,
-                          const QString &qName,
-                          const QXmlAttributes &attributes);
-        bool endElement(const QString &namespaceURI,
-                        const QString &localName,
-                        const QString &qName);
-        bool characters(const QString &str);
+protected:
+    bool startElement(const QString &namespaceURI, const QString &localName,
+            const QString &qName, const QXmlAttributes &attributes);
+    bool endElement(const QString &namespaceURI, const QString &localName,
+            const QString &qName);
+    bool characters(const QString &str);
 
-    private:
-        BrisaAbstractService *serv;
+private:
+    BrisaAbstractService *serv;
 
-        QXmlStreamWriter *writer;
-        QXmlSimpleReader *reader;
-        QXmlInputSource *input;
+    QXmlStreamWriter *writer;
+    QXmlSimpleReader *reader;
+    QXmlInputSource *input;
 
-        QString textSwap;
+    QString textSwap;
 
-        BrisaAction *actionSwap;
-        BrisaStateVariable *stateVariableSwap;
-        BrisaArgument *argumentSwap;
+    BrisaAction *actionSwap;
+    BrisaStateVariable *stateVariableSwap;
+    BrisaArgument *argumentSwap;
 
-        BrisaServiceParserContext *context;
+    BrisaServiceParserContext *context;
 };
 
 }

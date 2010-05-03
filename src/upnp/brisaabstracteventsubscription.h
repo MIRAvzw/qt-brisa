@@ -50,56 +50,56 @@ Q_OBJECT
 
 public:
 
-	/*!
-	 * Construtcs an abstract event subscription with given \a sid, list of
-	 * \a callbackUrls, \a timeout and \a parent. \a timeout less than 0 means
-	 * infinite.
-	 */
-	BrisaAbstractEventSubscription(const QString &sid,
-			const QStringList &callbackUrls, const int &timeout = -1, // <0 = infinite
-			QObject *parent = 0);
+    /*!
+     * Construtcs an abstract event subscription with given \a sid, list of
+     * \a callbackUrls, \a timeout and \a parent. \a timeout less than 0 means
+     * infinite.
+     */
+    BrisaAbstractEventSubscription(const QString &sid,
+            const QStringList &callbackUrls, const int &timeout = -1, // <0 = infinite
+            QObject *parent = 0);
 
-	/*!
-	 * Renews the subscription for the given \a newTimeout.
-	 */
-	virtual void renew(const int &newTimeout = -1) = 0; // <0 = infinite
+    /*!
+     * Renews the subscription for the given \a newTimeout.
+     */
+    virtual void renew(const int &newTimeout = -1) = 0; // <0 = infinite
 
-	/*!
-	 * Checks if the subscription has already expired. Returns true if it has
-	 * expired, else returns false.
-	 */
-	bool hasExpired() const;
+    /*!
+     * Checks if the subscription has already expired. Returns true if it has
+     * expired, else returns false.
+     */
+    bool hasExpired() const;
 
-	/*!
-	 * Returns the next event key for this subscription.
-	 */
-	quint32 getNextSeq();
+    /*!
+     * Returns the next event key for this subscription.
+     */
+    quint32 getNextSeq();
 
-	/*!
-	 * Returns this subscription's SID.
-	 */
-	QString getSid() const;
+    /*!
+     * Returns this subscription's SID.
+     */
+    QString getSid() const;
 
-	/*!
-	 * Returns this subscription's list of callback URLs.
-	 */
-	QStringList getCallbackUrls() const;
+    /*!
+     * Returns this subscription's list of callback URLs.
+     */
+    QStringList getCallbackUrls() const;
 
-	/*!
-	 * Returns this subscription's first callback URL.
-	 */
-	QUrl getUrl();
+    /*!
+     * Returns this subscription's first callback URL.
+     */
+    QUrl getUrl();
 
 protected:
-	QString SID;
+    QString SID;
 
-	const QStringList CALLBACK_URLS;
+    const QStringList CALLBACK_URLS;
 
-	QDateTime date;
-	int timeout;
+    QDateTime date;
+    int timeout;
 
-	quint32 lastSeq;
-	bool firstMessageSent;
+    quint32 lastSeq;
+    bool firstMessageSent;
 };
 
 }

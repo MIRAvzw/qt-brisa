@@ -45,44 +45,44 @@ namespace BrisaUpnp {
 class BRISA_UPNP_EXPORT BrisaArgument {
 public:
 
-	/*!
-	 * \internal
-	 *
-	 * Constructs an argument with given \a name, \a direction and
-	 * \a relatedStateVariable.
-	 */
-	BrisaArgument(const QString &name = "", const QString &direction = "",
-			const QString &relatedStateVariable = "");
+    /*!
+     * \internal
+     *
+     * Constructs an argument with given \a name, \a direction and
+     * \a relatedStateVariable.
+     */
+    BrisaArgument(const QString &name = "", const QString &direction = "",
+            const QString &relatedStateVariable = "");
 
-	typedef enum {
-		ArgumentName, Direction, RelatedStateVariable
-	} xmlArgument;
+    typedef enum {
+        ArgumentName, Direction, RelatedStateVariable
+    } xmlArgument;
 
-	/*!
-	 * \internal
-	 *
-	 * Sets the argument's attribute \a key to the given \a value.
-	 */
-	void setAttribute(xmlArgument key, const QString &value);
+    /*!
+     * \internal
+     *
+     * Sets the argument's attribute \a key to the given \a value.
+     */
+    void setAttribute(xmlArgument key, const QString &value);
 
-	/*!
-	 * \internal
-	 *
-	 * Returns the value of the argument's attribute \a key.
-	 */
-	QString getAttribute(xmlArgument key) const;
+    /*!
+     * \internal
+     *
+     * Returns the value of the argument's attribute \a key.
+     */
+    QString getAttribute(xmlArgument key) const;
 
-	/*!
-	 * \internal
-	 *
-	 * Sets the argument's attributes to their default value.
-	 */
-	void clear();
+    /*!
+     * \internal
+     *
+     * Sets the argument's attributes to their default value.
+     */
+    void clear();
 
 private:
-	QString name;
-	QString direction;
-	QString relatedStateVariable;
+    QString name;
+    QString direction;
+    QString relatedStateVariable;
 };
 
 }
