@@ -21,7 +21,7 @@ contains(CONVENIENCE, $${CLEAN_TARGET}){
 LIBS += -L../../deploy/libs/
 
 INSTALLS = target incs
-include(deploy/qt/brisa.prf)
+include(../deploy/qt/brisa.prf)
 
 defineReplace(brisaNativeSeparators) {
    local_path_variable = $$1
