@@ -36,6 +36,3 @@ include(device/device.pri)
 include(../../config.pri)
 include(../../deps/qtsoap-2.6-opensource/src/qtsoap.pri)
 include(../../deploy/qt/brisa.prf)
-HEADERS = brisaserviceparsercontext.h 
-
-SOURCES = brisaserviceparsercontext.cpp 

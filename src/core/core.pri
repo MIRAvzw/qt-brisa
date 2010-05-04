@@ -3,12 +3,12 @@ HEADERS = brisaconfig.h \
     brisaglobal.h \
     brisawebfile.h \
     brisawebserver.h \
-    brisawebservice.h
+    brisawebservice.h \
     brisawebserviceprovider.h \
-    brisawebstaticcontent.h \
+    brisawebstaticcontent.h
 SOURCES = brisaconfig.cpp \
     brisawebfile.cpp \
     brisawebserver.cpp \
-    brisawebservice.cpp
+    brisawebservice.cpp \
     brisawebserviceprovider.cpp \
-    brisawebstaticcontent.cpp \
+    brisawebstaticcontent.cpp
