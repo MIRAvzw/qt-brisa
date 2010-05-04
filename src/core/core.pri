@@ -1,16 +1,14 @@
-HEADERS += brisawebstaticcontent.h \
-           brisawebserviceprovider.h \
-           brisawebservice.h \
-           brisawebfile.h \
-           brisawebserver.h \
-           brisacore.h \
-           brisaglobal.h \
-           brisaconfig.h \
-
-SOURCES += brisawebstaticcontent.cpp \
-           brisawebserviceprovider.cpp \
-           brisawebservice.cpp \
-           brisawebfile.cpp \
-           brisawebserver.cpp \
-           brisaconfig.cpp \
-
+HEADERS = brisaconfig.h \
+    brisacore.h \
+    brisaglobal.h \
+    brisawebfile.h \
+    brisawebserver.h \
+    brisawebservice.h
+    brisawebserviceprovider.h \
+    brisawebstaticcontent.h \
+SOURCES = brisaconfig.cpp \
+    brisawebfile.cpp \
+    brisawebserver.cpp \
+    brisawebservice.cpp
+    brisawebserviceprovider.cpp \
+    brisawebstaticcontent.cpp \

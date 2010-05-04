@@ -1,10 +1,11 @@
-HEADERS += device/brisadevice.h \
+HEADERS += device/brisaactionxmlparser.h \
+    device/brisadevice.h \
     device/brisadevicexmlhandler.h \
-    device/brisaservice.h \
     device/brisaeventcontroller.h \
     device/brisaeventmessage.h \
+    device/brisaservice.h \
     device/brisaeventsubscription.h \
-    device/brisaactionxmlparser.h \
+    
 
 SOURCES += device/brisadevice.cpp \
     device/brisadevicexmlhandler.cpp \

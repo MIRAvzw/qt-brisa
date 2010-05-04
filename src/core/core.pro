@@ -14,12 +14,4 @@ CONVENIENCE += $$CLEAN_TARGET
 CONFIG += brisabuild
 include(../../config.pri)
 include(core.pri)
-HEADERS = brisacore.h \
-    brisawebfile.h \
-    brisawebservice.h \
-    brisawebserviceprovider.h \
-    brisawebstaticcontent.h
-SOURCES = brisawebfile.cpp \
-    brisawebservice.cpp \
-    brisawebserviceprovider.cpp \
-    brisawebstaticcontent.cpp
+

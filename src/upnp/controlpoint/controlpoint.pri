@@ -1,10 +1,10 @@
 HEADERS += brisadeviceparsercontext.h \
     controlpoint/brisacontrolpoint.h \
-    controlpoint/brisamsearchclientcp.h \
     controlpoint/brisacontrolpointdevice.h \
+    controlpoint/brisacontrolpointservice.h \  
     controlpoint/brisadeviceparsercontext.h \
     controlpoint/brisadevicexmlhandlercp.h \
-    controlpoint/brisacontrolpointservice.h \
+    controlpoint/brisamsearchclientcp.h \
     controlpoint/brisaeventproxy.h
 SOURCES += brisadeviceparsercontext.cpp \
     controlpoint/brisacontrolpoint.cpp \
