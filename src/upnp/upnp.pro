@@ -35,4 +35,3 @@ include(device/device.pri)
 # Deps
 include(../../config.pri)
 include(../../deps/qtsoap-2.6-opensource/src/qtsoap.pri)
-include(../../deploy/qt/brisa.prf)
