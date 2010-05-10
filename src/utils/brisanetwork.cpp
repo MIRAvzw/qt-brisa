@@ -31,6 +31,32 @@
 
 #include "brisanetwork.h"
 
+
+
+QBool isLoopbackIPv4Address(QString address) {
+    return QBool(!address.compare("127.0.0.1"));
+}
+
+QBool isLoopbackIPv6Address(QString address) {
+    return QBool(!address.compare("0:0:0:0:0:0:0:1"));
+}
+
+QString getValidIP() {
+    foreach(QHostAddress addressEntry , QNetworkInterface::allAddresses() )
+        {
+            QString address = addressEntry.toString();
+            if (!(isLoopbackIPv4Address(address)) && !(isLoopbackIPv6Address(
+                    address))) {
+                return address;
+            }
+        }
+    qDebug()
+            << "Couldn't acquire a non loopback IP  address,returning 127.0.0.1.";
+    return "127.0.0.1";
+}
+
+
+//TODO deprecated function
 QString getIp(QString networkInterface) {
     foreach( QNetworkInterface interface, QNetworkInterface::allInterfaces() )
         {

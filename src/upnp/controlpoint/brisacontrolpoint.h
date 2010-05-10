@@ -136,10 +136,15 @@ Q_OBJECT
     QMap<int, int> requestsMapping;
 
     /*!
-     *  Private function to create the UrlBase of the control point(ip Address) and set the port.
-     *  After that creates the urlBase(http:// + ip + : + port)'
+     *  Private function to create the UrlBase of the control point (http:// + ip + : + port)'.
      */
     void buildUrlBase();
+
+    /*!
+     *  Private function to discover the network address currently used by the machine where control
+     *  point is running and select an free port to use with BrisaWebServer.
+     */
+    void discoverNetworkAddress();
 
 public:
 
@@ -192,6 +197,7 @@ signals:
      *    This signal is emitted when a new device is find in network and all it's attributes are created
      *    by the xml reading.
      *    \sa deviceGone(QString usn)
+     *    \param device the device that has been found
      */
     void deviceFound(BrisaControlPointDevice *device);
 

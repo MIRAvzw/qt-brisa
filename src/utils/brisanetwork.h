@@ -38,8 +38,34 @@
 
 #include "brisaglobal.h"
 
+/*!
+ * Gets an valid IP address from an active interface on the host computer.
+ *
+ */
+BRISA_UTILS_EXPORT QString getValidIP();
+
+/*!
+ *  Gets an valid IP address from an specific interface.
+ *  \param networkInterface \a The interface to acquire the IP Address from.
+ */
 BRISA_UTILS_EXPORT QString getIp(QString networkInterface);
+
+/*!
+ *  Gets an closed port to be used by the BrisaWebServer.
+ */
 BRISA_UTILS_EXPORT quint16 getPort();
+
+/*!
+ *  Verify if this address is a loopback ipv4 address or not.
+ *  \param address \a The address to be tested
+ */
+BRISA_UTILS_EXPORT QBool isLoopbackIPv4Address(QString address);
+
+/*!
+ *  Verify if this address is a loopback ipv6 address or not.
+ *  \param address \a The address to be tested
+ */
+BRISA_UTILS_EXPORT QBool isLoopbackIPv6Address(QString address);
 
 #endif /* _BRISANETWORK_H */
 

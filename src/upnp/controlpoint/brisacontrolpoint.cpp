@@ -38,12 +38,12 @@ using namespace BrisaUpnp;
 
 BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
     QObject(parent) {
+
+    discoverNetworkAddress();
     buildUrlBase();
     deliveryPath = 0;
     running = false;
-
     webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
-
     /* HTTP protocol implementation for requests */
     http = new QHttp();
 
@@ -159,14 +159,17 @@ void BrisaControlPoint::deviceRemoved(const QString usn) {
     emit deviceGone(usn);
 }
 
+
 void BrisaControlPoint::buildUrlBase() {
     QString sPort;
-    this->port = getPort();
-    sPort.setNum(port);
-
-    this->ipAddress = (!getIp("eth0").isEmpty()) ? getIp("eth0") : getIp(
-            "wlan0");
+    sPort.setNum(this->port);
     this->urlBase = "http://" + ipAddress + ":" + sPort;
+}
+
+void BrisaControlPoint::discoverNetworkAddress() {
+    this->port = getPort();
+    this->ipAddress = getValidIP();
+    qDebug() << this->ipAddress;
 }
 
 BrisaEventProxy *BrisaControlPoint::getSubscriptionProxy(
