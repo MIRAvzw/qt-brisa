@@ -35,6 +35,7 @@
 #include <QNetworkAddressEntry>
 #include <QtDebug>
 #include <QObject>
+#include <ctime>
 
 #include "brisaglobal.h"
 
@@ -66,6 +67,14 @@ BRISA_UTILS_EXPORT QBool isLoopbackIPv4Address(QString address);
  *  \param address \a The address to be tested
  */
 BRISA_UTILS_EXPORT QBool isLoopbackIPv6Address(QString address);
+
+/*!
+ *  Verify if an port is currently opened on this host.
+ *  \param address \a the IP address
+ *  \param port    \a the port to be tested
+ *  \param timeout \a the timeout to end the test
+ */
+BRISA_UTILS_EXPORT QBool isPortOpen(QString address, qint16 port, qint16 timeout = 2);
 
 #endif /* _BRISANETWORK_H */
 

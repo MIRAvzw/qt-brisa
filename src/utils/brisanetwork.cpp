@@ -28,10 +28,8 @@
 
 #include <QtDebug>
 #include <QIODevice>
-
+#include <QTcpSocket>
 #include "brisanetwork.h"
-
-
 
 QBool isLoopbackIPv4Address(QString address) {
     return QBool(!address.compare("127.0.0.1"));
@@ -55,7 +53,6 @@ QString getValidIP() {
     return "127.0.0.1";
 }
 
-
 //TODO deprecated function
 QString getIp(QString networkInterface) {
     foreach( QNetworkInterface interface, QNetworkInterface::allInterfaces() )
@@ -69,8 +66,44 @@ QString getIp(QString networkInterface) {
     return "";
 }
 
+QBool isPortOpen(QString address, qint16 port, qint16 timeout) {
+    QTcpSocket *socket = new QTcpSocket();
+    socket->connectToHost(address,port);
+    socket->waitForConnected(timeout);
+    switch (socket->state()) {
+    case QAbstractSocket::UnconnectedState:
+        return QBool(false);
+        delete socket;
+        break;
+
+    case QAbstractSocket::ConnectingState:
+        //stay waiting for some miliseconds to re-verify the state
+        socket->waitForConnected(timeout);
+        if (socket->state() == QAbstractSocket::ConnectedState) {
+            return QBool(true);
+        } else {
+            return QBool(false);
+        }
+        delete socket;
+        break;
+
+    case QAbstractSocket::ConnectedState:
+        return QBool(true);
+        delete socket;
+        break;
+    }
+    delete socket;
+    return QBool(false);
+}
+
 quint16 getPort() {
-    srand((unsigned) time(NULL));
-    return (49152 + rand() / (RAND_MAX / (65535 - 49152 + 1) + 1));
+    srand(time(NULL));
+    quint16 randomPort =
+            (49152 + rand() / (RAND_MAX / (65535 - 49152 + 1) + 1));
+    while (isPortOpen(getValidIP(), randomPort)) {
+        qDebug() << "Port is already opened, trying another " << randomPort;
+        randomPort = (49152 + rand() / (RAND_MAX / (65535 - 49152 + 1) + 1));
+    }
+    return randomPort;
 }
 
