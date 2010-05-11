@@ -226,10 +226,3 @@ int BrisaEventController::getTimeOut(const QString &timeout) {
     return returnTime.toInt(&ok, 10);
 }
 
-QString BrisaEventController::getUuid() {
-    QString uuid = QUuid::createUuid().toString();
-    uuid.remove("{");
-    uuid.remove("}");
-    return uuid;
-}
-

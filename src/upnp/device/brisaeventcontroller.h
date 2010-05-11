@@ -32,6 +32,7 @@
 #include "brisaeventmessage.h"
 #include "brisaeventsubscription.h"
 #include "brisaglobal.h"
+#include "brisautils.h"
 
 #include <BrisaCore>
 
@@ -112,11 +113,6 @@ private:
      * value.
      */
     int getTimeOut(const QString &timeout);
-
-    /*!
-     * Generates random uuids.
-     */
-    QString getUuid();
 
     /*!
      * Returns a header for error messages with the given \a errorCode and

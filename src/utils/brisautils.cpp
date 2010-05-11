@@ -3,9 +3,9 @@
  * Centro de Engenharia Elétrica e Informática
  * Laboratório de Sistemas Embarcados e Computação Pervasiva
  * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
- * Filename: brisaeventsubscription.h
+ * Filename: brisautils.cpp
  * Created:
- * Description: Implements BrisaEventSubscription class.
+ * Description: Implementation of functions from brisautils.h
  * Authors: Name <email> @since 2009
  *
  *
@@ -23,39 +23,21 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
-#ifndef _BRISAEVENTSUBSCRIPTION_H
-#define _BRISAEVENTSUBSCRIPTION_H
 
-#include "brisaabstracteventsubscription.h"
-#include "brisaglobal.h"
+#include "brisautils.h"
 
-#include <BrisaCore>
+#include <QDebug>
 
-#include <QDateTime>
-#include <QList>
-#include <QString>
-#include <QHttpResponseHeader>
-#include <QObject>
-
-using namespace BrisaCore;
-
-namespace BrisaUpnp {
-
-class BRISA_UPNP_EXPORT BrisaEventSubscription: public BrisaAbstractEventSubscription {
-Q_OBJECT
-
-public:
-    BrisaEventSubscription(const QString &sid, const QStringList &callbackUrls,
-            const int &timeout = -1, // <0 = infinite
-            QObject *parent = 0);
-
-    void renew(const int &newTimeout = -1); // <0 = infinite
-    QHttpResponseHeader getAcceptSubscriptionResponse() const;
-    QHttpResponseHeader getAcceptUnsubscriptionResponse() const;
-};
-
+QString getUuid() {
+    QString uuid = QUuid::createUuid().toString();
+    uuid.remove("{");
+    uuid.remove("}");
+    return uuid;
 }
 
-#endif /* _BRISAEVENTSUBSCRIPTION_H */
+QString getCompleteUuid() {
+    QString uuid = "uuid:";
+    uuid.append(getUuid());
+    return uuid;
+}

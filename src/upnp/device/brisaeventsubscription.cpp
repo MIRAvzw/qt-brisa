@@ -29,6 +29,11 @@
 
 using namespace BrisaUpnp;
 
+BrisaEventSubscription::BrisaEventSubscription(const QString &sid,
+        const QStringList &callbackUrls, const int &timeout, QObject *parent) :
+            BrisaAbstractEventSubscription(sid, callbackUrls, timeout, parent) {
+}
+
 void BrisaEventSubscription::renew(const int &newTimeout) {
     this->date = QDateTime::currentDateTime();
     this->timeout = newTimeout;

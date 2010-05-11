@@ -1,5 +1,7 @@
 SOURCES += brisalog.cpp \
-           brisanetwork.cpp
+           brisanetwork.cpp \
+           brisautils.cpp
 
 HEADERS += brisalog.h \
-	   brisanetwork.h
+	   brisanetwork.h \
+	   brisautils.h
