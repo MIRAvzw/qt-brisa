@@ -169,7 +169,7 @@ void BrisaControlPoint::buildUrlBase() {
 void BrisaControlPoint::discoverNetworkAddress() {
     this->port = getPort();
     this->ipAddress = getValidIP();
-    qDebug() << this->ipAddress;
+    qDebug() << "Brisa Control Point: Acquired Address " << this->ipAddress << ":" << this->port;
 }
 
 BrisaEventProxy *BrisaControlPoint::getSubscriptionProxy(
@@ -221,7 +221,6 @@ void BrisaControlPoint::httpResponse(int i, bool error) {
     if (sid.isEmpty()) {
         // TODO report subscription error to user
         qWarning() << "SID header not present on event subscription response.";
-
         foreach(QString key, header.keys())
             {
                 qDebug() << key << header.value(key);

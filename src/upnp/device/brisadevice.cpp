@@ -7,7 +7,7 @@
  * Created:
  * Description: Implements the BrisaDevice class.
  * Authors: Name <email> @since 2009
- *
+ *          Jeysibel de Sousa Dantas <jeysibel@gmail.com> @since 11/05/2010
  *
  * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
@@ -35,6 +35,9 @@ using namespace BrisaUpnp;
 
 BrisaDevice::BrisaDevice(QObject *parent) :
     QObject(parent), running(false) {
+
+    this->discoverNetworkAddress();
+    this->buildUrlBase();
     webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
     ssdp = new BrisaSSDPServer();
 
@@ -66,6 +69,7 @@ BrisaDevice::BrisaDevice(const QString &deviceType, QString friendlyName,
             server("BRisa Webserver UPnP/1.0 " + modelName + " " + modelNumber),
             fileAddress(friendlyName.remove(QChar(' ')).append(".xml")),
             running(false) {
+    this->discoverNetworkAddress();
     this->buildUrlBase();
     this->location = urlBase + "/" + fileAddress;
 
@@ -259,7 +263,7 @@ QString BrisaDevice::getAttribute(xmlTags key) const {
         break;
     case ModelDescription:
         return modelDescription;
-        break;
+        break;qDebug() << "Brisa Device: after: " << ipAddress << port;
     case ModelName:
         return modelName;
         break;
@@ -606,13 +610,25 @@ void BrisaDevice::clear() {
     port = 0;
 }
 
+//void BrisaDevice::buildUrlBase() {
+//    this->port = getPort();
+//    this->ipAddress = getIp("eth0");
+//
+//    if (this->ipAddress == "")
+//        this->ipAddress = getIp("wlan0");
+//
+//    this->urlBase = "http://" + ipAddress + ":" + QString::number(this->port);
+//}
+
 void BrisaDevice::buildUrlBase() {
+    QString sPort;
+    sPort.setNum(this->port);
+    this->urlBase = "http://" + ipAddress + ":" + sPort;
+}
+
+void BrisaDevice::discoverNetworkAddress() {
     this->port = getPort();
-    this->ipAddress = getIp("eth0");
-
-    if (this->ipAddress == "")
-        this->ipAddress = getIp("wlan0");
-
-    this->urlBase = "http://" + ipAddress + ":" + QString::number(this->port);
+    this->ipAddress = getValidIP();
+    qDebug() << "Brisa Device: Acquired Address " << this->ipAddress << ":" << this->port;
 }
 

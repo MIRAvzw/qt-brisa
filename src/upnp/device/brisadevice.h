@@ -250,6 +250,13 @@ private:
      *  Creates the UrlBase attribute according to local IP address and a random port.
      */
     void buildUrlBase();
+
+    /*!
+     *  Private function to discover the network address currently used by the machine where control
+     *  point is running and select an free port to use with BrisaWebServer.
+     */
+    void discoverNetworkAddress();
+
     /*!
      *  Generates the webserver tree according to the services present in the device.
      *  Eg:

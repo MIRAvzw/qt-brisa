@@ -69,6 +69,18 @@ BRISA_UTILS_EXPORT QBool isLoopbackIPv4Address(QString address);
 BRISA_UTILS_EXPORT QBool isLoopbackIPv6Address(QString address);
 
 /*!
+ *  Verify if this address is a Promiscous ipv4 address or not.
+ *  \param address \a The address to be tested
+ */
+BRISA_UTILS_EXPORT QBool isPromiscuousIPv4Address(QString address);
+
+/*!
+ *  Verify if this address is a Promiscous ipv6 address or not.
+ *  \param address \a The address to be tested
+ */
+BRISA_UTILS_EXPORT QBool isPromiscuousIPv6Address(QString address);
+
+/*!
  *  Verify if an port is currently opened on this host.
  *  \param address \a the IP address
  *  \param port    \a the port to be tested
