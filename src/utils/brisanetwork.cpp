@@ -103,6 +103,9 @@ QBool isPortOpen(QString address, qint16 port, qint16 timeout) {
         return QBool(true);
         delete socket;
         break;
+    default:
+        delete socket;
+        break;
     }
     delete socket;
     return QBool(false);
