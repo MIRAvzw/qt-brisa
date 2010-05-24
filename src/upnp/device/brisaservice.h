@@ -134,6 +134,11 @@ private:
      */
     void connectVariablesEventSignals();
 
+    /*!
+     *  Set the DefaultValue as Value for all variables.
+     */
+    void setDefaultValues();
+
     BrisaWebServiceProvider *webService;
 
     QMap<QString, BrisaWebService *> childWebServices;

@@ -222,6 +222,7 @@ void BrisaService::parseDescriptionFile() {
     file.close();
 
     this->connectVariablesEventSignals();
+    this->setDefaultValues();
 }
 
 void BrisaService::connectVariablesEventSignals() {
@@ -238,6 +239,14 @@ void BrisaService::connectVariablesEventSignals() {
                 QObject::connect(s, SIGNAL(changed(BrisaStateVariable *)),
                         event, SLOT(variableChanged(BrisaStateVariable *)));
             }
+        }
+}
+
+void BrisaService::setDefaultValues() {
+    foreach (BrisaStateVariable *s, this->stateVariableList)
+        {
+            s->setAttribute(BrisaStateVariable::Value, s->getAttribute(
+                    BrisaStateVariable::DefaultValue));
         }
 }
 
