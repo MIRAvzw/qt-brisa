@@ -71,13 +71,13 @@ void BrisaSSDPClient::start() {
 
         if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *) &mreq,
                 sizeof(struct ip_mreq)) < 0) {
-            qDebug() << "BrisaSSDPClient could not join MULTICAST group";
+            qDebug() << "Brisa SSDP Client: Could not join MULTICAST group";
             return;
         }
 
         running = true;
     } else {
-        qDebug() << "BrisaSSDPClient already running!";
+        qDebug() << "Brisa SSDP Client: Already running!";
     }
 }
 
@@ -86,7 +86,7 @@ void BrisaSSDPClient::stop() {
         udpListener->disconnectFromHost();
         running = false;
     } else {
-        qDebug() << "BrisaSSDPClient already stopped!";
+        qDebug() << "Brisa SSDP Client: Already stopped!";
     }
 }
 
@@ -96,19 +96,20 @@ bool BrisaSSDPClient::isRunning() const {
 
 void BrisaSSDPClient::datagramReceived() {
     while (udpListener->hasPendingDatagrams()) {
-        QByteArray Datagram;
-        QList<QByteArray> cmd;
+        QByteArray *Datagram = new QByteArray();
 
-        Datagram.resize(udpListener->pendingDatagramSize());
-        udpListener->readDatagram(Datagram.data(), Datagram.size());
+        Datagram->resize(udpListener->pendingDatagramSize());
+        udpListener->readDatagram(Datagram->data(), Datagram->size());
 
-        QString Temp(Datagram);
+        QString Temp(Datagram->data());
         QHttpRequestHeader *Parser = new QHttpRequestHeader(Temp);
 
         notifyReceived(Parser);
 
+        delete Datagram;
         delete Parser;
     }
+
 }
 
 void BrisaSSDPClient::notifyReceived(QHttpRequestHeader *datagram) {
@@ -121,15 +122,15 @@ void BrisaSSDPClient::notifyReceived(QHttpRequestHeader *datagram) {
                 datagram->value("ext"), datagram->value("server"),
                 datagram->value("cacheControl"));
 
-        qDebug() << "BrisaSSDPClient received alive from " << datagram->value(
+        qDebug() << "Brisa SSDP Client: Received alive from " << datagram->value(
                 "usn") << "";
     } else if (datagram->value("nts") == "ssdp:byebye") {
         emit removedDeviceEvent(datagram->value("usn"));
 
-        qDebug() << "BrisaSSDPClient received byebye from " << datagram->value(
+        qDebug() << "Brisa SSDP Client: Received byebye from " << datagram->value(
                 "usn") << "";
     } else {
-        qDebug() << "BrisaSSDPClient received unknown subtype: "
+        qDebug() << "Brisa SSDP Client: Received unknown subtype: "
                 << datagram->value("nts") << "";
     }
 }

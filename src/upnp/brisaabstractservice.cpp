@@ -29,8 +29,9 @@
 
 using namespace BrisaUpnp;
 
-BrisaAbstractService::BrisaAbstractService(QObject *parent) :
-    QObject(parent), http(this) {
+BrisaAbstractService::BrisaAbstractService(QObject *parent) :QObject(parent) {
+
+    this->http = new QtSoapHttpTransport(this);
     this->major = "1";
     this->minor = "0";
 }
@@ -41,7 +42,8 @@ BrisaAbstractService::BrisaAbstractService(const QString &serviceType,
         const QString &host, QObject *parent) :
     QObject(parent), controlUrl(controlUrl), eventSubUrl(eventSubUrl),
             fileAddress(), scpdUrl(scpdUrl), serviceType(serviceType),
-            serviceId(serviceId), http(this) {
+            serviceId(serviceId) {
+    this->http = new QtSoapHttpTransport(this);
     this->major = "1";
     this->minor = "0";
 
@@ -49,7 +51,7 @@ BrisaAbstractService::BrisaAbstractService(const QString &serviceType,
     this->host = url.host();
     this->port = url.port();
 
-    this->http.setHost(host, port);
+    this->http->setHost(host, port);
 }
 
 BrisaAbstractService::BrisaAbstractService(BrisaAbstractService &serv) :
@@ -89,6 +91,7 @@ BrisaAbstractService::~BrisaAbstractService() {
         delete *i;
     }
     this->stateVariableList.clear();
+    delete http;
 }
 
 void BrisaAbstractService::setAttribute(xmlTags key, const QString &value) {
@@ -119,11 +122,11 @@ void BrisaAbstractService::setAttribute(xmlTags key, const QString &value) {
         break;
     case Host:
         this->host = value;
-        this->http.setHost(host, port);
+        this->http->setHost(host, port);
         break;
     case Port:
         this->port = value.toInt();
-        this->http.setHost(host, port);
+        this->http->setHost(host, port);
         break;
     }
 }

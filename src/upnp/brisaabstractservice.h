@@ -180,7 +180,7 @@ protected:
     QString host;
     int port;
 
-    QtSoapHttpTransport http;
+    QtSoapHttpTransport* http;
 };
 
 }

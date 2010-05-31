@@ -1,21 +1,29 @@
-/* brisa-c++
+/*
+ * Universidade Federal de Campina Grande
+ * Centro de Engenharia Elétrica e Informática
+ * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
+ * Filename: brisaabstractservice.h
+ * Created:
+ * Description: This file defines the BrisaAbstractService class.
+ * Authors: Name <email> @since 2009
  *
- * Copyright (C) 2009 Andre Dieb Martins <andre.dieb@gmail.com>
  *
- * This file is part of brisa-c++.
+ * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
- * brisa-c++ is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * BRisa-Qt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
  *
- * brisa-c++ is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with brisa-c++.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
 #include "brisacontrolpointservice.h"
@@ -28,7 +36,7 @@ using namespace BrisaUpnp;
 
 BrisaControlPointService::BrisaControlPointService(QObject *parent) :
     BrisaAbstractService(parent) {
-    connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
+    connect(http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
 BrisaControlPointService::BrisaControlPointService(const QString &serviceType,
@@ -37,25 +45,26 @@ BrisaControlPointService::BrisaControlPointService(const QString &serviceType,
         const QString &host, QObject *parent) :
     BrisaAbstractService(serviceType, serviceId, scpdUrl, controlUrl,
             eventSubUrl, host, parent) {
-    connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
+    connect(http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
 BrisaControlPointService::BrisaControlPointService(
         BrisaControlPointService &serv) :
     BrisaAbstractService(serv) {
-    connect(&http, SIGNAL(responseReady()), this, SLOT(getResponse()));
+    connect(http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 
 void BrisaControlPointService::parseFromXml(QTemporaryFile *xml) {
-    BrisaServiceXMLHandler handler;
-    handler.parseService(this, xml);
+    BrisaServiceXMLHandler* handler = new BrisaServiceXMLHandler();
+    handler->parseService(this, xml);
+    delete handler;
 }
 
 void BrisaControlPointService::call(const QString &method, const QMap<QString,
         QString> &param) {
     QtSoapMessage request;
 
-    http.setAction("\"" + serviceType + "#" + method + "\"");
+    http->setAction("\"" + serviceType + "#" + method + "\"");
 
     request.setMethod(method, serviceType);
 
@@ -65,11 +74,11 @@ void BrisaControlPointService::call(const QString &method, const QMap<QString,
         }
 
     lastMethod = method;
-    this->http.submitRequest(request, this->controlUrl);
+    this->http->submitRequest(request, this->controlUrl);
 }
 
 void BrisaControlPointService::getResponse() {
-    const QtSoapMessage &message = http.getResponse();
+    const QtSoapMessage &message = http->getResponse();
 
     if (message.isFault()) {
         emit requestFinished("Error: " + message.faultString().toString(),
