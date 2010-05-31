@@ -31,6 +31,10 @@
 
 using namespace BrisaUpnp;
 
+BrisaDeviceXMLHandlerCP::~BrisaDeviceXMLHandlerCP() {
+    delete context;
+}
+
 void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device,
         QTemporaryFile *tmp) {
     context = new BrisaDeviceParserContext(NULL, device);

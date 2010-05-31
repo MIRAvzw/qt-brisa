@@ -61,6 +61,9 @@ class BrisaControlPointDevice;
 class BRISA_UPNP_EXPORT BrisaDeviceXMLHandlerCP: public QXmlDefaultHandler {
 public:
 
+
+    ~BrisaDeviceXMLHandlerCP();
+
     /*!
      *  Method that initializes device attributes from a temporary file.
      *  \param device device

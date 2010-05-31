@@ -45,6 +45,8 @@ namespace BrisaUpnp {
 class BRISA_UPNP_EXPORT BrisaServiceXMLHandler: public QXmlDefaultHandler {
 public:
     void parseService(BrisaAbstractService *service, QIODevice *scpd);
+    BrisaServiceXMLHandler();
+    ~BrisaServiceXMLHandler();
 
 protected:
     bool startElement(const QString &namespaceURI, const QString &localName,
@@ -62,9 +64,9 @@ private:
 
     QString textSwap;
 
-    BrisaAction *actionSwap;
-    BrisaStateVariable *stateVariableSwap;
-    BrisaArgument *argumentSwap;
+//    BrisaAction *actionSwap;
+//    BrisaStateVariable *stateVariableSwap;
+//    BrisaArgument *argumentSwap;
 
     BrisaServiceParserContext *context;
 };
