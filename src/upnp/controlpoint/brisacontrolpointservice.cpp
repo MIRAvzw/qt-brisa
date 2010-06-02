@@ -86,6 +86,19 @@ void BrisaControlPointService::getResponse() {
         return;
     }
 
-    emit requestFinished(message.returnValue().toString(), lastMethod);
+    QString returnMessage;
+    QList<BrisaArgument*> arguments =
+            this->getAction(this->lastMethod)->getArgumentList();
+    foreach (BrisaArgument * arg, arguments)
+        {
+            if (arg->getAttribute(BrisaArgument::Direction) == "out") {
+                QString argName =
+                        arg->getAttribute(BrisaArgument::ArgumentName);
+                returnMessage.append(argName + " = "
+                        + message.method()[argName].toString() + "\n");
+            }
+        }
+
+    emit requestFinished(returnMessage, lastMethod);
 }
 
