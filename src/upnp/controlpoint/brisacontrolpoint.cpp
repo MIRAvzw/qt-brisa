@@ -133,7 +133,7 @@ void BrisaControlPoint::replyFinished(QNetworkReply *reply) {
         delete urlBase;
 
         //
-        delete reply;
+//        delete reply;
 
         emit deviceFound(device);
     }

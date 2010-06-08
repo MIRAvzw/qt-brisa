@@ -29,6 +29,8 @@
 #include "brisadevicexmlhandlercp.h"
 #include "brisacontrolpointdevice.h"
 
+#define PORT_INDEX 2
+
 using namespace BrisaUpnp;
 
 BrisaDeviceXMLHandlerCP::~BrisaDeviceXMLHandlerCP() {
@@ -414,11 +416,27 @@ bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &,
 
     case Service: {
         context->state = ServiceList;
+        QStringList urlBase = context->getDevice()->getAttribute(BrisaControlPointDevice::UrlBase).split(":");
+        if (urlBase.size() > PORT_INDEX) {
+            QString port = urlBase[PORT_INDEX];
+            QString newPort = "";
+            quint8 index = 0;
+            while (port[index].isDigit()) {
+                newPort.append(port[index]);
+                index++;
+            }
+            urlBase[PORT_INDEX] = newPort;
+            while (urlBase.size() > PORT_INDEX + 1) urlBase.pop_back();
+        }
+
+//        BrisaServiceFetcher *f = new BrisaServiceFetcher(context->getService(),
+//                context->getDevice()->getAttribute(
+//                        BrisaControlPointDevice::UrlBase)
+//                        + context->getService()->getAttribute(
+//                                BrisaControlPointService::ScpdUrl));
         BrisaServiceFetcher *f = new BrisaServiceFetcher(context->getService(),
-                context->getDevice()->getAttribute(
-                        BrisaControlPointDevice::UrlBase)
-                        + context->getService()->getAttribute(
-                                BrisaControlPointService::ScpdUrl));
+                  urlBase.join(":") + context->getService()->
+                  getAttribute(BrisaControlPointService::ScpdUrl));
 
         if (!f->fetch()) {
             context->getDevice()->addService(context->getService());
