@@ -117,7 +117,7 @@ quint16 getPort() {
     //TODO modify this expression to a more legible one
     quint16 randomPort =
             (49152 + rand()/ (RAND_MAX / (65535 - 49152 + 1) + 1));
-    qDebug() <<  "Porta Valor:" << randomPort;
+    qDebug() <<  "Port value chosen:" << randomPort;
     while (isPortOpen(getValidIP(), randomPort)) {
         qDebug() << "Port is already opened, trying another ";
         randomPort = (49152 + rand() / (RAND_MAX / (65535 - 49152 + 1) + 1));
