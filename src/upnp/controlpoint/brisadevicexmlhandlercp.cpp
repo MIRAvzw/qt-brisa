@@ -34,438 +34,104 @@
 using namespace BrisaUpnp;
 
 BrisaDeviceXMLHandlerCP::~BrisaDeviceXMLHandlerCP() {
-    delete context;
 }
 
 void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device,
         QTemporaryFile *tmp) {
-    context = new BrisaDeviceParserContext(NULL, device);
-    input = new QXmlInputSource(tmp);
-    reader = new QXmlSimpleReader();
+    QDomDocument document("Device");
+    document.setContent(tmp);
+    QDomElement element = document.documentElement();
+    if (element.tagName() != "root")
+        return;
+    QDomNode n;
+    n = element.firstChild();
+    while (!n.isNull()) {
+        element = n.toElement();
+        if (element.tagName() == "specVersion") {
+            QString major = element.elementsByTagName("major").at(0).toElement().text();
+            QString minor = element.elementsByTagName("minor").at(0).toElement().text();
+            if (major.isEmpty() || minor.isEmpty())
+                return;
+            device->setAttribute(BrisaControlPointDevice::Major, major);
+            device->setAttribute(BrisaControlPointDevice::Minor, minor);
+        } else if (element.tagName() == "device") {
+            QString udn = element.elementsByTagName("UDN").at(0).toElement().text();
+            QString friendlyName = element.elementsByTagName("friendlyName").at(0).toElement().text();
+            QString deviceType = element.elementsByTagName("deviceType").at(0).toElement().text();
+            QString manufacturer = element.elementsByTagName("manufacturer").at(0).toElement().text();
+            QString manufacturerURL = element.elementsByTagName("manufacturerURL").at(0).toElement().text();
+            QString modelName = element.elementsByTagName("manufacturer").at(0).toElement().text();
+            QString modelNumber = element.elementsByTagName("modelNumber").at(0).toElement().text();
+            QString modelURL = element.elementsByTagName("modelURL").at(0).toElement().text();
+            QString serialNumber = element.elementsByTagName("serialNumber").at(0).toElement().text();
+            device->setAttribute(BrisaControlPointDevice::Udn, udn);
+            device->setAttribute(BrisaControlPointDevice::FriendlyName, friendlyName);
+            device->setAttribute(BrisaControlPointDevice::DeviceType, deviceType);
+            device->setAttribute(BrisaControlPointDevice::Manufacturer, manufacturer);
+            device->setAttribute(BrisaControlPointDevice::ManufacturerUrl, manufacturerURL);
+            device->setAttribute(BrisaControlPointDevice::ModelName, modelName);
+            device->setAttribute(BrisaControlPointDevice::ModelNumber, modelNumber);
+            device->setAttribute(BrisaControlPointDevice::ModelUrl, modelURL);
+            device->setAttribute(BrisaControlPointDevice::SerialNumber, serialNumber);
 
-    context->state = Start;
-    context->stateSkip = 0;
-    reader->setContentHandler(this);
-    reader->setErrorHandler(this);
-    reader->parse(input);
+            QDomNodeList serviceList = element.elementsByTagName("serviceList");
+            if (serviceList.size() > 0) {
+                QDomNodeList services = serviceList.at(0).toElement().elementsByTagName("service");
+                for (int i = 0; i < services.size(); i++) {
+                    QString serviceType = services.at(i).toElement().elementsByTagName("serviceType").at(0).toElement().text();
+                    QString serviceId = services.at(i).toElement().elementsByTagName("serviceId").at(0).toElement().text();
+                    QString controlURL = services.at(i).toElement().elementsByTagName("controlURL").at(0).toElement().text();
+                    QString eventSubURL = services.at(i).toElement().elementsByTagName("eventSubURL").at(0).toElement().text();
+                    QString SCPDURL = services.at(i).toElement().elementsByTagName("SCPDURL").at(0).toElement().text();
 
-    delete input;
-    delete reader;
-}
+                    BrisaControlPointService *service = new BrisaControlPointService(serviceType, serviceId, SCPDURL, controlURL, eventSubURL, "");
 
-bool BrisaDeviceXMLHandlerCP::startElement(const QString &, const QString &,
-        const QString &qName, const QXmlAttributes &) {
-    switch (context->state) {
-    case Start:
-        if (qName == "root")
-            context->state = Root;
-        else
-            context->state = Error;
-        break;
+                    QStringList urlBase = device->getAttribute(BrisaControlPointDevice::UrlBase).split(":");
+                    if (urlBase.size() > PORT_INDEX) {
+                        QString port = urlBase[PORT_INDEX];
+                        QString newPort = "";
+                        quint8 index = 0;
+                        while (port[index].isDigit()) {
+                            newPort.append(port[index]);
+                            index++;
+                        }
+                        urlBase[PORT_INDEX] = newPort;
+                        while (urlBase.size() > PORT_INDEX + 1) urlBase.pop_back();
+                    }
 
-    case Root:
-        if (qName == "specVersion")
-            context->state = SpecVersion;
-        else if (qName == "URLBase")
-            context->state = UrlBase;
-        else if (qName == "device")
-            context->state = Device;
-        else
-            context->stateSkip++;
-        break;
+                    BrisaServiceFetcher f(service, urlBase.join(":") + service->
+                              getAttribute(BrisaControlPointService::ScpdUrl));
 
-    case SpecVersion:
-        if (qName == "major")
-            context->state = SpecVersionMajor;
-        else if (qName == "minor")
-            context->state = SpecVersionMinor;
-        else
-            context->stateSkip++;
-        break;
 
-    case Device:
-        if (!context->getDevice())
-            context->setDevice(new BrisaControlPointDevice());
-
-        if (qName == "deviceType")
-            context->state = DeviceType;
-        else if (qName == "friendlyName")
-            context->state = DeviceFriendlyName;
-        else if (qName == "manufacturer")
-            context->state = Manufacturer;
-        else if (qName == "manufacturerURL")
-            context->state = ManufacturerUrl;
-        else if (qName == "modelDescription")
-            context->state = ModelDescription;
-        else if (qName == "modelName")
-            context->state = ModelName;
-        else if (qName == "modelURL")
-            context->state = ModelUrl;
-        else if (qName == "serialNumber")
-            context->state = SerialNumber;
-        else if (qName == "presentationURL")
-            context->state = PresentationUrl;
-        else if (qName == "deviceList") {
-            // Create new parsing context
-            BrisaDeviceParserContext *newContext =
-                    new BrisaDeviceParserContext(context);
-
-            // Switch context
-            context = newContext;
-
-            break;
-        } else if (qName == "serviceList")
-            context->state = ServiceList;
-        else if (qName == "UPC")
-            context->state = Upc;
-        else if (qName == "UDN")
-            context->state = Udn;
-        else if (qName == "iconList")
-            context->state = IconList;
-        else
-            context->stateSkip++;
-        break;
-
-    case IconList:
-        if (qName == "icon")
-            context->state = Icon;
-        else
-            context->stateSkip++;
-        break;
-
-    case Icon:
-        if (!context->getIcon()) {
-            context->setIcon(new BrisaIcon());
-        }
-
-        if (qName == "mimetype")
-            context->state = IconMimetype;
-        else if (qName == "width")
-            context->state = IconWidth;
-        else if (qName == "height")
-            context->state = IconHeight;
-        else if (qName == "depth")
-            context->state = IconDepth;
-        else if (qName == "url")
-            context->state = IconUrl;
-        else
-            context->stateSkip++;
-        break;
-
-    case DeviceList:
-        if (qName == "device")
-            context->state = Device;
-        else
-            context->stateSkip++;
-        break;
-
-    case ServiceList:
-        if (qName == "service")
-            context->state = Service;
-        else
-            context->stateSkip++;
-        break;
-
-    case Service:
-        if (!context->getService())
-            context->setService(new BrisaControlPointService());
-
-        if (qName == "serviceType")
-            context->state = ServiceType;
-        else if (qName == "serviceId")
-            context->state = ServiceId;
-        else if (qName == "SCPDURL")
-            context->state = ServiceScpdUrl;
-        else if (qName == "controlURL")
-            context->state = ServiceControlUrl;
-        else if (qName == "eventSubURL")
-            context->state = ServiceEventSubUrl;
-        else
-            context->stateSkip++;
-        break;
-
-    default:
-        context->stateSkip++;
-    }
-
-    return true;
-}
-
-bool BrisaDeviceXMLHandlerCP::characters(const QString &str) {
-    switch (context->state) {
-
-    case SpecVersionMajor:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::Major, str);
-        break;
-
-    case SpecVersionMinor:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::Minor, str);
-        break;
-
-    case UrlBase:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::UrlBase,
-                str);
-        break;
-
-    case DeviceType:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::DeviceType,
-                str);
-        break;
-
-    case DeviceFriendlyName:
-        context->getDevice()->setAttribute(
-                BrisaControlPointDevice::FriendlyName, str);
-        break;
-
-    case Manufacturer:
-        context->getDevice()->setAttribute(
-                BrisaControlPointDevice::Manufacturer, str);
-        break;
-
-    case ManufacturerUrl:
-        context->getDevice()->setAttribute(
-                BrisaControlPointDevice::ManufacturerUrl, str);
-        break;
-
-    case ModelDescription:
-        context->getDevice()->setAttribute(
-                BrisaControlPointDevice::ModelDescription, str);
-        break;
-
-    case ModelName:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::ModelName,
-                str);
-        break;
-
-    case ModelUrl:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::ModelUrl,
-                str);
-        break;
-
-    case SerialNumber:
-        context->getDevice()->setAttribute(
-                BrisaControlPointDevice::SerialNumber, str);
-        break;
-
-    case Upc:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::Upc, str);
-        break;
-
-    case Udn:
-        context->getDevice()->setAttribute(BrisaControlPointDevice::Udn, str);
-        break;
-
-    case PresentationUrl:
-        context->getDevice()->setAttribute(
-                BrisaControlPointDevice::PresentationUrl, str);
-        break;
-
-    case IconMimetype:
-        context->getIcon()->setAttribute(BrisaIcon::Mimetype, str);
-        break;
-
-    case IconUrl:
-        context->getIcon()->setAttribute(BrisaIcon::Url, str);
-        break;
-
-    case IconWidth:
-        context->getIcon()->setAttribute(BrisaIcon::Width, str);
-        break;
-
-    case IconHeight:
-        context->getIcon()->setAttribute(BrisaIcon::Height, str);
-        break;
-
-    case IconDepth:
-        context->getIcon()->setAttribute(BrisaIcon::Depth, str);
-        break;
-
-    case ServiceType:
-        context->getService()->setAttribute(
-                BrisaControlPointService::ServiceType, str);
-        break;
-
-    case ServiceId:
-        context->getService()->setAttribute(
-                BrisaControlPointService::ServiceId, str);
-        break;
-
-    case ServiceScpdUrl:
-        context->getService()->setAttribute(BrisaControlPointService::ScpdUrl,
-                str);
-        break;
-
-    case ServiceEventSubUrl:
-        context->getService()->setAttribute(
-                BrisaControlPointService::EventSubUrl, str);
-        break;
-
-    case ServiceControlUrl:
-        context->getService()->setAttribute(
-                BrisaControlPointService::ControlUrl, str);
-        break;
-
-        /*
-         * Shut up compiler warnings
-         */
-    case Start:
-    case Root:
-    case SpecVersion:
-    case Device:
-    case IconList:
-    case Icon:
-    case DeviceList:
-    case ServiceList:
-    case Service:
-    case Finished:
-    case Error:
-        break;
-    }
-
-    return true;
-}
-
-bool BrisaDeviceXMLHandlerCP::endElement(const QString &, const QString &,
-        const QString &) {
-
-    if (context->stateSkip) {
-        context->stateSkip--;
-        return true;
-    }
-
-    switch (context->state) {
-
-    case Root:
-        context->state = Finished;
-        break;
-
-    case Device:
-        if (context->hasParent()) {
-            /*
-             * Finished building an embedded device, parent existence means
-             * we're inside a DeviceList.
-             */
-            context->getParent()->getDevice()->addDevice(context->getDevice());
-            context->state = DeviceList;
-        } else {
-            /*
-             * Finished building the root device.
-             */
-            context->state = Root;
-        }
-
-        break;
-
-    case DeviceList:
-        if (!context->hasParent()) {
-            /*
-             * Finished building device list
-             */
-            context->state = Root;
-            break;
-        }
-
-        /*
-         * Switch back to previous context
-         */
-        BrisaDeviceParserContext *inner;
-        inner = context;
-        context = inner->getParent();
-        delete inner;
-        break;
-
-    case SpecVersion:
-    case UrlBase:
-        context->state = Root;
-        break;
-
-    case SpecVersionMajor:
-    case SpecVersionMinor:
-        context->state = SpecVersion;
-        break;
-
-    case IconList:
-    case Udn:
-    case SerialNumber:
-    case ModelUrl:
-    case ModelDescription:
-    case ModelName:
-    case Upc:
-    case PresentationUrl:
-    case Manufacturer:
-    case ManufacturerUrl:
-    case DeviceFriendlyName:
-    case DeviceType:
-    case ServiceList:
-        context->state = Device;
-        break;
-
-    case IconMimetype:
-    case IconWidth:
-    case IconHeight:
-    case IconDepth:
-    case IconUrl:
-        context->state = Icon;
-        break;
-
-    case Icon:
-        context->state = IconList;
-        context->getDevice()->addIcon(context->getIcon());
-        context->setIcon(NULL);
-        break;
-
-    case Service: {
-        context->state = ServiceList;
-        QStringList urlBase = context->getDevice()->getAttribute(BrisaControlPointDevice::UrlBase).split(":");
-        if (urlBase.size() > PORT_INDEX) {
-            QString port = urlBase[PORT_INDEX];
-            QString newPort = "";
-            quint8 index = 0;
-            while (port[index].isDigit()) {
-                newPort.append(port[index]);
-                index++;
+                    if (!f.fetch()) {
+                        device->addService(service);
+                    } else {
+                        // TODO handle error
+                        qWarning() << "Failed to dowload service XML.";
+                    }
+                }
             }
-            urlBase[PORT_INDEX] = newPort;
-            while (urlBase.size() > PORT_INDEX + 1) urlBase.pop_back();
+
+            QDomNodeList iconList = element.elementsByTagName("iconList");
+            if (iconList.size() > 0) {
+                QDomNodeList icons = iconList.at(0).toElement().elementsByTagName("icon");
+                for (int i = 0; i < icons.size(); i++) {
+                    QString mimetype = icons.at(0).toElement().elementsByTagName("mimetype").at(0).toElement().text();
+                    QString width = icons.at(0).toElement().elementsByTagName("width").at(0).toElement().text();
+                    QString height = icons.at(0).toElement().elementsByTagName("height").at(0).toElement().text();
+                    QString depth = icons.at(0).toElement().elementsByTagName("depth").at(0).toElement().text();
+                    QString url = icons.at(0).toElement().elementsByTagName("url").at(0).toElement().text();
+
+                    device->addIcon(new BrisaIcon(mimetype, width, height, depth, url));
+                }
+            }
+
+            QDomNodeList deviceList = element.elementsByTagName("deviceList");
+            for (int i = 0; i < deviceList.size(); i++) {
+                //TODO parse devices;
+            }
         }
-
-//        BrisaServiceFetcher *f = new BrisaServiceFetcher(context->getService(),
-//                context->getDevice()->getAttribute(
-//                        BrisaControlPointDevice::UrlBase)
-//                        + context->getService()->getAttribute(
-//                                BrisaControlPointService::ScpdUrl));
-        BrisaServiceFetcher *f = new BrisaServiceFetcher(context->getService(),
-                  urlBase.join(":") + context->getService()->
-                  getAttribute(BrisaControlPointService::ScpdUrl));
-
-        if (!f->fetch()) {
-            context->getDevice()->addService(context->getService());
-            context->setService(NULL);
-        } else {
-            // TODO handle error
-            qWarning() << "Failed to dowload service XML.";
-        }
-
-        delete f;
-        break;
+        n = n.nextSibling();
     }
-
-    case ServiceType:
-    case ServiceId:
-    case ServiceScpdUrl:
-    case ServiceControlUrl:
-    case ServiceEventSubUrl:
-        context->state = Service;
-        break;
-
-        /*
-         * Shut up compiler warnings
-         */
-    case Start:
-    case Finished:
-    case Error:
-        break;
-    }
-
-    return true;
 }
+

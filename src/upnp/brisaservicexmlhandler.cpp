@@ -54,7 +54,6 @@ void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
 
     reader->setContentHandler(this);
     reader->setErrorHandler(this);
-    qDebug() << "Brisa Service XML Handler: " << service->getAttribute(BrisaAbstractService::ServiceType);
     reader->parse(input);
 
     delete input;
@@ -200,7 +199,6 @@ bool BrisaServiceXMLHandler::startElement(const QString &, const QString &,
 
 bool BrisaServiceXMLHandler::characters(const QString &str) {
 
-    qDebug() << "Brisa Service XML Handler char: " << str << " " << context->getService()->getAttribute(BrisaAbstractService::ServiceType);
     switch (context->state) {
     case ServiceSpecVersionMajor:
         context->getService()->setAttribute(BrisaAbstractService::Major, str);
@@ -277,7 +275,6 @@ bool BrisaServiceXMLHandler::characters(const QString &str) {
 bool BrisaServiceXMLHandler::endElement(const QString &, const QString &,
         const QString &qName) {
 
-    qDebug() << "Brisa Service XML Handler end: " << qName;
     Q_UNUSED(qName);
 
     if (context->stateSkip) {

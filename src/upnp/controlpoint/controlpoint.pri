@@ -1,6 +1,6 @@
 HEADERS += controlpoint/brisacontrolpoint.h \
     controlpoint/brisacontrolpointdevice.h \
-    controlpoint/brisacontrolpointservice.h \  
+    controlpoint/brisacontrolpointservice.h \
     controlpoint/brisadeviceparsercontext.h \
     controlpoint/brisadevicexmlhandlercp.h \
     controlpoint/brisamsearchclientcp.h \

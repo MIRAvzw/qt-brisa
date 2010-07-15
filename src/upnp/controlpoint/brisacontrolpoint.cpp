@@ -118,6 +118,7 @@ void BrisaControlPoint::replyFinished(QNetworkReply *reply) {
         rootXml->write(reply->readAll());
         rootXml->seek(0);
         QUrl *urlBase = new QUrl(reply->url());
+
         BrisaControlPointDevice *device = new BrisaControlPointDevice(rootXml,
                 urlBase);
         /* Fix embedded devices host/port attributes */

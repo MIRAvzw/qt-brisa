@@ -140,6 +140,8 @@ public:
     BrisaDeviceParserContext(BrisaDeviceParserContext *parent = 0,
             BrisaControlPointDevice *target = 0);
 
+    void deleteService();
+
     /*!
      *  \internal
      *  \fn BrisaDeviceParserContext::getIcon()

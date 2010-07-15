@@ -40,13 +40,16 @@
 #include <QtDebug>
 #include <QtCore>
 #include <QObject>
+#include <QDomDocument>
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QTemporaryFile>
 
-#include "brisadeviceparsercontext.h"
+#include "brisaicon.h"
+#include "brisacontrolpointservice.h"
+#include "brisaglobal.h"
 
 namespace BrisaUpnp {
 
@@ -58,7 +61,7 @@ class BrisaControlPointDevice;
  *  \brief BrisaDeviceXMLHandlerCP creates a device from a xml description file, with all it's
  *  attributes, it lets it ready to be used.
  */
-class BRISA_UPNP_EXPORT BrisaDeviceXMLHandlerCP: public QXmlDefaultHandler {
+class BRISA_UPNP_EXPORT BrisaDeviceXMLHandlerCP {
 public:
 
 
@@ -71,56 +74,6 @@ public:
      */
     void parseDevice(BrisaControlPointDevice *device, QTemporaryFile *tmp);
 
-protected:
-
-    /*!
-     *  Method inherited from QXmlDefaultHandler it's called in every beginning tag, depending on tag
-     *  the context state passes to a different state so that it can process separately. It's
-     *  important to say that in each state it performs a different action.
-     */
-    bool startElement(const QString &namespaceURI, const QString &localName,
-            const QString &qName, const QXmlAttributes &attributes);
-
-    /*!
-     *  Method that is called in the tag end, this method add the attribute to the device so that
-     *  attributes can be initialized in device. It's important to say that in each state it performs a
-     *  different action.
-     */
-    bool endElement(const QString &namespaceURI, const QString &localName,
-            const QString &qName);
-
-    /*!
-     *  Method that set properly the attribute value to \str value that it is the content between the
-     *  beginning tag and the finish one. It's important to say that in each state it performs a
-     *  different action.
-     */
-    bool characters(const QString &str);
-
-private:
-
-    /*!
-     *  \property writer
-     *  \brief Object that write changes to a xml file.
-     */
-    QXmlStreamWriter *writer;
-
-    /*!
-     *  \property reader
-     *  \brief Object that do the xml parse.
-     */
-    QXmlSimpleReader *reader;
-
-    /*!
-     *  \property input
-     *  \brief input source that reader is going to use in the parser.
-     */
-    QXmlInputSource *input;
-
-    /*!
-     *  \property context
-     *  \brief Used to see what reading is going to be done and set device's attributes.
-     */
-    BrisaDeviceParserContext *context;
 };
 
 /*!

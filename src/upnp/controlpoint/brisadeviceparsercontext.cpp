@@ -8,3 +8,8 @@ BrisaDeviceParserContext::BrisaDeviceParserContext(
     stateSkip(0), state(Root), parent(parent), device(target), service(0),
             icon(0) {
 }
+
+void BrisaDeviceParserContext::deleteService()
+{
+//    delete service;
+}
