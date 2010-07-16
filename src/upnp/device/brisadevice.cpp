@@ -87,35 +87,65 @@ BrisaDevice::BrisaDevice(const QString &deviceType, const QString &friendlyName,
 
 BrisaDevice::BrisaDevice(const BrisaDevice &dev) :
 	QObject(dev.parent()),
+	iconList(dev.getIconList()),
+	serviceList(dev.getServiceList()),
+	embeddedDeviceList(dev.getEmbeddedDeviceList()),
+	urlBase(dev.getAttribute(BrisaDevice::UrlBase)),
+	deviceType(dev.getAttribute(BrisaDevice::DeviceType)),
+	friendlyName(dev.getAttribute(BrisaDevice::FriendlyName)),
+	manufacturer(dev.getAttribute(BrisaDevice::Manufacturer)),
+	manufacturerUrl(dev.getAttribute(BrisaDevice::ManufacturerUrl)),
+	modelDescription(dev.getAttribute(BrisaDevice::ModelDescription)),
+	modelName(dev.getAttribute(BrisaDevice::ModelName)),
+	modelNumber(dev.getAttribute(BrisaDevice::ModelNumber)),
+	modelUrl(dev.getAttribute(BrisaDevice::ModelUrl)),
+	serialNumber(dev.getAttribute(BrisaDevice::SerialNumber)),
+	udn(dev.getAttribute(BrisaDevice::Udn)),
+	upc(dev.getAttribute(BrisaDevice::Upc)),
+	presentationUrl(dev.getAttribute(BrisaDevice::PresentationUrl)),
+	location(dev.getAttribute(BrisaDevice::Location)),
+	server(dev.getAttribute(BrisaDevice::Server)),
+	ipAddress(dev.getAttribute(BrisaDevice::IpAddress)),
+	port(dev.getAttribute(BrisaDevice::Port).toInt()),
+	fileAddress(dev.getAttribute(BrisaDevice::FileAddress)),
+	running(dev.running) {
 
-	iconList(dev.getIconList()), serviceList(dev.getServiceList()),
-			embeddedDeviceList(dev.getEmbeddedDeviceList()), urlBase(
-					dev.getAttribute(BrisaDevice::UrlBase)), deviceType(
-					dev.getAttribute(BrisaDevice::DeviceType)), friendlyName(
-					dev.getAttribute(BrisaDevice::FriendlyName)), manufacturer(
-					dev.getAttribute(BrisaDevice::Manufacturer)),
-			manufacturerUrl(dev.getAttribute(BrisaDevice::ManufacturerUrl)),
-			modelDescription(dev.getAttribute(BrisaDevice::ModelDescription)),
-			modelName(dev.getAttribute(BrisaDevice::ModelName)), modelNumber(
-					dev.getAttribute(BrisaDevice::ModelNumber)), modelUrl(
-					dev.getAttribute(BrisaDevice::ModelUrl)), serialNumber(
-					dev.getAttribute(BrisaDevice::SerialNumber)), udn(
-					dev.getAttribute(BrisaDevice::Udn)), upc(dev.getAttribute(
-					BrisaDevice::Upc)), presentationUrl(dev.getAttribute(
-					BrisaDevice::PresentationUrl)),
-
-			location(dev.getAttribute(BrisaDevice::Location)), server(
-					dev.getAttribute(BrisaDevice::Server)), ipAddress(
-					dev.getAttribute(BrisaDevice::IpAddress)), port(
-					dev.getAttribute(BrisaDevice::Port).toInt()),
-
-			fileAddress(dev.getAttribute(BrisaDevice::FileAddress)), running(
-					dev.running) {
 	this->major = dev.getAttribute(BrisaDevice::Major);
 	this->minor = dev.getAttribute(BrisaDevice::Minor);
 
 	webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
 	ssdp = new BrisaSSDPServer();
+}
+
+BrisaDevice &BrisaDevice::operator=(const BrisaDevice &dev) {
+	if (this != &dev) {
+		this->iconList = dev.getIconList();
+		this->serviceList = dev.getServiceList();
+		this->embeddedDeviceList = dev.getEmbeddedDeviceList();
+
+		this->major = dev.getAttribute(BrisaDevice::Major);
+		this->minor = dev.getAttribute(BrisaDevice::Minor);
+		this->urlBase = dev.getAttribute(BrisaDevice::UrlBase);
+		this->deviceType = dev.getAttribute(BrisaDevice::DeviceType);
+		this->friendlyName = dev.getAttribute(BrisaDevice::FriendlyName);
+		this->manufacturer = dev.getAttribute(BrisaDevice::Manufacturer);
+		this->manufacturerUrl = dev.getAttribute(BrisaDevice::ManufacturerUrl);
+		this->modelDescription = dev.getAttribute(BrisaDevice::ModelDescription);
+		this->modelName = dev.getAttribute(BrisaDevice::ModelName);
+		this->modelNumber = dev.getAttribute(BrisaDevice::ModelNumber);
+		this->modelUrl = dev.getAttribute(BrisaDevice::ModelUrl);
+		this->serialNumber = dev.getAttribute(BrisaDevice::SerialNumber);
+		this->udn = dev.getAttribute(BrisaDevice::Udn);
+		this->upc = dev.getAttribute(BrisaDevice::Upc);
+		this->presentationUrl = dev.getAttribute(BrisaDevice::PresentationUrl);
+		this->location = dev.getAttribute(BrisaDevice::Location);
+		this->server = dev.getAttribute(BrisaDevice::Server);
+		this->ipAddress = dev.getAttribute(BrisaDevice::IpAddress);
+		this->port = dev.getAttribute(BrisaDevice::Port).toInt();
+		this->fileAddress = dev.getAttribute(BrisaDevice::FileAddress);
+		this->running = dev.running;
+	}
+	return *this;
 }
 
 BrisaDevice::~BrisaDevice() {
@@ -135,38 +165,6 @@ BrisaDevice::~BrisaDevice() {
 void BrisaDevice::xmlGenerator() {
 	BrisaDeviceXMLHandler handler;
 	handler.xmlGenerator(this, &descriptionFile);
-}
-
-BrisaDevice &BrisaDevice::operator=(const BrisaDevice &dev) {
-	this->iconList = dev.getIconList();
-	this->serviceList = dev.getServiceList();
-	this->embeddedDeviceList = dev.getEmbeddedDeviceList();
-
-	this->major = dev.getAttribute(BrisaDevice::Major);
-	this->minor = dev.getAttribute(BrisaDevice::Minor);
-	this->urlBase = dev.getAttribute(BrisaDevice::UrlBase);
-	this->deviceType = dev.getAttribute(BrisaDevice::DeviceType);
-	this->friendlyName = dev.getAttribute(BrisaDevice::FriendlyName);
-	this->manufacturer = dev.getAttribute(BrisaDevice::Manufacturer);
-	this->manufacturerUrl = dev.getAttribute(BrisaDevice::ManufacturerUrl);
-	this->modelDescription = dev.getAttribute(BrisaDevice::ModelDescription);
-	this->modelName = dev.getAttribute(BrisaDevice::ModelName);
-	this->modelNumber = dev.getAttribute(BrisaDevice::ModelNumber);
-	this->modelUrl = dev.getAttribute(BrisaDevice::ModelUrl);
-	this->serialNumber = dev.getAttribute(BrisaDevice::SerialNumber);
-	this->udn = dev.getAttribute(BrisaDevice::Udn);
-	this->upc = dev.getAttribute(BrisaDevice::Upc);
-	this->presentationUrl = dev.getAttribute(BrisaDevice::PresentationUrl);
-
-	this->location = dev.getAttribute(BrisaDevice::Location);
-	this->server = dev.getAttribute(BrisaDevice::Server);
-	this->ipAddress = dev.getAttribute(BrisaDevice::IpAddress);
-	this->port = dev.getAttribute(BrisaDevice::Port).toInt();
-
-	this->fileAddress = dev.getAttribute(BrisaDevice::FileAddress);
-	this->running = dev.running;
-
-	return *this;
 }
 
 void BrisaDevice::setAttribute(xmlTags key, const QString &v) {

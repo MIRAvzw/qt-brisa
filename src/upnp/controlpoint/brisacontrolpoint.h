@@ -9,7 +9,6 @@
  * Authors: Andre Dieb Martins <andre.dieb@gmail.com>      @since 2009
  *          Jeysibel de Sousa Dantas <jeysibel@gmail.com>  @since 06/04/2010
  *
- *
  * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
  * BRisa-Qt is free software: you can redistribute it and/or modify
@@ -31,7 +30,6 @@
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QObject>
 #include <QMap>
 #include <BrisaCore>
 

@@ -28,13 +28,10 @@
 #ifndef _BRISADEVICE_H
 #define _BRISADEVICE_H
 
-#include <QString>
-#include <QList>
 #include <QXmlDefaultHandler>
 #include <QNetworkInterface>
 #include <QNetworkAddressEntry>
 #include <QtDebug>
-#include <QObject>
 #include <BrisaCore>
 
 #include "brisanetwork.h"
