@@ -39,8 +39,6 @@
 #include "brisaicon.h"
 #include "brisaglobal.h"
 
-//using namespace BrisaCore;
-
 namespace BrisaUpnp {
 
 class BrisaSSDPServer;
