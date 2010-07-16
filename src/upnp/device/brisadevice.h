@@ -75,20 +75,23 @@ public:
      *  Creates a BrisaDevice with the given parent QObject.
      */
     BrisaDevice(QObject *parent = 0);
+
     /*!
      *  Copy constructor.
      */
     BrisaDevice(const BrisaDevice &dev);
+
     /*!
      *  Creates a BrisaDevice with the given device information.
      */
-    BrisaDevice(const QString &deviceType, QString friendlyName = "",
-            const QString &manufacturer = "", const QString &manufacturerURL =
-                    "", const QString &modelDescription = "",
-            const QString &modelName = "", const QString &modelNumber = "",
-            const QString &modelURL = "", const QString &serialNumber = "",
-            const QString &UDN = "", const QString &UPC = "",
-            const QString &presentationURL = "", QObject *parent = 0);
+    BrisaDevice(const QString &deviceType, const QString &friendlyName = "",
+            const QString &manufacturer = "", const QString &manufacturerURL = "",
+	    const QString &modelDescription = "", const QString &modelName = "",
+	    const QString &modelNumber = "", const QString &modelURL = "",
+	    const QString &serialNumber = "", const QString &UDN = "",
+	    const QString &UPC = "", const QString &presentationURL = "",
+	    QObject *parent = 0);
+
     /*!
      *  Destructor for BrisaDevice.
      *  Stops the device if running.
@@ -129,6 +132,7 @@ public:
      *  \sa getAttribute()
      */
     void setAttribute(xmlTags key, const QString &value);
+
     /*!
      *  Attribute getter.
      *  \sa setAttribute()
@@ -156,6 +160,7 @@ public:
      *  \sa BrisaUpnp::BrisaService
      */
     void addService(BrisaService *serv);
+
     /*!
      *  Creates and adds a embedded device with the given information to the device.
      */
@@ -167,24 +172,28 @@ public:
             const QString &modelURL = "", const QString &serialNumber = "",
             const QString &UDN = "", const QString &UPC = "",
             const QString &presentationURL = "");
+
     /*!
      *  Overloads addEmbeddedDevice()
      *  Create a new \a BrisaDevice and call this method to add it as a embedded device to a root
      *  device. We recommend using this method for better object orientation.
      */
     void addEmbeddedDevice(BrisaDevice *newEmbeddedDevice);
+
     /*!
      *  Returns the icon list.
      *
      *  \sa getEmbeddedDeviceList() , getServiceList()
      */
     QList<BrisaIcon> getIconList() const;
+
     /*!
      *  Returns the service list.
      *
      *  \sa getEmbeddedDeviceList() , getIconList()
      */
     QList<BrisaService *> getServiceList() const;
+
     /*!
      *  Returns the embedded device list.
      *
@@ -196,6 +205,7 @@ public:
      *  Getter for BrisaService in the service list.
      */
     BrisaService *getServiceById(const QString &serviceId);
+
     /*!
      *  Getter for BrisaService in the service list.
      */
@@ -211,17 +221,20 @@ public:
      *  UPnP 1.0 especification.
      */
     void doNotify();
+
     /*!
      *  Sends the ssdp:byebye messages for root device, embedded devices and services according to the
      *  UPnP 1.0 especification.
      */
     void doByeBye();
+
     /*!
      *  Call this method to join the network and start the device.
      *
      *  \sa stop()
      */
     void start();
+
     /*!
      *  Stops the device and leaves the network.
      *
@@ -231,7 +244,7 @@ public:
 
 public slots:
     /*!
-     *  Slot connected to the msearchRequestReceived() signal comming from the ssdp module. It parses
+     *  Connects to the msearchRequestReceived() signal comming from the ssdp module. It parses
      *  the search type and responds accordingly.
      *
      *  \sa respondMSearchAll()
@@ -264,10 +277,12 @@ private:
      *  valid URLs in the webserver.
      */
     void buildWebServerTree();
+
     /*!
      *  Starts the webserver.
      */
     void startWebServer();
+
     /*!
      *  Responds the msearch in case of a "ssdp:all" search type.
      *
@@ -275,6 +290,7 @@ private:
      */
     void respondMSearchAll(const QString &senderIp, quint16 senderPort,
             const QString &sDate);
+
     /*!
      *  Returns true if the device is running.
      */

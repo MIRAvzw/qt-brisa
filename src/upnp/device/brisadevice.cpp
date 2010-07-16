@@ -46,7 +46,7 @@ BrisaDevice::BrisaDevice(QObject *parent) :
 			SLOT(respondMSearch(QString, QString, quint16)));
 }
 
-BrisaDevice::BrisaDevice(const QString &deviceType, QString friendlyName,
+BrisaDevice::BrisaDevice(const QString &deviceType, const QString &friendlyName,
 		const QString &manufacturer, const QString &manufacturerURL,
 		const QString &modelDescription, const QString &modelName,
 		const QString &modelNumber, const QString &modelURL,
@@ -67,8 +67,9 @@ BrisaDevice::BrisaDevice(const QString &deviceType, QString friendlyName,
 			upc(UPC),
 			presentationUrl(presentationURL),
 			server("BRisa Webserver UPnP/1.0 " + modelName + " " + modelNumber),
-			fileAddress(friendlyName.remove(QChar(' ')).append(".xml")),
+			fileAddress(QString(friendlyName).remove(QChar(' ')).append(".xml")),
 			running(false) {
+
 	this->discoverNetworkAddress();
 	this->buildUrlBase();
 	this->location = urlBase + "/" + fileAddress;

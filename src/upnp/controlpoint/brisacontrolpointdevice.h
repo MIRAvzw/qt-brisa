@@ -70,7 +70,7 @@ public:
      *  \param url \a empty
      *  \param parent \a empty
      */
-            BrisaControlPointDevice(QTemporaryFile *xml, QUrl *url,
+    BrisaControlPointDevice(QTemporaryFile *xml, QUrl *url,
                     QObject *parent = 0);
 
     /*!
