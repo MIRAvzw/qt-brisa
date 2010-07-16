@@ -32,18 +32,19 @@
 #include <QNetworkInterface>
 #include <QNetworkAddressEntry>
 #include <QtDebug>
-#include <BrisaCore>
 
 #include "brisanetwork.h"
 #include "brisadevicexmlhandler.h"
 #include "brisaservice.h"
-#include "brisassdpserver.h"
 #include "brisaicon.h"
 #include "brisaglobal.h"
 
-using namespace BrisaCore;
+//using namespace BrisaCore;
 
 namespace BrisaUpnp {
+
+class BrisaSSDPServer;
+
 /*!
  *  \class BrisaUpnp::BrisaDevice brisadevice.h BrisaUpnp/BrisaDevice
  *  \brief UPnP device implementation

@@ -35,15 +35,14 @@
 
 #include "brisanetwork.h"
 #include "brisacontrolpointdevice.h"
-#include "brisacontrolpointservice.h"
 #include "brisaeventproxy.h"
-#include "brisamsearchclientcp.h"
-#include "brisassdpclient.h"
 #include "brisaglobal.h"
 
-using namespace BrisaCore;
-
 namespace BrisaUpnp {
+
+class BrisaSSDPClient;
+class BrisaMSearchClientCP;
+class BrisaControlPointService;
 
 /*!
  *    \class BrisaUpnp::BrisaControlPoint brisacontrolpoint.h BrisaUpnp/BrisaControlPoint

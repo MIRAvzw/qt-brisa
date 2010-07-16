@@ -36,8 +36,6 @@
 
 #include <BrisaCore>
 
-#include <QObject>
-
 using namespace BrisaCore;
 
 namespace BrisaUpnp {
