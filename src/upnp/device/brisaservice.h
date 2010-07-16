@@ -33,11 +33,9 @@
 #include "brisaeventcontroller.h"
 #include "brisaactionxmlparser.h"
 
-#include <BrisaCore>
-
-using namespace BrisaCore;
-
 namespace BrisaUpnp {
+
+using BrisaCore::BrisaWebService;
 
 /*!
  *  \class BrisaUpnp::BrisaService brisaservice.h BrisaUpnp/BrisaService

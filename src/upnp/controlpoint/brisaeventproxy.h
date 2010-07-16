@@ -40,9 +40,10 @@
 #include <QObject>
 #include <QtXml>
 
-using namespace BrisaCore;
-
 namespace BrisaUpnp {
+
+using BrisaCore::BrisaWebserver;
+using BrisaCore::BrisaWebService;
 
 /*!
  *  \class BrisaUpnp::BrisaEventProxy brisaeventproxy.h BrisaUpnp/BrisaEventProxy

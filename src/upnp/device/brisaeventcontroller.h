@@ -36,9 +36,11 @@
 
 #include <BrisaCore>
 
-using namespace BrisaCore;
-
 namespace BrisaUpnp {
+
+using BrisaCore::BrisaWebService;
+using BrisaCore::BrisaWebServiceProvider;
+using BrisaCore::BrisaWebserver;
 
 /*!
  * \internal
@@ -51,8 +53,8 @@ class BRISA_UPNP_EXPORT BrisaEventController: public BrisaWebService {
 Q_OBJECT
 
 public:
-    BrisaEventController(QxtAbstractWebSessionManager *sessionManager, QList<
-            BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
+    BrisaEventController(QxtAbstractWebSessionManager *sessionManager,
+	    QList<BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
     /*!
      * Destructor.
      */

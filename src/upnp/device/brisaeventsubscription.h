@@ -31,15 +31,11 @@
 #include "brisaabstracteventsubscription.h"
 #include "brisaglobal.h"
 
-#include <BrisaCore>
-
 #include <QDateTime>
 #include <QList>
 #include <QString>
 #include <QHttpResponseHeader>
 #include <QObject>
-
-using namespace BrisaCore;
 
 namespace BrisaUpnp {
 
