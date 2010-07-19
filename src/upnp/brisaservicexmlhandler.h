@@ -30,45 +30,20 @@
 #ifndef _BRISAABSTRACTSERVICEXMLHANDLER_H
 #define _BRISAABSTRACTSERVICEXMLHANDLER_H
 
-#include <QXmlDefaultHandler>
-#include <QXmlSimpleReader>
-#include <QXmlStreamWriter>
-#include <QXmlInputSource>
-#include <QXmlAttributes>
 #include <QIODevice>
 #include <QString>
+#include <QDomDocument>
 
 #include "brisaserviceparsercontext.h"
 
 namespace BrisaUpnp {
 
-class BRISA_UPNP_EXPORT BrisaServiceXMLHandler: public QXmlDefaultHandler {
+class BRISA_UPNP_EXPORT BrisaServiceXMLHandler {
 public:
-    void parseService(BrisaAbstractService *service, QIODevice *scpd);
     BrisaServiceXMLHandler();
     ~BrisaServiceXMLHandler();
 
-protected:
-    bool startElement(const QString &namespaceURI, const QString &localName,
-            const QString &qName, const QXmlAttributes &attributes);
-    bool endElement(const QString &namespaceURI, const QString &localName,
-            const QString &qName);
-    bool characters(const QString &str);
-
-private:
-    BrisaAbstractService *serv;
-
-    QXmlStreamWriter *writer;
-    QXmlSimpleReader *reader;
-    QXmlInputSource *input;
-
-    QString textSwap;
-
-//    BrisaAction *actionSwap;
-//    BrisaStateVariable *stateVariableSwap;
-//    BrisaArgument *argumentSwap;
-
-    BrisaServiceParserContext *context;
+    void parseService(BrisaAbstractService *service, QIODevice *scpd);
 };
 
 }

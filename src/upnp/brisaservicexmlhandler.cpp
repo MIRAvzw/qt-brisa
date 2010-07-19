@@ -31,343 +31,78 @@
 
 using namespace BrisaUpnp;
 
-BrisaServiceXMLHandler::BrisaServiceXMLHandler() : QXmlDefaultHandler()
+BrisaServiceXMLHandler::BrisaServiceXMLHandler()
 {
 }
 BrisaServiceXMLHandler::~BrisaServiceXMLHandler()
 {
-    delete context;
-//    delete actionSwap;
-//    delete stateVariableSwap;
-//    delete argumentSwap;
-//    delete writer;
 }
 
 void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
         QIODevice *scpd) {
-    context = new BrisaServiceParserContext(NULL, service);
-    input = new QXmlInputSource(scpd);
-    reader = new QXmlSimpleReader();
 
-    context->state = ServiceStart;
-    context->stateSkip = 0;
+    QDomDocument doc("service");
+    doc.setContent(scpd);
+    QDomElement element = doc.documentElement();
+    if (element.tagName() != "scpd")
+        return;
 
-    reader->setContentHandler(this);
-    reader->setErrorHandler(this);
-    reader->parse(input);
-
-    delete input;
-    delete reader;
-}
-
-bool BrisaServiceXMLHandler::startElement(const QString &, const QString &,
-        const QString &qName, const QXmlAttributes &attribute) {
-    switch (context->state) {
-    case ServiceStart:
-        if (qName == "scpd")
-            context->state = Scpd;
-        else
-            context->state = ServiceError;
-        break;
-
-    case Scpd:
-        if (qName == "specVersion")
-            context->state = ServiceSpecVersion;
-        else if (qName == "actionList")
-            context->state = ActionList;
-        else if (qName == "serviceStateTable")
-            context->state = ServiceStateTable;
-        else
-            context->stateSkip++;
-        break;
-
-    case ServiceSpecVersion:
-        if (qName == "major")
-            context->state = ServiceSpecVersionMajor;
-        else if (qName == "minor")
-            context->state = ServiceSpecVersionMinor;
-        else
-            context->stateSkip++;
-        break;
-
-    case ActionList:
-        if (qName == "action") {
-            context->state = Action;
-        } else
-            context->stateSkip++;
-        break;
-
-    case Action:
-        if (!context->getAction())
-            context->setAction(new BrisaAction());
-
-        if (qName == "name")
-            context->state = ActionName;
-        else if (qName == "argumentList")
-            context->state = ArgumentList;
-        else
-            context->stateSkip++;
-        break;
-
-    case ArgumentList:
-        if (qName == "argument")
-            context->state = Argument;
-        else
-            context->stateSkip++;
-        break;
-
-    case Argument:
-        if (!context->getArgument())
-            context->setArgument(new BrisaArgument());
-        if (qName == "name")
-            context->state = ArgumentName;
-        else if (qName == "direction")
-            context->state = ArgumentDirection;
-        else if (qName == "relatedStateVariable")
-            context->state = RelatedStateVariable;
-        else
-            context->stateSkip++;
-        break;
-
-    case ServiceStateTable:
-        if (qName == "stateVariable")
-            context->state = StateVariable;
-        if (!context->getStateVariable()) {
-            context->setStateVariable(new BrisaStateVariable());
-            context->getStateVariable()->setAttribute(
-                    BrisaStateVariable::SendEvents, attribute.value(
-                            "sendEvents"));
-        } else
-            context->stateSkip++;
-        break;
-
-    case StateVariable:
-        if (qName == "name")
-            context->state = StateVariableName;
-        else if (qName == "dataType")
-            context->state = StateVariableDataType;
-        else if (qName == "defaultValue")
-            context->state = StateVariableDefaultValue;
-        else if (qName == "allowedValueList")
-            context->state = StateVariableAllowedValueList;
-        else if (qName == "allowedValueRange")
-            context->state = StateVariableAllowedValueRange;
-        else
-            context->stateSkip++;
-        break;
-
-    case StateVariableAllowedValueList:
-        if (qName == "allowedValue")
-            context->state = StateVariableAllowedValue;
-        else
-            context->stateSkip++;
-        break;
-
-    case StateVariableAllowedValueRange:
-        if (qName == "minimum")
-            context->state = StateVariableAllowedValueRangeMinimum;
-        else if (qName == "maximum")
-            context->state = StateVariableAllowedValueRangeMaximum;
-        else if (qName == "step")
-            context->state = StateVariableAllowedValueRangeStep;
-        else
-            context->stateSkip++;
-        break;
-
-    case ServiceSpecVersionMajor:
-    case ServiceSpecVersionMinor:
-    case ActionName:
-    case ArgumentName:
-    case ArgumentDirection:
-    case RelatedStateVariable:
-    case StateVariableName:
-    case StateVariableDataType:
-    case StateVariableDefaultValue:
-    case StateVariableAllowedValue:
-    case StateVariableAllowedValueRangeMinimum:
-    case StateVariableAllowedValueRangeMaximum:
-    case StateVariableAllowedValueRangeStep:
-        break;
-
-    default:
-        context->stateSkip++;
-        break;
-    }
-
-    return true;
-}
-
-bool BrisaServiceXMLHandler::characters(const QString &str) {
-
-    switch (context->state) {
-    case ServiceSpecVersionMajor:
-        context->getService()->setAttribute(BrisaAbstractService::Major, str);
-        break;
-
-    case ServiceSpecVersionMinor:
-        context->getService()->setAttribute(BrisaAbstractService::Minor, str);
-        break;
-
-    case ActionName:
-        context->getAction()->setName(str);
-        break;
-
-    case ArgumentName:
-        context->getArgument()->setAttribute(BrisaArgument::ArgumentName, str);
-        break;
-
-    case ArgumentDirection:
-        context->getArgument()->setAttribute(BrisaArgument::Direction, str);
-        break;
-
-    case RelatedStateVariable:
-        context->getArgument()->setAttribute(
-                BrisaArgument::RelatedStateVariable, str);
-        break;
-
-    case StateVariableName:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::Name, str);
-        break;
-
-    case StateVariableDataType:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::DataType,
-                str);
-        break;
-
-    case StateVariableDefaultValue:
-        context->getStateVariable()->setAttribute(
-                BrisaStateVariable::DefaultValue, str);
-        break;
-
-    case StateVariableAllowedValue:
-        context->getStateVariable()->addAllowedValue(str);
-        break;
-
-    case StateVariableAllowedValueRangeMinimum:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::Minimum,
-                str);
-        break;
-    case StateVariableAllowedValueRangeMaximum:
-        context->getStateVariable()->setAttribute(BrisaStateVariable::Maximum,
-                str);
-        break;
-
-    case ServiceStart:
-    case Scpd:
-    case ServiceSpecVersion:
-    case ActionList:
-    case Action:
-    case ArgumentList:
-    case Argument:
-    case ServiceStateTable:
-    case StateVariable:
-    case StateVariableAllowedValueList:
-    case StateVariableAllowedValueRange:
-    case StateVariableAllowedValueRangeStep:
-    case ServiceError:
-    case ServiceFinished:
-        break;
-    }
-
-    return true;
-}
-
-bool BrisaServiceXMLHandler::endElement(const QString &, const QString &,
-        const QString &qName) {
-
-    Q_UNUSED(qName);
-
-    if (context->stateSkip) {
-        context->stateSkip--;
-        return true;
-    }
-
-    switch (context->state) {
-
-    case Scpd:
-        context->state = ServiceFinished;
-        break;
-
-    case ServiceSpecVersion:
-    case ActionList:
-    case ServiceStateTable:
-        context->state = Scpd;
-        break;
-
-    case ServiceSpecVersionMajor:
-    case ServiceSpecVersionMinor:
-        context->state = ServiceSpecVersion;
-        break;
-
-    case Action: {
-        // check if there is another action with the same name of this one
-        BrisaAction *contextAction = context->getAction();
-        BrisaAbstractService *contextService = context->getService();
-        BrisaAction *actionLikeThis = contextService->getAction(
-                contextAction->getName());
-
-        if (actionLikeThis) {
-            actionLikeThis->addArguments(contextAction->getArgumentList());
-
-            contextAction->clearArgumentList();
-            //so it won't delete the arguments in the heap those are pointed to by actionLikeThis
-            //during its destruction
-            delete contextAction;
-        } else {
-            context->getService()->addAction(contextAction);
+    QDomNode n = element.firstChild();
+    while (!n.isNull()) {
+        element = n.toElement();
+        if (element.tagName() == "specVersion") {
+            QString major = element.elementsByTagName("major").at(0).toElement().text();
+            QString minor = element.elementsByTagName("minor").at(0).toElement().text();
+            service->setAttribute(BrisaAbstractService::Major, major);
+            service->setAttribute(BrisaAbstractService::Minor, minor);
         }
+        if (element.tagName() == "actionList") {
+            QDomNodeList actionList = element.elementsByTagName("action");
+            for (int i = 0; i < actionList.size(); i++) {
+                QString name = actionList.at(i).toElement().elementsByTagName("name").at(0).toElement().text();
+                BrisaAction *action = new BrisaAction();
+                action->setName(name);
+                QDomNode argumentList = actionList.at(i).toElement().elementsByTagName("argumentList").at(0);
+                QDomNodeList arguments = argumentList.toElement().elementsByTagName("argument");
+                for (int i = 0; i < arguments.size(); i++) {
+                    QString argumentName = arguments.at(0).toElement().elementsByTagName("name").at(0).toElement().text();
+                    QString direction = arguments.at(0).toElement().elementsByTagName("direction").at(0).toElement().text();
+                    QString relatedStateVariable = arguments.at(0).toElement().elementsByTagName("relatedStateVariable").at(0).toElement().text();
+                    if (argumentName.isEmpty() || direction.isEmpty())
+                        break;
+                    action->addArgument(new BrisaArgument(argumentName, direction, relatedStateVariable));
+                }
+                service->addAction(action);
+            }
+        }
+        if (element.tagName() == "serviceStateTable") {
+            QDomNodeList stateVariables = element.elementsByTagName("stateVariable");
+            for (int i = 0; i < stateVariables.size(); i++) {
+                BrisaStateVariable *stateVariable = new BrisaStateVariable();
+                QString sendEvents = stateVariables.at(i).toElement().attribute("sendEvents");
+                QString name = stateVariables.at(i).toElement().elementsByTagName("name").at(0).toElement().text();
+                QString dataType = stateVariables.at(i).toElement().elementsByTagName("dataType").at(0).toElement().text();
+                QString defaultValue = stateVariables.at(i).toElement().elementsByTagName("defaultValue").at(0).toElement().text();
+                stateVariable->setAttribute(BrisaStateVariable::SendEvents, sendEvents);
+                stateVariable->setAttribute(BrisaStateVariable::Name, name);
+                stateVariable->setAttribute(BrisaStateVariable::DataType, dataType);
+                stateVariable->setAttribute(BrisaStateVariable::DefaultValue, defaultValue);
+                QDomNode allowedValueList = stateVariables.at(i).toElement().elementsByTagName("allowedValueList").at(0);
+                QDomNodeList allowedValues = allowedValueList.toElement().elementsByTagName("allowedValue");
+                for (int j = 0; j < allowedValues.size(); j++)
+                    stateVariable->addAllowedValue(allowedValues.at(j).toElement().text());
 
-        context->setAction(NULL);
-        context->state = ActionList;
-        break;
+                QDomNodeList allowedValueRange = stateVariables.at(i).toElement().elementsByTagName("allowedValueRange");
+                QString minumim = allowedValueRange.at(0).toElement().elementsByTagName("minimum").at(0).toElement().text();
+                QString maximum = allowedValueRange.at(0).toElement().elementsByTagName("maximum").at(0).toElement().text();
+                QString step = allowedValueRange.at(0).toElement().elementsByTagName("step").at(0).toElement().text();
+                stateVariable->setAttribute(BrisaStateVariable::Minimum, minumim);
+                stateVariable->setAttribute(BrisaStateVariable::Maximum, maximum);
+                stateVariable->setAttribute(BrisaStateVariable::Step, step);
+                service->addStateVariable(stateVariable);
+            }
+        }
+        n = n.nextSibling();
     }
 
-    case ActionName:
-    case ArgumentList:
-        context->state = Action;
-        break;
-
-    case Argument:
-        context->getAction()->addArgument(context->getArgument());
-        context->setArgument(NULL);
-        context->state = ArgumentList;
-        break;
-
-    case ArgumentName:
-    case ArgumentDirection:
-    case RelatedStateVariable:
-        context->state = Argument;
-        break;
-
-    case StateVariable:
-        context->getService()->addStateVariable(context->getStateVariable());
-        context->setStateVariable(NULL);
-        context->state = ServiceStateTable;
-        break;
-
-    case StateVariableName:
-    case StateVariableDataType:
-    case StateVariableDefaultValue:
-    case StateVariableAllowedValueList:
-    case StateVariableAllowedValueRange:
-        context->state = StateVariable;
-        break;
-
-    case StateVariableAllowedValue:
-        context->state = StateVariableAllowedValueList;
-        break;
-
-    case StateVariableAllowedValueRangeMinimum:
-    case StateVariableAllowedValueRangeMaximum:
-    case StateVariableAllowedValueRangeStep:
-        context->state = StateVariableAllowedValueRange;
-        break;
-
-    case ServiceStart:
-    case ServiceFinished:
-    case ServiceError:
-        break;
-    }
-
-    return true;
 }

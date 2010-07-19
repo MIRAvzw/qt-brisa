@@ -29,11 +29,6 @@
 #ifndef _BRISADEVICEXMLHANDLER_H
 #define _BRISADEVICEXMLHANDLER_H
 
-#include <QXmlDefaultHandler>
-#include <QXmlSimpleReader>
-#include <QXmlStreamWriter>
-#include <QXmlInputSource>
-#include <QXmlAttributes>
 #include <QMainWindow>
 #include <QIODevice>
 #include <QString>

@@ -43,8 +43,7 @@ void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device,
     QDomElement element = document.documentElement();
     if (element.tagName() != "root")
         return;
-    QDomNode n;
-    n = element.firstChild();
+    QDomNode n = element.firstChild();
     while (!n.isNull()) {
         element = n.toElement();
         if (element.tagName() == "specVersion") {
