@@ -34,7 +34,11 @@
 #include <QString>
 #include <QDomDocument>
 
-#include "brisaserviceparsercontext.h"
+#include "brisaaction.h"
+#include "brisaargument.h"
+#include "brisastatevariable.h"
+#include "brisaabstractservice.h"
+#include "brisaglobal.h"
 
 namespace BrisaUpnp {
 

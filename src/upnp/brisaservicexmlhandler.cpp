@@ -94,12 +94,18 @@ void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
                     stateVariable->addAllowedValue(allowedValues.at(j).toElement().text());
 
                 QDomNodeList allowedValueRange = stateVariables.at(i).toElement().elementsByTagName("allowedValueRange");
-                QString minumim = allowedValueRange.at(0).toElement().elementsByTagName("minimum").at(0).toElement().text();
-                QString maximum = allowedValueRange.at(0).toElement().elementsByTagName("maximum").at(0).toElement().text();
-                QString step = allowedValueRange.at(0).toElement().elementsByTagName("step").at(0).toElement().text();
-                stateVariable->setAttribute(BrisaStateVariable::Minimum, minumim);
-                stateVariable->setAttribute(BrisaStateVariable::Maximum, maximum);
-                stateVariable->setAttribute(BrisaStateVariable::Step, step);
+                if (allowedValueRange.size() > 0) {
+                    QString minimum = allowedValueRange.at(0).toElement().elementsByTagName("minimum").at(0).toElement().text();
+                    QString maximum = allowedValueRange.at(0).toElement().elementsByTagName("maximum").at(0).toElement().text();
+                    if (minimum.isEmpty() || maximum.isEmpty()) {
+                        continue;
+                    }
+                    QString step = allowedValueRange.at(0).toElement().elementsByTagName("step").at(0).toElement().text();
+                    stateVariable->setAttribute(BrisaStateVariable::Minimum, minimum);
+                    stateVariable->setAttribute(BrisaStateVariable::Maximum, maximum);
+                    if (!step.isEmpty())
+                        stateVariable->setAttribute(BrisaStateVariable::Step, step);
+                }
                 service->addStateVariable(stateVariable);
             }
         } else
