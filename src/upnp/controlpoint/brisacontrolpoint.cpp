@@ -132,9 +132,7 @@ void BrisaControlPoint::replyFinished(QNetworkReply *reply) {
         rootXml->remove();
         delete rootXml;
         delete urlBase;
-
-        //
-//        delete reply;
+        reply->deleteLater();
 
         emit deviceFound(device);
     }
@@ -143,7 +141,6 @@ void BrisaControlPoint::replyFinished(QNetworkReply *reply) {
 void BrisaControlPoint::deviceFound(QString, QString location, QString,
         QString, QString, QString) {
     QNetworkReply* reply = downloader->get(QNetworkRequest(QUrl(location)));
-   // delete reply;
 }
 
 void BrisaControlPoint::deviceRemoved(const QString usn) {

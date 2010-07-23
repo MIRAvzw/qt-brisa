@@ -55,27 +55,28 @@ void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
             QString minor = element.elementsByTagName("minor").at(0).toElement().text();
             service->setAttribute(BrisaAbstractService::Major, major);
             service->setAttribute(BrisaAbstractService::Minor, minor);
-        }
-        if (element.tagName() == "actionList") {
+        } else if (element.tagName() == "actionList") {
             QDomNodeList actionList = element.elementsByTagName("action");
             for (int i = 0; i < actionList.size(); i++) {
                 QString name = actionList.at(i).toElement().elementsByTagName("name").at(0).toElement().text();
-                BrisaAction *action = new BrisaAction();
-                action->setName(name);
+                BrisaAction *action;
+                if (service->getAction(name)) {
+                    action = service->getAction(name);
+                } else {
+                    action = new BrisaAction();
+                    action->setName(name);
+                }
                 QDomNode argumentList = actionList.at(i).toElement().elementsByTagName("argumentList").at(0);
                 QDomNodeList arguments = argumentList.toElement().elementsByTagName("argument");
                 for (int i = 0; i < arguments.size(); i++) {
                     QString argumentName = arguments.at(0).toElement().elementsByTagName("name").at(0).toElement().text();
                     QString direction = arguments.at(0).toElement().elementsByTagName("direction").at(0).toElement().text();
                     QString relatedStateVariable = arguments.at(0).toElement().elementsByTagName("relatedStateVariable").at(0).toElement().text();
-                    if (argumentName.isEmpty() || direction.isEmpty())
-                        break;
-                    action->addArgument(new BrisaArgument(argumentName, direction, relatedStateVariable));
+                    action->addArgument(argumentName, direction, relatedStateVariable);
                 }
                 service->addAction(action);
             }
-        }
-        if (element.tagName() == "serviceStateTable") {
+        } else if (element.tagName() == "serviceStateTable") {
             QDomNodeList stateVariables = element.elementsByTagName("stateVariable");
             for (int i = 0; i < stateVariables.size(); i++) {
                 BrisaStateVariable *stateVariable = new BrisaStateVariable();
@@ -101,8 +102,8 @@ void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
                 stateVariable->setAttribute(BrisaStateVariable::Step, step);
                 service->addStateVariable(stateVariable);
             }
-        }
+        } else
+            return;
         n = n.nextSibling();
     }
-
 }

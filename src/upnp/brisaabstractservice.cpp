@@ -170,6 +170,10 @@ QString BrisaAbstractService::getAttribute(xmlTags key) {
 }
 
 void BrisaAbstractService::addAction(const QString &name) {
+    // must not add actions named as an already added action
+    if (this->getAction(name))
+        return;
+
     this->addAction(new BrisaAction(name));
 }
 
