@@ -27,8 +27,8 @@
  *
  */
 
-#ifndef _BRISADEVICE_H
-#define _BRISADEVICE_H
+#ifndef _BRISACONTROLPOINTDEVICE_H
+#define _BRISACONTROLPOINTDEVICE_H
 
 #include <QString>
 #include <QList>
@@ -256,5 +256,5 @@ private:
 
 }
 
-#endif /* _BRISADEVICE_H */
+#endif /* _BRISACONTROLPOINTDEVICE_H */
 
