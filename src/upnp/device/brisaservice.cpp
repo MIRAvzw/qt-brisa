@@ -208,6 +208,10 @@ void BrisaService::setDescriptionFile(const QString &scpdFilePath) {
     this->scpdFilePath = scpdFilePath;
 }
 
+void BrisaService::getDescriptionFile(const QString &scpdFilePath) {
+    return this->scpdFilePath;
+}
+
 void BrisaService::parseDescriptionFile() {
     if (this->scpdFilePath.isEmpty())
         return;

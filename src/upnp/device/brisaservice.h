@@ -96,6 +96,11 @@ public:
      */
     void setDescriptionFile(const QString &scpdFilePath);
 
+    /*!
+     *  Returns the service scpd path.
+     */
+    QString getDescriptionFile();
+
 public slots:
     /*!
      * Parses the genericRequestReceived() signal coming from the webservice.
