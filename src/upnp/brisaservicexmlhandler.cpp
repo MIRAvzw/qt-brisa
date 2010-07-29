@@ -69,9 +69,9 @@ void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
                 QDomNode argumentList = actionList.at(i).toElement().elementsByTagName("argumentList").at(0);
                 QDomNodeList arguments = argumentList.toElement().elementsByTagName("argument");
                 for (int i = 0; i < arguments.size(); i++) {
-                    QString argumentName = arguments.at(0).toElement().elementsByTagName("name").at(0).toElement().text();
-                    QString direction = arguments.at(0).toElement().elementsByTagName("direction").at(0).toElement().text();
-                    QString relatedStateVariable = arguments.at(0).toElement().elementsByTagName("relatedStateVariable").at(0).toElement().text();
+                    QString argumentName = arguments.at(i).toElement().elementsByTagName("name").at(0).toElement().text();
+                    QString direction = arguments.at(i).toElement().elementsByTagName("direction").at(0).toElement().text();
+                    QString relatedStateVariable = arguments.at(i).toElement().elementsByTagName("relatedStateVariable").at(0).toElement().text();
                     action->addArgument(argumentName, direction, relatedStateVariable);
                 }
                 service->addAction(action);
