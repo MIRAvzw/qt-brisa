@@ -28,15 +28,27 @@
 #ifndef _BRISAABSTRACTSERVICE_H
 #define _BRISAABSTRACTSERVICE_H
 
-#include "brisaaction.h"
-#include "brisastatevariable.h"
-#include "brisaglobal.h"
-
 #include <qtsoap.h>
-
 #include <QMap>
 #include <QString>
 #include <QObject>
+
+#include "brisaglobal.h"
+#include "brisastatevariable.h"
+#include "brisaaction.h"
+
+enum UPnPErrorCodes {
+	UPNP_SUCCESS = 0,
+	UPNP_INVALID_ACTION = 401,
+	UPNP_INVALID_ARGUMENTS = 402,
+	UPNP_ACTION_FAILED = 501,
+	UPNP_INVALID_VALUE_ARGUMENT = 600,
+	UPNP_ARGUMENT_VALUE_OUT_OF_RANGE = 601,
+	UPNP_OPTIONAL_ACTION_NOT_IMPLEMENTED = 602,
+	UPNP_OUT_OF_MEMORY = 603,
+	UPNP_HUMAN_INTERVENTION_REQUIRED = 604,
+	UPNP_STRING_ARGUMENT_TOO_LONG = 605
+};
 
 namespace BrisaUpnp {
 
@@ -158,12 +170,19 @@ public:
      */
     void clear();
 
+
+    /*!
+     * \internal
+     *
+     * Return string literal for a given upnp error code. 
+     */
+	QString errorCodeToString(int errorCode);
+
 signals:
     void requestFinished(QString root, QString lastMethod);
 
 protected:
-    virtual void call(const QString &method,
-            const QMap<QString, QString> &param) = 0;
+    virtual void call(const QString &method, BrisaInArgument &param) = 0;
 
     QList<BrisaAction *> actionList;
     QList<BrisaStateVariable *> stateVariableList;

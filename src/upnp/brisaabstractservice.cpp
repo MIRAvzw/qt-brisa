@@ -230,3 +230,26 @@ void BrisaAbstractService::clear() {
     this->port = 0;
 }
 
+QString BrisaAbstractService::errorCodeToString(int errorCode) {
+	switch (errorCode) {
+		case UPNP_INVALID_ACTION:
+				return "Invalid Action";
+		case UPNP_INVALID_ARGUMENTS:
+				return "Invalid Arguments";
+		case UPNP_ACTION_FAILED:
+				return "Action Failed";
+		case UPNP_INVALID_VALUE_ARGUMENT:
+				return "Invalid Value Argument";
+		case UPNP_ARGUMENT_VALUE_OUT_OF_RANGE:
+				return "Argument Value Out of Range";
+		case UPNP_OPTIONAL_ACTION_NOT_IMPLEMENTED:
+				return "Optional Action not Implemented";
+		case UPNP_OUT_OF_MEMORY:
+				return "Out of Memory";
+		case UPNP_HUMAN_INTERVENTION_REQUIRED:
+				return "Human Intervention Required";
+		case UPNP_STRING_ARGUMENT_TOO_LONG:
+				return "String Argument Too Long";
+	}
+	return "";
+}

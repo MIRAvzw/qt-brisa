@@ -60,8 +60,7 @@ void BrisaControlPointService::parseFromXml(QTemporaryFile *xml) {
     delete handler;
 }
 
-void BrisaControlPointService::call(const QString &method, const QMap<QString,
-        QString> &param) {
+void BrisaControlPointService::call(const QString &method, BrisaInArgument &param) {
     QtSoapMessage request;
 
     http->setAction("\"" + serviceType + "#" + method + "\"");

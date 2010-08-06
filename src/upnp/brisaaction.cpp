@@ -31,51 +31,54 @@
 
 using namespace BrisaUpnp;
 
-BrisaAction::BrisaAction(QString name, BrisaService *service, QObject *parent) :
-    QObject(parent), name(name), service(service) {
+BrisaAction::BrisaAction(QString name, BrisaService *service, QObject *parent):
+	QObject(parent),
+    name(name),
+    service(service) {
+}
+
+BrisaAction::BrisaAction(QString name, BrisaService *service, const QMetaMethod &method, QObject *parent):
+	QObject(parent),
+    name(name),
+    service(service),
+    method(method) {
 }
 
 BrisaAction::BrisaAction(const BrisaAction &action) :
-    QObject(action.parent()), name(action.getName()), service(
-            action.getService()) {
+                         QObject(action.parent()),
+                         name(action.getName()),
+                         service(action.getService()) {
+    this->method = action.getMethod();
     QList<BrisaArgument *> argumentList = action.getArgumentList();
-
-    foreach(BrisaArgument *a, argumentList)
-        {
-            this->argumentList.append(new BrisaArgument(*a));
-        }
+    foreach (BrisaArgument *argument, argumentList) {
+        this->argumentList.append(new BrisaArgument(*argument));
+    }
 }
 
 BrisaAction::~BrisaAction() {
-    foreach(BrisaArgument *a, this->argumentList)
-        {
-            delete a;
-        }
+    foreach (BrisaArgument *argument, this->argumentList) {
+        delete argument;
+    }
 
     this->argumentList.clear();
 }
 
-void BrisaAction::addArgument(QString name, QString direction,
-        QString relatedStateVariable) {
-    BrisaArgument *argumentSwap = new BrisaArgument(name, direction,
-            relatedStateVariable);
-    argumentList.append(argumentSwap);
+void BrisaAction::addArgument(QString name, QString direction, QString relatedStateVariable) {
+    BrisaArgument *argumentSwap = new BrisaArgument(name, direction, relatedStateVariable);
+    this->argumentList.append(argumentSwap);
 }
 
 void BrisaAction::addArgument(BrisaArgument *argumentA) {
-    argumentList.append(argumentA);
+    this->argumentList.append(argumentA);
 }
 
 void BrisaAction::addArguments(const QList<BrisaArgument*> arguments) {
-    for (QList<BrisaArgument*>::const_iterator i = arguments.begin(); i
-            != arguments.end(); ++i) {
+    for (QList<BrisaArgument*>::const_iterator i = arguments.begin(); i != arguments.end(); ++i) {
         this->addArgument(*i);
     }
 }
 
-void BrisaAction::setName(QString name)
-
-{
+void BrisaAction::setName(QString name) {
     this->name = name;
 }
 
@@ -87,23 +90,20 @@ void BrisaAction::setService(BrisaService *service) {
     this->service = service;
 }
 
-BrisaService *BrisaAction::getService() const {
+BrisaService* BrisaAction::getService() const {
     return this->service;
 }
 
-BrisaStateVariable *BrisaAction::getStateVariable(const QString &name) const {
-    BrisaService *service = this->getService();
-
-    if (!service) {
-        qDebug() << this->getName()
-                << "action couldn't find its related Service";
+BrisaStateVariable* BrisaAction::getStateVariable(const QString &name) const {
+    if (!this->service) {
+        qDebug() << this->getName() << " action couldn't find its related Service.";
         return 0;
     }
 
     BrisaStateVariable *stateVariable = service->getVariable(name);
-    if (!stateVariable)
-        qDebug() << this->getName()
-                << "action couldn't find the State Variable";
+    if (!stateVariable) {
+        qDebug() << this->getName() << " action couldn't find the State Variable.";
+    }
 
     return stateVariable;
 }
@@ -116,65 +116,67 @@ void BrisaAction::clearArgumentList() {
     this->argumentList.clear();
 }
 
-bool BrisaAction::call(const QMap<QString, QString> &inArguments, QMap<QString,
-        QString> &outArguments) {
-    // Check IN variables
-    for (QMap<QString, QString>::const_iterator i = inArguments.begin(); i
-            != inArguments.end(); ++i) {
+bool BrisaAction::call(BrisaInArgument *inArguments, BrisaOutArgument *&outArguments) {
+    // Checking IN variables
+    for (BrisaInArgument::const_iterator i = inArguments->begin(); i != inArguments->end(); ++i) {
         BrisaArgument *arg = this->getInArgument(i.key());
         if (!arg) {
-            qDebug() << this->getName() << "action has no IN argument called"
-                    << i.key();
+            qDebug() << "Error: action " << this->getName() << " has no IN argument named '" << i.key() << "'.";
             return false;
         }
     }
 
-    // run
-    QMap<QString, QString> outArgs = this->run(inArguments);
+    // use the run() invocation.
+    if (this->method.methodIndex() >= 0) { // checking if action has a QMetaMethod specified
+        bool execResult = this->method.invoke(this->service,
+                                              Qt::DirectConnection,
+                                              Q_RETURN_ARG(BrisaOutArgument *, outArguments),
+                                              Q_ARG(BrisaInArgument *, inArguments),
+                                              Q_ARG(BrisaAction *, this));
+        if (!execResult) {
+            qDebug() << "Error invoking defined action expressed by the service method " << this->method.signature();
+            return false;
+        }
+    } else {
+        qDebug() << "Error: there is not method to be invoked by this action.";
+        return false;
+    }
 
     // Check OUT variables
-    for (QMap<QString, QString>::const_iterator i = outArgs.begin(); i
-            != outArgs.end(); ++i) {
+    for (BrisaOutArgument::const_iterator i = outArguments->begin(); i != outArguments->end(); ++i) {
         BrisaArgument *arg = this->getOutArgument(i.key());
         if (!arg) {
-            qDebug() << this->getName() << "action has no OUT argument called"
-                    << i.key();
+            qDebug() << "Error: action " << this->getName() << " has no OUT expected argument named '" << i.key() << "'.";
             return false;
         }
     }
-
-    // set output argument list as the one passed by the BRisa's user
-    outArguments = outArgs;
-
+	
     return true;
 }
 
-BrisaArgument *BrisaAction::getInArgument(const QString &name) {
+BrisaArgument* BrisaAction::getInArgument(const QString &name) {
     return this->getArgument(name, "in");
 }
 
-BrisaArgument *BrisaAction::getOutArgument(const QString &name) {
+BrisaArgument* BrisaAction::getOutArgument(const QString &name) {
     return this->getArgument(name, "out");
 }
 
-BrisaArgument *BrisaAction::getArgument(const QString &name,
-        const QString &direction) {
-    foreach(BrisaArgument *a, this->getArgumentList())
-        {
-            if (a->getAttribute(BrisaArgument::Direction) == direction
-                    && a->getAttribute(BrisaArgument::ArgumentName) == name) {
-                return a;
-            }
+BrisaArgument* BrisaAction::getArgument(const QString &name, const QString &direction) {
+    foreach (BrisaArgument *argument, this->getArgumentList()) {
+        if (argument->getAttribute(BrisaArgument::Direction) == direction && argument->getAttribute(BrisaArgument::ArgumentName) == name) {
+                return argument;
         }
+    }
 
     return 0;
 }
 
-QMap<QString, QString> BrisaAction::run(
-        const QMap<QString, QString> &inArguments) {
-    Q_UNUSED(inArguments)
-
-    QMap<QString, QString> out;
-    return out;
+void BrisaAction::setMethod(const QMetaMethod &method, BrisaService *service) {
+    this->method = method;
+	this->setService(service);
 }
 
+QMetaMethod BrisaAction::getMethod() const {
+    return this->method;
+}

@@ -114,18 +114,17 @@ private:
     /*!
      *  This method is called when a valid SOAP action request is parsed by a BrisaActionXmlParser.
      */
-    void call(const QString &method, const QMap<QString, QString> &param);
+    void call(const QString &method, BrisaInArgument &param);
 
     /*!
      *  This method is called when a action is executed with no problems.
      */
-    void respondAction(const QString &actionName,
-            const QMap<QString, QString> &outArgs);
+    void respondAction(const QString &actionName, const BrisaOutArgument *outArgs);
 
     /*!
      * Responds a SOAP error message in case of a problem occuring while performing the action.
      */
-    void respondError(int errorCode, const QString &errorString);
+    void respondError(int errorCode, QString errorDescription = "");
 
     /*!
      *  Parses the service description file.
@@ -142,11 +141,23 @@ private:
      */
     void setDefaultValues();
 
+    /*!
+     *  Bind defined actions in the scpd to service methods.
+     */
+    void bindActionsToServiceMethods();
+
     BrisaWebServiceProvider *webService;
 
     QMap<QString, BrisaWebService *> childWebServices;
 
     QString scpdFilePath;
+   
+    QMetaMethod preActionMethod;
+
+    QMetaMethod postActionMethod;
+
+    QMetaMethod handleActionFailureMethod;
+	
 };
 
 }

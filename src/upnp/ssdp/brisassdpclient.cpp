@@ -41,10 +41,13 @@
 using namespace BrisaUpnp;
 
 BrisaSSDPClient::BrisaSSDPClient(QObject *parent) :
-    QObject(parent), running(false), SSDP_ADDR("239.255.255.250"), SSDP_PORT(
-            1900), S_SSDP_PORT("1900") {
-    udpListener = new QUdpSocket(parent);
+	QObject(parent),
+	running(false),
+	SSDP_ADDR("239.255.255.250"),
+	SSDP_PORT(1900),
+	S_SSDP_PORT("1900") {
 
+    udpListener = new QUdpSocket(parent);
     connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
@@ -59,9 +62,9 @@ void BrisaSSDPClient::start() {
     if (!isRunning()) {
         int fd;
 
-        if (!udpListener->bind(SSDP_PORT, QUdpSocket::ShareAddress
-                | QUdpSocket::ReuseAddressHint))
+        if (!udpListener->bind(SSDP_PORT, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint)) {
             qDebug() << "BrisaSSDPClient BIND FAIL!";
+		}
 
         fd = udpListener->socketDescriptor();
         struct ip_mreq mreq;
