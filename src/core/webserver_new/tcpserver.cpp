@@ -1,15 +1,12 @@
 /*
- * Universidade Federal de Campina Grande
- * Centro de Engenharia Elétrica e Informática
- * Laboratório de Sistemas Embarcados e Computação Pervasiva
+ * Universidade Federal de Alagoas
+ * Instituto de Computação
+ * Laboratório de Computação Pervasiva
  * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
- * Filename: tcpserver.cpp
- * Created:
- * Description: Implementation of BrisaConfigurationManager class.
- * Authors: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com> @since 2010
+ * Authors: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com> 2010
  *
- *
- * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
+ * Copyright (C) <2010> <Pervasive Computing Laboratory @ Federal
+ * University of Alagoas>
  *
  * BRisa-Qt is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
