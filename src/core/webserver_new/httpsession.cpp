@@ -110,12 +110,9 @@ void HttpSession::onReadyRead()
 {
     buffer.append(socket->readAll());
 
-    qDebug("Ready read");
-
     switch (state) {
     case WAITING_FOR_REQUEST_LINE:
         {
-            qDebug("Waiting for request line state");
             int i = buffer.indexOf("\r\n");
             if (i != -1) {
                 QList<QByteArray> request = buffer.left(i).split(' ');
@@ -146,7 +143,6 @@ void HttpSession::onReadyRead()
         }
     case WAITING_FOR_HEADERS:
         {
-            qDebug("waiting for headers state");
             for (int i = buffer.indexOf("\r\n") ; i != -1 ; i = buffer.indexOf("\r\n")) {
                 // don't starts with \r\n
                 if (i != 0) {
@@ -154,14 +150,27 @@ void HttpSession::onReadyRead()
                     buffer.remove(0, i + 2);
 
                     i = header.indexOf(':');
-                    if (i > 0 && i < header.size() - 2) {
-                        requestInfo.setHeader(header.left(i), header.mid(i + 2));
+                    if (i > 0) {
+                        if (i < header.size() - 2)
+                            requestInfo.setHeader(header.left(i), header.mid(i + 2));
+                        else
+                            requestInfo.setHeader(header.left(i), QByteArray());
                     }
                 } else {
-                    buffer.clear();
-                    state = WAITING_FOR_REQUEST_LINE;
+                    int versionMinor = requestInfo.httpVersion().minor();
+                    if (versionMinor == 0 || ((versionMinor > 0) && !requestInfo.header("Host").isNull())) {
+                        buffer.clear();
+                        state = WAITING_FOR_REQUEST_LINE;
 
-                    onRequest(requestInfo);
+                        onRequest(requestInfo);
+                    } else {
+                        HttpResponse response(HttpVersion(1, 1));
+
+                        response.setStatusCode(400);
+                        writeResponse(response);
+
+                        socket->close();
+                    }
                 }
             }
         }

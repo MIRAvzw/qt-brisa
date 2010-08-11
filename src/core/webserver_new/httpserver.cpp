@@ -45,13 +45,11 @@ void HttpServer::run()
 {
     connect(socket, SIGNAL(newConnection(int)), this, SLOT(onNewConnection(int)));
     socket->listen(address, port);
-    qDebug(DBG_PREFIX "running server on port %i", (int)socket->serverPort());
     exec();
 }
 
 void HttpServer::onNewConnection(int socketDescriptor)
 {
-    qDebug(DBG_PREFIX "nova conexão solicitada");
     HttpSession *c = incomingConnection(socketDescriptor);
     if (c) {
         connect(c, SIGNAL(finished()), c, SLOT(deleteLater()));

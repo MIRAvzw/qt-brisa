@@ -67,7 +67,7 @@ void WebServerSession::onRequest(HttpRequest request)
 
         writeResponse(response);
     } else {
-        response.setStatusCode(404, "Not Found");
+        response.setStatusCode(404);
 
         response.setHeader("Content-Type", "text/html");
         response.setBody(notFound);
