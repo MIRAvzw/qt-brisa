@@ -94,7 +94,7 @@ public:
     };
 
 public:
-    HttpResponse(const HttpVersion &httpVersion, int statusCode = 200,
+    HttpResponse(const HttpVersion &httpVersion, int statusCode = Ok,
                  const QByteArray &reasonPhrase = "OK");
 
     HttpVersion httpVersion() const;

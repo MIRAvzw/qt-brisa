@@ -3,11 +3,15 @@
 
 #include <QtCore>
 #include <QtNetwork>
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
+#endif // USE_NEW_BRISA_WEBSERVER
 
 #include "brisaglobal.h"
 #include "brisawebstaticcontent.h"
@@ -23,6 +27,9 @@ namespace BrisaCore {
  *  The BrisaWebServiceProvider has convenience methods for managing web services, like addFile()
  *  and addContent(). It also keeps track of all files and content stored into the web service.
  */
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 class BRISA_CORE_EXPORT BrisaWebServiceProvider: public QxtWebServiceDirectory {
 Q_OBJECT
 
@@ -75,6 +82,7 @@ private:
     QList<BrisaWebFile*> files;
     QList<BrisaWebStaticContent*> content;
 };
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 

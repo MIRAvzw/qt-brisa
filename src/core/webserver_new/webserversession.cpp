@@ -47,7 +47,7 @@ WebServerSession::WebServerSession(int socketDescriptor,
     qDebug(DBG_PREFIX "nova conexão web");
 }
 
-void WebServerSession::onRequest(HttpRequest request)
+void WebServerSession::pageRequest(HttpRequest request)
 {
     qDebug(DBG_PREFIX "respondendo request");
     HttpResponse response(request.httpVersion());
@@ -67,7 +67,7 @@ void WebServerSession::onRequest(HttpRequest request)
 
         writeResponse(response);
     } else {
-        response.setStatusCode(404);
+        response.setStatusCode(HttpResponse::NOT_FOUND);
 
         response.setHeader("Content-Type", "text/html");
         response.setBody(notFound);

@@ -3,12 +3,16 @@
 
 #include <QtCore>
 #include <QtNetwork>
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
 #include "brisaglobal.h"
+#endif // USE_NEW_BRISA_WEBSERVER
 
 namespace BrisaCore {
 
@@ -17,6 +21,9 @@ namespace BrisaCore {
  *
  *  Use this class to store static content in the web server using a string format.
  */
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 class BRISA_CORE_EXPORT BrisaWebStaticContent: public QxtWebSlotService {
 Q_OBJECT
 
@@ -47,6 +54,7 @@ public slots:
 private:
     QString *content;
 };
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 

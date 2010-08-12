@@ -45,7 +45,7 @@ public:
 protected:
     // a api poderia ter alguma coisa como esse método para permitir customização
 //    virtual QByteArray handleRequest();
-    virtual void onRequest(HttpRequest request) = 0;
+    virtual void pageRequest(HttpRequest request) = 0;
     qint64 writeResponse(HttpResponse);
 
 signals:

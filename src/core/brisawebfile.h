@@ -2,8 +2,12 @@
 #define _BRISA_WEB_FILE_H
 
 #include <QtCore>
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
+#endif // USE_NEW_BRISA_WEBSERVER
 
 #include "brisaglobal.h"
 
@@ -17,7 +21,14 @@ namespace BrisaCore {
  *  using the BrisaWebServer convenience method \a "publishFile()", it's url path will be
  *  "IP:PORT/yourfile".
  */
-class BRISA_CORE_EXPORT BrisaWebFile: public QxtAbstractWebService {
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+class BRISA_CORE_EXPORT BrisaWebFile
+{
+};
+#else // !USE_NEW_BRISA_WEBSERVER
+class BRISA_CORE_EXPORT BrisaWebFile: public QxtAbstractWebService
+{
 Q_OBJECT
 
 public:
@@ -47,6 +58,7 @@ public:
 private:
     QFile *file;
 };
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 

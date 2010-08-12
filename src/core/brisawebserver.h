@@ -31,24 +31,32 @@
 
 #include <QtCore>
 #include <QtNetwork>
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
+#endif // USE_NEW_BRISA_WEBSERVER
 
 #include "brisaglobal.h"
 #include "brisawebservice.h"
 #include "brisawebfile.h"
 #include "brisawebserviceprovider.h"
 
-namespace BrisaCore {
+namespace BrisaCore
+{
 
 /*!
  *  \brief The BrisaWebserver class is a web server implementation.
  *
  *  BrisaWebServer implements a Web Server using libQxt.
  */
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 class BRISA_CORE_EXPORT BrisaWebserver: public QxtHttpSessionManager {
 Q_OBJECT
 
@@ -100,6 +108,7 @@ protected:
 private:
     BrisaWebServiceProvider *rootService;
 };
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 ;

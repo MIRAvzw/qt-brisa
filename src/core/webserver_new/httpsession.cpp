@@ -162,7 +162,7 @@ void HttpSession::onReadyRead()
                         buffer.clear();
                         state = WAITING_FOR_REQUEST_LINE;
 
-                        onRequest(requestInfo);
+                        pageRequest(requestInfo);
                     } else {
                         HttpResponse response(HttpVersion(1, 1));
 

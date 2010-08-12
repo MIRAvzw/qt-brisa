@@ -31,8 +31,7 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     WebServer *server = new WebServer(QHostAddress::LocalHost, 8080);
-    server->publishFile("/index", WebResource("index.html", "text/plain; charset=UTF-8"));
-    server->publishFile("/index.pdf", WebResource("vai.gif", "image/png"));
+    server->publishFile("/", "/var/www/index.html");
     server->start();
 
     return a.exec();

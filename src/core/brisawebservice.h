@@ -3,11 +3,15 @@
 
 #include <QtCore>
 #include <QtNetwork>
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
+#endif // USE_NEW_BRISA_WEBSERVER
 
 #include "brisaglobal.h"
 
@@ -23,6 +27,9 @@ namespace BrisaCore {
  *
  *  \sa BrisaUpnp::BrisaService , BrisaUpnp::BrisaEventController
  */
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#else // !USE_NEW_BRISA_WEBSERVER
 class BRISA_CORE_EXPORT BrisaWebService: public QxtWebServiceDirectory {
 Q_OBJECT
 
@@ -122,6 +129,7 @@ private:
     int sessionID;
     int requestID;
 };
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 
