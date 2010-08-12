@@ -30,10 +30,16 @@
 
 using namespace BrisaUpnp;
 
-BrisaStateVariable::BrisaStateVariable(QString sendEvents, QString name,
-        QString datatype, QString defaultValue, QString maximum,
-        QString minimum, QString step, QObject *parent) :
-    QObject(parent) {
+BrisaStateVariable::BrisaStateVariable(QString sendEvents,
+                                       QString name,
+                                       QString datatype,
+                                       QString defaultValue,
+                                       QString maximum,
+                                       QString minimum,
+                                       QString step,
+                                       QObject *parent) :
+    QObject(parent)
+{
     this->events = (sendEvents == "yes");
     this->name = name;
     this->dataType = datatype;
@@ -45,7 +51,8 @@ BrisaStateVariable::BrisaStateVariable(QString sendEvents, QString name,
 }
 
 BrisaStateVariable::BrisaStateVariable(const BrisaStateVariable &variable) :
-    QObject(variable.parent()) {
+    QObject(variable.parent())
+{
     this->events = variable.sendEvents();
     this->name = variable.getAttribute(Name);
     this->dataType = variable.getAttribute(DataType);
@@ -56,21 +63,18 @@ BrisaStateVariable::BrisaStateVariable(const BrisaStateVariable &variable) :
     this->value = variable.getValue();
 }
 
-BrisaStateVariable &BrisaStateVariable::operator=(
-        const BrisaStateVariable &variable) {
-    if (this == &variable)
-        return *this;
-
-    this->setParent(variable.parent());
-    this->events = variable.sendEvents();
-    this->name = variable.getAttribute(Name);
-    this->dataType = variable.getAttribute(DataType);
-    this->defaultValue = variable.getAttribute(DefaultValue);
-    this->maximum = variable.getAttribute(Maximum);
-    this->minimum = variable.getAttribute(Minimum);
-    this->step = variable.getAttribute(Step);
-    this->value = variable.getValue();
-
+BrisaStateVariable &BrisaStateVariable::operator=(const BrisaStateVariable &variable) {
+    if (this != &variable) {
+        this->setParent(variable.parent());
+        this->events = variable.sendEvents();
+        this->name = variable.getAttribute(Name);
+        this->dataType = variable.getAttribute(DataType);
+        this->defaultValue = variable.getAttribute(DefaultValue);
+        this->maximum = variable.getAttribute(Maximum);
+        this->minimum = variable.getAttribute(Minimum);
+        this->step = variable.getAttribute(Step);
+        this->value = variable.getValue();
+    }
     return *this;
 }
 

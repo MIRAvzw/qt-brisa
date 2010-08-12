@@ -52,10 +52,14 @@ public:
      * \a datatype, \a defaultValue, \a maximum value, \a minimum value, value
      * \a step, and \a parent.
      */
-    BrisaStateVariable(QString sendEvents = "", QString name = "",
-            QString datatype = "", QString defaultValue = "", QString maximum =
-                    "", QString minimum = "", QString step = "",
-            QObject *parent = 0);
+    BrisaStateVariable(QString sendEvents = "",
+                       QString name = "",
+                       QString datatype = "",
+                       QString defaultValue = "",
+                       QString maximum = "",
+                       QString minimum = "",
+                       QString step = "",
+                       QObject *parent = 0);
 
     /*!
      * Constructs a BrisaStateVariable from the given \a variable.

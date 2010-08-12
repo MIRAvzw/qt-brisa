@@ -38,28 +38,29 @@ using namespace BrisaUpnp;
 
 BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
     QObject(parent) {
-    discoverNetworkAddress();
-    buildUrlBase();
-    deliveryPath = 0;
-    running = false;
-    webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
+    this->discoverNetworkAddress();
+    this->buildUrlBase();
+    this->deliveryPath = 0;
+    this->running = false;
+    this->webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
+
     /* HTTP protocol implementation for requests */
-    http = new QHttp();
+    this->http = new QHttp();
+
     /* SSDP client */
-    ssdpClient = new BrisaSSDPClient(this);
+    this->ssdpClient = new BrisaSSDPClient(this);
 
     /* MSearch client */
     msearch = new BrisaMSearchClientCP(this, st, mx);
 
     /* XML downloader */
     downloader = new QNetworkAccessManager();
+
     webserver->start();
 
-    connect(http, SIGNAL(requestFinished(int, bool)), this,
-            SLOT(httpResponse(int, bool)));
-    connect(ssdpClient, SIGNAL(removedDeviceEvent(QString)), this,
-            SLOT(deviceRemoved(QString)));
-    connect(ssdpClient,
+    connect(http, SIGNAL(requestFinished(int, bool)), this, SLOT(httpResponse(int, bool)));
+    connect(ssdpClient, SIGNAL(removedDeviceEvent(QString)), this, SLOT(deviceRemoved(QString)));
+    connect(ssdpClient, 
             SIGNAL(newDeviceEvent(QString, QString, QString, QString, QString, QString)),
             this,
             SLOT(deviceFound(QString, QString, QString, QString, QString, QString)));
@@ -67,27 +68,27 @@ BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
             SIGNAL(msearchResponseReceived(QString, QString, QString, QString, QString, QString)),
             this,
             SLOT(deviceFound(QString, QString, QString, QString, QString, QString)));
-    connect(downloader, SIGNAL(finished(QNetworkReply*)), this,
-            SLOT(replyFinished(QNetworkReply*)));
+    connect(downloader, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
 }
 
 BrisaControlPoint::~BrisaControlPoint() {
     if (!isRunning())
-        stop();
-    delete downloader;
-    delete msearch;
-    delete ssdpClient;
-    delete webserver;
-    delete http;
+        this->stop();
+
+    delete this->downloader;
+    delete this->msearch;
+    delete this->ssdpClient;
+    delete this->webserver;
+    delete this->http;
 }
 
 void BrisaControlPoint::start() {
     if (isRunning()) {
         qDebug() << "Brisa Control Point: already started.";
     } else {
-        ssdpClient->start();
-        msearch->start();
-        running = true;
+        this->ssdpClient->start();
+        this->msearch->start();
+        this->running = true;
     }
 }
 
@@ -95,43 +96,44 @@ void BrisaControlPoint::stop() {
     if (!isRunning()) {
         qDebug() << "Brisa Control Point: already stopped.";
     } else {
-        ssdpClient->stop();
-        msearch->stop();
-        running = false;
+        this->ssdpClient->stop();
+        this->msearch->stop();
+        this->running = false;
     }
 }
 
 bool BrisaControlPoint::isRunning() {
-    return running;
+    return this->running;
 }
 
 void BrisaControlPoint::discover() {
-    msearch->discover();
+    this->msearch->discover();
 }
 
 void BrisaControlPoint::replyFinished(QNetworkReply *reply) {
     QTemporaryFile *rootXml = new QTemporaryFile();
     if (!rootXml->open()) {
-        qWarning()
-                << "Brisa Control Point: Failed to open file for writing root XML.";
+        qWarning() << "Brisa Control Point: Failed to open file for writing root XML.";
     } else {
         rootXml->write(reply->readAll());
         rootXml->seek(0);
         QUrl *urlBase = new QUrl(reply->url());
 
-        BrisaControlPointDevice *device = new BrisaControlPointDevice(rootXml,
-                urlBase);
+        BrisaControlPointDevice *device = new BrisaControlPointDevice(rootXml, urlBase);
+
         /* Fix embedded devices host/port attributes */
         QList<BrisaControlPointService*> serviceList = device->getServiceList();
-        foreach(BrisaControlPointService *s, serviceList)
-            {
+        foreach(BrisaControlPointService *s, serviceList) {
                 s->setAttribute(BrisaControlPointService::Host, urlBase->host());
                 s->setAttribute(BrisaControlPointService::Port,
                         QString().setNum(urlBase->port()));
-            }
+        }
+
         rootXml->remove();
         delete rootXml;
         delete urlBase;
+        // deleteLater as per Qt documentation (see Detailed Description section of
+        // QNetworkAccessManager class documentation for more details;
         reply->deleteLater();
 
         emit deviceFound(device);
@@ -139,12 +141,15 @@ void BrisaControlPoint::replyFinished(QNetworkReply *reply) {
 }
 
 void BrisaControlPoint::deviceFound(QString, QString location, QString,
-        QString, QString, QString) {
-    QNetworkReply* reply = downloader->get(QNetworkRequest(QUrl(location)));
+                                    QString, QString, QString) {
+    downloader->get(QNetworkRequest(QUrl(location)));
 }
 
-void BrisaControlPoint::deviceRemoved(const QString usn) {
-    emit deviceGone(usn);
+void BrisaControlPoint::deviceRemoved(const QString udn) {
+    QString udnRet = udn;
+    udnRet = udnRet.replace("uuid:", "");
+    udnRet = udnRet.replace("::upnp:rootdevice", "");
+    emit deviceGone(udnRet);
 }
 
 void BrisaControlPoint::buildUrlBase() {
@@ -160,14 +165,16 @@ void BrisaControlPoint::discoverNetworkAddress() {
             << ":" << this->port;
 }
 
-BrisaEventProxy *BrisaControlPoint::getSubscriptionProxy(
-        BrisaControlPointService *service) {
+BrisaEventProxy *BrisaControlPoint::getSubscriptionProxy(BrisaControlPointService *service) {
     deliveryPath++;
-    BrisaEventProxy *subscription = new BrisaEventProxy(QStringList(
-            this->urlBase), webserver, deliveryPath, service->getAttribute(
-            BrisaControlPointService::Host), service->getAttribute(
-            BrisaControlPointService::Port).toInt(), http,
-            service->getAttribute(BrisaControlPointService::EventSubUrl));
+    BrisaEventProxy *subscription = new BrisaEventProxy(
+                                            QStringList(this->urlBase),
+                                            webserver,
+                                            deliveryPath,
+                                            service->getAttribute(BrisaControlPointService::Host),
+                                            service->getAttribute(BrisaControlPointService::Port).toInt(),
+                                            http,
+                                            service->getAttribute(BrisaControlPointService::EventSubUrl));
 
     requests[deliveryPath] = subscription;
     return subscription;

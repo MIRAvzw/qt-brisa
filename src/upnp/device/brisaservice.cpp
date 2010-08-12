@@ -197,15 +197,19 @@ void BrisaService::buildWebServiceTree(
 
     webService->addFile(scpdUrl.section('/', -1), scpdFilePath);
 
-    QObject::connect(control, SIGNAL(genericRequestReceived(const QString &,
-                    const QMultiHash<QString, QString> &,
-                    const QByteArray &,
-                    int,
-                    int)), this, SLOT(parseGenericRequest(const QString &,
-                    const QMultiHash<QString, QString> &,
-                    const QByteArray &,
-                    int,
-                    int)));
+    QObject::connect(control,
+            SIGNAL(genericRequestReceived(const QString &,
+                   const QMultiHash<QString, QString> &,
+                   const QByteArray &,
+                   int,
+                   int)),
+            this,
+            SLOT(parseGenericRequest(const QString &,
+                 const QMultiHash<QString, QString> &,
+                 const QByteArray &,
+                 int,
+                 int))
+           );
 
     childWebServices.insert(controlUrl.section('/', -1), control);
     childWebServices.insert(eventSubUrl.section('/', -1), event);
@@ -325,7 +329,11 @@ void BrisaService::connectVariablesEventSignals() {
 
     foreach (BrisaStateVariable *stateVar, this->stateVariableList) {
         if (stateVar->sendEvents()) {
-            QObject::connect(stateVar, SIGNAL(changed(BrisaStateVariable *)), event, SLOT(variableChanged(BrisaStateVariable *)));
+            QObject::connect(stateVar,
+                             SIGNAL(changed(BrisaStateVariable *)),
+                             event,
+                             SLOT(variableChanged(BrisaStateVariable *))
+                            );
         }
     }
 }

@@ -39,69 +39,73 @@ BrisaControlPointDevice::BrisaControlPointDevice(QObject *parent) :
 }
 
 BrisaControlPointDevice::BrisaControlPointDevice(QTemporaryFile *xml,
-        QUrl *url, QObject *parent) :
-    QObject(parent) {
-    this->setAttribute(BrisaControlPointDevice::UrlBase, url->toString(
-            QUrl::RemovePath));
+                                                 QUrl *url,
+                                                 QObject *parent) : QObject(parent)
+{
+    this->setAttribute(BrisaControlPointDevice::UrlBase, url->toString(QUrl::RemovePath));
     BrisaDeviceXMLHandlerCP *handler = new BrisaDeviceXMLHandlerCP();
     handler->parseDevice(this, xml);
+//    this->_udn = this->_udn.replace("uuid:", "");
+//    this->_udn = this->_udn.replace("::upnp:rootdevice", "");
     delete handler;
 }
 
-BrisaControlPointDevice::BrisaControlPointDevice(QString deviceType,
-        QString friendlyName, QString manufacturer, QString manufacturerURL,
-        QString modelDescription, QString modelName, QString modelNumber,
-        QString modelURL, QString serialNumber, QString UDN, QString UPC,
-        QString presentationURL, QObject *parent) :
-    QObject(parent) {
-    this->major = "1";
-    this->minor = "0";
-    this->deviceType = deviceType;
-    this->friendlyName = friendlyName;
-    this->manufacturer = manufacturer;
-    this->manufacturerUrl = manufacturerURL;
-    this->modelDescription = modelDescription;
-    this->modelName = modelName;
-    this->modelNumber = modelNumber;
-    this->modelUrl = modelURL;
-    this->serialNumber = serialNumber;
-    this->udn = UDN;
-    this->upc = UPC;
-    this->presentationUrl = presentationURL;
-    this->fileAddress = friendlyName.remove(QChar(' '));
-    this->fileAddress.append(".xml");
+BrisaControlPointDevice::BrisaControlPointDevice(QString udn,
+                                                 QString deviceType,
+                                                 QString friendlyName,
+                                                 QString manufacturer, 
+                                                 QString manufacturerURL,
+                                                 QString modelDescription,
+                                                 QString modelName,
+                                                 QString modelNumber,
+                                                 QString modelURL,
+                                                 QString serialNumber,
+                                                 QString upc,
+                                                 QString presentationURL,
+                                                 QObject *parent) : QObject(parent)
+{
+    this->_udn = udn;
+    this->_udn = this->_udn.replace("uuid:", "");
+    this->_udn = this->_udn.replace("::upnp:rootdevice", "");
+    this->_major = "1";
+    this->_minor = "0";
+    this->_deviceType = deviceType;
+    this->_friendlyName = friendlyName;
+    this->_manufacturer = manufacturer;
+    this->_manufacturerUrl = manufacturerURL;
+    this->_modelDescription = modelDescription;
+    this->_modelName = modelName;
+    this->_modelNumber = modelNumber;
+    this->_modelUrl = modelURL;
+    this->_serialNumber = serialNumber;
+    this->_upc = upc;
+    this->_presentationUrl = presentationURL;
+    this->_fileAddress = friendlyName.remove(QChar(' ')).append(this->_udn).append(".xml");
 }
 
 BrisaControlPointDevice::BrisaControlPointDevice(BrisaControlPointDevice &dev,
-        QObject *parent) :
-    QObject(parent) {
+        QObject *parent) : QObject(parent)
+{
     this->iconList = dev.getIconList();
     this->serviceList = dev.getServiceList();
     this->embeddedDeviceList = dev.getEmbeddedDeviceList();
 
-    this->major = dev.getAttribute(BrisaControlPointDevice::Major);
-    this->minor = dev.getAttribute(BrisaControlPointDevice::Minor);
-    this->urlBase = dev.getAttribute(BrisaControlPointDevice::UrlBase);
-    this->deviceType = dev.getAttribute(BrisaControlPointDevice::DeviceType);
-    this->friendlyName
-            = dev.getAttribute(BrisaControlPointDevice::FriendlyName);
-    this->manufacturer
-            = dev.getAttribute(BrisaControlPointDevice::Manufacturer);
-    this->manufacturerUrl = dev.getAttribute(
-            BrisaControlPointDevice::ManufacturerUrl);
-    this->modelDescription = dev.getAttribute(
-            BrisaControlPointDevice::ModelDescription);
-    this->modelName = dev.getAttribute(BrisaControlPointDevice::ModelName);
-    this->modelNumber = dev.getAttribute(BrisaControlPointDevice::ModelNumber);
-    this->modelUrl = dev.getAttribute(BrisaControlPointDevice::ModelUrl);
-    this->serialNumber
-            = dev.getAttribute(BrisaControlPointDevice::SerialNumber);
-    this->udn = dev.getAttribute(BrisaControlPointDevice::Udn);
-    this->upc = dev.getAttribute(BrisaControlPointDevice::Upc);
-    this->presentationUrl = dev.getAttribute(
-            BrisaControlPointDevice::PresentationUrl);
-
-    this->fileAddress = dev.getAttribute(BrisaControlPointDevice::FileAddress);
+    this->_udn = dev.getAttribute(BrisaControlPointDevice::Udn);
+    this->_major = dev.getAttribute(BrisaControlPointDevice::Major);
+    this->_minor = dev.getAttribute(BrisaControlPointDevice::Minor);
+    this->_urlBase = dev.getAttribute(BrisaControlPointDevice::UrlBase);
+    this->_deviceType = dev.getAttribute(BrisaControlPointDevice::DeviceType);
+    this->_friendlyName = dev.getAttribute(BrisaControlPointDevice::FriendlyName);
+    this->_manufacturer = dev.getAttribute(BrisaControlPointDevice::Manufacturer);
+    this->_manufacturerUrl = dev.getAttribute(BrisaControlPointDevice::ManufacturerUrl);
+    this->_modelDescription = dev.getAttribute(BrisaControlPointDevice::ModelDescription);
+    this->_modelName = dev.getAttribute(BrisaControlPointDevice::ModelName);
+    this->_modelNumber = dev.getAttribute(BrisaControlPointDevice::ModelNumber);
+    this->_modelUrl = dev.getAttribute(BrisaControlPointDevice::ModelUrl);
+    this->_serialNumber = dev.getAttribute(BrisaControlPointDevice::SerialNumber);
+    this->_upc = dev.getAttribute(BrisaControlPointDevice::Upc);
+    this->_presentationUrl = dev.getAttribute(BrisaControlPointDevice::PresentationUrl);
+    this->_fileAddress = dev.getAttribute(BrisaControlPointDevice::FileAddress);
 }
 
 BrisaControlPointDevice::~BrisaControlPointDevice() {
@@ -110,107 +114,137 @@ BrisaControlPointDevice::~BrisaControlPointDevice() {
 void BrisaControlPointDevice::setAttribute(xmlTags key, QString v) {
     switch (key) {
     case Major:
-        this->major = v;
+    case major:
+        this->_major = v;
         break;
     case Minor:
-        this->minor = v;
+    case minor:
+        this->_minor = v;
         break;
     case UrlBase:
-        this->urlBase = v;
+    case urlBase:
+        this->_urlBase = v;
         break;
     case DeviceType:
-        this->deviceType = v;
+    case deviceType:
+        this->_deviceType = v;
         break;
     case FriendlyName:
-        this->friendlyName = v;
-        this->fileAddress = this->friendlyName.remove(QChar(' '));
-        this->fileAddress.append(".xml");
+    case friendlyName:
+        this->_friendlyName = v;
         break;
     case Manufacturer:
-        this->manufacturer = v;
+    case manufacturer:
+        this->_manufacturer = v;
         break;
     case ManufacturerUrl:
-        this->manufacturerUrl = v;
+    case manufacturerUrl:
+        this->_manufacturerUrl = v;
         break;
     case ModelDescription:
-        this->modelDescription = v;
+    case modelDescription:
+        this->_modelDescription = v;
         break;
     case ModelName:
-        this->modelName = v;
+    case modelName:
+        this->_modelName = v;
         break;
     case ModelNumber:
-        this->modelNumber = v;
+    case modelNumber:
+        this->_modelNumber = v;
         break;
     case ModelUrl:
-        this->modelUrl = v;
+    case modelUrl:
+        this->_modelUrl = v;
         break;
     case SerialNumber:
-        this->serialNumber = v;
+    case serialNumber:
+        this->_serialNumber = v;
         break;
     case Udn:
-        this->udn = v;
+    case udn:
+        this->_udn = v;
         break;
     case Upc:
-        this->upc = v;
+    case upc:
+        this->_upc = v;
         break;
     case PresentationUrl:
-        this->presentationUrl = v;
+    case presentationUrl:
+        this->_presentationUrl = v;
         break;
     case FileAddress:
-        this->fileAddress = v;
+    case fileAddress:
+        this->_fileAddress = v;
         break;
     }
 }
 
 QString BrisaControlPointDevice::getAttribute(xmlTags key) {
     switch (key) {
+    case Udn:
+    case udn:
+        return this->_udn;
+        break;
     case Major:
-        return major;
+    case major:
+        return this->_major;
         break;
     case Minor:
-        return minor;
+    case minor:
+        return this->_minor;
         break;
     case UrlBase:
-        return urlBase;
+    case urlBase:
+        return this->_urlBase;
         break;
     case DeviceType:
-        return deviceType;
+    case deviceType:
+        return this->_deviceType;
         break;
     case FriendlyName:
-        return friendlyName;
+    case friendlyName:
+        return this->_friendlyName;
         break;
     case Manufacturer:
-        return manufacturer;
+    case manufacturer:
+        return this->_manufacturer;
         break;
     case ManufacturerUrl:
-        return manufacturerUrl;
+    case manufacturerUrl:
+        return this->_manufacturerUrl;
         break;
     case ModelDescription:
-        return modelDescription;
+    case modelDescription:
+        return this->_modelDescription;
         break;
     case ModelName:
-        return modelName;
+    case modelName:
+        return this->_modelName;
         break;
     case ModelNumber:
-        return modelNumber;
+    case modelNumber:
+        return this->_modelNumber;
         break;
     case ModelUrl:
-        return modelUrl;
+    case modelUrl:
+        return this->_modelUrl;
         break;
     case SerialNumber:
-        return serialNumber;
-        break;
-    case Udn:
-        return udn;
+    case serialNumber:
+        return this->_serialNumber;
         break;
     case Upc:
-        return upc;
+    case upc:
+        return this->_upc;
         break;
     case PresentationUrl:
-        return presentationUrl;
+    case presentationUrl:
+        return this->_presentationUrl;
         break;
     case FileAddress:
-        return fileAddress;
+    case fileAddress:
+        return this->_fileAddress;
         break;
     default:
         return "";
@@ -218,11 +252,9 @@ QString BrisaControlPointDevice::getAttribute(xmlTags key) {
     }
 }
 
-BrisaControlPointService *BrisaControlPointDevice::getServiceById(
-        QString serviceId) {
+BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString serviceId) {
     for (int i = 0; i < this->serviceList.size(); i++) {
-        if (this->serviceList.at(i)->getAttribute(
-                BrisaControlPointService::ServiceId).compare(serviceId) == 0) {
+        if (this->serviceList.at(i)->getAttribute(BrisaControlPointService::ServiceId).compare(serviceId) == 0) {
             return serviceList.at(i);
         }
     }
@@ -269,21 +301,21 @@ void BrisaControlPointDevice::clear() {
     this->iconList.clear();
     this->serviceList.clear();
     this->embeddedDeviceList.clear();
-    this->major.clear();
-    this->minor.clear();
-    this->urlBase.clear();
-    this->deviceType.clear();
-    this->friendlyName.clear();
-    this->manufacturer.clear();
-    this->manufacturerUrl.clear();
-    this->modelDescription.clear();
-    this->modelName.clear();
-    this->modelNumber.clear();
-    this->modelUrl.clear();
-    this->serialNumber.clear();
-    this->udn.clear();
-    this->upc.clear();
-    this->presentationUrl.clear();
-    this->fileAddress.clear();
+    this->_udn.clear();
+    this->_major.clear();
+    this->_minor.clear();
+    this->_urlBase.clear();
+    this->_deviceType.clear();
+    this->_friendlyName.clear();
+    this->_manufacturer.clear();
+    this->_manufacturerUrl.clear();
+    this->_modelDescription.clear();
+    this->_modelName.clear();
+    this->_modelNumber.clear();
+    this->_modelUrl.clear();
+    this->_serialNumber.clear();
+    this->_upc.clear();
+    this->_presentationUrl.clear();
+    this->_fileAddress.clear();
 }
 

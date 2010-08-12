@@ -108,7 +108,8 @@ BrisaDevice::BrisaDevice(const BrisaDevice &dev) :
 	ipAddress(dev.getAttribute(BrisaDevice::IpAddress)),
 	port(dev.getAttribute(BrisaDevice::Port).toInt()),
 	fileAddress(dev.getAttribute(BrisaDevice::FileAddress)),
-	running(dev.running) {
+	running(dev.running)
+{
 
 	this->major = dev.getAttribute(BrisaDevice::Major);
 	this->minor = dev.getAttribute(BrisaDevice::Minor);

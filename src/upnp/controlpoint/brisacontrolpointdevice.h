@@ -81,6 +81,7 @@ public:
 
     /*!
      *  Constructor where all device's attributes are passed as parameter.
+     *  \param udn \a empty
      *  \param deviceType \a empty
      *  \param friendlyName \a empty
      *  \param manufacturer \a empty
@@ -90,17 +91,23 @@ public:
      *  \param modelNumber \a empty
      *  \param modelURL \a empty
      *  \param serialNumber \a empty
-     *  \param UDN \a empty
-     *  \param UPC \a empty
+     *  \param upc \a empty
      *  \param presentationURL \a empty
      *  \param parent \a empty
      */
-    BrisaControlPointDevice(QString deviceType, QString friendlyName = "",
-            QString manufacturer = "", QString manufacturerURL = "",
-            QString modelDescription = "", QString modelName = "",
-            QString modelNumber = "", QString modelURL = "",
-            QString serialNumber = "", QString UDN = "", QString UPC = "",
-            QString presentationURL = "", QObject *parent = 0);
+    BrisaControlPointDevice(QString udn,
+                            QString deviceType = "",
+                            QString friendlyName = "",
+                            QString manufacturer = "",
+                            QString manufacturerURL = "",
+                            QString modelDescription = "",
+                            QString modelName = "",
+                            QString modelNumber = "",
+                            QString modelURL = "",
+                            QString serialNumber = "",
+                            QString UPC = "",
+                            QString presentationURL = "",
+                            QObject *parent = 0);
 
     /*!
      *    Destructor
@@ -110,6 +117,7 @@ public:
     /*!
      *  \enum BrisaUpnp::BrisaControlPointDevice::xmlTags
      *  \brief This enum specifies the devices attributes that are going to be set/get
+     *  \param Udn  Unique Device Name. Universally-unique identifier for the device.
      *  \param Major  Major version of the UPnP Device Architecture.
      *  \param Minor  Minor version of the UPnP Device Architecture.
      *  \param UrlBase  Defines the base URL. Used to construct fully-qualified URLs.
@@ -122,29 +130,44 @@ public:
      *  \param ModelNumber  Model number. Should be less then 32 characters.
      *  \param ModelUrl  Web site for model.
      *  \param SerialNumber  Serial number. Should be less then 64 characters
-     *  \param Udn  Unique Device Name. Universally-unique identifier for the device.
      *  \param Upc  Universal Product Code. 12-digit, all-numeric code that identifies the consumer package.
      *  \param PresentationUrl  URL to presentation for device.
      *  \param FileAddress  Device's file address.
      *  \sa setAttribute(xmlTags key, QString v), getAttribute(xmlTags key)
      */
     typedef enum {
-        Major,
-        Minor,
-        UrlBase,
-        DeviceType,
-        FriendlyName,
-        Manufacturer,
-        ManufacturerUrl,
-        ModelDescription,
-        ModelName,
-        ModelNumber,
-        ModelUrl,
-        SerialNumber,
         Udn,
+        udn,
+        Major,
+        major,
+        Minor,
+        minor,
+        UrlBase,
+        urlBase,
+        DeviceType,
+        deviceType,
+        FriendlyName,
+        friendlyName,
+        Manufacturer,
+        manufacturer,
+        ManufacturerUrl,
+        manufacturerUrl,
+        ModelDescription,
+        modelDescription,
+        ModelName,
+        modelName,
+        ModelNumber,
+        modelNumber,
+        ModelUrl,
+        modelUrl,
+        SerialNumber,
+        serialNumber,
         Upc,
+        upc,
         PresentationUrl,
-        FileAddress
+        presentationUrl,
+        FileAddress,
+        fileAddress
     } xmlTags;
 
     /*!
@@ -235,23 +258,22 @@ private:
      */
     QList<BrisaControlPointDevice*> embeddedDeviceList;
 
-    QString major;
-    QString minor;
-    QString urlBase;
-    QString deviceType;
-    QString friendlyName;
-    QString manufacturer;
-    QString manufacturerUrl;
-    QString modelDescription;
-    QString modelName;
-    QString modelNumber;
-    QString modelUrl;
-    QString serialNumber;
-    QString udn;
-    QString upc;
-    QString presentationUrl;
-
-    QString fileAddress;
+    QString _major;
+    QString _minor;
+    QString _urlBase;
+    QString _deviceType;
+    QString _friendlyName;
+    QString _manufacturer;
+    QString _manufacturerUrl;
+    QString _modelDescription;
+    QString _modelName;
+    QString _modelNumber;
+    QString _modelUrl;
+    QString _serialNumber;
+    QString _udn;
+    QString _upc;
+    QString _presentationUrl;
+    QString _fileAddress;
 };
 
 }

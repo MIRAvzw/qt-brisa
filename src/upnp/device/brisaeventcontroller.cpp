@@ -36,15 +36,21 @@ using namespace BrisaUpnp;
 #define ERROR_412_MESSAGE "Precondition Failed"
 
 BrisaEventController::BrisaEventController(
-        QxtAbstractWebSessionManager *sessionManager, QList<
-                BrisaStateVariable *> *stateVariableList, QObject *parent) :
-    BrisaWebService(sessionManager, parent), variableList(stateVariableList) {
-    QObject::connect(this, SIGNAL(genericRequestReceived(const QString &,
-                    const QMultiHash<QString, QString> &,
-                    const QByteArray &, int, int)), this,
-            SLOT(parseGenericRequest(const QString &,
-                            const QMultiHash<QString, QString> &,
-                            const QByteArray &, int, int)));
+        QxtAbstractWebSessionManager *sessionManager,
+        QList<BrisaStateVariable *> *stateVariableList,
+        QObject *parent) :
+    BrisaWebService(sessionManager, parent),
+    variableList(stateVariableList)
+{
+    QObject::connect(this,
+                     SIGNAL(genericRequestReceived(const QString &,
+                                                   const QMultiHash<QString, QString> &,
+                                                   const QByteArray &, int, int)),
+                     this,
+                     SLOT(parseGenericRequest(const QString &,
+                                              const QMultiHash<QString, QString> &,
+                                              const QByteArray &, int, int))
+                    );
 }
 
 BrisaEventController::~BrisaEventController() {
@@ -68,8 +74,7 @@ void BrisaEventController::variableChanged(BrisaStateVariable *variable) {
     QList<BrisaStateVariable *> variables;
     variables.append(variable);
 
-    for (QList<BrisaEventSubscription *>::iterator i = subscriptions.begin(); i
-            != subscriptions.end(); ++i) {
+    for (QList<BrisaEventSubscription *>::iterator i = subscriptions.begin(); i != subscriptions.end(); ++i) {
         // Remove expired subscriptions
         if ((*i)->hasExpired()) {
             qDebug() << "Removing subscription:" << (*i)->getSid();
@@ -84,19 +89,19 @@ void BrisaEventController::variableChanged(BrisaStateVariable *variable) {
     }
 }
 
-void BrisaEventController::sendEvent(const BrisaEventMessage &message,
-        const QUrl &url) {
+void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUrl &url) {
     httpClient.setHost(url.host(), url.port());
     httpClient.request(message.getMessageHeader(), message.getMessageBody());
 
-    qDebug() << "BrisaEventController Sending event to "
-            << message.getMessageHeader().value("SID") << "at Host: "
-            << url.host() << ":" << url.port();
+    qDebug() << "BrisaEventController sending event to "
+             << message.getMessageHeader().value("SID") << " at Host: "
+             << url.host() << ":" << url.port();
 }
 
-void BrisaEventController::subscribe(
-        const QMultiHash<QString, QString> &subscriberInfo, int sessionId,
-        int requestId) {
+void BrisaEventController::subscribe(const QMultiHash<QString, QString> &subscriberInfo,
+                                     int sessionId,
+                                     int requestId)
+{
     if (subscriberInfo.contains("SID")) { //Then it's probably a renewal request.
         if (subscriberInfo.contains("NT")
                 || subscriberInfo.contains("CALLBACK")) {

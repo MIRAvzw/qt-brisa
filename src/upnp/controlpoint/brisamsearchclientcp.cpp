@@ -128,18 +128,23 @@ void BrisaMSearchClientCP::datagramReceived() {
         Datagram.resize(udpListener->pendingDatagramSize());
         udpListener->readDatagram(Datagram.data(), Datagram.size());
 
-        QString Temp(Datagram);
-        QHttpResponseHeader *response = new QHttpResponseHeader(Temp);
+        QString temp(Datagram);
+        QHttpResponseHeader *response = new QHttpResponseHeader(temp);
 
         if (response->statusCode() == 200) {
-
-            qDebug() << "BrisaMSearch received MSearch answer from "
-                    << response->value("usn") << "";
-
-            emit msearchResponseReceived(response->value("usn"),
-                    response->value("location"), response->value("st"),
-                    response->value("ext"), response->value("server"),
-                    response->value("cache-control"));
+            QString usn = response->value("usn");
+            if (usn.startsWith("uuid:")) {
+                qDebug() << "BrisaMSearch received MSearch answer from "  << usn << "";
+                emit msearchResponseReceived(response->value("usn"),
+                                             response->value("location"),
+                                             response->value("st"),
+                                             response->value("ext"),
+                                             response->value("server"),
+                                             response->value("cache-control"));
+            } else {
+                qDebug() << "BrisaMSearch received MSearch from " << response->value("location")
+                         << " but it does not start with string \"uuid:\". USN field is " << usn;
+            }
         }
 
         delete response;

@@ -193,39 +193,39 @@ signals:
      *    \fn void BrisaControlPoint::deviceFound(BrisaControlPointDevice *device)
      *    This signal is emitted when a new device is find in network and all it's attributes are created
      *    by the xml reading.
-     *    \sa deviceGone(QString usn)
+     *    \sa deviceGone(QString udn)
      *    \param device the device that has been found
      */
     void deviceFound(BrisaControlPointDevice *device);
 
     /*!
-     *    \fn void BrisaControlPoint::deviceGone(QString usn)
+     *    \fn void BrisaControlPoint::deviceGone(QString udn)
      *    This signal is emitted when a device leaves the network, that means that the the ssdp client
      *    received a "ssdp:byebye" message from the device and, to handle this, the control point emit
-     *    a deviceGone event with the device's \a usn as parameter.
+     *    a deviceGone event with the device's \a udn as parameter.
      *    \sa deviceFound(BrisaControlPointDevice *device)
      */
-    void deviceGone(QString usn);
+    void deviceGone(QString udn);
 
 private slots:
 
     /*!
      *  Slot called when receive a newDevice event, this slot start the device's xml download.
-     *  \param usn \a empty
+     *  \param udn \a empty
      *  \param location \a empty
      *  \param ext \a empty
      *  \param server \a empty
      *  \param cacheControl \a empty
      */
-    void deviceFound(QString usn, QString location, QString st, QString ext,
+    void deviceFound(QString udn, QString location, QString st, QString ext,
             QString server, QString cacheControl);
 
     /*!
      *  Slot called when ssdp client emits a removed device event, this slot emit the deviceGone signal
-     *  which has as parameter the device's usn.
-     *  \param usn empty
+     *  which has as parameter the device's udn.
+     *  \param udn empty
      */
-    void deviceRemoved(const QString usn);
+    void deviceRemoved(const QString udn);
 
     /*!
      *  Write the content of the downloaded xml in a new xml temporary file to set the device's

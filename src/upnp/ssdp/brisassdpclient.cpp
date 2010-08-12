@@ -121,19 +121,16 @@ void BrisaSSDPClient::notifyReceived(QHttpRequestHeader *datagram) {
 
     if (datagram->value("nts") == "ssdp:alive") {
         emit newDeviceEvent(datagram->value("usn"),
-                datagram->value("location"), datagram->value("nt"),
-                datagram->value("ext"), datagram->value("server"),
-                datagram->value("cacheControl"));
+                            datagram->value("location"), datagram->value("nt"),
+                            datagram->value("ext"), datagram->value("server"),
+                            datagram->value("cacheControl"));
+        qDebug() << "Brisa SSDP Client: Received alive from " << datagram->value("usn") << "";
 
-        qDebug() << "Brisa SSDP Client: Received alive from " << datagram->value(
-                "usn") << "";
     } else if (datagram->value("nts") == "ssdp:byebye") {
         emit removedDeviceEvent(datagram->value("usn"));
+        qDebug() << "Brisa SSDP Client: Received byebye from " << datagram->value("usn") << "";
 
-        qDebug() << "Brisa SSDP Client: Received byebye from " << datagram->value(
-                "usn") << "";
     } else {
-        qDebug() << "Brisa SSDP Client: Received unknown subtype: "
-                << datagram->value("nts") << "";
+        qDebug() << "Brisa SSDP Client: Received unknown subtype: " << datagram->value("nts") << "";
     }
 }
