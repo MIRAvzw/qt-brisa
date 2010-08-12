@@ -146,10 +146,7 @@ void BrisaControlPoint::deviceFound(QString, QString location, QString,
 }
 
 void BrisaControlPoint::deviceRemoved(const QString udn) {
-    QString udnRet = udn;
-    udnRet = udnRet.replace("uuid:", "");
-    udnRet = udnRet.replace("::upnp:rootdevice", "");
-    emit deviceGone(udnRet);
+    emit deviceGone(udn);
 }
 
 void BrisaControlPoint::buildUrlBase() {

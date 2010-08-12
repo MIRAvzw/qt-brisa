@@ -45,8 +45,6 @@ BrisaControlPointDevice::BrisaControlPointDevice(QTemporaryFile *xml,
     this->setAttribute(BrisaControlPointDevice::UrlBase, url->toString(QUrl::RemovePath));
     BrisaDeviceXMLHandlerCP *handler = new BrisaDeviceXMLHandlerCP();
     handler->parseDevice(this, xml);
-//    this->_udn = this->_udn.replace("uuid:", "");
-//    this->_udn = this->_udn.replace("::upnp:rootdevice", "");
     delete handler;
 }
 
@@ -65,8 +63,6 @@ BrisaControlPointDevice::BrisaControlPointDevice(QString udn,
                                                  QObject *parent) : QObject(parent)
 {
     this->_udn = udn;
-    this->_udn = this->_udn.replace("uuid:", "");
-    this->_udn = this->_udn.replace("::upnp:rootdevice", "");
     this->_major = "1";
     this->_minor = "0";
     this->_deviceType = deviceType;
