@@ -60,6 +60,9 @@ public:
     HttpVersion httpVersion() const;
     void setHttpVersion(const HttpVersion &);
 
+    QByteArray entityBody() const;
+    void setEntityBody(const QByteArray &body);
+
     QHash<QByteArray, QByteArray> headers() const;
     void setHeader(const QByteArray &name, const QByteArray &value);
     void removeHeader(const QByteArray &name);
@@ -94,7 +97,7 @@ private:
     // max: 32 headers
     QHash<QByteArray, QByteArray> m_headers;
 
-    QByteArray m_body;                // char *post_data; int post_data_len;
+    QByteArray m_entityBody;                // char *post_data; int post_data_len;
 
 };
 

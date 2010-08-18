@@ -54,4 +54,9 @@ inline int HttpVersion::minor() const
     return m_minor;
 }
 
+inline int HttpVersion::major() const
+{
+    return m_major;
+}
+
 #endif // HTTPVERSION_H

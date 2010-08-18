@@ -32,7 +32,8 @@
 enum State
 {
     WAITING_FOR_REQUEST_LINE,
-    WAITING_FOR_HEADERS
+    WAITING_FOR_HEADERS,
+    WAITING_FOR_ENTITY_BODY
 };
 
 HttpSession::HttpSession(int socketDescriptor, QObject *parent) :
@@ -86,7 +87,7 @@ qint64 HttpSession::writeResponse(HttpResponse r)
         }
     }
 
-    QByteArray body = r.body();
+    QByteArray body = r.entityBody();
 
     numberBytesSent += socket->write("Content-Length: ");
     numberBytesSent += socket->write(QByteArray::number(body.size()));
@@ -117,27 +118,66 @@ void HttpSession::onReadyRead()
             if (i != -1) {
                 QList<QByteArray> request = buffer.left(i).split(' ');
 
+                requestInfo.setHttpVersion(request.at(2).split('/').at(1).toDouble());
+
+                if (requestInfo.httpVersion().major() > 1) {
+                    HttpResponse response(HttpVersion(1, 1), HttpResponse::HTTP_VERSION_NOT_SUPPORTED);
+
+                    writeResponse(response);
+                    socket->close();
+                    return;
+                }
+
                 if (request.size() > 1) {
                     if (request.at(0) == "GET")
                         requestInfo.setMethod(HttpRequest::GET);
                     else if (request.at(0) == "POST")
                         requestInfo.setMethod(HttpRequest::POST);
-                    else {
-                        // 501
+                    else if (request.at(0) == "HEAD")
+                        requestInfo.setMethod(HttpRequest::HEAD);
+                    else if (request.at(0) == "PUT")
+                        requestInfo.setMethod(HttpRequest::PUT);
+                    else if (request.at(0) == "DELETE")
+                        requestInfo.setMethod(HttpRequest::DELETE);
+                    else if (request.at(0) == "TRACE")
+                        requestInfo.setMethod(HttpRequest::TRACE);
+                    else if (request.at(0) == "OPTIONS")
+                        requestInfo.setMethod(HttpRequest::OPTIONS);
+                    else if (request.at(0) == "CONNECT")
+                        requestInfo.setMethod(HttpRequest::CONNECT);
+                    else if (request.at(0) == "PATCH")
+                        requestInfo.setMethod(HttpRequest::PATCH);
+                    else if (requestInfo.httpVersion().minor() > 1) {
+                        HttpResponse response(HttpVersion(1, 1), HttpResponse::NOT_IMPLEMENTED);
+
+                        response.setHeader("Connection", "close");
+
+                        writeResponse(response);
+                        socket->close();
+                        return;
+                    } else {
+                        HttpResponse response(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST);
+
+                        if (requestInfo.httpVersion().minor() == 1)
+                            response.setHeader("Connection", "close");
+
+                        writeResponse(response);
+                        socket->close();
+                        return;
                     }
 
                     requestInfo.setUri(request.at(1));
-
-                    requestInfo.setHttpVersion(request.at(2).split('/').at(1).toDouble());
 
                     buffer.remove(0, request.at(0).size() + request.at(1).size() +
                                   request.at(2).size() + 4);
 
                     state = WAITING_FOR_HEADERS;
                 } else {
-                    // BAD REQUEST
-                    qDebug(DBG_PREFIX "bad request");
+                    HttpResponse response(HttpVersion(1, 0), HttpResponse::BAD_REQUEST);
+
+                    writeResponse(response);
                     socket->close();
+                    return;
                 }
             }
         }
@@ -151,28 +191,29 @@ void HttpSession::onReadyRead()
 
                     i = header.indexOf(':');
                     if (i > 0) {
-                        if (i < header.size() - 2)
-                            requestInfo.setHeader(header.left(i), header.mid(i + 2));
+                        if (i + 1 < header.size())
+                            requestInfo.setHeader(header.left(i), header.mid(i + 1));
                         else
                             requestInfo.setHeader(header.left(i), QByteArray());
                     }
                 } else {
                     int versionMinor = requestInfo.httpVersion().minor();
                     if (versionMinor == 0 || ((versionMinor > 0) && !requestInfo.header("Host").isNull())) {
+                        // TODO: remove only the consumed piece of the buffer
                         buffer.clear();
                         state = WAITING_FOR_REQUEST_LINE;
 
                         pageRequest(requestInfo);
                     } else {
-                        HttpResponse response(HttpVersion(1, 1));
+                        HttpResponse response(HttpVersion(1, 1), HttpResponse::BAD_REQUEST);
 
-                        response.setStatusCode(400);
                         writeResponse(response);
-
                         socket->close();
                     }
                 }
             }
         }
+    case WAITING_FOR_ENTITY_BODY:
+        ;// TODO: store the body to requestInfo.m_entity
     }
 }

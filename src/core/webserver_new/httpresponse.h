@@ -94,8 +94,10 @@ public:
     };
 
 public:
+    // If reasonPhrase is null and the status code is know, then the default
+    // reason phrase to the is set
     HttpResponse(const HttpVersion &httpVersion, int statusCode = Ok,
-                 const QByteArray &reasonPhrase = "OK");
+                 const QByteArray &reasonPhrase = QByteArray());
 
     HttpVersion httpVersion() const;
     void setHttpVersion(const HttpVersion &version);
@@ -107,8 +109,8 @@ public:
     QByteArray reasonPhrase() const;
     void setReasonPhrase(const QByteArray &reasonPhrase);
 
-    QByteArray body() const;
-    void setBody(const QByteArray &body);
+    QByteArray entityBody() const;
+    void setEntityBody(const QByteArray &body);
 
     QHash<QByteArray, QByteArray> headers() const;
     void setHeader(const QByteArray &name, const QByteArray &value);
@@ -122,7 +124,7 @@ private:
 
     QHash<QByteArray, QByteArray> m_headers;
 
-    QByteArray m_body;
+    QByteArray m_entityBody;
 };
 
 #endif // HTTPRESPONSE_H

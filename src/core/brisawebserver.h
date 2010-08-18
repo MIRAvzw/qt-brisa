@@ -7,6 +7,7 @@
  * Created:
  * Description: Definition of BrisaWebserver class.
  * Authors: Andre Dieb Martins <andre.dieb@gmail.com> @since 2009
+ *          Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com> @since 2010
  *
  *
  * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
@@ -33,12 +34,16 @@
 #include <QtNetwork>
 #ifdef USE_NEW_BRISA_WEBSERVER
 
+#include "webserver_new/httpserver.h"
+
 #else // !USE_NEW_BRISA_WEBSERVER
+
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
+
 #endif // USE_NEW_BRISA_WEBSERVER
 
 #include "brisaglobal.h"
@@ -55,6 +60,22 @@ namespace BrisaCore
  *  BrisaWebServer implements a Web Server using libQxt.
  */
 #ifdef USE_NEW_BRISA_WEBSERVER
+    class BRISA_CORE_EXPORT BrisaWebserver: public HttpServer
+    {
+    Q_OBJECT
+    public:
+        BrisaWebserver(const QHostAddress &host, quint16 port);
+        ~BrisaWebserver();
+
+        void publishFile(QString publishPath, QString filePath);
+
+    protected:
+        HttpSession *incomingConnection(int socketDescriptor);
+
+    private:
+        QMutex mutex;
+//        QHash<WebResourceIdentifier, WebResource> ...;
+    }
 
 #else // !USE_NEW_BRISA_WEBSERVER
 class BRISA_CORE_EXPORT BrisaWebserver: public QxtHttpSessionManager {

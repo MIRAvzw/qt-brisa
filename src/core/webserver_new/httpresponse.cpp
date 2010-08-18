@@ -146,6 +146,11 @@ HttpResponse::HttpResponse(const HttpVersion &httpVersion, int statusCode,
     m_statusCode(statusCode),
     m_reasonPhrase(reasonPhrase)
 {
+    if (m_reasonPhrase.isNull()) {
+        int i = statusCodeToReasonPhrasesIndex(statusCode);
+        if (i != -1)
+            m_reasonPhrase = reasonPhrases[i];
+    }
 }
 
 int HttpResponse::statusCode() const
@@ -163,14 +168,14 @@ QHash<QByteArray, QByteArray> HttpResponse::headers() const
     return m_headers;
 }
 
-QByteArray HttpResponse::body() const
+QByteArray HttpResponse::entityBody() const
 {
-    return m_body;
+    return m_entityBody;
 }
 
-void HttpResponse::setBody(const QByteArray &body)
+void HttpResponse::setEntityBody(const QByteArray &body)
 {
-    m_body = body;
+    m_entityBody = body;
 }
 
 bool HttpResponse::setStatusCode(int st)

@@ -63,14 +63,14 @@ void WebServerSession::pageRequest(HttpRequest request)
         if (!resource.contentType.isEmpty())
             response.setHeader("Content-Type", resource.contentType);
 
-        response.setBody(file.readAll());
+        response.setEntityBody(file.readAll());
 
         writeResponse(response);
     } else {
         response.setStatusCode(HttpResponse::NOT_FOUND);
 
         response.setHeader("Content-Type", "text/html");
-        response.setBody(notFound);
+        response.setEntityBody(notFound);
 
         writeResponse(response);
     }
