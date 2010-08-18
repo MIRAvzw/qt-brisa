@@ -29,6 +29,15 @@
 #include <QStateMachine>
 #define DBG_PREFIX "HttpConnection: "
 
+// some fixes to work with bad code (alias macro preprocessor)
+#ifdef major
+#undef major
+#endif
+
+#ifdef minor
+#undef minor
+#endif
+
 enum State
 {
     WAITING_FOR_REQUEST_LINE,
@@ -76,25 +85,24 @@ qint64 HttpSession::writeResponse(HttpResponse r)
     numberBytesSent += socket->write(r.reasonPhrase());
     numberBytesSent += socket->write("\r\n");
 
-    {
-        QHash<QByteArray, QByteArray> headers = r.headers();
-        for (QHash<QByteArray, QByteArray>::iterator i = headers.begin();i != headers.end();++i) {
-            qDebug(DBG_PREFIX "%s: %s", i.key().constData(), i.value().constData());
-            numberBytesSent += socket->write(i.key());
+    for (QHash<QByteArray, QByteArray>::const_iterator i = r.headersBeginIterator();i != r.headersEndIterator();++i) {
+        qDebug(DBG_PREFIX "%s: %s", i.key().constData(), i.value().constData());
+        numberBytesSent += socket->write(i.key());
+        if (!i.value().isNull()) {
             numberBytesSent += socket->write(": ");
             numberBytesSent += socket->write(i.value());
-            numberBytesSent += socket->write("\r\n");
+        } else {
+            numberBytesSent += socket->write(":");
         }
+        numberBytesSent += socket->write("\r\n");
     }
 
-    QByteArray body = r.entityBody();
-
     numberBytesSent += socket->write("Content-Length: ");
-    numberBytesSent += socket->write(QByteArray::number(body.size()));
+    numberBytesSent += socket->write(QByteArray::number(r.entitySize()));
 
     numberBytesSent += socket->write("\r\n\r\n");
 
-    numberBytesSent += socket->write(body);
+    numberBytesSent += r.entityBody(socket);
 
     numberBytesSent += socket->write("\r\n");
 

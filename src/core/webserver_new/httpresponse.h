@@ -26,10 +26,11 @@
 #ifndef HTTPRESPONSE_H
 #define HTTPRESPONSE_H
 
+#include "httpmessage.h"
 #include "httpversion.h"
 #include <QHash>
 
-class HttpResponse
+class HttpResponse: public HttpMessage
 {
 public:
     enum StatusCode
@@ -99,9 +100,6 @@ public:
     HttpResponse(const HttpVersion &httpVersion, int statusCode = Ok,
                  const QByteArray &reasonPhrase = QByteArray());
 
-    HttpVersion httpVersion() const;
-    void setHttpVersion(const HttpVersion &version);
-
     int statusCode() const;
     bool setStatusCode(int st);
     void setStatusCode(int st, const QByteArray &reasonPhrase);
@@ -109,22 +107,9 @@ public:
     QByteArray reasonPhrase() const;
     void setReasonPhrase(const QByteArray &reasonPhrase);
 
-    QByteArray entityBody() const;
-    void setEntityBody(const QByteArray &body);
-
-    QHash<QByteArray, QByteArray> headers() const;
-    void setHeader(const QByteArray &name, const QByteArray &value);
-    void removeHeader(const QByteArray &name);
-    QByteArray header(const QByteArray &name) const;
-
 private:
-    HttpVersion m_httpVersion;
     int m_statusCode;
     QByteArray m_reasonPhrase;
-
-    QHash<QByteArray, QByteArray> m_headers;
-
-    QByteArray m_entityBody;
 };
 
 #endif // HTTPRESPONSE_H

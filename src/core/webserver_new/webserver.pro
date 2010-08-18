@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     httpresponse.cpp \
     webserversession.cpp \
     httpversion.cpp \
-    webserver.cpp
+    webserver.cpp \
+    httpmessage.cpp
 HEADERS += httprequest.h \
     httpserver.h \
     httpsession.h \
@@ -22,4 +23,5 @@ HEADERS += httprequest.h \
     webserversession.h \
     httpversion.h \
     webserver.h \
-    webresource.h
+    webresource.h \
+    httpmessage.h

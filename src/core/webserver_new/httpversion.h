@@ -32,6 +32,7 @@ class HttpVersion
 {
 public:
     HttpVersion(int httpVersionMajor = 1, int httpVersionMinor = 1);
+//    HttpVersion(const HttpVersion &);
 
     int major() const;
     int minor() const;

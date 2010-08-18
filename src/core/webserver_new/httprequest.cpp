@@ -27,11 +27,9 @@
 
 HttpRequest::HttpRequest(Method method, const QByteArray &uri,
                          const HttpVersion &httpVersion) :
+    HttpMessage(httpVersion),
     m_method(method),
-    m_uri(uri),
-//    m_httpVersionMajor(httpVersion),
-//    m_httpVersionMinor(static_cast<int>(httpVersion * 10) % 10)
-    m_httpVersion(httpVersion)
+    m_uri(uri)
 {
 }
 
@@ -48,34 +46,4 @@ void HttpRequest::setUri(const QByteArray &uri)
 QByteArray HttpRequest::uri() const
 {
     return m_uri;
-}
-
-HttpVersion HttpRequest::httpVersion() const
-{
-    return m_httpVersion;
-}
-
-void HttpRequest::setHttpVersion(const HttpVersion &version)
-{
-    m_httpVersion = version;
-}
-
-QHash<QByteArray, QByteArray> HttpRequest::headers() const
-{
-    return m_headers;
-}
-
-void HttpRequest::setHeader(const QByteArray &name, const QByteArray &value)
-{
-    m_headers[name] = value;
-}
-
-void HttpRequest::removeHeader(const QByteArray &name)
-{
-    m_headers.remove(name);
-}
-
-QByteArray HttpRequest::header(const QByteArray &headerName) const
-{
-    return m_headers.value(headerName);
 }

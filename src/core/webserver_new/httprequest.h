@@ -26,11 +26,12 @@
 #ifndef HTTPREQUEST_H
 #define HTTPREQUEST_H
 
+#include "httpmessage.h"
 #include <QUrl>
 #include <QHostAddress>
 #include "httpversion.h"
 
-class HttpRequest
+class HttpRequest: public HttpMessage
 {
 public:
     enum MethodFlag
@@ -57,17 +58,6 @@ public:
     QByteArray uri() const;
     void setUri(const QByteArray &uri);
 
-    HttpVersion httpVersion() const;
-    void setHttpVersion(const HttpVersion &);
-
-    QByteArray entityBody() const;
-    void setEntityBody(const QByteArray &body);
-
-    QHash<QByteArray, QByteArray> headers() const;
-    void setHeader(const QByteArray &name, const QByteArray &value);
-    void removeHeader(const QByteArray &name);
-    QByteArray header(const QByteArray &headerName) const;
-
     //    /*
     //     * Get a value of particular form variable.
     //     * Both query string (whatever comes after '?' in the URL) and a POST buffer
@@ -83,22 +73,6 @@ public:
 private:
     Method m_method;                  // char *request_method;
     QByteArray m_uri;                 // char *uri
-
-    QByteArray remoteUser;            // char *remote_user;
-    QHostAddress remoteIp;            // long remote_ip;
-    // the socket descriptor to be used by QTcpSocket
-    int remotePort;                   // int remote_port;
-
-//    int m_httpVersionMajor;             // int http_version_major;
-//    int m_httpVersionMinor;             // int http_version_minor;
-    HttpVersion m_httpVersion;
-    // the maximum number of headers should be 64
-//    QList<HttpHeader> m_headers;      // int num_headers; struct mg_header http_headers[64];
-    // max: 32 headers
-    QHash<QByteArray, QByteArray> m_headers;
-
-    QByteArray m_entityBody;                // char *post_data; int post_data_len;
-
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(HttpRequest::Method)

@@ -31,6 +31,12 @@ HttpVersion::HttpVersion(int httpVersionMajor, int httpVersionMinor) :
 {
 }
 
+//HttpVersion::HttpVersion(const HttpVersion &o) :
+//        m_major(o.m_major),
+//        m_minor(o.m_minor)
+//{
+//}
+
 HttpVersion &HttpVersion::operator =(qreal version)
 {
     m_major = version;
