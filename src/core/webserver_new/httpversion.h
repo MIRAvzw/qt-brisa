@@ -26,13 +26,12 @@
 #ifndef HTTPVERSION_H
 #define HTTPVERSION_H
 
-#include <QtGlobal>
+#include <QByteArray>
 
 class HttpVersion
 {
 public:
     HttpVersion(int httpVersionMajor = 1, int httpVersionMinor = 1);
-//    HttpVersion(const HttpVersion &);
 
     int major() const;
     int minor() const;
@@ -40,10 +39,9 @@ public:
     void setMajor(int);
     void setMinor(int);
 
-    bool operator==(qreal);
+    bool operator==(qreal) const;
     HttpVersion &operator=(qreal);
-
-//    QByteArray operator() const;
+    operator QByteArray() const;
 
 private:
     int m_major;
@@ -58,6 +56,23 @@ inline int HttpVersion::minor() const
 inline int HttpVersion::major() const
 {
     return m_major;
+}
+
+inline bool HttpVersion::operator ==(qreal r) const
+{
+    return (m_major == static_cast<int>(r)) && (static_cast<int>(r * 10) % 10);
+}
+
+inline HttpVersion::operator QByteArray() const
+{
+    QByteArray str;
+    // "HTTP/x.x" // 8 chars
+    str.reserve(8);
+    str += "HTTP/";
+    str += QByteArray::number(m_major);
+    str += ".";
+    str += QByteArray::number(m_minor);
+    return str;
 }
 
 #endif // HTTPVERSION_H

@@ -69,13 +69,13 @@ void HttpSession::run()
     exec();
 }
 
+// the way of acquiring the number bytes sent isn't safe, and the exception
+// handling too
 qint64 HttpSession::writeResponse(HttpResponse r)
 {
     qint64 numberBytesSent = 0;
-    if (r.httpVersion().minor() == 1)
-        numberBytesSent += socket->write("HTTP/1.1 ");
-    else
-        numberBytesSent += socket->write("HTTP/1.0 ");
+
+    numberBytesSent += socket->write(r.httpVersion());
 
     qDebug(DBG_PREFIX "status code: %i", r.statusCode());
     qDebug(DBG_PREFIX "Reason Phrase: %s", r.reasonPhrase().constData());
@@ -86,7 +86,6 @@ qint64 HttpSession::writeResponse(HttpResponse r)
     numberBytesSent += socket->write("\r\n");
 
     for (QHash<QByteArray, QByteArray>::const_iterator i = r.headersBeginIterator();i != r.headersEndIterator();++i) {
-        qDebug(DBG_PREFIX "%s: %s", i.key().constData(), i.value().constData());
         numberBytesSent += socket->write(i.key());
         if (!i.value().isNull()) {
             numberBytesSent += socket->write(": ");
