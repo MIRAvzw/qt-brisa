@@ -77,4 +77,14 @@ private:
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(HttpRequest::Method)
 
+inline HttpRequest::Method HttpRequest::method() const
+{
+    return m_method;
+}
+
+inline QByteArray HttpRequest::uri() const
+{
+    return m_uri;
+}
+
 #endif // HTTPREQUEST_H

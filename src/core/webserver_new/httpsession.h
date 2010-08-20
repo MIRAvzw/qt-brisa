@@ -61,6 +61,8 @@ private:
     QDateTime birthTime;
     int state;
     QByteArray buffer;
+    // entity body related only
+    qint64 remainingBytes;
 
     // os atributos abaixo estavam originalmente presentes.
     // falta verificar se eles pertencerão a o port Qt também

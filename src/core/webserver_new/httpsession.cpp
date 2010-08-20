@@ -49,7 +49,8 @@ HttpSession::HttpSession(int socketDescriptor, QObject *parent) :
     QThread(parent),
     socket(NULL),
     socketDescriptor(socketDescriptor),
-    state(WAITING_FOR_REQUEST_LINE)
+    state(WAITING_FOR_REQUEST_LINE),
+    remainingBytes(-1)
 {
 }
 
@@ -75,11 +76,12 @@ qint64 HttpSession::writeResponse(HttpResponse r)
 {
     qint64 numberBytesSent = 0;
 
-    numberBytesSent += socket->write(r.httpVersion());
 
     qDebug(DBG_PREFIX "status code: %i", r.statusCode());
     qDebug(DBG_PREFIX "Reason Phrase: %s", r.reasonPhrase().constData());
 
+    numberBytesSent += socket->write(r.httpVersion());
+    numberBytesSent += socket->write(" ");
     numberBytesSent += socket->write(QByteArray::number(r.statusCode()));
     numberBytesSent += socket->write(" ");
     numberBytesSent += socket->write(r.reasonPhrase());
@@ -136,6 +138,7 @@ void HttpSession::onReadyRead()
                 }
 
                 if (request.size() > 1) {
+                    //
                     if (request.at(0) == "GET")
                         requestInfo.setMethod(HttpRequest::GET);
                     else if (request.at(0) == "POST")
@@ -206,12 +209,35 @@ void HttpSession::onReadyRead()
                 } else {
                     int versionMinor = requestInfo.httpVersion().minor();
                     if (versionMinor == 0 || ((versionMinor > 0) && !requestInfo.header("Host").isNull())) {
-                        // TODO: remove only the consumed piece of the buffer
-                        buffer.clear();
-                        state = WAITING_FOR_REQUEST_LINE;
-
-                        pageRequest(requestInfo);
+                        buffer.remove(0, 2);
+                        // in future versions should be interesting make
+                        // automatic detection of the presence of entity body
+                        // based on the headers supplied by the client
+                        switch (requestInfo.method()) {
+                        case HttpRequest::HEAD:
+                        case HttpRequest::GET:
+                        case HttpRequest::DELETE:
+                        case HttpRequest::TRACE:
+                        // If the OPTIONS request includes an entity-body (as
+                        // indicated by the presence of Content-Length or
+                        // Transfer-Encoding), then the media type MUST be indicated
+                        // by a Content-Type field. Although this specification does
+                        // not define any use for such a body, future extensions to
+                        // HTTP might use the OPTIONS body to make more detailed
+                        // queries on the server. A server that does not support
+                        // such an extension MAY discard the request body
+                        case HttpRequest::OPTIONS:
+                        case HttpRequest::CONNECT:
+                            state = WAITING_FOR_REQUEST_LINE;
+                            pageRequest(requestInfo);
+                            break;
+                        case HttpRequest::POST:
+                        case HttpRequest::PUT:
+                        case HttpRequest::PATCH:
+                            state = WAITING_FOR_ENTITY_BODY;
+                        }
                     } else {
+                        // The HTTP/1.0 client tried make a request without the host header
                         HttpResponse response(HttpVersion(1, 1), HttpResponse::BAD_REQUEST);
 
                         writeResponse(response);
@@ -221,6 +247,23 @@ void HttpSession::onReadyRead()
             }
         }
     case WAITING_FOR_ENTITY_BODY:
-        ;// TODO: store the body to requestInfo.m_entity
+        // TODO: handles other methods to discover the size of the entity body
+        switch (remainingBytes) {
+        case -1:
+            bool ok;
+            remainingBytes = requestInfo.header("Content-Length").toInt(&ok);
+            if (!ok) {
+                HttpResponse response(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST);
+                writeResponse(response);
+                socket->close();
+            }
+        default:
+            if (buffer.size() == remainingBytes) {
+                requestInfo.setEntityBody(buffer);
+                state = WAITING_FOR_REQUEST_LINE;
+
+                pageRequest(requestInfo);
+            }
+        }
     }
 }

@@ -42,8 +42,3 @@ void HttpRequest::setUri(const QByteArray &uri)
 {
     m_uri = uri;
 }
-
-QByteArray HttpRequest::uri() const
-{
-    return m_uri;
-}
