@@ -1,3 +1,5 @@
+#ifndef USE_NEW_BRISA_WEBSERVER
+
 #include "brisawebfile.h"
 
 using namespace BrisaCore;
@@ -21,3 +23,5 @@ void BrisaWebFile::pageRequestedEvent(QxtWebRequestEvent *event) {
     postEvent(c);
     file->reset();
 }
+
+#endif // USE_NEW_BRISA_WEBSERVER

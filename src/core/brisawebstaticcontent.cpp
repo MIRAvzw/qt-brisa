@@ -1,3 +1,5 @@
+#ifndef USE_NEW_BRISA_WEBSERVER
+
 #include "brisawebstaticcontent.h"
 
 using namespace BrisaCore;
@@ -16,3 +18,5 @@ void BrisaWebStaticContent::index(QxtWebRequestEvent *event) {
     postEvent(new QxtWebPageEvent(event->sessionID, event->requestID,
             content->toUtf8()));
 }
+
+#endif // USE_NEW_BRISA_WEBSERVER

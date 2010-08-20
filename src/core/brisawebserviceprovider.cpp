@@ -1,3 +1,5 @@
+#ifndef USE_NEW_BRISA_WEBSERVER
+
 #include "brisawebserviceprovider.h"
 
 using namespace BrisaCore;
@@ -60,3 +62,5 @@ inline QString extractPathLevel(QxtWebRequestEvent *event) {
         event->url.setPath(path.mid(pos));
     return path.mid(1, pos - 1);
 }
+
+#endif // USE_NEW_BRISA_WEBSERVER
