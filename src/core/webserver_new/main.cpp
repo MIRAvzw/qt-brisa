@@ -24,15 +24,8 @@
  */
 
 #include <QtCore/QCoreApplication>
-#include "webserver.h"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
-
-    WebServer *server = new WebServer(QHostAddress::LocalHost, 8080);
-    server->publishFile("/", "/var/www/index.html");
-    server->start();
-
-    return a.exec();
+    return 0;
 }

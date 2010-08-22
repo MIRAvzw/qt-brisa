@@ -42,11 +42,19 @@ public:
     virtual ~HttpSession();
     void run();
 
+    // default implementation returns true if version is lower or equals to the
+    // last supported version.
+    // used to identify if this http version is supported
+    virtual bool isVersionSupported(const HttpVersion &version) const;
+
 protected:
-    // a api poderia ter alguma coisa como esse método para permitir customização
-//    virtual QByteArray handleRequest();
-    virtual void pageRequest(HttpRequest request) = 0;
-    qint64 writeResponse(HttpResponse);
+    // used to respond BAD_REQUESTs
+    HttpVersion lastSupportedHttpVersion;
+
+    virtual bool hasEntityBody(const HttpRequest &request) = 0;
+    virtual void onRequest(const HttpRequest &request) = 0;
+    qint64 writeResponse(HttpResponse, bool closeConnection = false);
+//    void setDefaultHttpVersion(const HttpVersion &version);
 
 signals:
     void error();
@@ -71,6 +79,7 @@ private:
 
     //	SSL		*ssl;		/* SSL descriptor		*/
 
+//    static HttpVersion defaultHttpVersion;
 };
 
 #endif // HTTPSESSION_H

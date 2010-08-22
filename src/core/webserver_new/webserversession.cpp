@@ -47,7 +47,7 @@ WebServerSession::WebServerSession(int socketDescriptor,
     qDebug(DBG_PREFIX "nova conexão web");
 }
 
-void WebServerSession::pageRequest(HttpRequest request)
+void WebServerSession::onRequest(HttpRequest request)
 {
     qDebug(DBG_PREFIX "respondendo request");
     HttpResponse response(request.httpVersion());

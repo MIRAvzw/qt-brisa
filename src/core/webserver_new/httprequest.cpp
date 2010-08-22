@@ -25,7 +25,7 @@
 
 #include "httprequest.h"
 
-HttpRequest::HttpRequest(Method method, const QByteArray &uri,
+HttpRequest::HttpRequest(const QByteArray &method, const QByteArray &uri,
                          const HttpVersion &httpVersion) :
     HttpMessage(httpVersion),
     m_method(method),
@@ -33,7 +33,7 @@ HttpRequest::HttpRequest(Method method, const QByteArray &uri,
 {
 }
 
-void HttpRequest::setMethod(const Method &method)
+void HttpRequest::setMethod(const QByteArray &method)
 {
     m_method = method;
 }

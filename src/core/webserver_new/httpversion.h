@@ -32,6 +32,8 @@ class HttpVersion
 {
 public:
     HttpVersion(int httpVersionMajor = 1, int httpVersionMinor = 1);
+    // str must have the format "HTTP/1.1", or a HTTP 0.0 will be created
+    HttpVersion(const QByteArray &str);
 
     int major() const;
     int minor() const;
@@ -39,9 +41,14 @@ public:
     void setMajor(int);
     void setMinor(int);
 
-    bool operator==(qreal) const;
-    HttpVersion &operator=(qreal);
+    bool operator ==(qreal) const;
+    bool operator >(const HttpVersion &o) const;
+    bool operator <(const HttpVersion &o) const;
+    bool operator >=(const HttpVersion &o) const;
+    bool operator <=(const HttpVersion &o) const;
+    HttpVersion &operator =(qreal);
     operator QByteArray() const;
+    operator bool() const;
 
 private:
     int m_major;
@@ -63,6 +70,50 @@ inline bool HttpVersion::operator ==(qreal r) const
     return (m_major == static_cast<int>(r)) && (static_cast<int>(r * 10) % 10);
 }
 
+inline bool HttpVersion::operator >(const HttpVersion &o) const
+{
+    if (m_major > o.m_major) {
+        return true;
+    } else if (m_major < o.m_major) {
+        return false;
+    } else {
+        return m_minor > o.m_minor;
+    }
+}
+
+inline bool HttpVersion::operator <(const HttpVersion &o) const
+{
+    if (m_major < o.m_major) {
+        return true;
+    } else if (m_major > o.m_major) {
+        return false;
+    } else {
+        return m_minor < o.m_minor;
+    }
+}
+
+inline bool HttpVersion::operator >=(const HttpVersion &o) const
+{
+    if (m_major > o.m_major) {
+        return true;
+    } else if (m_major < o.m_major) {
+        return false;
+    } else {
+        return m_minor >= o.m_minor;
+    }
+}
+
+inline bool HttpVersion::operator <=(const HttpVersion &o) const
+{
+    if (m_major < o.m_major) {
+        return true;
+    } else if (m_major > o.m_major) {
+        return false;
+    } else {
+        return m_minor <= o.m_minor;
+    }
+}
+
 inline HttpVersion::operator QByteArray() const
 {
     QByteArray str;
@@ -73,6 +124,11 @@ inline HttpVersion::operator QByteArray() const
     str += ".";
     str += QByteArray::number(m_minor);
     return str;
+}
+
+inline HttpVersion::operator bool() const
+{
+    return m_major || m_minor;
 }
 
 #endif // HTTPVERSION_H

@@ -31,6 +31,38 @@ HttpVersion::HttpVersion(int httpVersionMajor, int httpVersionMinor) :
 {
 }
 
+// a non-trivial constructor :)
+// the commented code also works, but isn't a good code (slow,
+// difficult ro understand, ...), I made it only for fun
+HttpVersion::HttpVersion(const QByteArray &str) :
+//        m_major((str.indexOf('/') != -1) && (str.indexOf('.', str.indexOf('/')) != -1) ?
+//                str.mid(str.indexOf('/') + 1, str.indexOf('.', str.indexOf('/')) -
+//                        str.indexOf('/') - 1).toInt() : 1),
+//        m_minor((str.indexOf('/') != -1) && (str.indexOf('.', str.indexOf('/'))) ?
+//                str.mid(str.indexOf('.', str.indexOf('/')) + 1).toInt() : 0)
+        m_major(0),
+        m_minor(0)
+{
+    if (!str.startsWith("HTTP/"))
+        return;
+    int indexOfSlash = str.indexOf('/');
+    if (indexOfSlash != -1) {
+        int indexOfDot = str.indexOf('.', indexOfSlash);
+        if (indexOfDot != -1) {
+            bool ok[2];
+
+            int tmp[] =
+            {str.mid(indexOfSlash + 1, indexOfDot - indexOfSlash - 1).toInt(ok),
+             str.mid(indexOfDot + 1).toInt(ok + 1)};
+
+            if (ok[0] && ok[1]) {
+                m_major = tmp[0];
+                m_minor = tmp[1];
+            }
+        }
+    }
+}
+
 HttpVersion &HttpVersion::operator =(qreal version)
 {
     m_major = version;

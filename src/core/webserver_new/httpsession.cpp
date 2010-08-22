@@ -47,6 +47,7 @@ enum State
 
 HttpSession::HttpSession(int socketDescriptor, QObject *parent) :
     QThread(parent),
+    lastSupportedHttpVersion(1, 1),
     socket(NULL),
     socketDescriptor(socketDescriptor),
     state(WAITING_FOR_REQUEST_LINE),
@@ -70,15 +71,16 @@ void HttpSession::run()
     exec();
 }
 
+bool HttpSession::isVersionSupported(const HttpVersion &version) const
+{
+    return version <= lastSupportedHttpVersion;
+}
+
 // the way of acquiring the number bytes sent isn't safe, and the exception
 // handling too
-qint64 HttpSession::writeResponse(HttpResponse r)
+qint64 HttpSession::writeResponse(HttpResponse r, bool closeConnection)
 {
     qint64 numberBytesSent = 0;
-
-
-    qDebug(DBG_PREFIX "status code: %i", r.statusCode());
-    qDebug(DBG_PREFIX "Reason Phrase: %s", r.reasonPhrase().constData());
 
     numberBytesSent += socket->write(r.httpVersion());
     numberBytesSent += socket->write(" ");
@@ -109,8 +111,7 @@ qint64 HttpSession::writeResponse(HttpResponse r)
 
     qDebug(DBG_PREFIX "%i bytes enviados", (int)numberBytesSent);
 
-    // HTTP 1.0
-    if (r.httpVersion().minor() == 0)
+    if (closeConnection)
         socket->close();
 
     return numberBytesSent;
@@ -125,70 +126,43 @@ void HttpSession::onReadyRead()
         {
             int i = buffer.indexOf("\r\n");
             if (i != -1) {
-                QList<QByteArray> request = buffer.left(i).split(' ');
+                QList<QByteArray> request = buffer.left(i).simplified().split(' ');
 
-                requestInfo.setHttpVersion(request.at(2).split('/').at(1).toDouble());
+                if (request.size() != 3) {
+                    HttpResponse response(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST);
 
-                if (requestInfo.httpVersion().major() > 1) {
-                    HttpResponse response(HttpVersion(1, 1), HttpResponse::HTTP_VERSION_NOT_SUPPORTED);
-
-                    writeResponse(response);
-                    socket->close();
+                    writeResponse(response, true);
                     return;
                 }
 
-                if (request.size() > 1) {
-                    //
-                    if (request.at(0) == "GET")
-                        requestInfo.setMethod(HttpRequest::GET);
-                    else if (request.at(0) == "POST")
-                        requestInfo.setMethod(HttpRequest::POST);
-                    else if (request.at(0) == "HEAD")
-                        requestInfo.setMethod(HttpRequest::HEAD);
-                    else if (request.at(0) == "PUT")
-                        requestInfo.setMethod(HttpRequest::PUT);
-                    else if (request.at(0) == "DELETE")
-                        requestInfo.setMethod(HttpRequest::DELETE);
-                    else if (request.at(0) == "TRACE")
-                        requestInfo.setMethod(HttpRequest::TRACE);
-                    else if (request.at(0) == "OPTIONS")
-                        requestInfo.setMethod(HttpRequest::OPTIONS);
-                    else if (request.at(0) == "CONNECT")
-                        requestInfo.setMethod(HttpRequest::CONNECT);
-                    else if (request.at(0) == "PATCH")
-                        requestInfo.setMethod(HttpRequest::PATCH);
-                    else if (requestInfo.httpVersion().minor() > 1) {
-                        HttpResponse response(HttpVersion(1, 1), HttpResponse::NOT_IMPLEMENTED);
+                requestInfo.setMethod(request.at(0));
 
-                        response.setHeader("Connection", "close");
+                requestInfo.setUri(request.at(1));
 
-                        writeResponse(response);
-                        socket->close();
-                        return;
+                {
+                    HttpVersion version(request.at(2));
+
+                    if (version) {
+                        if (isVersionSupported(version)) {
+                            requestInfo.setHttpVersion(version);
+                        } else {
+                            HttpResponse response(lastSupportedHttpVersion, HttpResponse::HTTP_VERSION_NOT_SUPPORTED);
+
+                            writeResponse(response, true);
+                            return;
+                        }
                     } else {
-                        HttpResponse response(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST);
+                        HttpResponse response(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST);
 
-                        if (requestInfo.httpVersion().minor() == 1)
-                            response.setHeader("Connection", "close");
-
-                        writeResponse(response);
-                        socket->close();
+                        writeResponse(response, true);
                         return;
                     }
-
-                    requestInfo.setUri(request.at(1));
-
-                    buffer.remove(0, request.at(0).size() + request.at(1).size() +
-                                  request.at(2).size() + 4);
-
-                    state = WAITING_FOR_HEADERS;
-                } else {
-                    HttpResponse response(HttpVersion(1, 0), HttpResponse::BAD_REQUEST);
-
-                    writeResponse(response);
-                    socket->close();
-                    return;
                 }
+
+                buffer.remove(0, request.at(0).size() + request.at(1).size() +
+                              request.at(2).size() + 4);
+
+                state = WAITING_FOR_HEADERS;
             }
         }
     case WAITING_FOR_HEADERS:
@@ -196,52 +170,31 @@ void HttpSession::onReadyRead()
             for (int i = buffer.indexOf("\r\n") ; i != -1 ; i = buffer.indexOf("\r\n")) {
                 // don't starts with \r\n
                 if (i != 0) {
-                    QByteArray header = buffer.mid(0, i);
+                    QByteArray header = buffer.left(i);
                     buffer.remove(0, i + 2);
 
                     i = header.indexOf(':');
                     if (i > 0) {
                         if (i + 1 < header.size())
-                            requestInfo.setHeader(header.left(i), header.mid(i + 1));
+                            requestInfo.setHeader(header.left(i).trimmed(), header.mid(i + 1).trimmed());
                         else
-                            requestInfo.setHeader(header.left(i), QByteArray());
+                            requestInfo.setHeader(header.left(i).trimmed(), QByteArray());
+                    } else {
+                        HttpResponse response(requestInfo.httpVersion() < lastSupportedHttpVersion ?
+                                              requestInfo.httpVersion() : lastSupportedHttpVersion,
+                                              HttpResponse::BAD_REQUEST);
+
+                        writeResponse(response, true);
+                        return;
                     }
                 } else {
-                    int versionMinor = requestInfo.httpVersion().minor();
-                    if (versionMinor == 0 || ((versionMinor > 0) && !requestInfo.header("Host").isNull())) {
-                        buffer.remove(0, 2);
-                        // in future versions should be interesting make
-                        // automatic detection of the presence of entity body
-                        // based on the headers supplied by the client
-                        switch (requestInfo.method()) {
-                        case HttpRequest::HEAD:
-                        case HttpRequest::GET:
-                        case HttpRequest::DELETE:
-                        case HttpRequest::TRACE:
-                        // If the OPTIONS request includes an entity-body (as
-                        // indicated by the presence of Content-Length or
-                        // Transfer-Encoding), then the media type MUST be indicated
-                        // by a Content-Type field. Although this specification does
-                        // not define any use for such a body, future extensions to
-                        // HTTP might use the OPTIONS body to make more detailed
-                        // queries on the server. A server that does not support
-                        // such an extension MAY discard the request body
-                        case HttpRequest::OPTIONS:
-                        case HttpRequest::CONNECT:
-                            state = WAITING_FOR_REQUEST_LINE;
-                            pageRequest(requestInfo);
-                            break;
-                        case HttpRequest::POST:
-                        case HttpRequest::PUT:
-                        case HttpRequest::PATCH:
-                            state = WAITING_FOR_ENTITY_BODY;
-                        }
-                    } else {
-                        // The HTTP/1.0 client tried make a request without the host header
-                        HttpResponse response(HttpVersion(1, 1), HttpResponse::BAD_REQUEST);
+                    buffer.remove(0, 2);
 
-                        writeResponse(response);
-                        socket->close();
+                    if (hasEntityBody(requestInfo)) {
+                        state = WAITING_FOR_ENTITY_BODY;
+                    } else {
+                        state = WAITING_FOR_REQUEST_LINE;
+                        onRequest(requestInfo);
                     }
                 }
             }
@@ -250,19 +203,36 @@ void HttpSession::onReadyRead()
         // TODO: handles other methods to discover the size of the entity body
         switch (remainingBytes) {
         case -1:
-            bool ok;
-            remainingBytes = requestInfo.header("Content-Length").toInt(&ok);
-            if (!ok) {
-                HttpResponse response(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST);
-                writeResponse(response);
-                socket->close();
+            {
+                QByteArray contentLength = requestInfo.header("Content-Length");
+                bool ok = !contentLength.isNull();
+
+                if (ok) {
+                    remainingBytes = contentLength.toInt(&ok);
+                } else {
+                    HttpResponse response(requestInfo.httpVersion() < lastSupportedHttpVersion ?
+                                          requestInfo.httpVersion() : lastSupportedHttpVersion,
+                                          HttpResponse::LENGTH_REQUIRED);
+
+                    writeResponse(response, true);
+                    return;
+                }
+
+                if (!ok) {
+                    HttpResponse response(requestInfo.httpVersion() < lastSupportedHttpVersion ?
+                                          requestInfo.httpVersion() : lastSupportedHttpVersion,
+                                          HttpResponse::BAD_REQUEST);
+
+                    writeResponse(response, true);
+                    return;
+                }
             }
         default:
             if (buffer.size() == remainingBytes) {
                 requestInfo.setEntityBody(buffer);
                 state = WAITING_FOR_REQUEST_LINE;
 
-                pageRequest(requestInfo);
+                onRequest(requestInfo);
             }
         }
     }

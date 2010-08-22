@@ -41,7 +41,7 @@ signals:
 public slots:
 
 protected:
-    void pageRequest(HttpRequest request);
+    void onRequest(HttpRequest request);
 
 private:
     WebServer *server;
