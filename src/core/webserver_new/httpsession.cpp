@@ -26,7 +26,6 @@
 #include "httpsession.h"
 #include "httpserver.h"
 #include <QTcpSocket>
-#include <QStateMachine>
 #define DBG_PREFIX "HttpConnection: "
 
 // some fixes to work with bad code (alias macro preprocessor)

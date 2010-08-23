@@ -32,7 +32,6 @@
 #include "httpresponse.h"
 
 class QTcpSocket;
-//class HttpContext;
 
 class HttpSession : public QThread
 {
@@ -49,12 +48,12 @@ public:
 
 protected:
     // used to respond BAD_REQUESTs
+    // must be set in the constructor (HttpVersion isn't thread-safe yet)
     HttpVersion lastSupportedHttpVersion;
 
     virtual bool hasEntityBody(const HttpRequest &request) = 0;
     virtual void onRequest(const HttpRequest &request) = 0;
     qint64 writeResponse(HttpResponse, bool closeConnection = false);
-//    void setDefaultHttpVersion(const HttpVersion &version);
 
 signals:
     void error();

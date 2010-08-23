@@ -50,15 +50,6 @@ public:
     virtual ~HttpServer();
     void run();
 
-    // talvez fosse interessante option retornar um QVariant
-    /*
-     * Return current value of a particular option.
-     */
-    QByteArray option(const QByteArray &optionName);
-    // talvez fosse mais interessante setOption receber um QVariant
-    // no lugar do value
-    bool setOption(const QByteArray &optionName, const QByteArray &value);
-
     HttpError error();
     QString errorString();
 

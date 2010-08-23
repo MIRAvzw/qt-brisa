@@ -34,21 +34,6 @@
 class HttpRequest: public HttpMessage
 {
 public:
-//    enum MethodFlag
-//    {
-//        HEAD,
-//        GET,
-//        POST,
-//        PUT,
-//        DELETE,
-//        TRACE,
-//        OPTIONS,
-//        CONNECT,
-//        PATCH
-//    };
-//    Q_DECLARE_FLAGS(Method, MethodFlag)
-
-public:
     explicit HttpRequest(const QByteArray &method = QByteArray(), const QByteArray &uri = "/",
                          const HttpVersion &version = HttpVersion());
 
@@ -74,8 +59,6 @@ private:
     QByteArray m_method;              // char *request_method;
     QByteArray m_uri;                 // char *uri
 };
-
-//Q_DECLARE_OPERATORS_FOR_FLAGS(HttpRequest::Method)
 
 inline QByteArray HttpRequest::method() const
 {
