@@ -27,6 +27,7 @@
 #define WEBRESOURCE_H
 
 #include <QByteArray>
+#include <QFile>
 
 class WebResourceIdentifier
 {
@@ -62,6 +63,8 @@ public:
     {
     }
 
+    operator bool() const;
+
     QString fileName;
     QByteArray contentType;
 };
@@ -94,6 +97,11 @@ inline uint qHash(const WebResourceIdentifier &r)
     uint sum = qChecksum(r.host.constData(), r.host.size());
     sum += qChecksum(r.uri.constData(), r.uri.size());
     return sum;
+}
+
+inline WebResource::operator bool() const
+{
+    return QFile::exists(fileName);
 }
 
 #endif // WEBRESOURCE_H

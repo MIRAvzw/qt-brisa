@@ -70,9 +70,13 @@ void HttpSession::run()
     exec();
 }
 
-bool HttpSession::isVersionSupported(const HttpVersion &version) const
+int HttpSession::isRequestSupported(const HttpRequest &request) const
 {
-    return version <= lastSupportedHttpVersion;
+    if (request.httpVersion() <= lastSupportedHttpVersion) {
+        return 0;
+    } else {
+        return HttpResponse::HTTP_VERSION_NOT_SUPPORTED;
+    }
 }
 
 // the way of acquiring the number bytes sent isn't safe, and the exception
@@ -142,16 +146,19 @@ void HttpSession::onReadyRead()
                     HttpVersion version(request.at(2));
 
                     if (version) {
-                        if (isVersionSupported(version)) {
-                            requestInfo.setHttpVersion(version);
-                        } else {
-                            HttpResponse response(lastSupportedHttpVersion, HttpResponse::HTTP_VERSION_NOT_SUPPORTED);
-
-                            writeResponse(response, true);
-                            return;
-                        }
+                        requestInfo.setHttpVersion(version);
                     } else {
                         HttpResponse response(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST);
+
+                        writeResponse(response, true);
+                        return;
+                    }
+                }
+
+                {
+                    int statusCode = isRequestSupported(version);
+                    if (statusCode) {
+                        HttpResponse response(lastSupportedHttpVersion, statusCode);
 
                         writeResponse(response, true);
                         return;

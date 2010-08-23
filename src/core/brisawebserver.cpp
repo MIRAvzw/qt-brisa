@@ -7,6 +7,7 @@
  * Created:
  * Description: Implementation of BrisaWebServer class.
  * Authors: Andre Dieb Martins <andre.dieb@gmail.com> @since 2009
+ *          Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com> @since 2010
  *
  *
  * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
@@ -28,6 +29,54 @@
 
 #include "brisawebserver.h"
 using namespace BrisaCore;
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include "brisawebserversession.h"
+
+BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) :
+        HttpServer(host, port)
+{
+}
+
+BrisaWebserver::~BrisaWebserver()
+{
+    foreach (BrisaWebserverSession *session, listeners) {
+        session->deleteLater();
+    }
+}
+
+void BrisaWebserver::publishResource(const WebResourceIdentifier &publishPath, const WebResource &filePath)
+{
+    mutex.lock();
+
+    if (filePath)
+        resources[publishPath] = filePath;
+    else
+        resources.remove(publishPath);
+
+    mutex.unlock();
+}
+
+WebResource BrisaWebserver::resource(const WebResourceIdentifier &resourceIdentifier)
+{
+    return resources.value(resourceIdentifier);
+}
+
+HttpSession *BrisaWebserver::incomingConnection(int socketDescriptor)
+{
+    BrisaWebserverSession *session = new BrisaWebserverSession(socketDescriptor);
+
+    mutex.lock();
+
+    listeners.append(session);
+
+    mutex.unlock();
+
+    return session;
+}
+
+#else
 
 BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) {
     QxtHttpSessionManager(this);
@@ -63,3 +112,5 @@ void BrisaWebserver::publishFile(QString publishPath, QString filePath) {
     // Publishing a file to the root
     rootService->addFile(publishPath, filePath);
 }
+
+#endif // USE_NEW_BRISA_WEBSERVER

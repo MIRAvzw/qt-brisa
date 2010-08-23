@@ -41,10 +41,10 @@ public:
     virtual ~HttpSession();
     void run();
 
-    // default implementation returns true if version is lower or equals to the
-    // last supported version.
+    // default implementation returns 0 if version is lower or equals to the
+    // last supported version or HTTP_VERSION_NOTSUPPORTED otherwise.
     // used to identify if this http version is supported
-    virtual bool isVersionSupported(const HttpVersion &version) const;
+    virtual int isRequestSupported(const HttpRequest &request) const;
 
 protected:
     // used to respond BAD_REQUESTs

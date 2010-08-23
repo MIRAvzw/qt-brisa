@@ -42,6 +42,7 @@ public:
     void setMinor(int);
 
     bool operator ==(qreal) const;
+    bool operator !=(qreal) const;
     bool operator >(const HttpVersion &o) const;
     bool operator <(const HttpVersion &o) const;
     bool operator >=(const HttpVersion &o) const;
@@ -67,7 +68,14 @@ inline int HttpVersion::major() const
 
 inline bool HttpVersion::operator ==(qreal r) const
 {
-    return (m_major == static_cast<int>(r)) && (static_cast<int>(r * 10) % 10);
+    qreal self = static_cast<qreal> (m_major) + (m_minor / 10.);
+    return self == r;
+}
+
+inline bool HttpVersion::operator !=(qreal r) const
+{
+    qreal self = static_cast<qreal> (m_major) + (m_minor / 10.);
+    return self != r;
 }
 
 inline bool HttpVersion::operator >(const HttpVersion &o) const

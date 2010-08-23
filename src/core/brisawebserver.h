@@ -35,6 +35,12 @@
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 #include "webserver_new/httpserver.h"
+#include "webresource.h"
+
+namespace BrisaCore
+{
+    class BrisaWebserverSession;
+}
 
 #else // !USE_NEW_BRISA_WEBSERVER
 
@@ -67,15 +73,18 @@ namespace BrisaCore
         BrisaWebserver(const QHostAddress &host, quint16 port);
         ~BrisaWebserver();
 
-        void publishFile(QString publishPath, QString filePath);
+        void publishResource(const WebResourceIdentifier &publishPath, const WebResource &filePath);
+        WebResource resource(const WebResourceIdentifier &resourceIdentifier) const;
 
     protected:
         HttpSession *incomingConnection(int socketDescriptor);
 
     private:
+        // QHash and QList are reentrant, not thread-safe
         QMutex mutex;
-//        QHash<WebResourceIdentifier, WebResource> ...;
-    }
+        QHash<WebResourceIdentifier, WebResource> resources;
+        QList<BrisaWebserverSession *> listeners;
+    };
 
 #else // !USE_NEW_BRISA_WEBSERVER
 class BRISA_CORE_EXPORT BrisaWebserver: public QxtHttpSessionManager {
@@ -132,6 +141,5 @@ private:
 #endif // USE_NEW_BRISA_WEBSERVER
 
 }
-;
 
 #endif /* _BRISAWEBSERVER_H */
