@@ -23,10 +23,11 @@
  *
  */
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 #include "brisawebserversession.h"
+#include "brisawebserver.h"
 using namespace BrisaCore;
+
+#ifdef USE_NEW_BRISA_WEBSERVER
 
 BrisaWebserverSession::BrisaWebserverSession(int socketDescriptor) :
     HttpSession(socketDescriptor)
@@ -34,13 +35,66 @@ BrisaWebserverSession::BrisaWebserverSession(int socketDescriptor) :
     lastSupportedHttpVersion = HttpVersion(1, 1);
 }
 
+BrisaWebserverSession::~BrisaWebserverSession()
+{
+}
+
+int BrisaWebserverSession::isRequestSupported(const HttpRequest &request) const
+{
+    if (request.httpVersion() != 1.0 && request.httpVersion() != 1.1) {
+        return HttpResponse::HTTP_VERSION_NOT_SUPPORTED;
+    }
+    if (request.method() != "GET" && request.method() != "POST") {
+        return HttpResponse::NOT_IMPLEMENTED;
+    }
+    return 0;
+}
+
+bool BrisaWebserverSession::hasEntityBody(const HttpRequest &request)
+{
+    if (request.method() == "POST")
+        return true;
+    else
+        return false;
+}
+
 void BrisaWebserverSession::onRequest(const HttpRequest &request)
 {
-    HttpResponse response(request.httpVersion());
+    if (request.httpVersion() == lastSupportedHttpVersion &&
+        request.header("Host").isNull()) {
+        HttpResponse response(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST);
+
+        writeResponse(response, true);
+        return;
+    }
     if (request.method() == "GET") {
-        // TODO
+        WebResource resource = server->resource(WebResourceIdentifier(request.uri(), request.header("Host")));
+        if (!resource) {
+            resource = server->resource(WebResourceIdentifier(request.uri()));
+        }
+
+        if (resource) {
+            HttpResponse response(request.httpVersion(), HttpResponse::OK);
+
+            if (!resource.contentType.isNull())
+                response.setHeader("Content-Type", resource.contentType);
+
+            response.setEntityBody(new QFile(resource.fileName));
+            return;
+        } else {
+            HttpResponse response(request.httpVersion(), HttpResponse::NOT_FOUND);
+
+            writeResponse(response);
+            return;
+        }
     } else if (request.method() == "POST"){
-        // TODO
+        if (request.header("Content-Type").isNull()) {
+            HttpResponse response(request.httpVersion(), HttpResponse::BAD_REQUEST);
+
+            writeResponse(response, true);
+            return;
+        }
+
     }
 }
 

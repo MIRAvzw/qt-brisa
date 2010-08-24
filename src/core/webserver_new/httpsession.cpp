@@ -198,6 +198,11 @@ void HttpSession::onReadyRead()
 
                     if (hasEntityBody(requestInfo)) {
                         state = WAITING_FOR_ENTITY_BODY;
+                    } else if (buffer.size()) {
+                        HttpResponse response(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST);
+
+                        writeResponse(response, close);
+                        return;
                     } else {
                         state = WAITING_FOR_REQUEST_LINE;
                         onRequest(requestInfo);
@@ -237,6 +242,7 @@ void HttpSession::onReadyRead()
             if (buffer.size() == remainingBytes) {
                 requestInfo.setEntityBody(buffer);
                 state = WAITING_FOR_REQUEST_LINE;
+                remainingBytes = -1;
 
                 onRequest(requestInfo);
             }

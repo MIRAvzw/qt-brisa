@@ -28,13 +28,18 @@
 
 #include "webserver_new/httpsession.h"
 
+namespace BrisaCore
+{
+    class BrisaWebserver;
+}
+
 namespace BrisaCore {
 
 class BrisaWebserverSession : public HttpSession
 {
 Q_OBJECT
 public:
-    BrisaWebserverSession(int socketDescriptor);
+    BrisaWebserverSession(int socketDescriptor, BrisaWebserver *server);
     ~BrisaWebserverSession();
 
     int isRequestSupported(const HttpRequest &request) const;
@@ -42,6 +47,9 @@ public:
 protected:
     bool hasEntityBody(const HttpRequest &request);
     void onRequest(const HttpRequest &request);
+
+private:
+    BrisaWebserver *server;
 };
 
 } // namespace BrisaCore

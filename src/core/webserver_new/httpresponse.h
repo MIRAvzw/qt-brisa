@@ -40,7 +40,7 @@ public:
         SWITCHING_PROTOCOLS = 101,
         PROCESSING = 102,
         // 2xx Successful
-        Ok = 200,
+        OK = 200,
         CREATED = 201,
         ACCEPTED = 202,
         NON_AUTHORITATIVE_INFORMATION = 203,
