@@ -576,14 +576,13 @@ void BrisaDevice::doNotify() {
 }
 
 bool BrisaDevice::isRunning() {
-	return running;
+	return this->running;
 }
 
 void BrisaDevice::clear() {
 	iconList.clear();
 	serviceList.clear();
 	embeddedDeviceList.clear();
-	;
 
 	this->major.clear();
 	this->minor.clear();
@@ -610,16 +609,6 @@ void BrisaDevice::clear() {
 
 	port = 0;
 }
-
-//void BrisaDevice::buildUrlBase() {
-//    this->port = getPort();
-//    this->ipAddress = getIp("eth0");
-//
-//    if (this->ipAddress == "")
-//        this->ipAddress = getIp("wlan0");
-//
-//    this->urlBase = "http://" + ipAddress + ":" + QString::number(this->port);
-//}
 
 void BrisaDevice::buildUrlBase() {
 	QString sPort;
