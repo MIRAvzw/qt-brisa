@@ -7,6 +7,7 @@
  * Created:
  * Description: Definition of BrisaWebserver class.
  * Authors: Andre Dieb Martins <andre.dieb@gmail.com> @since 2009
+ *          Leandro Melo de Sales <leandroal@gmail.com> @since 2009-2010
  *          Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com> @since 2010
  *
  *
@@ -57,8 +58,7 @@ namespace BrisaCore
 #include "brisawebfile.h"
 #include "brisawebserviceprovider.h"
 
-namespace BrisaCore
-{
+namespace BrisaCore {
 
 /*!
  *  \brief The BrisaWebserver class is a web server implementation.
@@ -110,7 +110,7 @@ public:
      *  \param publishPath \a empty
      *  \param filePath \a empty
      */
-    void publishFile(QString publishPath, QString filePath);
+    void publishFile(QString path, QString filePath);
 
     /*!
      *  Adds a service to the web server. The service url path will be added to the root of the server.

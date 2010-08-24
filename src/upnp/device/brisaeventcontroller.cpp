@@ -32,6 +32,8 @@
 
 using namespace BrisaUpnp;
 
+//TODO: remove this and replace it with UPnPErrorCodes
+//defined in upnp/brisaabstractservice.h
 #define ERROR_400_MESSAGE "Bad Request"
 #define ERROR_412_MESSAGE "Precondition Failed"
 
@@ -54,8 +56,8 @@ BrisaEventController::BrisaEventController(
 }
 
 BrisaEventController::~BrisaEventController() {
-    while (!subscriptions.empty())
-        delete subscriptions.takeFirst();
+    while (!this->subscriptions.empty())
+        delete this->subscriptions.takeFirst();
 }
 
 void BrisaEventController::parseGenericRequest(const QString &method,
@@ -74,12 +76,12 @@ void BrisaEventController::variableChanged(BrisaStateVariable *variable) {
     QList<BrisaStateVariable *> variables;
     variables.append(variable);
 
-    for (QList<BrisaEventSubscription *>::iterator i = subscriptions.begin(); i != subscriptions.end(); ++i) {
+    for (QList<BrisaEventSubscription *>::iterator i = this->subscriptions.begin(); i != this->subscriptions.end(); ++i) {
         // Remove expired subscriptions
         if ((*i)->hasExpired()) {
             qDebug() << "Removing subscription:" << (*i)->getSid();
             delete *i;
-            subscriptions.erase(i);
+            this->subscriptions.erase(i);
 
             continue;
         }
@@ -117,7 +119,7 @@ void BrisaEventController::subscribe(const QMultiHash<QString, QString> &subscri
         }
 
         bool validSubscription = false;
-        foreach (BrisaEventSubscription *current, subscriptions)
+        foreach (BrisaEventSubscription *current, this->subscriptions)
             {
                 if (current->getSid() == subscriberInfo.value("SID")) {
                     current->renew(getTimeOut(subscriberInfo.value("TIMEOUT")));
@@ -154,12 +156,12 @@ void BrisaEventController::subscribe(const QMultiHash<QString, QString> &subscri
                 getUuid(), getEventUrls(subscriberInfo.value("CALLBACK")),
                 getTimeOut(subscriberInfo.value("TIMEOUT")));
 
-        subscriptions.append(newSubscriber);
+        this->subscriptions.append(newSubscriber);
         respond(newSubscriber->getAcceptSubscriptionResponse(), sessionId,
                 requestId);
 
         BrisaEventMessage *message = new BrisaEventMessage(*newSubscriber,
-                this->variableList);
+                                                           this->variableList);
         sendEvent(*message, newSubscriber->getUrl());
         delete message;
 
@@ -187,14 +189,13 @@ void BrisaEventController::unsubscribe(
         }
 
         bool validSubscription = false;
-        for (int i = 0; i < subscriptions.size(); ++i) {
-            if (("uuid:" + subscriptions.at(i)->getSid())
-                    == subscriberInfo.value("SID")) {
-                respond(subscriptions.at(i)->getAcceptUnsubscriptionResponse(),
+        for (int i = 0; i < this->subscriptions.size(); ++i) {
+            if (("uuid:" + this->subscriptions.at(i)->getSid()) == subscriberInfo.value("SID")) {
+                respond(this->subscriptions.at(i)->getAcceptUnsubscriptionResponse(),
                         sessionId, requestId);
 
-                delete subscriptions.at(i);
-                subscriptions.removeAt(i);
+                delete this->subscriptions.at(i);
+                this->subscriptions.removeAt(i);
 
                 qDebug() << "BrisaEventController canceling subscription for "
                         << subscriberInfo.value("SID");

@@ -184,32 +184,32 @@ void BrisaService::call(const QString &method, BrisaInArgument &param) {
     this->respondError(UPNP_INVALID_ACTION);
 }
 
-void BrisaService::buildWebServiceTree(
-        QxtAbstractWebSessionManager *sessionManager) {
+void BrisaService::buildWebServiceTree(QxtAbstractWebSessionManager *sessionManager) {
     webService = new BrisaWebServiceProvider(sessionManager, this);
 
     BrisaWebService *control = new BrisaWebService(sessionManager, this);
     webService->addService(controlUrl.section('/', -1), control);
 
     BrisaEventController *event = new BrisaEventController(sessionManager,
-            &stateVariableList, this);
+                                                           &this->stateVariableList,
+                                                           this);
     webService->addService(eventSubUrl.section('/', -1), event);
 
     webService->addFile(scpdUrl.section('/', -1), scpdFilePath);
 
     QObject::connect(control,
-            SIGNAL(genericRequestReceived(const QString &,
-                   const QMultiHash<QString, QString> &,
-                   const QByteArray &,
-                   int,
-                   int)),
-            this,
-            SLOT(parseGenericRequest(const QString &,
-                 const QMultiHash<QString, QString> &,
-                 const QByteArray &,
-                 int,
-                 int))
-           );
+                     SIGNAL(genericRequestReceived(const QString &,
+                                                   const QMultiHash<QString, QString> &,
+                                                   const QByteArray &,
+                                                   int,
+                                                   int)),
+                     this,
+                     SLOT(parseGenericRequest(const QString &,
+                                              const QMultiHash<QString, QString> &,
+                                              const QByteArray &,
+                                              int,
+                                              int))
+                    );
 
     childWebServices.insert(controlUrl.section('/', -1), control);
     childWebServices.insert(eventSubUrl.section('/', -1), event);
@@ -259,11 +259,10 @@ void BrisaService::parseGenericRequest(const QString &method, const QMultiHash<
 
 void BrisaService::respondAction(const QString &actionName, const BrisaOutArgument *outArgs) {
     QByteArray message("<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
-        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
-        "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
-        "<s:Body>\r\n"
-        "<u:" + actionName.toUtf8() + "Response xmlns:u=\""
-            + serviceType.toUtf8() + "\">\r\n");
+                       "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
+                       "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
+                       "<s:Body>\r\n"
+                       "<u:" + actionName.toUtf8() + "Response xmlns:u=\"" + serviceType.toUtf8() + "\">\r\n");
 
     for (QMap<QString, QString>::const_iterator i = outArgs->begin(); i != outArgs->end(); ++i) {
         message.append("<" + i.key() + ">" + i.value() + "</" + i.key()
@@ -328,12 +327,11 @@ void BrisaService::connectVariablesEventSignals() {
 	}
 
     foreach (BrisaStateVariable *stateVar, this->stateVariableList) {
-        if (stateVar->sendEvents()) {
+        if (stateVar->sendEventsChange()) {
             QObject::connect(stateVar,
                              SIGNAL(changed(BrisaStateVariable *)),
                              event,
-                             SLOT(variableChanged(BrisaStateVariable *))
-                            );
+                             SLOT(variableChanged(BrisaStateVariable *)));
         }
     }
 }

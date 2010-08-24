@@ -60,10 +60,13 @@ public:
     /*!
      *  Constructs a BrisaService with the given service information.
      */
-    BrisaService(const QString &serviceType, const QString &serviceId = "",
-            const QString &scpdUrl = "", const QString &controlUrl = "",
-            const QString &eventSubUrl = "", const QString &host = "",
-            QObject *parent = 0);
+    BrisaService(const QString &serviceType,
+                 const QString &serviceId = "",
+                 const QString &scpdUrl = "",
+                 const QString &controlUrl = "",
+                 const QString &eventSubUrl = "",
+                 const QString &host = "",
+                 QObject *parent = 0);
 
     /*!
      *  Copy constructor.
@@ -105,9 +108,11 @@ public slots:
     /*!
      * Parses the genericRequestReceived() signal coming from the webservice.
      */
-    void parseGenericRequest(const QString &method, const QMultiHash<QString,
-            QString> &headers, const QByteArray &requestContent, int sessionId,
-            int requestId);
+    void parseGenericRequest(const QString &method,
+                             const QMultiHash<QString, QString> &headers,
+                             const QByteArray &requestContent,
+                             int sessionId,
+                             int requestId);
 
 private:
 

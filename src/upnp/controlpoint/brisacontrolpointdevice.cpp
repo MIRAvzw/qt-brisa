@@ -257,12 +257,9 @@ BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString servic
     return NULL;
 }
 
-BrisaControlPointService *BrisaControlPointDevice::getServiceByType(
-        QString serviceType) {
+BrisaControlPointService *BrisaControlPointDevice::getServiceByType(QString serviceType) {
     for (int i = 0; i < this->serviceList.size(); i++) {
-        if (this->serviceList.at(i)->getAttribute(
-                BrisaControlPointService::ServiceType).compare(serviceType)
-                == 0) {
+        if (this->serviceList.at(i)->getAttribute(BrisaControlPointService::ServiceType).compare(serviceType) == 0) {
             return serviceList.at(i);
         }
     }

@@ -183,25 +183,20 @@ void BrisaControlPoint::httpResponse(int i, bool error) {
     // Locate request object
     BrisaEventProxy *subscription = NULL;
 
-    foreach(int deliveryPath, requests.keys())
-        {
-            if (requests[deliveryPath]->requestId == i) {
-                subscription = requests[deliveryPath];
-                qDebug() << "Brisa Control Point: Response for request id " << i << " "
-                        << deliveryPath;
-                break;
-            }
+    foreach(int deliveryPath, requests.keys()) {
+        if (requests[deliveryPath]->requestId == i) {
+            subscription = requests[deliveryPath];
+            qDebug() << "Brisa Control Point: Response for request id " << i << " " << deliveryPath;
+            break;
         }
+    }
 
     if (!subscription) {
-        qWarning()
-                << "Brisa Control Point: Failed to match response with request id "
-                << i;
+        qWarning() << "Brisa Control Point: Failed to match response with request id " << i;
         return;
     } else if (error) {
         // TODO forward error to user, notify that subscription didn't work
-        qWarning() << "Brisa Control Point: Subscription error "
-                << http->errorString() << i;
+        qWarning() << "Brisa Control Point: Subscription error "  << http->errorString() << i;
         return;
     }
 
@@ -215,21 +210,16 @@ void BrisaControlPoint::httpResponse(int i, bool error) {
 
     if (sid.isEmpty()) {
         // TODO report subscription error to user
-        qWarning()
-                << "Brisa Control Point: SID header not present on event subscription response.";
-        foreach(QString key, header.keys())
-            {
-                qDebug() << key << header.value(key);
-            }
+        qWarning() << "Brisa Control Point: SID header not present on event subscription response.";
+        foreach(QString key, header.keys()) {
+            qDebug() << key << header.value(key);
+        }
 
-        qDebug()
-                << "Brisa Control Point: Finished printing headers.. printing data";
-        qDebug() << http->readAll();
+        qDebug() << "Brisa Control Point: Finished printing headers.. printing data" << http->readAll();
 
         return;
     }
 
     subscription->setSid(sid);
-    qDebug() << "Brisa Control Point: Subscribed with SID "
-            << subscription->getSid();
+    qDebug() << "Brisa Control Point: Subscribed with SID " << subscription->getSid();
 }

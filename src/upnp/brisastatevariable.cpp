@@ -40,75 +40,83 @@ BrisaStateVariable::BrisaStateVariable(QString sendEvents,
                                        QObject *parent) :
     QObject(parent)
 {
-    this->events = (sendEvents == "yes");
-    this->name = name;
-    this->dataType = datatype;
-    this->defaultValue = defaultValue;
-    this->maximum = maximum;
-    this->minimum = minimum;
-    this->step = step;
-    this->value = this->defaultValue;
+    this->_sendEvents = (sendEvents == "yes");
+    this->_name = name;
+    this->_dataType = datatype;
+    this->_defaultValue = defaultValue;
+    this->_maximum = maximum;
+    this->_minimum = minimum;
+    this->_step = step;
+    this->_value = this->defaultValue;
 }
 
 BrisaStateVariable::BrisaStateVariable(const BrisaStateVariable &variable) :
     QObject(variable.parent())
 {
-    this->events = variable.sendEvents();
-    this->name = variable.getAttribute(Name);
-    this->dataType = variable.getAttribute(DataType);
-    this->defaultValue = variable.getAttribute(DefaultValue);
-    this->maximum = variable.getAttribute(Maximum);
-    this->minimum = variable.getAttribute(Minimum);
-    this->step = variable.getAttribute(Step);
-    this->value = variable.getValue();
+    this->_sendEvents = variable.sendEventsChange();
+    this->_name = variable.getAttribute(Name);
+    this->_dataType = variable.getAttribute(DataType);
+    this->_defaultValue = variable.getAttribute(DefaultValue);
+    this->_maximum = variable.getAttribute(Maximum);
+    this->_minimum = variable.getAttribute(Minimum);
+    this->_step = variable.getAttribute(Step);
+    this->_value = variable.getValue();
 }
 
 BrisaStateVariable &BrisaStateVariable::operator=(const BrisaStateVariable &variable) {
     if (this != &variable) {
         this->setParent(variable.parent());
-        this->events = variable.sendEvents();
-        this->name = variable.getAttribute(Name);
-        this->dataType = variable.getAttribute(DataType);
-        this->defaultValue = variable.getAttribute(DefaultValue);
-        this->maximum = variable.getAttribute(Maximum);
-        this->minimum = variable.getAttribute(Minimum);
-        this->step = variable.getAttribute(Step);
-        this->value = variable.getValue();
+        this->_sendEvents = variable.sendEventsChange();
+        this->_name = variable.getAttribute(Name);
+        this->_dataType = variable.getAttribute(DataType);
+        this->_defaultValue = variable.getAttribute(DefaultValue);
+        this->_maximum = variable.getAttribute(Maximum);
+        this->_minimum = variable.getAttribute(Minimum);
+        this->_step = variable.getAttribute(Step);
+        this->_value = variable.getValue();
     }
     return *this;
 }
 
-void BrisaStateVariable::setAttribute(BrisaStateVariableAttribute attr,
-        QVariant value) {
+void BrisaStateVariable::setAttribute(BrisaStateVariableAttribute attr, QVariant newValue) {
     switch (attr) {
     case SendEvents:
-        this->events = (value.toString() == "yes");
+    case sendEvents:
+        this->_sendEvents = (newValue.toString() == "yes");
         break;
     case Name:
-        this->name = value.toString();
+    case name:
+        this->_name = newValue.toString();
         break;
     case DataType:
-        this->dataType = value.toString();
+    case dataType:
+        this->_dataType = newValue.toString();
         break;
     case DefaultValue:
-        this->defaultValue = value.toString();
+    case defaultValue:
+        this->_defaultValue = newValue.toString();
         break;
     case AllowedValue:
-        this->allowedValueList.append(value.toString());
+    case allowedValue:
+        this->allowedValueList.append(newValue.toString());
         break;
     case Minimum:
-        this->minimum = value.toString();
+    case minimum:
+        this->_minimum = newValue.toString();
         break;
     case Maximum:
-        this->maximum = value.toString();
+    case maximum:
+        this->_maximum = newValue.toString();
         break;
     case Step:
-        this->step = value.toString();
+    case step:
+        this->_step = newValue.toString();
         break;
     case Value:
-        if (this->validateNewValue(value) && this->value != value) {
-            this->value = value;
-            if (events) {
+    case value:
+        if (this->validateNewValue(newValue) && this->_value != newValue) {
+            this->_value = newValue;
+            if (this->_sendEvents) {
                 emit this->changed(this);
             }
         }
@@ -118,32 +126,39 @@ void BrisaStateVariable::setAttribute(BrisaStateVariableAttribute attr,
     }
 }
 
-QString BrisaStateVariable::getAttribute(BrisaStateVariableAttribute attr,
-        int ind) const {
+QString BrisaStateVariable::getAttribute(BrisaStateVariableAttribute attr, int ind) const {
     switch (attr) {
     case Name:
-        return this->name;
+    case name:
+        return this->_name;
         break;
     case DataType:
-        return this->dataType;
+    case dataType:
+        return this->_dataType;
         break;
     case DefaultValue:
-        return this->defaultValue;
+    case defaultValue:
+        return this->_defaultValue;
         break;
     case AllowedValue:
+    case allowedValue:
         return this->allowedValueList[ind];
         break;
     case Minimum:
-        return QString(this->minimum);
+    case minimum:
+        return QString(this->_minimum);
         break;
     case Maximum:
-        return QString(this->maximum);
+    case maximum:
+        return QString(this->_maximum);
         break;
     case Step:
-        return QString(this->step);
+    case step:
+        return QString(this->_step);
         break;
     case Value:
-        return QString(this->value.toString());
+    case value:
+        return QString(this->_value.toString());
         break;
     default:
         return "";
@@ -155,45 +170,44 @@ QList<QString> BrisaStateVariable::getAllowedValueList() {
     return this->allowedValueList;
 }
 
-void BrisaStateVariable::addAllowedValue(QString allowedValue) {
-    allowedValueList.append(allowedValue);
+void BrisaStateVariable::addAllowedValue(QString allowedVal) {
+    allowedValueList.append(allowedVal);
 }
 
 void BrisaStateVariable::clear() {
     this->allowedValueList.clear();
-    this->name.clear();
-    this->dataType.clear();
-    this->defaultValue.clear();
-    this->maximum.clear();
-    this->minimum.clear();
-    this->step.clear();
-    this->value.clear();
+    this->_name.clear();
+    this->_dataType.clear();
+    this->_defaultValue.clear();
+    this->_maximum.clear();
+    this->_minimum.clear();
+    this->_step.clear();
+    this->_value.clear();
 }
 
 QVariant BrisaStateVariable::getValue() const {
-    return this->value;
+    return this->_value;
 }
 
-bool BrisaStateVariable::sendEvents() const {
-    return this->events;
+bool BrisaStateVariable::sendEventsChange() const {
+    return this->_sendEvents;
 }
 
 bool BrisaStateVariable::validateNewValue(const QVariant &value) {
-    QVariant::Type type = getDataType();
+    QVariant::Type type = this->getDataType();
 
     if (!value.canConvert(type)) {
-        qDebug() << "Type mismatch.";
+        qDebug() << "Type mismatch while validating new value for state variable " << this->_name;
         return false;
     }
 
     if (type == QVariant::String) {
-        if (allowedValueList.isEmpty())
+        if (this->allowedValueList.isEmpty())
             return true;
-        if (allowedValueList.contains(value.toString())) {
+        if (this->allowedValueList.contains(value.toString())) {
             return true;
         } else {
-            qDebug() << "Allowed value list does not contain "
-                    << value.toString();
+            qDebug() << "State variable " << this->_name << " does not allows value " << value.toString();
             return false;
         }
 
@@ -203,41 +217,37 @@ bool BrisaStateVariable::validateNewValue(const QVariant &value) {
                 || value.toString() == "yes" || value.toString() == "no") {
             return true;
         } else {
-            qDebug()
-                    << "Value not allowed for boolean type. Try '0', '1', 'true', 'false', 'yes', or 'no'.";
+            qDebug() << "Value not allowed for boolean type. Use '0', '1', 'true', 'false', 'yes', or 'no'.";
             return false;
         }
 
     } else if (type == QVariant::UInt) {
-        if (maximum == "" || minimum == "") {
+        if (this->_maximum == "" || this->_minimum == "") {
             return true;
-        } else if (value.toUInt() <= maximum.toUInt() && value.toUInt()
-                >= minimum.toUInt()) {
+        } else if (value.toUInt() <= this->_maximum.toUInt() && value.toUInt() >= this->_minimum.toUInt()) {
             return true;
         } else {
-            qDebug() << "Value out of range.";
+            qDebug() << "Value out of range for UInt.";
             return false;
         }
 
     } else if (type == QVariant::Int) {
-        if (maximum == "" || minimum == "") {
+        if (this->_maximum == "" || this->_minimum == "") {
             return true;
-        } else if (value.toInt() <= maximum.toInt() && value.toInt()
-                >= minimum.toInt()) {
+        } else if (value.toInt() <= this->_maximum.toInt() && value.toInt() >= this->_minimum.toInt()) {
             return true;
         } else {
-            qDebug() << "Value out of range.";
+            qDebug() << "Value out of range for Int.";
             return false;
         }
 
     } else if (type == QVariant::Double) {
-        if (maximum == "" || minimum == "") {
+        if (this->_maximum == "" || this->_minimum == "") {
             return true;
-        } else if (value.toDouble() <= maximum.toDouble() && value.toDouble()
-                >= minimum.toDouble()) {
+        } else if (value.toDouble() <= this->_maximum.toDouble() && value.toDouble() >= this->_minimum.toDouble()) {
             return true;
         } else {
-            qDebug() << "Value out of range.";
+            qDebug() << "Value out of range for Double.";
             return false;
         }
 
@@ -247,53 +257,53 @@ bool BrisaStateVariable::validateNewValue(const QVariant &value) {
 }
 
 QVariant::Type BrisaStateVariable::getDataType() const {
-    if (dataType == "ui1") {
+    if (this->_dataType == "ui1") {
         return QVariant::UInt;
-    } else if (dataType == "ui2") {
+    } else if (this->_dataType == "ui2") {
         return QVariant::UInt;
-    } else if (dataType == "ui4") {
+    } else if (this->_dataType == "ui4") {
         return QVariant::UInt;
-    } else if (dataType == "i1") {
+    } else if (this->_dataType == "i1") {
         return QVariant::Int;
-    } else if (dataType == "i2") {
+    } else if (this->_dataType == "i2") {
         return QVariant::Int;
-    } else if (dataType == "i4") {
+    } else if (this->_dataType == "i4") {
         return QVariant::Int;
-    } else if (dataType == "int") {
+    } else if (this->_dataType == "int") {
         return QVariant::Int;
-    } else if (dataType == "r4") {
+    } else if (this->_dataType == "r4") {
         return QVariant::Double;
-    } else if (dataType == "r8") {
+    } else if (this->_dataType == "r8") {
         return QVariant::Double;
-    } else if (dataType == "number") {
+    } else if (this->_dataType == "number") {
         return QVariant::Double;
-    } else if (dataType == "fixed") {
+    } else if (this->_dataType == "fixed") {
         return QVariant::Double;
-    } else if (dataType == "float") {
+    } else if (this->_dataType == "float") {
         return QVariant::Double;
-    } else if (dataType == "char") {
+    } else if (this->_dataType == "char") {
         return QVariant::Char;
-    } else if (dataType == "string") {
+    } else if (this->_dataType == "string") {
         return QVariant::String;
-    } else if (dataType == "date") {
+    } else if (this->_dataType == "date") {
         return QVariant::Date;
-    } else if (dataType == "dateTime") {
+    } else if (this->_dataType == "dateTime") {
         return QVariant::DateTime;
-    } else if (dataType == "dateTime.tz") {
+    } else if (this->_dataType == "dateTime.tz") {
         return QVariant::DateTime;
-    } else if (dataType == "time") {
+    } else if (this->_dataType == "time") {
         return QVariant::Time;
-    } else if (dataType == "time.tz") {
+    } else if (this->_dataType == "time.tz") {
         return QVariant::Time;
-    } else if (dataType == "boolean") {
+    } else if (this->_dataType == "boolean") {
         return QVariant::Bool;
-    } else if (dataType == "bin.base64") {
+    } else if (this->_dataType == "bin.base64") {
         return QVariant::String;
-    } else if (dataType == "bin.hex") {
+    } else if (this->_dataType == "bin.hex") {
         return QVariant::String;
-    } else if (dataType == "uri") {
+    } else if (this->_dataType == "uri") {
         return QVariant::String;
-    } else if (dataType == "uuid") {
+    } else if (this->_dataType == "uuid") {
         return QVariant::String;
     } else {
         return QVariant::Invalid;

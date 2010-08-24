@@ -25,8 +25,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef _BRISACONTROLPOINTEVENTSUBSCRIPTION_H
-#define _BRISACONTROLPOINTEVENTSUBSCRIPTION_H
+#ifndef _BRISAEVENTPROXY_H
+#define _BRISAEVENTPROXY_H
 
 #include "brisaabstracteventsubscription.h"
 #include "brisaglobal.h"
@@ -100,9 +100,14 @@ private:
      *  BrisaEventProxy constructor, prepare all the attribute and starts the webServer and the
      *  webService.
      */
-    BrisaEventProxy(const QStringList &callbackUrls, BrisaWebserver *webserver,
-            int &deliveryPath, QString host, int port, QHttp *http,
-            QString eventSub, QObject *parent = 0);
+    BrisaEventProxy(const QStringList &callbackUrls,
+                    BrisaWebserver *webserver,
+                    int &deliveryPath,
+                    QString host,
+                    int port,
+                    QHttp *http,
+                    QString eventSub,
+                    QObject *parent = 0);
 
     /*!
      *  \property requestId
@@ -194,4 +199,4 @@ private slots:
 
 }
 
-#endif /* _BRISACONTROLPOINTEVENTSUBSCRIPTION_H */
+#endif /* _BRISAEVENTPROXY_H */

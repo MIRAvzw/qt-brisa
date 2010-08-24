@@ -7,8 +7,8 @@
  * Created:
  * Description: Implementation of BrisaWebServer class.
  * Authors: Andre Dieb Martins <andre.dieb@gmail.com> @since 2009
+ *          Leandro Melo de Sales <leandroal@gmail.com> @since 2009-2010
  *          Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com> @since 2010
- *
  *
  * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
@@ -82,14 +82,14 @@ BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) {
     QxtHttpSessionManager(this);
     rootService = new BrisaWebServiceProvider(this, this);
 
-    setPort(port);
-    setListenInterface(host);
-    setConnector(HttpServer);
-    setStaticContentService(rootService);
+    this->setPort(port);
+    this->setListenInterface(host);
+    this->setConnector(HttpServer);
+    this->setStaticContentService(rootService);
 }
 
 BrisaWebserver::~BrisaWebserver() {
-    delete rootService;
+    delete this->rootService;
 }
 
 int BrisaWebserver::newSession() {
@@ -97,7 +97,7 @@ int BrisaWebserver::newSession() {
 }
 
 void BrisaWebserver::addService(QString path, QxtWebServiceDirectory *service) {
-    rootService->addService(path, service);
+    this->rootService->addService(path, service);
 }
 
 void BrisaWebserver::incomingRequest(quint32 requestID,
@@ -108,9 +108,9 @@ void BrisaWebserver::incomingRequest(quint32 requestID,
     qDebug() << "URI: " << header.path();
 }
 
-void BrisaWebserver::publishFile(QString publishPath, QString filePath) {
+void BrisaWebserver::publishFile(QString path, QString filePath) {
     // Publishing a file to the root
-    rootService->addFile(publishPath, filePath);
+    this->rootService->addFile(path, filePath);
 }
 
 #endif // USE_NEW_BRISA_WEBSERVER

@@ -30,19 +30,29 @@
 using namespace BrisaUpnp;
 
 BrisaEventProxy::BrisaEventProxy(const QStringList &callbackUrls,
-        BrisaWebserver *webserver, int &deliveryPath, QString host, int port,
-        QHttp *http, QString eventSub, QObject *parent) :
+                                 BrisaWebserver *webserver,
+                                 int &deliveryPath,
+                                 QString host, 
+                                 int port,
+                                 QHttp *http,
+                                 QString eventSub,
+                                 QObject *parent) :
     BrisaAbstractEventSubscription(QString(), callbackUrls, -1, parent),
-            requestId(-1), deliveryPath(deliveryPath), host(host), port(port),
-            http(http), eventSub(eventSub), webServer(webserver) {
+    requestId(-1),
+    deliveryPath(deliveryPath),
+    host(host),
+    port(port),
+    http(http),
+    eventSub(eventSub),
+    webServer(webserver)
+{
     eventService = new BrisaWebService(webServer, this);
     webserver->addService(QString().setNum(deliveryPath), eventService);
 
-    QObject::connect(
-            eventService,
-            SIGNAL(genericRequestReceived(BrisaWebService*, QMultiHash<QString, QString>, QString)),
-            this,
-            SLOT(eventReceived(BrisaWebService*, QMultiHash<QString, QString>, QString)));
+    QObject::connect(eventService,
+                     SIGNAL(genericRequestReceived(BrisaWebService*, QMultiHash<QString, QString>, QString)),
+                     this,
+                     SLOT(eventReceived(BrisaWebService*, QMultiHash<QString, QString>, QString)));
 }
 
 BrisaEventProxy::~BrisaEventProxy() {
@@ -85,21 +95,26 @@ QHttpRequestHeader *BrisaEventProxy::getSubscriptionRequest(const int timeout) {
     request->setValue("HOST", host + ":" + QString().setNum(port));
 
     // Our URL for receiving notifications
-    const QUrl url = getUrl();
+    const QUrl url = this->getUrl();
 
-    qDebug() << "Url is" << url.host() << "porta " << url.port();
-    request->setValue("CALLBACK", "<http://" + url.host() + ":"
-            + QString().setNum(url.port()) + "/" + QString().setNum(
-            deliveryPath) + ">");
+    qDebug() << "Url: " << url.host() << " port: " << url.port();
+    request->setValue("CALLBACK", "<http://"
+                                    + url.host()
+                                    + ":"
+                                    + QString().setNum(url.port())
+                                    + "/"
+                                    + QString().setNum(deliveryPath)
+                                    + ">");
 
     request->setValue("NT", "upnp:event");
-    request->setValue("TIMEOUT", (timeout > 0) ? "Second-" + QString().setNum(
-            timeout) : "INFINITE");
+    request->setValue("TIMEOUT", (timeout > 0)
+                                    ? "Second-" + QString().setNum(timeout)
+                                    : "INFINITE"); // INFINITE is obsolete in UPnP 1.1
     return request;
 }
 
 QHttpRequestHeader *BrisaEventProxy::getRenewRequest(const int timeout) const {
-    if (getSid().isEmpty()) {
+    if (this->getSid().isEmpty()) {
         qWarning() << "Renew failed: SID field not filled.";
         return NULL;
     }
@@ -107,16 +122,16 @@ QHttpRequestHeader *BrisaEventProxy::getRenewRequest(const int timeout) const {
     QHttpRequestHeader *request = new QHttpRequestHeader("SUBSCRIBE", eventSub);
     request->setValue("HOST", host + ":" + port);
     request->setValue("SID", getSid());
-    request->setValue("TIMEOUT", (timeout > 0) ? "Second-" + QString().setNum(
-            timeout) : "INFINITE");
+    request->setValue("TIMEOUT", (timeout > 0)
+                                    ? "Second-" + QString().setNum(timeout)
+                                    : "INFINITE");
     return request;
 }
 
 QHttpRequestHeader *BrisaEventProxy::getUnsubscriptionRequest() const {
-    QHttpRequestHeader *request = new QHttpRequestHeader("UNSUBSCRIBE",
-            eventSub);
-    request->setValue("HOST", host + ":" + port);
-    request->setValue("SID", SID);
+    QHttpRequestHeader *request = new QHttpRequestHeader("UNSUBSCRIBE", eventSub);
+    request->setValue("HOST", this->host + ":" + this->port);
+    request->setValue("SID", this->SID);
     return request;
 }
 
@@ -138,8 +153,7 @@ void BrisaEventProxy::eventReceived(BrisaWebService *service, QMultiHash<
                 qDebug() << key << headers.value(key);
             }
 
-        qDebug() << "Finished printing headers..";
-        qDebug() << "Raw data: " << rawData;
+        qDebug() << "Finished printing headers..." << " Raw data: " << rawData;
 
         return;
     }
@@ -160,8 +174,7 @@ void BrisaEventProxy::eventReceived(BrisaWebService *service, QMultiHash<
         }
     }
 
-    emit
-    eventNotification(this, eventingVariables);
+    emit eventNotification(this, eventingVariables);
 
     QHttpResponseHeader responseHeader(200, "OK");
     responseHeader.setValue("Connection", "close");
@@ -170,5 +183,5 @@ void BrisaEventProxy::eventReceived(BrisaWebService *service, QMultiHash<
 }
 
 void BrisaEventProxy::setSid(QString &sid) {
-    SID = sid;
+    this->SID = sid;
 }

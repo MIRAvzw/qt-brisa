@@ -73,20 +73,29 @@ public:
 
     typedef enum {
         Name,
+        name,
         SendEvents,
+        sendEvents,
         DataType,
+        dataType,
         DefaultValue,
+        defaultValue,
         AllowedValue,
+        allowedValue,
         Minimum,
+        minimum,
         Maximum,
+        maximum,
         Step,
-        Value
+        step,
+        Value,
+        value
     } BrisaStateVariableAttribute;
 
     /*!
      * Sets its attribute \a attr to the given \a value.
      */
-    void setAttribute(BrisaStateVariableAttribute attr, QVariant value);
+    void setAttribute(BrisaStateVariableAttribute attr, QVariant newValue);
 
     /*!
      * Returns \a attr value as a QString.
@@ -107,12 +116,12 @@ public:
     /*!
      * Returns true if the variable is set to send events.
      */
-    bool sendEvents() const;
+    bool sendEventsChange() const;
 
     /*!
      * Adds a value to the list of values that can be set to its Value attribute.
      */
-    void addAllowedValue(QString allowedValue);
+    void addAllowedValue(QString allowedVal);
 
     /*!
      * Returns the list of values that can be set to its Value attribute.
@@ -135,15 +144,16 @@ private:
      */
     bool validateNewValue(const QVariant &value);
 
-    bool events;
     QList<QString> allowedValueList;
-    QString name;
-    QString defaultValue;
-    QString maximum;
-    QString minimum;
-    QString step;
-    QString dataType;
-    QVariant value;
+
+    bool _sendEvents;
+    QString _name;
+    QString _defaultValue;
+    QString _maximum;
+    QString _minimum;
+    QString _step;
+    QString _dataType;
+    QVariant _value;
 
 };
 

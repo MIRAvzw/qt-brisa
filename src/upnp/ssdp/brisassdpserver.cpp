@@ -39,6 +39,12 @@
 
 using namespace BrisaUpnp;
 
+// TODO: Add this three fields commented below in the ALIVE_MESSAGE 
+// as per upnp spec 1.1, section 1.2.2.
+//  - BOOTID.UPNP.ORG
+//  - CONFIGID.UPNP.ORG
+//  - SEARCHPORT.UPNP.ORG (optional)
+// TODO: Make IP and port below another #define and replace message below
 #define UPNP_ALIVE_MESSAGE "NOTIFY * HTTP/1.1\r\n"          \
                            "HOST: 239.255.255.250:1900\r\n" \
                            "CACHE-CONTROL: max-age=%1\r\n"  \
@@ -49,6 +55,26 @@ using namespace BrisaUpnp;
                            "USN: %5\r\n"                    \
                            "\r\n"
 
+// TODO: Implement ssdp:update as per spec 1.1, section 1.2.4
+// and use the below define to build the message, where
+// SEARCHPORT.UPNP.ORG are optional.
+// TODO: Make IP and port below another #define and replace message below
+#define UPNP_UPDATE_MESSAGE "NOTIFY * HTTP/1.1\r\n"          \
+                            "HOST: 239.255.255.250:1900\r\n" \
+                            "LOCATION: %1\r\n"               \
+                            "NT: %2\r\n"                     \
+                            "NTS: ssdp:update\r\n"           \
+                            "USN: %3\r\n"                    \
+                            "CONFIGID.UPNP.ORG: %4\r\n"      \
+                            "NEXTBOOTID.UPNP.ORG: %5\r\n"    \
+                            "SEARCHPORT.UPNP.ORG: %6\r\n"    \
+                            "\r\n"
+
+// TODO: Add this two fields commented below in the BYEBYE MESSAGE
+// as per upnp spec 1.1, section 1.2.2 and 1.2.3.
+//  - BOOTID.UPNP.ORG
+//  - CONFIGID.UPNP.ORG
+// TODO: Make IP and port below another #define and replace message below
 #define UPNP_BYEBYE_MESSAGE "NOTIFY * HTTP/1.1\r\n"          \
                             "HOST: 239.255.255.250:1900\r\n" \
                             "NT: %1\r\n"                     \
@@ -56,6 +82,11 @@ using namespace BrisaUpnp;
                             "USN: %2\r\n"                    \
                             "\r\n"
 
+// TODO: Add this three fields commented below in the MSEARCH_RESPONSE
+// as per upnp spec 1.1, section 1.3.3.
+//  - BOOTID.UPNP.ORG
+//  - CONFIGID.UPNP.ORG
+//  - SEARCHPORT.UPNP.ORG (optional)
 #define UPNP_MSEARCH_RESPONSE "HTTP/1.1 200 OK\r\n"             \
                               "CACHE-CONTROL: max-age = %1\r\n" \
                               "DATE: %2\r\n"                    \
@@ -67,24 +98,26 @@ using namespace BrisaUpnp;
                               "\r\n"
 
 BrisaSSDPServer::BrisaSSDPServer(QObject *parent) :
-    QObject(parent), running(false), SSDP_ADDR("239.255.255.250"), SSDP_PORT(
-            1900), S_SSDP_PORT("1900") {
-    udpListener = new QUdpSocket();
-
-    connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+    QObject(parent),
+    running(false),
+    SSDP_ADDR("239.255.255.250"), // TODO: make this as #define
+    SSDP_PORT(1900), // TODO: make this as #define
+    S_SSDP_PORT("1900") // TODO: make this as #defin
+{
+    this->udpListener = new QUdpSocket();
+    connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
 BrisaSSDPServer::~BrisaSSDPServer() {
     if (isRunning())
         stop();
 
-    delete udpListener;
+    delete this->udpListener;
 }
 
 void BrisaSSDPServer::start() {
     if (!isRunning()) {
-        if (!udpListener->bind(QHostAddress(SSDP_ADDR), SSDP_PORT,
-                QUdpSocket::ShareAddress))
+        if (!udpListener->bind(QHostAddress(SSDP_ADDR), SSDP_PORT, QUdpSocket::ShareAddress))
             qDebug() << "BrisaSSDPServer NOT LISTENING!";
 
         int fd;
@@ -95,8 +128,13 @@ void BrisaSSDPServer::start() {
         mreq.imr_multiaddr.s_addr = inet_addr(SSDP_ADDR.toUtf8());
         mreq.imr_interface.s_addr = htonl(INADDR_ANY);
 
-        if (::setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
-                (const char *) &mreq, sizeof(struct ip_mreq)) < 0) {
+        // TODO: improve this to allow use of loopback interface
+        if (::setsockopt(fd,
+                         IPPROTO_IP,
+                         IP_ADD_MEMBERSHIP,
+                         (const char *) &mreq,
+                         sizeof(struct ip_mreq)) < 0)
+        {
             qDebug() << "BrisaSSDPServer could not join MULTICAST group";
             return;
         }
@@ -121,15 +159,25 @@ bool BrisaSSDPServer::isRunning() {
     return running;
 }
 
-void BrisaSSDPServer::doNotify(const QString &usn, const QString &location,
-        const QString &st, const QString &server, const QString &cacheControl) {
-    QString message = QString(UPNP_ALIVE_MESSAGE).arg(cacheControl).arg(
-            location).arg(st).arg(server).arg(usn);
+void BrisaSSDPServer::doNotify(const QString &usn,
+                               const QString &location,
+                               const QString &st,
+                               const QString &server,
+                               const QString &cacheControl)
+{
+    QString message = QString(UPNP_ALIVE_MESSAGE).arg(cacheControl)
+                                                 .arg(location)
+                                                 .arg(st)
+                                                 .arg(server)
+                                                 .arg(usn);
 
-    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-            SSDP_PORT);
-    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-            SSDP_PORT);
+    udpListener->writeDatagram(message.toUtf8(),
+                               QHostAddress(SSDP_ADDR),
+                               SSDP_PORT);
+
+    udpListener->writeDatagram(message.toUtf8(),
+                               QHostAddress(SSDP_ADDR),
+                               SSDP_PORT);
 
     qDebug() << "BrisaSSDPServer writing Notify alive for: " << usn << "";
 }
@@ -137,28 +185,33 @@ void BrisaSSDPServer::doNotify(const QString &usn, const QString &location,
 void BrisaSSDPServer::doByeBye(const QString &usn, const QString &st) {
     QString message = QString(UPNP_BYEBYE_MESSAGE).arg(st).arg(usn);
 
-    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-            SSDP_PORT);
-    udpListener->writeDatagram(message.toUtf8(), QHostAddress(SSDP_ADDR),
-            SSDP_PORT);
+    udpListener->writeDatagram(message.toUtf8(),
+                               QHostAddress(SSDP_ADDR),
+                               SSDP_PORT);
+
+    udpListener->writeDatagram(message.toUtf8(),
+                               QHostAddress(SSDP_ADDR),
+                               SSDP_PORT);
 
     qDebug() << "BrisaSSDPServer writing notify byebye for: " << usn << "";
 }
 
 void BrisaSSDPServer::datagramReceived() {
-    while (udpListener->hasPendingDatagrams()) {
-        QByteArray Datagram;
+    while (this->udpListener->hasPendingDatagrams()) {
+        QByteArray datagram;
         QHostAddress *senderIP = new QHostAddress();
         quint16 senderPort;
 
-        Datagram.resize(udpListener->pendingDatagramSize());
-        udpListener->readDatagram(Datagram.data(), Datagram.size(), senderIP,
-                &senderPort);
+        datagram.resize(this->udpListener->pendingDatagramSize());
+        this->udpListener->readDatagram(datagram.data(),
+                                        datagram.size(),
+                                        senderIP,
+                                        &senderPort);
 
-        QString Temp(Datagram);
-        QHttpRequestHeader *parser = new QHttpRequestHeader(Temp);
+        QString temp(datagram);
+        QHttpRequestHeader *parser = new QHttpRequestHeader(temp);
 
-        msearchReceived(parser, senderIP, senderPort);
+        this->msearchReceived(parser, senderIP, senderPort);
 
         delete senderIP;
         delete parser;
@@ -166,31 +219,42 @@ void BrisaSSDPServer::datagramReceived() {
 }
 
 void BrisaSSDPServer::msearchReceived(QHttpRequestHeader *datagram,
-        QHostAddress *senderIp, quint16 senderPort) {
+                                      QHostAddress *senderIp,
+                                      quint16 senderPort)
+{
     if (!datagram->hasKey("man"))
         return;
 
     if (datagram->value("man") == "\"ssdp:discover\"") {
         qDebug() << "BrisaSSDPServer Received msearch from "
-                << senderIp->toString() << ":" << senderPort
-                << " Search target: " << datagram->value("st");
+                 << senderIp->toString() << ":" << senderPort
+                 << " Search target: " << datagram->value("st");
 
         emit msearchRequestReceived(datagram->value("st"),
-                senderIp->toString(), senderPort);
+                                    senderIp->toString(),
+                                    senderPort);
     }
 }
 
 void BrisaSSDPServer::respondMSearch(const QString &senderIp,
-        quint16 senderPort, const QString &cacheControl, const QString &date,
-        const QString &location, const QString &server, const QString &st,
-        const QString &usn) {
-    QString message =
-            QString(UPNP_MSEARCH_RESPONSE).arg(cacheControl).arg(date).arg(
-                    location).arg(server).arg(st).arg(usn);
+                                     quint16 senderPort,
+                                     const QString &cacheControl,
+                                     const QString &date,
+                                     const QString &location,
+                                     const QString &server,
+                                     const QString &st,
+                                     const QString &usn)
+{
+    QString message = QString(UPNP_MSEARCH_RESPONSE).arg(cacheControl)
+                                                    .arg(date)
+                                                    .arg(location)
+                                                    .arg(server)
+                                                    .arg(st)
+                                                    .arg(usn);
 
-    udpListener->writeDatagram(message.toUtf8(), QHostAddress(senderIp),
-            senderPort);
+    this->udpListener->writeDatagram(message.toUtf8(),
+                                     QHostAddress(senderIp),
+                                     senderPort);
 
-    qDebug() << "BrisaSSDPServer writing msearch response for: " << senderIp
-            << ":" << senderPort;
+    qDebug() << "BrisaSSDPServer writing msearch response for " << senderIp << ":" << senderPort;
 }
