@@ -45,57 +45,57 @@ using namespace BrisaUpnp;
 //  - CONFIGID.UPNP.ORG
 //  - SEARCHPORT.UPNP.ORG (optional)
 // TODO: Make IP and port below another #define and replace message below
-#define UPNP_ALIVE_MESSAGE "NOTIFY * HTTP/1.1\r\n"          \
-                           "HOST: 239.255.255.250:1900\r\n" \
-                           "CACHE-CONTROL: max-age=%1\r\n"  \
-                           "LOCATION: %2\r\n"               \
-                           "NT: %3\r\n"                     \
-                           "NTS: ssdp:alive\r\n"            \
-                           "SERVER: %4\r\n"                 \
-                           "USN: %5\r\n"                    \
-                           "\r\n"
+static const QString UPNP_ALIVE_MESSAGE = "NOTIFY * HTTP/1.1\r\n"
+                                          "HOST: 239.255.255.250:1900\r\n"
+                                          "CACHE-CONTROL: max-age=%1\r\n"
+                                          "LOCATION: %2\r\n"
+                                          "NT: %3\r\n"
+                                          "NTS: ssdp:alive\r\n"
+                                          "SERVER: %4\r\n"
+                                          "USN: %5\r\n"
+                                          "\r\n";
 
 // TODO: Implement ssdp:update as per spec 1.1, section 1.2.4
 // and use the below define to build the message, where
 // SEARCHPORT.UPNP.ORG are optional.
 // TODO: Make IP and port below another #define and replace message below
-#define UPNP_UPDATE_MESSAGE "NOTIFY * HTTP/1.1\r\n"          \
-                            "HOST: 239.255.255.250:1900\r\n" \
-                            "LOCATION: %1\r\n"               \
-                            "NT: %2\r\n"                     \
-                            "NTS: ssdp:update\r\n"           \
-                            "USN: %3\r\n"                    \
-                            "CONFIGID.UPNP.ORG: %4\r\n"      \
-                            "NEXTBOOTID.UPNP.ORG: %5\r\n"    \
-                            "SEARCHPORT.UPNP.ORG: %6\r\n"    \
-                            "\r\n"
+static const QString UPNP_UPDATE_MESSAGE = "NOTIFY * HTTP/1.1\r\n"
+                                           "HOST: 239.255.255.250:1900\r\n"
+                                           "LOCATION: %1\r\n"
+                                           "NT: %2\r\n"
+                                           "NTS: ssdp:update\r\n"
+                                           "USN: %3\r\n"
+                                           "CONFIGID.UPNP.ORG: %4\r\n"
+                                           "NEXTBOOTID.UPNP.ORG: %5\r\n"
+                                           "SEARCHPORT.UPNP.ORG: %6\r\n"
+                                           "\r\n";
 
 // TODO: Add this two fields commented below in the BYEBYE MESSAGE
 // as per upnp spec 1.1, section 1.2.2 and 1.2.3.
 //  - BOOTID.UPNP.ORG
 //  - CONFIGID.UPNP.ORG
 // TODO: Make IP and port below another #define and replace message below
-#define UPNP_BYEBYE_MESSAGE "NOTIFY * HTTP/1.1\r\n"          \
-                            "HOST: 239.255.255.250:1900\r\n" \
-                            "NT: %1\r\n"                     \
-                            "NTS: ssdp:byebye\r\n"           \
-                            "USN: %2\r\n"                    \
-                            "\r\n"
+static const QString UPNP_BYEBYE_MESSAGE = "NOTIFY * HTTP/1.1\r\n"
+                                           "HOST: 239.255.255.250:1900\r\n"
+                                           "NT: %1\r\n"
+                                           "NTS: ssdp:byebye\r\n"
+                                           "USN: %2\r\n"
+                                           "\r\n";
 
 // TODO: Add this three fields commented below in the MSEARCH_RESPONSE
 // as per upnp spec 1.1, section 1.3.3.
 //  - BOOTID.UPNP.ORG
 //  - CONFIGID.UPNP.ORG
 //  - SEARCHPORT.UPNP.ORG (optional)
-#define UPNP_MSEARCH_RESPONSE "HTTP/1.1 200 OK\r\n"             \
-                              "CACHE-CONTROL: max-age = %1\r\n" \
-                              "DATE: %2\r\n"                    \
-                              "EXT: \r\n"                       \
-                              "LOCATION: %3\r\n"                \
-                              "SERVER: %4\r\n"                  \
-                              "ST: %5\r\n"                      \
-                              "USN: %6\r\n"                     \
-                              "\r\n"
+static const QString UPNP_MSEARCH_RESPONSE = "HTTP/1.1 200 OK\r\n"
+                                             "CACHE-CONTROL: max-age = %1\r\n"
+                                             "DATE: %2\r\n"
+                                             "EXT: \r\n"
+                                             "LOCATION: %3\r\n"
+                                             "SERVER: %4\r\n"
+                                             "ST: %5\r\n"
+                                             "USN: %6\r\n"
+                                             "\r\n";
 
 BrisaSSDPServer::BrisaSSDPServer(QObject *parent) :
     QObject(parent),
@@ -165,11 +165,7 @@ void BrisaSSDPServer::doNotify(const QString &usn,
                                const QString &server,
                                const QString &cacheControl)
 {
-    QString message = QString(UPNP_ALIVE_MESSAGE).arg(cacheControl)
-                                                 .arg(location)
-                                                 .arg(st)
-                                                 .arg(server)
-                                                 .arg(usn);
+    QString message = UPNP_ALIVE_MESSAGE.arg(cacheControl, location, st, server, usn);
 
     udpListener->writeDatagram(message.toUtf8(),
                                QHostAddress(SSDP_ADDR),
@@ -183,7 +179,7 @@ void BrisaSSDPServer::doNotify(const QString &usn,
 }
 
 void BrisaSSDPServer::doByeBye(const QString &usn, const QString &st) {
-    QString message = QString(UPNP_BYEBYE_MESSAGE).arg(st).arg(usn);
+    QString message = UPNP_BYEBYE_MESSAGE.arg(st, usn);
 
     udpListener->writeDatagram(message.toUtf8(),
                                QHostAddress(SSDP_ADDR),
@@ -245,12 +241,7 @@ void BrisaSSDPServer::respondMSearch(const QString &senderIp,
                                      const QString &st,
                                      const QString &usn)
 {
-    QString message = QString(UPNP_MSEARCH_RESPONSE).arg(cacheControl)
-                                                    .arg(date)
-                                                    .arg(location)
-                                                    .arg(server)
-                                                    .arg(st)
-                                                    .arg(usn);
+    QString message = UPNP_MSEARCH_RESPONSE.arg(cacheControl, date, location, server, st, usn);
 
     this->udpListener->writeDatagram(message.toUtf8(),
                                      QHostAddress(senderIp),

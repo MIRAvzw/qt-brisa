@@ -39,12 +39,12 @@
 
 using namespace BrisaUpnp;
 
-#define UPNP_MSEARCH_DISCOVER "M-SEARCH * HTTP/1.1\r\n"       \
-                              "HOST: 239.255.255.250:1900\r\n"\
-                              "MAN: \"ssdp:discover\"\r\n"    \
-                              "MX: %1\r\n"                    \
-                              "ST: %2\r\n"                    \
-                              "\r\n"
+static const QString UPNP_MSEARCH_DISCOVER = "M-SEARCH * HTTP/1.1\r\n"
+                                             "HOST: 239.255.255.250:1900\r\n"
+                                             "MAN: \"ssdp:discover\"\r\n"
+                                             "MX: %1\r\n"
+                                             "ST: %2\r\n"
+                                             "\r\n";
 
 BrisaMSearchClientCP::BrisaMSearchClientCP(QObject *parent,
         const QString &serviceType, int serviceMx) :
@@ -67,8 +67,7 @@ BrisaMSearchClientCP::~BrisaMSearchClientCP() {
 }
 
 void BrisaMSearchClientCP::discover() {
-    QString discoverMessage =
-            QString(UPNP_MSEARCH_DISCOVER).arg(QString(mx)).arg(type);
+    QString discoverMessage = UPNP_MSEARCH_DISCOVER.arg(QString(mx), type);
 
     qDebug() << "BrisaMSearch discover message sent";
 
