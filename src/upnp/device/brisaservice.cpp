@@ -43,22 +43,22 @@
 
 using namespace BrisaUpnp;
 
-#define SOAP_ERROR_TEMPLATE "<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"                   \
-                            "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"" \
-                            "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"\
-                            "<s:Body>\r\n"                                                      \
-                            "<s:Fault>\r\n"                                                     \
-                            "<faultcode>s:Client</faultcode>\r\n"                               \
-                            "<faultstring>UPnPError</faultstring>\r\n"                          \
-                            "<detail>\r\n"                                                      \
-                            "<UPnPError xmlns=\"urn:schemas-upnp-org:control-1-0\">\r\n"        \
-                            "<errorCode>%1</errorCode>\r\n"                                     \
-                            "<errorDescription>%2</errorDescription>\r\n"                       \
-                            "</UPnPError>\r\n"                                                  \
-                            "</detail>\r\n"                                                     \
-                            "</s:Fault>\r\n"                                                    \
-                            "</s:Body>\r\n"                                                     \
-                            "</s:Envelope>\r\n"
+static const QString SOAP_ERROR_TEMPLATE = "<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
+                                           "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
+                                           "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
+                                           "<s:Body>\r\n"
+                                           "<s:Fault>\r\n"
+                                           "<faultcode>s:Client</faultcode>\r\n"
+                                           "<faultstring>UPnPError</faultstring>\r\n"
+                                           "<detail>\r\n"
+                                           "<UPnPError xmlns=\"urn:schemas-upnp-org:control-1-0\">\r\n"
+                                           "<errorCode>%1</errorCode>\r\n"
+                                           "<errorDescription>%2</errorDescription>\r\n"
+                                           "</UPnPError>\r\n"
+                                           "</detail>\r\n"
+                                           "</s:Fault>\r\n"
+                                           "</s:Body>\r\n"
+                                           "</s:Envelope>\r\n";
 BrisaService::BrisaService(QObject *parent) :
     BrisaAbstractService(parent) {
 }
@@ -281,9 +281,8 @@ void BrisaService::respondError(int errorCode, QString errorDescription) {
 	if (errorDescription == "") {
 		errorDescription = this->errorCodeToString(errorCode);
 	}
-    QString message = QString(SOAP_ERROR_TEMPLATE)
-						.arg(QString::number(errorCode))
-						.arg(this->errorCodeToString(errorCode));
+    QString message = SOAP_ERROR_TEMPLATE.arg(QString::number(errorCode),
+                                              this->errorCodeToString(errorCode));
 
     childWebServices.value(controlUrl.section('/', -1))->respond(message.toUtf8());
 }
