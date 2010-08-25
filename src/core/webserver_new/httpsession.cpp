@@ -79,45 +79,37 @@ int HttpSession::isRequestSupported(const HttpRequest &request) const
     }
 }
 
-// the way of acquiring the number bytes sent isn't safe, and the exception
-// handling too
-qint64 HttpSession::writeResponse(HttpResponse r, bool closeConnection)
+void HttpSession::writeResponse(HttpResponse r)
 {
-    qint64 numberBytesSent = 0;
-
-    numberBytesSent += socket->write(r.httpVersion());
-    numberBytesSent += socket->write(" ");
-    numberBytesSent += socket->write(QByteArray::number(r.statusCode()));
-    numberBytesSent += socket->write(" ");
-    numberBytesSent += socket->write(r.reasonPhrase());
-    numberBytesSent += socket->write("\r\n");
+    socket->write(r.httpVersion());
+    socket->write(" ");
+    socket->write(QByteArray::number(r.statusCode()));
+    socket->write(" ");
+    socket->write(r.reasonPhrase());
+    socket->write("\r\n");
 
     for (QHash<QByteArray, QByteArray>::const_iterator i = r.headersBeginIterator();i != r.headersEndIterator();++i) {
-        numberBytesSent += socket->write(i.key());
+        socket->write(i.key());
         if (!i.value().isNull()) {
-            numberBytesSent += socket->write(": ");
-            numberBytesSent += socket->write(i.value());
+            socket->write(": ");
+            socket->write(i.value());
         } else {
-            numberBytesSent += socket->write(":");
+            socket->write(":");
         }
-        numberBytesSent += socket->write("\r\n");
+        socket->write("\r\n");
     }
 
-    numberBytesSent += socket->write("Content-Length: ");
-    numberBytesSent += socket->write(QByteArray::number(r.entitySize()));
+    socket->write("Content-Length: ");
+    socket->write(QByteArray::number(r.entitySize()));
 
-    numberBytesSent += socket->write("\r\n\r\n");
+    socket->write("\r\n\r\n");
 
-    numberBytesSent += r.entityBody(socket);
+    r.entityBody(socket);
 
-    numberBytesSent += socket->write("\r\n");
+    socket->write("\r\n");
 
-    qDebug(DBG_PREFIX "%i bytes enviados", (int)numberBytesSent);
-
-    if (closeConnection)
+    if (r.closeConnection())
         socket->close();
-
-    return numberBytesSent;
 }
 
 void HttpSession::onReadyRead()
@@ -211,41 +203,12 @@ void HttpSession::onReadyRead()
             }
         }
     case WAITING_FOR_ENTITY_BODY:
-        // TODO: handles other methods to discover the size of the entity body
-        switch (remainingBytes) {
-        case -1:
-            {
-                QByteArray contentLength = requestInfo.header("Content-Length");
-                bool ok = !contentLength.isNull();
+        if (atEnd(requestInfo, buffer)) {
+            requestInfo.setEntityBody(buffer);
+            buffer.clear();
+            state = WAITING_FOR_REQUEST_LINE;
 
-                if (ok) {
-                    remainingBytes = contentLength.toInt(&ok);
-                } else {
-                    HttpResponse response(requestInfo.httpVersion() < lastSupportedHttpVersion ?
-                                          requestInfo.httpVersion() : lastSupportedHttpVersion,
-                                          HttpResponse::LENGTH_REQUIRED);
-
-                    writeResponse(response, true);
-                    return;
-                }
-
-                if (!ok) {
-                    HttpResponse response(requestInfo.httpVersion() < lastSupportedHttpVersion ?
-                                          requestInfo.httpVersion() : lastSupportedHttpVersion,
-                                          HttpResponse::BAD_REQUEST);
-
-                    writeResponse(response, true);
-                    return;
-                }
-            }
-        default:
-            if (buffer.size() == remainingBytes) {
-                requestInfo.setEntityBody(buffer);
-                state = WAITING_FOR_REQUEST_LINE;
-                remainingBytes = -1;
-
-                onRequest(requestInfo);
-            }
+            writeResponse(onRequest(requestInfo));
         }
     }
 }

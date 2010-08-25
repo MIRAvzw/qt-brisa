@@ -50,12 +50,40 @@ int BrisaWebserverSession::isRequestSupported(const HttpRequest &request) const
     return 0;
 }
 
-bool BrisaWebserverSession::hasEntityBody(const HttpRequest &request)
+bool BrisaWebserverSession::hasEntityBody(const HttpRequest &request) throw(HttpResponse)
 {
-    if (request.method() == "POST")
+    if (request.method() == "POST") {
+        // REQUIRED. Field value MUST be text/xml; charset="utf-8" for description documents.
+        if (request.header("Content-Type").isNull()) {
+            throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
+        }/* else if(request.header("Content-Type") != "text/xml; charset=\"utf-8\"") {
+            throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
+        }*/
+
+        if (request.header("Content-Length").isNull()) {
+            throw HttpResponse(request.httpVersion(), HttpResponse::LENGTH_REQUIRED);
+        } else {
+            bool ok;
+            entitySize = request.header("Content-Length").toInt(&ok);
+
+            if (!ok)
+                throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
+        }
+
         return true;
-    else
+    } else {
         return false;
+    }
+}
+
+bool BrisaWebserverSession::atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse)
+{
+    if (entitySize == buffer.size())
+        return true;
+    else if (entitySize < buffer.size())
+        throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
+
+    return false;
 }
 
 void BrisaWebserverSession::onRequest(const HttpRequest &request)
@@ -69,9 +97,8 @@ void BrisaWebserverSession::onRequest(const HttpRequest &request)
     }
     if (request.method() == "GET") {
         WebResource resource = server->resource(WebResourceIdentifier(request.uri(), request.header("Host")));
-        if (!resource) {
+        if (!resource)
             resource = server->resource(WebResourceIdentifier(request.uri()));
-        }
 
         if (resource) {
             HttpResponse response(request.httpVersion(), HttpResponse::OK);
@@ -88,14 +115,7 @@ void BrisaWebserverSession::onRequest(const HttpRequest &request)
             return;
         }
     } else if (request.method() == "POST"){
-        if (request.header("Content-Type").isNull()) {
-            HttpResponse response(request.httpVersion(), HttpResponse::BAD_REQUEST);
-
-            writeResponse(response, true);
-            return;
-        }
-
     }
 }
 
-#endif
+#endif // USE_NEW_BRISA_WEBSERVER

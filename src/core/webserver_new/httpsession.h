@@ -30,6 +30,7 @@
 #include <QThread>
 #include "httprequest.h"
 #include "httpresponse.h"
+#include <exception>
 
 class QTcpSocket;
 
@@ -51,34 +52,36 @@ protected:
     // must be set in the constructor (HttpVersion isn't thread-safe yet)
     HttpVersion lastSupportedHttpVersion;
 
-    virtual bool hasEntityBody(const HttpRequest &request) = 0;
-    virtual void onRequest(const HttpRequest &request) = 0;
-    qint64 writeResponse(HttpResponse, bool closeConnection = false);
-
-signals:
-    void error();
+    virtual bool hasEntityBody(const HttpRequest &request) throw(HttpResponse) = 0;
+    // @ret returns true when the entity body was fully received
+    // default implementation does nothing.
+    // in future, the entity body should be put on qiodevice buffer, not in memory
+    virtual bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
+    virtual HttpResponse onRequest(const HttpRequest &request) = 0;
 
 private slots:
     void onReadyRead();
 
 private:
+    void writeResponse(HttpResponse);
+
     QTcpSocket *socket;
     int socketDescriptor;
     HttpRequest requestInfo;
     QDateTime birthTime;
     int state;
     QByteArray buffer;
-    // entity body related only
-    qint64 remainingBytes;
 
     // os atributos abaixo estavam originalmente presentes.
     // falta verificar se eles pertencerão a o port Qt também
-//    bool embeddedAuth; // Used for authorization
-//    quint64 numBytesSent;// Total bytes sent to client
+    //  bool embeddedAuth; // Used for authorization
 
     //	SSL		*ssl;		/* SSL descriptor		*/
-
-//    static HttpVersion defaultHttpVersion;
 };
+
+inline bool HttpSession::atEnd(const HttpRequest &, const QByteArray &) throw(HttpResponse)
+{
+    return true;
+}
 
 #endif // HTTPSESSION_H

@@ -144,23 +144,14 @@ HttpResponse::HttpResponse(const HttpVersion &httpVersion, int statusCode,
                            const QByteArray &reasonPhrase) :
     HttpMessage(httpVersion),
     m_statusCode(statusCode),
-    m_reasonPhrase(reasonPhrase)
+    m_reasonPhrase(reasonPhrase),
+    m_closeConnection(false)
 {
     if (m_reasonPhrase.isNull()) {
         int i = statusCodeToReasonPhrasesIndex(statusCode);
         if (i != -1)
             m_reasonPhrase = reasonPhrases[i];
     }
-}
-
-int HttpResponse::statusCode() const
-{
-    return m_statusCode;
-}
-
-QByteArray HttpResponse::reasonPhrase() const
-{
-    return m_reasonPhrase;
 }
 
 bool HttpResponse::setStatusCode(int st)
@@ -179,4 +170,14 @@ void HttpResponse::setStatusCode(int st, const QByteArray &reasonPhrase)
 {
     m_statusCode = st;
     m_reasonPhrase = reasonPhrase;
+}
+
+void HttpResponse::setReasonPhrase(const QByteArray &reasonPhrase)
+{
+    m_reasonPhrase = reasonPhrase;
+}
+
+void HttpResponse::setCloseConnection(bool close)
+{
+    m_closeConnection = close;
 }

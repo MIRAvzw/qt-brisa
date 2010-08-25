@@ -45,11 +45,13 @@ public:
     int isRequestSupported(const HttpRequest &request) const;
 
 protected:
-    bool hasEntityBody(const HttpRequest &request);
+    bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
+    bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
     void onRequest(const HttpRequest &request);
 
 private:
     BrisaWebserver *server;
+    int entitySize;
 };
 
 } // namespace BrisaCore

@@ -107,9 +107,28 @@ public:
     QByteArray reasonPhrase() const;
     void setReasonPhrase(const QByteArray &reasonPhrase);
 
+    bool closeConnection() const;
+    void setCloseConnection(bool close);
+
 private:
     int m_statusCode;
     QByteArray m_reasonPhrase;
+    bool m_closeConnection;
 };
+
+inline int HttpResponse::statusCode() const
+{
+    return m_statusCode;
+}
+
+inline QByteArray HttpResponse::reasonPhrase() const
+{
+    return m_reasonPhrase;
+}
+
+inline HttpResponse::closeConnection() const
+{
+    return m_closeConnection;
+}
 
 #endif // HTTPRESPONSE_H
