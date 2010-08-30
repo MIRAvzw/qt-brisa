@@ -15,4 +15,3 @@ CONFIG += brisabuild
 include(../../config.pri)
 include(core.pri)
 include(webserver_new/webserver.pri)
-

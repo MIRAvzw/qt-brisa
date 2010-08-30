@@ -1,3 +1,5 @@
+#include "brisaglobal.h"
+
 #ifndef USE_NEW_BRISA_WEBSERVER
 
 #ifndef _BRISAWEBSTATICCONTENT_H
@@ -10,7 +12,6 @@
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
-#include "brisaglobal.h"
 
 namespace BrisaCore {
 

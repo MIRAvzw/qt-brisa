@@ -141,17 +141,23 @@ inline int statusCodeToReasonPhrasesIndex(int st)
 }
 
 HttpResponse::HttpResponse(const HttpVersion &httpVersion, int statusCode,
-                           const QByteArray &reasonPhrase) :
+                           bool closeConnection) :
+    HttpMessage(httpVersion),
+    m_statusCode(statusCode),
+    m_closeConnection(closeConnection)
+{
+    int i = statusCodeToReasonPhrasesIndex(statusCode);
+    if (i != -1)
+        m_reasonPhrase = reasonPhrases[i];
+}
+
+HttpResponse::HttpResponse(const HttpVersion &httpVersion, int statusCode,
+                           const QByteArray &reasonPhrase, bool closeConnection) :
     HttpMessage(httpVersion),
     m_statusCode(statusCode),
     m_reasonPhrase(reasonPhrase),
-    m_closeConnection(false)
+    m_closeConnection(closeConnection)
 {
-    if (m_reasonPhrase.isNull()) {
-        int i = statusCodeToReasonPhrasesIndex(statusCode);
-        if (i != -1)
-            m_reasonPhrase = reasonPhrases[i];
-    }
 }
 
 bool HttpResponse::setStatusCode(int st)

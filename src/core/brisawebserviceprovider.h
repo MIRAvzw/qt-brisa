@@ -1,3 +1,5 @@
+#include "brisaglobal.h"
+
 #ifndef USE_NEW_BRISA_WEBSERVER
 
 #ifndef _BRISAWEBSERVICEPROVIDER_H
@@ -11,7 +13,6 @@
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
 
-#include "brisaglobal.h"
 #include "brisawebstaticcontent.h"
 #include "brisawebfile.h"
 

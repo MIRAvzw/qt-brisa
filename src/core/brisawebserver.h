@@ -33,6 +33,11 @@
 
 #include <QtCore>
 #include <QtNetwork>
+#include "brisaglobal.h"
+#include "brisawebservice.h"
+#include "brisawebfile.h"
+#include "brisawebserviceprovider.h"
+
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 #include "webserver_new/httpserver.h"
@@ -52,11 +57,6 @@ namespace BrisaCore
 #include <QxtWebContent>
 
 #endif // USE_NEW_BRISA_WEBSERVER
-
-#include "brisaglobal.h"
-#include "brisawebservice.h"
-#include "brisawebfile.h"
-#include "brisawebserviceprovider.h"
 
 namespace BrisaCore {
 

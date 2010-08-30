@@ -33,6 +33,7 @@ class HttpVersion
 public:
     HttpVersion(int httpVersionMajor = 1, int httpVersionMinor = 1);
     // str must have the format "HTTP/1.1", or a HTTP 0.0 will be created
+//    HttpVersion(const HttpVersion &) = default;
     HttpVersion(const QByteArray &str);
 
     int major() const;
@@ -41,12 +42,15 @@ public:
     void setMajor(int);
     void setMinor(int);
 
+//    bool operator ==(const HttpVersion &) = default;
+    bool operator ==(const HttpVersion &);
     bool operator ==(qreal) const;
     bool operator !=(qreal) const;
     bool operator >(const HttpVersion &o) const;
     bool operator <(const HttpVersion &o) const;
     bool operator >=(const HttpVersion &o) const;
     bool operator <=(const HttpVersion &o) const;
+//    HttpVersion &operator =(qreal) = default;
     HttpVersion &operator =(qreal);
     operator QByteArray() const;
     operator bool() const;
@@ -64,6 +68,11 @@ inline int HttpVersion::minor() const
 inline int HttpVersion::major() const
 {
     return m_major;
+}
+
+inline bool HttpVersion::operator ==(const HttpVersion &v)
+{
+    return m_major == v.m_major && m_minor == v.m_minor;
 }
 
 inline bool HttpVersion::operator ==(qreal r) const

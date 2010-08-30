@@ -1,6 +1,17 @@
 #include "brisawebservice.h"
-
 using namespace BrisaCore;
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+BrisaWebService::BrisaWebService(QObject *)
+{
+}
+
+BrisaWebService::~BrisaWebService()
+{
+}
+
+#else
 
 BrisaWebService::BrisaWebService(QxtAbstractWebSessionManager *sm, QObject *parent) :
                 QxtWebServiceDirectory(sm, parent)
@@ -61,3 +72,5 @@ void BrisaWebService::respond(const QHttpResponseHeader &response, const int &se
 
     this->postEvent(event);
 }
+
+#endif

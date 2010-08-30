@@ -3,21 +3,37 @@
 
 #include <QtCore>
 #include <QtNetwork>
+#include "brisaglobal.h"
+
 #ifdef USE_NEW_BRISA_WEBSERVER
 
+// nothing yet
+
 #else // !USE_NEW_BRISA_WEBSERVER
+
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
-#endif // USE_NEW_BRISA_WEBSERVER
 
-#include "brisaglobal.h"
+#endif // USE_NEW_BRISA_WEBSERVER
 
 #define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>"
 
 namespace BrisaCore {
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+// probably won't be used, I hope
+class BRISA_CORE_EXPORT BrisaWebService
+{
+public:
+    BrisaWebService(QObject *parent = 0);
+    ~BrisaWebService();
+};
+
+#else // !USE_NEW_BRISA_WEBSERVER
 
 /*!
  *  \brief Web service abstraction class
@@ -27,9 +43,6 @@ namespace BrisaCore {
  *
  *  \sa BrisaUpnp::BrisaService , BrisaUpnp::BrisaEventController
  */
-#ifdef USE_NEW_BRISA_WEBSERVER
-
-#else // !USE_NEW_BRISA_WEBSERVER
 class BRISA_CORE_EXPORT BrisaWebService: public QxtWebServiceDirectory {
 Q_OBJECT
 

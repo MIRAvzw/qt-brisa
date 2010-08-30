@@ -1,7 +1,6 @@
-#ifndef USE_NEW_BRISA_WEBSERVER
-
 #include "brisawebstaticcontent.h"
 
+#ifndef USE_NEW_BRISA_WEBSERVER
 using namespace BrisaCore;
 
 BrisaWebStaticContent::BrisaWebStaticContent(QxtAbstractWebSessionManager *sm,

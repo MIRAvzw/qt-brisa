@@ -23,6 +23,8 @@
  *
  */
 
+#include "brisaglobal.h"
+
 #if !defined(BRISAWEBSERVERSESSION_H) && defined(USE_NEW_BRISA_WEBSERVER)
 #define BRISAWEBSERVERSESSION_H
 
@@ -47,7 +49,7 @@ public:
 protected:
     bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
     bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
-    void onRequest(const HttpRequest &request);
+    HttpResponse onRequest(const HttpRequest &request);
 
 private:
     BrisaWebserver *server;

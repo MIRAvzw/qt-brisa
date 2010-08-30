@@ -97,8 +97,10 @@ public:
 public:
     // If reasonPhrase is null and the status code is know, then the default
     // reason phrase to the is set
-    HttpResponse(const HttpVersion &httpVersion, int statusCode = Ok,
-                 const QByteArray &reasonPhrase = QByteArray());
+    HttpResponse(const HttpVersion &httpVersion, int statusCode = OK,
+                 bool closeConnection = false);
+    HttpResponse(const HttpVersion &httpVersion, int statusCode,
+                 const QByteArray &reasonPhrase, bool closeConnection = false);
 
     int statusCode() const;
     bool setStatusCode(int st);
@@ -126,7 +128,7 @@ inline QByteArray HttpResponse::reasonPhrase() const
     return m_reasonPhrase;
 }
 
-inline HttpResponse::closeConnection() const
+inline bool HttpResponse::closeConnection() const
 {
     return m_closeConnection;
 }

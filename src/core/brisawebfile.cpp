@@ -1,6 +1,6 @@
-#ifndef USE_NEW_BRISA_WEBSERVER
-
 #include "brisawebfile.h"
+
+#ifndef USE_NEW_BRISA_WEBSERVER
 
 using namespace BrisaCore;
 

@@ -58,14 +58,14 @@ void BrisaWebserver::publishResource(const WebResourceIdentifier &publishPath, c
     mutex.unlock();
 }
 
-WebResource BrisaWebserver::resource(const WebResourceIdentifier &resourceIdentifier)
+WebResource BrisaWebserver::resource(const WebResourceIdentifier &resourceIdentifier) const
 {
     return resources.value(resourceIdentifier);
 }
 
 HttpSession *BrisaWebserver::incomingConnection(int socketDescriptor)
 {
-    BrisaWebserverSession *session = new BrisaWebserverSession(socketDescriptor);
+    BrisaWebserverSession *session = new BrisaWebserverSession(socketDescriptor, this);
 
     mutex.lock();
 
