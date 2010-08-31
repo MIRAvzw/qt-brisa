@@ -19,7 +19,7 @@
 
 #endif // USE_NEW_BRISA_WEBSERVER
 
-#define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>"
+extern const QByteArray DEFAULT_PAGE;
 
 namespace BrisaCore {
 

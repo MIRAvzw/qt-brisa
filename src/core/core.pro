@@ -14,4 +14,4 @@ CONVENIENCE += $$CLEAN_TARGET
 CONFIG += brisabuild
 include(../../config.pri)
 include(core.pri)
-include(webserver_new/webserver.pri)
+include(webserver.pri)

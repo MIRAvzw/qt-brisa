@@ -49,8 +49,7 @@ HttpSession::HttpSession(int socketDescriptor, QObject *parent) :
     lastSupportedHttpVersion(1, 1),
     socket(NULL),
     socketDescriptor(socketDescriptor),
-    state(WAITING_FOR_REQUEST_LINE),
-    remainingBytes(-1)
+    state(WAITING_FOR_REQUEST_LINE)
 {
 }
 
@@ -124,9 +123,7 @@ void HttpSession::onReadyRead()
                 QList<QByteArray> request = buffer.left(i).simplified().split(' ');
 
                 if (request.size() != 3) {
-                    HttpResponse response(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST);
-
-                    writeResponse(response, true);
+                    writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
                     return;
                 }
 
@@ -140,19 +137,15 @@ void HttpSession::onReadyRead()
                     if (version) {
                         requestInfo.setHttpVersion(version);
                     } else {
-                        HttpResponse response(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST);
-
-                        writeResponse(response, true);
+                        writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
                         return;
                     }
                 }
 
                 {
-                    int statusCode = isRequestSupported(version);
+                    int statusCode = isRequestSupported(requestInfo);
                     if (statusCode) {
-                        HttpResponse response(lastSupportedHttpVersion, statusCode);
-
-                        writeResponse(response, true);
+                        writeResponse(HttpResponse(lastSupportedHttpVersion, statusCode, true));
                         return;
                     }
                 }
@@ -178,11 +171,9 @@ void HttpSession::onReadyRead()
                         else
                             requestInfo.setHeader(header.left(i).trimmed(), QByteArray());
                     } else {
-                        HttpResponse response(requestInfo.httpVersion() < lastSupportedHttpVersion ?
-                                              requestInfo.httpVersion() : lastSupportedHttpVersion,
-                                              HttpResponse::BAD_REQUEST);
-
-                        writeResponse(response, true);
+                        writeResponse(HttpResponse(requestInfo.httpVersion() < lastSupportedHttpVersion ?
+                                                   requestInfo.httpVersion() : lastSupportedHttpVersion,
+                                                   HttpResponse::BAD_REQUEST, true));
                         return;
                     }
                 } else {
@@ -191,9 +182,7 @@ void HttpSession::onReadyRead()
                     if (hasEntityBody(requestInfo)) {
                         state = WAITING_FOR_ENTITY_BODY;
                     } else if (buffer.size()) {
-                        HttpResponse response(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST);
-
-                        writeResponse(response, close);
+                        writeResponse(HttpResponse(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST, true));
                         return;
                     } else {
                         state = WAITING_FOR_REQUEST_LINE;

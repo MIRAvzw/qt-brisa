@@ -16,8 +16,6 @@
 #include "brisawebstaticcontent.h"
 #include "brisawebfile.h"
 
-#define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!\n</body></html>"
-
 namespace BrisaCore {
 
 /*!

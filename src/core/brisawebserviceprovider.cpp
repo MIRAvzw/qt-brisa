@@ -3,6 +3,8 @@
 #ifndef USE_NEW_BRISA_WEBSERVER
 using namespace BrisaCore;
 
+extern const QByteArray DEFAULT_PAGE;
+
 /*
  * Reimplemented from libQxt.
  */
