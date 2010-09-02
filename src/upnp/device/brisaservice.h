@@ -104,6 +104,8 @@ public:
      */
     QString getDescriptionFile();
 
+
+
 public slots:
     /*!
      * Parses the genericRequestReceived() signal coming from the webservice.
@@ -162,6 +164,8 @@ private:
     QMetaMethod postActionMethod;
 
     QMetaMethod handleActionFailureMethod;
+
+
 	
 };
 

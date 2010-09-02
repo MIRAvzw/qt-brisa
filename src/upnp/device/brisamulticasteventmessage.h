@@ -3,10 +3,10 @@
  * Centro de Engenharia Elétrica e Informática
  * Laboratório de Sistemas Embarcados e Computação Pervasiva
  * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
- * Filename: brisaeventmessage.h
+ * Filename: brisamulticasteventmessage.h
  * Created:
- * Description: Defines BrisaEventMessage class.
- * Authors: Name <email> @since 2009
+ * Description: Defines BrisaAbstractEventMessage class.
+ * Authors: Danilo Araújo de Freitas <dsurviver@gmail.com> @since 2010
  *
  *
  * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
@@ -26,66 +26,43 @@
  *
  */
 
-#ifndef _BRISAEVENTMESSAGE_H
-#define _BRISAEVENTMESSAGE_H
+#ifndef BRISAMULTICASTEVENTMESSAGE_H
+#define BRISAMULTICASTEVENTMESSAGE_H
 
 #include <QObject>
 #include <QList>
 #include <QHttpRequestHeader>
 
-#include "brisaabstracteventmessage.h"
-#include "brisaeventsubscription.h"
+#include <brisaabstracteventmessage.h>
 
 namespace BrisaUpnp {
 
-/*!
- * \internal
- * \class BrisaUpnp::BrisaEventMessage
- *
- * \brief Represents an UPnP unicast event message.
- */
-class BRISA_UPNP_EXPORT BrisaEventMessage: public BrisaAbstractEventMessage {
-Q_OBJECT
-
+class BrisaMulticastEventMessage : public BrisaAbstractEventMessage
+{
 public:
-    /*!
-     * Contructs a new event message to the given \a subscription and related to the
-     * given \a variables, with the given \a parent object.
-     */
-    BrisaEventMessage(BrisaEventSubscription &subscription, const QList<
-            BrisaStateVariable *> *variables, QObject *parent = 0);
+    BrisaMulticastEventMessage(BrisaStateVariable *variable,
+                               QString LVL, QObject *parent = 0);
 
-    /*!
-     * Returns this event message's http header.
-     */
     QHttpRequestHeader getMessageHeader() const;
 
     QByteArray getMessageBody() const;
 
 private:
+    BrisaStateVariable *variable;
 
     /*!
      * \property SEQ
      *
      * \brief its event key
      */
-    const int SEQ;
+    int SEQ;
 
     /*!
-     * \property VARIABLES
-     *
-     * \brief the list of state variables related to the event
+     * \property LVL
+     * \brief event level
      */
-    const QList<BrisaStateVariable *> *VARIABLES;
-
-    /*!
-     * \property subscription
-     *
-     * \brief the subscription for which the message will be sent
-     */
-    BrisaEventSubscription &subscription;
+    QString LVL;
 };
 
 }
-
-#endif /* _BRISAEVENTMESSAGE_H */
+#endif // BRISAMULTICASTEVENTMESSAGE_H

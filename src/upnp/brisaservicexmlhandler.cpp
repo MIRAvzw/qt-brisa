@@ -81,10 +81,12 @@ void BrisaServiceXMLHandler::parseService(BrisaAbstractService *service,
             for (int i = 0; i < stateVariables.size(); i++) {
                 BrisaStateVariable *stateVariable = new BrisaStateVariable();
                 QString sendEvents = stateVariables.at(i).toElement().attribute("sendEvents");
+                QString multicast = stateVariables.at(i).toElement().attribute("multicast");
                 QString name = stateVariables.at(i).toElement().elementsByTagName("name").at(0).toElement().text();
                 QString dataType = stateVariables.at(i).toElement().elementsByTagName("dataType").at(0).toElement().text();
                 QString defaultValue = stateVariables.at(i).toElement().elementsByTagName("defaultValue").at(0).toElement().text();
                 stateVariable->setAttribute(BrisaStateVariable::SendEvents, sendEvents);
+                stateVariable->setAttribute(BrisaStateVariable::Multicast, multicast);
                 stateVariable->setAttribute(BrisaStateVariable::Name, name);
                 stateVariable->setAttribute(BrisaStateVariable::DataType, dataType);
                 stateVariable->setAttribute(BrisaStateVariable::DefaultValue, defaultValue);

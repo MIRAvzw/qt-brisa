@@ -27,6 +27,7 @@
  */
 
 #include "brisastatevariable.h"
+#include "brisaabstractservice.h"
 
 using namespace BrisaUpnp;
 
@@ -37,10 +38,13 @@ BrisaStateVariable::BrisaStateVariable(QString sendEvents,
                                        QString maximum,
                                        QString minimum,
                                        QString step,
+                                       QString multicast,
                                        QObject *parent) :
     QObject(parent)
 {
+    this->nextMulticastSeq = 0;
     this->_sendEvents = (sendEvents == "yes");
+    this->_multicast = (multicast == "yes");
     this->_name = name;
     this->_dataType = datatype;
     this->_defaultValue = defaultValue;
@@ -65,6 +69,7 @@ BrisaStateVariable::BrisaStateVariable(const BrisaStateVariable &variable) :
 
 BrisaStateVariable &BrisaStateVariable::operator=(const BrisaStateVariable &variable) {
     if (this != &variable) {
+        this->nextMulticastSeq = 0;
         this->setParent(variable.parent());
         this->_sendEvents = variable.sendEventsChange();
         this->_name = variable.getAttribute(Name);
@@ -74,6 +79,7 @@ BrisaStateVariable &BrisaStateVariable::operator=(const BrisaStateVariable &vari
         this->_minimum = variable.getAttribute(Minimum);
         this->_step = variable.getAttribute(Step);
         this->_value = variable.getValue();
+        this->_multicast = variable.multicastEvents();
     }
     return *this;
 }
@@ -121,6 +127,10 @@ void BrisaStateVariable::setAttribute(BrisaStateVariableAttribute attr, QVariant
             }
         }
         break;
+    case Multicast:
+    case multicast:
+        this->_multicast = (newValue.toString() == "yes");
+        break;
     default:
         break;
     }
@@ -160,6 +170,10 @@ QString BrisaStateVariable::getAttribute(BrisaStateVariableAttribute attr, int i
     case value:
         return QString(this->_value.toString());
         break;
+    case Multicast:
+    case multicast:
+        return QString(this->_multicast);
+        break;
     default:
         return "";
         break;
@@ -191,6 +205,10 @@ QVariant BrisaStateVariable::getValue() const {
 
 bool BrisaStateVariable::sendEventsChange() const {
     return this->_sendEvents;
+}
+
+bool BrisaStateVariable::multicastEvents() const {
+    return this->_multicast;
 }
 
 bool BrisaStateVariable::validateNewValue(const QVariant &value) {
@@ -310,3 +328,30 @@ QVariant::Type BrisaStateVariable::getDataType() const {
     }
 }
 
+void BrisaStateVariable::setMulticastSeq(quint32 *seq)
+{
+    this->nextMulticastSeq = seq;
+}
+
+quint32 BrisaStateVariable::getNextMulticastSeq()
+{
+    if (*(this->nextMulticastSeq) == 0) {
+        (*(this->nextMulticastSeq))++;
+        return 0;
+    }
+
+    if (*(this->nextMulticastSeq) == 0xFFFFFFFF) /*4294967295L*/
+        *(this->nextMulticastSeq) = 0;
+
+    return (*(this->nextMulticastSeq))++;
+}
+
+void BrisaStateVariable::setMulticastUsn(QString usn)
+{
+    this->multicastUsn = usn;
+}
+
+QString BrisaStateVariable::getMulticastUsn()
+{
+    return this->multicastUsn;
+}

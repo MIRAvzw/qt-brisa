@@ -5,8 +5,8 @@ HEADERS += device/brisaactionxmlparser.h \
     device/brisaeventmessage.h \
     device/brisaservice.h \
     device/brisaeventsubscription.h \
-    
-
+    brisaabstracteventmessage.h \
+    brisamulticasteventmessage.h
 SOURCES += device/brisadevice.cpp \
     device/brisadevicexmlhandler.cpp \
     device/brisaservice.cpp \
@@ -14,4 +14,5 @@ SOURCES += device/brisadevice.cpp \
     device/brisaeventmessage.cpp \
     device/brisaeventsubscription.cpp \
     device/brisaactionxmlparser.cpp \
-
+    brisaabstracteventmessage.cpp \
+    brisamulticasteventmessage.cpp

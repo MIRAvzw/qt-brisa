@@ -53,6 +53,7 @@ BrisaEventController::BrisaEventController(
                                               const QMultiHash<QString, QString> &,
                                               const QByteArray &, int, int))
                     );
+    udpSocket.bind(QHostAddress("239.255.255.246"), 7900);
 }
 
 BrisaEventController::~BrisaEventController() {
@@ -73,21 +74,26 @@ void BrisaEventController::parseGenericRequest(const QString &method,
 }
 
 void BrisaEventController::variableChanged(BrisaStateVariable *variable) {
-    QList<BrisaStateVariable *> variables;
-    variables.append(variable);
+    if (variable->multicastEvents()) {
+        BrisaMulticastEventMessage message(variable, "upnp:/general");
+        sendMulticastEvent(message);
+    } else {
+        QList<BrisaStateVariable *> variables;
+        variables.append(variable);
 
-    for (QList<BrisaEventSubscription *>::iterator i = this->subscriptions.begin(); i != this->subscriptions.end(); ++i) {
-        // Remove expired subscriptions
-        if ((*i)->hasExpired()) {
-            qDebug() << "Removing subscription:" << (*i)->getSid();
-            delete *i;
-            this->subscriptions.erase(i);
+        for (QList<BrisaEventSubscription *>::iterator i = this->subscriptions.begin(); i != this->subscriptions.end(); ++i) {
+            // Remove expired subscriptions
+            if ((*i)->hasExpired()) {
+                qDebug() << "Removing subscription:" << (*i)->getSid();
+                delete *i;
+                this->subscriptions.erase(i);
 
-            continue;
+                continue;
+            }
+
+            BrisaEventMessage message(*(*i), &variables);
+            this->sendEvent(message, (*i)->getUrl());
         }
-
-        BrisaEventMessage message(*(*i), &variables);
-        this->sendEvent(message, (*i)->getUrl());
     }
 }
 
@@ -98,6 +104,15 @@ void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUr
     qDebug() << "BrisaEventController sending event to "
              << message.getMessageHeader().value("SID") << " at Host: "
              << url.host() << ":" << url.port();
+}
+
+void BrisaEventController::sendMulticastEvent(const BrisaMulticastEventMessage &message)
+{
+    udpSocket.writeDatagram(message.getMessageHeader().toString().toUtf8() +
+                            message.getMessageBody(),
+                            QHostAddress("239.255.255.246"), 7900);
+
+    qDebug() << "BrisaEventController sending multicast event";
 }
 
 void BrisaEventController::subscribe(const QMultiHash<QString, QString> &subscriberInfo,

@@ -30,6 +30,7 @@
 #define _BRISAEVENTCONTROLLER_H
 
 #include "brisaeventmessage.h"
+#include "brisamulticasteventmessage.h"
 #include "brisaeventsubscription.h"
 #include "brisaglobal.h"
 #include "brisautils.h"
@@ -103,6 +104,11 @@ private:
     void sendEvent(const BrisaEventMessage &message, const QUrl &url);
 
     /*!
+     * Sends the multicast event \a message.
+     */
+    void sendMulticastEvent(const BrisaMulticastEventMessage &message);
+
+    /*!
      * Parses the event \a urls of a subscription request from the CALLBACK header
      * value.
      */
@@ -142,6 +148,8 @@ private:
      * subscribers
      */
     QHttp httpClient;
+
+    QUdpSocket udpSocket;
 };
 
 }

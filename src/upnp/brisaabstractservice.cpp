@@ -29,11 +29,13 @@
 
 using namespace BrisaUpnp;
 
-BrisaAbstractService::BrisaAbstractService(QObject *parent) :QObject(parent) {
-
+BrisaAbstractService::BrisaAbstractService(QObject *parent) :QObject(parent)
+{
+    this->initialSeq = 0;
+    this->nextMulticastSeq = &this->initialSeq;
     this->http = new QtSoapHttpTransport(this);
     this->major = "1";
-    this->minor = "0";
+    this->minor = "1";
 }
 
 BrisaAbstractService::BrisaAbstractService(const QString &serviceType,
@@ -42,10 +44,13 @@ BrisaAbstractService::BrisaAbstractService(const QString &serviceType,
         const QString &host, QObject *parent) :
     QObject(parent), controlUrl(controlUrl), eventSubUrl(eventSubUrl),
             fileAddress(), scpdUrl(scpdUrl), serviceType(serviceType),
-            serviceId(serviceId) {
+            serviceId(serviceId)
+{
+    this->initialSeq = 0;
+    this->nextMulticastSeq = &this->initialSeq;
     this->http = new QtSoapHttpTransport(this);
     this->major = "1";
-    this->minor = "0";
+    this->minor = "1";
 
     QUrl url(host);
     this->host = url.host();
@@ -92,6 +97,7 @@ BrisaAbstractService::~BrisaAbstractService() {
     }
     this->stateVariableList.clear();
     delete http;
+    delete nextMulticastSeq;
 }
 
 void BrisaAbstractService::setAttribute(xmlTags key, const QString &value) {
@@ -201,6 +207,10 @@ QList<BrisaAction *> BrisaAbstractService::getActionList() {
 
 void BrisaAbstractService::addStateVariable(BrisaStateVariable *stateVariable) {
     this->stateVariableList.append(stateVariable);
+    if(stateVariable->multicastEvents()) {
+        stateVariable->setMulticastSeq(this->nextMulticastSeq);
+        stateVariable->setMulticastUsn(this->udn + "::" + this->serviceType);
+    }
 }
 
 void BrisaAbstractService::addStateVariable(const QString &sendEvents,
@@ -252,4 +262,9 @@ QString BrisaAbstractService::errorCodeToString(int errorCode) {
 				return "String Argument Too Long";
 	}
 	return "";
+}
+
+void BrisaAbstractService::setUdn(QString udn)
+{
+    this->udn = udn;
 }

@@ -32,8 +32,11 @@ using namespace BrisaUpnp;
 
 BrisaEventMessage::BrisaEventMessage(BrisaEventSubscription &subscription,
         const QList<BrisaStateVariable *> *variables, QObject *parent) :
-    QObject(parent), VARIABLES(variables), SEQ(subscription.getNextSeq()),
-            subscription(subscription) {
+    BrisaAbstractEventMessage(parent),
+    subscription(subscription),
+    VARIABLES(variables),
+    SEQ(subscription.getNextSeq())
+{
 }
 
 QHttpRequestHeader BrisaEventMessage::getMessageHeader() const {
@@ -82,4 +85,3 @@ QByteArray BrisaEventMessage::getMessageBody() const {
 
     return body;
 }
-

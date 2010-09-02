@@ -321,11 +321,12 @@ void BrisaDevice::addService(const QString &serviceType,
 		const QString &controlURL, const QString &eventSubURL) {
 	BrisaService *serviceSwap = new BrisaService(serviceType, serviceId,
 			SCPDURL, controlURL, eventSubURL, this->urlBase);
-	serviceList.append(serviceSwap);
+    this->addService(serviceSwap);
 }
 
 void BrisaDevice::addService(BrisaService *servdev) {
 	serviceList.append(servdev);
+    servdev->setUdn(this->udn);
 }
 
 void BrisaDevice::addEmbeddedDevice(const QString &deviceType,

@@ -178,6 +178,8 @@ public:
      */
 	QString errorCodeToString(int errorCode);
 
+    void setUdn(QString udn);
+
 signals:
     void requestFinished(QString root, QString lastMethod);
 
@@ -200,6 +202,15 @@ protected:
     int port;
 
     QtSoapHttpTransport* http;
+
+    /*!
+     * SEQ number used on multicast event messages.
+     */
+    quint32 *nextMulticastSeq;
+
+    quint32 initialSeq;
+
+    QString udn;
 };
 
 }

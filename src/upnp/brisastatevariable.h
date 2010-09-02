@@ -59,6 +59,7 @@ public:
                        QString maximum = "",
                        QString minimum = "",
                        QString step = "",
+                       QString multicast = "",
                        QObject *parent = 0);
 
     /*!
@@ -89,7 +90,9 @@ public:
         Step,
         step,
         Value,
-        value
+        value,
+        Multicast,
+        multicast
     } BrisaStateVariableAttribute;
 
     /*!
@@ -128,10 +131,20 @@ public:
      */
     QList<QString> getAllowedValueList();
 
+    bool multicastEvents() const;
+
     /*!
      * Clears this variable's attributtes.
      */
     void clear();
+
+    void setMulticastSeq(quint32 *seq);
+
+    quint32 getNextMulticastSeq();
+
+    QString getMulticastUsn();
+
+    void setMulticastUsn(QString usn);
 
 signals:
     void changed(BrisaStateVariable *);
@@ -147,6 +160,7 @@ private:
     QList<QString> allowedValueList;
 
     bool _sendEvents;
+    bool _multicast;
     QString _name;
     QString _defaultValue;
     QString _maximum;
@@ -154,6 +168,9 @@ private:
     QString _step;
     QString _dataType;
     QVariant _value;
+
+    quint32 *nextMulticastSeq;
+    QString multicastUsn;
 
 };
 
