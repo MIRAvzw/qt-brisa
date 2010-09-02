@@ -1,0 +1,495 @@
+**************
+Code Examples
+**************
+
+These are some examples to show how simple it is to develop using BRisa.
+
+-------------------------------
+Creating a Binary Light Device
+-------------------------------
+
+This is the implementation of a Binary Light Device, which the specifications
+you can find `here
+<http://upnp.org/standardizeddcps/documents/BinaryLight1.0cc.pdf>`_.
+
+Before you create a Device, it's very important that you create first the service, 
+that the device is going to use.
+
+First, define the constant variables in the beginning of the code.
+::
+        #define SERVICE_TYPE "urn:schemas-upnp-org:service:SwitchPower:1"
+        #define SERVICE_ID "SwitchPower"
+        #define SERVICE_XML_PATH "/SwitchPower/SwitchPower-scpd.xml"
+        #define SERVICE_CONTROL "/SwitchPower/control"
+        #define SERVICE_EVENT_SUB "/SwitchPower/eventSub"
+
+After this, let's include the Brisa libraries that are used to create the Actions and the services.
+::
+        #include <BrisaUpnp/BrisaAction>
+        #include <BrisaUpnp/BrisaService>
+        
+        using namespace BrisaUpnp;  
+       
+Now, create the actions that are going to be used by the serviceand after that finish the service implementation. 
+The run method is overwritten and to the action perform.
+::
+        class GetStatus : public BrisaAction
+        {
+            public:
+                GetStatus(BrisaService *service) : BrisaAction("GetStatus", service) {}
+
+            private:
+                QMap<QString, QString> run(const QMap<QString, QString> &inArguments)
+                {
+                    Q_UNUSED(inArguments)
+
+                    QMap<QString, QString> outArgs;
+                    outArgs.insert("ResultStatus", this->getStateVariable("Status")
+                                                       ->getAttribute(BrisaStateVariable::Value));
+                    return outArgs;
+                }
+        };
+
+        class GetTarget : public BrisaAction
+        {
+            public:
+                GetTarget(BrisaService *service) : BrisaAction("GetTarget", service) {}
+
+            private:
+                QMap<QString, QString> run(const QMap<QString, QString> &inArguments)
+                {
+                    Q_UNUSED(inArguments)
+
+                    QMap<QString, QString> outArgs;
+                    outArgs.insert("RetTargetValue", this->getStateVariable("Target")
+                                                 ->getAttribute(BrisaStateVariable::Value));
+                    return outArgs;
+                }
+        };
+
+        class SetTarget : public BrisaAction
+        {
+            public:
+                SetTarget(BrisaService *service) : BrisaAction("SetTarget", service) {}
+
+            private:
+                QMap<QString, QString> run(const QMap<QString, QString> &inArguments)
+                {
+                    this->getStateVariable("Target")->setAttribute(BrisaStateVariable::Value,
+                                                                   inArguments["NewTargetValue"]);
+                    this->getStateVariable("Status")->setAttribute(BrisaStateVariable::Value,
+                                                                   inArguments["NewTargetValue"]);
+        
+                    QMap<QString, QString> outArgs;
+                    return outArgs;
+                }
+        };
+
+Now, we have the actions created, so let's start creating the service to finish the service part.
+::
+        class SwitchPower : public BrisaService
+        {
+            public:
+                SwitchPower() : BrisaService(SERVICE_TYPE,
+                                             SERVICE_ID,
+                                             SERVICE_XML_PATH,
+                                             SERVICE_CONTROL,
+                                             SERVICE_EVENT_SUB)
+                {
+                    addAction(new SetTarget(this));
+                    addAction(new GetTarget(this));
+                    addAction(new GetStatus(this));
+                }
+        };
+
+Note that in the constructor we have put the actions inside the service, so that they are callable now.
+Now, we start implementing the Device, the first thing you have to do is to include Brisa libs, the 
+service file and declare the namespace
+::
+        #include <BrisaUpnp/BrisaDevice>
+        #include "switchPower.h"
+        
+        using namespace BrisaUpnp;
+
+Now, we define the device's constants
+::
+        #define DEVICE_TYPE              "urn:schemas-upnp-org:device:BinaryLight:1"
+        #define DEVICE_FRIENDLY_NAME     "Binary Light Device"
+        #define DEVICE_MANUFACTURER      "Brisa Team. Embedded Laboratory and INdT Brazil"
+        #define DEVICE_MANUFACTURER_URL  "https://garage.maemo.org/projects/brisa"
+        #define DEVICE_MODEL_DESCRIPTION "An UPnP Binary Light Device"
+        #define DEVICE_MODEL_NAME        "Binary Light Device"
+        #define DEVICE_MODEL_NUMBER      "1.0"
+        #define DEVICE_MODEL_URL         "https://garage.maemo.org/projects/brisa"
+        #define DEVICE_SERIAL_NUMBER     "1.0"
+
+And after all these things we can start the device's implementation by setting the slots that are 
+going to be used, the attributes and the methods. Note that the device is going to have two states 
+variables and will have a BrisaDevice as an attribute.
+::
+        class Device : public QWidget
+        {
+            Q_OBJECT
+        
+        public:
+            Device(QWidget *parent = 0);
+            ~Device();
+                
+        public slots:
+            void statechanged(BrisaStateVariable *);
+        
+        private:
+            BrisaDevice binaryLight;
+            BrisaStateVariable *status;
+            BrisaStateVariable *target;
+            
+            //METHODS FOR UDN CREATION
+            QString createUdn();
+            int get1RandomNumber();
+            int get2RandomNumber();
+            int get3RandomNumber();
+        };
+
+Now, our header file is ready and we have to start the implementation of the device, 
+first let's do the constructor
+::
+        Widget::Widget(QWidget *parent) :
+            QWidget(parent),
+            binaryLight(DEVICE_TYPE,
+                        DEVICE_FRIENDLY_NAME,
+                        DEVICE_MANUFACTURER,
+                        DEVICE_MANUFACTURER_URL,
+                        DEVICE_MODEL_DESCRIPTION,
+                        DEVICE_MODEL_NAME,
+                        DEVICE_MODEL_NUMBER,
+                        DEVICE_MODEL_URL,
+                        DEVICE_SERIAL_NUMBER,
+                        createUdn())
+        {                  
+            SwitchPower *switchPower = new SwitchPower();
+            switchPower->setDescriptionFile("SwitchPower-scpd.xml");
+            binaryLight.addService(switchPower);
+            binaryLight.start();
+        
+            this->status = binaryLight.getServiceByType("urn:schemas-upnp-org:service:SwitchPower:1")->getVariable("Status");
+            this->target = binaryLight.getServiceByType("urn:schemas-upnp-org:service:SwitchPower:1")->getVariable("Target");
+        
+            connect(status, SIGNAL(changed(BrisaStateVariable *)), this, SLOT(statechanged(BrisaStateVariable *)));
+        }
+
+Note that we initialized our Device attribute and added the service that was set by the xml description file 
+to it, the state variables we've initialized by catching from the service, so, now it's possible now to see 
+if a value of a variable changes.
+
+Here is what we do to create the device's UDN
+::
+
+        QString Widget::createUdn()
+        {
+            QString randNumber1;
+            QString randNumber2;
+            QString randNumber3;
+            QString randNumber4;
+            QString randNumber5;
+            QString randNumber6;
+            QString randNumber7;
+            QString udn;
+        
+            randNumber1.setNum(get3RandomNumber());
+            randNumber2.setNum(get1RandomNumber());
+            randNumber3.setNum(get1RandomNumber());
+            randNumber4.setNum(get2RandomNumber());
+            randNumber5.setNum(get1RandomNumber());
+            randNumber6.setNum(get1RandomNumber());
+            randNumber7.setNum(get3RandomNumber());
+
+            udn.append("uuid:");
+            udn.append(randNumber1);
+            udn.append("a");
+            udn.append(randNumber2);
+            udn.append("fa");
+            udn.append(randNumber3);
+            udn.append("-cf");
+            udn.append(randNumber4);
+            udn.append("-");
+            udn.append(randNumber5);
+            udn.append("cc");
+            udn.append(randNumber6);
+            udn.append("-");
+            udn.append(randNumber7);
+            udn.append("d-");
+            udn.append("0af4c615cecb");
+        
+            return udn;
+        }
+
+        int Widget::get1RandomNumber()
+        {
+            srand(time(NULL));
+            return rand() % 10;
+        }
+        
+        int Widget::get2RandomNumber()
+        {
+            srand(time(NULL));
+            return rand() % 90 + 10;
+        }
+        
+        int Widget::get3RandomNumber()
+        {
+            srand(time(NULL));
+            return rand() % 900 + 100;
+        }
+
+After these steps we create the Slot implementation to show when the variable changes.
+::
+        void Widget::statechanged(BrisaStateVariable *var)
+        {
+            if(var->getAttribute(BrisaStateVariable::Value) == "1") {
+                qDebug() << "Light Switched on";
+            } else {
+                qDebug() << "Light Switched off";
+            }
+        }
+
+And the last thing we've gotten to do is the main that will initialize the device.
+::
+        #include <QtGui/QApplication>
+        #include "light.h"
+        
+        int main(int argc, char *argv[])
+        {
+            QApplication a(argc, argv);
+            Widget window;
+
+            return a.exec();
+        }
+
+Remeber to change your .pro file and put.
+::
+        CONFIG += BRISA
+        BRISA += upnp core utils
+
+Thats all it takes to implement the Binary Light Device.
+
+You could follow these steps to implement any service/device, but remember that for
+now you'll have to write the service's xml yourself.
+
+You can downlaod easily each file click on the name to download the file :download:`light.h <example_code/light.h>`, :download:`light.cpp <example_code/light.cpp>`, :download:`switchPower.h <example_code/switchPower.h>`, :download:`main.cpp <example_code/main.cpp>`, :download:`BrisaBinaryLight.pro <example_code/BrisaBinaryLight.pro>`
+
+and the service's xml :download:`Here <example_code/SwitchPower-scpd.xml>`.
+
+--------------------------------
+Creating a simple Control Point
+--------------------------------
+
+This is an example of a simple Control Point, in this example we will implement
+a Binary Light command line Control Point, but this may help you to create any
+Control Point.
+This Control Point has the following features:
+
+* Searching for devices
+* Listing devices
+* Handling events (new device located, removed device)
+
+As we sad above, our ControlPoint is a command line one, and we'll have to implement two things, 
+the ControlPoint that will hold the devices and the thread to receive the commands.
+The first thing to do is to do the right includes in the code.
+::
+    #include <BrisaUpnp/BrisaControlPoint> // To create the Control Point
+    #include <QList>    // To store the devices
+    #include <QString>
+    #include <QtDebug>  // For debugging purposes
+    #include <QTextStream>  // For receiving the commands
+    #include <QCoreApplication>
+    #include <iostream>
+
+As we sad, our control point is to interact with Binary Light devices, 
+so we define some constants to use in the code.
+::
+    #define BINARY_LIGHT_TYPE    "urn:schemas-upnp-org:device:BinaryLight:1"  //The binary light type 
+    #define SERVICE_SWITCH_POWER "urn:schemas-upnp-org:service:SwitchPower:1" //Service that contains the actions we use
+
+After doing this, let's create and implement the ControlPoint class, we 
+decided to inherit from BrisaControlPoint, but you could have a BrisaControlPoint object 
+to work as a ControlPoint too.
+
+Our Control Point class is going to show when devices enter or leave the network,
+is going to list device to the user, and is going to interact to the device too, by 
+calling some actions from them, for this we'll have to have the following class implementation with the attributes, a few 
+methods and the main slots( yes, slots, because the commands are going to come from the Thread)
+::
+    class ControlPoint : BrisaControlPoint
+    {
+        Q_OBJECT
+        public:
+            ControlPoint();   //ControlPoint Constructor
+            ~ControlPoint();  //ControlPoint Destructor
+    
+    
+        private:
+            QString listServices(BrisaControlPointDevice *dev);
+            QString listEmbeddedDevices(BrisaControlPointDevice *dev);
+    
+            QList <BrisaControlPointDevice*> devices;  //List to store the devices
+            BrisaControlPointDevice *selected;         //Device to interact
+            HandleCmds *handle;                        //Thread that handle the commands
+    
+        private slots:
+            void help();                 // Lists all commands
+            void setLight(int index);    // Selects a device 
+            void getTarget();            // Calls the getTarget action
+            void getStatus();            // Calls the getStatus action   
+            void turnOn();               // Turns on the light       
+            void turnOff();              // Turns off the light
+            void exit();                 // Exits the application
+            void list();                 // Lists all the devices;   
+            void setTargetResponse(QString response, QString method); // Gets the SetTarget response
+            void getTargetResponse(QString response, QString method); // Gets the GetTarget response
+            void getStatusResponse(QString response, QString method); // Gets the GetStatus response
+            void onNewDevice(BrisaControlPointDevice *dev);    //Slot for when a device comes in the network.
+            void onRemovedDevice(QString desc);                //Slot for when a device leaves the network.
+    };
+
+Now, we finished the Control Point implementation in the header file, so let's 
+implement all methods and slots that were declared, the first important thing to
+do is to implement the constructor method that is going to have all the connects
+and will start the Device's discovery and the commands Thread.
+::
+    #include "controlpoint.h"
+    
+    ControlPoint::ControlPoint() : BrisaControlPoint()
+    {
+        this->selected = NULL;
+        handle = new HandleCmds();
+    
+        connect(this, SIGNAL(deviceFound(BrisaControlPointDevice*)), this, SLOT(onNewDevice(BrisaControlPointDevice*)), Qt::DirectConnection);
+        connect(this, SIGNAL(deviceGone(QString)), this, SLOT(onRemovedDevice(QString)), Qt::DirectConnection);
+        
+        this->start();
+        this->discover();
+    
+        connect(handle, SIGNAL(leave()), this, SLOT(exit()));
+        connect(handle, SIGNAL(list()), this, SLOT(list()));
+        connect(handle, SIGNAL(help()), this, SLOT(help()));
+        connect(handle, SIGNAL(getTarget()), this, SLOT(getTarget()));
+        connect(handle, SIGNAL(getStatus()), this, SLOT(getStatus()));
+        connect(handle, SIGNAL(setLight(int)), this, SLOT(setLight(int)));
+        connect(handle, SIGNAL(turnOn()), this, SLOT(turnOn()));
+        connect(handle, SIGNAL(turnOff()), this, SLOT(turnOff()));
+    
+        handle->start();
+    }
+
+The destructor is simples and will have the stop command for the discovery.
+::
+    ControlPoint::~ControlPoint()
+    {
+        delete handle;
+        this->stop();
+    }
+
+To handle when a device comes or leave the network we show simple messages for the user 
+and store/delete in/from the list.
+
+.. literalinclude:: example_code/ControlPoint/controlpoint.cpp
+    :lines: 32-50
+
+Now the functions that are going to perform the actions by the command handler, and the 
+private functions to show the Services from a device and the Embedded Devices of it
+
+.. literalinclude:: example_code/ControlPoint/controlpoint.cpp
+    :lines: 52-121
+
+The action calls function(turn on, turn off, getTarget, getStatus) need a slot to receive
+the action call response teh call is made in a simple way direct from the BrisaControlPointService
+Note that in the call we need to pass a QMap, that contains the paramenter name and the value 
+that is going to be passed all these values are strings. If there aren't parameters, so you call
+with an empty map
+
+.. literalinclude:: example_code/ControlPoint/controlpoint.cpp
+    :lines: 123-205
+
+The way on how we get the commands(Thread) is not implemented yet, but the implementaion is very simple.
+On the header file we create the QThread, note that the signals are to be passed to the ControlPoint 
+to perform the actions
+::
+    class HandleCmds : public QThread
+    {
+        Q_OBJECT
+        public:
+            void run() {            
+                QTextStream stream(stdin);
+                do{
+                    QString line;
+                    QCoreApplication::processEvents();
+                    std::cout << ">>> ";
+                    line = stream.readLine();
+                    if(line == "exit") {
+                        emit leave();
+                        running = false;
+                    } else if(line == "list") {
+                        emit list();
+                    } else if(line == "help"){
+                        emit help();
+                    } else if(line == "get_target"){
+                        emit getTarget();
+                    } else if(line == "get_status"){
+                        emit getStatus();
+                    } else if(line == "turn on"){
+                        emit turnOn();
+                    } else if(line == "turn off"){
+                        emit turnOff();
+                    } else {
+                        if (line.split(" ").size() == 2) {
+                            if(line.split(" ")[0] == "set_light") {
+                                emit setLight(line.split(" ")[1].toInt());
+                            } else {
+                                qDebug() << "Wrong usage, try 'help' to see the commands";
+                            }
+                        } else {
+                            qDebug() << "Wrong usage, try 'help' to see the commands";
+                        }
+                    }
+                } while(running);
+            }
+    
+        private:
+            void setRunningCmds(bool running) { this->running = running; }
+            
+            bool running;
+    
+        signals:
+            void leave();
+            void list();
+            void help();
+            void setLight(int i);
+            void turnOn();
+            void turnOff();
+            void getTarget();
+            void getStatus();
+    };
+
+After that we call it in the Control Point as it was showed
+::
+    HandleCmds *handle = new HandleCmds();    
+
+    connect(handle, SIGNAL(leave()), this, SLOT(exit()));
+    connect(handle, SIGNAL(list()), this, SLOT(list()));
+    connect(handle, SIGNAL(help()), this, SLOT(help()));
+    connect(handle, SIGNAL(getTarget()), this, SLOT(getTarget()));
+    connect(handle, SIGNAL(getStatus()), this, SLOT(getStatus()));
+    connect(handle, SIGNAL(setLight(int)), this, SLOT(setLight(int)));
+    connect(handle, SIGNAL(turnOn()), this, SLOT(turnOn()));
+    connect(handle, SIGNAL(turnOff()), this, SLOT(turnOff()));
+
+    handle->start();
+
+The program is done only missing the main, that is very simple
+
+.. literalinclude:: example_code/controlpoint.cpp
+    :lines: 1-11
+
+And that's how we created a control point using Brisa Qt in an easy way.
+
+You can find the code :download:`here <example_code/ControlPoint/ControlPoint.zip>`.
