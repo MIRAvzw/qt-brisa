@@ -102,11 +102,6 @@ It's time we start implementing our device! We need to create our header file wi
             BrisaStateVariable *status;
             BrisaStateVariable *target;
             
-            //METHODS FOR UDN CREATION
-            QString createUdn();
-            int get1RandomNumber();
-            int get2RandomNumber();
-            int get3RandomNumber();
         };
 
 Now, our header file is ready and we have to start the implementation of the device class source file.
