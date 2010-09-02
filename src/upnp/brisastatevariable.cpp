@@ -355,3 +355,23 @@ QString BrisaStateVariable::getMulticastUsn()
 {
     return this->multicastUsn;
 }
+
+void BrisaStateVariable::setMulticastUdn(QString udn)
+{
+    this->multicastUdn = udn;
+}
+
+QString BrisaStateVariable::getMulticastUdn()
+{
+    return this->multicastUdn;
+}
+
+void BrisaStateVariable::setMulticastSvcid(QString svcid)
+{
+    this->multicastSvcid = svcid;
+}
+
+QString BrisaStateVariable::getMulticastSvcid()
+{
+    return this->multicastSvcid;
+}

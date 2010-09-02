@@ -47,7 +47,9 @@ QHttpRequestHeader BrisaMulticastEventMessage::getMessageHeader() const
     header.setValue("HOST","239.255.255.246:7900");
     header.setValue("CONTENT-TYPE", "text/xml");
     header.addValue("CONTENT-TYPE", "charset=\"utf-8\"");
-    header.setValue("USN", this->variable->getMulticastUsn());
+    header.setValue("USN", this->variable->getMulticastUdn() + "::" +
+                    this->variable->getMulticastUsn());
+    header.setValue("SVCID", variable->getMulticastSvcid());
     header.setValue("NT", "upnp:event");
     header.setValue("NTS", "upnp:propchange");
     header.setValue("SEQ", QString::number(SEQ));

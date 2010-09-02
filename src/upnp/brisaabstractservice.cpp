@@ -209,7 +209,9 @@ void BrisaAbstractService::addStateVariable(BrisaStateVariable *stateVariable) {
     this->stateVariableList.append(stateVariable);
     if(stateVariable->multicastEvents()) {
         stateVariable->setMulticastSeq(this->nextMulticastSeq);
-        stateVariable->setMulticastUsn(this->udn + "::" + this->serviceType);
+        stateVariable->setMulticastUsn(this->serviceType);
+        stateVariable->setMulticastUdn(this->udn);
+        stateVariable->setMulticastSvcid(this->serviceId);
     }
 }
 

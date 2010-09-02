@@ -146,6 +146,14 @@ public:
 
     void setMulticastUsn(QString usn);
 
+    QString getMulticastUdn();
+
+    void setMulticastUdn(QString udn);
+
+    QString getMulticastSvcid();
+
+    void setMulticastSvcid(QString svcid);
+
 signals:
     void changed(BrisaStateVariable *);
 
@@ -171,6 +179,8 @@ private:
 
     quint32 *nextMulticastSeq;
     QString multicastUsn;
+    QString multicastUdn;
+    QString multicastSvcid;
 
 };
 
