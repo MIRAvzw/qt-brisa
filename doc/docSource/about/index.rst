@@ -15,7 +15,7 @@ protocol easier and will cover the basics about using BRisa to create new device
 Project under development since 2007 at the `Laboratory of Embedded Systems and
 Pervasive computing <http://embedded.ufcg.edu.br>`_ located at `Universidade
 Federal de Campina Grande – UFCG <http://ufcg.edu.br>`_ (Campina Grande – Brazil).
-Qt-BRisa is part of BRisa project whose objective is to facilitate the use of UpnP protocol to connect devices. 
+Qt-BRisa is part of BRisa project whose objective is to facilitate the use of UPnP protocol to connect devices. 
 
 Qt-BRisa does that by providing an API written in Qt for easier creation of devices and control points, as well as actions and services.
 
@@ -27,15 +27,18 @@ News and updates will be posted on BRisa project `front page
  People
 ********
 
-Team Leader and Project Manager: Leandro de Melo Sales *<leandroal at gmail dot com>*
+Team Leader and Project Manager: Leandro de Melo Sales *<leandroal@gmail.com>*
 
 Student Developers:
-    * André Dieb Martins *<andre.dieb at gmail dot com>*
-    * André Luiz de Guimarães *<andre.leite at ee.ufcg.edu.br>*
-    * Arthur de Souza Ribeiro *<arthurdesribeiro at gmail dot com>*
-    * Caio Nobrega *<caionobrega0 at gmail dot com>*
-    * Flavio Fabricio *<flaviofabricio at gmail dot com>*
-    * Gabriel Bezerra *<gabriel.bezerra at gmail dot com>*
-    * Renato Souto *<rw.souto at gmail dot com>*
+    * André Dieb Martins *<andre.dieb@gmail.com>*
+    * André Luiz de Guimarães *<andre.leite@ee.ufcg.edu.br>*
+    * Arthur de Souza Ribeiro *<arthurdesribeiro@gmail.com>*
+    * Caio Nobrega *<caionobrega0@gmail.com>*
+    * Danilo Freitas *<dsurviver@gmail.com>*
+    * Flavio Fabricio *<flaviofabricio@gmail.com>*
+    * Gabriel Bezerra *<gabriel.bezerra@gmail.com>*
+    * Jeysibel Sousa Dantas *<jeysibel@gmail.com>*
+    * Nicholas Alexander *<nickmaclewy222@gmail.com>*
+    * Renato Souto *<rw.souto@gmail.com>*
 
 

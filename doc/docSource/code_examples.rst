@@ -175,17 +175,17 @@ Creating a simple Control Point
 --------------------------------
 
 This is an example of a simple Control Point, in this example we will implement
-a Binary Light command line Control Point, but this may help you to create any
-Control Point.
+a command line Control Point for Binary Light devices, but this will cover the basics of creating a control point.
 This Control Point has the following features:
 
 * Searching for devices
 * Listing devices
 * Handling events (new device located, removed device)
 
-As we sad above, our ControlPoint is a command line one, and we'll have to implement two things, 
+As we said above, our ControlPoint is a command line one, and we'll have to implement two things, 
 the ControlPoint that will hold the devices and the thread to receive the commands.
-The first thing to do is to do the right includes in the code.
+
+The first thing to do is to include the libs we are going to use in our code.
 ::
     #include <BrisaUpnp/BrisaControlPoint> // To create the Control Point
     #include <QList>    // To store the devices
@@ -195,20 +195,20 @@ The first thing to do is to do the right includes in the code.
     #include <QCoreApplication>
     #include <iostream>
 
-As we sad, our control point is to interact with Binary Light devices, 
-so we define some constants to use in the code.
+Because our control point is interacting with Binary Light devices, we need to define the device type we are
+communicating with and service that contains the actions we are going to use
 ::
     #define BINARY_LIGHT_TYPE    "urn:schemas-upnp-org:device:BinaryLight:1"  //The binary light type 
-    #define SERVICE_SWITCH_POWER "urn:schemas-upnp-org:service:SwitchPower:1" //Service that contains the actions we use
+    #define SERVICE_SWITCH_POWER "urn:schemas-upnp-org:service:SwitchPower:1" //Service that contains the actions we'll use
 
-After doing this, let's create and implement the ControlPoint class, we 
-decided to inherit from BrisaControlPoint, but you could have a BrisaControlPoint object 
-to work as a ControlPoint too.
+Now let's create and implement the ControlPoint class, we 
+decided to make it a BrisaControlPoint itself, but you could have a BrisaControlPoint object to work as a control point
+in another class of your choice if you'd want to.
 
-Our Control Point class is going to show when devices enter or leave the network,
-is going to list device to the user, and is going to interact to the device too, by 
-calling some actions from them, for this we'll have to have the following class implementation with the attributes, a few 
-methods and the main slots( yes, slots, because the commands are going to come from the Thread)
+Our Control Point class will show when devices enter or leave the network,
+list devices to the user and it is going to interact with the devices by 
+using the actions provided by them. In order to implement these features we are going to need
+the following attributes, methods and slots
 ::
     class ControlPoint : BrisaControlPoint
     {
@@ -242,10 +242,10 @@ methods and the main slots( yes, slots, because the commands are going to come f
             void onRemovedDevice(QString desc);                //Slot for when a device leaves the network.
     };
 
-Now, we finished the Control Point implementation in the header file, so let's 
-implement all methods and slots that were declared, the first important thing to
-do is to implement the constructor method that is going to have all the connects
-and will start the Device's discovery and the commands Thread.
+Our Control Point header file is ready, so let us 
+implement all methods and slots that were declared. The first important thing to
+do is implementing the constructor method that is going to create all the necessary event connections and
+start both the Device's discovery and the Thread commands.
 ::
     #include "controlpoint.h"
     
@@ -286,23 +286,20 @@ and store/delete in/from the list.
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
     :lines: 32-50
 
-Now the functions that are going to perform the actions by the command handler, and the 
-private functions to show the Services from a device and the Embedded Devices of it
+Now we will implement the functions that are going to perform the actions by the command handler and the 
+private functions to show the Services from a device and its embedded devices
 
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
     :lines: 52-121
 
-The action calls function(turn on, turn off, getTarget, getStatus) need a slot to receive
-the action call response teh call is made in a simple way direct from the BrisaControlPointService
-Note that in the call we need to pass a QMap, that contains the paramenter name and the value 
-that is going to be passed all these values are strings. If there aren't parameters, so you call
-with an empty map
+Each of the action call functions (turn on, turn off, getTarget, getStatus) need a slot to receive
+the action call response. The call itself is done in a simple way directly from the BrisaControlPointService.
 
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
     :lines: 123-205
 
 The way on how we get the commands(Thread) is not implemented yet, but the implementaion is very simple.
-On the header file we create the QThread, note that the signals are to be passed to the ControlPoint 
+On the header file we create the QThread, note that the signals are passed to the ControlPoint 
 to perform the actions
 ::
     class HandleCmds : public QThread
@@ -361,7 +358,7 @@ to perform the actions
             void getStatus();
     };
 
-After that we call it in the Control Point as it was showed
+We already connected it in the Control Point when we were creating the control point constructor 
 ::
     HandleCmds *handle = new HandleCmds();    
 
@@ -376,11 +373,11 @@ After that we call it in the Control Point as it was showed
 
     handle->start();
 
-The program is done only missing the main, that is very simple
+So our control point is done. We only need our main now
 
 .. literalinclude:: example_code/controlpoint.cpp
     :lines: 1-11
 
-And that's how we created a control point using Brisa Qt in an easy way.
+And that's how we create a simple control point using Qt-Brisa.
 
 You can find the code :download:`here <example_code/ControlPoint/ControlPoint.zip>`.

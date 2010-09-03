@@ -41,7 +41,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'BRisa Qt UPnP framework'
+project = u'Qt-BRisa UPnP framework'
 copyright = u'2010, Arthur de Souza Ribeiro'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -169,8 +169,8 @@ htmlhelp_basename = 'BRisaUPnPdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
-  ('index', 'BRisaUPnP.tex', ur'BRisa Qt Documentation',
-   ur'Arthur de Souza Ribeiro', 'manual'),
+  ('index', 'BRisaUPnP.tex', ur'Qt-BRisa Documentation',
+   ur'Arthur de Souza Ribeiro \and Nicholas Alexander Diniz Rodrigues', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
