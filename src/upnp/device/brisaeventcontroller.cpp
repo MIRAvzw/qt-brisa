@@ -77,23 +77,20 @@ void BrisaEventController::variableChanged(BrisaStateVariable *variable) {
     if (variable->multicastEvents()) {
         BrisaMulticastEventMessage message(variable, "upnp:/general");
         sendMulticastEvent(message);
-    } else {
-        QList<BrisaStateVariable *> variables;
-        variables.append(variable);
+    }
+    QList<BrisaStateVariable *> variables;
+    variables.append(variable);
 
-        for (QList<BrisaEventSubscription *>::iterator i = this->subscriptions.begin(); i != this->subscriptions.end(); ++i) {
-            // Remove expired subscriptions
-            if ((*i)->hasExpired()) {
-                qDebug() << "Removing subscription:" << (*i)->getSid();
-                delete *i;
-                this->subscriptions.erase(i);
-
-                continue;
-            }
-
-            BrisaEventMessage message(*(*i), &variables);
-            this->sendEvent(message, (*i)->getUrl());
+    for (QList<BrisaEventSubscription *>::iterator i = this->subscriptions.begin(); i != this->subscriptions.end(); ++i) {
+        // Remove expired subscriptions
+        if ((*i)->hasExpired()) {
+            qDebug() << "Removing subscription:" << (*i)->getSid();
+            delete *i;
+            this->subscriptions.erase(i);
+            continue;
         }
+        BrisaEventMessage message(*(*i), &variables);
+        this->sendEvent(message, (*i)->getUrl());
     }
 }
 

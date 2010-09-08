@@ -66,7 +66,7 @@ QByteArray BrisaMulticastEventMessage::getMessageBody() const {
 
     body.append("<?xml version=\"1.0\"?>\r\n");
     body.append(
-            "<e:propertyset: xmlns:e=\"urn:schemas-upnp-org:event-1-0\">\r\n");
+            "<e:propertyset xmlns:e=\"urn:schemas-upnp-org:event-1-0\">\r\n");
 
     QString variableName = this->variable->getAttribute(BrisaStateVariable::Name);
     QString variableValue = this->variable->getAttribute(BrisaStateVariable::Value);

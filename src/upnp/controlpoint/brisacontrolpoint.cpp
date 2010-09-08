@@ -43,6 +43,7 @@ BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
     this->deliveryPath = 0;
     this->running = false;
     this->webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
+    this->multicastReceiver = new BrisaMulticastEventReceiver(parent);
 
     /* HTTP protocol implementation for requests */
     this->http = new QHttp();
@@ -69,6 +70,9 @@ BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
             this,
             SLOT(deviceFound(QString, QString, QString, QString, QString, QString)));
     connect(downloader, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+    connect(this->multicastReceiver, SIGNAL(multicastReceived(QMap<QString,QString>)),
+            this, SLOT(receiveMulticast(QMap<QString,QString>)));
+    this->multicastReceiver->start();
 }
 
 BrisaControlPoint::~BrisaControlPoint() {
@@ -80,6 +84,7 @@ BrisaControlPoint::~BrisaControlPoint() {
     delete this->ssdpClient;
     delete this->webserver;
     delete this->http;
+    delete this->multicastReceiver;
 }
 
 void BrisaControlPoint::start() {
@@ -222,4 +227,10 @@ void BrisaControlPoint::httpResponse(int i, bool error) {
 
     subscription->setSid(sid);
     qDebug() << "Brisa Control Point: Subscribed with SID " << subscription->getSid();
+}
+
+void BrisaControlPoint::receiveMulticast(BrisaOutArgument attributes)
+{
+    emit multicastReceived(attributes.value("variableName"), attributes.value("newValue"));
+    emit multicastReceivedRaw(attributes);
 }

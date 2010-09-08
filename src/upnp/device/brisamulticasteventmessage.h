@@ -37,7 +37,7 @@
 
 namespace BrisaUpnp {
 
-class BrisaMulticastEventMessage : public BrisaAbstractEventMessage
+class BRISA_UPNP_EXPORT BrisaMulticastEventMessage : public BrisaAbstractEventMessage
 {
 public:
     BrisaMulticastEventMessage(BrisaStateVariable *variable,

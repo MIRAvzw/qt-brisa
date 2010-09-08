@@ -36,6 +36,7 @@
 #include "brisanetwork.h"
 #include "brisacontrolpointdevice.h"
 #include "brisaeventproxy.h"
+#include "brisamulticasteventreceiver.h"
 #include "brisaglobal.h"
 
 namespace BrisaUpnp {
@@ -54,6 +55,7 @@ class BrisaControlPointService;
 class BRISA_UPNP_EXPORT BrisaControlPoint: public QObject {
 Q_OBJECT
 
+private:
     /*!
      *    \property http
      *    \brief Do the http request in event subscription.
@@ -108,6 +110,11 @@ Q_OBJECT
      */
     BrisaMSearchClientCP *msearch;
 
+    /*!
+     *  \property multicastReceiver
+     *  \brief Receives the multicast event messages and prepares it to be used.
+     */
+    BrisaMulticastEventReceiver *multicastReceiver;
     /*!
      *    \property deliveryPath
      *    \brief Path to receive each event response.
@@ -207,6 +214,25 @@ signals:
      */
     void deviceGone(QString udn);
 
+    /*!
+     * Signal emitted when a multicast message is received.
+     *
+     * \param variableName name of the state variable.
+     * \param newValue new value of the state variable.
+     */
+    void multicastReceived(QString variableName, QString newValue);
+
+    /*!
+     * Signal emitted when a multicast message is received.
+     *
+     * Similar to multicastReceived, but sends a BrisaOutArgument containing
+     * all the attributes of the multicast event massage, including
+     * "variableName" and "newValue".
+     *
+     * \param raw attributes of the multicast event message.
+     */
+    void multicastReceivedRaw(BrisaOutArgument raw);
+
 private slots:
 
     /*!
@@ -241,6 +267,13 @@ private slots:
      *  \param error \a empty
      */
     void httpResponse(int i, bool error);
+
+    /*!
+     * Receives the attributes of a multicast event.
+     *
+     * \param attributes attributes of the multicast event.
+     */
+    void receiveMulticast(QMap<QString, QString> attributes);
 };
 
 }
