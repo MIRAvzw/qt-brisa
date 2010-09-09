@@ -9,9 +9,9 @@ The compilation and installation proccess on Linux is very simple, and don't tak
 Installing libqxt on linux
 ----------------------------------------
 
-The first thing you need to do is to install libqxt in your system, in case you already have libqxt installed in your system you can jump to "Installing qt-BRisa on Linux" section. 
+The first thing you need to do is to install libqxt in your system, in case you already have libqxt installed in your system you can jump to "Installing Qt BRisa on Linux" section. 
 
-Qt-Brisa repository has it own version of libqxt with some changes made to it in order to make things work fine in Brisa.  You can download qt-BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and after that go to the libqxt directory (qt-brisa/deps/libqxt/) using a command line terminal and type
+Qt BRisa repository has it own version of libqxt with some changes made to it in order to make things work fine in Brisa.  You can download Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and after that go to the libqxt directory (Qt BRisa/deps/libqxt/) using a command line terminal and type
 ::
 
     $ ./configure
@@ -27,10 +27,10 @@ You can also choose to install libqxt using .deb `file <https://garage.maemo.org
 
 This will install libqxt in your computer.
 
-Installing qt-BRisa on Linux
+Installing Qt BRisa on Linux
 --------------------
 
-With libqxt installed in your system you just need to compile BRisa project, by going to the main directory (qt-brisa) inside qt-BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and typing
+With libqxt installed in your system you just need to compile BRisa project, by going to the main directory (Qt BRisa) inside Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and typing
 ::
     $ ./configure
     $ make
@@ -40,7 +40,7 @@ And installing it typing
 ::
     $ sudo make install
 
-You can also install qt-BRisa using the .deb `file <https://garage.maemo.org/frs/download.php/8364/libbrisa-dev_0.1.1linux.deb>`_
+You can also install Qt BRisa using the .deb `file <https://garage.maemo.org/frs/download.php/8364/libbrisa-dev_0.1.1linux.deb>`_
 running the following command inside the folder you downloaded it
 ::
     $ sudo dpkg -i libbrisa-dev_0.4.0maemo_all.deb

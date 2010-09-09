@@ -6,28 +6,28 @@
 
 The compilation and installation process in Windows is very simple and don't take much time.
 
-Compiling qt-BRisa on Windows
+Compiling Qt BRisa on Windows
 ----------------------------------------
 
-The first thing you need to do is to install libqxt in your system. Qt-Brisa repository has it own version of libqxt with some changes made to it in order to make things work fine in Brisa.  You can download qt-BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and after that go to the libqxt directory (qt-brisa/deps/libqxt/) using a command line terminal and type
+The first thing you need to do is to install libqxt in your system. Qt BRisa repository has it own version of libqxt with some changes made to it in order to make things work fine in Brisa.  You can download Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and after that go to the libqxt directory (Qt BRisa/deps/libqxt/) using a command line terminal and type
 ::
 
     $ configure.bat
     $ mingw32-make
     $ mingw32-make install
 
-This will install libqxt in your computer. Now you need to compile qt-BRisa project, by going to the main directory (qt-brisa) inside qt-BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and typing
+This will install libqxt in your computer. Now you need to compile Qt BRisa project, by going to the main directory (Qt BRisa) inside Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and typing
 ::
     $ configure.bat
     $ mingw32-make
 
-And Brisa Qt will be successfully compiled.
+And Qt BRisa will be successfully compiled.
 
-Installing qt-BRisa on Windows
+Installing Qt BRisa on Windows
 --------------------
 
-After compiling qt-BRisa you just need to type the following command in order to install it
+After compiling Qt BRisa you just need to type the following command in order to install it
 ::
     $ mingw32-make install
 
-And qt-BRisa is finally installed in your computer.
+And Qt BRisa is finally installed in your computer.

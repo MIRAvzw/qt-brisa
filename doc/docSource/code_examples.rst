@@ -2,7 +2,7 @@
 Code Examples
 **************
 
-Here we're going to show some examples that will help you understand better how to make applications using qt-BRisa.
+Here we're going to show some examples that will help you understand better how to make applications using Qt BRisa.
 
 -------------------------------
 Creating a Binary Light Device
@@ -24,8 +24,8 @@ Let's define the service's information at the beginning of the code.
 
 After that, let's include the Brisa libraries that are used to create the Actions and the services.
 ::
-        #include <BrisaUpnp/BrisaAction>
-        #include <BrisaUpnp/BrisaService>
+        #include <BrisaAction>
+        #include <BrisaService>
         
         using namespace BrisaUpnp;  
        
@@ -69,7 +69,7 @@ Now we should start implementing our SwitchPower service
 
 Now it's time to start implementing our device. Let us include BrisaDevice class and our service header, define the namespace and our device informations.
 ::
-        #include <BrisaUpnp/BrisaDevice>
+        #include <BrisaDevice>
         #include "switchPower.h"
         
         using namespace BrisaUpnp;
@@ -124,10 +124,13 @@ Here's its constructor
             this->binaryLight.addService(switchPower);
             this->binaryLight.start();
         
-            this->status = binaryLight.getServiceByType("urn:schemas-upnp-org:service:SwitchPower:1")->getVariable("Status");
-            this->target = binaryLight.getServiceByType("urn:schemas-upnp-org:service:SwitchPower:1")->getVariable("Target");
+            this->status = binaryLight.getServiceByType("urn:schemas-upnp-org:service:SwitchPower:1")->
+                           getVariable("Status");
+            this->target = binaryLight.getServiceByType("urn:schemas-upnp-org:service:SwitchPower:1")->
+                           getVariable("Target");
         
-            connect(status, SIGNAL(changed(BrisaStateVariable *)), this, SLOT(statechanged(BrisaStateVariable *)));
+            connect(status, SIGNAL(changed(BrisaStateVariable *)), this,
+                    SLOT(statechanged(BrisaStateVariable *)));
         }
 
 
@@ -142,7 +145,7 @@ And now we just need to implement our statechanged slot.
             }
         }
 
-OK, or device is done and the last thing we need to do is initialize the device in the main file.
+Our device is done and the last thing we need to do is initialize the device in the main file.
 ::
         #include <QtGui/QApplication>
         #include "light.h"
@@ -156,7 +159,7 @@ OK, or device is done and the last thing we need to do is initialize the device 
             return a.exec();
         }
 
-Remeber to change your .pro file and put.
+Remember to change your .pro file and add.
 ::
         CONFIG += BRISA
         BRISA += upnp core utils
@@ -187,7 +190,7 @@ the ControlPoint that will hold the devices and the thread to receive the comman
 
 The first thing to do is to include the libs we are going to use in our code.
 ::
-    #include <BrisaUpnp/BrisaControlPoint> // To create the Control Point
+    #include <BrisaControlPoint> // To create the Control Point
     #include <QList>    // To store the devices
     #include <QString>
     #include <QtDebug>  // For debugging purposes
@@ -378,6 +381,6 @@ So our control point is done. We only need our main now
 .. literalinclude:: example_code/controlpoint.cpp
     :lines: 1-11
 
-And that's how we create a simple control point using Qt-Brisa.
+And that's how we create a simple control point using Qt BRisa.
 
 You can find the code :download:`here <example_code/ControlPoint/ControlPoint.zip>`.

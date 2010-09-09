@@ -12,7 +12,7 @@ This is a basic glossary defining the most common words that will appear in this
 		BRisa is a project focused on the development of UPnP technologies. It provides an API to building UPnP devices,
 		services and control points. BRisa project is released in MIT License (Python version) and in LGPL License (Qt version).
 
-	qt-BRisa
+	Qt BRisa
 		Brisa project version developed at `Laboratory of Embedded Systems and Pervasive Computing <http://embedded.ufcg.edu.br>`_,
 		financed by `INdT <http://www.indt.org.br>`_. UPnP framework for Qt.
 
