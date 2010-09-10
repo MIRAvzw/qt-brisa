@@ -32,7 +32,8 @@ ControlPoint::~ControlPoint()
 void ControlPoint::onNewDevice(BrisaControlPointDevice *device)
 {
     foreach(BrisaControlPointDevice *deviceInside, devices) {
-        if(deviceInside->getAttribute(BrisaControlPointDevice::Udn) == device->getAttribute(BrisaControlPointDevice::Udn))
+        if(deviceInside->getAttribute(BrisaControlPointDevice::Udn)
+            == device->getAttribute(BrisaControlPointDevice::Udn))
             return;
     }
     devices.append(device);
@@ -113,7 +114,8 @@ void ControlPoint::setLight(int index)
         qDebug() << "Binary Light Number not found. Please run list and check again.";
         return;
     }
-    if(this->devices[index]->getAttribute(BrisaControlPointDevice::DeviceType) != BINARY_LIGHT_TYPE) {
+    if(this->devices[index]->getAttribute(BrisaControlPointDevice::DeviceType)
+        != BINARY_LIGHT_TYPE) {
         qDebug() << "Please, choose a Binary Light device";
         return;
     }    
@@ -128,7 +130,8 @@ void ControlPoint::getTarget()
     }
     QMap<QString, QString> param;
     BrisaControlPointService *service = this->selected->getServiceByType(SERVICE_SWITCH_POWER);
-    connect(service, SIGNAL(requestFinished(QString, QString)), this, SLOT(getTargetResponse(QString, QString)));
+    connect(service, SIGNAL(requestFinished(QString, QString)), this,
+            SLOT(getTargetResponse(QString, QString)));
     service->call("GetTarget", param);
 }
 
@@ -153,7 +156,8 @@ void ControlPoint::getStatus()
     }
     QMap<QString, QString> param;
     BrisaControlPointService *service = this->selected->getServiceByType(SERVICE_SWITCH_POWER);
-    connect(service, SIGNAL(requestFinished(QString, QString)), this, SLOT(getStatusResponse(QString, QString)));
+    connect(service, SIGNAL(requestFinished(QString, QString)), this,
+            SLOT(getStatusResponse(QString, QString)));
     service->call("GetStatus", param);
 }
 
@@ -176,7 +180,8 @@ void ControlPoint::turnOn()
     }
     QMap<QString, QString> param;
     BrisaControlPointService *service = this->selected->getServiceByType(SERVICE_SWITCH_POWER);
-    connect(service, SIGNAL(requestFinished(QString, QString)), this, SLOT(setTargetResponse(QString, QString)));
+    connect(service, SIGNAL(requestFinished(QString, QString)), this,
+            SLOT(setTargetResponse(QString, QString)));
     param["NewTargetValue"] = "1";
     service->call("SetTarget", param);
 }
@@ -189,7 +194,8 @@ void ControlPoint::turnOff()
     }
     QMap<QString, QString> param;
     BrisaControlPointService *service = this->selected->getServiceByType(SERVICE_SWITCH_POWER);
-    connect(service, SIGNAL(requestFinished(QString, QString)), this, SLOT(setTargetResponse(QString, QString)));
+    connect(service, SIGNAL(requestFinished(QString, QString)), this,
+            SLOT(setTargetResponse(QString, QString)));
     param["NewTargetValue"] = "0";
     service->call("SetTarget", param);
 }

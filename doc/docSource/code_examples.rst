@@ -201,8 +201,11 @@ The first thing to do is to include the libs we are going to use in our code.
 Because our control point is interacting with Binary Light devices, we need to define the device type we are
 communicating with and service that contains the actions we are going to use
 ::
-    #define BINARY_LIGHT_TYPE    "urn:schemas-upnp-org:device:BinaryLight:1"  //The binary light type 
-    #define SERVICE_SWITCH_POWER "urn:schemas-upnp-org:service:SwitchPower:1" //Service that contains the actions we'll use
+    //The binary light type 
+    #define BINARY_LIGHT_TYPE    "urn:schemas-upnp-org:device:BinaryLight:1"
+
+    //Service that contains the actions we'll use
+    #define SERVICE_SWITCH_POWER "urn:schemas-upnp-org:service:SwitchPower:1"
 
 Now let's create and implement the ControlPoint class, we 
 decided to make it a BrisaControlPoint itself, but you could have a BrisaControlPoint object to work as a control point
@@ -237,12 +240,17 @@ the following attributes, methods and slots
             void turnOn();               // Turns on the light       
             void turnOff();              // Turns off the light
             void exit();                 // Exits the application
-            void list();                 // Lists all the devices;   
-            void setTargetResponse(QString response, QString method); // Gets the SetTarget response
-            void getTargetResponse(QString response, QString method); // Gets the GetTarget response
-            void getStatusResponse(QString response, QString method); // Gets the GetStatus response
-            void onNewDevice(BrisaControlPointDevice *dev);    //Slot for when a device comes in the network.
-            void onRemovedDevice(QString desc);                //Slot for when a device leaves the network.
+            void list();                 // Lists all the devices; 
+            // Gets the SetTarget response  
+            void setTargetResponse(QString response, QString method);
+            // Gets the GetTarget response
+            void getTargetResponse(QString response, QString method);
+            // Gets the GetStatus response
+            void getStatusResponse(QString response, QString method);
+            //Slot used when a device joins the network.
+            void onNewDevice(BrisaControlPointDevice *dev);
+            //Slot used when a device leaves the network.
+            void onRemovedDevice(QString desc);
     };
 
 Our Control Point header file is ready, so let us 
@@ -257,8 +265,10 @@ start both the Device's discovery and the Thread commands.
         this->selected = NULL;
         handle = new HandleCmds();
     
-        connect(this, SIGNAL(deviceFound(BrisaControlPointDevice*)), this, SLOT(onNewDevice(BrisaControlPointDevice*)), Qt::DirectConnection);
-        connect(this, SIGNAL(deviceGone(QString)), this, SLOT(onRemovedDevice(QString)), Qt::DirectConnection);
+        connect(this, SIGNAL(deviceFound(BrisaControlPointDevice*)), this,
+                            SLOT(onNewDevice(BrisaControlPointDevice*)), Qt::DirectConnection);
+        connect(this, SIGNAL(deviceGone(QString)), this, SLOT(onRemovedDevice(QString)),
+                             Qt::DirectConnection);
         
         this->start();
         this->discover();
