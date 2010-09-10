@@ -3,39 +3,30 @@
 BrisaMulticastEventReceiver::BrisaMulticastEventReceiver(QObject *parent) :
         QObject(parent)
 {
-    this->udpSocket = new QUdpSocket(parent);
-    this->udpSocket->bind(QHostAddress("239.255.255.246"), 7900);
+    this->udpListener = new BrisaUdpListener("239.255.255.246", 7900,
+                                       "BrisaMulticastEventReceiver BIND FAIL",
+                                       "BrisaMulticastEventReceiver: Could not join MULTICAST group",
+                                       parent);
+    connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(read()));
+}
 
-    connect(this->udpSocket, SIGNAL(readyRead()), this, SLOT(read()));
+BrisaMulticastEventReceiver::~BrisaMulticastEventReceiver()
+{
+    delete this->udpListener;
 }
 
 void BrisaMulticastEventReceiver::start()
 {
-    int fd;
-
-    if (!udpSocket->bind(7900, QUdpSocket::ShareAddress |
-                         QUdpSocket::ReuseAddressHint)) {
-        qDebug() << "BrisaMulticastEventReceiver BIND FAIL!";
-    }
-
-    fd = udpSocket->socketDescriptor();
-    struct ip_mreq mreq;
-    memset(&mreq, 0, sizeof(struct ip_mreq));
-    mreq.imr_multiaddr.s_addr = inet_addr("239.255.255.246");
-    mreq.imr_interface.s_addr = htonl(INADDR_ANY);
-
-    if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *) &mreq,
-            sizeof(struct ip_mreq)) < 0) {
-        qDebug() << "Brisa SSDP Client: Could not join MULTICAST group";
-        return;
-    }
+    this->udpListener->start();
 }
 
 void BrisaMulticastEventReceiver::read()
 {
-    this->message.resize(udpSocket->pendingDatagramSize());
-    this->udpSocket->readDatagram(this->message.data(), this->message.size());
-    formatMessage();
+    while (this->udpListener->hasPendingDatagrams()) {
+        this->message.resize(udpListener->pendingDatagramSize());
+        this->udpListener->readDatagram(this->message.data(), this->message.size());
+        formatMessage();
+    }
 }
 
 void BrisaMulticastEventReceiver::formatMessage()
@@ -56,6 +47,10 @@ void BrisaMulticastEventReceiver::formatMessage()
         }
         header.append(temp);
     }
+    if (i == newMessage.size()) {
+        qWarning() << "Bad formated multicast message!";
+        return;
+    }
     QHttpRequestHeader requestHeader(header);
     bool castOk = 0;
     const int length = requestHeader.value("CONTENT-LENGTH").toInt(&castOk);
@@ -68,6 +63,7 @@ void BrisaMulticastEventReceiver::formatMessage()
     }
     if (length != body.size()) {
         qWarning() << "Value for CONTENT-LENGTH is wrong.";
+        return;
     }
     this->attributes["USN"] =  requestHeader.value("USN");
     this->attributes["SVCID"] = requestHeader.value("SVCID");
@@ -75,7 +71,8 @@ void BrisaMulticastEventReceiver::formatMessage()
     this->attributes["NTS"] = requestHeader.value("NTS");
     this->attributes["SEQ"] = requestHeader.value("SEQ");
     this->attributes["LVL"] = requestHeader.value("LVL");
-    this->attributes["BOOTID.UPNP.ORG"] = requestHeader.value("LVL");
+    //TODO: use BOOTID.UPNP.ORG
+//    this->attributes["BOOTID.UPNP.ORG"] = requestHeader.value("BOOTID.UPNP.ORG");
     parseBody(body.toUtf8());
     emit multicastReceived(attributes);
 }

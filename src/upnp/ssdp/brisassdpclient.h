@@ -30,10 +30,10 @@
 #define _BRISASSDPCLIENT_H
 
 #include <QObject>
-#include <QUdpSocket>
 #include <QHttpRequestHeader>
 
 #include "brisaglobal.h"
+#include "brisaudplistener.h"
 
 namespace BrisaUpnp {
 
@@ -129,11 +129,8 @@ private slots:
 
 private:
     bool running;
-    QString SSDP_ADDR;
-    int SSDP_PORT;
-    QString S_SSDP_PORT;
 
-    QUdpSocket *udpListener;
+    BrisaUdpListener *udpListener;
 };
 
 }

@@ -28,27 +28,17 @@
 
 #include "brisassdpclient.h"
 
-#include <QtDebug>
-#ifdef Q_WS_X11
-#include <arpa/inet.h>
-#include <netinet/in.h>
-#else
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#endif
-#include <string.h>
-
 using namespace BrisaUpnp;
 
 BrisaSSDPClient::BrisaSSDPClient(QObject *parent) :
 	QObject(parent),
-	running(false),
-	SSDP_ADDR("239.255.255.250"),
-	SSDP_PORT(1900),
-	S_SSDP_PORT("1900") {
-
-    udpListener = new QUdpSocket(parent);
-    connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+    running(false)
+{
+    this->udpListener = new BrisaUdpListener("239.255.255.250", 1900,
+                                             "BrisaSSDPClient BIND FAIL!",
+                                             "Brisa SSDP Client: Could not join MULTICAST group",
+                                             parent);
+    connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
 BrisaSSDPClient::~BrisaSSDPClient() {
@@ -60,24 +50,7 @@ BrisaSSDPClient::~BrisaSSDPClient() {
 
 void BrisaSSDPClient::start() {
     if (!isRunning()) {
-        int fd;
-
-        if (!udpListener->bind(SSDP_PORT, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint)) {
-            qDebug() << "BrisaSSDPClient BIND FAIL!";
-		}
-
-        fd = udpListener->socketDescriptor();
-        struct ip_mreq mreq;
-        memset(&mreq, 0, sizeof(struct ip_mreq));
-        mreq.imr_multiaddr.s_addr = inet_addr(SSDP_ADDR.toUtf8());
-        mreq.imr_interface.s_addr = htonl(INADDR_ANY);
-
-        if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *) &mreq,
-                sizeof(struct ip_mreq)) < 0) {
-            qDebug() << "Brisa SSDP Client: Could not join MULTICAST group";
-            return;
-        }
-
+        udpListener->start();
         running = true;
     } else {
         qDebug() << "Brisa SSDP Client: Already running!";
@@ -86,7 +59,7 @@ void BrisaSSDPClient::start() {
 
 void BrisaSSDPClient::stop() {
     if (isRunning()) {
-        udpListener->disconnectFromHost();
+        this->udpListener->disconnectFromHost();;
         running = false;
     } else {
         qDebug() << "Brisa SSDP Client: Already stopped!";
@@ -98,19 +71,19 @@ bool BrisaSSDPClient::isRunning() const {
 }
 
 void BrisaSSDPClient::datagramReceived() {
-    while (udpListener->hasPendingDatagrams()) {
-        QByteArray *Datagram = new QByteArray();
+    while (this->udpListener->hasPendingDatagrams()) {
+        QByteArray *datagram = new QByteArray();
 
-        Datagram->resize(udpListener->pendingDatagramSize());
-        udpListener->readDatagram(Datagram->data(), Datagram->size());
+        datagram->resize(udpListener->pendingDatagramSize());
+        udpListener->readDatagram(datagram->data(), datagram->size());
 
-        QString Temp(Datagram->data());
-        QHttpRequestHeader *Parser = new QHttpRequestHeader(Temp);
+        QString Temp(datagram->data());
+        QHttpRequestHeader *parser = new QHttpRequestHeader(Temp);
 
-        notifyReceived(Parser);
+        notifyReceived(parser);
 
-        delete Datagram;
-        delete Parser;
+        delete datagram;
+        delete parser;
     }
 
 }
@@ -124,13 +97,16 @@ void BrisaSSDPClient::notifyReceived(QHttpRequestHeader *datagram) {
                             datagram->value("location"), datagram->value("nt"),
                             datagram->value("ext"), datagram->value("server"),
                             datagram->value("cacheControl"));
-        qDebug() << "Brisa SSDP Client: Received alive from " << datagram->value("usn") << "";
+        qDebug() << "Brisa SSDP Client: Received alive from " <<
+                datagram->value("usn") << "";
 
     } else if (datagram->value("nts") == "ssdp:byebye") {
         emit removedDeviceEvent(datagram->value("usn"));
-        qDebug() << "Brisa SSDP Client: Received byebye from " << datagram->value("usn") << "";
+        qDebug() << "Brisa SSDP Client: Received byebye from " <<
+                datagram->value("usn") << "";
 
     } else {
-        qDebug() << "Brisa SSDP Client: Received unknown subtype: " << datagram->value("nts") << "";
+        qDebug() << "Brisa SSDP Client: Received unknown subtype: " <<
+                datagram->value("nts") << "";
     }
 }

@@ -2,19 +2,10 @@
 #define BRISAMULTICASTEVENTRECEIVER_H
 
 #include <QObject>
-#include <QUdpSocket>
 #include <QHttp>
 #include <QDomDocument>
 
-#ifdef Q_WS_X11
-#include <arpa/inet.h>
-#include <netinet/in.h>
-#else
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#endif
-#include <string.h>
-
+#include "brisaudplistener.h"
 #include "brisaglobal.h"
 
 class BRISA_UPNP_EXPORT BrisaMulticastEventReceiver : public QObject
@@ -24,8 +15,15 @@ public:
 
     /*!
      * Constructor.
+     *
+     * \param parent parent
      */
     BrisaMulticastEventReceiver(QObject *parent = 0);
+
+    /*!
+     * Destructor
+     */
+    virtual ~BrisaMulticastEventReceiver();
 
     /*!
      * Starts receiving the multicast events.
@@ -75,7 +73,7 @@ private:
     /*!
      * Socket listening to 239.255.255.246:7900.
      */
-    QUdpSocket *udpSocket;
+    BrisaUdpListener *udpListener;
 
 };
 

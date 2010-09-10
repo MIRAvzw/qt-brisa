@@ -33,9 +33,9 @@ using namespace BrisaUpnp;
 BrisaEventMessage::BrisaEventMessage(BrisaEventSubscription &subscription,
         const QList<BrisaStateVariable *> *variables, QObject *parent) :
     BrisaAbstractEventMessage(parent),
-    subscription(subscription),
+    SEQ(subscription.getNextSeq()),
     VARIABLES(variables),
-    SEQ(subscription.getNextSeq())
+    subscription(subscription)
 {
 }
 
