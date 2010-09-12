@@ -60,19 +60,16 @@ namespace BrisaUpnp {
 
         BrisaWebServiceProvider *getWebService();
 
-        void buildWebServiceTree(BrisaWebserver *sessionManager);
+        void buildWebServiceTree(BrisaCore::BrisaWebserver *sessionManager);
 
         void setDescriptionFile(const QString &scpdFilePath);
 
         QString getDescriptionFile();
 
-
-
     public slots:
         void parseGenericRequest(const HttpRequest &request);
 
     private:
-
         void call(const QString &method, BrisaInArgument &param);
 
         void respondAction(const QString &actionName, const BrisaOutArgument *outArgs);
@@ -98,7 +95,6 @@ namespace BrisaUpnp {
         QMetaMethod postActionMethod;
 
         QMetaMethod handleActionFailureMethod;
-
     };
 
 #else
@@ -238,7 +234,7 @@ private:
 	
 };
 
-#endif
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 

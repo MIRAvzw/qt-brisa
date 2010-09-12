@@ -39,6 +39,55 @@
 
 namespace BrisaUpnp {
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include <QNetworkAccessManager>
+
+    class BRISA_UPNP_EXPORT BrisaEventController: public BrisaWebService {
+    Q_OBJECT
+
+    public:
+        BrisaEventController(BrisaCore::BrisaWebserver *sessionManager,
+                QList<BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
+        ~BrisaEventController();
+
+    public slots:
+        void variableChanged(BrisaStateVariable *variable);
+
+        void subscribe(const QMultiHash<QString, QString> &subscriberInfo,
+                int sessionId, int requestId);
+
+        void unsubscribe(const QMultiHash<QString, QString> &subscriberInfo,
+                int sessionId, int requestId);
+
+        void parseGenericRequest(const HttpRequest &request);
+
+    private:
+        BrisaEventController(const BrisaEventController &);
+
+        void sendEvent(const BrisaEventMessage &message, const QUrl &url);
+
+        void sendMulticastEvent(const BrisaMulticastEventMessage &message);
+
+        QStringList getEventUrls(const QString &urls);
+
+        int getTimeOut(const QString &timeout);
+
+        QHttpResponseHeader getErrorHeader(const int &errorCode,
+                const QString &errorMessage);
+
+        QList<BrisaEventSubscription *> subscriptions;
+
+        QList<BrisaStateVariable *> *variableList;
+
+        QNetworkAccessManager httpClient;
+
+        QUdpSocket udpSocket;
+    };
+
+#else
+
+// TODO: remove using statements from the .h file
 using BrisaCore::BrisaWebService;
 using BrisaCore::BrisaWebServiceProvider;
 using BrisaCore::BrisaWebserver;
@@ -151,6 +200,8 @@ private:
 
     QUdpSocket udpSocket;
 };
+
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 

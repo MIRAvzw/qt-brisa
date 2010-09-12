@@ -29,8 +29,11 @@ namespace BrisaCore {
 class BRISA_CORE_EXPORT BrisaWebService
 {
 public:
-    BrisaWebService(QObject *parent = 0);
+    BrisaWebService(BrisaWebserver *sm, QObject *parent = 0);
     ~BrisaWebService();
+
+private:
+    BrisaWebserver *server;
 };
 
 #else // !USE_NEW_BRISA_WEBSERVER
