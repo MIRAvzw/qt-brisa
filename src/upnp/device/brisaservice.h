@@ -35,6 +35,75 @@
 
 namespace BrisaUpnp {
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+    class BRISA_UPNP_EXPORT BrisaService: public BrisaAbstractService
+    {
+    Q_OBJECT
+    public:
+
+        BrisaService(QObject *parent = 0);
+
+        BrisaService(const QString &serviceType,
+                     const QString &serviceId = QString(),
+                     const QString &scpdUrl = QString(),
+                     const QString &controlUrl = QString(),
+                     const QString &eventSubUrl = QString(),
+                     const QString &host = QString(),
+                     QObject *parent = 0);
+
+        BrisaService(BrisaService &service);
+
+        ~BrisaService();
+
+        BrisaStateVariable *getVariable(const QString &variableName);
+
+        BrisaWebServiceProvider *getWebService();
+
+        void buildWebServiceTree(BrisaWebserver *sessionManager);
+
+        void setDescriptionFile(const QString &scpdFilePath);
+
+        QString getDescriptionFile();
+
+
+
+    public slots:
+        void parseGenericRequest(const HttpRequest &request);
+
+    private:
+
+        void call(const QString &method, BrisaInArgument &param);
+
+        void respondAction(const QString &actionName, const BrisaOutArgument *outArgs);
+
+        void respondError(int errorCode, QString errorDescription = QString());
+
+        void parseDescriptionFile();
+
+        void connectVariablesEventSignals();
+
+        void setDefaultValues();
+
+        void bindActionsToServiceMethods();
+
+        BrisaWebServiceProvider *webService;
+
+        QMap<QString, BrisaWebService *> childWebServices;
+
+        QString scpdFilePath;
+
+        QMetaMethod preActionMethod;
+
+        QMetaMethod postActionMethod;
+
+        QMetaMethod handleActionFailureMethod;
+
+    };
+
+#else
+
+// TODO: remove the using statement from the .h file
 using BrisaCore::BrisaWebService;
 
 /*!
@@ -168,6 +237,8 @@ private:
 
 	
 };
+
+#endif
 
 }
 
