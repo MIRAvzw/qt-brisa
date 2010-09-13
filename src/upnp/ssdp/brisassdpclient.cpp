@@ -35,9 +35,7 @@ BrisaSSDPClient::BrisaSSDPClient(QObject *parent) :
     running(false)
 {
     this->udpListener = new BrisaUdpListener("239.255.255.250", 1900,
-                                             "BrisaSSDPClient BIND FAIL!",
-                                             "Brisa SSDP Client: Could not join MULTICAST group",
-                                             parent);
+                                             "BrisaSSDPClient", parent);
     connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 

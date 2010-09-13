@@ -39,14 +39,12 @@
 #include <cstring>
 
 BrisaUdpListener::BrisaUdpListener(QString address, quint32 port,
-                                   QString bindErrorMessage,
-                                   QString joinErrorMessage, QObject *parent) :
+                                   QString objectName, QObject *parent) :
         QUdpSocket(parent)
 {
     this->address = address;
     this->port = port;
-    this->bindErrorMessage = bindErrorMessage;
-    this->joinErrorMessage = joinErrorMessage;
+    this->objectName = objectName;
     this->bind(QHostAddress(address), port);
 }
 
@@ -60,7 +58,7 @@ void BrisaUdpListener::start()
 
     if (!this->bind(this->port, QUdpSocket::ShareAddress |
                                  QUdpSocket::ReuseAddressHint)) {
-        qDebug() << this->bindErrorMessage;
+        qWarning() << this->objectName << ": failure to bind interface.";
     }
 
     fd = this->socketDescriptor();
@@ -71,6 +69,6 @@ void BrisaUdpListener::start()
 
     if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *) &mreq,
             sizeof(struct ip_mreq)) < 0) {
-        qDebug() << this->joinErrorMessage;
+        qWarning() << this->objectName << ": could not join MULTICAST group.";
     }
 }

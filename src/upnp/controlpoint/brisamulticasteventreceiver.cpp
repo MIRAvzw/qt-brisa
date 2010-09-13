@@ -4,8 +4,7 @@ BrisaMulticastEventReceiver::BrisaMulticastEventReceiver(QObject *parent) :
         QObject(parent)
 {
     this->udpListener = new BrisaUdpListener("239.255.255.246", 7900,
-                                       "BrisaMulticastEventReceiver BIND FAIL",
-                                       "BrisaMulticastEventReceiver: Could not join MULTICAST group",
+                                       "BrisaMulticastEventReceiver",
                                        parent);
     connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(read()));
 }
