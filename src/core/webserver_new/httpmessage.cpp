@@ -25,7 +25,7 @@
 
 #include "httpmessage.h"
 
-const int HttpMessage::chunkSize = 64;
+#define MAPPED_MEMORY_SIZE 64
 
 HttpMessage::HttpMessage(HttpVersion httpVersion) :
         m_httpVersion(httpVersion),
@@ -66,7 +66,7 @@ qint64 HttpMessage::entityBody(QIODevice *device) const
     if (m_entityBodyDevice) {
         m_entityBodyDevice->seek(0);
         while (!m_entityBodyDevice->atEnd())
-            numberByteWritten += device->write(m_entityBodyDevice->read(chunkSize));
+            numberByteWritten += device->write(m_entityBodyDevice->read(MAPPED_MEMORY_SIZE));
     } else {
         numberByteWritten += device->write(m_entityBody);
     }

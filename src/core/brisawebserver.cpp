@@ -63,6 +63,20 @@ WebResource BrisaWebserver::resource(const WebResourceIdentifier &resourceIdenti
     return resources.value(resourceIdentifier);
 }
 
+void BrisaWebserver::addService(const QByteArray &path, BrisaWebService *service)
+{
+    mutex.lock();
+
+    services[path] = service;
+
+    mutex.unlock();
+}
+
+BrisaWebService *BrisaWebserver::service(const QByteArray &path) const
+{
+    return services.value(path);
+}
+
 HttpSession *BrisaWebserver::incomingConnection(int socketDescriptor)
 {
     BrisaWebserverSession *session = new BrisaWebserverSession(socketDescriptor, this);

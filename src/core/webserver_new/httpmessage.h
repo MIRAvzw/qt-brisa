@@ -71,10 +71,6 @@ private:
 
     QByteArray m_entityBody;
     QIODevice *m_entityBodyDevice;
-
-    // chunk is a term generally used in images processing, i need to discover
-    // the ideal term to this variable and refactor it
-    static const int chunkSize;
 };
 
 inline HttpVersion HttpMessage::httpVersion() const

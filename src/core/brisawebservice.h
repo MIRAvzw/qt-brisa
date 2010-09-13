@@ -25,12 +25,18 @@ namespace BrisaCore {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-// probably won't be used, I hope
+class HttpRequest;
+
 class BRISA_CORE_EXPORT BrisaWebService
 {
 public:
     BrisaWebService(BrisaWebserver *sm, QObject *parent = 0);
     ~BrisaWebService();
+
+    void postRequest(const HttpRequest &request, BrisaWebserverSession *session);
+
+signals:
+    void genericRequestReceived(HttpRequest, BrisaWebserverSession *session);
 
 private:
     BrisaWebserver *server;

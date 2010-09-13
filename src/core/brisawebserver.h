@@ -66,6 +66,8 @@ namespace BrisaCore {
  *  BrisaWebServer implements a Web Server using libQxt.
  */
 #ifdef USE_NEW_BRISA_WEBSERVER
+    class BrisaWebService;
+
     class BRISA_CORE_EXPORT BrisaWebserver: public HttpServer
     {
     Q_OBJECT
@@ -76,12 +78,18 @@ namespace BrisaCore {
         void publishResource(const WebResourceIdentifier &publishPath, const WebResource &filePath);
         WebResource resource(const WebResourceIdentifier &resourceIdentifier) const;
 
+        void addService(const QByteArray &path, BrisaWebService *service);
+        BrisaWebService *service(const QByteArray &path) const;
+
     protected:
         HttpSession *incomingConnection(int socketDescriptor);
 
     private:
         // QHash and QList are reentrant, not thread-safe
         QMutex mutex;
+        QHash<QByteArray, BrisaWebService *> services;
+        // after remove the libQxt dependency, some work should be done to create a webservice that
+        // publishes files, then the below hash could below hash could be removed
         QHash<WebResourceIdentifier, WebResource> resources;
         QList<BrisaWebserverSession *> listeners;
     };

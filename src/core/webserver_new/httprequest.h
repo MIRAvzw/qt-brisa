@@ -27,8 +27,6 @@
 #define HTTPREQUEST_H
 
 #include "httpmessage.h"
-#include <QUrl>
-#include <QHostAddress>
 #include "httpversion.h"
 
 class HttpRequest: public HttpMessage
@@ -42,18 +40,6 @@ public:
 
     QByteArray uri() const;
     void setUri(const QByteArray &uri);
-
-    //    /*
-    //     * Get a value of particular form variable.
-    //     * Both query string (whatever comes after '?' in the URL) and a POST buffer
-    //     * are scanned. If a variable is specified in both query string and POST
-    //     * buffer, POST buffer wins. Return value:
-    //     *	NULL      if the variable is not found
-    //     *	non-NULL  if found. NOTE: this returned value is dynamically allocated
-    //     *		  and is subject to mg_free() when no longer needed. It is
-    //     *		  an application's responsibility to mg_free() the variable.
-    //     */
-    //    char *mg_get_var(const struct mg_connection *, const char *var_name);
 
 private:
     QByteArray m_method;              // char *request_method;

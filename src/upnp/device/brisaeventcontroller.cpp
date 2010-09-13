@@ -37,6 +37,20 @@ using namespace BrisaUpnp;
 #define ERROR_400_MESSAGE "Bad Request"
 #define ERROR_412_MESSAGE "Precondition Failed"
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+BrisaEventController::BrisaEventController(
+        BrisaCore::BrisaWebserver *sessionManager,
+        QList<BrisaStateVariable *> *stateVariableList,
+        QObject *parent) :
+        BrisaWebService(sessionManager, parent),
+        variableList(stateVariableList)
+{
+//    connect()
+}
+
+#else
+
 BrisaEventController::BrisaEventController(
         QxtAbstractWebSessionManager *sessionManager,
         QList<BrisaStateVariable *> *stateVariableList,
@@ -244,3 +258,4 @@ int BrisaEventController::getTimeOut(const QString &timeout) {
     return returnTime.toInt(&ok, 10);
 }
 
+#endif // USE_NEW_BRISA_WEBSERVER

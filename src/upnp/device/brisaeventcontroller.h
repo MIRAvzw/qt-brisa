@@ -136,10 +136,6 @@ public slots:
             QString> &headers, const QByteArray &requestContent, int sessionId,
             int requestId);
 
-signals:
-
-private slots:
-
 private:
 
     /*!

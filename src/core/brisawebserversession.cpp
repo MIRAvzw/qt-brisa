@@ -93,25 +93,30 @@ HttpResponse BrisaWebserverSession::onRequest(const HttpRequest &request)
         request.header("Host").isNull()) {
         return HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true);
     }
-    if (request.method() == "GET") {
-        WebResource resource = server->resource(WebResourceIdentifier(request.uri(), request.header("Host")));
-        if (!resource)
-            resource = server->resource(WebResourceIdentifier(request.uri()));
-
-        if (resource) {
-            HttpResponse response(request.httpVersion());
-
-            if (!resource.contentType.isNull())
-                response.setHeader("Content-Type", resource.contentType);
-
-            response.setEntityBody(new QFile(resource.fileName));
-            return response;
-        } else {
-            return HttpResponse(request.httpVersion(), HttpResponse::NOT_FOUND);
-        }
+    if (BrisaWebService *service = server->service(request.uri())) {
+        service->postRequest(request, this);
+        wait_for_request_be_posted(); // TODO
     } else {
-        // request.method() == "POST"
-        // TODO
+        if (request.method() == "GET") {
+            WebResource resource = server->resource(WebResourceIdentifier(request.uri(), request.header("Host")));
+            if (!resource)
+                resource = server->resource(WebResourceIdentifier(request.uri()));
+
+            if (resource) {
+                HttpResponse response(request.httpVersion());
+
+                if (!resource.contentType.isNull())
+                    response.setHeader("Content-Type", resource.contentType);
+
+                response.setEntityBody(new QFile(resource.fileName));
+                return response;
+            } else {
+                return HttpResponse(request.httpVersion(), HttpResponse::NOT_FOUND);
+            }
+        } else {
+            // request.method() == "POST"
+            // TODO
+        }
     }
 }
 
