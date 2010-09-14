@@ -4,6 +4,8 @@
 .. module: linux
     :synopsis: Compiling/Installing on Linux
 
+.. index::  libqxt
+
 The compilation and installation proccess on Linux is very simple, and don't take much time.
 
 Installing libqxt on linux
@@ -11,7 +13,7 @@ Installing libqxt on linux
 
 The first thing you need to do is to install libqxt in your system, in case you already have libqxt installed in your system you can jump to "Installing Qt BRisa on Linux" section. 
 
-Qt BRisa repository has it own version of libqxt with some changes made to it in order to make things work fine in Brisa.  You can download Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and after that go to the libqxt directory (Qt BRisa/deps/libqxt/) using a command line terminal and type
+Qt BRisa repository has it own version of libqxt with some changes made to it in order to make things work fine in Brisa.  You can download Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and after that go to the libqxt directory (qt-brisa/deps/libqxt/) using a command line terminal and type
 ::
 
     $ ./configure
@@ -30,7 +32,7 @@ This will install libqxt in your computer.
 Installing Qt BRisa on Linux
 --------------------
 
-With libqxt installed in your system you just need to compile BRisa project, by going to the main directory (Qt BRisa) inside Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and typing
+With libqxt installed in your system you just need to compile BRisa project, by going to the main directory (qt-brisa) inside Qt BRisa folder `tree <https://garage.maemo.org/frs/download.php/8365/libbrisa_0.1.1.tar.gz>`_ and typing
 ::
     $ ./configure
     $ make

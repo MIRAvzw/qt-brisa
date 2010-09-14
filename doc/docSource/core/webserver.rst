@@ -4,6 +4,8 @@
 .. module: webserver
     :synopsis: Using Brisa to create WebServers
 
+.. index:: webserver
+
 Creating a simple Web Service using Qt BRisa
 --------------------------------------------------
 

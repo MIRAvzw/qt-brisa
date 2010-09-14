@@ -393,4 +393,6 @@ So our control point is done. We only need our main now
 
 And that's how we create a simple control point using Qt BRisa.
 
-You can find the code :download:`here <example_code/ControlPoint/ControlPoint.zip>`.
+You can find the code in:
+    https://garage.maemo.org/plugins/scmsvn/viewcvs.php/qt/trunk/qt-brisa/doc/docSource/example_code/ControlPoint/?root=brisa.
+    Just download ControlPoint.zip file.

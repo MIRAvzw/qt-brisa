@@ -9,6 +9,7 @@ BrisaDevice class provides an easy and fast way to create UPnP devices. All you 
 
 Important Methods
 ^^^^^^^^^^
+.. index:: addEmbeddedDevice
 
 BrisaDevice constructor which should receive all device information on its arguments.
 ::
@@ -31,6 +32,8 @@ BrisaDevice constructor which should receive all device information on its argum
 Call this function passing the BrisaDevice to be embedded and the embedded device will be announced when the root device joins the network.
 ::
     void addEmbeddedDevice(BrisaDevice *newEmbeddedDevice);
+
+.. index:: addService, start (BrisaDevice method), stop (BrisaDevice method)
     
 Method used to add a service to the device, you just need to pass a BrisaService object as the argument. The service will be automatically added to the device and the appropriate webserver urls paths will be created.
 ::

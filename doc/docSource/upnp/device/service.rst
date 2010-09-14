@@ -8,6 +8,7 @@ BrisaService class allows you to create UPnP services in an easy way. You only n
 
 Important Methods
 ^^^^^^^^^^^^
+.. index:: BrisaService, addAction, getStateVariableList
 
 BrisaService constructor. Receives service information.
 ::

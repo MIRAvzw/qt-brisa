@@ -3,6 +3,7 @@
 
 .. module: log
     :synopsis: Provides logging facility with a colored logging feature.
+.. index:: logger
 
 Qt BRisa provides logging functions with a colored
 logging feature.
