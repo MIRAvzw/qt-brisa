@@ -55,6 +55,7 @@ BrisaAction::BrisaAction(const BrisaAction &action) :
     }
 }
 
+
 BrisaAction::~BrisaAction() {
     foreach (BrisaArgument *argument, this->argumentList) {
         delete argument;
@@ -70,6 +71,10 @@ void BrisaAction::addArgument(QString name, QString direction, QString relatedSt
 
 void BrisaAction::addArgument(BrisaArgument *argumentA) {
     this->argumentList.append(argumentA);
+}
+
+void BrisaAction::removeArgument(BrisaArgument* argumentA){
+	this->argumentList.removeOne(argumentA);
 }
 
 void BrisaAction::addArguments(const QList<BrisaArgument*> arguments) {

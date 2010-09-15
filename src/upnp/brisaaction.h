@@ -137,6 +137,12 @@ public:
      * Clears this action's argument list.
      */
     void clearArgumentList();
+	 
+    /*!
+     * Remove given \a argument from this action's list of arguments.
+     */
+
+    void removeArgument(BrisaArgument* argumentA);
 
     /*!
      * Validates \a inArguments, \a outArguments and runs the action. \a outArguments
