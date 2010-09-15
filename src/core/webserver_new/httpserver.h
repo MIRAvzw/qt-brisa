@@ -33,25 +33,15 @@
 
 class QTcpServer;
 class QTcpSocket;
-class TcpServer;
 
 class HttpServer : public QThread
 {
     Q_OBJECT
 public:
-    enum HttpError
-    {
-        // TODO
-    };
-
-public:
     explicit HttpServer(const QHostAddress &address = QHostAddress::Any,
-                         quint16 port = 0, QObject *parent = 0);
+                        quint16 port = 0, QObject *parent = 0);
     virtual ~HttpServer();
     void run();
-
-    HttpError error();
-    QString errorString();
 
 protected:
     virtual HttpSession *incomingConnection(int socketDescriptor) = 0;
@@ -65,13 +55,10 @@ signals:
 //    typedef int (*mg_spcb_t)(char *buf, int num, int w, void *key);
 //    void mg_set_ssl_password_callback(struct mg_context *ctx, mg_spcb_t func);
 
-public slots:
-
 private slots:
     void onNewConnection(int socketDescriptor);
 
 private:
-    TcpServer *socket;
     QHostAddress address;
     quint16 port;
 };

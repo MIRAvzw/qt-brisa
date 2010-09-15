@@ -98,14 +98,17 @@ void HttpSession::writeResponse(HttpResponse r)
         socket->write("\r\n");
     }
 
-    socket->write("Content-Length: ");
-    socket->write(QByteArray::number(r.entitySize()));
+    // this should be work of the higher-level stack
+    if (r.entitySize()) {
+        socket->write("Content-Length: ");
+        socket->write(QByteArray::number(r.entitySize()));
 
-    socket->write("\r\n\r\n");
+        socket->write("\r\n\r\n");
 
-    r.entityBody(socket);
-
-    socket->write("\r\n");
+        r.entityBody(socket);
+    } else {
+        socket->write("\r\n");
+    }
 
     if (r.closeConnection())
         socket->close();
@@ -115,89 +118,93 @@ void HttpSession::onReadyRead()
 {
     buffer.append(socket->readAll());
 
-    switch (state) {
-    case WAITING_FOR_REQUEST_LINE:
-        {
-            int i = buffer.indexOf("\r\n");
-            if (i != -1) {
-                QList<QByteArray> request = buffer.left(i).simplified().split(' ');
+    try {
+        switch (state) {
+        case WAITING_FOR_REQUEST_LINE:
+            {
+                while (buffer.startsWith("\r\n"))
+                    buffer.remove(0, 2);
 
-                if (request.size() != 3) {
-                    writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
-                    return;
-                }
+                int i = buffer.indexOf("\r\n");
+                if (i != -1) {
+                    QList<QByteArray> request = buffer.left(i).simplified().split(' ');
 
-                requestInfo.setMethod(request.at(0));
-
-                requestInfo.setUri(request.at(1));
-
-                {
-                    HttpVersion version(request.at(2));
-
-                    if (version) {
-                        requestInfo.setHttpVersion(version);
-                    } else {
+                    if (request.size() != 3) {
                         writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
                         return;
                     }
-                }
 
-                {
-                    int statusCode = isRequestSupported(requestInfo);
-                    if (statusCode) {
-                        writeResponse(HttpResponse(lastSupportedHttpVersion, statusCode, true));
-                        return;
+                    requestInfo.setMethod(request.at(0));
+
+                    requestInfo.setUri(request.at(1));
+
+                    {
+                        HttpVersion version(request.at(2));
+
+                        if (version) {
+                            requestInfo.setHttpVersion(version);
+                        } else {
+                            writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
+                            return;
+                        }
                     }
-                }
 
-                buffer.remove(0, request.at(0).size() + request.at(1).size() +
-                              request.at(2).size() + 4);
-
-                state = WAITING_FOR_HEADERS;
-            }
-        }
-    case WAITING_FOR_HEADERS:
-        {
-            for (int i = buffer.indexOf("\r\n") ; i != -1 ; i = buffer.indexOf("\r\n")) {
-                // don't starts with \r\n
-                if (i != 0) {
-                    QByteArray header = buffer.left(i);
-                    buffer.remove(0, i + 2);
-
-                    i = header.indexOf(':');
-                    if (i > 0) {
-                        if (i + 1 < header.size())
-                            requestInfo.setHeader(header.left(i).trimmed(), header.mid(i + 1).trimmed());
-                        else
-                            requestInfo.setHeader(header.left(i).trimmed(), QByteArray());
-                    } else {
-                        writeResponse(HttpResponse(requestInfo.httpVersion() < lastSupportedHttpVersion ?
-                                                   requestInfo.httpVersion() : lastSupportedHttpVersion,
-                                                   HttpResponse::BAD_REQUEST, true));
-                        return;
+                    {
+                        int statusCode = isRequestSupported(requestInfo);
+                        if (statusCode) {
+                            writeResponse(HttpResponse(lastSupportedHttpVersion, statusCode, true));
+                            return;
+                        }
                     }
-                } else {
-                    buffer.remove(0, 2);
 
-                    if (hasEntityBody(requestInfo)) {
-                        state = WAITING_FOR_ENTITY_BODY;
-                    } else if (buffer.size()) {
-                        writeResponse(HttpResponse(requestInfo.httpVersion(), HttpResponse::BAD_REQUEST, true));
-                        return;
-                    } else {
-                        state = WAITING_FOR_REQUEST_LINE;
-                        onRequest(requestInfo);
-                    }
+                    buffer.remove(0, request.at(0).size() + request.at(1).size() +
+                                  request.at(2).size() + 4);
+
+                    state = WAITING_FOR_HEADERS;
                 }
             }
-        }
-    case WAITING_FOR_ENTITY_BODY:
-        if (atEnd(requestInfo, buffer)) {
-            requestInfo.setEntityBody(buffer);
-            buffer.clear();
-            state = WAITING_FOR_REQUEST_LINE;
+        case WAITING_FOR_HEADERS:
+            {
+                for (int i = buffer.indexOf("\r\n") ; i != -1 ; i = buffer.indexOf("\r\n")) {
+                    // don't starts with \r\n
+                    if (i != 0) {
+                        QByteArray header = buffer.left(i);
+                        buffer.remove(0, i + 2);
 
-            writeResponse(onRequest(requestInfo));
+                        i = header.indexOf(':');
+                        if (i > 0) {
+                            if (i + 1 < header.size())
+                                requestInfo.setHeader(header.left(i).trimmed(), header.mid(i + 1).trimmed());
+                            else
+                                requestInfo.setHeader(header.left(i).trimmed(), QByteArray());
+                        } else {
+                            writeResponse(HttpResponse(requestInfo.httpVersion() < lastSupportedHttpVersion ?
+                                                       requestInfo.httpVersion() : lastSupportedHttpVersion,
+                                                       HttpResponse::BAD_REQUEST, true));
+                            return;
+                        }
+                    } else {
+                        buffer.remove(0, 2);
+
+                        if (hasEntityBody(requestInfo)) {
+                            state = WAITING_FOR_ENTITY_BODY;
+                        } else {
+                            state = WAITING_FOR_REQUEST_LINE;
+                            onRequest(requestInfo);
+                        }
+                    }
+                }
+            }
+        case WAITING_FOR_ENTITY_BODY:
+            if (atEnd(requestInfo, buffer)) {
+                requestInfo.setEntityBody(buffer);
+                buffer.clear();
+                state = WAITING_FOR_REQUEST_LINE;
+
+                onRequest(requestInfo);
+            }
         }
+    } catch (const HttpResponse &r) {
+        writeResponse(r);
     }
 }

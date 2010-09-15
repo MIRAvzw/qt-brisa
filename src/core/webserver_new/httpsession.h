@@ -47,6 +47,8 @@ public:
     // used to identify if this http version is supported
     virtual int isRequestSupported(const HttpRequest &request) const;
 
+public slots:
+
 protected:
     // used to respond BAD_REQUESTs
     // must be set in the constructor (HttpVersion isn't thread-safe yet)
@@ -57,13 +59,18 @@ protected:
     // default implementation does nothing.
     // in future, the entity body should be put on qiodevice buffer, not in memory
     virtual bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
-    virtual HttpResponse onRequest(const HttpRequest &request) = 0;
+    virtual void onRequest(const HttpRequest &request) = 0;
+
+    void writeResponse(HttpResponse);
+
+    // the ideia is:
+    //  on a 8-threads limited system there are 8 objects to manage x sessions
+//    virtual bool die();
 
 private slots:
     void onReadyRead();
 
 private:
-    void writeResponse(HttpResponse);
 
     QTcpSocket *socket;
     int socketDescriptor;

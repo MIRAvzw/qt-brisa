@@ -31,7 +31,6 @@
 
 HttpServer::HttpServer(const QHostAddress &address, quint16 port, QObject *parent) :
     QThread(parent),
-    socket(new TcpServer(this)),
     address(address),
     port(port)
 {
@@ -43,6 +42,7 @@ HttpServer::~HttpServer()
 
 void HttpServer::run()
 {
+    TcpServer *socket = new TcpServer;
     connect(socket, SIGNAL(newConnection(int)), this, SLOT(onNewConnection(int)));
     socket->listen(address, port);
     exec();
