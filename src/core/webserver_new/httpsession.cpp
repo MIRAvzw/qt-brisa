@@ -205,6 +205,7 @@ void HttpSession::onReadyRead()
             }
         }
     } catch (const HttpResponse &r) {
+        r.setCloseConnection(true);
         writeResponse(r);
     }
 }

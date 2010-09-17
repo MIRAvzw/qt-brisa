@@ -42,12 +42,14 @@ public:
     virtual ~HttpSession();
     void run();
 
-    // default implementation returns 0 if version is lower or equals to the
+    // @ret should return the HTTP response status (404 not found, method not implemented,
+    // ...) or 0. If a 0 is returned, the server continues to read the request, otherwise,
+    // respond the request with the specified response code and closes the connection.
+    // Default implementation returns 0 if version is lower or equals to the
     // last supported version or HTTP_VERSION_NOTSUPPORTED otherwise.
-    // used to identify if this http version is supported
+    // used to identify if this http request (version, method, uri, ...) is supported
+    // always close the connection after respond the message
     virtual int isRequestSupported(const HttpRequest &request) const;
-
-public slots:
 
 protected:
     // used to respond BAD_REQUESTs
@@ -56,15 +58,14 @@ protected:
 
     virtual bool hasEntityBody(const HttpRequest &request) throw(HttpResponse) = 0;
     // @ret returns true when the entity body was fully received
-    // default implementation does nothing.
     // in future, the entity body should be put on qiodevice buffer, not in memory
-    virtual bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
+    virtual bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse) = 0;
     virtual void onRequest(const HttpRequest &request) = 0;
 
     void writeResponse(HttpResponse);
 
-    // the ideia is:
-    //  on a 8-threads limited system there are 8 objects to manage x sessions
+    // the ideia is to help to implement the Object pool pattern
+    // http://en.wikipedia.org/wiki/Object_pool_pattern
 //    virtual bool die();
 
 private slots:
@@ -78,17 +79,6 @@ private:
     QDateTime birthTime;
     int state;
     QByteArray buffer;
-
-    // os atributos abaixo estavam originalmente presentes.
-    // falta verificar se eles pertencerão a o port Qt também
-    //  bool embeddedAuth; // Used for authorization
-
-    //	SSL		*ssl;		/* SSL descriptor		*/
 };
-
-inline bool HttpSession::atEnd(const HttpRequest &, const QByteArray &) throw(HttpResponse)
-{
-    return true;
-}
 
 #endif // HTTPSESSION_H

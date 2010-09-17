@@ -44,6 +44,7 @@ void HttpServer::run()
 {
     TcpServer *socket = new TcpServer;
     connect(socket, SIGNAL(newConnection(int)), this, SLOT(onNewConnection(int)));
+    connect(this, SIGNAL(finished()), socket, SLOT(deleteLater()));
     socket->listen(address, port);
     exec();
 }

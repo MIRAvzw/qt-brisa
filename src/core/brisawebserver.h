@@ -81,6 +81,11 @@ namespace BrisaCore {
         void addService(const QByteArray &path, BrisaWebService *service);
         BrisaWebService *service(const QByteArray &path) const;
 
+        void postRequest(const HttpRequest &, BrisaWebserverSession *);
+
+    signals:
+        void genericRequestReceived(HttpRequest, BrisaWebserverSession *);
+
     protected:
         HttpSession *incomingConnection(int socketDescriptor);
 

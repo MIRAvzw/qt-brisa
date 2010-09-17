@@ -40,6 +40,11 @@ BrisaWebserverSession::~BrisaWebserverSession()
 {
 }
 
+void BrisaWebserverSession::respond(const HttpResponse &r)
+{
+    writeResponse(r);
+}
+
 int BrisaWebserverSession::isRequestSupported(const HttpRequest &request) const
 {
     if (request.httpVersion() != 1.0 && request.httpVersion() != 1.1) {
@@ -91,12 +96,14 @@ HttpResponse BrisaWebserverSession::onRequest(const HttpRequest &request)
 {
     if (request.httpVersion() == lastSupportedHttpVersion &&
         request.header("Host").isNull()) {
-        return HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true);
+        writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
+        return;
     }
     if (BrisaWebService *service = server->service(request.uri())) {
         service->postRequest(request, this);
         wait_for_request_be_posted(); // TODO
     } else {
+        // should return a NOT_FOUND and the use of WebResource and WebResourceIdentifier should be removed
         if (request.method() == "GET") {
             WebResource resource = server->resource(WebResourceIdentifier(request.uri(), request.header("Host")));
             if (!resource)

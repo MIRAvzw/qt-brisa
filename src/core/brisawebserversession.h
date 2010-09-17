@@ -46,6 +46,9 @@ public:
 
     int isRequestSupported(const HttpRequest &request) const;
 
+public slots:
+    void respond(const HttpResponse &r);
+
 protected:
     bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
     bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
