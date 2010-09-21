@@ -46,7 +46,20 @@ BrisaEventController::BrisaEventController(
         BrisaWebService(sessionManager, parent),
         variableList(stateVariableList)
 {
-//    connect()
+    connect(this,
+            SIGNAL(void genericRequestReceived(HttpRequest, BrisaWebserverSession *)),
+            this,
+            SLOT(parseGenericRequest(const HttpRequest &, BrisaWebserverSession *)));
+    udpSocket.bind(QHostAddress("239.255.255.246"), 7900);
+}
+
+void BrisaEventController::parseGenericRequest(const HttpRequest &r, BrisaWebserverSession *session)
+{
+    if (r.method() == "SUBSCRIBE") {
+        subscribe(r, session);
+    } else if (r.method() == "UNSUBSCRIBE") {
+        unsubscribe(r, session);
+    }
 }
 
 #else

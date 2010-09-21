@@ -41,26 +41,9 @@ BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) :
 
 BrisaWebserver::~BrisaWebserver()
 {
-    foreach (BrisaWebserverSession *session, listeners) {
-        session->deleteLater();
-    }
-}
-
-void BrisaWebserver::publishResource(const WebResourceIdentifier &publishPath, const WebResource &filePath)
-{
-    mutex.lock();
-
-    if (filePath)
-        resources[publishPath] = filePath;
-    else
-        resources.remove(publishPath);
-
-    mutex.unlock();
-}
-
-WebResource BrisaWebserver::resource(const WebResourceIdentifier &resourceIdentifier) const
-{
-    return resources.value(resourceIdentifier);
+//    foreach (BrisaWebserverSession *session, listeners) {
+//        session->deleteLater();
+//    }
 }
 
 void BrisaWebserver::addService(const QByteArray &path, BrisaWebService *service)
@@ -68,6 +51,7 @@ void BrisaWebserver::addService(const QByteArray &path, BrisaWebService *service
     mutex.lock();
 
     services[path] = service;
+    connect(service, SIGNAL(destroyed(QObject*)), this, SLOT(onServiceDestroyed(QObject*)));
 
     mutex.unlock();
 }
@@ -88,6 +72,15 @@ HttpSession *BrisaWebserver::incomingConnection(int socketDescriptor)
     mutex.unlock();
 
     return session;
+}
+
+void BrisaWebserver::onServiceDestroyed(QObject *service)
+{
+    mutex.lock();
+
+    services.remove(services.key(reinterpret_cast<BrisaWebService *>(service)));
+
+    mutex.unlock();
 }
 
 #else

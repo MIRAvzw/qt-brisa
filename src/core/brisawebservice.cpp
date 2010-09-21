@@ -13,6 +13,11 @@ BrisaWebService::~BrisaWebService()
 {
 }
 
+void BrisaWebService::postRequest(const HttpRequest &request, BrisaWebserverSession *session)
+{
+    emit genericRequestReceived(request, session);
+}
+
 #else
 
 BrisaWebService::BrisaWebService(QxtAbstractWebSessionManager *sm, QObject *parent) :
