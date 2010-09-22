@@ -32,11 +32,6 @@
 
 using namespace BrisaUpnp;
 
-//TODO: remove this and replace it with UPnPErrorCodes
-//defined in upnp/brisaabstractservice.h
-#define ERROR_400_MESSAGE "Bad Request"
-#define ERROR_412_MESSAGE "Precondition Failed"
-
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 BrisaEventController::BrisaEventController(
@@ -46,14 +41,15 @@ BrisaEventController::BrisaEventController(
         BrisaWebService(sessionManager, parent),
         variableList(stateVariableList)
 {
-    connect(this,
-            SIGNAL(void genericRequestReceived(HttpRequest, BrisaWebserverSession *)),
-            this,
-            SLOT(parseGenericRequest(const HttpRequest &, BrisaWebserverSession *)));
     udpSocket.bind(QHostAddress("239.255.255.246"), 7900);
 }
 
-void BrisaEventController::parseGenericRequest(const HttpRequest &r, BrisaWebserverSession *session)
+BrisaEventController::~BrisaEventController() {
+    while (!this->subscriptions.empty())
+        delete this->subscriptions.takeFirst();
+}
+
+void BrisaEventController::onRequest(const HttpRequest &r, BrisaWebserverSession *session)
 {
     if (r.method() == "SUBSCRIBE") {
         subscribe(r, session);
@@ -62,7 +58,81 @@ void BrisaEventController::parseGenericRequest(const HttpRequest &r, BrisaWebser
     }
 }
 
+void BrisaEventController::subscribe(const HttpRequest &request, BrisaWebserverSession *session)
+{
+    if (request.headers().contains("SID")) { //Then it's probably a renewal request.
+        if (request.headers().contains("NT")
+                || request.headers().contains("CALLBACK")) {
+            session->respond(HttpResponse(request.httpVersion(),
+                                          HttpResponse::BAD_REQUEST,
+                                          true));
+            return;
+        }
+
+        if (request.headers().value("SID").isEmpty()) {
+            session->respond(HttpResponse(request.httpVersion(),
+                                          HttpResponse::PRECONDITION_FAILED,
+                                          true));
+            return;
+        }
+
+        bool validSubscription = false;
+        foreach (BrisaEventSubscription *current, subscriptions)
+        {
+            if (current->getSid() == request.headers().value("SID")) {
+                current->renew(getTimeOut(request.headers().value("TIMEOUT")));
+
+                qDebug()
+                        << "BrisaEventController renewing subscription for "
+                        << request.headers().value("SID");
+                validSubscription = true;
+
+                session->respond(current->getAcceptSubscriptionResponse());
+            }
+        }
+
+        if (!validSubscription)
+            session->respond(HttpResponse(request.httpVersion(),
+                                          HttpResponse::PRECONDITION_FAILED));
+
+        return;
+    } else if (request.headers().contains("NT") && request.headers().contains(
+            "CALLBACK")) {
+
+        if (request.headers().value("NT") != "upnp:event") {
+            session->respond(HttpResponse(request.httpVersion(),
+                                          HttpResponse::PRECONDITION_FAILED));
+            return;
+        }
+
+        qDebug() << "BrisaEventController received a subscription request:"
+            " Callback: " << request.headers().value("CALLBACK") << "- Timeout: "
+                << request.headers().value("TIMEOUT");
+
+        BrisaEventSubscription *newSubscriber = new BrisaEventSubscription(
+                getUuid(), getEventUrls(subscriberInfo.value("CALLBACK")),
+                getTimeOut(subscriberInfo.value("TIMEOUT")));
+
+        subscriptions.append(newSubscriber);
+        session->respond(newSubscriber->getAcceptSubscriptionResponse());
+
+        BrisaEventMessage *message = new BrisaEventMessage(*newSubscriber,
+                                                           this->variableList);
+        sendEvent(*message, newSubscriber->getUrl());
+        delete message;
+
+        return;
+    } else {
+        session->respond(HttpResponse(request.httpVersion(), HttpResponse::PRECONDITION_FAILED));
+    }
+}
+
 #else
+
+//TODO: remove this and replace it with UPnPErrorCodes
+//defined in upnp/brisaabstractservice.h
+#define ERROR_400_MESSAGE "Bad Request"
+#define ERROR_412_MESSAGE "Precondition Failed"
 
 BrisaEventController::BrisaEventController(
         QxtAbstractWebSessionManager *sessionManager,

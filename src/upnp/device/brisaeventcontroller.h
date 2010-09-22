@@ -60,7 +60,8 @@ namespace BrisaUpnp {
         void unsubscribe(const QMultiHash<QString, QString> &subscriberInfo,
                 int sessionId, int requestId);
 
-        void parseGenericRequest(const HttpRequest &, BrisaWebserverSession *session);
+    protected:
+        void onRequest(const HttpRequest &, BrisaWebserverSession *session);
 
     private:
         BrisaEventController(const BrisaEventController &);

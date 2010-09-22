@@ -39,6 +39,23 @@
 
 namespace BrisaUpnp {
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+    class BRISA_UPNP_EXPORT BrisaEventSubscription: public BrisaAbstractEventSubscription {
+    Q_OBJECT
+
+    public:
+        BrisaEventSubscription(const QString &sid, const QStringList &callbackUrls,
+                const int &timeout = -1, // <0 = infinite
+                QObject *parent = 0);
+
+        void renew(const int &newTimeout = -1); // <0 = infinite
+        HttpResponse getAcceptSubscriptionResponse() const;
+        HttpResponse getAcceptUnsubscriptionResponse() const;
+    };
+
+#else // !USE_NEW_BRISA_WEBSERVER
+
 class BRISA_UPNP_EXPORT BrisaEventSubscription: public BrisaAbstractEventSubscription {
 Q_OBJECT
 
@@ -51,6 +68,8 @@ public:
     QHttpResponseHeader getAcceptSubscriptionResponse() const;
     QHttpResponseHeader getAcceptUnsubscriptionResponse() const;
 };
+
+#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 

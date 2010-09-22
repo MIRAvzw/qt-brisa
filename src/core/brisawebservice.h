@@ -38,6 +38,9 @@ public:
 signals:
     void genericRequestReceived(HttpRequest, BrisaWebserverSession *session);
 
+protected:
+    virtual void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
+
 private:
     BrisaWebserver *server;
 };
