@@ -41,8 +41,6 @@ namespace BrisaUpnp {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-#include <QNetworkAccessManager>
-
     class BRISA_UPNP_EXPORT BrisaEventController: public BrisaWebService {
     Q_OBJECT
 
@@ -54,17 +52,15 @@ namespace BrisaUpnp {
     public slots:
         void variableChanged(BrisaStateVariable *variable);
 
-        void subscribe(const QMultiHash<QString, QString> &subscriberInfo,
-                int sessionId, int requestId);
+        void subscribe(const HttpRequest &request, BrisaWebserverSession *session);
 
-        void unsubscribe(const QMultiHash<QString, QString> &subscriberInfo,
-                int sessionId, int requestId);
+        void unsubscribe(const HttpRequest &request, BrisaWebserverSession *session);
 
     protected:
         void onRequest(const HttpRequest &, BrisaWebserverSession *session);
 
     private:
-        BrisaEventController(const BrisaEventController &);
+        BrisaEventController(const BrisaEventController &) // = delete;
 
         void sendEvent(const BrisaEventMessage &message, const QUrl &url);
 
@@ -74,14 +70,9 @@ namespace BrisaUpnp {
 
         int getTimeOut(const QString &timeout);
 
-        QHttpResponseHeader getErrorHeader(const int &errorCode,
-                const QString &errorMessage);
-
         QList<BrisaEventSubscription *> subscriptions;
 
         QList<BrisaStateVariable *> *variableList;
-
-        QNetworkAccessManager httpClient;
 
         QUdpSocket udpSocket;
     };

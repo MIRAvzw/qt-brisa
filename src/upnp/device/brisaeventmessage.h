@@ -55,12 +55,18 @@ public:
     BrisaEventMessage(BrisaEventSubscription &subscription, const QList<
             BrisaStateVariable *> *variables, QObject *parent = 0);
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+    QByteArray getRequestMessage() const;
+#else
     /*!
      * Returns this event message's http header.
      */
     QHttpRequestHeader getMessageHeader() const;
 
     QByteArray getMessageBody() const;
+#endif
+
+    QString getSid() const;
 
 private:
 
@@ -86,6 +92,11 @@ private:
     BrisaEventSubscription &subscription;
 };
 
+}
+
+inline QString BrisaUpnp::BrisaEventMessage::getSid() const
+{
+    return subscription.getSid();
 }
 
 #endif /* _BRISAEVENTMESSAGE_H */

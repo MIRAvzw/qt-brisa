@@ -44,12 +44,8 @@ BrisaEventController::BrisaEventController(
     udpSocket.bind(QHostAddress("239.255.255.246"), 7900);
 }
 
-BrisaEventController::~BrisaEventController() {
-    while (!this->subscriptions.empty())
-        delete this->subscriptions.takeFirst();
-}
-
-void BrisaEventController::onRequest(const HttpRequest &r, BrisaWebserverSession *session)
+void BrisaEventController::onRequest(const HttpRequest &r,
+                                     BrisaWebserverSession *session)
 {
     if (r.method() == "SUBSCRIBE") {
         subscribe(r, session);
@@ -58,18 +54,19 @@ void BrisaEventController::onRequest(const HttpRequest &r, BrisaWebserverSession
     }
 }
 
-void BrisaEventController::subscribe(const HttpRequest &request, BrisaWebserverSession *session)
+inline void BrisaEventController::subscribe(const HttpRequest &request,
+                                            BrisaWebserverSession *session)
 {
-    if (request.headers().contains("SID")) { //Then it's probably a renewal request.
-        if (request.headers().contains("NT")
-                || request.headers().contains("CALLBACK")) {
+    const QHash<QByteArray, QByteArray> headers = request.headers();
+    if (headers.contains("SID")) { //Then it's probably a renewal request.
+        if (headers.contains("NT") || headers.contains("CALLBACK")) {
             session->respond(HttpResponse(request.httpVersion(),
                                           HttpResponse::BAD_REQUEST,
                                           true));
             return;
         }
 
-        if (request.headers().value("SID").isEmpty()) {
+        if (headers.value("SID").isEmpty()) {
             session->respond(HttpResponse(request.httpVersion(),
                                           HttpResponse::PRECONDITION_FAILED,
                                           true));
@@ -79,12 +76,12 @@ void BrisaEventController::subscribe(const HttpRequest &request, BrisaWebserverS
         bool validSubscription = false;
         foreach (BrisaEventSubscription *current, subscriptions)
         {
-            if (current->getSid() == request.headers().value("SID")) {
-                current->renew(getTimeOut(request.headers().value("TIMEOUT")));
+            if (current->getSid() == headers.value("SID")) {
+                current->renew(getTimeOut(headers.value("TIMEOUT")));
 
                 qDebug()
                         << "BrisaEventController renewing subscription for "
-                        << request.headers().value("SID");
+                        << headers.value("SID");
                 validSubscription = true;
 
                 session->respond(current->getAcceptSubscriptionResponse());
@@ -96,18 +93,17 @@ void BrisaEventController::subscribe(const HttpRequest &request, BrisaWebserverS
                                           HttpResponse::PRECONDITION_FAILED));
 
         return;
-    } else if (request.headers().contains("NT") && request.headers().contains(
-            "CALLBACK")) {
+    } else if (headers.contains("NT") && headers.contains("CALLBACK")) {
 
-        if (request.headers().value("NT") != "upnp:event") {
+        if (headers.value("NT") != "upnp:event") {
             session->respond(HttpResponse(request.httpVersion(),
                                           HttpResponse::PRECONDITION_FAILED));
             return;
         }
 
         qDebug() << "BrisaEventController received a subscription request:"
-            " Callback: " << request.headers().value("CALLBACK") << "- Timeout: "
-                << request.headers().value("TIMEOUT");
+            " Callback: " << headers.value("CALLBACK") << "- Timeout: "
+                << headers.value("TIMEOUT");
 
         BrisaEventSubscription *newSubscriber = new BrisaEventSubscription(
                 getUuid(), getEventUrls(subscriberInfo.value("CALLBACK")),
@@ -123,8 +119,74 @@ void BrisaEventController::subscribe(const HttpRequest &request, BrisaWebserverS
 
         return;
     } else {
-        session->respond(HttpResponse(request.httpVersion(), HttpResponse::PRECONDITION_FAILED));
+        session->respond(HttpResponse(request.httpVersion()
+                                      HttpResponse::PRECONDITION_FAILED));
     }
+}
+
+inline void BrisaEventController::unsubscribe(const HttpRequest &request,
+                                              BrisaWebserverSession *session)
+{
+    const QHash<QByteArray, QByteArray> headers = request.headers();
+    if (headers.contains("SID")) {
+        if (headers.contains("NT") || headers.contains("CALLBACK")) {
+            respond(getErrorHeader(400, ERROR_400_MESSAGE), sessionId,
+                    requestId);
+            session->respond(HttpResponse(request.httpVersion(),
+                                          HttpResponse::BAD_REQUEST));
+            return;
+        }
+
+        if (headers.value("SID").isEmpty()) {
+            session->respond(HttpResponse(request.httpVersion(),
+                                          HttpResponse::PRECONDITION_FAILED,
+                                          true));
+            return;
+        }
+
+        bool validSubscription = false;
+        for (int i = 0; i < subscriptions.size(); ++i) {
+            if (("uuid:" + subscriptions.at(i)->getSid()).toUtf8()
+                == subscriberInfo.value("SID")) {
+                session->respond(subscriptions.at(i)
+                                 ->getAcceptUnsubscriptionResponse());
+
+                delete subscriptions.at(i);
+                subscriptions.removeAt(i);
+
+                qDebug() << "BrisaEventController canceling subscription for "
+                        << headers.value("SID");
+
+                validSubscription = true;
+            }
+        }
+
+        if (!validSubscription)
+            session->respond(HttpResponse(request.httpVersion(),
+                                          HttpResponse::PRECONDITION_FAILED,
+                                          true));
+
+    } else {
+        session->respond(HttpResponse(request.httpVersion(),
+                                      HttpResponse::PRECONDITION_FAILED));
+    }
+}
+
+void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUrl &url)
+{
+    QTcpSocket *socket = new QTcpSocket(this);
+
+    socket->connectToHost(url.host(), url.port());
+
+    connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
+    connect(socket, SIGNAL(error(QAbstractSocket::SocketError)), socket, SLOT(deleteLater()));
+    connect(socket, SIGNAL(readyRead()), socket, SLOT(deleteLater()));
+
+    socket->write(message.getRequestMessage());
+
+    qDebug() << "BrisaEventController sending event to "
+             << message.getSid() << " at Host: "
+             << url.host() << ":" << url.port();
 }
 
 #else
@@ -153,14 +215,10 @@ BrisaEventController::BrisaEventController(
     udpSocket.bind(QHostAddress("239.255.255.246"), 7900);
 }
 
-BrisaEventController::~BrisaEventController() {
-    while (!this->subscriptions.empty())
-        delete this->subscriptions.takeFirst();
-}
-
 void BrisaEventController::parseGenericRequest(const QString &method,
         const QMultiHash<QString, QString> &headers,
-        const QByteArray &requestContent, int sessionId, int requestId) {
+        const QByteArray &requestContent, int sessionId, int requestId)
+{
     Q_UNUSED(requestContent);
 
     if (method == "SUBSCRIBE") {
@@ -168,45 +226,6 @@ void BrisaEventController::parseGenericRequest(const QString &method,
     } else if (method == "UNSUBSCRIBE") {
         unsubscribe(headers, sessionId, requestId);
     }
-}
-
-void BrisaEventController::variableChanged(BrisaStateVariable *variable) {
-    if (variable->multicastEvents()) {
-        BrisaMulticastEventMessage message(variable, "upnp:/general");
-        sendMulticastEvent(message);
-    }
-    QList<BrisaStateVariable *> variables;
-    variables.append(variable);
-
-    for (QList<BrisaEventSubscription *>::iterator i = this->subscriptions.begin(); i != this->subscriptions.end(); ++i) {
-        // Remove expired subscriptions
-        if ((*i)->hasExpired()) {
-            qDebug() << "Removing subscription:" << (*i)->getSid();
-            delete *i;
-            this->subscriptions.erase(i);
-            continue;
-        }
-        BrisaEventMessage message(*(*i), &variables);
-        this->sendEvent(message, (*i)->getUrl());
-    }
-}
-
-void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUrl &url) {
-    httpClient.setHost(url.host(), url.port());
-    httpClient.request(message.getMessageHeader(), message.getMessageBody());
-
-    qDebug() << "BrisaEventController sending event to "
-             << message.getMessageHeader().value("SID") << " at Host: "
-             << url.host() << ":" << url.port();
-}
-
-void BrisaEventController::sendMulticastEvent(const BrisaMulticastEventMessage &message)
-{
-    udpSocket.writeDatagram(message.getMessageHeader().toString().toUtf8() +
-                            message.getMessageBody(),
-                            QHostAddress("239.255.255.246"), 7900);
-
-    qDebug() << "BrisaEventController sending multicast event";
 }
 
 void BrisaEventController::subscribe(const QMultiHash<QString, QString> &subscriberInfo,
@@ -282,7 +301,8 @@ void BrisaEventController::subscribe(const QMultiHash<QString, QString> &subscri
 
 void BrisaEventController::unsubscribe(
         const QMultiHash<QString, QString> &subscriberInfo, int sessionId,
-        int requestId) {
+        int requestId)
+{
     if (subscriberInfo.contains("SID")) {
         if (subscriberInfo.contains("NT")
                 || subscriberInfo.contains("CALLBACK")) {
@@ -322,12 +342,63 @@ void BrisaEventController::unsubscribe(
     }
 }
 
+void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUrl &url)
+{
+    httpClient.setHost(url.host(), url.port());
+    httpClient.request(message.getMessageHeader(), message.getMessageBody());
+
+    qDebug() << "BrisaEventController sending event to "
+             << message.getMessageHeader().value("SID") << " at Host: "
+             << url.host() << ":" << url.port();
+}
+
 QHttpResponseHeader BrisaEventController::getErrorHeader(const int &errorCode,
-        const QString &errorMessage) {
+        const QString &errorMessage)
+{
     return QHttpResponseHeader(errorCode, errorMessage);
 }
 
-QStringList BrisaEventController::getEventUrls(const QString &urls) {
+#endif // USE_NEW_BRISA_WEBSERVER
+
+BrisaEventController::~BrisaEventController()
+{
+    while (!this->subscriptions.empty())
+        delete this->subscriptions.takeFirst();
+}
+
+void BrisaEventController::variableChanged(BrisaStateVariable *variable)
+{
+    if (variable->multicastEvents()) {
+        BrisaMulticastEventMessage message(variable, "upnp:/general");
+        sendMulticastEvent(message);
+    }
+    QList<BrisaStateVariable *> variables;
+    variables.append(variable);
+
+    for (QList<BrisaEventSubscription *>::iterator i = this->subscriptions.begin(); i != this->subscriptions.end(); ++i) {
+        // Remove expired subscriptions
+        if ((*i)->hasExpired()) {
+            qDebug() << "Removing subscription:" << (*i)->getSid();
+            delete *i;
+            this->subscriptions.erase(i);
+            continue;
+        }
+        BrisaEventMessage message(*(*i), &variables);
+        this->sendEvent(message, (*i)->getUrl());
+    }
+}
+
+void BrisaEventController::sendMulticastEvent(const BrisaMulticastEventMessage &message)
+{
+    udpSocket.writeDatagram(message.getMessageHeader().toString().toUtf8() +
+                            message.getMessageBody(),
+                            QHostAddress("239.255.255.246"), 7900);
+
+    qDebug() << "BrisaEventController sending multicast event";
+}
+
+QStringList BrisaEventController::getEventUrls(const QString &urls)
+{
     QList<QString> urlList;
     QStringList list = urls.split(">", QString::SkipEmptyParts);
     list.replaceInStrings("<", "");
@@ -340,5 +411,3 @@ int BrisaEventController::getTimeOut(const QString &timeout) {
     bool ok;
     return returnTime.toInt(&ok, 10);
 }
-
-#endif // USE_NEW_BRISA_WEBSERVER
