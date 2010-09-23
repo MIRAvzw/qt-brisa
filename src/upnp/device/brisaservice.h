@@ -86,7 +86,7 @@ namespace BrisaUpnp {
 
         BrisaWebServiceProvider *webService;
 
-        QMap<QString, BrisaWebService *> childWebServices;
+        QMap<QString, BrisaCore::BrisaWebService *> childWebServices;
 
         QString scpdFilePath;
 
@@ -98,9 +98,6 @@ namespace BrisaUpnp {
     };
 
 #else
-
-// TODO: remove the using statement from the .h file
-using BrisaCore::BrisaWebService;
 
 /*!
  *  \class BrisaUpnp::BrisaService brisaservice.h BrisaUpnp/BrisaService
@@ -220,7 +217,7 @@ private:
 
     BrisaWebServiceProvider *webService;
 
-    QMap<QString, BrisaWebService *> childWebServices;
+    QMap<QString, BrisaCore::BrisaWebService *> childWebServices;
 
     QString scpdFilePath;
    
