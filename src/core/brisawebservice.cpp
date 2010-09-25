@@ -5,7 +5,9 @@ const QByteArray DEFAULT_PAGE = "<html><body><h1>BRisa WebServer!</h1></body></h
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-BrisaWebService::BrisaWebService(QObject *)
+BrisaWebService::BrisaWebService(QObject *parent = 0) :
+    QObject(parent),
+    server(NULL)
 {
 }
 

@@ -70,6 +70,7 @@ private:
     QHash<QByteArray, QByteArray> m_headers;
 
     QByteArray m_entityBody;
+    // TODO: use QSharedPointer
     QIODevice *m_entityBodyDevice;
 };
 

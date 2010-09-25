@@ -1,17 +1,43 @@
 #include "brisaglobal.h"
 
-
-// wrong
-#ifndef USE_NEW_BRISA_WEBSERVER
-
 #ifndef _BRISA_WEB_FILE_H
 #define _BRISA_WEB_FILE_H
 
 #include <QtCore>
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include "brisawebservice.h"
+
+#else // !USE_NEW_BRISA_WEBSERVER
+
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 
+#endif // USE_NEW_BRISA_WEBSERVER
+
 namespace BrisaCore {
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+    class BRISA_CORE_EXPORT BrisaWebFile: public BrisaWebService
+    {
+    Q_OBJECT
+    public:
+        BrisaWebFile(const QString &filePath = QString(), QObject parent = 0);
+        ~BrisaWebFile();
+
+        QString fileName() const;
+        void setFile(const QString &fileName);
+
+    protected:
+        void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
+
+    private:
+        QString m_fileName;
+    };
+
+#else // !USE_NEW_BRISA_WEBSERVER
 
 /*!
  *  \brief Adds a file to the web server.
@@ -56,6 +82,6 @@ private:
 
 }
 
-#endif /* _BRISA_WEB_FILE_H */
-
 #endif // USE_NEW_BRISA_WEBSERVER
+
+#endif /* _BRISA_WEB_FILE_H */

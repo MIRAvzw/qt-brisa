@@ -97,10 +97,11 @@ public:
 public:
     // If reasonPhrase is null and the status code is know, then the default
     // reason phrase to the is set
-    HttpResponse(const HttpVersion &httpVersion, int statusCode = OK,
-                 bool closeConnection = false);
-    HttpResponse(const HttpVersion &httpVersion, int statusCode,
-                 const QByteArray &reasonPhrase, bool closeConnection = false);
+    explicit HttpResponse(const HttpVersion &httpVersion, int statusCode = OK,
+                          bool closeConnection = false);
+    explicit HttpResponse(const HttpVersion &httpVersion, int statusCode,
+                          const QByteArray &reasonPhrase,
+                          bool closeConnection = false);
 
     int statusCode() const;
     bool setStatusCode(int st);

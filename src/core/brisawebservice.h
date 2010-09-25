@@ -27,11 +27,12 @@ namespace BrisaCore {
 
 class HttpRequest;
 
-class BRISA_CORE_EXPORT BrisaWebService
+class BRISA_CORE_EXPORT BrisaWebService: public QObject
 {
+Q_OBJECT
 public:
-    BrisaWebService(BrisaWebserver *sm, QObject *parent = 0);
-    ~BrisaWebService();
+    BrisaWebService(QObject *parent = 0);
+    virtual ~BrisaWebService();
 
     void postRequest(const HttpRequest &request, BrisaWebserverSession *session);
 
@@ -40,9 +41,6 @@ signals:
 
 protected:
     virtual void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
-
-private:
-    BrisaWebserver *server;
 };
 
 #else // !USE_NEW_BRISA_WEBSERVER

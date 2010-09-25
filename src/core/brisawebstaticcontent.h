@@ -1,20 +1,48 @@
 #include "brisaglobal.h"
 
-// wrong
-#ifndef USE_NEW_BRISA_WEBSERVER
-
 #ifndef _BRISAWEBSTATICCONTENT_H
 #define _BRISAWEBSTATICCONTENT_H
 
 #include <QtCore>
 #include <QtNetwork>
+#include "brisawebservice.h"
+
+#ifndef USE_NEW_BRISA_WEBSERVER
+
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
 
+#endif // USE_NEW_BRISA_WEBSERVER
+
 namespace BrisaCore {
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+    class BrisaWebStaticContent: public BrisaWebService
+    {
+    Q_OBJECT
+    public:
+        BrisaWebStaticContent(const QByteArray &content = "", QObject parent = 0);
+        ~BrisaWebStaticContent();
+
+        QByteArray content() const;
+        void setContent(const QByteArray &content);
+
+        QByteArray contentType() const;
+        void setContentType(const QByteArray &contentType);
+
+    protected:
+        void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
+
+    private:
+        QByteArray m_content;
+        QByteArray m_contentType;
+    };
+
+#else // !USE_NEW_BRISA_WEBSERVER
 
 /*!
  *  \brief The BrisaWebStaticContent class stores a QString into the web server.
@@ -52,8 +80,8 @@ private:
     QString *content;
 };
 
+#endif // USE_NEW_BRISA_WEBSERVER
+
 }
 
 #endif /* _BRISAWEBSTATICCONTENT_H */
-
-#endif // USE_NEW_BRISA_WEBSERVER
