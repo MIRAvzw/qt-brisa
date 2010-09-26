@@ -32,6 +32,12 @@
 #include "brisaservice.h"
 #include "brisaservicexmlhandler.h"
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include "brisawebfile.h"
+
+#endif // USE_NEW_BRISA_WEBSERVER
+
 #define PRE_ACTION_SIG "preAction(BrisaInArgument*const,BrisaAction*const,QString&)"
 #define POST_ACTION_SIG "postAction(BrisaInArgument*const,BrisaOutArgument*const,BrisaAction*const,QString&)"
 #define FAILURE_ACTION_SIG "handleActionFailure(BrisaInArgument*const,BrisaAction*const,QString&)"
@@ -184,6 +190,14 @@ void BrisaService::call(const QString &method, BrisaInArgument &param) {
     this->respondError(UPNP_INVALID_ACTION);
 }
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+void BrisaService::buildWebServiceTree(BrisaWebserver *sessionManager) {
+    // TODO
+}
+
+#else // !USE_NEW_BRISA_WEBSERVER
+
 void BrisaService::buildWebServiceTree(QxtAbstractWebSessionManager *sessionManager) {
     webService = new BrisaWebServiceProvider(sessionManager, this);
 
@@ -216,6 +230,8 @@ void BrisaService::buildWebServiceTree(QxtAbstractWebSessionManager *sessionMana
 
     this->parseDescriptionFile();
 }
+
+#endif
 
 BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
     for (QList<BrisaStateVariable *>::iterator i =

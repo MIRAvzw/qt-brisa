@@ -28,7 +28,11 @@
  */
 
 #include "brisawebserver.h"
+#include "brisawebstaticcontent.h"
+#include "brisawebfile.h"
 using namespace BrisaCore;
+
+const QByteArray DEFAULT_PAGE = "<html><body><h1>BRisa WebServer!</h1></body></html>";
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
@@ -37,6 +41,7 @@ using namespace BrisaCore;
 BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) :
         HttpServer(host, port)
 {
+    addService("/", new BrisaWebStaticContent(DEFAULT_PAGE, this));
 }
 
 BrisaWebserver::~BrisaWebserver()
@@ -46,19 +51,40 @@ BrisaWebserver::~BrisaWebserver()
 //    }
 }
 
-void BrisaWebserver::addService(const QByteArray &path, BrisaWebService *service)
+void BrisaWebserver::addService(QByteArray path, BrisaWebService *service)
+{
+    if (!service || path.isEmpty())
+        return;
+
+    mutex.lock();
+
+    if (!path.startsWith('/'))
+        path.append('/');
+
+    services[path] = service;
+    service->m_path = path;
+
+    mutex.unlock();
+}
+
+void BrisaWebserver::removeService(const QByteArray &path)
 {
     mutex.lock();
 
-    services[path] = service;
-    connect(service, SIGNAL(destroyed(QObject*)), this, SLOT(onServiceDestroyed(QObject*)));
+    if (services.contains(path)) {
+        services[path]->m_path.clear();
+        services.remove(path);
+    }
 
     mutex.unlock();
 }
 
 BrisaWebService *BrisaWebserver::service(const QByteArray &path) const
 {
-    return services.value(path);
+    mutex.lock();
+    BrisaWebService *service = services.value(path);
+    mutex.unlock();
+    return service;
 }
 
 HttpSession *BrisaWebserver::incomingConnection(int socketDescriptor)
@@ -72,15 +98,6 @@ HttpSession *BrisaWebserver::incomingConnection(int socketDescriptor)
     mutex.unlock();
 
     return session;
-}
-
-void BrisaWebserver::onServiceDestroyed(QObject *service)
-{
-    mutex.lock();
-
-    services.remove(services.key(reinterpret_cast<BrisaWebService *>(service)));
-
-    mutex.unlock();
 }
 
 #else

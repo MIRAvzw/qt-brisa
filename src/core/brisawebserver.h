@@ -60,6 +60,8 @@ namespace BrisaCore
 
 namespace BrisaCore {
 
+    extern const QByteArray DEFAULT_PAGE;
+
 /*!
  *  \brief The BrisaWebserver class is a web server implementation.
  *
@@ -75,14 +77,12 @@ namespace BrisaCore {
         BrisaWebserver(const QHostAddress &host, quint16 port);
         ~BrisaWebserver();
 
-        void addService(const QByteArray &path, BrisaWebService *service);
+        void addService(QByteArray path, BrisaWebService *service);
+        void removeService(const QByteArray &path);
         BrisaWebService *service(const QByteArray &path) const;
 
     protected:
         HttpSession *incomingConnection(int socketDescriptor);
-
-    private slots:
-        void onServiceDestroyed(QObject *);
 
     private:
         // QHash and QList are reentrant, not thread-safe
