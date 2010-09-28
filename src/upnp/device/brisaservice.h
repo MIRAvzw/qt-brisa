@@ -148,7 +148,7 @@ public:
     /*!
      *  Returns the web service.
      */
-    BrisaWebServiceProvider *getWebService();
+    BrisaCore::BrisaWebServiceProvider *getWebService();
 
     /*!
      *  This method creates all the webservice related stuff. It creates a URL for the control path,
@@ -215,7 +215,7 @@ private:
      */
     void bindActionsToServiceMethods();
 
-    BrisaWebServiceProvider *webService;
+    BrisaCore::BrisaWebServiceProvider *webService;
 
     QMap<QString, BrisaCore::BrisaWebService *> childWebServices;
 

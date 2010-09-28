@@ -196,6 +196,8 @@ void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUr
 #define ERROR_400_MESSAGE "Bad Request"
 #define ERROR_412_MESSAGE "Precondition Failed"
 
+using namespace BrisaCore;
+
 BrisaEventController::BrisaEventController(
         QxtAbstractWebSessionManager *sessionManager,
         QList<BrisaStateVariable *> *stateVariableList,

@@ -48,6 +48,7 @@
 #define FAILURE_ACTION_OUT "int"
 
 using namespace BrisaUpnp;
+using namespace BrisaCore;
 
 static const QString SOAP_ERROR_TEMPLATE = "<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
                                            "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""

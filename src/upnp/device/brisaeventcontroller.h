@@ -79,11 +79,6 @@ namespace BrisaUpnp {
 
 #else
 
-// TODO: remove using statements from the .h file
-using BrisaCore::BrisaWebService;
-using BrisaCore::BrisaWebServiceProvider;
-using BrisaCore::BrisaWebserver;
-
 /*!
  * \internal
  * \class BrisaUpnp::BrisaEventController
@@ -91,7 +86,8 @@ using BrisaCore::BrisaWebserver;
  * \brief Handles the event subscriptions and event messages for the service.
  */
 
-class BRISA_UPNP_EXPORT BrisaEventController: public BrisaWebService {
+class BRISA_UPNP_EXPORT BrisaEventController: public BrisaCore::BrisaWebService
+{
 Q_OBJECT
 
 public:

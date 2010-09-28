@@ -32,6 +32,7 @@
 #include "brisassdpserver.h"
 
 using namespace BrisaUpnp;
+using namespace BrisaCore;
 
 BrisaDevice::BrisaDevice(QObject *parent) :
 	QObject(parent), running(false) {

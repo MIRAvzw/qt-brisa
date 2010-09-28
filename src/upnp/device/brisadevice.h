@@ -323,7 +323,7 @@ private:
     QTemporaryFile descriptionFile;
 
     BrisaSSDPServer *ssdp;
-    BrisaWebserver *webserver;
+    BrisaCore::BrisaWebserver *webserver;
     bool running;
 };
 
