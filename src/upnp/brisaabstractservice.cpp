@@ -97,7 +97,6 @@ BrisaAbstractService::~BrisaAbstractService() {
     }
     this->stateVariableList.clear();
     delete http;
-    delete nextMulticastSeq;
 }
 
 void BrisaAbstractService::setAttribute(xmlTags key, const QString &value) {

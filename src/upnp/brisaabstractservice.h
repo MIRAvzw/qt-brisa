@@ -181,7 +181,9 @@ public:
     void setUdn(QString udn);
 
 signals:
-    void requestFinished(QString root, QString lastMethod);
+    void requestFinished(BrisaOutArgument arguments, QString methodName);
+
+    void requestError(QString errorMessage, QString methodName);
 
 protected:
     virtual void call(const QString &method, BrisaInArgument &param) = 0;

@@ -55,9 +55,9 @@ BrisaControlPointService::BrisaControlPointService(
 }
 
 void BrisaControlPointService::parseFromXml(QTemporaryFile *xml) {
-    BrisaServiceXMLHandler* handler = new BrisaServiceXMLHandler();
-    handler->parseService(this, xml);
-    delete handler;
+    BrisaServiceXMLHandler handler;
+    handler.parseService(this, xml);
+    xml->deleteLater();
 }
 
 void BrisaControlPointService::call(const QString &method, BrisaInArgument &param) {
@@ -80,24 +80,21 @@ void BrisaControlPointService::getResponse() {
     const QtSoapMessage &message = http->getResponse();
 
     if (message.isFault()) {
-        emit requestFinished("Error: " + message.faultString().toString(),
+        emit requestError("Error: " + message.faultString().toString(),
                 lastMethod);
         return;
     }
 
-    QString returnMessage;
+    BrisaOutArgument returnMessage;
     QList<BrisaArgument*> arguments =
             this->getAction(this->lastMethod)->getArgumentList();
     foreach (BrisaArgument * arg, arguments)
         {
             if (arg->getAttribute(BrisaArgument::Direction) == "out") {
-                QString argName =
-                        arg->getAttribute(BrisaArgument::ArgumentName);
-                returnMessage.append(argName + " = "
-                        + message.method()[argName].toString() + "\n");
+                QString argName = arg->getAttribute(BrisaArgument::ArgumentName);
+                returnMessage.insert(argName, message.method()[argName].toString());
             }
         }
-
     emit requestFinished(returnMessage, lastMethod);
 }
 
