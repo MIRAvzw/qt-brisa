@@ -251,6 +251,8 @@ the following attributes, methods and slots
             void onNewDevice(BrisaControlPointDevice *dev);
             //Slot used when a device leaves the network.
             void onRemovedDevice(QString desc);
+            //Slot used to handle error
+            void requestError(QString errorMessage, QString methodName);  
     };
 
 Our Control Point header file is ready, so let us 
@@ -297,19 +299,19 @@ To handle when a device comes or leave the network we show simple messages for t
 and store/delete in/from the list.
 
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
-    :lines: 32-50
+    :lines: 32-51
 
 Now we will implement the functions that are going to perform the actions by the command handler and the 
 private functions to show the Services from a device and its embedded devices
 
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
-    :lines: 52-121
+    :lines: 53-123
 
 Each of the action call functions (turn on, turn off, getTarget, getStatus) need a slot to receive
 the action call response. The call itself is done in a simple way directly from the BrisaControlPointService.
 
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
-    :lines: 123-205
+    :lines: 125-224
 
 The way on how we get the commands(Thread) is not implemented yet, but the implementaion is very simple.
 On the header file we create the QThread, note that the signals are passed to the ControlPoint 
@@ -388,7 +390,7 @@ We already connected it in the Control Point when we were creating the control p
 
 So our control point is done. We only need our main now
 
-.. literalinclude:: example_code/controlpoint.cpp
+.. literalinclude:: example_code/ControlPoint/main.cpp
     :lines: 1-11
 
 And that's how we create a simple control point using Qt BRisa.

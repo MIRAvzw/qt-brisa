@@ -105,6 +105,7 @@ class ControlPoint : BrisaControlPoint
         void getStatusResponse(QString response, QString method);
         void onNewDevice(BrisaControlPointDevice *dev);
         void onRemovedDevice(QString desc);
+		void requestError(QString errorMessage, QString methodName); 
 };
 
 #endif
