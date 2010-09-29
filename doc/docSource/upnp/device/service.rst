@@ -84,8 +84,7 @@ To create your actions you just need to implement a method with a specific signa
                        outArgs->insert("TextOut", inArg + "Out!!");
                        return outArgs;
                 }
-
-			private slots:
+            private slots:
                 BrisaOutArgument* actionname3(BrisaInArgument* const inArguments,
                                               BrisaAction* const action)
                 {
