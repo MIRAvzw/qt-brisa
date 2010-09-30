@@ -43,6 +43,7 @@ using Sphinx and Doxygen documentation tools.
 	- Choose qt-brisa src folder as Source code directory and check scan recursively
 	- Specify the output directory
 	- At Wizard tab on Mode topic check All Entities and Include cross-referenced source code
+	- At Expert tab on Project topic uncheck FULL_PATH_NAMES
 	- At Expert tab on HTML topic check GENERATE_TREEVIEW
 	- At Run tab click Run doxygen
 
