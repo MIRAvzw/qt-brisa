@@ -91,6 +91,15 @@ BrisaService::~BrisaService() {
     childWebServices.clear();
 }
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+void BrisaService::call(const QString &method, BrisaInArgument &param, BrisaWebserverSession *)
+{
+    // TODO
+}
+
+#else // !USE_NEW_BRISA_WEBSERVER
+
 void BrisaService::call(const QString &method, BrisaInArgument &param) {
     // TODO: Improve this by using a QMap of type <QString, BrisaAction*> (action_name, action instance) to fastly
     // find an action, instead of make a looping and comparisons. For this, it is necessary to change the type of the
@@ -191,9 +200,12 @@ void BrisaService::call(const QString &method, BrisaInArgument &param) {
     this->respondError(UPNP_INVALID_ACTION);
 }
 
+#endif
+
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-void BrisaService::buildWebServiceTree(BrisaWebserver *sessionManager) {
+void BrisaService::buildWebServiceTree(BrisaWebserver *sessionManager)
+{
     // TODO
 }
 
@@ -244,9 +256,15 @@ BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
     return 0;
 }
 
+#ifndef USE_NEW_BRISA_WEBSERVER
+
 BrisaWebServiceProvider *BrisaService::getWebService() {
     return webService;
 }
+
+#endif
+
+#ifndef USE_NEW_BRISA_WEBSERVER
 
 void BrisaService::parseGenericRequest(const QString &method, const QMultiHash<
         QString, QString> &headers, const QByteArray &requestContent,
@@ -274,7 +292,45 @@ void BrisaService::parseGenericRequest(const QString &method, const QMultiHash<
     }
 }
 
-void BrisaService::respondAction(const QString &actionName, const BrisaOutArgument *outArgs) {
+#endif
+
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+void BrisaService::respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaWebserverSession *session)
+{
+    QByteArray message("<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
+                       "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
+                       "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
+                       "<s:Body>\r\n"
+                       "<u:" + actionName.toUtf8() + "Response xmlns:u=\"" + serviceType.toUtf8() + "\">\r\n");
+
+    for (QMap<QString, QString>::const_iterator i = outArgs->begin(); i != outArgs->end(); ++i) {
+        message.append("<" + i.key() + ">" + i.value() + "</" + i.key()
+                + ">\r\n");
+    }
+
+    message.append("</u:" + actionName + "Response>\r\n"
+        "</s:Body>\r\n"
+        "</s:Envelope>\r\n");
+
+    session->respond(message);
+}
+
+void BrisaService::respondError(int errorCode, QString errorDescription, BrisaWebserverSession *session)
+{
+    if (errorDescription == "") {
+            errorDescription = this->errorCodeToString(errorCode);
+    }
+    QString message = SOAP_ERROR_TEMPLATE.arg(QString::number(errorCode),
+                                              this->errorCodeToString(errorCode));
+
+    session->respond(message.toUtf8());
+}
+
+#else // !USE_NEW_BRISA_WEBSERVER
+
+void BrisaService::respondAction(const QString &actionName, const BrisaOutArgument *outArgs)
+{
     QByteArray message("<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
                        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
                        "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
@@ -303,6 +359,8 @@ void BrisaService::respondError(int errorCode, QString errorDescription) {
 
     childWebServices.value(controlUrl.section('/', -1))->respond(message.toUtf8());
 }
+
+#endif
 
 void BrisaService::setDescriptionFile(const QString &scpdFilePath) {
     this->scpdFilePath = scpdFilePath;

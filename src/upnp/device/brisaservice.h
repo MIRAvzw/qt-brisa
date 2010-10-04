@@ -37,7 +37,7 @@ namespace BrisaUpnp {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-    class BRISA_UPNP_EXPORT BrisaService: public BrisaAbstractService
+    class BRISA_UPNP_EXPORT BrisaService: public BrisaAbstractService, public BrisaWebService
     {
     Q_OBJECT
     public:
@@ -58,23 +58,21 @@ namespace BrisaUpnp {
 
         BrisaStateVariable *getVariable(const QString &variableName);
 
-        BrisaWebServiceProvider *getWebService();
-
         void buildWebServiceTree(BrisaCore::BrisaWebserver *sessionManager);
 
         void setDescriptionFile(const QString &scpdFilePath);
 
         QString getDescriptionFile();
 
-    public slots:
-        void parseGenericRequest(const HttpRequest &request);
+    protected:
+        void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
 
     private:
-        void call(const QString &method, BrisaInArgument &param);
+        void call(const QString &method, BrisaInArgument &param, BrisaWebserverSession *);
 
-        void respondAction(const QString &actionName, const BrisaOutArgument *outArgs);
+        void respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaWebserverSession *session);
 
-        void respondError(int errorCode, QString errorDescription = QString());
+        void respondError(int errorCode, QString errorDescription, BrisaWebserverSession *session);
 
         void parseDescriptionFile();
 
@@ -83,8 +81,6 @@ namespace BrisaUpnp {
         void setDefaultValues();
 
         void bindActionsToServiceMethods();
-
-        BrisaWebServiceProvider *webService;
 
         QMap<QString, BrisaCore::BrisaWebService *> childWebServices;
 
