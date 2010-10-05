@@ -31,6 +31,12 @@
 #include "brisadevice.h"
 #include "brisassdpserver.h"
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include "brisawebfile.h"
+
+#endif
+
 using namespace BrisaUpnp;
 using namespace BrisaCore;
 
@@ -48,42 +54,42 @@ BrisaDevice::BrisaDevice(QObject *parent) :
 }
 
 BrisaDevice::BrisaDevice(const QString &deviceType, const QString &friendlyName,
-		const QString &manufacturer, const QString &manufacturerURL,
-		const QString &modelDescription, const QString &modelName,
-		const QString &modelNumber, const QString &modelURL,
-		const QString &serialNumber, const QString &UDN, const QString &UPC,
-		const QString &presentationURL, QObject *parent) :
-			QObject(parent),
+                         const QString &manufacturer, const QString &manufacturerURL,
+                         const QString &modelDescription, const QString &modelName,
+                         const QString &modelNumber, const QString &modelURL,
+                         const QString &serialNumber, const QString &UDN, const QString &UPC,
+                         const QString &presentationURL, QObject *parent) :
+    QObject(parent),
+    deviceType(deviceType),
+    friendlyName(friendlyName),
+    manufacturer(manufacturer),
+    manufacturerUrl(manufacturerURL),
+    modelDescription(modelDescription),
+    modelName(modelName),
+    modelNumber(modelNumber),
+    modelUrl(modelURL),
+    serialNumber(serialNumber),
+    udn(UDN),
+    upc(UPC),
+    presentationUrl(presentationURL),
+    server("BRisa Webserver UPnP/1.0 " + modelName + " " + modelNumber),
+    fileAddress(QString(friendlyName).remove(QChar(' ')).append(".xml")),
+    running(false)
+{
+    this->discoverNetworkAddress();
+    this->buildUrlBase();
+    this->location = urlBase + "/" + fileAddress;
 
-			deviceType(deviceType),
-			friendlyName(friendlyName),
-			manufacturer(manufacturer),
-			manufacturerUrl(manufacturerURL),
-			modelDescription(modelDescription),
-			modelName(modelName),
-			modelNumber(modelNumber),
-			modelUrl(modelURL),
-			serialNumber(serialNumber),
-			udn(UDN),
-			upc(UPC),
-			presentationUrl(presentationURL),
-			server("BRisa Webserver UPnP/1.0 " + modelName + " " + modelNumber),
-			fileAddress(QString(friendlyName).remove(QChar(' ')).append(".xml")),
-			running(false) {
+    this->major = "1";
+    this->minor = "0";
 
-	this->discoverNetworkAddress();
-	this->buildUrlBase();
-	this->location = urlBase + "/" + fileAddress;
+    webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
+    ssdp = new BrisaSSDPServer();
 
-	this->major = "1";
-	this->minor = "0";
-
-	webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
-	ssdp = new BrisaSSDPServer();
-
-	QObject::connect(ssdp,
-			SIGNAL(msearchRequestReceived(QString, QString, quint16)), this,
-			SLOT(respondMSearch(QString, QString, quint16)));
+    QObject::connect(ssdp,
+                     SIGNAL(msearchRequestReceived(QString, QString, quint16)),
+                     this,
+                     SLOT(respondMSearch(QString, QString, quint16)));
 }
 
 BrisaDevice::BrisaDevice(const BrisaDevice &dev) :
@@ -395,6 +401,22 @@ void BrisaDevice::startWebServer() {
 	this->webserver->start();
 }
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+void BrisaDevice::buildWebServerTree()
+{
+    descriptionFile.open();
+    webserver->addService(fileAddress,
+                          new BrisaWebFile(descriptionFile.fileName(), this));
+    descriptionFile.close();
+
+    foreach(BrisaService *service, serviceList) {
+        service->buildWebServiceTree(webserver);
+    }
+}
+
+#else // !USE_NEW_BRISA_WEBSERVER
+
 void BrisaDevice::buildWebServerTree() {
 	// open the file to get its name
 	this->descriptionFile.open();
@@ -410,6 +432,8 @@ void BrisaDevice::buildWebServerTree() {
 					service->getWebService());
 		}
 }
+
+#endif
 
 void BrisaDevice::respondMSearch(const QString &st, const QString &senderIp,
 		quint16 senderPort) {

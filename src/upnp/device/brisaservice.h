@@ -67,8 +67,11 @@ namespace BrisaUpnp {
     protected:
         void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
 
-    private:
+    private slots:
         void call(const QString &method, BrisaInArgument &param, BrisaWebserverSession *);
+        void onInvalidRequest(BrisaWebserverSession *session);
+
+    private:
 
         void respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaWebserverSession *session);
 

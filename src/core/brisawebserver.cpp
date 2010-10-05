@@ -81,6 +81,11 @@ void BrisaWebserver::removeService(const QByteArray &path)
 
 BrisaWebService *BrisaWebserver::service(const QByteArray &path) const
 {
+    if (path.isEmpty())
+        return;
+    if (!path.startsWith('/'))
+        path.append('/');
+
     mutex.lock();
     BrisaWebService *service = services.value(path);
     mutex.unlock();

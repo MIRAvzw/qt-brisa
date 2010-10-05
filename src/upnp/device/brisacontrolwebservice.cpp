@@ -22,11 +22,9 @@ void BrisaControlWebService::onRequest(const HttpRequest &request, BrisaWebserve
         if (actionXmlParser.serviceType != serviceType)
             return;
 
-//        this->call(actionXmlParser.method, actionXmlParser.args);
         emit requestReceived(actionXmlParser.method, actionXmlParser.args, session);
     } else {
         qDebug() << "BrisaService: Invalid SOAP xml format.";
-//        this->respondError(UPNP_INVALID_ACTION);
         emit invalidRequest(session);
     }
 }

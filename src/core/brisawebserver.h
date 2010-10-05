@@ -79,7 +79,7 @@ namespace BrisaCore {
 
         void addService(QByteArray path, BrisaWebService *service);
         void removeService(const QByteArray &path);
-        BrisaWebService *service(const QByteArray &path) const;
+        BrisaWebService *service(QByteArray path) const;
 
     protected:
         HttpSession *incomingConnection(int socketDescriptor);

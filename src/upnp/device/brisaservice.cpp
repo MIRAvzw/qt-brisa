@@ -35,6 +35,7 @@
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 #include "brisawebfile.h"
+#include "brisacontrolwebservice.h"
 
 #endif // USE_NEW_BRISA_WEBSERVER
 
@@ -93,9 +94,104 @@ BrisaService::~BrisaService() {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-void BrisaService::call(const QString &method, BrisaInArgument &param, BrisaWebserverSession *)
+void BrisaService::call(const QString &method, BrisaInArgument &param, BrisaWebserverSession *session)
 {
-    // TODO
+    for (QList<BrisaAction *>::iterator i = this->actionList.begin(); i != actionList.end(); ++i) {
+        BrisaAction *action = *i;
+        if (action->getName() == method) {
+            int prePostActionReturn = 0;
+            QString errorDescription = "";
+            // executing preMethod if available
+            if (this->preActionMethod.methodIndex() >= 0) {
+                if (!this->preActionMethod.invoke(this,
+                                                  Qt::DirectConnection,
+                                                  Q_RETURN_ARG(int, prePostActionReturn),
+                                                  Q_ARG(BrisaInArgument *, &param),
+                                                  Q_ARG(BrisaAction *, action),
+                                                  Q_ARG(QString, errorDescription)))
+                {
+                    qDebug() << "Error invoking preAction method. Continuing...";
+                }
+            } else {
+                qDebug() << "Warning: preAction method not found, continuing...";
+            }
+
+            if (prePostActionReturn == 0) {
+                // call the action
+                BrisaOutArgument *outArguments;
+
+                if (!action->call(&param, outArguments)) {
+                    qDebug() << "An error has occurred during the " << action->getName() << " callback.";
+                    if (!outArguments) {
+                        delete outArguments;
+                    }
+
+                    if (this->handleActionFailureMethod.methodIndex() >= 0) {
+                        int handleFailureActionMethodReturn = 0;
+                        if (!this->handleActionFailureMethod.invoke(this,
+                                                                    Qt::DirectConnection,
+                                                                    Q_RETURN_ARG(int, handleFailureActionMethodReturn),
+                                                                    Q_ARG(BrisaInArgument *, &param),
+                                                                    Q_ARG(BrisaAction *, action),
+                                                                    Q_ARG(QString, errorDescription)))
+                        {
+                            qDebug() << "Error invoking handleActionFailure method. Continuing...";
+                            respondError(UPNP_ACTION_FAILED, session);
+                            return;
+                        }
+                        respondError(handleFailureActionMethodReturn,
+                                     "Error specified by UPnP vendor: "
+                                     + errorDescription, session);
+                        return;
+                    }
+
+                    qDebug() << "handleActionFailure method not implemented in service, returning default error.";
+                    this->respondError(UPNP_ACTION_FAILED, session);
+                    return;
+                }
+
+                // avoiding segmentation fault...
+                if (!outArguments) {
+                    outArguments = new BrisaOutArgument();
+                }
+
+                // executing postMethod if available
+                if (this->postActionMethod.methodIndex() >= 0) {
+                    if (!this->postActionMethod.invoke(this,
+                                                       Qt::DirectConnection,
+                                                       Q_RETURN_ARG(int, prePostActionReturn),
+                                                       Q_ARG(BrisaInArgument *, &param),
+                                                       Q_ARG(BrisaOutArgument *, outArguments),
+                                                       Q_ARG(BrisaAction *, action),
+                                                       Q_ARG(QString, errorDescription)))
+                    {
+                        qDebug() << "Error invoking postAction method.";
+                    }
+
+                    if (prePostActionReturn != 0) {
+                        qDebug() << "Warning: postAction service method returned non-zero, sending UPnP error code " << prePostActionReturn;
+                        delete outArguments;
+                        respondError(prePostActionReturn, errorDescription, session);
+                        return;
+                    }
+                } else {
+                    qDebug() << "Warning: postAction method not found, continuing...";
+                }
+
+                // send response.
+                this->respondAction(action->getName(), outArguments, session);
+                delete outArguments;
+                return;
+            } else { // preAction returned non-zero
+                qDebug() << "Warning: preAction method returned non-zero value, it returned " << prePostActionReturn << " with description " << errorDescription;
+                respondError(prePostActionReturn, errorDescription, session);
+                return;
+            }
+        }
+    }
+
+    qDebug() << "BrisaService: Unknown callback: " << method;
+    respondError(UPNP_INVALID_ACTION, session);
 }
 
 #else // !USE_NEW_BRISA_WEBSERVER
@@ -206,7 +302,32 @@ void BrisaService::call(const QString &method, BrisaInArgument &param) {
 
 void BrisaService::buildWebServiceTree(BrisaWebserver *sessionManager)
 {
-    // TODO
+    BrisaWebService *control = new BrisaControlWebService(serviceType);
+
+    connect(control, SIGNAL(requestReceived(QString, BrisaInArgument, BrisaWebserverSession)),
+            this, SLOT(call(const QString &, BrisaInArgument &, BrisaWebserverSession *)));
+    connect(control, SIGNAL(requestReceived(BrisaWebserverSession *)),
+            this, SLOT(onInvalidRequest(BrisaWebserverSession *));
+
+    BrisaEventController *event = new BrisaEventController(sessionManager,
+                                                           &stateVariableList,
+                                                           this);
+
+    // TODO: use serviceId to add the webservices
+    sessionManager->addService(eventSubUrl.section('/', -1), event);
+
+    sessionManager->addService(scpdUrl.section('/', -1),
+                               new BrisaWebFile(scpdFilePath, this));
+
+    childWebServices.insert(controlUrl.section('/', -1), control);
+    childWebServices.insert(eventSubUrl.section('/', -1), event);
+
+    parseDescriptionFile();
+}
+
+void BrisaService::onInvalidRequest(BrisaWebserverSession *session)
+{
+    respondError(UPNP_INVALID_ACTION, session);
 }
 
 #else // !USE_NEW_BRISA_WEBSERVER
@@ -296,7 +417,7 @@ void BrisaService::parseGenericRequest(const QString &method, const QMultiHash<
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-void BrisaService::respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaWebserverSession *session)
+inline void BrisaService::respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaWebserverSession *session)
 {
     QByteArray message("<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
                        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
@@ -316,7 +437,7 @@ void BrisaService::respondAction(const QString &actionName, const BrisaOutArgume
     session->respond(message);
 }
 
-void BrisaService::respondError(int errorCode, QString errorDescription, BrisaWebserverSession *session)
+inline void BrisaService::respondError(int errorCode, QString errorDescription, BrisaWebserverSession *session)
 {
     if (errorDescription == "") {
             errorDescription = this->errorCodeToString(errorCode);

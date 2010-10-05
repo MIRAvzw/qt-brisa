@@ -149,7 +149,7 @@ public:
      * is an output parameter. This method returns true in case of successful
      * running of the action, else returns false.
      */
-    bool call(BrisaInArgument *inArguments, BrisaOutArgument *&outArguments);
+    bool call(/*const */BrisaInArgument *inArguments, BrisaOutArgument *&outArguments);
 
     /*!
      * Sets the method to be invoked when the action is executed.
