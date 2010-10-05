@@ -159,11 +159,6 @@ Our device is done and the last thing we need to do is initialize the device in 
             return a.exec();
         }
 
-Remember to change your .pro file and add.
-::
-        CONFIG += BRISA
-        BRISA += upnp core utils
-
 Thats all it takes to implement the Binary Light Device.
 
 You could follow these steps to implement any service/device, but remember that for

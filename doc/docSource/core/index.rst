@@ -8,6 +8,7 @@
 
 This section describes Qt BRisa BrisaCore and BrisaUtils namespaces. Each of the next sub sections will describe a class and how to use it.
 
+
 .. toctree::
     :numbered:
 

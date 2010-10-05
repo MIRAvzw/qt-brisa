@@ -10,6 +10,14 @@ You can create Configuration Managers using the BrisaConfigurationManager class 
 
 Here is an example on how to use BrisaConfigurationManager class
 
+Before writing your Qt BRisa applications
+-----------------------------------------
+Whenever you are going to write a Qt BRisa application you need to change the .pro file in the project folder adding the following lines:
+::
+        CONFIG += BRISA
+        BRISA += upnp core utils
+
+
 Using the Built-In Configuration Manager
 ----------------------------------------
 ::
