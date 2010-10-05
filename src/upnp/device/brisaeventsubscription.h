@@ -37,6 +37,12 @@
 #include <QHttpResponseHeader>
 #include <QObject>
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include "webserver_new/httpresponse.h"
+
+#endif
+
 namespace BrisaUpnp {
 
 #ifdef USE_NEW_BRISA_WEBSERVER

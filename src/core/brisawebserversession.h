@@ -30,13 +30,9 @@
 
 #include "webserver_new/httpsession.h"
 
-namespace BrisaCore
-{
-    class BrisaWebserver;
-}
-
 namespace BrisaCore {
 
+class BrisaWebserver;
 class BrisaWebserverSession : public HttpSession
 {
 Q_OBJECT
@@ -52,7 +48,7 @@ public slots:
 protected:
     bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
     bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
-    HttpResponse onRequest(const HttpRequest &request);
+    void onRequest(const HttpRequest &request);
 
 private:
     BrisaWebserver *server;

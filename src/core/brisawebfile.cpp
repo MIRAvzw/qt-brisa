@@ -27,6 +27,11 @@
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
+#include "brisawebserversession.h"
+#include "webserver_new/httpresponse.h"
+
+using namespace BrisaCore;
+
 BrisaWebFile::BrisaWebFile(const QString &fileName, QObject *parent) :
         BrisaWebService(parent),
         m_fileName(fileName)
@@ -55,7 +60,7 @@ void BrisaWebFile::onRequest(const HttpRequest &request,
 //    response.setHeader("Content-Type", ); // TODO
     QFile *file = new QFile(m_fileName);
     file->open(QIODevice::ReadOnly);
-    resoponse.setEntityBody(file);
+    response.setEntityBody(file);
 
     session->respond(response);
 }

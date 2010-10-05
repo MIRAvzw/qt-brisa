@@ -28,9 +28,8 @@ using namespace BrisaCore;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-BrisaWebService::BrisaWebService(QObject *parent = 0) :
-    QObject(parent),
-    server(NULL)
+BrisaWebService::BrisaWebService(QObject *parent) :
+    QObject(parent)
 {
 }
 

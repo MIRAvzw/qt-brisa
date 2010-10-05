@@ -313,10 +313,9 @@ void BrisaService::buildWebServiceTree(BrisaWebserver *sessionManager)
                                                            &stateVariableList,
                                                            this);
 
-    // TODO: use serviceId to add the webservices
-    sessionManager->addService(eventSubUrl.section('/', -1), event);
+    sessionManager->addService(serviceId + '/' + eventSubUrl.section('/', -1), event);
 
-    sessionManager->addService(scpdUrl.section('/', -1),
+    sessionManager->addService(serviceId + '/' + scpdUrl.section('/', -1),
                                new BrisaWebFile(scpdFilePath, this));
 
     childWebServices.insert(controlUrl.section('/', -1), control);

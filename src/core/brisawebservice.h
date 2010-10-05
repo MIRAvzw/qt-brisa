@@ -32,9 +32,9 @@
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-// nothing yet
+#include "webserver_new/httprequest.h"
 
-#else // !USE_NEW_BRISA_WEBSERVER
+#else
 
 #include "QxtHttpSessionManager"
 #include <QxtWebServiceDirectory>
@@ -50,7 +50,7 @@ namespace BrisaCore {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-class HttpRequest;
+class BrisaWebserverSession;
 
 class BRISA_CORE_EXPORT BrisaWebService: public QObject
 {

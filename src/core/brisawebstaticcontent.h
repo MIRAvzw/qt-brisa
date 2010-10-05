@@ -46,11 +46,11 @@ namespace BrisaCore {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-    class BrisaWebStaticContent: public BrisaWebService
+    class BrisaWebStaticContent: public ::BrisaCore::BrisaWebService
     {
     Q_OBJECT
     public:
-        BrisaWebStaticContent(const QByteArray &content = "", QObject parent = 0);
+        BrisaWebStaticContent(const QByteArray &content = "", QObject *parent = 0);
         ~BrisaWebStaticContent();
 
         QByteArray content() const;

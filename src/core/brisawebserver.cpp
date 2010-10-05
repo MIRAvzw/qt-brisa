@@ -29,6 +29,7 @@
 
 #include "brisawebserver.h"
 #include "brisawebstaticcontent.h"
+#include "brisawebserversession.h"
 #include "brisawebfile.h"
 using namespace BrisaCore;
 
@@ -79,10 +80,11 @@ void BrisaWebserver::removeService(const QByteArray &path)
     mutex.unlock();
 }
 
-BrisaWebService *BrisaWebserver::service(const QByteArray &path) const
+BrisaWebService *BrisaWebserver::service(QByteArray path) const
 {
     if (path.isEmpty())
-        return;
+        return NULL;
+
     if (!path.startsWith('/'))
         path.append('/');
 

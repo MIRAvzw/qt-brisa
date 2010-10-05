@@ -28,8 +28,10 @@ using namespace BrisaCore;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
+#include "brisawebserversession.h"
+
 BrisaWebStaticContent::BrisaWebStaticContent(const QByteArray &content,
-                                             QObject parent) :
+                                             QObject *parent) :
         BrisaWebService(parent),
         m_content(content)
 {
@@ -65,7 +67,7 @@ void BrisaWebStaticContent::onRequest(const HttpRequest &request,
     HttpResponse response(request.httpVersion());
 
     response.setHeader("Content-Type", m_contentType);
-    response.setEntityBody(content);
+    response.setEntityBody(m_content);
 
     session->respond(response);
 }

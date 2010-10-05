@@ -49,7 +49,7 @@ namespace BrisaCore {
     {
     Q_OBJECT
     public:
-        BrisaWebFile(const QString &filePath = QString(), QObject parent = 0);
+        BrisaWebFile(const QString &filePath = QString(), QObject *parent = 0);
         ~BrisaWebFile();
 
         QString fileName() const;
@@ -105,8 +105,8 @@ private:
     QFile *file;
 };
 
-}
-
 #endif // USE_NEW_BRISA_WEBSERVER
+
+}
 
 #endif /* _BRISA_WEB_FILE_H */

@@ -34,19 +34,10 @@
 #include <QtCore>
 #include <QtNetwork>
 #include "brisaglobal.h"
-#include "brisawebservice.h"
-#include "brisawebfile.h"
-#include "brisawebserviceprovider.h"
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 #include "webserver_new/httpserver.h"
-#include "webresource.h"
-
-namespace BrisaCore
-{
-    class BrisaWebserverSession;
-}
 
 #else // !USE_NEW_BRISA_WEBSERVER
 
@@ -55,6 +46,9 @@ namespace BrisaCore
 #include <QxtWebSlotService>
 #include <QxtWebPageEvent>
 #include <QxtWebContent>
+#include "brisawebserviceprovider.h"
+#include "brisawebfile.h"
+#include "brisawebservice.h"
 
 #endif // USE_NEW_BRISA_WEBSERVER
 
@@ -69,6 +63,7 @@ namespace BrisaCore {
  */
 #ifdef USE_NEW_BRISA_WEBSERVER
     class BrisaWebService;
+    class BrisaWebserverSession;
 
     class BRISA_CORE_EXPORT BrisaWebserver: public HttpServer
     {
@@ -86,7 +81,7 @@ namespace BrisaCore {
 
     private:
         // QHash and QList are reentrant, not thread-safe
-        QMutex mutex;
+        mutable QMutex mutex;
         QHash<QByteArray, BrisaWebService *> services;
         QList<BrisaWebserverSession *> listeners;
     };

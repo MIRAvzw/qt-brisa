@@ -25,6 +25,7 @@
 
 #include "brisawebserversession.h"
 #include "brisawebserver.h"
+#include "brisawebservice.h"
 using namespace BrisaCore;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
