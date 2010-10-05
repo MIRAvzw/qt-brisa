@@ -1,6 +1,9 @@
 Installing Brisa-C++
 ====================
 
+Running QMake:
+   $ qmake
+
 Configure:
 
    $ ./configure
