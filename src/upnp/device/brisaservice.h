@@ -33,11 +33,20 @@
 #include "brisaeventcontroller.h"
 #include "brisaactionxmlparser.h"
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+namespace BrisaCore
+{
+    class BrisaWebserver;
+}
+
+#endif
+
 namespace BrisaUpnp {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-    class BRISA_UPNP_EXPORT BrisaService: public BrisaAbstractService, public BrisaWebService
+    class BRISA_UPNP_EXPORT BrisaService: public BrisaAbstractService, public BrisaCore::BrisaWebService
     {
     Q_OBJECT
     public:
@@ -58,24 +67,24 @@ namespace BrisaUpnp {
 
         BrisaStateVariable *getVariable(const QString &variableName);
 
-        void buildWebServiceTree(BrisaCore::BrisaWebserver *sessionManager);
+        void buildWebServiceTree(::BrisaCore::BrisaWebserver *sessionManager);
 
         void setDescriptionFile(const QString &scpdFilePath);
 
         QString getDescriptionFile();
 
     protected:
-        void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
+        void onRequest(const HttpRequest &request, BrisaCore::BrisaWebserverSession *session);
 
     private slots:
-        void call(const QString &method, BrisaInArgument &param, BrisaWebserverSession *);
-        void onInvalidRequest(BrisaWebserverSession *session);
+        void call(const QString &method, BrisaInArgument &param, ::BrisaCore::BrisaWebserverSession *);
+        void onInvalidRequest(BrisaCore::BrisaWebserverSession *session);
 
     private:
 
-        void respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaWebserverSession *session);
+        void respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaCore::BrisaWebserverSession *session);
 
-        void respondError(int errorCode, QString errorDescription, BrisaWebserverSession *session);
+        void respondError(int errorCode, QString errorDescription, BrisaCore::BrisaWebserverSession *session);
 
         void parseDescriptionFile();
 

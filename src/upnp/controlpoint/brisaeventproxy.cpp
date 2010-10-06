@@ -27,6 +27,12 @@
  */
 #include "brisaeventproxy.h"
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include "brisawebserversession.h"
+
+#endif
+
 using namespace BrisaUpnp;
 
 BrisaEventProxy::BrisaEventProxy(const QStringList &callbackUrls,
@@ -46,6 +52,7 @@ BrisaEventProxy::BrisaEventProxy(const QStringList &callbackUrls,
     eventSub(eventSub),
     webServer(webserver)
 {
+#ifndef USE_NEW_BRISA_WEBSERVER
     eventService = new BrisaWebService(webServer, this);
     webserver->addService(QString().setNum(deliveryPath), eventService);
 
@@ -53,11 +60,14 @@ BrisaEventProxy::BrisaEventProxy(const QStringList &callbackUrls,
                      SIGNAL(genericRequestReceived(BrisaWebService*, QMultiHash<QString, QString>, QString)),
                      this,
                      SLOT(eventReceived(BrisaWebService*, QMultiHash<QString, QString>, QString)));
+#endif
 }
 
 BrisaEventProxy::~BrisaEventProxy() {
+#ifndef USE_NEW_BRISA_WEBSERVER
     // TODO remove service
     delete eventService;
+#endif
 }
 
 void BrisaEventProxy::renew(const int &newTimeout) {
@@ -135,6 +145,50 @@ QHttpRequestHeader *BrisaEventProxy::getUnsubscriptionRequest() const {
     return request;
 }
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+
+void BrisaEventProxy::onRequest(const HttpRequest &request, BrisaCore::BrisaWebserverSession *session)
+{
+    QByteArray sid = request.header("SID");
+
+    if (sid.isEmpty())
+        // try "sid"
+        sid = request.header("sid");
+
+    if (sid.isEmpty()) {
+        // TODO report subscription error to user and should close the connection too
+        qDebug() << "SID header not present on event subscription response.";
+
+        return;
+    }
+
+    QDomDocument doc;
+    QMap<QString, QString> eventingVariables;
+
+    doc.setContent(request.entityBody(), false);
+    QDomElement root = doc.documentElement();
+    QDomNodeList list = root.elementsByTagName("e:property");
+
+    for (int i = 0; i < list.count(); i++) {
+        QDomNodeList internal = list.at(i).childNodes();
+
+        for (int j = 0; j < internal.count(); j++) {
+            QDomElement stateVariable = internal.at(j).toElement();
+            eventingVariables[stateVariable.tagName()] = stateVariable.text();
+        }
+    }
+
+    emit eventNotification(this, eventingVariables);
+
+    HttpResponse response(request.httpVersion(), HttpResponse::OK, true);
+    response.setHeader("Connection", "close");
+    response.setHeader("Content-length", "0");
+    session->respond(response);
+}
+
+#else
+
 void BrisaEventProxy::eventReceived(BrisaWebService *service, QMultiHash<
         QString, QString> headers, QString rawData) {
     QString sid = headers.value("SID");
@@ -181,6 +235,8 @@ void BrisaEventProxy::eventReceived(BrisaWebService *service, QMultiHash<
     responseHeader.setValue("Content-length", "0");
     service->respond(responseHeader);
 }
+
+#endif
 
 void BrisaEventProxy::setSid(QString &sid) {
     this->SID = sid;

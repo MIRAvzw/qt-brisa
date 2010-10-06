@@ -72,6 +72,11 @@ QByteArray BrisaEventMessage::getRequestMessage() const
 
     body.append("</e:propertyset>\r\n");
 
+    QString callback;
+    QStringList urlList = subscription.getCallbackUrls();
+    if (urlList.size())
+        callback = urlList[0];
+
     QUrl url(callback);
 
     return genericRequest.arg(url.path(),                   // URI

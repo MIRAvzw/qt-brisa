@@ -30,12 +30,18 @@
 
 #include "brisaeventcontroller.h"
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+#include "brisawebserversession.h"
+
+#endif
+
 using namespace BrisaUpnp;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 BrisaEventController::BrisaEventController(
-        BrisaCore::BrisaWebserver *sessionManager,
+        ::BrisaCore::BrisaWebserver *sessionManager,
         QList<BrisaStateVariable *> *stateVariableList,
         QObject *parent) :
         BrisaWebService(sessionManager, parent),
@@ -45,7 +51,7 @@ BrisaEventController::BrisaEventController(
 }
 
 void BrisaEventController::onRequest(const HttpRequest &r,
-                                     BrisaWebserverSession *session)
+                                     ::BrisaCore::BrisaWebserverSession *session)
 {
     if (r.method() == "SUBSCRIBE") {
         subscribe(r, session);
@@ -55,7 +61,7 @@ void BrisaEventController::onRequest(const HttpRequest &r,
 }
 
 inline void BrisaEventController::subscribe(const HttpRequest &request,
-                                            BrisaWebserverSession *session)
+                                            ::BrisaCore::BrisaWebserverSession *session)
 {
     const QHash<QByteArray, QByteArray> headers = request.headers();
     if (headers.contains("SID")) { //Then it's probably a renewal request.
@@ -106,8 +112,8 @@ inline void BrisaEventController::subscribe(const HttpRequest &request,
                 << headers.value("TIMEOUT");
 
         BrisaEventSubscription *newSubscriber = new BrisaEventSubscription(
-                getUuid(), getEventUrls(subscriberInfo.value("CALLBACK")),
-                getTimeOut(subscriberInfo.value("TIMEOUT")));
+                getUuid(), getEventUrls(headers.value("CALLBACK")),
+                getTimeOut(headers.value("TIMEOUT")));
 
         subscriptions.append(newSubscriber);
         session->respond(newSubscriber->getAcceptSubscriptionResponse());
@@ -119,19 +125,17 @@ inline void BrisaEventController::subscribe(const HttpRequest &request,
 
         return;
     } else {
-        session->respond(HttpResponse(request.httpVersion()
+        session->respond(HttpResponse(request.httpVersion(),
                                       HttpResponse::PRECONDITION_FAILED));
     }
 }
 
 inline void BrisaEventController::unsubscribe(const HttpRequest &request,
-                                              BrisaWebserverSession *session)
+                                              ::BrisaCore::BrisaWebserverSession *session)
 {
     const QHash<QByteArray, QByteArray> headers = request.headers();
     if (headers.contains("SID")) {
         if (headers.contains("NT") || headers.contains("CALLBACK")) {
-            respond(getErrorHeader(400, ERROR_400_MESSAGE), sessionId,
-                    requestId);
             session->respond(HttpResponse(request.httpVersion(),
                                           HttpResponse::BAD_REQUEST));
             return;
@@ -147,7 +151,7 @@ inline void BrisaEventController::unsubscribe(const HttpRequest &request,
         bool validSubscription = false;
         for (int i = 0; i < subscriptions.size(); ++i) {
             if (("uuid:" + subscriptions.at(i)->getSid()).toUtf8()
-                == subscriberInfo.value("SID")) {
+                == headers.value("SID")) {
                 session->respond(subscriptions.at(i)
                                  ->getAcceptUnsubscriptionResponse());
 

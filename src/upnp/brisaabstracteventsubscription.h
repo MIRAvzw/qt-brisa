@@ -45,7 +45,7 @@ namespace BrisaUpnp {
  *
  * \brief Abstract class that represents an event subscription
  */
-class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: public QObject {
+class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public QObject {
 Q_OBJECT
 
 public:

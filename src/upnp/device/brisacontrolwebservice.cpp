@@ -2,13 +2,15 @@
 #include "brisacontrolwebservice.h"
 #include "brisaactionxmlparser.h"
 
+using namespace BrisaUpnp;
+
 BrisaControlWebService::BrisaControlWebService(const QString &serviceType, QObject *parent) :
     BrisaWebService(parent),
     serviceType(serviceType)
 {
 }
 
-void BrisaControlWebService::onRequest(const HttpRequest &request, BrisaWebserverSession *session)
+void BrisaControlWebService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session)
 {
     if (request.method() != "POST")
         return;

@@ -40,6 +40,10 @@
 #include <QObject>
 #include <QtXml>
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+#include "brisawebservice.h"
+#endif
+
 namespace BrisaUpnp {
 
 using BrisaCore::BrisaWebserver;
@@ -50,7 +54,11 @@ using BrisaCore::BrisaWebService;
  *  Class that implements the event part in control point side in Brisa Qt, this class makes the
  *  operations of subscribe, renew subscription and unsubscribe.
  */
-class BRISA_UPNP_EXPORT BrisaEventProxy: public BrisaAbstractEventSubscription {
+class BRISA_UPNP_EXPORT BrisaEventProxy: public BrisaAbstractEventSubscription
+#ifdef USE_NEW_BRISA_WEBSERVER
+      , public BrisaWebService
+#endif
+{
 Q_OBJECT
 
 public:
@@ -93,7 +101,10 @@ signals:
     void eventNotification(BrisaEventProxy *subscription,
             QMap<QString, QString> eventingVariables);
 
+#ifdef USE_NEW_BRISA_WEBSERVER
 protected:
+    void onRequest(const HttpRequest &request, BrisaCore::BrisaWebserverSession *session);
+#endif
 
 private:
     /*!
@@ -151,12 +162,16 @@ private:
      */
     BrisaWebserver *webServer;
 
+#ifndef USE_NEW_BRISA_WEBSERVER
+    
     /*!
      *  \property eventService
      *  \brief Webservice that is going to be add to web server, and will properly receive the event
      *  responses.
      */
     BrisaWebService *eventService;
+
+#endif
 
     /*!
      *  Creates and returns a Http subscription header with the passed \a timeout
@@ -184,6 +199,7 @@ private:
      */
     void setSid(QString &sid);
 
+#ifndef USE_NEW_BRISA_WEBSERVER
 private slots:
 
     /*!
@@ -195,6 +211,7 @@ private slots:
      */
     void eventReceived(BrisaWebService *service,
             QMultiHash<QString, QString> headers, QString rawData);
+#endif
 };
 
 }

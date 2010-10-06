@@ -52,7 +52,7 @@ namespace BrisaCore {
 
 class BrisaWebserverSession;
 
-class BRISA_CORE_EXPORT BrisaWebService: public QObject
+class BRISA_CORE_EXPORT BrisaWebService: virtual public QObject
 {
 Q_OBJECT
 public:

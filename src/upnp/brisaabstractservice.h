@@ -57,7 +57,7 @@ namespace BrisaUpnp {
  *
  * \brief An abstract class for the control point side and device side service
  */
-class BRISA_UPNP_EXPORT BrisaAbstractService: public QObject {
+class BRISA_UPNP_EXPORT BrisaAbstractService: virtual public QObject {
 Q_OBJECT
 
 public:
@@ -186,7 +186,9 @@ signals:
     void requestError(QString errorMessage, QString methodName);
 
 protected:
+#ifndef USE_NEW_BRISA_WEBSERVER
     virtual void call(const QString &method, BrisaInArgument &param) = 0;
+#endif
 
     QList<BrisaAction *> actionList;
     QList<BrisaStateVariable *> stateVariableList;

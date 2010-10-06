@@ -50,7 +50,9 @@ BrisaControlPointService::BrisaControlPointService(const QString &serviceType,
 
 BrisaControlPointService::BrisaControlPointService(
         BrisaControlPointService &serv) :
-    BrisaAbstractService(serv) {
+    QObject(NULL),
+    BrisaAbstractService(serv)
+{
     connect(http, SIGNAL(responseReady()), this, SLOT(getResponse()));
 }
 

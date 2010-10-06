@@ -45,7 +45,7 @@ namespace BrisaCore {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-    class BRISA_CORE_EXPORT BrisaWebFile: public BrisaWebService
+    class BRISA_CORE_EXPORT BrisaWebFile: public ::BrisaCore::BrisaWebService
     {
     Q_OBJECT
     public:

@@ -30,6 +30,7 @@
 
 #include "brisadevice.h"
 #include "brisassdpserver.h"
+#include "brisawebserver.h"
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
@@ -38,14 +39,13 @@
 #endif
 
 using namespace BrisaUpnp;
-using namespace BrisaCore;
 
 BrisaDevice::BrisaDevice(QObject *parent) :
 	QObject(parent), running(false) {
 
 	this->discoverNetworkAddress();
 	this->buildUrlBase();
-	webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
+        webserver = new ::BrisaCore::BrisaWebserver(QHostAddress(ipAddress), port);
 	ssdp = new BrisaSSDPServer();
 
 	QObject::connect(ssdp,
@@ -83,7 +83,7 @@ BrisaDevice::BrisaDevice(const QString &deviceType, const QString &friendlyName,
     this->major = "1";
     this->minor = "0";
 
-    webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
+    webserver = new ::BrisaCore::BrisaWebserver(QHostAddress(ipAddress), port);
     ssdp = new BrisaSSDPServer();
 
     QObject::connect(ssdp,
@@ -121,7 +121,7 @@ BrisaDevice::BrisaDevice(const BrisaDevice &dev) :
 	this->major = dev.getAttribute(BrisaDevice::Major);
 	this->minor = dev.getAttribute(BrisaDevice::Minor);
 
-	webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
+        webserver = new ::BrisaCore::BrisaWebserver(QHostAddress(ipAddress), port);
 	ssdp = new BrisaSSDPServer();
 }
 

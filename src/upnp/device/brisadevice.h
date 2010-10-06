@@ -39,6 +39,11 @@
 #include "brisaicon.h"
 #include "brisaglobal.h"
 
+namespace BrisaCore
+{
+    class BrisaWebserver;
+}
+
 namespace BrisaUpnp {
 
 class BrisaSSDPServer;
@@ -323,7 +328,7 @@ private:
     QTemporaryFile descriptionFile;
 
     BrisaSSDPServer *ssdp;
-    BrisaCore::BrisaWebserver *webserver;
+    ::BrisaCore::BrisaWebserver *webserver;
     bool running;
 };
 
