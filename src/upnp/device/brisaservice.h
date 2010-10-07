@@ -82,9 +82,9 @@ namespace BrisaUpnp {
 
     private:
 
-        void respondAction(const QString &actionName, const BrisaOutArgument *outArgs, BrisaCore::BrisaWebserverSession *session);
+        void respondAction(BrisaCore::BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName /*= QString()*/);
 
-        void respondError(int errorCode, QString errorDescription, BrisaCore::BrisaWebserverSession *session);
+        void respondError(BrisaCore::BrisaWebserverSession *session, int errorCode, QString errorDescription = QString());
 
         void parseDescriptionFile();
 

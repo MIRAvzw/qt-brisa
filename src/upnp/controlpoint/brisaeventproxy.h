@@ -54,9 +54,9 @@ using BrisaCore::BrisaWebService;
  *  Class that implements the event part in control point side in Brisa Qt, this class makes the
  *  operations of subscribe, renew subscription and unsubscribe.
  */
-class BRISA_UPNP_EXPORT BrisaEventProxy: public BrisaAbstractEventSubscription
+class BRISA_UPNP_EXPORT BrisaEventProxy: virtual public BrisaAbstractEventSubscription
 #ifdef USE_NEW_BRISA_WEBSERVER
-      , public BrisaWebService
+      , virtual public BrisaWebService
 #endif
 {
 Q_OBJECT

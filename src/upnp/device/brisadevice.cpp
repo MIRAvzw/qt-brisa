@@ -28,15 +28,16 @@
 #include <QtDebug>
 #include <QIODevice>
 
-#include "brisadevice.h"
-#include "brisassdpserver.h"
-#include "brisawebserver.h"
-
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 #include "brisawebfile.h"
 
 #endif
+
+// TODO: put this include at the begin of the file
+#include "brisadevice.h"
+#include "brisassdpserver.h"
+#include "brisawebserver.h"
 
 using namespace BrisaUpnp;
 
@@ -406,8 +407,8 @@ void BrisaDevice::startWebServer() {
 void BrisaDevice::buildWebServerTree()
 {
     descriptionFile.open();
-    webserver->addService(fileAddress,
-                          new BrisaWebFile(descriptionFile.fileName(), this));
+    webserver->addService(fileAddress.toUtf8(),
+                          new ::BrisaCore::BrisaWebFile(descriptionFile.fileName(), this));
     descriptionFile.close();
 
     foreach(BrisaService *service, serviceList) {

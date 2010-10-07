@@ -44,7 +44,11 @@ BrisaEventController::BrisaEventController(
         ::BrisaCore::BrisaWebserver *sessionManager,
         QList<BrisaStateVariable *> *stateVariableList,
         QObject *parent) :
+#ifdef USE_NEW_BRISA_WEBSERVER
+        BrisaWebService(parent),
+#else
         BrisaWebService(sessionManager, parent),
+#endif
         variableList(stateVariableList)
 {
     udpSocket.bind(QHostAddress("239.255.255.246"), 7900);
