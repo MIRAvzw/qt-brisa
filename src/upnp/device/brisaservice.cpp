@@ -82,8 +82,10 @@ BrisaService::BrisaService(const QString &serviceType,
 
 BrisaService::BrisaService(BrisaService &serv) :
     QObject(NULL),
-    BrisaAbstractService(serv),
-    BrisaWebService(&serv)
+    BrisaAbstractService(serv)
+#ifdef USE_NEW_BRISA_WEBSERVER
+    , BrisaWebService(&serv)
+#endif
 {
 }
 
