@@ -73,7 +73,7 @@ void BrisaAction::addArgument(BrisaArgument *argumentA) {
     this->argumentList.append(argumentA);
 }
 
-void BrisaAction::removeArgument(BrisaArgument* argumentA){
+bool BrisaAction::removeArgument(BrisaArgument* argumentA){
 	this->argumentList.removeOne(argumentA);
 }
 

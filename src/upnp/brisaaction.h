@@ -133,6 +133,7 @@ public:
      */
     void addArguments(const QList<BrisaArgument*> argumentA);
 
+
     /*!
      * Clears this action's argument list.
      */
@@ -142,7 +143,7 @@ public:
      * Remove given \a argument from this action's list of arguments.
      */
 
-    void removeArgument(BrisaArgument* argumentA);
+    bool removeArgument(BrisaArgument* argumentA);
 
     /*!
      * Validates \a inArguments, \a outArguments and runs the action. \a outArguments

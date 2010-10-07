@@ -204,6 +204,11 @@ QList<BrisaAction *> BrisaAbstractService::getActionList() {
     return this->actionList;
 }
 
+void BrisaAbstractService::clearActionList(){
+    this->actionList.clear();
+}
+
+
 void BrisaAbstractService::addStateVariable(BrisaStateVariable *stateVariable) {
     this->stateVariableList.append(stateVariable);
     if(stateVariable->multicastEvents()) {
@@ -225,6 +230,10 @@ void BrisaAbstractService::addStateVariable(const QString &sendEvents,
 
 const QList<BrisaStateVariable *> BrisaAbstractService::getStateVariableList() {
     return this->stateVariableList;
+}
+
+void BrisaAbstractService::clearStateVariableList(){
+    this->stateVariableList.clear();
 }
 
 void BrisaAbstractService::clear() {

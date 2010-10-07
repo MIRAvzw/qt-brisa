@@ -137,6 +137,10 @@ public:
      */
     QList<BrisaAction *> getActionList();
     /*!
+     * Clears this Actions's list.
+     */
+    void clearActionList();
+    /*!
      * \internal
      *
      * Adds the given \a stateVariable to the service's state variables list.
@@ -162,6 +166,10 @@ public:
      * Returns the service's state variables list.
      */
     const QList<BrisaStateVariable *> getStateVariableList();
+    /*!
+     * Clears this State variable's list.
+     */
+    void clearStateVariableList();	
 
     /*!
      * \internal
