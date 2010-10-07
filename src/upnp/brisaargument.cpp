@@ -32,7 +32,7 @@ using namespace BrisaUpnp;
 BrisaArgument::BrisaArgument(const BrisaArgument &brisaArgument):
         name(brisaArgument.name),
         direction(brisaArgument.direction),
-        relatedStateVariable(brisaArgument.relatedStateVariable){
+        relatedStateVariable(brisaArgument.relatedStateVariable) {
 }
 
 BrisaArgument::BrisaArgument(const QString &name, const QString &direction,

@@ -73,8 +73,8 @@ void BrisaAction::addArgument(BrisaArgument *argumentA) {
     this->argumentList.append(argumentA);
 }
 
-bool BrisaAction::removeArgument(BrisaArgument* argumentA){
-	this->argumentList.removeOne(argumentA);
+bool BrisaAction::removeArgument(BrisaArgument* argumentA) {
+	return this->argumentList.removeOne(argumentA);
 }
 
 void BrisaAction::addArguments(const QList<BrisaArgument*> arguments) {

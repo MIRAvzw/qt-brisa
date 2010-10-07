@@ -54,6 +54,13 @@ public:
     BrisaArgument(const QString &name = "", const QString &direction = "",
             const QString &relatedStateVariable = "");
 
+    /*!
+     * \internal
+     *
+     * Constructs an argument with an argument reference.
+     */
+    BrisaArgument(const BrisaArgument &brisaArgument);
+
     typedef enum {
         ArgumentName, Direction, RelatedStateVariable
     } xmlArgument;
