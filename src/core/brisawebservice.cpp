@@ -24,6 +24,9 @@
  */
 
 #include "brisawebservice.h"
+
+#define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>"
+
 using namespace BrisaCore;
 
 #ifdef USE_NEW_BRISA_WEBSERVER

@@ -99,7 +99,7 @@ BrisaService::~BrisaService() {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-void BrisaService::call(const QString &method, BrisaInArgument &param, ::BrisaCore::BrisaWebserverSession *session)
+void BrisaService::call(const QString &method, BrisaInArgument param, ::BrisaCore::BrisaWebserverSession *session)
 {
     for (QList<BrisaAction *>::iterator i = this->actionList.begin(); i != actionList.end(); ++i) {
         BrisaAction *action = *i;
@@ -309,10 +309,10 @@ void BrisaService::buildWebServiceTree(::BrisaCore::BrisaWebserver *sessionManag
 {
     BrisaWebService *control = new BrisaControlWebService(serviceType);
 
-    connect(control, SIGNAL(requestReceived(QString, BrisaInArgument, BrisaWebserverSession)),
-            this, SLOT(call(const QString &, BrisaInArgument &, BrisaWebserverSession *)));
-    connect(control, SIGNAL(requestReceived(BrisaWebserverSession *)),
-            this, SLOT(onInvalidRequest(BrisaWebserverSession *)));
+    connect(control, SIGNAL(requestReceived(QString,BrisaInArgument,::BrisaCore::BrisaWebserverSession*)),
+            this, SLOT(call(QString,BrisaInArgument,::BrisaCore::BrisaWebserverSession*)));
+    connect(control, SIGNAL(invalidRequest(::BrisaCore::BrisaWebserverSession*)),
+            this, SLOT(onInvalidRequest(::BrisaCore::BrisaWebserverSession*)));
 
     BrisaEventController *event = new BrisaEventController(sessionManager,
                                                            &stateVariableList,
@@ -390,7 +390,32 @@ BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
 
 #endif
 
-#ifndef USE_NEW_BRISA_WEBSERVER
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+void BrisaService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session)
+{
+    if (request.method() != "POST") {
+        HttpResponse r(request.httpVersion(), HttpResponse::BAD_REQUEST, true);
+        session->respond(r);
+    }
+
+    BrisaActionXmlParser actionXmlParser;
+
+    actionXmlParser.setXmlContent(request.entityBody());
+
+    if (actionXmlParser.parseSOAP()) {
+        //If servicetype is incorrect
+        if (actionXmlParser.serviceType != serviceType)
+            return;
+
+        call(actionXmlParser.method, actionXmlParser.args, session);
+    } else {
+        qDebug() << "BrisaService: Invalid SOAP xml format.";
+        respondError(session, UPNP_INVALID_ACTION);
+    }
+}
+
+#else
 
 void BrisaService::parseGenericRequest(const QString &method, const QMultiHash<
         QString, QString> &headers, const QByteArray &requestContent,

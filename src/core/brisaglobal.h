@@ -44,6 +44,10 @@
 #    define BRISA_UTILS_EXPORT Q_DECL_IMPORT
 #endif
 
+#ifdef BRISA_UPNP_EXPORT
+#undef BRISA_UPNP_EXPORT
+#endif
+
 #if defined BUILD_BRISA_UPNP
 #    define BRISA_UPNP_EXPORT Q_DECL_EXPORT
 #else

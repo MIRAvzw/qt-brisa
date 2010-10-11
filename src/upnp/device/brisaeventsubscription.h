@@ -39,7 +39,7 @@
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-#include "webserver_new/httpresponse.h"
+#include <httpresponse.h>
 
 #endif
 

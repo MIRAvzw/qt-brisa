@@ -37,7 +37,7 @@
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-#include "webserver_new/httpserver.h"
+#include "httpserver.h"
 
 #else // !USE_NEW_BRISA_WEBSERVER
 
@@ -53,8 +53,6 @@
 #endif // USE_NEW_BRISA_WEBSERVER
 
 namespace BrisaCore {
-
-    extern const QByteArray DEFAULT_PAGE;
 
 /*!
  *  \brief The BrisaWebserver class is a web server implementation.

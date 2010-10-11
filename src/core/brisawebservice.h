@@ -32,7 +32,7 @@
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-#include "webserver_new/httprequest.h"
+#include "httprequest.h"
 
 #else
 
@@ -43,8 +43,6 @@
 #include <QxtWebContent>
 
 #endif // USE_NEW_BRISA_WEBSERVER
-
-extern const QByteArray DEFAULT_PAGE;
 
 namespace BrisaCore {
 

@@ -74,11 +74,11 @@ namespace BrisaUpnp {
         QString getDescriptionFile();
 
     protected:
-        void onRequest(const HttpRequest &request, BrisaCore::BrisaWebserverSession *session);
+        void onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session);
 
     private slots:
-        void call(const QString &method, BrisaInArgument &param, ::BrisaCore::BrisaWebserverSession *);
-        void onInvalidRequest(BrisaCore::BrisaWebserverSession *session);
+        void call(const QString &method, BrisaInArgument param, ::BrisaCore::BrisaWebserverSession *);
+        void onInvalidRequest(::BrisaCore::BrisaWebserverSession *session);
 
     private:
 

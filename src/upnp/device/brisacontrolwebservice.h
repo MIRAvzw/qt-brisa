@@ -13,11 +13,11 @@ public:
     explicit BrisaControlWebService(const QString &serviceType = QString(), QObject *parent = 0);
 
 signals:
-    void requestReceived(QString xml, BrisaInArgument args, BrisaCore::BrisaWebserverSession *server);
-    void invalidRequest(BrisaCore::BrisaWebserverSession *server);
+    void requestReceived(QString xml, BrisaInArgument args, ::BrisaCore::BrisaWebserverSession *server);
+    void invalidRequest(::BrisaCore::BrisaWebserverSession *server);
 
 protected:
-    void onRequest(const HttpRequest &request, BrisaCore::BrisaWebserverSession *session);
+    void onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session);
 
 private:
     QString serviceType;

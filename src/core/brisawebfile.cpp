@@ -28,7 +28,7 @@
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 #include "brisawebserversession.h"
-#include "webserver_new/httpresponse.h"
+#include "httpresponse.h"
 
 using namespace BrisaCore;
 

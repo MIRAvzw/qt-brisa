@@ -31,8 +31,9 @@
 #include <QObject>
 #include <QString>
 
-// TODO: other projects aren't including this piece of code
-#include <brisaglobal.h>
+#ifndef BRISA_UPNP_EXPORT
+#define BRISA_UPNP_EXPORT
+#endif
 
 namespace BrisaUpnp {
 

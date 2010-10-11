@@ -26,9 +26,10 @@
 #include "brisawebserviceprovider.h"
 
 #ifndef USE_NEW_BRISA_WEBSERVER
-using namespace BrisaCore;
 
-extern const QByteArray DEFAULT_PAGE;
+#define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>"
+
+using namespace BrisaCore;
 
 /*
  * Reimplemented from libQxt.
@@ -39,7 +40,7 @@ BrisaWebServiceProvider::BrisaWebServiceProvider(
         QxtAbstractWebSessionManager *sm, QObject *parent) :
     QxtWebServiceDirectory(sm, parent)
 {
-    root = new BrisaWebStaticContent(sm, DEFAULT_PAGE, this);
+    root = new BrisaWebStaticContent(sm, QByteArray(DEFAULT_PAGE), this);
     sessionManager = sm;
 }
 

@@ -28,7 +28,7 @@
 #if !defined(BRISAWEBSERVERSESSION_H) && defined(USE_NEW_BRISA_WEBSERVER)
 #define BRISAWEBSERVERSESSION_H
 
-#include "webserver_new/httpsession.h"
+#include "httpsession.h"
 
 namespace BrisaCore {
 
