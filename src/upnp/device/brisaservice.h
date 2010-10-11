@@ -46,7 +46,7 @@ namespace BrisaUpnp {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-    class BRISA_UPNP_EXPORT BrisaService: public BrisaAbstractService, public BrisaCore::BrisaWebService
+    class BRISA_UPNP_EXPORT BrisaService: public BrisaAbstractService
     {
     Q_OBJECT
     public:

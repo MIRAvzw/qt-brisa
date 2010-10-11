@@ -31,7 +31,8 @@
 #include <QObject>
 #include <QString>
 
-#include "brisaglobal.h"
+// TODO: other projects aren't including this piece of code
+#include <brisaglobal.h>
 
 namespace BrisaUpnp {
 

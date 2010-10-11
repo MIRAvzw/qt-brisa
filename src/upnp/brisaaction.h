@@ -30,7 +30,7 @@
 #define _BRISAACTION_H
 
 #include "brisaargument.h"
-#include "brisaglobal.h"
+#include "../BrisaCore/brisaglobal.h"
 
 #include <QString>
 #include <QList>

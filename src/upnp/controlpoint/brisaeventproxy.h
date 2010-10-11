@@ -40,10 +40,6 @@
 #include <QObject>
 #include <QtXml>
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-#include "brisawebservice.h"
-#endif
-
 namespace BrisaUpnp {
 
 using BrisaCore::BrisaWebserver;
@@ -55,9 +51,6 @@ using BrisaCore::BrisaWebService;
  *  operations of subscribe, renew subscription and unsubscribe.
  */
 class BRISA_UPNP_EXPORT BrisaEventProxy: virtual public BrisaAbstractEventSubscription
-#ifdef USE_NEW_BRISA_WEBSERVER
-      , virtual public BrisaWebService
-#endif
 {
 Q_OBJECT
 

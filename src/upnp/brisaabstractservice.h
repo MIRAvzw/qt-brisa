@@ -37,6 +37,10 @@
 #include "brisastatevariable.h"
 #include "brisaaction.h"
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+#include "brisawebservice.h"
+#endif
+
 enum UPnPErrorCodes {
 	UPNP_SUCCESS = 0,
 	UPNP_INVALID_ACTION = 401,
@@ -57,7 +61,11 @@ namespace BrisaUpnp {
  *
  * \brief An abstract class for the control point side and device side service
  */
+#ifdef USE_NEW_BRISA_WEBSERVER
+class BRISA_UPNP_EXPORT BrisaAbstractService: public ::BrisaCore::BrisaWebService {
+#else
 class BRISA_UPNP_EXPORT BrisaAbstractService: virtual public QObject {
+#endif
 Q_OBJECT
 
 public:
