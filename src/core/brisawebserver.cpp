@@ -31,13 +31,17 @@
 #include "brisawebstaticcontent.h"
 #include "brisawebserversession.h"
 #include "brisawebfile.h"
+#ifndef USE_NEW_BRISA_WEBSERVER
 using namespace BrisaCore;
+#endif
 
 #define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>"
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 #include "brisawebserversession.h"
+
+using namespace BrisaCore;
 
 BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) :
         HttpServer(host, port)
@@ -60,7 +64,7 @@ void BrisaWebserver::addService(QByteArray path, BrisaWebService *service)
     mutex.lock();
 
     if (!path.startsWith('/'))
-        path.append('/');
+        path.prepend('/');
 
     services[path] = service;
     service->m_path = path;
@@ -68,8 +72,11 @@ void BrisaWebserver::addService(QByteArray path, BrisaWebService *service)
     mutex.unlock();
 }
 
-void BrisaWebserver::removeService(const QByteArray &path)
+void BrisaWebserver::removeService(QByteArray path)
 {
+    if (!path.startsWith('/'))
+        path.prepend('/');
+
     mutex.lock();
 
     if (services.contains(path)) {
@@ -86,7 +93,7 @@ BrisaWebService *BrisaWebserver::service(QByteArray path) const
         return NULL;
 
     if (!path.startsWith('/'))
-        path.append('/');
+        path.prepend('/');
 
     mutex.lock();
     BrisaWebService *service = services.value(path);

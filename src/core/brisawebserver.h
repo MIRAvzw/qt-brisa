@@ -71,7 +71,7 @@ namespace BrisaCore {
         ~BrisaWebserver();
 
         void addService(QByteArray path, BrisaWebService *service);
-        void removeService(const QByteArray &path);
+        void removeService(QByteArray path);
         BrisaWebService *service(QByteArray path) const;
 
     protected:

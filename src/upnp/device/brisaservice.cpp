@@ -318,6 +318,8 @@ void BrisaService::buildWebServiceTree(::BrisaCore::BrisaWebserver *sessionManag
                                                            &stateVariableList,
                                                            this);
 
+    sessionManager->addService((serviceId + '/' + controlUrl.section('/', -1)).toUtf8(), control);
+
     sessionManager->addService((serviceId + '/' + eventSubUrl.section('/', -1)).toUtf8(), event);
 
     sessionManager->addService((serviceId + '/' + scpdUrl.section('/', -1)).toUtf8(),

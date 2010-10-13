@@ -60,10 +60,16 @@ HttpSession::~HttpSession()
 
 void HttpSession::run()
 {
-    socket = new QTcpSocket(this);
+    socket = new QTcpSocket();
     connect(socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+
+    connect(this, SIGNAL(finished()), socket, SLOT(deleteLater()));
     connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
     connect(socket, SIGNAL(destroyed()), this, SLOT(quit()));
+
+    // WARNING: this line:
+    //  QObject: Cannot create children for a parent that is in a different thread.
+    //  (Parent is QNativeSocketEngine(*), parent's thread is BrisaCore::BrisaWebserverSession(*), current thread is QThread(*)
     socket->setSocketDescriptor(socketDescriptor);
 
     exec();

@@ -28,6 +28,14 @@
 #include "brisawebservice.h"
 using namespace BrisaCore;
 
+#ifdef major
+#undef major
+#endif
+
+#ifdef minor
+#undef minor
+#endif
+
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 BrisaWebserverSession::BrisaWebserverSession(int socketDescriptor, BrisaWebserver *server) :
@@ -48,7 +56,8 @@ void BrisaWebserverSession::respond(const HttpResponse &r)
 
 int BrisaWebserverSession::isRequestSupported(const HttpRequest &request) const
 {
-    if (request.httpVersion() != 1.0 && request.httpVersion() != 1.1) {
+    if ((request.httpVersion().major() != 1)
+        || (request.httpVersion().minor() != 0 && request.httpVersion().minor() != 1)) {
         return HttpResponse::HTTP_VERSION_NOT_SUPPORTED;
     }
     if (request.method() != "GET" && request.method() != "POST") {
@@ -61,17 +70,17 @@ bool BrisaWebserverSession::hasEntityBody(const HttpRequest &request) throw(Http
 {
     if (request.method() == "POST") {
         // REQUIRED. Field value MUST be text/xml; charset="utf-8" for description documents.
-        if (request.header("Content-Type").isNull()) {
+        /*if (request.header("Content-Type").isNull()) {
             throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
         }/* else if(request.header("Content-Type") != "text/xml; charset=\"utf-8\"") {
             throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
         }*/
 
-        if (request.header("Content-Length").isNull()) {
+        if (request.header("content-length").isNull()) {
             throw HttpResponse(request.httpVersion(), HttpResponse::LENGTH_REQUIRED);
         } else {
             bool ok;
-            entitySize = request.header("Content-Length").toInt(&ok);
+            entitySize = request.header("content-length").toInt(&ok);
 
             if (!ok)
                 throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
@@ -95,14 +104,16 @@ bool BrisaWebserverSession::atEnd(const HttpRequest &request, const QByteArray &
 
 void BrisaWebserverSession::onRequest(const HttpRequest &request)
 {
-    if (request.httpVersion() == lastSupportedHttpVersion &&
-        request.header("Host").isNull()) {
-        writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
-        return;
-    }
+//    if (request.httpVersion() == lastSupportedHttpVersion &&
+//        request.header("HOST").isNull()) {
+//        writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
+//        return;
+//    }
     if (BrisaWebService *service = server->service(request.uri())) {
+        qDebug("webservice found");
         service->postRequest(request, this);
     } else {
+        qDebug("webservice not found");
         writeResponse(HttpResponse(request.httpVersion(), HttpResponse::NOT_FOUND, true));
     }
 }

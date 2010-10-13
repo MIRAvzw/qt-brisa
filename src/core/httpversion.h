@@ -44,8 +44,12 @@ public:
 
 //    bool operator ==(const HttpVersion &) = default;
     bool operator ==(const HttpVersion &);
+
+    // TODO: fix
     bool operator ==(qreal) const;
     bool operator !=(qreal) const;
+
+
     bool operator >(const HttpVersion &o) const;
     bool operator <(const HttpVersion &o) const;
     bool operator >=(const HttpVersion &o) const;

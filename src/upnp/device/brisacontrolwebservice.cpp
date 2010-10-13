@@ -8,12 +8,16 @@ BrisaControlWebService::BrisaControlWebService(const QString &serviceType, QObje
     BrisaWebService(parent),
     serviceType(serviceType)
 {
+    qDebug("I'm alive - BrisaControlWebService");
 }
 
 void BrisaControlWebService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session)
 {
+    qDebug("request received on BrisaControlWebService");
     if (request.method() != "POST")
         return;
+    else
+        qDebug("valid request");
 
     BrisaActionXmlParser actionXmlParser;
 
