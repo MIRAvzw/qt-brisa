@@ -97,9 +97,11 @@ void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device,
                         urlBase[PORT_INDEX] = newPort;
                         while (urlBase.size() > PORT_INDEX + 1) urlBase.pop_back();
                     }
+                    device->setAttribute(BrisaControlPointDevice::UrlBase, urlBase.join(":"));
 
-                    BrisaServiceFetcher f(service, urlBase.join(":") + service->
-                              getAttribute(BrisaControlPointService::ScpdUrl));
+                    BrisaServiceFetcher f(service, device->
+                                          getAttribute(BrisaControlPointDevice::UrlBase)
+                                          + service->getAttribute(BrisaControlPointService::ScpdUrl));
 
 
                     if (!f.fetch()) {
