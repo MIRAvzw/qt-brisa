@@ -110,10 +110,8 @@ void BrisaWebserverSession::onRequest(const HttpRequest &request)
 //        return;
 //    }
     if (BrisaWebService *service = server->service(request.uri())) {
-        qDebug("webservice found");
         service->postRequest(request, this);
     } else {
-        qDebug("webservice not found");
         writeResponse(HttpResponse(request.httpVersion(), HttpResponse::NOT_FOUND, true));
     }
 }
