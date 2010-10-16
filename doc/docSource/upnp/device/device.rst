@@ -79,7 +79,7 @@ Then we can call the constructor passing the device informations we just defined
                             DEVICE_MODEL_URL,
                             DEVICE_SERIAL_NUMBER,
                             getCompleteUuid());
-	// The getcompleteuuid() finction returns a valid device udn automatically
+	// The getcompleteuuid() function returns a valid device udn automatically
 
 We can now add our services to the device we just created (creation of services will be explained on the next section)
 ::
