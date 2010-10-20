@@ -28,7 +28,6 @@
 #include <QTcpSocket>
 #define DBG_PREFIX "HttpConnection: "
 
-// some fixes to work with bad code (alias macro preprocessor)
 #ifdef major
 #undef major
 #endif

@@ -81,7 +81,7 @@ inline HttpVersion HttpMessage::httpVersion() const
 
 inline QByteArray HttpMessage::header(const QByteArray &name) const
 {
-    return m_headers.value(name);
+    return m_headers.value(name.toLower());
 }
 
 inline QHash<QByteArray, QByteArray> HttpMessage::headers() const

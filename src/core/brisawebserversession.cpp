@@ -70,9 +70,9 @@ bool BrisaWebserverSession::hasEntityBody(const HttpRequest &request) throw(Http
 {
     if (request.method() == "POST") {
         // REQUIRED. Field value MUST be text/xml; charset="utf-8" for description documents.
-        /*if (request.header("Content-Type").isNull()) {
+        if (request.header("content-type").isNull()) {
             throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
-        }/* else if(request.header("Content-Type") != "text/xml; charset=\"utf-8\"") {
+        }/* else if(request.header("content-type") != "text/xml; charset=\"utf-8\"") {
             throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
         }*/
 
@@ -104,11 +104,11 @@ bool BrisaWebserverSession::atEnd(const HttpRequest &request, const QByteArray &
 
 void BrisaWebserverSession::onRequest(const HttpRequest &request)
 {
-//    if (request.httpVersion() == lastSupportedHttpVersion &&
-//        request.header("HOST").isNull()) {
-//        writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
-//        return;
-//    }
+    if (request.httpVersion() == lastSupportedHttpVersion &&
+        request.header("host").isNull()) {
+        writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
+        return;
+    }
     if (BrisaWebService *service = server->service(request.uri())) {
         service->postRequest(request, this);
     } else {

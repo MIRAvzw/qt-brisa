@@ -167,8 +167,13 @@ BrisaDevice::~BrisaDevice() {
 	while (!embeddedDeviceList.empty())
 		delete embeddedDeviceList.takeFirst();
 
-	delete ssdp;
+        ssdp->deleteLater();;
+#ifdef USE_NEW_BRISA_WEBSERVER
+        webserver->quit();
+        webserver->deleteLater();
+#else
 	delete webserver;
+#endif
 }
 
 void BrisaDevice::xmlGenerator() {
