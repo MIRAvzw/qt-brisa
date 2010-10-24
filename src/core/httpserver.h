@@ -44,7 +44,7 @@ public:
     void run();
 
 protected:
-    virtual HttpSession *incomingConnection(int socketDescriptor) = 0;
+    virtual HttpSession *incomingSession(int socketDescriptor) = 0;
 
 signals:
 //    /*

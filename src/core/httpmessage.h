@@ -63,6 +63,9 @@ public:
       */
     bool setEntityBody(QIODevice *bodyDevice);
 
+    // clear the headers and entity body
+    void clear();
+
 private:
     HttpVersion m_httpVersion;
 
@@ -70,7 +73,6 @@ private:
     QHash<QByteArray, QByteArray> m_headers;
 
     QByteArray m_entityBody;
-    // TODO: use QSharedPointer
     QIODevice *m_entityBodyDevice;
 };
 
@@ -81,7 +83,7 @@ inline HttpVersion HttpMessage::httpVersion() const
 
 inline QByteArray HttpMessage::header(const QByteArray &name) const
 {
-    return m_headers.value(name.toLower());
+    return m_headers.value(name.toUpper());
 }
 
 inline QHash<QByteArray, QByteArray> HttpMessage::headers() const

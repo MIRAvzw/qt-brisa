@@ -30,7 +30,6 @@
 #include <QThread>
 #include "httprequest.h"
 #include "httpresponse.h"
-#include <exception>
 
 class QTcpSocket;
 
@@ -59,7 +58,7 @@ protected:
     virtual bool hasEntityBody(const HttpRequest &request) throw(HttpResponse) = 0;
     // @ret returns true when the entity body was fully received
     // in future, the entity body should be put on qiodevice buffer, not in memory
-    virtual bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse) = 0;
+    virtual bool atEnd(HttpRequest &request, QByteArray &buffer) throw(HttpResponse) = 0;
     virtual void onRequest(const HttpRequest &request) = 0;
 
     void writeResponse(HttpResponse);
@@ -72,7 +71,6 @@ private slots:
     void onReadyRead();
 
 private:
-
     QTcpSocket *socket;
     int socketDescriptor;
     HttpRequest requestInfo;

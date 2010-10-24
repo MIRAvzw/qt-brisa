@@ -1,6 +1,7 @@
 #ifdef USE_NEW_BRISA_WEBSERVER
 #include "brisacontrolwebservice.h"
 #include "brisaactionxmlparser.h"
+#include <httpresponse.h>
 
 using namespace BrisaUpnp;
 
@@ -12,8 +13,11 @@ BrisaControlWebService::BrisaControlWebService(const QString &serviceType, QObje
 
 void BrisaControlWebService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session)
 {
-    if (request.method() != "POST")
+    if (request.method() != "POST") {
+        // TODO: close connection?
+        HttpResponse r(request.httpVersion(), HttpResponse::METHOD_NOT_ALLOWED);
         return;
+    }
 
     BrisaActionXmlParser actionXmlParser;
 

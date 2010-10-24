@@ -29,7 +29,7 @@
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-#include "brisawebserversession.h"
+#include <brisawebserversession.h>
 
 #endif
 
@@ -152,10 +152,6 @@ void BrisaEventProxy::onRequest(const HttpRequest &request, BrisaCore::BrisaWebs
 {
     QByteArray sid = request.header("SID");
 
-    if (sid.isEmpty())
-        // try "sid"
-        sid = request.header("sid");
-
     if (sid.isEmpty()) {
         // TODO report subscription error to user and should close the connection too
         qDebug() << "SID header not present on event subscription response.";
@@ -182,8 +178,8 @@ void BrisaEventProxy::onRequest(const HttpRequest &request, BrisaCore::BrisaWebs
     emit eventNotification(this, eventingVariables);
 
     HttpResponse response(request.httpVersion(), HttpResponse::OK, true);
-    response.setHeader("Connection", "close");
-    response.setHeader("Content-length", "0");
+    response.setHeader("CONNECTION", "close");
+    response.setHeader("CONTENT-LENGTH", "0");
     session->respond(response);
 }
 

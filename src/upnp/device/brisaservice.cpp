@@ -397,8 +397,7 @@ BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
 void BrisaService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session)
 {
     if (request.method() != "POST") {
-        HttpResponse r(request.httpVersion(), HttpResponse::BAD_REQUEST, true);
-        session->respond(r);
+        session->respond(HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST, true));
     }
 
     BrisaActionXmlParser actionXmlParser;
@@ -468,6 +467,7 @@ inline void BrisaService::respondAction(::BrisaCore::BrisaWebserverSession *sess
 
     // TODO: if the connection should br closed, set the flag in the HttpResponse constructor
     HttpResponse r(HttpVersion(1, 1), HttpResponse::OK);
+    r.setHeader("CONTENT-LENGTH", QByteArray::number(message.size()));
     r.setEntityBody(message);
     session->respond(r);
 }
@@ -482,6 +482,7 @@ inline void BrisaService::respondError(::BrisaCore::BrisaWebserverSession *sessi
 
     // TODO: if the connection should br closed, set the flag in the HttpResponse constructor
     HttpResponse r(HttpVersion(1, 1), HttpResponse::OK);
+    r.setHeader("CONTENT-LENGTH", QByteArray::number(message.size()));
     r.setEntityBody(message.toUtf8());
     session->respond(r);
 }

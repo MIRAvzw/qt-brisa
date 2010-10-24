@@ -49,10 +49,10 @@ void HttpMessage::setHeader(const QByteArray &name, const QByteArray &value)
     if (!name.isEmpty()) {
         if (!value.isNull())
             // sets the value
-            m_headers[name.toLower()] = value;
+            m_headers[name.toUpper()] = value;
         else
             // erases the header
-            m_headers.remove(name.toLower());
+            m_headers.remove(name.toUpper());
     }
 }
 
@@ -88,15 +88,25 @@ bool HttpMessage::setEntityBody(QIODevice *bodyDevice)
     if (!bodyDevice->isReadable() || bodyDevice->isSequential())
         return false;
 
+    if (m_entityBodyDevice)
+        m_entityBodyDevice->deleteLater();
+    else
+        m_entityBody.clear();
+
+    m_entityBodyDevice = bodyDevice;
+    m_entityBodyDevice->setParent(NULL);
+
+    return true;
+}
+
+void HttpMessage::clear()
+{
+    m_headers.clear();
+
     if (m_entityBodyDevice) {
         m_entityBodyDevice->deleteLater();
         m_entityBodyDevice = NULL;
     } else {
         m_entityBody.clear();
     }
-
-    m_entityBodyDevice = bodyDevice;
-    m_entityBodyDevice->setParent(NULL);
-
-    return true;
 }

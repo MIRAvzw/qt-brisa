@@ -66,9 +66,6 @@ void HttpSession::run()
     connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
     connect(socket, SIGNAL(destroyed()), this, SLOT(quit()));
 
-    // WARNING: this line:
-    //  QObject: Cannot create children for a parent that is in a different thread.
-    //  (Parent is QNativeSocketEngine(*), parent's thread is BrisaCore::BrisaWebserverSession(*), current thread is QThread(*)
     socket->setSocketDescriptor(socketDescriptor);
 
     exec();
@@ -85,6 +82,10 @@ int HttpSession::isRequestSupported(const HttpRequest &request) const
 
 void HttpSession::writeResponse(HttpResponse r)
 {
+    // WARNING: callings to QTcpSocket::write are causing this warning, even when
+    // the call is made in this thread:
+    //  QObject: Cannot create children for a parent that is in a different thread.
+    //  (Parent is QNativeSocketEngine(*), parent's thread is BrisaCore::BrisaWebserverSession(*), current thread is QThread(*)
     socket->write(r.httpVersion());
     socket->write(" ");
     socket->write(QByteArray::number(r.statusCode()));
@@ -103,17 +104,14 @@ void HttpSession::writeResponse(HttpResponse r)
         socket->write("\r\n");
     }
 
-    // this should be work of the higher-level stack
-    if (r.entitySize()) {
-        socket->write("Content-Length: ");
-        socket->write(QByteArray::number(r.entitySize()));
-
-        socket->write("\r\n\r\n");
-
-        r.entityBody(socket);
-    } else {
-        socket->write("\r\n");
+    if (!r.entitySize()) {
+        socket->write("Content-Length: 0\r\n");
     }
+
+    socket->write("\r\n");
+
+    if (r.entitySize())
+        r.entityBody(socket);
 
     if (r.closeConnection())
         socket->close();
@@ -133,6 +131,7 @@ void HttpSession::onReadyRead()
                 int i = buffer.indexOf("\r\n");
                 if (i != -1) {
                     QList<QByteArray> request = buffer.left(i).simplified().split(' ');
+                    buffer.remove(0, i + 2);
 
                     if (request.size() != 3) {
                         writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
@@ -162,10 +161,9 @@ void HttpSession::onReadyRead()
                         }
                     }
 
-                    buffer.remove(0, request.at(0).size() + request.at(1).size() +
-                                  request.at(2).size() + 4);
-
                     state = WAITING_FOR_HEADERS;
+                } else {
+                    break;
                 }
             }
         case WAITING_FOR_HEADERS:
@@ -196,9 +194,13 @@ void HttpSession::onReadyRead()
                         } else {
                             state = WAITING_FOR_REQUEST_LINE;
                             onRequest(requestInfo);
+                            requestInfo.clear();
                         }
                     }
                 }
+
+                if (state != WAITING_FOR_ENTITY_BODY)
+                    break;
             }
         case WAITING_FOR_ENTITY_BODY:
             if (atEnd(requestInfo, buffer)) {
@@ -207,6 +209,7 @@ void HttpSession::onReadyRead()
                 state = WAITING_FOR_REQUEST_LINE;
 
                 onRequest(requestInfo);
+                requestInfo.clear();
             }
         }
     } catch (HttpResponse &r) {

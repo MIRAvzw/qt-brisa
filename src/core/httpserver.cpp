@@ -51,7 +51,7 @@ void HttpServer::run()
 
 void HttpServer::onNewConnection(int socketDescriptor)
 {
-    HttpSession *c = incomingConnection(socketDescriptor);
+    HttpSession *c = incomingSession(socketDescriptor);
     if (c) {
         connect(c, SIGNAL(finished()), c, SLOT(deleteLater()));
 

@@ -75,7 +75,7 @@ namespace BrisaCore {
         BrisaWebService *service(QByteArray path) const;
 
     protected:
-        HttpSession *incomingConnection(int socketDescriptor);
+        HttpSession *incomingSession(int socketDescriptor);
 
     private:
         // QHash and QList are reentrant, not thread-safe

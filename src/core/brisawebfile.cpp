@@ -57,9 +57,11 @@ void BrisaWebFile::onRequest(const HttpRequest &request,
 {
     HttpResponse response(request.httpVersion());
 
-//    response.setHeader("Content-Type", ); // TODO
     QFile *file = new QFile(m_fileName);
     file->open(QIODevice::ReadOnly);
+    //    response.setHeader("CONTENT-TYPE", ); // TODO
+    response.setHeader("CONTENT-LENGTH", QByteArray::number(file->size()));
+
     response.setEntityBody(file);
 
     session->respond(response);

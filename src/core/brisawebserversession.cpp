@@ -38,6 +38,13 @@ using namespace BrisaCore;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
+enum State
+{
+    WAITING_FOR_CHUNK_SIZE = 1,
+    WAITING_FOR_CHUNK,
+    WAITING_FOR_TRAILLING_HEADERS
+};
+
 BrisaWebserverSession::BrisaWebserverSession(int socketDescriptor, BrisaWebserver *server) :
     HttpSession(socketDescriptor),
     server(server)
@@ -70,20 +77,24 @@ bool BrisaWebserverSession::hasEntityBody(const HttpRequest &request) throw(Http
 {
     if (request.method() == "POST") {
         // REQUIRED. Field value MUST be text/xml; charset="utf-8" for description documents.
-        if (request.header("content-type").isNull()) {
+        if (request.header("CONTENT-TYPE").isNull()) {
             throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
-        }/* else if(request.header("content-type") != "text/xml; charset=\"utf-8\"") {
+        }/* else if(request.header("CONTENT-TYPE") != "text/xml; charset=\"utf-8\"") {
             throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
         }*/
 
-        if (request.header("content-length").isNull()) {
-            throw HttpResponse(request.httpVersion(), HttpResponse::LENGTH_REQUIRED);
-        } else {
+        if (!request.header("CONTENT-LENGTH").isNull()) {
             bool ok;
-            entitySize = request.header("content-length").toInt(&ok);
+            entitySize = request.header("CONTENT-LENGTH").toInt(&ok);
 
             if (!ok)
                 throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
+
+            chunkedEntity = false;
+        } else if (request.header("TRANSFER-ENCODING") == "chunked") {
+            chunkedEntity = true;
+        } else {
+            throw HttpResponse(request.httpVersion(), HttpResponse::LENGTH_REQUIRED);
         }
 
         return true;
@@ -92,20 +103,88 @@ bool BrisaWebserverSession::hasEntityBody(const HttpRequest &request) throw(Http
     }
 }
 
-bool BrisaWebserverSession::atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse)
+bool BrisaWebserverSession::atEnd(HttpRequest &request, QByteArray &buffer) throw(HttpResponse)
 {
-    if (entitySize == buffer.size())
-        return true;
-    else if (entitySize < buffer.size())
-        throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST);
+    while (true) {
+        switch (chunkedEntity) {
+        case WAITING_FOR_CHUNK_SIZE:
+            {
+                int i = buffer.indexOf("\r\n");
+                if (i != -1) {
+                    QByteArray n = buffer.left(i);
+                    buffer.remove(0, i + 2);
 
-    return false;
+                    bool ok;
+                    entitySize = n.toInt(&ok, 16);
+
+                    if (!ok)
+                        throw HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST, true);
+
+                    if (entitySize)
+                        chunkedEntity = WAITING_FOR_CHUNK;
+                    else
+                        chunkedEntity = WAITING_FOR_TRAILLING_HEADERS;
+
+                    break;
+                } else {
+                    return false;
+                }
+            }
+        case WAITING_FOR_CHUNK:
+            {
+                if (buffer.size() >= entitySize) {
+                    chunksBuffer.append(buffer.left(entitySize));
+                    buffer.remove(0, entitySize);
+                    chunkedEntity = WAITING_FOR_CHUNK_SIZE;
+                    break;
+                } else {
+                    return false;
+                }
+            }
+        case WAITING_FOR_TRAILLING_HEADERS:
+            {
+                for (int i = buffer.indexOf("\r\n") ; i != -1 ; i = buffer.indexOf("\r\n")) {
+                    // don't starts with \r\n
+                    if (i != 0) {
+                        QByteArray header = buffer.left(i);
+                        buffer.remove(0, i + 2);
+
+                        i = header.indexOf(':');
+                        if (i > 0) {
+                            if (i + 1 < header.size())
+                                request.setHeader(header.left(i).trimmed(), header.mid(i + 1).trimmed());
+                            else
+                                request.setHeader(header.left(i).trimmed(), QByteArray());
+                        } else {
+                            throw HttpResponse(request.httpVersion() < lastSupportedHttpVersion ?
+                                               request.httpVersion() : lastSupportedHttpVersion,
+                                               HttpResponse::BAD_REQUEST, true);
+                        }
+                    } else {
+                        buffer = chunksBuffer;
+                        chunksBuffer.clear();
+
+                        return true;
+                    }
+                }
+            }
+
+        // not a chunked entity
+        case false:
+            if (buffer.size() >= entitySize) {
+                buffer.chop(buffer.size() - entitySize);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }
 
 void BrisaWebserverSession::onRequest(const HttpRequest &request)
 {
     if (request.httpVersion() == lastSupportedHttpVersion &&
-        request.header("host").isNull()) {
+        request.header("HOST").isNull()) {
         writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
         return;
     }

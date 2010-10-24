@@ -47,12 +47,15 @@ public slots:
 
 protected:
     bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
-    bool atEnd(const HttpRequest &request, const QByteArray &buffer) throw(HttpResponse);
+    bool atEnd(HttpRequest &request, QByteArray &buffer) throw(HttpResponse);
     void onRequest(const HttpRequest &request);
 
 private:
     BrisaWebserver *server;
     int entitySize;
+
+    int chunkedEntity;
+    QByteArray chunksBuffer;
 };
 
 } // namespace BrisaCore

@@ -66,7 +66,8 @@ void BrisaWebStaticContent::onRequest(const HttpRequest &request,
 {
     HttpResponse response(request.httpVersion());
 
-    response.setHeader("Content-Type", m_contentType);
+    response.setHeader("CONTENT-TYPE", m_contentType);
+    response.setHeader("CONTENT-LENGTH", QByteArray::number(m_content.size()));
     response.setEntityBody(m_content);
 
     session->respond(response);

@@ -37,12 +37,6 @@
 
 #include <BrisaCore>
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
-// TODO: remove me
-
-#endif
-
 namespace BrisaUpnp {
 
 #ifdef USE_NEW_BRISA_WEBSERVER

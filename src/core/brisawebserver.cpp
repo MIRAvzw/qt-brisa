@@ -101,7 +101,7 @@ BrisaWebService *BrisaWebserver::service(QByteArray path) const
     return service;
 }
 
-HttpSession *BrisaWebserver::incomingConnection(int socketDescriptor)
+HttpSession *BrisaWebserver::incomingSession(int socketDescriptor)
 {
     BrisaWebserverSession *session = new BrisaWebserverSession(socketDescriptor, this);
 
