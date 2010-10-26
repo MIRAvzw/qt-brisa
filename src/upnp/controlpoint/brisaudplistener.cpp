@@ -45,7 +45,6 @@ BrisaUdpListener::BrisaUdpListener(QString address, quint32 port,
     this->address = address;
     this->port = port;
     this->objectName = objectName;
-//    this->bind(QHostAddress(address), port);
 }
 
 BrisaUdpListener::~BrisaUdpListener()
