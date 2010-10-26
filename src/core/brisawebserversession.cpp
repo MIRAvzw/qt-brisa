@@ -67,7 +67,8 @@ int BrisaWebserverSession::isRequestSupported(const HttpRequest &request) const
         || (request.httpVersion().minor() != 0 && request.httpVersion().minor() != 1)) {
         return HttpResponse::HTTP_VERSION_NOT_SUPPORTED;
     }
-    if (request.method() != "GET" && request.method() != "POST") {
+    if (request.method() != "GET" && request.method() != "POST"
+        && request.method() != "SUBSCRIBE" && request.method() != "UNSUBSCRIBE") {
         return HttpResponse::NOT_IMPLEMENTED;
     }
     return 0;
