@@ -85,16 +85,9 @@ BrisaAbstractService::BrisaAbstractService(BrisaAbstractService &serv) :
 }
 
 BrisaAbstractService::~BrisaAbstractService() {
-    for (QList<BrisaAction *>::iterator i = this->actionList.begin(); i
-            != this->actionList.end(); ++i) {
-        delete *i;
-    }
+    qDeleteAll(this->actionList);
     this->actionList.clear();
-
-    for (QList<BrisaStateVariable *>::iterator i =
-            this->stateVariableList.begin(); i != this->stateVariableList.end(); ++i) {
-        delete *i;
-    }
+    qDeleteAll(this->stateVariableList);
     this->stateVariableList.clear();
     delete http;
 }

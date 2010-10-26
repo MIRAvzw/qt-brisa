@@ -57,10 +57,7 @@ BrisaAction::BrisaAction(const BrisaAction &action) :
 
 
 BrisaAction::~BrisaAction() {
-    foreach (BrisaArgument *argument, this->argumentList) {
-        delete argument;
-    }
-
+    qDeleteAll(this->argumentList);
     this->argumentList.clear();
 }
 

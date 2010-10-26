@@ -43,9 +43,7 @@ BrisaControlPointDevice::BrisaControlPointDevice(QTemporaryFile *xml,
                                                  QObject *parent) : QObject(parent)
 {
     this->setAttribute(BrisaControlPointDevice::UrlBase, url->toString(QUrl::RemovePath));
-    BrisaDeviceXMLHandlerCP *handler = new BrisaDeviceXMLHandlerCP();
-    handler->parseDevice(this, xml);
-    delete handler;
+    BrisaDeviceXMLHandlerCP().parseDevice(this, xml);
 }
 
 BrisaControlPointDevice::BrisaControlPointDevice(QString udn,
@@ -105,6 +103,12 @@ BrisaControlPointDevice::BrisaControlPointDevice(BrisaControlPointDevice &dev,
 }
 
 BrisaControlPointDevice::~BrisaControlPointDevice() {
+    qDeleteAll(this->iconList);
+    this->iconList.clear();
+    qDeleteAll(this->serviceList);
+    this->serviceList.clear();
+    qDeleteAll(this->embeddedDeviceList);
+    this->embeddedDeviceList.clear();
 }
 
 void BrisaControlPointDevice::setAttribute(xmlTags key, QString v) {

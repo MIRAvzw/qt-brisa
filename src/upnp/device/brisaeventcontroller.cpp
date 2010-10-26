@@ -372,8 +372,8 @@ QHttpResponseHeader BrisaEventController::getErrorHeader(const int &errorCode,
 
 BrisaEventController::~BrisaEventController()
 {
-    while (!this->subscriptions.empty())
-        delete this->subscriptions.takeFirst();
+    qDeleteAll(this->subscriptions);
+    this->subscriptions.clear();
 }
 
 void BrisaEventController::variableChanged(BrisaStateVariable *variable)

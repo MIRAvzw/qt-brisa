@@ -161,16 +161,15 @@ BrisaDevice::~BrisaDevice() {
 	if (isRunning())
 		stop();
 
-	while (!serviceList.empty())
-		delete serviceList.takeFirst();
+    qDeleteAll(this->serviceList);
+    this->serviceList.clear();
+    qDeleteAll(this->embeddedDeviceList);
+    this->serviceList.clear();
 
-	while (!embeddedDeviceList.empty())
-		delete embeddedDeviceList.takeFirst();
-
-        ssdp->deleteLater();;
+    ssdp->deleteLater();;
 #ifdef USE_NEW_BRISA_WEBSERVER
-        webserver->quit();
-        webserver->deleteLater();
+    webserver->quit();
+    webserver->deleteLater();
 #else
 	delete webserver;
 #endif

@@ -91,9 +91,7 @@ BrisaService::~BrisaService() {
     delete webService;
 #endif
 
-    for (QMap<QString, ::BrisaCore::BrisaWebService *>::iterator i = childWebServices.begin(); i != childWebServices.end(); ++i) {
-        delete i.value();
-    }
+    qDeleteAll(this->childWebServices);
     childWebServices.clear();
 }
 
