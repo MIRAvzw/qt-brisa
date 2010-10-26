@@ -38,4 +38,5 @@ QXT += core \
 INSTALLS += target \
     sources
 RESOURCES += classwizard.qrc
-FORMS += dialogargument.ui
+FORMS += dialogargument.ui \
+    mainwindow.ui
