@@ -45,7 +45,7 @@ BrisaUdpListener::BrisaUdpListener(QString address, quint32 port,
     this->address = address;
     this->port = port;
     this->objectName = objectName;
-    this->bind(QHostAddress(address), port);
+//    this->bind(QHostAddress(address), port);
 }
 
 BrisaUdpListener::~BrisaUdpListener()
@@ -55,7 +55,6 @@ BrisaUdpListener::~BrisaUdpListener()
 void BrisaUdpListener::start()
 {
     int fd;
-
     if (!this->bind(this->port, QUdpSocket::ShareAddress |
                                  QUdpSocket::ReuseAddressHint)) {
         qWarning() << this->objectName << ": failure to bind interface.";
