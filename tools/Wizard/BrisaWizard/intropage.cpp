@@ -22,7 +22,7 @@ IntroPage::IntroPage(QWidget *parent)
      projectNameLineEdit = new QLineEdit;
      projectNameLabel->setBuddy(projectNameLineEdit);
 
-     browserButton = new QPushButton("&Browser...");
+     browserButton = new QPushButton("&Browse...");
 
      QGridLayout *deviceLayoutGrid = new QGridLayout;
      deviceLayoutGrid->addWidget(deviceNameLabel,0,0);

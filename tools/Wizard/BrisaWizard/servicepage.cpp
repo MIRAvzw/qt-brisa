@@ -108,6 +108,15 @@ ServicePage::ServicePage(QWidget *parent)
      serviceXMLPathLineEdit->setText(serviceEdit->text()+"/"+serviceEdit->text()+".xml");
      serviceControlLineEdit->setText(serviceEdit->text()+"/control");
      eventSubLineEdit->setText(serviceEdit->text()+"/eventSub");
+
+
+     serviceTypeLineEdit->setCursorPosition(0);
+     serviceIDLineEdit->setCursorPosition(0);
+     serviceXMLPathLineEdit->setCursorPosition(0);
+     serviceControlLineEdit->setCursorPosition(0);
+     eventSubLineEdit->setCursorPosition(0);
+
+
  }
 
  void ServicePage::on_addServiceButton_clicked()

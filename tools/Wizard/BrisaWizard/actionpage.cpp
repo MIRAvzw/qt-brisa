@@ -2,7 +2,7 @@
 #include "dialogargument.h"
 #include <QMessageBox>
 
-static int rowArgumentsRepeated;
+int rowArgumentsRepeated = -1;
 
 ActionPage::ActionPage(QWidget *parent)
     : QWizardPage(parent)
@@ -27,7 +27,7 @@ ActionPage::ActionPage(QWidget *parent)
     QLabel *serviceLabelName = new QLabel(tr("Services"));
     serviceCbox = new QComboBox;
     qDebug()<<"adding items";
-    //serviceCbox->addItems(serviceNameList); //continuar aqui FIXME
+    //serviceCbox->addItems(serviceNameList);
 
 
     actionListWidget = new QListWidget();

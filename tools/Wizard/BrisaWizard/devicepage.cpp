@@ -100,5 +100,15 @@ DevicePage::DevicePage(QWidget *parent)
      modelUrlLine->setText("https://garage.maemo.org/projects/brisa");
      deviceSerialLine->setText("1.0");
 
+     deviceTypeLine->setCursorPosition(0);
+     friendlyNameLine->setCursorPosition(0);
+     manufacturerLine->setCursorPosition(0);
+     manufacturerUrlLine->setCursorPosition(0);
+     modelDesciptionLine->setCursorPosition(0);
+     modelNameLine->setCursorPosition(0);
+     modelNumberLine->setCursorPosition(0);
+     modelUrlLine->setCursorPosition(0);
+     deviceSerialLine->setCursorPosition(0);
+
 
  }

@@ -1,4 +1,3 @@
-
 /****************************************************************************
 **
 ** Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies).
@@ -40,26 +39,68 @@
 **
 ****************************************************************************/
 
-#include <QApplication>
-#include <QTranslator>
-#include <QLocale>
-#include <QLibraryInfo>
+#ifndef CLASSWIZARD_H
+#define CLASSWIZARD_H
+#include "intropage.h"
+#include "devicepage.h"
+#include "servicepage.h"
+#include "actionpage.h"
+#include <QWizard>
+#include <QMap>
+#include <QMetaType>
+#include <QDir>
+#include <BRisa/BrisaUpnp/BrisaAction>
+#include <BRisa/BrisaUpnp/brisaargument.h>
+#include <BRisa/BrisaUpnp/brisaaction.h>
+#include <BRisa/BrisaUpnp/brisastatevariable.h>
+#include <BRisa/BrisaUpnp/BrisaService>
 
-#include "brisawizard.h"
 
-int main(int argc, char *argv[])
+using BrisaUpnp::BrisaArgument;
+using BrisaUpnp::BrisaStateVariable;
+using BrisaUpnp::BrisaAction;
+using BrisaUpnp::BrisaService;
+
+//struct QMetaTypeId< BrisaService * >;
+
+//typedef QMultiMap<QString,QString> Argument;
+//Q_DECLARE_METATYPE(BrisaArgument*)
+//Q_DECLARE_METATYPE(BrisaService*)
+
+class QCheckBox;
+class QGroupBox;
+class QLabel;
+class QLineEdit;
+class QRadioButton;
+class QVBoxLayout;
+class QHBoxLayout;
+class QGridLayout;
+class QListWidget;
+class QTableWidget;
+class QFileDialog;
+class QComboBox;
+class QSpacerItem;
+class QListWidgetItem;
+
+
+class BrisaWizard : public QWizard
 {
-    Q_INIT_RESOURCE(brisawizard);
+    Q_OBJECT
 
-    QApplication app(argc, argv);
+public:
+    BrisaWizard(QWidget *parent = 0);
+    void accept();
+    void generateServiceXml();//TODO
+    void generatePro();//TODO
+    void generateService();//TODO
+    void generateDevice();//TODO
+private:
+    QList<BrisaService*> serviceList;
+    //IntroPage *introPage;
+public slots:
+  //  void on_pagechanged(int id);
+signals:
+    //void thirdPage_arrives();
+};
 
-    QString translatorFileName = QLatin1String("qt_");
-    translatorFileName += QLocale::system().name();
-    QTranslator *translator = new QTranslator(&app);
-    if (translator->load(translatorFileName, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-        app.installTranslator(translator);
-
-    BrisaWizard wizard;
-    wizard.show();
-    return app.exec();
-}
+#endif
