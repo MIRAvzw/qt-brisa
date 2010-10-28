@@ -49,9 +49,6 @@ IntroPage::IntroPage(QWidget *parent)
 
      connect(browserButton, SIGNAL(clicked()), this, SLOT(changeDirectory()));
      connect(deviceNameEdit,SIGNAL(textChanged(QString)),this,SLOT(on_deviceNameChanged()));
-     connect(deviceNameEdit,SIGNAL(editingFinished()),this,SLOT(on_deviceNameEditing_finished()));
-     connect(projectNameLineEdit,SIGNAL(editingFinished()),this,SLOT(on_projectNameEditing_finished()));
-     connect(projectNameLineEdit,SIGNAL(textChanged(QString)),this,SLOT(on_projectNameChanged()));
 
  }
 

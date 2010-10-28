@@ -166,7 +166,7 @@ QStringList stateVariableList;
                     if(!stateVariableList.contains(argument->getAttribute(argument->RelatedStateVariable))){
                         stateVariableList.append(argument->getAttribute(argument->RelatedStateVariable));
                         if(argument->getAttribute(argument->Direction) == "in"){
-                            block += "\tconnect(" + argument->getAttribute(argument->RelatedStateVariable) + ",SIGNAL(changed(BrisaStateVariable*)),this,SLOT(on_" +argument->getAttribute(argument->RelatedStateVariable)  + "_change(BrisaStateVariable*)));\n";
+                            block += "\tconnect(" + argument->getAttribute(argument->RelatedStateVariable) + ",SIGNAL(changed(BrisaStateVariable*)),this,SLOT(on" +argument->getAttribute(argument->RelatedStateVariable)  + "Change(BrisaStateVariable*)));\n";
                         }
                     }
 
@@ -204,7 +204,7 @@ QStringList stateVariableList;
                      if(argument->getAttribute(argument->Direction) == "in"){
                          if(!stateVariableList.contains(argument->getAttribute(argument->RelatedStateVariable))){
                              stateVariableList.append(argument->getAttribute(argument->RelatedStateVariable));
-                             block += "void "+className+"::on_"+argument->getAttribute(argument->RelatedStateVariable)+"_change(BrisaStateVariable* v){\n"
+                             block += "void "+className+"::on"+argument->getAttribute(argument->RelatedStateVariable)+"Change(BrisaStateVariable* v){\n"
                                       "\tqDebug() << \"receiving " + argument->getAttribute(argument->RelatedStateVariable)+" change value to:\" + v->getValue().toString();\n";
                              if(((inArguments.count() > 0) && (outArguments.count() > 0)) || ((outArguments.count() > 0) && (inArguments.count() == 0)))
                                 if(!argument->getAttribute(argument->ArgumentName).isEmpty())
@@ -334,7 +334,7 @@ foreach(BrisaService* service, serviceList){
             if(argument->getAttribute(argument->Direction) == "in"){
                 if(!stateVariableList.contains(argument->getAttribute(argument->RelatedStateVariable))){
                     stateVariableList.append(argument->getAttribute(argument->RelatedStateVariable));
-                    block += "\t void on_"+argument->getAttribute(argument->RelatedStateVariable)+"_change(BrisaStateVariable*);\n";
+                    block += "\t void on"+argument->getAttribute(argument->RelatedStateVariable)+"Change(BrisaStateVariable*);\n";
                 }
             }
         }
@@ -405,6 +405,16 @@ block += "\n\n"
             }
             index++;
         }
+block += "\n\n"
+         "RESOURCES +=";
+         index = 1;
+         foreach(BrisaService* service, serviceList){
+             block += "\t"+service->getAttribute(service->ServiceId) + ".xml";
+             if(index != serviceList.count()){
+                 block += "\\ \n";
+             }
+             index++;
+         }
 block +=   "\nFORMS += "+ className.toLower() + ".ui\n";
 
                             QFile *projectFile = new QFile(path + "/" + field("projectName").toString() + ".pro");

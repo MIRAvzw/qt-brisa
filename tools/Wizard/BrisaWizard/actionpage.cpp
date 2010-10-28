@@ -92,7 +92,7 @@ ActionPage::ActionPage(QWidget *parent)
 
 void ActionPage::on_repeatArgumentsButton_clicked(){
     int response = QMessageBox::information(this,tr("Atention!"),
-                 tr("When you apply same arguments to others actions, certify than other actions haven't any arguments, because their argument list will clean. Are you sure this?"),
+                 tr("When you apply same arguments to others actions, certify that other actions haven't any arguments, because their argument list will clean. Are you sure this?"),
                  QMessageBox::No,QMessageBox::Ok);
     if(response == QMessageBox::Ok){
        BrisaAction* action = actionListWidget->currentItem()->data(Qt::UserRole).value<BrisaAction*>();

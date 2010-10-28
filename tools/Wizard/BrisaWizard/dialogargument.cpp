@@ -53,7 +53,7 @@ void DialogArgument::updateTableWidget(){
         QComboBox* cbxDirection = new QComboBox();
         QStringList directions;
         directions.append("in");
-        directions.append("return");
+        directions.append("out");
         cbxDirection->addItems(directions);
         ui->table->setCellWidget(currentRow,3,cbxDirection);
         qDebug() << "GETTING DIRECTION:" + argument->getAttribute(argument->Direction);
@@ -111,7 +111,7 @@ void DialogArgument::setArgumentList(QList<BrisaArgument*> argumentListA){
             qDebug() << "passed getARGUMENT: " + argument->getAttribute(argument->ArgumentName) ;
         }
     }else{
-        qDebug() << "without argumentList";
+        qDebug() << "withreturn argumentList";
         ui->table->clear();
         QStringList labels;
         labels.append("Argument");
@@ -154,7 +154,7 @@ void DialogArgument::on_btnInsert_clicked()
     QComboBox* cbxDirection = new QComboBox();
     QStringList directions;
     directions.append("in");
-    directions.append("return");
+    directions.append("out");
     cbxDirection->addItems(directions);
     ui->table->setCellWidget(currentTableRow,3,cbxDirection);
     cbxDirection->setCurrentIndex(0);
@@ -208,7 +208,7 @@ int DialogArgument::validateInformation(){
                 if( (!ui->table->item(i,0)->text().isEmpty()) && (ui->table->item(i,0)->text() == ui->table->item(j,0)->text()) )
                     return -1;
                 if( (!ui->table->item(i,1)->text().isEmpty()) && (ui->table->item(i,1)->text() == ui->table->item(j,1)->text()))
-                    return 0;                         
+                    return 0;
             }
         }
         if((!ui->table->item(i,0)->text().isEmpty()) && (ui->table->item(i,1)->text().isEmpty()))
