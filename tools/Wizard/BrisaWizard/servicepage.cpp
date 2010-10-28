@@ -17,6 +17,8 @@ ServicePage::ServicePage(QWidget *parent)
      serviceLabel->setBuddy(serviceEdit);
      serviceListWidget = new QListWidget();
      addServiceButton = new QPushButton(tr("&add"));
+     //const QKeySequence *k = new QKeySequence(QKeySequence("&a"));
+     addServiceButton->setShortcut(QKeySequence("Alt+a"));
      mainBox = new QVBoxLayout();
      serviceTypeLineEdit = new QLineEdit();
      serviceIDLineEdit = new QLineEdit();

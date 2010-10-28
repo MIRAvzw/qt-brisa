@@ -22,6 +22,7 @@ ActionPage::ActionPage(QWidget *parent)
     QHBoxLayout *radioBox = new QHBoxLayout;
     QGridLayout *listGrid = new QGridLayout;
     addActionButton = new QPushButton(tr("       A&dd Action       "));
+    addActionButton->setShortcut(QKeySequence("Alt+d"));
     QLabel *actionLabelList = new QLabel(tr("Actions"));
     QLabel *argumentLabelList = new QLabel(tr("Arguments"));
     QLabel *serviceLabelName = new QLabel(tr("Services"));
@@ -154,7 +155,7 @@ void ActionPage::on_actionListWidget_DoubleClicked(){
 void ActionPage::on_actionPage(int id){
     if(id == 3){
         serviceCbox->clear();
-        //actionListWidget->setFocus();
+        actionListWidget->setFocus();
         actionNameLineEdit->setFocus();
 
         serviceList = ServicePage::getServiceList();
