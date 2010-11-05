@@ -162,7 +162,7 @@ public:
 
     /**  Destructor
      */
-    ~BrisaControlPoint();
+    virtual ~BrisaControlPoint();
 
     /*!
      *  Starts the control point, the ssdpClient and the msearch

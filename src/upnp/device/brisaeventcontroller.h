@@ -50,7 +50,7 @@ namespace BrisaUpnp {
     public:
         BrisaEventController(::BrisaCore::BrisaWebserver *sessionManager,
                 QList<BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
-        ~BrisaEventController();
+        virtual ~BrisaEventController();
 
     public slots:
         void variableChanged(BrisaStateVariable *variable);

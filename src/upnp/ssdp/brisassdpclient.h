@@ -62,7 +62,7 @@ public:
      *
      *  Stops the client if it's running.
      */
-    ~BrisaSSDPClient();
+    virtual ~BrisaSSDPClient();
 
 public slots:
     /*!

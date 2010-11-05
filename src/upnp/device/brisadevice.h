@@ -97,7 +97,7 @@ public:
      *  Destructor for BrisaDevice.
      *  Stops the device if running.
      */
-    ~BrisaDevice();
+    virtual ~BrisaDevice();
 
     /*!
      *  Assigns dev to this BrisaDevice and returns a copy.

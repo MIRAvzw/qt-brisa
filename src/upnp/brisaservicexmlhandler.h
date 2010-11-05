@@ -45,7 +45,7 @@ namespace BrisaUpnp {
 class BRISA_UPNP_EXPORT BrisaServiceXMLHandler {
 public:
     BrisaServiceXMLHandler();
-    ~BrisaServiceXMLHandler();
+    virtual ~BrisaServiceXMLHandler();
 
     void parseService(BrisaAbstractService *service, QIODevice *scpd);
 };

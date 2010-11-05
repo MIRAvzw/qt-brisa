@@ -60,7 +60,7 @@ class BRISA_UPNP_EXPORT BrisaDeviceXMLHandlerCP {
 public:
 
 
-    ~BrisaDeviceXMLHandlerCP();
+    virtual ~BrisaDeviceXMLHandlerCP();
 
     /*!
      *  Method that initializes device attributes from a temporary file.
@@ -108,7 +108,7 @@ public:
      *  \fn BrisaServiceFetcher::~BrisaServiceFetcher()
      *  \brief Destructor.
      */
-    ~BrisaServiceFetcher() {
+    virtual ~BrisaServiceFetcher() {
         delete downloader;
         delete eventLoop;
     }

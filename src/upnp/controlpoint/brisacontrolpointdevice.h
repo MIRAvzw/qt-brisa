@@ -112,7 +112,7 @@ public:
     /*!
      *    Destructor
      */
-    ~BrisaControlPointDevice();
+    virtual ~BrisaControlPointDevice();
 
     /*!
      *  \enum BrisaUpnp::BrisaControlPointDevice::xmlTags

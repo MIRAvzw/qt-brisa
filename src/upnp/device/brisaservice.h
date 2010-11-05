@@ -63,7 +63,7 @@ namespace BrisaUpnp {
 
         BrisaService(BrisaService &service);
 
-        ~BrisaService();
+        virtual ~BrisaService();
 
         BrisaStateVariable *getVariable(const QString &variableName);
 

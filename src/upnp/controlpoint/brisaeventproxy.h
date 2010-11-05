@@ -60,7 +60,7 @@ public:
     /*!
      *  Destructor
      */
-    ~BrisaEventProxy();
+    virtual ~BrisaEventProxy();
 
     /*!
      *  Gets the request id.
