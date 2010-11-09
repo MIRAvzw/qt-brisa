@@ -2,6 +2,24 @@ PROVIDER        = BRisa
 TEMPLATE        = lib
 TARGET          = CustomProjectWizard
 
+QT += network \
+    xml
+CONFIG += QT \
+    BRISA
+CONFIG += qt \
+    qxt
+QT += core \
+    network \
+    xml
+BRISA += upnp \
+    core \
+    utils
+QXT += core \
+    web
+INSTALLS += target \
+    sources
+
+
 QTC_SOURCE_DIR = /home/wvs/Downloads/qt-creator-2.0.1-src
 IDE_SOURCE_TREE = $$QTC_SOURCE_DIR
 QTC_BUILD_DIR = /home/wvs/Downloads/qt-creator-2.0.1-src
@@ -24,11 +42,36 @@ INCLUDEPATH += $$IDE_SOURCE_TREE/src \
                $$IDE_SOURCE_TREE/src/libs/extensionsystem \
 
 HEADERS         = CustomProjectWizard.h \
-                  DoNothingPlugin.h
+                  DoNothingPlugin.h \
+                  brisawizard.h \
+                  dialogargument.h \
+                  intropage.h \
+                  devicepage.h \
+                  servicepage.h \
+                  actionpage.h
 
 
 SOURCES         = CustomProjectWizard.cpp \
-                    DoNothingPlugin.cpp
+                    DoNothingPlugin.cpp \
+                    dialogargument.cpp \
+                    intropage.cpp \
+                    devicepage.cpp \
+                    servicepage.cpp \
+                    brisawizard.cpp \
+                    actionpage.cpp
+
 
 OTHER_FILES     = CustomProjectWizard.pluginspec
 
+# install
+target.path = $$[QT_INSTALL_EXAMPLES]/dialogs/classwizard
+sources.files = $$SOURCES \
+    $$HEADERS \
+    $$FORMS \
+    $$RESOURCES \
+    *.pro \
+    images
+sources.path = $$[QT_INSTALL_EXAMPLES]/dialogs/classwizard
+RESOURCES += brisawizard.qrc
+FORMS += dialogargument.ui \
+    mainwindow.ui

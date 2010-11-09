@@ -3,6 +3,7 @@
 #include <extensionsystem/iplugin.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/basefilewizard.h>
+#include <QStringList>
 
 //#include <coreplugin/dialogs/iwizard.h>
 //class DoNothingPlugin : public ExtensionSystem::IPlugin
@@ -46,7 +47,7 @@ public slots:
 //    void about();
 //    void newProject();
     void on_finished();
-
+    static void setProjectPaths(QStringList paths);
 
 };
 
