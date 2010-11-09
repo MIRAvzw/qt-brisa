@@ -16,7 +16,7 @@
 #include <QMainWindow>
 #include <QCoreApplication>
 
-#include "CustomProjectWizard.h"
+#include "BrisaProjectWizard.h"
 
 DoNothingPlugin::DoNothingPlugin()
 {
@@ -31,14 +31,14 @@ bool DoNothingPlugin::initialize(const QStringList& args, QString *errMsg)
 {
 
     //DoNothingPlugin *nothing = new DoNothingPlugin();
-    //CustomProjectWizard *custom = new CustomProjectWizard();
+    //BrisaProjectWizard *custom = new BrisaProjectWizard();
 
     Q_UNUSED(args);
     Q_UNUSED(errMsg);
 
 
 
-    addAutoReleasedObject(new CustomProjectWizard);
+    addAutoReleasedObject(new BrisaProjectWizard);
 
 Core::ActionManager* am = Core::ICore::instance()->actionManager();
     Core::Command* cmd = am->registerAction(new QAction(this),

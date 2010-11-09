@@ -54,7 +54,7 @@
 #include <BRisa/BrisaUpnp/brisaaction.h>
 #include <BRisa/BrisaUpnp/brisastatevariable.h>
 #include <BRisa/BrisaUpnp/BrisaService>
-#include "CustomProjectWizard.h"
+#include "BrisaProjectWizard.h"
 
 using BrisaUpnp::BrisaArgument;
 using BrisaUpnp::BrisaStateVariable;
