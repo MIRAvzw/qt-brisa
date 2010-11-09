@@ -42,9 +42,9 @@ BrisaUdpListener::BrisaUdpListener(QString address, quint32 port,
                                    QString objectName, QObject *parent) :
         QUdpSocket(parent)
 {
-    this->address = address;
     this->port = port;
     this->objectName = objectName;
+    this->address = address;
 }
 
 BrisaUdpListener::~BrisaUdpListener()
@@ -53,20 +53,33 @@ BrisaUdpListener::~BrisaUdpListener()
 
 void BrisaUdpListener::start()
 {
-    int fd;
-    if (!this->bind(this->port, QUdpSocket::ShareAddress |
-                                 QUdpSocket::ReuseAddressHint)) {
-        qWarning() << this->objectName << ": failure to bind interface.";
+    if (!this->bind(QHostAddress(this->address), this->port, QUdpSocket::ShareAddress |
+                    QUdpSocket::ReuseAddressHint)) {
+            qWarning() << this->objectName << ": failure to bind interface.";
     }
 
+    int fd;
     fd = this->socketDescriptor();
     struct ip_mreq mreq;
-    memset(&mreq, 0, sizeof(struct ip_mreq));
+    memset(&mreq, 0, sizeof(ip_mreq));
     mreq.imr_multiaddr.s_addr = inet_addr(this->address.toUtf8());
-    mreq.imr_interface.s_addr = htonl(INADDR_ANY);
+    bool boolean = true;
 
-    if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *) &mreq,
-            sizeof(struct ip_mreq)) < 0) {
-        qWarning() << this->objectName << ": could not join MULTICAST group.";
+    if (getValidIP() == LOCAL_HOST)
+    {
+        mreq.imr_interface.s_addr = inet_addr(QString(LOCAL_HOST).toUtf8());
+    }
+    else
+    {
+        mreq.imr_interface.s_addr = htons(INADDR_ANY);
+    }
+
+
+    if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
+            reinterpret_cast<char*>(&mreq), sizeof(mreq)) < 0 ||
+        setsockopt(fd, IPPROTO_IP, IP_MULTICAST_LOOP,
+                    &boolean, sizeof (boolean)) < 0)
+    {
+          qWarning() << this->objectName << ": could not join MULTICAST group.";
     }
 }

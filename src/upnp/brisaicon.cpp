@@ -31,7 +31,9 @@
 using namespace BrisaUpnp;
 
 BrisaIcon::BrisaIcon(QString mimetype, QString width, QString height,
-        QString depth, QString url) {
+                     QString depth, QString url,
+                     QObject *parent) : QObject(parent)
+{
     this->mimetype = mimetype;
     this->width = width;
     this->height = height;
@@ -39,7 +41,8 @@ BrisaIcon::BrisaIcon(QString mimetype, QString width, QString height,
     this->url = url;
 }
 
-void BrisaIcon::setAttribute(xmlIconTags key, QString v) {
+void BrisaIcon::setAttribute(xmlIconTags key, QString v)
+{
     switch (key) {
     case Mimetype:
         this->mimetype = v;
@@ -59,7 +62,47 @@ void BrisaIcon::setAttribute(xmlIconTags key, QString v) {
     }
 }
 
-QString BrisaIcon::getAttribute(xmlIconTags key) {
+void BrisaIcon::setIcon(QIcon icon)
+{
+    this->icon = icon;
+}
+
+QIcon BrisaIcon::getIcon()
+{
+    return this->icon;
+}
+
+void BrisaIcon::downloadIcon(QString deviceUrl)
+{
+    QNetworkAccessManager *manager = new QNetworkAccessManager();
+    connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(downloadFinished(QNetworkReply*)));
+
+    QString iconUrl = deviceUrl + this->url;
+    manager->get(QNetworkRequest(QUrl(iconUrl)));
+}
+
+void BrisaIcon::downloadFinished(QNetworkReply *reply)
+{
+    QByteArray imageData = reply->readAll();
+    QPixmap pixmap;
+    pixmap.loadFromData(imageData);
+    this->setIcon(QIcon(pixmap));
+
+    emit iconDownloadFinished();
+}
+
+void BrisaIcon::clear()
+{
+    this->mimetype.clear();
+    this->width.clear();
+    this->height.clear();
+    this->depth.clear();
+    this->url.clear();
+    this->attribute.clear();
+}
+
+QString BrisaIcon::getAttribute(xmlIconTags key)
+{
     switch (key) {
     case Mimetype:
         return this->mimetype;
@@ -80,13 +123,4 @@ QString BrisaIcon::getAttribute(xmlIconTags key) {
         return "";
         break;
     }
-}
-
-void BrisaIcon::clear() {
-    this->mimetype.clear();
-    this->width.clear();
-    this->height.clear();
-    this->depth.clear();
-    this->url.clear();
-    this->attribute.clear();
 }

@@ -86,20 +86,20 @@ void BrisaDeviceXMLHandler::writeDevice(BrisaDevice *device) {
     this->writer->writeTextElement("UPC",
             device->getAttribute(BrisaDevice::Upc));
     this->writer->writeStartElement("iconList");
-    QList<BrisaIcon> iconList = device->getIconList();
-    foreach(BrisaIcon i, iconList)
+    QList<BrisaIcon*> iconList = device->getIconList();
+    foreach(BrisaIcon *i, iconList)
         {
             this->writer->writeStartElement("icon");
-            this->writer->writeTextElement("mimetype", i.getAttribute(
+            this->writer->writeTextElement("mimetype", i->getAttribute(
                     BrisaIcon::Mimetype));
-            this->writer->writeTextElement("width", i.getAttribute(
+            this->writer->writeTextElement("width", i->getAttribute(
                     BrisaIcon::Width));
-            this->writer->writeTextElement("height", i.getAttribute(
+            this->writer->writeTextElement("height", i->getAttribute(
                     BrisaIcon::Height));
-            this->writer->writeTextElement("depth", i.getAttribute(
+            this->writer->writeTextElement("depth", i->getAttribute(
                     BrisaIcon::Depth));
             this->writer->writeTextElement("url",
-                    i.getAttribute(BrisaIcon::Url));
+                    i->getAttribute(BrisaIcon::Url));
             this->writer->writeEndElement(); //icon
         }
     this->writer->writeEndElement(); //iconList

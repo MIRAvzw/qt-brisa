@@ -33,6 +33,7 @@
 #include <QUdpSocket>
 
 #include "brisaglobal.h"
+#include "brisanetwork.h"
 
 class BRISA_UPNP_EXPORT BrisaUdpListener : public QUdpSocket
 {

@@ -102,7 +102,8 @@ BrisaControlPointDevice::BrisaControlPointDevice(BrisaControlPointDevice &dev,
     this->_fileAddress = dev.getAttribute(BrisaControlPointDevice::FileAddress);
 }
 
-BrisaControlPointDevice::~BrisaControlPointDevice() {
+BrisaControlPointDevice::~BrisaControlPointDevice()
+{
     qDeleteAll(this->iconList);
     this->iconList.clear();
     qDeleteAll(this->serviceList);
@@ -111,7 +112,8 @@ BrisaControlPointDevice::~BrisaControlPointDevice() {
     this->embeddedDeviceList.clear();
 }
 
-void BrisaControlPointDevice::setAttribute(xmlTags key, QString v) {
+void BrisaControlPointDevice::setAttribute(xmlTags key, QString v)
+{
     switch (key) {
     case Major:
     case major:
@@ -180,7 +182,8 @@ void BrisaControlPointDevice::setAttribute(xmlTags key, QString v) {
     }
 }
 
-QString BrisaControlPointDevice::getAttribute(xmlTags key) {
+QString BrisaControlPointDevice::getAttribute(xmlTags key)
+{
     switch (key) {
     case Udn:
     case udn:
@@ -252,7 +255,8 @@ QString BrisaControlPointDevice::getAttribute(xmlTags key) {
     }
 }
 
-BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString serviceId) {
+BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString serviceId)
+{
     for (int i = 0; i < this->serviceList.size(); i++) {
         if (this->serviceList.at(i)->getAttribute(BrisaControlPointService::ServiceId).compare(serviceId) == 0) {
             return serviceList.at(i);
@@ -261,7 +265,8 @@ BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString servic
     return NULL;
 }
 
-BrisaControlPointService *BrisaControlPointDevice::getServiceByType(QString serviceType) {
+BrisaControlPointService *BrisaControlPointDevice::getServiceByType(QString serviceType)
+{
     for (int i = 0; i < this->serviceList.size(); i++) {
         if (this->serviceList.at(i)->getAttribute(BrisaControlPointService::ServiceType).compare(serviceType) == 0) {
             return serviceList.at(i);
@@ -270,7 +275,8 @@ BrisaControlPointService *BrisaControlPointDevice::getServiceByType(QString serv
     return NULL;
 }
 
-QList<BrisaIcon*> BrisaControlPointDevice::getIconList() {
+QList<BrisaIcon*> BrisaControlPointDevice::getIconList()
+{
     return this->iconList;
 }
 
@@ -292,6 +298,27 @@ void BrisaControlPointDevice::addService(BrisaControlPointService *serviceSwap) 
 
 void BrisaControlPointDevice::addDevice(BrisaControlPointDevice *device) {
     embeddedDeviceList.append(device);
+}
+
+void BrisaControlPointDevice::downloadIcons()
+{
+    downloaded = 0;
+
+    for (int i = 0; i < this->iconList.size(); i++)
+    {
+        BrisaIcon *icon = this->iconList.at(i);
+        connect(icon, SIGNAL(iconDownloadFinished()), this, SLOT(downloadFinished()));
+        icon->downloadIcon(this->getAttribute(UrlBase));
+    }
+}
+
+void BrisaControlPointDevice::downloadFinished()
+{
+    downloaded++;
+    if(downloaded == this->iconList.size())
+    {
+        emit onReadyDownloadIcons(this);
+    }
 }
 
 void BrisaControlPointDevice::clear() {

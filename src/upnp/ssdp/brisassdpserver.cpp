@@ -104,7 +104,7 @@ BrisaSSDPServer::BrisaSSDPServer(QObject *parent) :
     SSDP_PORT(1900), // TODO: make this as #define
     S_SSDP_PORT("1900") // TODO: make this as #defin
 {
-    this->udpListener = new QUdpSocket();
+    this->udpListener = new BrisaUdpListener(SSDP_ADDR, SSDP_PORT, "Brisa SSDP Server", parent);
     connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
@@ -117,31 +117,12 @@ BrisaSSDPServer::~BrisaSSDPServer() {
 
 void BrisaSSDPServer::start() {
     if (!isRunning()) {
-        if (!udpListener->bind(QHostAddress(SSDP_ADDR), SSDP_PORT, QUdpSocket::ShareAddress))
-            qDebug() << "BrisaSSDPServer NOT LISTENING!";
-
-        int fd;
-        fd = udpListener->socketDescriptor();
-
-        struct ip_mreq mreq;
-        memset(&mreq, 0, sizeof(ip_mreq));
-        mreq.imr_multiaddr.s_addr = inet_addr(SSDP_ADDR.toUtf8());
-        mreq.imr_interface.s_addr = htonl(INADDR_ANY);
-
-        // TODO: improve this to allow use of loopback interface
-        if (::setsockopt(fd,
-                         IPPROTO_IP,
-                         IP_ADD_MEMBERSHIP,
-                         (const char *) &mreq,
-                         sizeof(struct ip_mreq)) < 0)
-        {
-            qDebug() << "BrisaSSDPServer could not join MULTICAST group";
-            return;
-        }
-
+        this->udpListener->start();
         qDebug() << "BrisaSSDPServer Started!";
         running = true;
-    } else {
+    }
+    else
+    {
         qDebug() << "BrisaSSDPServer already running!";
     }
 }

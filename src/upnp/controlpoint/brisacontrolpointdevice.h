@@ -239,6 +239,19 @@ public:
      */
     void clear();
 
+    /*!
+     *  Send icons download request to QNetworkAccessManager. After download is finished
+     *  the downloaded icons images are added to the BrisaIcons objects in device icons list and a
+     *  onReadyDownloadIcons(BrisaControlPointDevice) signal is emitted by downloader method.
+     */
+    void downloadIcons();
+
+signals:
+    void onReadyDownloadIcons(BrisaControlPointDevice*);
+
+public slots:
+    void downloadFinished();
+
 private:
     /*!
      *  \property iconList
@@ -257,6 +270,8 @@ private:
      *  \brief Device's embedded device list.
      */
     QList<BrisaControlPointDevice*> embeddedDeviceList;
+
+    int downloaded;
 
     QString _major;
     QString _minor;

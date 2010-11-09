@@ -186,7 +186,7 @@ public:
      *
      *  \sa getEmbeddedDeviceList() , getServiceList()
      */
-    QList<BrisaIcon> getIconList() const;
+    QList<BrisaIcon *> getIconList() const;
 
     /*!
      *  Returns the service list.
@@ -297,7 +297,7 @@ private:
      */
     bool isRunning();
 
-    QList<BrisaIcon> iconList;
+    QList<BrisaIcon*> iconList;
     QList<BrisaService *> serviceList;
     QList<BrisaDevice *> embeddedDeviceList;
 

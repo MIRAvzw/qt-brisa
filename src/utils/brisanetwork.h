@@ -39,6 +39,9 @@
 
 #include "brisaglobal.h"
 
+
+#define LOCAL_HOST "127.0.0.1"
+
 /*!
  * Gets an valid IP address from an active interface on the host computer.
  *

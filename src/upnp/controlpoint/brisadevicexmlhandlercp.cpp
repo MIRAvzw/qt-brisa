@@ -127,6 +127,7 @@ void BrisaDeviceXMLHandlerCP::parseDevice(BrisaControlPointDevice *device,
                 }
             }
 
+
             QDomNodeList deviceList = element.elementsByTagName("deviceList");
             for (int i = 0; i < deviceList.size(); i++) {
                 //TODO parse devices;

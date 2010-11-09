@@ -29,12 +29,13 @@
 #ifndef _BRISASSDPSERVER_H
 #define _BRISASSDPSERVER_H
 
-#include <QUdpSocket>
 #include <QHttpRequestHeader>
 #include <QMap>
 #include <QString>
 
 #include "brisaglobal.h"
+#include "brisaudplistener.h"
+#include "brisanetwork.h"
 
 namespace BrisaUpnp {
 
@@ -177,7 +178,7 @@ private:
     int SSDP_PORT;
     QString S_SSDP_PORT;
 
-    QUdpSocket *udpListener;
+    BrisaUdpListener *udpListener;
 };
 
 }

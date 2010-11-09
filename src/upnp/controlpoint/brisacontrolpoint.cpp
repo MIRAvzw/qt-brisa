@@ -56,7 +56,6 @@ BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
 
     /* XML downloader */
     downloader = new QNetworkAccessManager();
-
     webserver->start();
 
     connect(http, SIGNAL(requestFinished(int, bool)), this, SLOT(httpResponse(int, bool)));
