@@ -1,5 +1,5 @@
-#ifndef CustomProjectWizard_H
-#define CustomProjectWizard_H
+#ifndef BrisaProjectWizard_H
+#define BrisaProjectWizard_H
 #include <extensionsystem/iplugin.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/basefilewizard.h>
@@ -22,11 +22,11 @@
 //    void on_finished();
 //};
 
-class CustomProjectWizard : public Core::IWizard
+class BrisaProjectWizard : public Core::IWizard
 {
 public:
-    CustomProjectWizard() {}
-    ~CustomProjectWizard() { }
+    BrisaProjectWizard() {}
+    ~BrisaProjectWizard() { }
     Core::IWizard::WizardKind kind() const;
     QIcon icon() const;
     QString description() const;

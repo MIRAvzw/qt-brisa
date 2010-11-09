@@ -1,4 +1,4 @@
-#include "CustomProjectWizard.h"
+#include "BrisaProjectWizard.h"
 #include <QtPlugin>
 #include <QStringList>
 #include <coreplugin/coreconstants.h>
@@ -48,48 +48,48 @@
 static QStringList projectPaths;
 
 
-Core::IWizard::WizardKind CustomProjectWizard::kind() const
+Core::IWizard::WizardKind BrisaProjectWizard::kind() const
 {
     return IWizard::ProjectWizard;
 }
 
 
-QIcon CustomProjectWizard::icon() const
+QIcon BrisaProjectWizard::icon() const
 {
-    return qApp->windowIcon();
+    return QIcon(":/images/brisa.png");
 }
 
-QString CustomProjectWizard::description() const
+QString BrisaProjectWizard::description() const
 {
     return "A BRisa project";
 }
-QString CustomProjectWizard::name() const
+QString BrisaProjectWizard::name() const
 {
     return "BRisa project";
 }
-QString CustomProjectWizard::category() const
+QString BrisaProjectWizard::category() const
 {
     return "Upnp Project";
 }
-QString CustomProjectWizard::trCategory() const
+QString BrisaProjectWizard::trCategory() const
 {
     return tr("UPnP Project");
 }
-QString CustomProjectWizard::displayName() const
+QString BrisaProjectWizard::displayName() const
 {
     return "BRisa UPnP";
 }
-QString CustomProjectWizard::id() const
+QString BrisaProjectWizard::id() const
 {
     return "BRisa Project";
 }
 
-QString CustomProjectWizard::displayCategory() const
+QString BrisaProjectWizard::displayCategory() const
 {
     return "Upnp Project";
 }
 
-QStringList CustomProjectWizard::runWizard(const QString &path, QWidget *parent)
+QStringList BrisaProjectWizard::runWizard(const QString &path, QWidget *parent)
 {
     Q_UNUSED(path);
     Q_UNUSED(parent);
@@ -114,7 +114,7 @@ QStringList CustomProjectWizard::runWizard(const QString &path, QWidget *parent)
 
     }
 
-    void CustomProjectWizard::on_finished()
+    void BrisaProjectWizard::on_finished()
     {
             qDebug() << "ON FINISHED:";
             //qDebug() << projectPaths.at(0);
@@ -125,8 +125,8 @@ QStringList CustomProjectWizard::runWizard(const QString &path, QWidget *parent)
                 ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(1));
     }
 
-    void CustomProjectWizard::setProjectPaths(QStringList paths){
-        qDebug() << "at customProjectWizard ";
+    void BrisaProjectWizard::setProjectPaths(QStringList paths){
+        qDebug() << "at BrisaProjectWizard ";
         //qDebug() << paths.at(0);
         //qDebug() << paths.at(1);
         foreach(QString path, paths)
