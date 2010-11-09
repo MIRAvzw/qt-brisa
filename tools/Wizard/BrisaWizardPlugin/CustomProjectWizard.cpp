@@ -117,17 +117,18 @@ QStringList CustomProjectWizard::runWizard(const QString &path, QWidget *parent)
     void CustomProjectWizard::on_finished()
     {
             qDebug() << "ON FINISHED:";
-            qDebug() << projectPaths.at(0);
-            qDebug() << projectPaths.at(1);
+            //qDebug() << projectPaths.at(0);
+            //qDebug() << projectPaths.at(1);
             ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(0));
-            if(projectPaths.at(1) != "")
+            qDebug() << projectPaths.length();
+            if(projectPaths.length() > 1)
                 ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(1));
     }
 
     void CustomProjectWizard::setProjectPaths(QStringList paths){
         qDebug() << "at customProjectWizard ";
-        qDebug() << paths.at(0);
-        qDebug() << paths.at(1);
+        //qDebug() << paths.at(0);
+        //qDebug() << paths.at(1);
         foreach(QString path, paths)
             projectPaths.append(path);
     }

@@ -989,7 +989,8 @@ if(field("generateControlPointYES").toString() == "true"){
 
     QStringList paths;
     paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "/" + field("projectName").toString() + ".pro").toAscii());
-    paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "ControlPoint/" + field("deviceName").toString() + "ControlPoint.pro").toAscii());
+    if(field("generateControlPointYES").toString() == "true")
+        paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "ControlPoint/" + field("deviceName").toString() + "ControlPoint.pro").toAscii());
     CustomProjectWizard::setProjectPaths(paths);
     QDialog::accept();
 
