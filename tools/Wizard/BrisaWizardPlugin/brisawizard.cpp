@@ -53,18 +53,18 @@ static QDir directory(QDir::home());
 //QStringList serviceNameList;
 //QList<BrisaService*> serviceList;
 QStringList stateVariableList;
-
+static bool wasAccept = false;
 
  BrisaWizard::BrisaWizard(QWidget *parent)
      : QWizard(parent)
  {
-     IntroPage* introPage = new IntroPage(this);
+     introPage = new IntroPage(this);
      addPage(introPage);
-     DevicePage *devicePage = new DevicePage(this);
+     devicePage = new DevicePage(this);
      addPage(devicePage);
-     ServicePage *servicePage = new ServicePage(this);
+     servicePage = new ServicePage(this);
      addPage(servicePage);
-     ActionPage *actionPage = new ActionPage(this);
+     actionPage = new ActionPage(this);
      addPage(actionPage);
 
      setPixmap(QWizard::BannerPixmap, QPixmap(":/images/brisaLogo.png"));
@@ -75,6 +75,13 @@ QStringList stateVariableList;
      connect(this,SIGNAL(currentIdChanged(int)),actionPage,SLOT(on_actionPage(int)));
      connect(this,SIGNAL(currentIdChanged(int)),servicePage,SLOT(on_servicePage(int)));
      connect(this,SIGNAL(currentIdChanged(int)),devicePage,SLOT(on_devicePage(int)));
+ }
+
+ BrisaWizard::~BrisaWizard(){
+    delete introPage;
+    delete devicePage;
+    delete servicePage;
+    delete actionPage;
  }
 
 
@@ -992,6 +999,7 @@ if(field("generateControlPointYES").toString() == "true"){
     if(field("generateControlPointYES").toString() == "true")
         paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "ControlPoint/" + field("deviceName").toString() + "ControlPoint.pro").toAscii());
     BrisaProjectWizard::setProjectPaths(paths);
+    wasAccept = true;
     QDialog::accept();
 
 }
@@ -1002,5 +1010,9 @@ if(field("generateControlPointYES").toString() == "true"){
 
  void BrisaWizard::generateService(){
 
+ }
+
+ bool BrisaWizard::wasAcceptedWizard(){
+     return wasAccept;
  }
 

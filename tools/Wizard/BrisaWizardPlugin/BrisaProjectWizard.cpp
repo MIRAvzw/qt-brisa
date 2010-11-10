@@ -119,10 +119,13 @@ QStringList BrisaProjectWizard::runWizard(const QString &path, QWidget *parent)
             qDebug() << "ON FINISHED:";
             //qDebug() << projectPaths.at(0);
             //qDebug() << projectPaths.at(1);
-            ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(0));
-            qDebug() << projectPaths.length();
-            if(projectPaths.length() > 1)
-                ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(1));
+            if(BrisaWizard::wasAcceptedWizard()){
+                ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(0));
+                qDebug() << projectPaths.length();
+                if(projectPaths.length() >= 1)
+                    ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(1));
+
+            }
     }
 
     void BrisaProjectWizard::setProjectPaths(QStringList paths){

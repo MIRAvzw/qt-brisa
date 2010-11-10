@@ -89,13 +89,20 @@ class BrisaWizard : public QWizard
 
 public:
     BrisaWizard(QWidget *parent = 0);
+    ~BrisaWizard();
     void accept();
+//    void reject();
     void generateServiceXml();//TODO
     void generatePro();//TODO
     void generateService();//TODO
     void generateDevice();//TODO
+    static bool wasAcceptedWizard();
 private:
     QList<BrisaService*> serviceList;
+    IntroPage* introPage;
+    DevicePage *devicePage;
+    ServicePage *servicePage;
+    ActionPage *actionPage;
     //IntroPage *introPage;
 public slots:
   //  void on_pagechanged(int id);
