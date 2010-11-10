@@ -20,11 +20,10 @@ INSTALLS += target \
     sources
 
 
-QTC_SOURCE_DIR = /home/wvs/Downloads/qt-creator-2.0.1-src
+QTC_SOURCE_DIR = /home/camilo/qt-creator-2.0.1-src #change this field to your Qt Creator Source code dir
 IDE_SOURCE_TREE = $$QTC_SOURCE_DIR
-QTC_BUILD_DIR = /home/wvs/Downloads/qt-creator-2.0.1-src
+QTC_BUILD_DIR = /home/camilo/qtcreator-build-desktop #change this field to your Qt Creator Builded code dir
 
-#DESTDIR =/home/camilo/qtcreator-build-desktop/lib/qtcreator/plugins
 DESTDIR = $$QTC_BUILD_DIR/lib/qtcreator/plugins/BRisa
 IDE_BUILD_TREE = $$QTC_BUILD_DIR
 

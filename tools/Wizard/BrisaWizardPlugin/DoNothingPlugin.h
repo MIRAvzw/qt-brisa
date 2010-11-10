@@ -13,8 +13,6 @@ public:
 
 public slots:
     void about();
-    void newProject();
-    void on_finished();
 };
 #endif // DONOTHINGPLUGIN_H
 

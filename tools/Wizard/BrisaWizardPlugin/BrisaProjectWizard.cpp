@@ -21,8 +21,6 @@
 #include <QIcon>
 #include <iplugin.h>
 #include <coreplugin/editormanager/editormanager.h>
-//#include <coreplugin/editormanager/editorview.h>
-//#include "mimedatabase.h"
 #include <QProcess>
 
 
@@ -43,7 +41,6 @@
 #include "brisawizard.h"
 
 
-//#include "DoNothingPlugin.h"
 
 static QStringList projectPaths;
 
@@ -95,43 +92,38 @@ QStringList BrisaProjectWizard::runWizard(const QString &path, QWidget *parent)
     Q_UNUSED(parent);
 
 
+    Q_INIT_RESOURCE(brisawizard);
 
-        QString wizard = QCoreApplication::applicationDirPath();
-        wizard.chop(3); //removes the bin
-        wizard += "lib/qtcreator/plugins/BRisa/classwizard";
+    QString translatorFileName = QLatin1String("qt_");
+    translatorFileName += QLocale::system().name();
+    QTranslator *translator = new QTranslator(QCoreApplication::instance());
+    if (translator->load(translatorFileName, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+        QCoreApplication::instance()->installTranslator(translator);
+    BrisaWizard *b = new BrisaWizard(parent);
+    b->show();
+    connect(b,SIGNAL(finished(int)),this, SLOT(on_finished()));
+    return QStringList();
 
-        Q_INIT_RESOURCE(brisawizard);
+}
 
-        QString translatorFileName = QLatin1String("qt_");
-        translatorFileName += QLocale::system().name();
-        QTranslator *translator = new QTranslator(QCoreApplication::instance());
-        if (translator->load(translatorFileName, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-            QCoreApplication::instance()->installTranslator(translator);
-        BrisaWizard *b = new BrisaWizard(parent);
-        b->show();
-        connect(b,SIGNAL(finished(int)),this, SLOT(on_finished()));
-        return QStringList();
+void BrisaProjectWizard::on_finished()
+{
+    qDebug() << "ON FINISHED:";
+    //qDebug() << projectPaths.at(0);
+    //qDebug() << projectPaths.at(1);
+    if(BrisaWizard::wasAcceptedWizard()){
+        ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(0));
+        qDebug() << projectPaths.length();
+        if(projectPaths.length() >= 1)
+            ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(1));
 
     }
+}
 
-    void BrisaProjectWizard::on_finished()
-    {
-            qDebug() << "ON FINISHED:";
-            //qDebug() << projectPaths.at(0);
-            //qDebug() << projectPaths.at(1);
-            if(BrisaWizard::wasAcceptedWizard()){
-                ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(0));
-                qDebug() << projectPaths.length();
-                if(projectPaths.length() >= 1)
-                    ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(1));
-
-            }
-    }
-
-    void BrisaProjectWizard::setProjectPaths(QStringList paths){
-        qDebug() << "at BrisaProjectWizard ";
-        //qDebug() << paths.at(0);
-        //qDebug() << paths.at(1);
-        foreach(QString path, paths)
-            projectPaths.append(path);
-    }
+void BrisaProjectWizard::setProjectPaths(QStringList paths){
+    qDebug() << "at BrisaProjectWizard ";
+    //qDebug() << paths.at(0);
+    //qDebug() << paths.at(1);
+    foreach(QString path, paths)
+        projectPaths.append(path);
+}
