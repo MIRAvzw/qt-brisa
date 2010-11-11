@@ -99,9 +99,11 @@ QStringList BrisaProjectWizard::runWizard(const QString &path, QWidget *parent)
     QTranslator *translator = new QTranslator(QCoreApplication::instance());
     if (translator->load(translatorFileName, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QCoreApplication::instance()->installTranslator(translator);
+
     BrisaWizard *b = new BrisaWizard(parent);
     b->show();
     connect(b,SIGNAL(finished(int)),this, SLOT(on_finished()));
+    connect(b, SIGNAL(finished(int)), b, SLOT(deleteLater()));
     return QStringList();
 
 }
@@ -114,8 +116,9 @@ void BrisaProjectWizard::on_finished()
     if(BrisaWizard::wasAcceptedWizard()){
         ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(0));
         qDebug() << projectPaths.length();
-        if(projectPaths.length() >= 1)
+        if(projectPaths.length() > 1)
             ProjectExplorer::ProjectExplorerPlugin::instance()->openProject(projectPaths.at(1));
+
 
     }
 }

@@ -47,12 +47,7 @@
 #include "brisawizard.h"
 #include "dialogargument.h"
 
-
-QList<BrisaAction *> listAction;
-static QDir directory(QDir::home());
-//QStringList serviceNameList;
-//QList<BrisaService*> serviceList;
-QStringList stateVariableList;
+QDir BrisaWizard::directory(QDir::home());
 static bool wasAccept = false;
 
  BrisaWizard::BrisaWizard(QWidget *parent)
@@ -78,11 +73,15 @@ static bool wasAccept = false;
  }
 
  BrisaWizard::~BrisaWizard(){
-    delete introPage;
-    delete devicePage;
-    delete servicePage;
-    delete actionPage;
+    introPage->deleteLater();
+    devicePage->deleteLater();
+    servicePage->deleteLater();
+    actionPage->deleteLater();
+
+    qDebug()<< "aqui";
  }
+
+
 
 
  void BrisaWizard::accept()
@@ -106,7 +105,7 @@ static bool wasAccept = false;
      QString className = firstCharClass.toUpper() + lastCharsClass.toLower();
      QString varBrisaDevice = firstCharClass.toLower() + lastCharsClass;
 
-     directory.setPath(field("devicePath").toString());
+     const_cast<QDir &>(directory).setPath(field("devicePath").toString());
 
      qDebug() << directory.path();
 
@@ -1000,7 +999,11 @@ if(field("generateControlPointYES").toString() == "true"){
         paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "ControlPoint/" + field("deviceName").toString() + "ControlPoint.pro").toAscii());
     BrisaProjectWizard::setProjectPaths(paths);
     wasAccept = true;
+    serviceList.clear();
+    listAction.clear();
+    paths.clear();
     QDialog::accept();
+
 
 }
 

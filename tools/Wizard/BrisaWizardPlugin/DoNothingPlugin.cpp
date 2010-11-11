@@ -10,6 +10,8 @@
 #include <QAction>
 #include <QMenu>
 #include <QMessageBox>
+#include <QIcon>
+#include <QPixmap>
 #include <QProcess>
 #include <QDir>
 #include <QtDebug>
@@ -50,8 +52,20 @@ bool DoNothingPlugin::initialize(const QStringList& args, QString *errMsg)
 
 void DoNothingPlugin::about()
 {
-    QMessageBox::information(0, tr("About BRisa Plugin"),
-                              tr("More info about Brisa in:\nhttp://brisa.garage.maemo.org/"));
+
+QMessageBox * aboutBox = new QMessageBox();
+/*QMessageBox::NoIcon,
+                                         tr("About BRisa Plugin"),
+                                         tr("BRisa is a project focused on the development of UPnP technologies. <br><br> It provides two projects: the python-brisa and qt-brisa, while a third project is under development: a java version. BRisa Python and Qt implement the UPnP specification 1.1 and shares the same framework API to building UPnP devices, services and control points. This means that developers are able to implement application in one of these programming language reading only a common programming API. In this way, developers only needs to learn just one API and implement UPnP applications in the programming languages BRisa project provides, this prevents, among other problems, have to learn other UPnP stack/API in case it is necessary to migrate codes from one programming language to other.<br><br> BRisa project is released in <a href= 'http://www.opensource.org/licenses/mit-license.php'> MIT License </a>(Python version) and in <a href='http://www.opensource.org/licenses/lgpl-license.php'> LGPL License </a> (Qt version). <br><br> <a href='http://brisa.garage.maemo.org/'>BRisa Project</a>"),
+                                         QMessageBox::Ok);
+aboutBox->setIconPixmap(QPixmap(":/images/bigBrisaIcon.png"));
+*/
+aboutBox->setText(tr("BRisa is a project focused on the development of UPnP technologies. <br><br> It provides two projects: the python-brisa and qt-brisa, while a third project is under development: a java version. BRisa Python and Qt implement the UPnP specification 1.1 and shares the same framework API to building UPnP devices, services and control points. This means that developers are able to implement application in one of these programming language reading only a common programming API. In this way, developers only needs to learn just one API and implement UPnP applications in the programming languages BRisa project provides, this prevents, among other problems, have to learn other UPnP stack/API in case it is necessary to migrate codes from one programming language to other.<br><br> BRisa project is released in <a href= 'http://www.opensource.org/licenses/mit-license.php'> MIT License </a>(Python version) and in <a href='http://www.opensource.org/licenses/lgpl-license.php'> LGPL License </a> (Qt version). <br><br> <a href='http://brisa.garage.maemo.org/'>BRisa Project</a>"));
+aboutBox->setWindowTitle(tr("About BRisa Plugin"));
+aboutBox->setIconPixmap(QPixmap(":/images/bigBrisaIcon.png"));
+aboutBox->show();
+
+//QMessageBox::about(0, tr("About BRisa Plugin"), tr("BRisa is a project focused on the development of UPnP technologies. <br><br> It provides two projects: the python-brisa and qt-brisa, while a third project is under development: a java version. BRisa Python and Qt implement the UPnP specification 1.1 and shares the same framework API to building UPnP devices, services and control points. This means that developers are able to implement application in one of these programming language reading only a common programming API. In this way, developers only needs to learn just one API and implement UPnP applications in the programming languages BRisa project provides, this prevents, among other problems, have to learn other UPnP stack/API in case it is necessary to migrate codes from one programming language to other.<br><br> BRisa project is released in <a href= 'http://www.opensource.org/licenses/mit-license.php'> MIT License </a>(Python version) and in <a href='http://www.opensource.org/licenses/lgpl-license.php'> LGPL License </a> (Qt version). <br><br> <a href='http://brisa.garage.maemo.org/'>BRisa Project</a>"));
 }
 
 

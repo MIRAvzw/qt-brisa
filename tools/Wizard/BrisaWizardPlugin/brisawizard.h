@@ -104,6 +104,13 @@ private:
     ServicePage *servicePage;
     ActionPage *actionPage;
     //IntroPage *introPage;
+    QList<BrisaAction *> listAction;
+
+    //QStringList serviceNameList;
+    //QList<BrisaService*> serviceList;
+    QStringList stateVariableList;
+    static QDir directory;
+
 public slots:
   //  void on_pagechanged(int id);
 signals:

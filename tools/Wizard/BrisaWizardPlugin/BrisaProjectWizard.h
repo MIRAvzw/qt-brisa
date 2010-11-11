@@ -10,7 +10,7 @@ class BrisaProjectWizard : public Core::IWizard
 {
 public:
     BrisaProjectWizard() {}
-    ~BrisaProjectWizard() { }
+    ~BrisaProjectWizard() { qDebug("hell2"); }
     Core::IWizard::WizardKind kind() const;
     QIcon icon() const;
     QString description() const;
