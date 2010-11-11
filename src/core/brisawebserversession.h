@@ -33,14 +33,18 @@
 namespace BrisaCore {
 
 class BrisaWebserver;
+
 class BrisaWebserverSession : public HttpSession
 {
 Q_OBJECT
 public:
-    BrisaWebserverSession(int socketDescriptor, BrisaWebserver *server);
+    BrisaWebserverSession(BrisaWebserver *server, HttpSessionManager *parent);
     ~BrisaWebserverSession();
 
     int isRequestSupported(const HttpRequest &request) const;
+
+signals:
+    void responsePosted(HttpResponse);
 
 public slots:
     void respond(const HttpResponse &r);

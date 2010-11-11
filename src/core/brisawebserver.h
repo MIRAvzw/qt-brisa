@@ -30,7 +30,6 @@
 
 #ifndef _BRISAWEBSERVER_H
 #define _BRISAWEBSERVER_H
-
 #include <QtCore>
 #include <QtNetwork>
 #include "brisaglobal.h"
@@ -75,13 +74,22 @@ namespace BrisaCore {
         BrisaWebService *service(QByteArray path) const;
 
     protected:
-        HttpSession *incomingSession(int socketDescriptor);
+        HttpServerFactory &factory();
 
     private:
+        class Factory: public HttpServerFactory
+        {
+        public:
+            Factory(BrisaWebserver *server) : server(server) {}
+            HttpSession *generateSessionHandler(HttpSessionManager *parent);
+
+        private:
+            BrisaWebserver *server;
+        } m_factory;
+
         // QHash and QList are reentrant, not thread-safe
         mutable QMutex mutex;
         QHash<QByteArray, BrisaWebService *> services;
-        QList<BrisaWebserverSession *> listeners;
     };
 
 #else // !USE_NEW_BRISA_WEBSERVER

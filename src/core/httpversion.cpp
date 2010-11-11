@@ -69,3 +69,19 @@ HttpVersion &HttpVersion::operator =(qreal version)
     m_minor = static_cast<int>(version * 10) % 10;
     return *this;
 }
+
+//int main()
+//{
+//    HttpVersion last(1, 1);
+//    HttpVersion legacy(1, 0);
+//    qDebug() << last == legacy;
+//    qDebug() << last == 1.1;
+//    qDebug() << last == 1.;
+//    qDebug() << legacy == 1.1;
+//    qDebug() << legacy == 1.0;
+//    qDebug() << last != 1.1;
+//    qDebug() << last != 1.0;
+//    qDebug() << legacy != 1.1;
+//    qDebug() << legacy != 1.0;
+//    return 0;
+//}

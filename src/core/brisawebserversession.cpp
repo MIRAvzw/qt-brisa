@@ -45,11 +45,12 @@ enum State
     WAITING_FOR_TRAILLING_HEADERS
 };
 
-BrisaWebserverSession::BrisaWebserverSession(int socketDescriptor, BrisaWebserver *server) :
-    HttpSession(socketDescriptor),
+BrisaWebserverSession::BrisaWebserverSession(BrisaWebserver *server, HttpSessionManager *parent) :
+    HttpSession(parent),
     server(server)
 {
     lastSupportedHttpVersion = HttpVersion(1, 1);
+    connect(this, SIGNAL(responsePosted(HttpResponse)), this, SLOT(writeResponse(HttpResponse)));
 }
 
 BrisaWebserverSession::~BrisaWebserverSession()
@@ -58,7 +59,7 @@ BrisaWebserverSession::~BrisaWebserverSession()
 
 void BrisaWebserverSession::respond(const HttpResponse &r)
 {
-    writeResponse(r);
+    emit responsePosted(r);
 }
 
 int BrisaWebserverSession::isRequestSupported(const HttpRequest &request) const

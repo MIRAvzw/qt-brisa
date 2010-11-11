@@ -26,41 +26,41 @@
 #ifndef HTTPSERVER_H
 #define HTTPSERVER_H
 
-#include <QThread>
+#include <QTcpServer>
 #include <QFile>
-#include "httpsession.h"
 #include <QHostAddress>
 
-class QTcpServer;
-class QTcpSocket;
+class HttpSession;
+class HttpSessionManager;
 
-class HttpServer : public QThread
+class HttpServerFactory
+{
+public:
+    virtual HttpSession *generateSessionHandler(HttpSessionManager *parent) = 0;
+};
+
+class HttpServer : public QTcpServer
 {
     Q_OBJECT
 public:
     explicit HttpServer(const QHostAddress &address = QHostAddress::Any,
                         quint16 port = 0, QObject *parent = 0);
     virtual ~HttpServer();
-    void run();
+
+    void start();
+
+    virtual HttpServerFactory &factory() = 0;
 
 protected:
-    virtual HttpSession *incomingSession(int socketDescriptor) = 0;
+    void incomingConnection(int handle);
 
-signals:
-//    /*
-//     * Register SSL password handler.
-//     * This is needed only if SSL certificate asks for a password. Instead of
-//     * prompting for a password on a console a specified function will be called.
-//     */
-//    typedef int (*mg_spcb_t)(char *buf, int num, int w, void *key);
-//    void mg_set_ssl_password_callback(struct mg_context *ctx, mg_spcb_t func);
-
-private slots:
-    void onNewConnection(int socketDescriptor);
+//    virtual HttpSession *incomingSession(int socketDescriptor) = 0;
 
 private:
     QHostAddress address;
     quint16 port;
+    QList<HttpSessionManager *> threads;
+    int ringIndex;
 };
 
 #endif // HTTPSERVER_H

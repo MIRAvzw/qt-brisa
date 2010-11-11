@@ -44,7 +44,8 @@ using namespace BrisaCore;
 using namespace BrisaCore;
 
 BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) :
-        HttpServer(host, port)
+        HttpServer(host, port),
+        m_factory(this)
 {
     addService("/", new BrisaWebStaticContent(DEFAULT_PAGE, this));
 }
@@ -101,17 +102,14 @@ BrisaWebService *BrisaWebserver::service(QByteArray path) const
     return service;
 }
 
-HttpSession *BrisaWebserver::incomingSession(int socketDescriptor)
+HttpServerFactory &BrisaWebserver::factory()
 {
-    BrisaWebserverSession *session = new BrisaWebserverSession(socketDescriptor, this);
+    return m_factory;
+}
 
-    mutex.lock();
-
-    listeners.append(session);
-
-    mutex.unlock();
-
-    return session;
+HttpSession *BrisaWebserver::Factory::generateSessionHandler(HttpSessionManager *parent)
+{
+    return new BrisaWebserverSession(server, parent);
 }
 
 #else

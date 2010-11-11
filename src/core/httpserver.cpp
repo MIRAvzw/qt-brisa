@@ -24,13 +24,12 @@
  */
 
 #include "httpserver.h"
-#include <QTcpServer>
-#include "tcpserver.h"
+#include "httpsessionmanager.h"
 
 #define DBG_PREFIX "HttpContext: "
 
 HttpServer::HttpServer(const QHostAddress &address, quint16 port, QObject *parent) :
-    QThread(parent),
+    QTcpServer(parent),
     address(address),
     port(port)
 {
@@ -38,23 +37,26 @@ HttpServer::HttpServer(const QHostAddress &address, quint16 port, QObject *paren
 
 HttpServer::~HttpServer()
 {
+    foreach(HttpSessionManager *thread, threads) {
+        thread->terminate();
+    }
+    foreach(HttpSessionManager *thread, threads) {
+        thread->wait();
+    }
 }
 
-void HttpServer::run()
+void HttpServer::incomingConnection(int socketDescriptor)
 {
-    TcpServer *socket = new TcpServer;
-    connect(socket, SIGNAL(newConnection(int)), this, SLOT(onNewConnection(int)));
-    connect(this, SIGNAL(finished()), socket, SLOT(deleteLater()));
-    socket->listen(address, port);
-    exec();
+    threads[(ringIndex++) % threads.size()]->addSession(socketDescriptor);
 }
 
-void HttpServer::onNewConnection(int socketDescriptor)
+void HttpServer::start()
 {
-    HttpSession *c = incomingSession(socketDescriptor);
-    if (c) {
-        connect(c, SIGNAL(finished()), c, SLOT(deleteLater()));
+    // TODO: lots of code reviews
+    threads.append(new HttpSessionManager(this));
 
-        c->start();
+    listen(address, port);
+    foreach(HttpSessionManager *thread, threads) {
+        thread->start();
     }
 }

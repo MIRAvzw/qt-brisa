@@ -170,12 +170,8 @@ BrisaDevice::~BrisaDevice()
     this->serviceList.clear();
 
     ssdp->deleteLater();;
-#ifdef USE_NEW_BRISA_WEBSERVER
-    webserver->quit();
-    webserver->deleteLater();
-#else
-	delete webserver;
-#endif
+
+    delete webserver;
 }
 
 void BrisaDevice::xmlGenerator()

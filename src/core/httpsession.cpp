@@ -24,8 +24,8 @@
  */
 
 #include "httpsession.h"
-#include "httpserver.h"
 #include <QTcpSocket>
+#include "httpsessionmanager.h"
 #define DBG_PREFIX "HttpConnection: "
 
 #ifdef major
@@ -43,32 +43,31 @@ enum State
     WAITING_FOR_ENTITY_BODY
 };
 
-HttpSession::HttpSession(int socketDescriptor, QObject *parent) :
-    QThread(parent),
+HttpSession::HttpSession(HttpSessionManager *sessionManager) :
+    QObject(sessionManager),
     lastSupportedHttpVersion(1, 1),
-    socket(NULL),
-    socketDescriptor(socketDescriptor),
+    sessionManager(sessionManager),
+    socket(new QTcpSocket()),
     state(WAITING_FOR_REQUEST_LINE)
 {
+    connect(socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+    connect(socket, SIGNAL(disconnected()), this, SLOT(onConnectionDie()));
 }
 
 HttpSession::~HttpSession()
 {
-    qDebug(DBG_PREFIX "Dying");
+    delete socket;
 }
 
-void HttpSession::run()
+void HttpSession::setSession(int socketDescriptor)
 {
-    socket = new QTcpSocket();
-    connect(socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+    requestInfo.clear();
+    buffer.clear();
+    state = WAITING_FOR_REQUEST_LINE;
 
-    connect(this, SIGNAL(finished()), socket, SLOT(deleteLater()));
-    connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
-    connect(socket, SIGNAL(destroyed()), this, SLOT(quit()));
+    birthTime = QDateTime::currentDateTime();
 
     socket->setSocketDescriptor(socketDescriptor);
-
-    exec();
 }
 
 int HttpSession::isRequestSupported(const HttpRequest &request) const
@@ -216,4 +215,12 @@ void HttpSession::onReadyRead()
         r.setCloseConnection(true);
         writeResponse(r);
     }
+}
+
+void HttpSession::onConnectionDie()
+{
+    if (cleanUp())
+        sessionManager->releaseSession(this);
+    else
+        deleteLater();
 }

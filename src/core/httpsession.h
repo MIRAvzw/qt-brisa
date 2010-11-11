@@ -26,20 +26,22 @@
 #ifndef HTTPSESSION_H
 #define HTTPSESSION_H
 
+#include <QObject>
 #include <QDateTime>
-#include <QThread>
 #include "httprequest.h"
 #include "httpresponse.h"
 
 class QTcpSocket;
+class HttpSessionManager;
 
-class HttpSession : public QThread
+class HttpSession: public QObject
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    explicit HttpSession(int socketDescriptor, QObject *parent = 0);
+    explicit HttpSession(HttpSessionManager *sessionManager);
     virtual ~HttpSession();
-    void run();
+
+    void setSession(int socketDescriptor);
 
     // @ret should return the HTTP response status (404 not found, method not implemented,
     // ...) or 0. If a 0 is returned, the server continues to read the request, otherwise,
@@ -49,6 +51,9 @@ public:
     // used to identify if this http request (version, method, uri, ...) is supported
     // always close the connection after respond the message
     virtual int isRequestSupported(const HttpRequest &request) const;
+
+protected slots:
+    void writeResponse(HttpResponse);
 
 protected:
     // used to respond BAD_REQUESTs
@@ -61,18 +66,21 @@ protected:
     virtual bool atEnd(HttpRequest &request, QByteArray &buffer) throw(HttpResponse) = 0;
     virtual void onRequest(const HttpRequest &request) = 0;
 
-    void writeResponse(HttpResponse);
-
-    // the ideia is to help to implement the Object pool pattern
-    // http://en.wikipedia.org/wiki/Object_pool_pattern
-//    virtual bool die();
+    // this function is called every time a connection is closed
+    // should return true if the object must keep alive or false
+    // if the object should be deleted
+    virtual bool cleanUp()
+    {
+        return true;
+    }
 
 private slots:
     void onReadyRead();
+    void onConnectionDie();
 
 private:
+    HttpSessionManager *sessionManager;
     QTcpSocket *socket;
-    int socketDescriptor;
     HttpRequest requestInfo;
     QDateTime birthTime;
     int state;
