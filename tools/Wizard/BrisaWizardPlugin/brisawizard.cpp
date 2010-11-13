@@ -988,7 +988,7 @@ if(field("generateControlPointYES").toString() == "true"){
     paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "/" + field("projectName").toString() + ".pro").toAscii());
     if(field("generateControlPointYES").toString() == "true")
         paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "ControlPoint/" + field("deviceName").toString() + "ControlPoint.pro").toAscii());
-    BrisaProjectWizard::setProjectPaths(paths);
+    brisaprojectwizard::setProjectPaths(paths);
     wasAccept = true;
     serviceList.clear();
     listAction.clear();

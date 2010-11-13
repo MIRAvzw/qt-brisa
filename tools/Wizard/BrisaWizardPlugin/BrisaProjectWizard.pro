@@ -1,6 +1,6 @@
 PROVIDER        = BRisa
 TEMPLATE        = lib
-TARGET          = BrisaProjectWizard
+TARGET          = brisaprojectwizard
 
 QT += network \
     xml
@@ -40,8 +40,8 @@ INCLUDEPATH += $$IDE_SOURCE_TREE/src \
                $$IDE_SOURCE_TREE/src/libs \
                $$IDE_SOURCE_TREE/src/libs/extensionsystem \
 
-HEADERS         = BrisaProjectWizard.h \
-                  DoNothingPlugin.h \
+HEADERS         = brisaprojectwizard.h \
+                  brisaplugin.h \
                   brisawizard.h \
                   dialogargument.h \
                   intropage.h \
@@ -50,8 +50,8 @@ HEADERS         = BrisaProjectWizard.h \
                   actionpage.h
 
 
-SOURCES         = BrisaProjectWizard.cpp \
-                    DoNothingPlugin.cpp \
+SOURCES         = brisaprojectwizard.cpp \
+                    brisaplugin.cpp \
                     dialogargument.cpp \
                     intropage.cpp \
                     devicepage.cpp \
@@ -60,7 +60,7 @@ SOURCES         = BrisaProjectWizard.cpp \
                     actionpage.cpp
 
 
-OTHER_FILES     = BrisaProjectWizard.pluginspec
+OTHER_FILES     = brisaprojectwizard.pluginspec
 
 # install
 target.path = $$[QT_INSTALL_EXAMPLES]/dialogs/classwizard
