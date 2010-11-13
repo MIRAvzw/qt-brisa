@@ -3,7 +3,7 @@
  * Instituto de Computação
  * Laboratório de Computação Pervasiva
  * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
- * Filename: BrisaProjectWizard.cpp
+ * Filename: brisaprojectwizard.cpp
  * Created: 11/13/2010
  * Description: Implements the new BRisa project function.
  * Authors: Willian Victor Silva <willian.victors@gmail.com> 2010
@@ -30,7 +30,7 @@
  */
 
 
-#include "BrisaProjectWizard.h"
+#include "brisaprojectwizard.h"
 #include <QtPlugin>
 #include <QStringList>
 #include <coreplugin/coreconstants.h>
@@ -77,48 +77,48 @@
 static QStringList projectPaths;
 
 
-Core::IWizard::WizardKind BrisaProjectWizard::kind() const
+Core::IWizard::WizardKind brisaprojectwizard::kind() const
 {
     return IWizard::ProjectWizard;
 }
 
 
-QIcon BrisaProjectWizard::icon() const
+QIcon brisaprojectwizard::icon() const
 {
     return QIcon(":/images/brisa.png");
 }
 
-QString BrisaProjectWizard::description() const
+QString brisaprojectwizard::description() const
 {
     return "A BRisa project";
 }
-QString BrisaProjectWizard::name() const
+QString brisaprojectwizard::name() const
 {
     return "BRisa project";
 }
-QString BrisaProjectWizard::category() const
+QString brisaprojectwizard::category() const
 {
     return "Upnp Project";
 }
-QString BrisaProjectWizard::trCategory() const
+QString brisaprojectwizard::trCategory() const
 {
     return tr("UPnP Project");
 }
-QString BrisaProjectWizard::displayName() const
+QString brisaprojectwizard::displayName() const
 {
     return "BRisa UPnP";
 }
-QString BrisaProjectWizard::id() const
+QString brisaprojectwizard::id() const
 {
     return "BRisa Project";
 }
 
-QString BrisaProjectWizard::displayCategory() const
+QString brisaprojectwizard::displayCategory() const
 {
     return "Upnp Project";
 }
 
-QStringList BrisaProjectWizard::runWizard(const QString &path, QWidget *parent)
+QStringList brisaprojectwizard::runWizard(const QString &path, QWidget *parent)
 {
     Q_UNUSED(path);
     Q_UNUSED(parent);
@@ -140,7 +140,7 @@ QStringList BrisaProjectWizard::runWizard(const QString &path, QWidget *parent)
 
 }
 
-void BrisaProjectWizard::on_finished()
+void brisaprojectwizard::on_finished()
 {
     qDebug() << "ON FINISHED:";
     //qDebug() << projectPaths.at(0);
@@ -155,8 +155,8 @@ void BrisaProjectWizard::on_finished()
     }
 }
 
-void BrisaProjectWizard::setProjectPaths(QStringList paths){
-    qDebug() << "at BrisaProjectWizard ";
+void brisaprojectwizard::setProjectPaths(QStringList paths){
+    qDebug() << "at brisaprojectwizard ";
     //qDebug() << paths.at(0);
     //qDebug() << paths.at(1);
     foreach(QString path, paths)

@@ -3,7 +3,7 @@
  * Instituto de Computação
  * Laboratório de Computação Pervasiva
  * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
- * Filename: BrisaProjectWizard.h
+ * Filename: brisaprojectwizard.h
  * Created: 11/13/2010
  * Description: Implements the new BRisa project function.
  * Authors: Willian Victor Silva <willian.victors@gmail.com> 2010
@@ -29,19 +29,19 @@
  *
  */
 
-#ifndef BrisaProjectWizard_H
-#define BrisaProjectWizard_H
+#ifndef brisaprojectwizard_H
+#define brisaprojectwizard_H
 #include <extensionsystem/iplugin.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/basefilewizard.h>
 #include <QStringList>
 
 
-class BrisaProjectWizard : public Core::IWizard
+class brisaprojectwizard : public Core::IWizard
 {
 public:
-    BrisaProjectWizard() {}
-    ~BrisaProjectWizard() { qDebug("hell2"); }
+    brisaprojectwizard() {}
+    ~brisaprojectwizard() { qDebug("hell2"); }
     Core::IWizard::WizardKind kind() const;
     QIcon icon() const;
     QString description() const;
@@ -62,4 +62,4 @@ public slots:
 
 };
 
-#endif // DONOTHINGPLUGIN_H
+#endif

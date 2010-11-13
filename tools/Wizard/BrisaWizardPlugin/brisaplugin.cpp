@@ -3,7 +3,7 @@
  * Instituto de Computação
  * Laboratório de Computação Pervasiva
  * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
- * Filename: DoNothingPlugin.cpp
+ * Filename: brisaplugin.cpp
  * Created: 11/13/2010
  * Description: Implements the BRisa Plugin.
  * Authors: Willian Victor Silva <willian.victors@gmail.com> 2010
@@ -29,7 +29,7 @@
  *
  */
 
-#include "DoNothingPlugin.h"
+#include "brisaplugin.h"
 #include <QtPlugin>
 #include <QStringList>
 #include <coreplugin/coreconstants.h>
@@ -49,30 +49,30 @@
 #include <QMainWindow>
 #include <QCoreApplication>
 
-#include "BrisaProjectWizard.h"
+#include "brisaprojectwizard.h"
 
-DoNothingPlugin::DoNothingPlugin()
+brisaplugin::brisaplugin()
 {
     // Do nothing
 }
-DoNothingPlugin::~DoNothingPlugin()
+brisaplugin::~brisaplugin()
 {
     // Do nothing
 }
 
-bool DoNothingPlugin::initialize(const QStringList& args, QString *errMsg)
+bool brisaplugin::initialize(const QStringList& args, QString *errMsg)
 {
 
     Q_UNUSED(args);
     Q_UNUSED(errMsg);
 
-    addAutoReleasedObject(new BrisaProjectWizard);
+    addAutoReleasedObject(new brisaprojectwizard);
     Core::ActionManager* am = Core::ICore::instance()->actionManager();
-    Core::ActionContainer* ac = am->createMenu("DoNothingPlugin.DoNothingMenu");
+    Core::ActionContainer* ac = am->createMenu("brisaplugin.brisaMenu");
     ac->menu()->setTitle("BRisa");
     am->actionContainer(Core::Constants::M_HELP)->addMenu(ac);
     Core::Command* cmd = am->registerAction(new QAction(this),
-                                            "DoNothingPlugin.AboutDoNothing",
+                                            "brisaplugin.Aboutbrisa",
                                             QList<int>() << 0);
     cmd->action()->setText(tr("About BRisa"));
     ac->addAction(cmd);
@@ -81,7 +81,7 @@ bool DoNothingPlugin::initialize(const QStringList& args, QString *errMsg)
 }
 
 
-void DoNothingPlugin::about()
+void brisaplugin::about()
 {
 
 QMessageBox * aboutBox = new QMessageBox();
@@ -100,14 +100,14 @@ aboutBox->show();
 }
 
 
-void DoNothingPlugin::extensionsInitialized()
+void brisaplugin::extensionsInitialized()
 {
     // Do nothing
 }
 
-void DoNothingPlugin::shutdown()
+void brisaplugin::shutdown()
 {
     // Do nothing
 }
 
-Q_EXPORT_PLUGIN(DoNothingPlugin)
+Q_EXPORT_PLUGIN(brisaplugin)

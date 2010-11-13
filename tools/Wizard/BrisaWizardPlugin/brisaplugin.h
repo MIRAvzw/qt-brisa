@@ -3,7 +3,7 @@
  * Instituto de Computação
  * Laboratório de Computação Pervasiva
  * BRisa Project / BRisa-Qt - http://brisa.garage.maemo.org
- * Filename: DoNothingPlugin.h
+ * Filename: brisaplugin.h
  * Created: 11/13/2010
  * Description: Implements the BRisa Plugin.
  * Authors: Willian Victor Silva <willian.victors@gmail.com> 2010
@@ -31,12 +31,12 @@
 #ifndef DONOTHINGPLUGIN_H
 #define DONOTHINGPLUGIN_H
 #include <extensionsystem/iplugin.h>
-class DoNothingPlugin : public ExtensionSystem::IPlugin
+class brisaplugin : public ExtensionSystem::IPlugin
 {
         Q_OBJECT
 public:
-    DoNothingPlugin();
-    ~DoNothingPlugin();
+    brisaplugin();
+    ~brisaplugin();
     void extensionsInitialized();
     bool initialize(const QStringList & arguments, QString * errorString);
     void shutdown();
