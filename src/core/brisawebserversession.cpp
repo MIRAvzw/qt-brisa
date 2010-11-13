@@ -57,8 +57,11 @@ BrisaWebserverSession::~BrisaWebserverSession()
 {
 }
 
-void BrisaWebserverSession::respond(const HttpResponse &r)
+void BrisaWebserverSession::respond(HttpResponse r)
 {
+    if (lastRequest.httpVersion().minor() == 0 || lastRequest.header("CONNECTION") == "close")
+        r.setCloseConnection(true);
+
     emit responsePosted(r);
 }
 
@@ -191,6 +194,7 @@ void BrisaWebserverSession::onRequest(const HttpRequest &request)
         return;
     }
     if (BrisaWebService *service = server->service(request.uri())) {
+        lastRequest = request;
         service->postRequest(request, this);
     } else {
         writeResponse(HttpResponse(request.httpVersion(), HttpResponse::NOT_FOUND, true));

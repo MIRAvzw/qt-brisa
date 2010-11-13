@@ -25,7 +25,7 @@
 
 #include "brisawebservice.h"
 
-#define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>"
+#define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>\n"
 
 using namespace BrisaCore;
 

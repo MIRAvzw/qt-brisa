@@ -47,7 +47,7 @@ signals:
     void responsePosted(HttpResponse);
 
 public slots:
-    void respond(const HttpResponse &r);
+    void respond(HttpResponse r);
 
 protected:
     bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
@@ -60,6 +60,7 @@ private:
 
     int chunkedEntity;
     QByteArray chunksBuffer;
+    HttpRequest lastRequest;
 };
 
 } // namespace BrisaCore
