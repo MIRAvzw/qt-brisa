@@ -28,15 +28,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#ifndef DONOTHINGPLUGIN_H
-#define DONOTHINGPLUGIN_H
+#ifndef BRISAPLUGIN_H
+#define BRISAPLUGIN_H
 #include <extensionsystem/iplugin.h>
-class brisaplugin : public ExtensionSystem::IPlugin
+class BrisaPlugin : public ExtensionSystem::IPlugin
 {
         Q_OBJECT
 public:
-    brisaplugin();
-    ~brisaplugin();
+    BrisaPlugin();
+    ~BrisaPlugin();
     void extensionsInitialized();
     bool initialize(const QStringList & arguments, QString * errorString);
     void shutdown();
@@ -44,5 +44,5 @@ public:
 public slots:
     void about();
 };
-#endif // DONOTHINGPLUGIN_H
+#endif // BRISAPLUGIN_H
 

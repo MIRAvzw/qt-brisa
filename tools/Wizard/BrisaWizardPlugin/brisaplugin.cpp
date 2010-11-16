@@ -51,22 +51,22 @@
 
 #include "brisaprojectwizard.h"
 
-brisaplugin::brisaplugin()
+BrisaPlugin::BrisaPlugin()
 {
     // Do nothing
 }
-brisaplugin::~brisaplugin()
+BrisaPlugin::~BrisaPlugin()
 {
     // Do nothing
 }
 
-bool brisaplugin::initialize(const QStringList& args, QString *errMsg)
+bool BrisaPlugin::initialize(const QStringList& args, QString *errMsg)
 {
 
     Q_UNUSED(args);
     Q_UNUSED(errMsg);
 
-    addAutoReleasedObject(new brisaprojectwizard);
+    addAutoReleasedObject(new BrisaProjectWizard);
     Core::ActionManager* am = Core::ICore::instance()->actionManager();
     Core::ActionContainer* ac = am->createMenu("brisaplugin.brisaMenu");
     ac->menu()->setTitle("BRisa");
@@ -81,7 +81,7 @@ bool brisaplugin::initialize(const QStringList& args, QString *errMsg)
 }
 
 
-void brisaplugin::about()
+void BrisaPlugin::about()
 {
 
 QMessageBox * aboutBox = new QMessageBox();
@@ -100,14 +100,14 @@ aboutBox->show();
 }
 
 
-void brisaplugin::extensionsInitialized()
+void BrisaPlugin::extensionsInitialized()
 {
     // Do nothing
 }
 
-void brisaplugin::shutdown()
+void BrisaPlugin::shutdown()
 {
     // Do nothing
 }
 
-Q_EXPORT_PLUGIN(brisaplugin)
+Q_EXPORT_PLUGIN(BrisaPlugin)

@@ -29,19 +29,19 @@
  *
  */
 
-#ifndef brisaprojectwizard_H
-#define brisaprojectwizard_H
+#ifndef BRISAPROJECTWIZARD_H
+#define BRISAPROJECTWIZARD_H
 #include <extensionsystem/iplugin.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/basefilewizard.h>
 #include <QStringList>
 
 
-class brisaprojectwizard : public Core::IWizard
+class BrisaProjectWizard : public Core::IWizard
 {
 public:
-    brisaprojectwizard() {}
-    ~brisaprojectwizard() { qDebug("hell2"); }
+    BrisaProjectWizard() {}
+    ~BrisaProjectWizard() { qDebug("hell2"); }
     Core::IWizard::WizardKind kind() const;
     QIcon icon() const;
     QString description() const;
@@ -62,4 +62,4 @@ public slots:
 
 };
 
-#endif
+#endif //BRISAPROJECTWIZARD_H

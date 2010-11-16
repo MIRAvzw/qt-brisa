@@ -77,48 +77,48 @@
 static QStringList projectPaths;
 
 
-Core::IWizard::WizardKind brisaprojectwizard::kind() const
+Core::IWizard::WizardKind BrisaProjectWizard::kind() const
 {
     return IWizard::ProjectWizard;
 }
 
 
-QIcon brisaprojectwizard::icon() const
+QIcon BrisaProjectWizard::icon() const
 {
     return QIcon(":/images/brisa.png");
 }
 
-QString brisaprojectwizard::description() const
+QString BrisaProjectWizard::description() const
 {
     return "A BRisa project";
 }
-QString brisaprojectwizard::name() const
+QString BrisaProjectWizard::name() const
 {
     return "BRisa project";
 }
-QString brisaprojectwizard::category() const
+QString BrisaProjectWizard::category() const
 {
     return "Upnp Project";
 }
-QString brisaprojectwizard::trCategory() const
+QString BrisaProjectWizard::trCategory() const
 {
     return tr("UPnP Project");
 }
-QString brisaprojectwizard::displayName() const
+QString BrisaProjectWizard::displayName() const
 {
     return "BRisa UPnP";
 }
-QString brisaprojectwizard::id() const
+QString BrisaProjectWizard::id() const
 {
     return "BRisa Project";
 }
 
-QString brisaprojectwizard::displayCategory() const
+QString BrisaProjectWizard::displayCategory() const
 {
     return "Upnp Project";
 }
 
-QStringList brisaprojectwizard::runWizard(const QString &path, QWidget *parent)
+QStringList BrisaProjectWizard::runWizard(const QString &path, QWidget *parent)
 {
     Q_UNUSED(path);
     Q_UNUSED(parent);
@@ -140,7 +140,7 @@ QStringList brisaprojectwizard::runWizard(const QString &path, QWidget *parent)
 
 }
 
-void brisaprojectwizard::on_finished()
+void BrisaProjectWizard::on_finished()
 {
     qDebug() << "ON FINISHED:";
     //qDebug() << projectPaths.at(0);
@@ -155,7 +155,7 @@ void brisaprojectwizard::on_finished()
     }
 }
 
-void brisaprojectwizard::setProjectPaths(QStringList paths){
+void BrisaProjectWizard::setProjectPaths(QStringList paths){
     qDebug() << "at brisaprojectwizard ";
     //qDebug() << paths.at(0);
     //qDebug() << paths.at(1);

@@ -29,8 +29,8 @@
  *
  */
 
-#ifndef CLASSWIZARD_H
-#define CLASSWIZARD_H
+#ifndef BRISAWIZARD_H
+#define BRISAWIZARD_H
 #include "intropage.h"
 #include "devicepage.h"
 #include "servicepage.h"
@@ -101,4 +101,4 @@ signals:
 
 };
 
-#endif
+#endif //BRISAWIZARD_H
