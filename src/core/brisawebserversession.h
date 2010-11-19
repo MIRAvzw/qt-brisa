@@ -47,12 +47,15 @@ signals:
     void responsePosted(HttpResponse);
 
 public slots:
-    void respond(HttpResponse r);
+    void respond(HttpResponse r, bool chunkedResponse = false);
 
 protected:
     bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
     bool atEnd(HttpRequest &request, QByteArray &buffer) throw(HttpResponse);
     void onRequest(const HttpRequest &request);
+
+    void prepareResponse(HttpResponse &);
+    void writeEntityBody(const HttpResponse &, QTcpSocket *);
 
 private:
     BrisaWebserver *server;
@@ -61,6 +64,8 @@ private:
     int chunkedEntity;
     QByteArray chunksBuffer;
     HttpRequest lastRequest;
+
+    bool useChunkedResponse;
 };
 
 } // namespace BrisaCore

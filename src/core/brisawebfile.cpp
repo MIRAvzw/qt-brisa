@@ -60,11 +60,12 @@ void BrisaWebFile::onRequest(const HttpRequest &request,
     QFile *file = new QFile(m_fileName);
     file->open(QIODevice::ReadOnly);
     //    response.setHeader("CONTENT-TYPE", ); // TODO
-    response.setHeader("CONTENT-LENGTH", QByteArray::number(file->size()));
+
+    // TODO: interpret the request and add range fields in response
 
     response.setEntityBody(file);
 
-    session->respond(response);
+    session->respond(response, true);
 }
 
 #else // !USE_NEW_BRISA_WEBSERVER

@@ -26,7 +26,10 @@
 #include "brisawebserversession.h"
 #include "brisawebserver.h"
 #include "brisawebservice.h"
-using namespace BrisaCore;
+
+#ifndef MAPPED_MEMORY_SIZE
+#define MAPPED_MEMORY_SIZE 64
+#endif
 
 #ifdef major
 #undef major
@@ -35,6 +38,8 @@ using namespace BrisaCore;
 #ifdef minor
 #undef minor
 #endif
+
+using namespace BrisaCore;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
@@ -57,11 +62,9 @@ BrisaWebserverSession::~BrisaWebserverSession()
 {
 }
 
-void BrisaWebserverSession::respond(HttpResponse r)
+void BrisaWebserverSession::respond(HttpResponse r, bool chunkedResponse)
 {
-    if (lastRequest.httpVersion().minor() == 0 || lastRequest.header("CONNECTION") == "close")
-        r.setCloseConnection(true);
-
+    useChunkedResponse = chunkedResponse;
     emit responsePosted(r);
 }
 
@@ -198,6 +201,41 @@ void BrisaWebserverSession::onRequest(const HttpRequest &request)
         service->postRequest(request, this);
     } else {
         writeResponse(HttpResponse(request.httpVersion(), HttpResponse::NOT_FOUND, true));
+    }
+}
+
+void BrisaWebserverSession::prepareResponse(HttpResponse &r)
+{
+    if (useChunkedResponse) {
+        r.setHeader("TRANSFER-ENCODING", "chunked");
+        r.setHeader("CONTENT-LENGTH", QByteArray());
+    } else {
+        r.setHeader("CONTENT-LENGTH", QByteArray::number(r.entitySize()));
+    }
+
+    if (lastRequest.httpVersion().minor() == 0 || lastRequest.header("CONNECTION") == "close")
+        r.setCloseConnection(true);
+}
+
+void BrisaWebserverSession::writeEntityBody(const HttpResponse &r, QTcpSocket *s)
+{
+    QIODevice *body = r.entityBody();
+    body->seek(0);
+
+    if (useChunkedResponse) {
+        QByteArray buffer;
+
+        while (!body->atEnd()) {
+            buffer = body->read(MAPPED_MEMORY_SIZE);
+            s->write(QByteArray::number(buffer.size(), 16).toUpper());
+            s->write("\r\n");
+            s->write(buffer);
+        }
+
+        s->write("0\r\n\r\n");
+    } else {
+        while (!body->atEnd())
+            s->write(body->read(MAPPED_MEMORY_SIZE));
     }
 }
 

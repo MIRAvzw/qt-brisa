@@ -400,7 +400,11 @@ void BrisaService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebse
 
     BrisaActionXmlParser actionXmlParser;
 
-    actionXmlParser.setXmlContent(request.entityBody());
+    {
+        QIODevice *xml = request.entityBody();
+        xml->seek(0);
+        actionXmlParser.setXmlContent(xml->readAll());
+    }
 
     if (actionXmlParser.parseSOAP()) {
         //If servicetype is incorrect

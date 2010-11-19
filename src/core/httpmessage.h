@@ -28,7 +28,7 @@
 
 #include "httpversion.h"
 #include <QHash>
-#include <QIODevice>
+#include <QBuffer>
 
 class HttpMessage
 {
@@ -49,12 +49,11 @@ public:
     QHash<QByteArray, QByteArray>::const_iterator headersEndIterator() const;
 
     qint64 entitySize() const;
-    QByteArray entityBody() const;
-    /*
-      returns the number of bytes written or -1 if some error occurs
-      */
-    qint64 entityBody(QIODevice *device) const;
+    QIODevice *entityBody() const;
+
+    // creates a QBuffer
     void setEntityBody(const QByteArray &body);
+
     /*
       the \p bodyDevice must be opened in readMode and must be
       random-acess (not sequencial) device
@@ -72,8 +71,7 @@ private:
     // the maximum number of headers should be 64
     QHash<QByteArray, QByteArray> m_headers;
 
-    QByteArray m_entityBody;
-    QIODevice *m_entityBodyDevice;
+    QIODevice *m_entityBody;
 };
 
 inline HttpVersion HttpMessage::httpVersion() const
@@ -103,19 +101,12 @@ inline QHash<QByteArray, QByteArray>::const_iterator HttpMessage::headersEndIter
 
 inline qint64 HttpMessage::entitySize() const
 {
-    if (m_entityBodyDevice) {
-        return m_entityBodyDevice->size();
-    } else {
-        return m_entityBody.size();
-    }
+    return m_entityBody->size();
 }
 
-inline QByteArray HttpMessage::entityBody() const
+inline QIODevice *HttpMessage::entityBody() const
 {
-    if (m_entityBodyDevice)
-        return m_entityBodyDevice->readAll();
-    else
-        return m_entityBody;
+    return m_entityBody;
 }
 
 #endif // HTTPMESSAGE_H

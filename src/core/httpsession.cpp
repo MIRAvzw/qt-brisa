@@ -26,7 +26,12 @@
 #include "httpsession.h"
 #include <QTcpSocket>
 #include "httpsessionmanager.h"
+
 #define DBG_PREFIX "HttpConnection: "
+
+#ifndef MAPPED_MEMORY_SIZE
+#define MAPPED_MEMORY_SIZE 64
+#endif
 
 #ifdef major
 #undef major
@@ -81,10 +86,8 @@ int HttpSession::isRequestSupported(const HttpRequest &request) const
 
 void HttpSession::writeResponse(HttpResponse r)
 {
-    // WARNING: callings to QTcpSocket::write are causing this warning, even when
-    // the call is made in this thread:
-    //  QObject: Cannot create children for a parent that is in a different thread.
-    //  (Parent is QNativeSocketEngine(*), parent's thread is BrisaCore::BrisaWebserverSession(*), current thread is QThread(*)
+    prepareResponse(r);
+
     socket->write(r.httpVersion());
     socket->write(" ");
     socket->write(QByteArray::number(r.statusCode()));
@@ -103,17 +106,26 @@ void HttpSession::writeResponse(HttpResponse r)
         socket->write("\r\n");
     }
 
-    if (!r.entitySize()) {
-        socket->write("Content-Length: 0\r\n");
-    }
-
     socket->write("\r\n");
 
-    if (r.entitySize())
-        r.entityBody(socket);
+    writeEntityBody(r, socket);
 
     if (r.closeConnection())
         socket->close();
+}
+
+void HttpSession::prepareResponse(HttpResponse &r)
+{
+    r.setHeader("CONTENT-LENGTH", QByteArray::number(r.entitySize()));
+}
+
+void HttpSession::writeEntityBody(const HttpResponse &r, QTcpSocket *s)
+{
+    QIODevice *body = r.entityBody();
+
+    body->seek(0);
+    while (!body->atEnd())
+        s->write(body->read(MAPPED_MEMORY_SIZE));
 }
 
 void HttpSession::onReadyRead()

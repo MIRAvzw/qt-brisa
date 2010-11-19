@@ -66,6 +66,9 @@ protected:
     virtual bool atEnd(HttpRequest &request, QByteArray &buffer) throw(HttpResponse) = 0;
     virtual void onRequest(const HttpRequest &request) = 0;
 
+    virtual void prepareResponse(HttpResponse &);
+    virtual void writeEntityBody(const HttpResponse &, QTcpSocket *);
+
     // this function is called every time a connection is closed
     // should return true if the object must keep alive or false
     // if the object should be deleted

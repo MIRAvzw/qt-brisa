@@ -25,18 +25,16 @@
 
 #include "httpmessage.h"
 
-#define MAPPED_MEMORY_SIZE 64
-
 HttpMessage::HttpMessage(HttpVersion httpVersion) :
         m_httpVersion(httpVersion),
-        m_entityBodyDevice(NULL)
+        m_entityBody(NULL)
 {
 }
 
 HttpMessage::~HttpMessage()
 {
-    if (m_entityBodyDevice)
-        m_entityBodyDevice->deleteLater();
+    if (m_entityBody)
+        m_entityBody->deleteLater();
 }
 
 void HttpMessage::setHttpVersion(const HttpVersion &version)
@@ -56,31 +54,21 @@ void HttpMessage::setHeader(const QByteArray &name, const QByteArray &value)
     }
 }
 
-qint64 HttpMessage::entityBody(QIODevice *device) const
-{
-    if (!device->isWritable())
-        return -1;
-
-    qint64 numberByteWritten = 0;
-
-    if (m_entityBodyDevice) {
-        m_entityBodyDevice->seek(0);
-        while (!m_entityBodyDevice->atEnd())
-            numberByteWritten += device->write(m_entityBodyDevice->read(MAPPED_MEMORY_SIZE));
-    } else {
-        numberByteWritten += device->write(m_entityBody);
-    }
-
-    return numberByteWritten;
-}
-
 void HttpMessage::setEntityBody(const QByteArray &body)
 {
-    if (m_entityBodyDevice) {
-        m_entityBodyDevice->deleteLater();
-        m_entityBodyDevice = NULL;
+    if (m_entityBody && !dynamic_cast<QBuffer *>(m_entityBody)) {
+        m_entityBody->deleteLater();
+        m_entityBody = NULL;
     }
-    m_entityBody = body;
+
+    if (m_entityBody)
+        m_entityBody->close();
+    else
+        m_entityBody = new QBuffer;
+
+    static_cast<QBuffer *>(m_entityBody)->setData(body);
+
+    m_entityBody->open(QIODevice::ReadOnly);
 }
 
 bool HttpMessage::setEntityBody(QIODevice *bodyDevice)
@@ -88,13 +76,11 @@ bool HttpMessage::setEntityBody(QIODevice *bodyDevice)
     if (!bodyDevice->isReadable() || bodyDevice->isSequential())
         return false;
 
-    if (m_entityBodyDevice)
-        m_entityBodyDevice->deleteLater();
-    else
-        m_entityBody.clear();
+    if (m_entityBody)
+        m_entityBody->deleteLater();
 
-    m_entityBodyDevice = bodyDevice;
-    m_entityBodyDevice->setParent(NULL);
+    m_entityBody = bodyDevice;
+    m_entityBody->setParent(NULL);
 
     return true;
 }
@@ -103,10 +89,6 @@ void HttpMessage::clear()
 {
     m_headers.clear();
 
-    if (m_entityBodyDevice) {
-        m_entityBodyDevice->deleteLater();
-        m_entityBodyDevice = NULL;
-    } else {
-        m_entityBody.clear();
-    }
+    m_entityBody->deleteLater();
+    m_entityBody = NULL;
 }
