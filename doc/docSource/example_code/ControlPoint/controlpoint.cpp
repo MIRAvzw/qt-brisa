@@ -37,6 +37,7 @@ void ControlPoint::onNewDevice(BrisaControlPointDevice *device)
             return;
     }
     devices.append(device);
+    device->downloadIcons();
     qDebug() << "Got new device " << device->getAttribute(BrisaControlPointDevice::Udn);
     qDebug() << "Type 'list' to see the whole list";    
 }

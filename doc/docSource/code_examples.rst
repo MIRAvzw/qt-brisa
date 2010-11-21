@@ -296,8 +296,24 @@ and store/delete in/from the list.
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
     :lines: 32-51
 
-Now we will implement the functions that are going to perform the actions by the command handler and the 
-private functions to show the Services from a device and its embedded devices
+Before continuing let us see quickly how to download device's icons if you need them in your control point.
+
+BrisaControlPointDevice class has a method called downloadIcons which request the download of all its icons. When all downloads
+are finished BrisaControlPointDevice will emit a onReadyDownloadIcons(BrisaControlPointDevice*) signal. So basically all you need to do is the following:
+
+Create a slot which you are going to use to do whatever you want with devices icons. I'm calling my slot iconsDownloadFinished, but you can put any name you want. Inside your Control Point header file:
+::
+    public slots:
+        void iconsDownloadFinished(BrisaControlPointDevice*)
+
+And inside your source file call BrisaControlPointDevice downloadIcons() method when you find a device. Also, connect onReadyDownloadIcons(BrisaControlPointDevice*) signal to the slot you created, like this:
+::
+    device->downloadIcons();
+    connect(device, SIGNAL(onReadyDownloadIcons(BrisaControlPointDevice*)), 
+            this, SLOT(iconsDownloadFinished(BrisaControlPointDevice*)))
+
+All BrisaIcons objects inside your BrisaControlPointDevice will now have a QIcon object with the icon's object. To access BrisaIcons objects you can use device 
+getIconList() method and then BrisaIcon getIcon() to retrieve QIcon object related to that BrisaIcon!
 
 .. literalinclude:: example_code/ControlPoint/controlpoint.cpp
     :lines: 53-123
