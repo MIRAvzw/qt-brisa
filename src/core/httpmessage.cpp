@@ -31,6 +31,15 @@ HttpMessage::HttpMessage(HttpVersion httpVersion) :
 {
 }
 
+HttpMessage::HttpMessage(const HttpMessage &m) :
+        m_httpVersion(m.m_httpVersion),
+        m_headers(m.m_headers),
+        m_entityBody(m.m_entityBody),
+        m_range(m.m_range)
+{
+    m.m_entityBody = NULL;
+}
+
 HttpMessage::~HttpMessage()
 {
     if (m_entityBody)
@@ -91,4 +100,9 @@ void HttpMessage::clear()
 
     m_entityBody->deleteLater();
     m_entityBody = NULL;
+}
+
+void HttpMessage::setRange(const QPair<qlonglong, qlonglong> &range)
+{
+    m_range = range;
 }

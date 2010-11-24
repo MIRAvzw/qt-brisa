@@ -55,12 +55,35 @@ namespace BrisaCore {
         QString fileName() const;
         void setFile(const QString &fileName);
 
+        QByteArray contentType() const;
+        void setContentType(const QByteArray &);
+
+        bool useChunkedEntities() const;
+        void setUseChunkedEntities(bool);
+
     protected:
         void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
 
     private:
         QString m_fileName;
+        QByteArray m_contentType;
+        bool m_useChunkedEntities;
     };
+
+    inline QString BrisaWebFile::fileName() const
+    {
+        return m_fileName;
+    }
+
+    inline QByteArray BrisaWebFile::contentType() const
+    {
+        return m_contentType;
+    }
+
+    inline bool BrisaWebFile::useChunkedEntities() const
+    {
+        return m_useChunkedEntities;
+    }
 
 #else // !USE_NEW_BRISA_WEBSERVER
 

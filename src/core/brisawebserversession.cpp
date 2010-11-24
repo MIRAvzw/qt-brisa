@@ -206,36 +206,64 @@ void BrisaWebserverSession::onRequest(const HttpRequest &request)
 
 void BrisaWebserverSession::prepareResponse(HttpResponse &r)
 {
+    if (lastRequest.httpVersion().minor() == 0 || lastRequest.header("CONNECTION") == "close")
+        r.setCloseConnection(true);
+
+    QPair<qlonglong, qlonglong> range = r.range();
+
     if (useChunkedResponse) {
         r.setHeader("TRANSFER-ENCODING", "chunked");
         r.setHeader("CONTENT-LENGTH", QByteArray());
     } else {
-        r.setHeader("CONTENT-LENGTH", QByteArray::number(r.entitySize()));
+        if (r.useRange()) {
+            r.setHeader("CONTENT-LENGTH", QByteArray::number(1 + range.second
+                                                             - range.first));
+        } else {
+            r.setHeader("CONTENT-LENGTH", QByteArray::number(r.entitySize()));
+        }
     }
 
-    if (lastRequest.httpVersion().minor() == 0 || lastRequest.header("CONNECTION") == "close")
-        r.setCloseConnection(true);
+    if (r.useRange()) {
+        r.setHeader("CONTENT-RANGE",
+                    QByteArray("bytes ")
+                    + QByteArray::number(range.first) + '-'
+                    + QByteArray::number(range.second) + '/'
+                    + QByteArray::number(r.entitySize()));
+    }
 }
 
 void BrisaWebserverSession::writeEntityBody(const HttpResponse &r, QTcpSocket *s)
 {
     QIODevice *body = r.entityBody();
-    body->seek(0);
+    QPair<qlonglong, qlonglong> range = r.range();
+
+    if (!r.useRange()) {
+        range.first = 0;
+        range.second = body->size() - 1;
+    }
+    body->seek(range.first);
+    qlonglong remainingBytes = 1 + range.second - range.first;
 
     if (useChunkedResponse) {
         QByteArray buffer;
 
-        while (!body->atEnd()) {
-            buffer = body->read(MAPPED_MEMORY_SIZE);
+        while (remainingBytes) {
+            buffer = body->read((MAPPED_MEMORY_SIZE > remainingBytes)
+                                ? remainingBytes : MAPPED_MEMORY_SIZE);
             s->write(QByteArray::number(buffer.size(), 16).toUpper());
             s->write("\r\n");
             s->write(buffer);
+            remainingBytes -= buffer.size();
         }
 
         s->write("0\r\n\r\n");
     } else {
-        while (!body->atEnd())
-            s->write(body->read(MAPPED_MEMORY_SIZE));
+        while (remainingBytes) {
+            QByteArray buffer = body->read((MAPPED_MEMORY_SIZE > remainingBytes)
+                                           ? remainingBytes : MAPPED_MEMORY_SIZE);
+            s->write(buffer);
+            remainingBytes -= buffer.size();
+        }
     }
 }
 

@@ -108,7 +108,8 @@ void HttpSession::writeResponse(HttpResponse r)
 
     socket->write("\r\n");
 
-    writeEntityBody(r, socket);
+    if (r.entityBody())
+        writeEntityBody(r, socket);
 
     if (r.closeConnection())
         socket->close();

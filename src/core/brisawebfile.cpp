@@ -29,12 +29,14 @@
 
 #include "brisawebserversession.h"
 #include "httpresponse.h"
+#include <QScopedPointer>
 
 using namespace BrisaCore;
 
 BrisaWebFile::BrisaWebFile(const QString &fileName, QObject *parent) :
         BrisaWebService(parent),
-        m_fileName(fileName)
+        m_fileName(fileName),
+        m_useChunkedEntities(false)
 {
 }
 
@@ -42,14 +44,19 @@ BrisaWebFile::~BrisaWebFile()
 {
 }
 
-QString BrisaWebFile::fileName() const
-{
-    return m_fileName;
-}
-
 void BrisaWebFile::setFile(const QString &fileName)
 {
     m_fileName = fileName;
+}
+
+void BrisaWebFile::setContentType(const QByteArray &cT)
+{
+    m_contentType = cT;
+}
+
+void BrisaWebFile::setUseChunkedEntities(bool u)
+{
+    m_useChunkedEntities = u;
 }
 
 void BrisaWebFile::onRequest(const HttpRequest &request,
@@ -57,15 +64,74 @@ void BrisaWebFile::onRequest(const HttpRequest &request,
 {
     HttpResponse response(request.httpVersion());
 
-    QFile *file = new QFile(m_fileName);
+    QScopedPointer<QFile> file(new QFile(m_fileName));
     file->open(QIODevice::ReadOnly);
-    //    response.setHeader("CONTENT-TYPE", ); // TODO
 
-    // TODO: interpret the request and add range fields in response
+    const qint64 fileSize = file->size();
 
-    response.setEntityBody(file);
+    if (!m_contentType.isEmpty())
+        response.setHeader("CONTENT-TYPE", m_contentType);
 
-    session->respond(response, true);
+    if (request.header("ACCEPT-RANGES") == "bytes")
+        response.setHeader("ACCEPT-RANGES", "bytes");
+
+    if (!request.header("RANGE").isEmpty()) {
+        QByteArray rangeHeader = request.header("RANGE");
+
+        // from begin of range to the end of the file
+        if (rangeHeader.indexOf('-') == -1) {
+            // 6 = QByteArray("bytes=").size()
+            QByteArray firstBytePos = rangeHeader
+                                      .mid(rangeHeader.indexOf("bytes=") + 6);
+
+            bool ok;
+            qlonglong firstByte = firstBytePos.toLongLong(&ok);
+
+            if (ok) {
+                response.setRange(QPair<qlonglong, qlonglong>(firstByte,
+                                                              fileSize - 1));
+                response.setStatusCode(HttpResponse::PARTIAL_CONTENT);
+            }
+        } else {
+            QByteArray firstBytePos = rangeHeader
+                                      .mid(rangeHeader.indexOf("bytes=") + 6,
+                                           rangeHeader.indexOf('-') - 6);
+            QByteArray lastBytePos = rangeHeader.mid(rangeHeader.indexOf('-') + 1);
+
+            // has initial bytePos
+            if (!firstBytePos.isEmpty()) {
+                bool ok[2];
+                qlonglong firstByte = firstBytePos.toLongLong(ok);
+                qlonglong lastByte = lastBytePos.toLongLong(ok + 1);
+
+                if (ok[0]) {
+                    if (ok[1]) {
+                        if (firstByte < lastByte) {
+                            response.setRange(QPair<qlonglong, qlonglong>(firstByte,
+                                                                          lastByte));
+                            response.setStatusCode(HttpResponse::PARTIAL_CONTENT);
+                        }
+                    } else {
+                        response.setRange(QPair<qlonglong, qlonglong>(firstByte,
+                                                                      fileSize - 1));
+                    }
+                }
+            } else {
+                bool ok;
+                qlonglong lastBytes = lastBytePos.toLongLong(&ok);
+
+                if (ok) {
+                    response.setRange(QPair<qlonglong, qlonglong>(fileSize - lastBytes,
+                                                                  fileSize - 1));
+                    response.setStatusCode(HttpResponse::PARTIAL_CONTENT);
+                }
+            }
+        }
+    }
+
+    response.setEntityBody(file.take());
+
+    session->respond(response, m_useChunkedEntities);
 }
 
 #else // !USE_NEW_BRISA_WEBSERVER

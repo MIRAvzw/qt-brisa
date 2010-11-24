@@ -34,6 +34,7 @@ class HttpMessage
 {
 public:
     HttpMessage(HttpVersion httpVersion);
+    HttpMessage(const HttpMessage &);
     ~HttpMessage();
 
     HttpVersion httpVersion() const;
@@ -54,6 +55,11 @@ public:
     // creates a QBuffer
     void setEntityBody(const QByteArray &body);
 
+    QPair<qlonglong, qlonglong> range() const;
+    void setRange(const QPair<qlonglong, qlonglong> &);
+
+    bool useRange() const;
+
     /*
       the \p bodyDevice must be opened in readMode and must be
       random-acess (not sequencial) device
@@ -71,7 +77,8 @@ private:
     // the maximum number of headers should be 64
     QHash<QByteArray, QByteArray> m_headers;
 
-    QIODevice *m_entityBody;
+    mutable QIODevice *m_entityBody;
+    QPair<qlonglong, qlonglong> m_range;
 };
 
 inline HttpVersion HttpMessage::httpVersion() const
@@ -101,12 +108,25 @@ inline QHash<QByteArray, QByteArray>::const_iterator HttpMessage::headersEndIter
 
 inline qint64 HttpMessage::entitySize() const
 {
-    return m_entityBody->size();
+    if(m_entityBody)
+        return m_entityBody->size();
+    else
+        return 0;
 }
 
 inline QIODevice *HttpMessage::entityBody() const
 {
     return m_entityBody;
+}
+
+inline QPair<qlonglong, qlonglong> HttpMessage::range() const
+{
+    return m_range;
+}
+
+inline bool HttpMessage::useRange() const
+{
+    return (m_range.second != 0);
 }
 
 #endif // HTTPMESSAGE_H
