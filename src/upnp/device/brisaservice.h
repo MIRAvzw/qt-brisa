@@ -35,7 +35,7 @@
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-namespace BrisaCore
+namespace Brisa
 {
     class BrisaWebserver;
 }
@@ -67,24 +67,24 @@ namespace BrisaUpnp {
 
         BrisaStateVariable *getVariable(const QString &variableName);
 
-        void buildWebServiceTree(::BrisaCore::BrisaWebserver *sessionManager);
+        void buildWebServiceTree(Brisa::BrisaWebserver *sessionManager);
 
         void setDescriptionFile(const QString &scpdFilePath);
 
         QString getDescriptionFile();
 
     protected:
-        void onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session);
+        void onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session);
 
     private slots:
-        void call(const QString &method, BrisaInArgument param, ::BrisaCore::BrisaWebserverSession *);
-        void onInvalidRequest(::BrisaCore::BrisaWebserverSession *session);
+        void call(const QString &method, BrisaInArgument param, Brisa::BrisaWebserverSession *);
+        void onInvalidRequest(Brisa::BrisaWebserverSession *session);
 
     private:
 
-        void respondAction(BrisaCore::BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName /*= QString()*/);
+        void respondAction(Brisa::BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName /*= QString()*/);
 
-        void respondError(BrisaCore::BrisaWebserverSession *session, int errorCode, QString errorDescription = QString());
+        void respondError(Brisa::BrisaWebserverSession *session, int errorCode, QString errorDescription = QString());
 
         void parseDescriptionFile();
 
@@ -94,7 +94,7 @@ namespace BrisaUpnp {
 
         void bindActionsToServiceMethods();
 
-        QMap<QString, BrisaCore::BrisaWebService *> childWebServices;
+        QMap<QString, Brisa::BrisaWebService *> childWebServices;
 
         QString scpdFilePath;
 
@@ -156,7 +156,7 @@ public:
     /*!
      *  Returns the web service.
      */
-    BrisaCore::BrisaWebServiceProvider *getWebService();
+    Brisa::BrisaWebServiceProvider *getWebService();
 
     /*!
      *  This method creates all the webservice related stuff. It creates a URL for the control path,
@@ -223,9 +223,9 @@ private:
      */
     void bindActionsToServiceMethods();
 
-    BrisaCore::BrisaWebServiceProvider *webService;
+    Brisa::BrisaWebServiceProvider *webService;
 
-    QMap<QString, BrisaCore::BrisaWebService *> childWebServices;
+    QMap<QString, Brisa::BrisaWebService *> childWebServices;
 
     QString scpdFilePath;
    

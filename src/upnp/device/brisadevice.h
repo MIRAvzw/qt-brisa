@@ -39,7 +39,7 @@
 #include "brisaicon.h"
 #include "brisaglobal.h"
 
-namespace BrisaCore
+namespace Brisa
 {
     class BrisaWebserver;
 }
@@ -328,7 +328,7 @@ private:
     QTemporaryFile descriptionFile;
 
     BrisaSSDPServer *ssdp;
-    ::BrisaCore::BrisaWebserver *webserver;
+    Brisa::BrisaWebserver *webserver;
     bool running;
 };
 

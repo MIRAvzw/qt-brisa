@@ -42,8 +42,8 @@
 
 namespace BrisaUpnp {
 
-using BrisaCore::BrisaWebserver;
-using BrisaCore::BrisaWebService;
+using Brisa::BrisaWebserver;
+using Brisa::BrisaWebService;
 
 /*!
  *  \class BrisaUpnp::BrisaEventProxy brisaeventproxy.h BrisaUpnp/BrisaEventProxy
@@ -96,7 +96,7 @@ signals:
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 protected:
-    void onRequest(const HttpRequest &request, BrisaCore::BrisaWebserverSession *session);
+    void onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session);
 #endif
 
 private:

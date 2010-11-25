@@ -32,7 +32,7 @@
 
 #include "brisaconfig.h"
 
-using namespace BrisaCore;
+using namespace Brisa;
 
 BrisaConfigurationManager::BrisaConfigurationManager(const QString &configPath,
         const QHash<QString, QString> &state) {

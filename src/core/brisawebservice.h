@@ -44,7 +44,7 @@
 
 #endif // USE_NEW_BRISA_WEBSERVER
 
-namespace BrisaCore {
+namespace Brisa {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 

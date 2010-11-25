@@ -32,7 +32,7 @@
 #include "brisawebserversession.h"
 #include "brisawebfile.h"
 #ifndef USE_NEW_BRISA_WEBSERVER
-using namespace BrisaCore;
+using namespace Brisa;
 #endif
 
 #define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>\n"
@@ -41,7 +41,7 @@ using namespace BrisaCore;
 
 #include "brisawebserversession.h"
 
-using namespace BrisaCore;
+using namespace Brisa;
 
 BrisaWebserver::BrisaWebserver(const QHostAddress &host, quint16 port) :
         HttpServer(host, port),

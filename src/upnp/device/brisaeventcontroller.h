@@ -43,24 +43,24 @@ namespace BrisaUpnp {
 
 #include "brisawebservice.h"
 
-    class BRISA_UPNP_EXPORT BrisaEventController: public BrisaCore::BrisaWebService
+    class BRISA_UPNP_EXPORT BrisaEventController: public Brisa::BrisaWebService
     {
     Q_OBJECT
 
     public:
-        BrisaEventController(::BrisaCore::BrisaWebserver *sessionManager,
+        BrisaEventController(Brisa::BrisaWebserver *sessionManager,
                 QList<BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
         virtual ~BrisaEventController();
 
     public slots:
         void variableChanged(BrisaStateVariable *variable);
 
-        void subscribe(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session);
+        void subscribe(const HttpRequest &request, Brisa::BrisaWebserverSession *session);
 
-        void unsubscribe(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session);
+        void unsubscribe(const HttpRequest &request, Brisa::BrisaWebserverSession *session);
 
     protected:
-        void onRequest(const HttpRequest &, ::BrisaCore::BrisaWebserverSession *session);
+        void onRequest(const HttpRequest &, Brisa::BrisaWebserverSession *session);
 
     private:
         BrisaEventController(const BrisaEventController &); // = delete;
@@ -89,7 +89,7 @@ namespace BrisaUpnp {
  * \brief Handles the event subscriptions and event messages for the service.
  */
 
-class BRISA_UPNP_EXPORT BrisaEventController: public BrisaCore::BrisaWebService
+class BRISA_UPNP_EXPORT BrisaEventController: public Brisa::BrisaWebService
 {
 Q_OBJECT
 

@@ -39,7 +39,7 @@
 #include "brisawebstaticcontent.h"
 #include "brisawebfile.h"
 
-namespace BrisaCore {
+namespace Brisa {
 
 /*!
  *  \brief The BrisaWebServiceProvider class works as web service manager for the web server.

@@ -41,7 +41,7 @@ using namespace BrisaUpnp;
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 BrisaEventController::BrisaEventController(
-        ::BrisaCore::BrisaWebserver *sessionManager,
+        Brisa::BrisaWebserver *sessionManager,
         QList<BrisaStateVariable *> *stateVariableList,
         QObject *parent) :
 #ifdef USE_NEW_BRISA_WEBSERVER
@@ -55,7 +55,7 @@ BrisaEventController::BrisaEventController(
 }
 
 void BrisaEventController::onRequest(const HttpRequest &r,
-                                     ::BrisaCore::BrisaWebserverSession *session)
+                                     Brisa::BrisaWebserverSession *session)
 {
     if (r.method() == "SUBSCRIBE") {
         subscribe(r, session);
@@ -65,7 +65,7 @@ void BrisaEventController::onRequest(const HttpRequest &r,
 }
 
 inline void BrisaEventController::subscribe(const HttpRequest &request,
-                                            ::BrisaCore::BrisaWebserverSession *session)
+                                            Brisa::BrisaWebserverSession *session)
 {
     const QHash<QByteArray, QByteArray> headers = request.headers();
     if (headers.contains("SID")) { //Then it's probably a renewal request.
@@ -135,7 +135,7 @@ inline void BrisaEventController::subscribe(const HttpRequest &request,
 }
 
 inline void BrisaEventController::unsubscribe(const HttpRequest &request,
-                                              ::BrisaCore::BrisaWebserverSession *session)
+                                              Brisa::BrisaWebserverSession *session)
 {
     const QHash<QByteArray, QByteArray> headers = request.headers();
     if (headers.contains("SID")) {
@@ -204,7 +204,7 @@ void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUr
 #define ERROR_400_MESSAGE "Bad Request"
 #define ERROR_412_MESSAGE "Precondition Failed"
 
-using namespace BrisaCore;
+using namespace Brisa;
 
 BrisaEventController::BrisaEventController(
         QxtAbstractWebSessionManager *sessionManager,

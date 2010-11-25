@@ -51,7 +51,7 @@
 
 #endif // USE_NEW_BRISA_WEBSERVER
 
-namespace BrisaCore {
+namespace Brisa {
 
 /*!
  *  \brief The BrisaWebserver class is a web server implementation.

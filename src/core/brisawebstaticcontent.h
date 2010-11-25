@@ -42,11 +42,11 @@
 
 #endif // USE_NEW_BRISA_WEBSERVER
 
-namespace BrisaCore {
+namespace Brisa {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-    class BrisaWebStaticContent: public ::BrisaCore::BrisaWebService
+    class BrisaWebStaticContent: public BrisaWebService
     {
     Q_OBJECT
     public:

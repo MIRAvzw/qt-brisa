@@ -39,7 +39,7 @@
 #undef minor
 #endif
 
-using namespace BrisaCore;
+using namespace Brisa;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 

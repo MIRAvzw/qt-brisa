@@ -36,7 +36,7 @@
 
 #include "brisaglobal.h"
 
-namespace BrisaCore {
+namespace Brisa {
 
 /*!
  \brief Class that provides an easy way of managing configurations.

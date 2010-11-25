@@ -62,7 +62,7 @@ namespace BrisaUpnp {
  * \brief An abstract class for the control point side and device side service
  */
 #ifdef USE_NEW_BRISA_WEBSERVER
-class BRISA_UPNP_EXPORT BrisaAbstractService: public ::BrisaCore::BrisaWebService {
+class BRISA_UPNP_EXPORT BrisaAbstractService: public Brisa::BrisaWebService {
 #else
 class BRISA_UPNP_EXPORT BrisaAbstractService: virtual public QObject {
 #endif

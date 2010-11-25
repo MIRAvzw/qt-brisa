@@ -30,7 +30,7 @@
 
 #include "httpsession.h"
 
-namespace BrisaCore {
+namespace Brisa {
 
 class BrisaWebserver;
 
@@ -68,6 +68,6 @@ private:
     bool useChunkedResponse;
 };
 
-} // namespace BrisaCore
+} // namespace Brisa
 
 #endif // BRISAWEBSERVERSESSION_H

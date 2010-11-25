@@ -97,7 +97,7 @@ BrisaService::~BrisaService() {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-void BrisaService::call(const QString &method, BrisaInArgument param, ::BrisaCore::BrisaWebserverSession *session)
+void BrisaService::call(const QString &method, BrisaInArgument param, Brisa::BrisaWebserverSession *session)
 {
     for (QList<BrisaAction *>::iterator i = this->actionList.begin(); i != actionList.end(); ++i) {
         BrisaAction *action = *i;
@@ -303,14 +303,14 @@ void BrisaService::call(const QString &method, BrisaInArgument &param) {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-void BrisaService::buildWebServiceTree(::BrisaCore::BrisaWebserver *sessionManager)
+void BrisaService::buildWebServiceTree(Brisa::BrisaWebserver *sessionManager)
 {
     BrisaWebService *control = new BrisaControlWebService(serviceType);
 
-    connect(control, SIGNAL(requestReceived(QString,BrisaInArgument,::BrisaCore::BrisaWebserverSession*)),
-            this, SLOT(call(QString,BrisaInArgument,::BrisaCore::BrisaWebserverSession*)));
-    connect(control, SIGNAL(invalidRequest(::BrisaCore::BrisaWebserverSession*)),
-            this, SLOT(onInvalidRequest(::BrisaCore::BrisaWebserverSession*)));
+    connect(control, SIGNAL(requestReceived(QString,BrisaInArgument,Brisa::BrisaWebserverSession*)),
+            this, SLOT(call(QString,BrisaInArgument,Brisa::BrisaWebserverSession*)));
+    connect(control, SIGNAL(invalidRequest(Brisa::BrisaWebserverSession*)),
+            this, SLOT(onInvalidRequest(Brisa::BrisaWebserverSession*)));
 
     BrisaEventController *event = new BrisaEventController(sessionManager,
                                                            &stateVariableList,
@@ -321,7 +321,7 @@ void BrisaService::buildWebServiceTree(::BrisaCore::BrisaWebserver *sessionManag
     sessionManager->addService((serviceId + '/' + eventSubUrl.section('/', -1)).toUtf8(), event);
 
     sessionManager->addService((serviceId + '/' + scpdUrl.section('/', -1)).toUtf8(),
-                               new ::BrisaCore::BrisaWebFile(scpdFilePath, this));
+                               new Brisa::BrisaWebFile(scpdFilePath, this));
 
     childWebServices.insert(controlUrl.section('/', -1), control);
     childWebServices.insert(eventSubUrl.section('/', -1), event);
@@ -329,7 +329,7 @@ void BrisaService::buildWebServiceTree(::BrisaCore::BrisaWebserver *sessionManag
     parseDescriptionFile();
 }
 
-void BrisaService::onInvalidRequest(::BrisaCore::BrisaWebserverSession *session)
+void BrisaService::onInvalidRequest(Brisa::BrisaWebserverSession *session)
 {
     respondError(session, UPNP_INVALID_ACTION);
 }
@@ -337,9 +337,9 @@ void BrisaService::onInvalidRequest(::BrisaCore::BrisaWebserverSession *session)
 #else // !USE_NEW_BRISA_WEBSERVER
 
 void BrisaService::buildWebServiceTree(QxtAbstractWebSessionManager *sessionManager) {
-    webService = new ::BrisaCore::BrisaWebServiceProvider(sessionManager, this);
+    webService = new Brisa::BrisaWebServiceProvider(sessionManager, this);
 
-    ::BrisaCore::BrisaWebService *control = new ::BrisaCore::BrisaWebService(sessionManager, this);
+    Brisa::BrisaWebService *control = new Brisa::BrisaWebService(sessionManager, this);
     webService->addService(controlUrl.section('/', -1), control);
 
     BrisaEventController *event = new BrisaEventController(sessionManager,
@@ -383,7 +383,7 @@ BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
 
 #ifndef USE_NEW_BRISA_WEBSERVER
 
-::BrisaCore::BrisaWebServiceProvider *BrisaService::getWebService()
+Brisa::BrisaWebServiceProvider *BrisaService::getWebService()
 {
     return webService;
 }
@@ -392,7 +392,7 @@ BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-void BrisaService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session)
+void BrisaService::onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session)
 {
     if (request.method() != "POST") {
         session->respond(HttpResponse(request.httpVersion(), HttpResponse::BAD_REQUEST, true));
@@ -450,7 +450,7 @@ void BrisaService::parseGenericRequest(const QString &method, const QMultiHash<
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
-inline void BrisaService::respondAction(::BrisaCore::BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName)
+inline void BrisaService::respondAction(Brisa::BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName)
 {
     QByteArray message("<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
                        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
@@ -474,7 +474,7 @@ inline void BrisaService::respondAction(::BrisaCore::BrisaWebserverSession *sess
     session->respond(r);
 }
 
-inline void BrisaService::respondError(::BrisaCore::BrisaWebserverSession *session, int errorCode, QString errorDescription)
+inline void BrisaService::respondError(Brisa::BrisaWebserverSession *session, int errorCode, QString errorDescription)
 {
     if (errorDescription == "") {
             errorDescription = this->errorCodeToString(errorCode);

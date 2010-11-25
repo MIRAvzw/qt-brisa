@@ -27,7 +27,7 @@
 
 #define DEFAULT_PAGE "<html><body><h1>BRisa WebServer!</h1></body></html>\n"
 
-using namespace BrisaCore;
+using namespace Brisa;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 

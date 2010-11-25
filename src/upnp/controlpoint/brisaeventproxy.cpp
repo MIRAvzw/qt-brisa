@@ -148,7 +148,7 @@ QHttpRequestHeader *BrisaEventProxy::getUnsubscriptionRequest() const {
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 
-void BrisaEventProxy::onRequest(const HttpRequest &request, BrisaCore::BrisaWebserverSession *session)
+void BrisaEventProxy::onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session)
 {
     QByteArray sid = request.header("SID");
 

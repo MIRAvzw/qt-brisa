@@ -11,7 +11,7 @@ BrisaControlWebService::BrisaControlWebService(const QString &serviceType, QObje
 {
 }
 
-void BrisaControlWebService::onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session)
+void BrisaControlWebService::onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session)
 {
     if (request.method() != "POST") {
         // TODO: close connection?

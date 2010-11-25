@@ -50,7 +50,7 @@ namespace BrisaUpnp {
  * \brief Abstract class that represents an event subscription
  */
 #ifdef USE_NEW_BRISA_WEBSERVER
-class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public ::BrisaCore::BrisaWebService {
+class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public Brisa::BrisaWebService {
 #else
 class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public QObject {
 #endif

@@ -31,7 +31,7 @@
 #include "httpresponse.h"
 #include <QScopedPointer>
 
-using namespace BrisaCore;
+using namespace Brisa;
 
 BrisaWebFile::BrisaWebFile(const QString &fileName, QObject *parent) :
         BrisaWebService(parent),
@@ -136,7 +136,7 @@ void BrisaWebFile::onRequest(const HttpRequest &request,
 
 #else // !USE_NEW_BRISA_WEBSERVER
 
-using namespace BrisaCore;
+using namespace Brisa;
 
 BrisaWebFile::BrisaWebFile(QxtAbstractWebSessionManager *sm, QString filePath,
         QObject *parent) :

@@ -6,18 +6,18 @@
 
 namespace BrisaUpnp {
 
-    class BrisaControlWebService : public BrisaCore::BrisaWebService
+    class BrisaControlWebService : public Brisa::BrisaWebService
 {
 Q_OBJECT
 public:
     explicit BrisaControlWebService(const QString &serviceType = QString(), QObject *parent = 0);
 
 signals:
-    void requestReceived(QString xml, BrisaInArgument args, ::BrisaCore::BrisaWebserverSession *server);
-    void invalidRequest(::BrisaCore::BrisaWebserverSession *server);
+    void requestReceived(QString xml, BrisaInArgument args, Brisa::BrisaWebserverSession *server);
+    void invalidRequest(Brisa::BrisaWebserverSession *server);
 
 protected:
-    void onRequest(const HttpRequest &request, ::BrisaCore::BrisaWebserverSession *session);
+    void onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session);
 
 private:
     QString serviceType;
