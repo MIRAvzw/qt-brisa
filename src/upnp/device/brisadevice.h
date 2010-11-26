@@ -240,6 +240,11 @@ public:
      */
     void stop();
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+    int threadsNumber() const;
+    void setThreadsNumber(int);
+#endif
+
 public slots:
     /*!
      *  Connects to the msearchRequestReceived() signal comming from the ssdp module. It parses

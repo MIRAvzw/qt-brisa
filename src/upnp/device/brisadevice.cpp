@@ -400,6 +400,20 @@ void BrisaDevice::start()
 	running = true;
 }
 
+#ifdef USE_NEW_BRISA_WEBSERVER
+
+int BrisaDevice::threadsNumber() const
+{
+    return webserver->threadsNumber();
+}
+
+void BrisaDevice::setThreadsNumber(int n)
+{
+    webserver->setThreadsNumber(n);
+}
+
+#endif
+
 void BrisaDevice::stop()
 {
 	if (!isRunning()) {

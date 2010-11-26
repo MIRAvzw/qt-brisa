@@ -51,6 +51,10 @@ public:
 
     void start();
 
+    int threadsNumber() const;
+    // must be more than 0
+    void setThreadsNumber(int);
+
     virtual HttpServerFactory &factory() = 0;
 
 protected:
@@ -64,5 +68,10 @@ private:
 };
 
 } // namespace Brisa
+
+inline int Brisa::HttpServer::threadsNumber() const
+{
+    return threads.size();
+}
 
 #endif // HTTPSERVER_H
