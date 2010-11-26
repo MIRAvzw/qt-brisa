@@ -86,7 +86,7 @@ private:
 
 } // namespace Brisa
 
-inline Brisa::HttpVersion HttpMessage::httpVersion() const
+inline Brisa::HttpVersion Brisa::HttpMessage::httpVersion() const
 {
     return m_httpVersion;
 }

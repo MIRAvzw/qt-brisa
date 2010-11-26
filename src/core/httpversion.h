@@ -68,13 +68,13 @@ private:
 
 } // namespace Brisa
 
-Brisa::HttpVersion::HttpVersion(int httpVersionMajor, int httpVersionMinor) :
+inline Brisa::HttpVersion::HttpVersion(int httpVersionMajor, int httpVersionMinor) :
         m_major(httpVersionMajor),
         m_minor(httpVersionMinor)
 {
 }
 
-Brisa::HttpVersion::HttpVersion(const QByteArray &str) :
+inline Brisa::HttpVersion::HttpVersion(const QByteArray &str) :
         m_major(0),
         m_minor(0)
 {
@@ -98,7 +98,7 @@ Brisa::HttpVersion::HttpVersion(const QByteArray &str) :
     }
 }
 
-HttpVersion &Brisa::HttpVersion::operator =(qreal version)
+inline Brisa::HttpVersion &Brisa::HttpVersion::operator =(qreal version)
 {
     m_major = version;
     m_minor = static_cast<int>(version * 10) % 10;
