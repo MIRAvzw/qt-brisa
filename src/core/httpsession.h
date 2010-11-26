@@ -32,6 +32,9 @@
 #include "httpresponse.h"
 
 class QTcpSocket;
+
+namespace Brisa {
+
 class HttpSessionManager;
 
 class HttpSession: public QObject
@@ -89,5 +92,7 @@ private:
     int state;
     QByteArray buffer;
 };
+
+} // namespace Brisa
 
 #endif // HTTPSESSION_H

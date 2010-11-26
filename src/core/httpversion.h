@@ -28,6 +28,8 @@
 
 #include <QByteArray>
 
+namespace Brisa {
+
 class HttpVersion
 {
 public:
@@ -64,34 +66,73 @@ private:
     int m_minor;
 };
 
-inline int HttpVersion::minor() const
+} // namespace Brisa
+
+Brisa::HttpVersion::HttpVersion(int httpVersionMajor, int httpVersionMinor) :
+        m_major(httpVersionMajor),
+        m_minor(httpVersionMinor)
+{
+}
+
+Brisa::HttpVersion::HttpVersion(const QByteArray &str) :
+        m_major(0),
+        m_minor(0)
+{
+    if (!str.startsWith("HTTP/"))
+        return;
+    int indexOfSlash = str.indexOf('/');
+    if (indexOfSlash != -1) {
+        int indexOfDot = str.indexOf('.', indexOfSlash);
+        if (indexOfDot != -1) {
+            bool ok[2];
+
+            int tmp[] =
+            {str.mid(indexOfSlash + 1, indexOfDot - indexOfSlash - 1).toInt(ok),
+             str.mid(indexOfDot + 1).toInt(ok + 1)};
+
+            if (ok[0] && ok[1]) {
+                m_major = tmp[0];
+                m_minor = tmp[1];
+            }
+        }
+    }
+}
+
+HttpVersion &Brisa::HttpVersion::operator =(qreal version)
+{
+    m_major = version;
+    m_minor = static_cast<int>(version * 10) % 10;
+    return *this;
+}
+
+inline int Brisa::HttpVersion::minor() const
 {
     return m_minor;
 }
 
-inline int HttpVersion::major() const
+inline int Brisa::HttpVersion::major() const
 {
     return m_major;
 }
 
-inline bool HttpVersion::operator ==(const HttpVersion &v)
+inline bool Brisa::HttpVersion::operator ==(const HttpVersion &v)
 {
     return m_major == v.m_major && m_minor == v.m_minor;
 }
 
-inline bool HttpVersion::operator ==(qreal r) const
+inline bool Brisa::HttpVersion::operator ==(qreal r) const
 {
     qreal self = static_cast<qreal> (m_major) + (m_minor / 10.);
     return self == r;
 }
 
-inline bool HttpVersion::operator !=(qreal r) const
+inline bool Brisa::HttpVersion::operator !=(qreal r) const
 {
     qreal self = static_cast<qreal> (m_major) + (m_minor / 10.);
     return self != r;
 }
 
-inline bool HttpVersion::operator >(const HttpVersion &o) const
+inline bool Brisa::HttpVersion::operator >(const HttpVersion &o) const
 {
     if (m_major > o.m_major) {
         return true;
@@ -102,7 +143,7 @@ inline bool HttpVersion::operator >(const HttpVersion &o) const
     }
 }
 
-inline bool HttpVersion::operator <(const HttpVersion &o) const
+inline bool Brisa::HttpVersion::operator <(const HttpVersion &o) const
 {
     if (m_major < o.m_major) {
         return true;
@@ -113,7 +154,7 @@ inline bool HttpVersion::operator <(const HttpVersion &o) const
     }
 }
 
-inline bool HttpVersion::operator >=(const HttpVersion &o) const
+inline bool Brisa::HttpVersion::operator >=(const HttpVersion &o) const
 {
     if (m_major > o.m_major) {
         return true;
@@ -124,7 +165,7 @@ inline bool HttpVersion::operator >=(const HttpVersion &o) const
     }
 }
 
-inline bool HttpVersion::operator <=(const HttpVersion &o) const
+inline bool Brisa::HttpVersion::operator <=(const HttpVersion &o) const
 {
     if (m_major < o.m_major) {
         return true;
@@ -135,7 +176,7 @@ inline bool HttpVersion::operator <=(const HttpVersion &o) const
     }
 }
 
-inline HttpVersion::operator QByteArray() const
+inline Brisa::HttpVersion::operator QByteArray() const
 {
     QByteArray str;
     // "HTTP/x.x" // 8 chars
@@ -147,7 +188,7 @@ inline HttpVersion::operator QByteArray() const
     return str;
 }
 
-inline HttpVersion::operator bool() const
+inline Brisa::HttpVersion::operator bool() const
 {
     return m_major || m_minor;
 }

@@ -30,6 +30,8 @@
 #include <QMutex>
 #include "httpserver.h"
 
+namespace Brisa {
+
 class HttpSessionManager : public QThread
 {
 Q_OBJECT
@@ -52,5 +54,7 @@ private:
     QList<HttpSession *> pool;
     QMutex mutex;
 };
+
+} // namespace Brisa
 
 #endif // HTTPSESSIONMANAGER_H

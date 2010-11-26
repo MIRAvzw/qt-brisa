@@ -24,6 +24,9 @@
  */
 
 #include "httpmessage.h"
+#include <QBuffer>
+
+using namespace Brisa;
 
 HttpMessage::HttpMessage(HttpVersion httpVersion) :
         m_httpVersion(httpVersion),

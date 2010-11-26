@@ -41,6 +41,8 @@
 #undef minor
 #endif
 
+using namespace Brisa;
+
 enum State
 {
     WAITING_FOR_REQUEST_LINE,

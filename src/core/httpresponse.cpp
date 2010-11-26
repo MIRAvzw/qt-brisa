@@ -25,6 +25,8 @@
 
 #include "httpresponse.h"
 
+using namespace Brisa;
+
 static const QByteArray reasonPhrases[] =
 {
     // 1xx Informational

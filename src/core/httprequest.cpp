@@ -25,6 +25,8 @@
 
 #include "httprequest.h"
 
+using namespace Brisa;
+
 HttpRequest::HttpRequest(const QByteArray &method, const QByteArray &uri,
                          const HttpVersion &httpVersion) :
     HttpMessage(httpVersion),

@@ -30,6 +30,8 @@
 #include "httpversion.h"
 #include <QHash>
 
+namespace Brisa {
+
 class HttpResponse: public HttpMessage
 {
 public:
@@ -119,17 +121,19 @@ private:
     bool m_closeConnection;
 };
 
-inline int HttpResponse::statusCode() const
+} // namespace Brisa
+
+inline int Brisa::HttpResponse::statusCode() const
 {
     return m_statusCode;
 }
 
-inline QByteArray HttpResponse::reasonPhrase() const
+inline QByteArray Brisa::HttpResponse::reasonPhrase() const
 {
     return m_reasonPhrase;
 }
 
-inline bool HttpResponse::closeConnection() const
+inline bool Brisa::HttpResponse::closeConnection() const
 {
     return m_closeConnection;
 }

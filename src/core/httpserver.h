@@ -30,6 +30,8 @@
 #include <QFile>
 #include <QHostAddress>
 
+namespace Brisa {
+
 class HttpSession;
 class HttpSessionManager;
 
@@ -54,13 +56,13 @@ public:
 protected:
     void incomingConnection(int handle);
 
-//    virtual HttpSession *incomingSession(int socketDescriptor) = 0;
-
 private:
     QHostAddress address;
     quint16 port;
     QList<HttpSessionManager *> threads;
     int ringIndex;
 };
+
+} // namespace Brisa
 
 #endif // HTTPSERVER_H

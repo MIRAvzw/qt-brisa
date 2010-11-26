@@ -29,6 +29,8 @@
 #include "httpmessage.h"
 #include "httpversion.h"
 
+namespace Brisa {
+
 class HttpRequest: public HttpMessage
 {
 public:
@@ -46,12 +48,14 @@ private:
     QByteArray m_uri;                 // char *uri
 };
 
-inline QByteArray HttpRequest::method() const
+} // namespace Brisa
+
+inline QByteArray Brisa::HttpRequest::method() const
 {
     return m_method;
 }
 
-inline QByteArray HttpRequest::uri() const
+inline QByteArray Brisa::HttpRequest::uri() const
 {
     return m_uri;
 }
