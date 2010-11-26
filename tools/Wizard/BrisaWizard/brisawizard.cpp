@@ -53,18 +53,18 @@ static QDir directory(QDir::home());
 //QStringList serviceNameList;
 //QList<BrisaService*> serviceList;
 QStringList stateVariableList;
-
+static bool wasAccept = false;
 
  BrisaWizard::BrisaWizard(QWidget *parent)
      : QWizard(parent)
  {
-     IntroPage* introPage = new IntroPage(this);
+     introPage = new IntroPage(this);
      addPage(introPage);
-     DevicePage *devicePage = new DevicePage(this);
+     devicePage = new DevicePage(this);
      addPage(devicePage);
-     ServicePage *servicePage = new ServicePage(this);
+     servicePage = new ServicePage(this);
      addPage(servicePage);
-     ActionPage *actionPage = new ActionPage(this);
+     actionPage = new ActionPage(this);
      addPage(actionPage);
 
      setPixmap(QWizard::BannerPixmap, QPixmap(":/images/brisaLogo.png"));
@@ -75,6 +75,13 @@ QStringList stateVariableList;
      connect(this,SIGNAL(currentIdChanged(int)),actionPage,SLOT(on_actionPage(int)));
      connect(this,SIGNAL(currentIdChanged(int)),servicePage,SLOT(on_servicePage(int)));
      connect(this,SIGNAL(currentIdChanged(int)),devicePage,SLOT(on_devicePage(int)));
+ }
+
+ BrisaWizard::~BrisaWizard(){
+    delete introPage;
+    delete devicePage;
+    delete servicePage;
+    delete actionPage;
  }
 
 
@@ -117,20 +124,20 @@ QStringList stateVariableList;
              inArguments.append(a);
      }
 
-         block += "#include \"" + className.toLower() + ".h\" \n";
+         block += "#include \"" + className.toLower().toAscii() + ".h\" \n";
 
          //TODO permitir que o usuário escolha se deseja uma UI ?
-         block += "#include \"ui_" + className.toLower() + ".h\" \n";
+         block += "#include \"ui_" + className.toLower().toAscii() + ".h\" \n";
         //END TODO
          foreach(BrisaService* service, serviceList){
              QString serviceName = service->getAttribute(service->ServiceId);
-             block += "#include \"" + serviceName.toLower() + ".h\" \n";
+             block += "#include \"" + serviceName.toLower().toAscii() + ".h\" \n";
          }
 
-         block += "\n" + className + "::" + className + "(QWidget *parent) :\n"
+         block += "\n" + className.toAscii() + "::" + className.toAscii() + "(QWidget *parent) :\n"
              "\tQMainWindow(parent),\n"
-             "\tui(new Ui::" + className + "),\n"
-             "\t" + varBrisaDevice + "(DEVICE_TYPE, DEVICE_FRIENDLY_NAME,\n"
+             "\tui(new Ui::" + className.toAscii() + "),\n"
+             "\t" + varBrisaDevice.toAscii() + "(DEVICE_TYPE, DEVICE_FRIENDLY_NAME,\n"
                          "\t\tDEVICE_MANUFACTURER, DEVICE_MANUFACTURER_URL,\n"
                          "\t\tDEVICE_MODEL_DESCRIPTION, DEVICE_MODEL_NAME, DEVICE_MODEL_NUMBER,\n"
                          "\t\tDEVICE_MODEL_URL, DEVICE_SERIAL_NUMBER, getCompleteUuid())\n"
@@ -145,10 +152,10 @@ QStringList stateVariableList;
             QString serviceNameClass = firstCharService.toUpper() +lastCharsService;
             QString serviceNameVar = firstCharService.toLower() + lastCharsService;
             block +=
-           "\t" + serviceNameClass+"* " +serviceNameVar + " = new " + serviceNameClass + "(); \n"
-           "\t" + serviceNameVar + "->setDescriptionFile(\"" +serviceName +".xml\"); \n"
-           "\t" + varBrisaDevice + ".addService(" + serviceNameVar +");\n"
-           "\t" + varBrisaDevice + ".start();\n\n";
+           "\t" + serviceNameClass.toAscii()+"* " +serviceNameVar.toAscii() + " = new " + serviceNameClass.toAscii() + "(); \n"
+           "\t" + serviceNameVar.toAscii() + "->setDescriptionFile(\"" +serviceName.toAscii() +".xml\"); \n"
+           "\t" + varBrisaDevice.toAscii() + ".addService(" + serviceNameVar.toAscii() +");\n"
+           "\t" + varBrisaDevice.toAscii() + ".start();\n\n";
         }
 
 
@@ -156,7 +163,7 @@ QStringList stateVariableList;
 
         foreach(BrisaService* service, serviceList)
             foreach(BrisaStateVariable* v, service->getStateVariableList())
-                block += "\t" + v->getAttribute(v->Name) + " = " + varBrisaDevice + ".getServiceByType(\"urn:schemas-upnp-org:service:" + service->getAttribute(service->ServiceId) + ":1\")->getVariable(\"" + v->getAttribute(v->Name) + "\");\n";
+                block += "\t" + v->getAttribute(v->Name).toAscii() + " = " + varBrisaDevice.toAscii() + ".getServiceByType(\"urn:schemas-upnp-org:service:" + service->getAttribute(service->ServiceId).toAscii() + ":1\")->getVariable(\"" + v->getAttribute(v->Name).toAscii() + "\");\n";
 
 
         foreach(BrisaService* service, serviceList){
@@ -166,7 +173,7 @@ QStringList stateVariableList;
                     if(!stateVariableList.contains(argument->getAttribute(argument->RelatedStateVariable))){
                         stateVariableList.append(argument->getAttribute(argument->RelatedStateVariable));
                         if(argument->getAttribute(argument->Direction) == "in"){
-                            block += "\tconnect(" + argument->getAttribute(argument->RelatedStateVariable) + ",SIGNAL(changed(BrisaStateVariable*)),this,SLOT(on" +argument->getAttribute(argument->RelatedStateVariable)  + "Change(BrisaStateVariable*)));\n";
+                            block += "\tconnect(" + argument->getAttribute(argument->RelatedStateVariable).toAscii() + ",SIGNAL(changed(BrisaStateVariable*)),this,SLOT(on" +argument->getAttribute(argument->RelatedStateVariable).toAscii()  + "Change(BrisaStateVariable*)));\n";
                         }
                     }
 
@@ -176,11 +183,11 @@ QStringList stateVariableList;
          if((inArguments.count() == 0) && (outArguments.count() > 0))
              block += "\ttestingResponse();\n";
          block += "}\n\n"+
-            className + "::~" + className + "()\n"
+            className.toAscii() + "::~" + className.toAscii() + "()\n"
             "{\n"
             "\tdelete ui;\n"
             "}\n\n"
-            "void " + className + "::changeEvent(QEvent *e)\n"
+            "void " + className.toAscii() + "::changeEvent(QEvent *e)\n"
             "{\n"
              "\tQMainWindow::changeEvent(e);\n"
              "\tswitch (e->type()) {\n"
@@ -204,8 +211,8 @@ QStringList stateVariableList;
                      if(argument->getAttribute(argument->Direction) == "in"){
                          if(!stateVariableList.contains(argument->getAttribute(argument->RelatedStateVariable))){
                              stateVariableList.append(argument->getAttribute(argument->RelatedStateVariable));
-                             block += "void "+className+"::on"+argument->getAttribute(argument->RelatedStateVariable)+"Change(BrisaStateVariable* v){\n"
-                                      "\tqDebug() << \"receiving " + argument->getAttribute(argument->RelatedStateVariable)+" change value to:\" + v->getValue().toString();\n";
+                             block += "void "+className.toAscii()+"::on"+argument->getAttribute(argument->RelatedStateVariable).toAscii()+"Change(BrisaStateVariable* v){\n"
+                                      "\tqDebug() << \"receiving " + argument->getAttribute(argument->RelatedStateVariable).toAscii()+" change value to:\" + v->getValue().toString();\n";
                              if(((inArguments.count() > 0) && (outArguments.count() > 0)) || ((outArguments.count() > 0) && (inArguments.count() == 0)))
                                 if(!argument->getAttribute(argument->ArgumentName).isEmpty())
                                     block += "\ttestingResponse();\n";
@@ -214,27 +221,27 @@ QStringList stateVariableList;
                          }
                      }
                  }
-                 block += "void " + className +  "::" + action->getName() + "(){\n\n}\n";
+                 block += "void " + className.toAscii() +  "::" + action->getName().toAscii() + "(){\n\n}\n";
              }
          }
 
          if((inArguments.count() > 0) && (outArguments.count() > 0)){
-             block += "void " + className + "::testingResponse(){\n"
-                  "\tif( !"+ inArguments.at(0)->getAttribute(inArguments.at(0)->RelatedStateVariable) + "->getValue().toString().isEmpty() ";
+             block += "void " + className.toAscii() + "::testingResponse(){\n"
+                  "\tif( !"+ inArguments.at(0)->getAttribute(inArguments.at(0)->RelatedStateVariable).toAscii() + "->getValue().toString().isEmpty() ";
              for (int i = 1; i < inArguments.count(); i++){
                  BrisaArgument* argument = inArguments.at(i);
                  if(!argument->getAttribute(argument->ArgumentName).isEmpty())
-                    block += "&& !" + argument->getAttribute(argument->RelatedStateVariable) + "->getValue().toString().isEmpty()";
+                    block += "&& !" + argument->getAttribute(argument->RelatedStateVariable).toAscii() + "->getValue().toString().isEmpty()";
              }
              block += "){\n";
 
              foreach(BrisaArgument* a, outArguments){
-                 block+="\t\t"+a->getAttribute(a->RelatedStateVariable) +"->setAttribute(BrisaStateVariable::Value,QString("+
-                        inArguments.at(0)->getAttribute(inArguments.at(0)->RelatedStateVariable) + "->getValue().toString() ";
+                 block+="\t\t"+a->getAttribute(a->RelatedStateVariable).toAscii() +"->setAttribute(BrisaStateVariable::Value,QString("+
+                        inArguments.at(0)->getAttribute(inArguments.at(0)->RelatedStateVariable).toAscii() + "->getValue().toString() ";
                  for(int i = 1; i< inArguments.count(); i++){
                      BrisaArgument* argument = inArguments.at(i);
                      if(!argument->getAttribute(argument->ArgumentName).isEmpty())
-                        block += "+ " + argument->getAttribute(argument->RelatedStateVariable) + "->getValue().toString()";
+                        block += "+ " + argument->getAttribute(argument->RelatedStateVariable).toAscii() + "->getValue().toString()";
                  }
                  block += "));\n"
                           "\t}\n"
@@ -243,9 +250,9 @@ QStringList stateVariableList;
          }
 
          if((inArguments.count() == 0) && (outArguments.count() > 0)){
-             block += "void " + className + "::testingResponse(){\n";
+             block += "void " + className.toAscii() + "::testingResponse(){\n";
              foreach(BrisaArgument* argument, outArguments){
-                 block += "\t" + argument->getAttribute(argument->RelatedStateVariable) + "->setAttribute(BrisaStateVariable::Value, \"testing return of action " + serviceList[0]->getActionList().at(0)->getName() + "\");\n";
+                 block += "\t" + argument->getAttribute(argument->RelatedStateVariable).toAscii() + "->setAttribute(BrisaStateVariable::Value, \"testing return of action " + serviceList[0]->getActionList().at(0)->getName().toAscii() + "\");\n";
              }
              block += "}\n";
          }
@@ -268,8 +275,8 @@ QStringList stateVariableList;
 
 QByteArray uuidDevice = QUuid::createUuid().toString().remove("{").remove("}").toAscii();
 block +=
-"#ifndef " + className.toUpper() + "_H\n"
-"#define " + className.toUpper() + "_H\n\n"
+"#ifndef " + className.toUpper().toAscii() + "_H\n"
+"#define " + className.toUpper().toAscii() + "_H\n\n"
 "#include <QMainWindow>\n"
 "#include <BRisa/BrisaUpnp/BrisaAction>\n"
 "#include <BRisa/BrisaUpnp/BrisaDevice>\n\n"
@@ -281,26 +288,26 @@ block +=
 
 
 
-"#define DEVICE_TYPE              \"" + field("deviceType").toString() + "\"\n"
-"#define DEVICE_FRIENDLY_NAME     \""+ field("friendlyName").toString()  + "\"\n"
-"#define DEVICE_MANUFACTURER      \"" + field("manufacturer").toString()  + "\"\n"
-"#define DEVICE_MANUFACTURER_URL  \""+field("manufacturerUrl").toString() + "\"\n"
-"#define DEVICE_MODEL_DESCRIPTION \"" + field("modelDesciption").toString()  + "\"\n"
-"#define DEVICE_MODEL_NAME        \""+ field("modelName").toString()  +"\" \n"
-"#define DEVICE_MODEL_NUMBER      \"" + field("modelNumber").toString()  + "\"\n"
-"#define DEVICE_MODEL_URL         \"" + field("modelUrl").toString() + "\"\n"
-"#define DEVICE_SERIAL_NUMBER     \"" +field("deviceSerial").toString() + "\"\n"
+"#define DEVICE_TYPE              \"" + field("deviceType").toString().toAscii() + "\"\n"
+"#define DEVICE_FRIENDLY_NAME     \""+ field("friendlyName").toString().toAscii()  + "\"\n"
+"#define DEVICE_MANUFACTURER      \"" + field("manufacturer").toString().toAscii()  + "\"\n"
+"#define DEVICE_MANUFACTURER_URL  \""+field("manufacturerUrl").toString().toAscii() + "\"\n"
+"#define DEVICE_MODEL_DESCRIPTION \"" + field("modelDesciption").toString().toAscii()  + "\"\n"
+"#define DEVICE_MODEL_NAME        \""+ field("modelName").toString().toAscii()  +"\" \n"
+"#define DEVICE_MODEL_NUMBER      \"" + field("modelNumber").toString().toAscii()  + "\"\n"
+"#define DEVICE_MODEL_URL         \"" + field("modelUrl").toString().toAscii() + "\"\n"
+"#define DEVICE_SERIAL_NUMBER     \"" +field("deviceSerial").toString().toAscii() + "\"\n"
 "#define DEVICE_UDN               \"uuid:" + uuidDevice + "\"\n\n"
 
 "namespace Ui {\n"
-    "\tclass " + className + ";\n"
+    "\tclass " + className.toAscii() + ";\n"
 "}\n\n"
 
-"class " + className + " : public QMainWindow {\n"
+"class " + className.toAscii() + " : public QMainWindow {\n"
     "\tQ_OBJECT\n"
 "public:\n" +
-    "\t" + className + "(QWidget *parent = 0);\n"
-    "\t~" + className + "();\n\n"
+    "\t" + className.toAscii() + "(QWidget *parent = 0);\n"
+    "\t~" + className.toAscii() + "();\n\n"
 
 
 
@@ -308,19 +315,17 @@ block +=
     "\tvoid changeEvent(QEvent *e);\n\n"
 
 "private:\n"
-    "\tUi::"+ className +" *ui;\n"
-    "\tBrisaDevice "+ varBrisaDevice +";\n";
+    "\tUi::"+ className.toAscii() +" *ui;\n"
+    "\tBrisaDevice "+ varBrisaDevice.toAscii() +";\n";
 
 stateVariableList.clear();
 foreach(BrisaService* service, serviceList){
     QString serviceName = service->getAttribute(service->ServiceId);
     foreach(BrisaStateVariable* v, service->getStateVariableList()){
-        //foreach(BrisaArgument *argument, action->getArgumentList()){
                 if(!stateVariableList.contains(v->getAttribute(v->Name))){
                     stateVariableList.append(v->getAttribute(v->Name));
-                    block += "\tBrisaStateVariable *" + v->getAttribute(v->Name) + ";\n";
+                    block += "\tBrisaStateVariable *" + v->getAttribute(v->Name).toAscii() + ";\n";
                 }
-        //}
     }
 }
 
@@ -334,11 +339,11 @@ foreach(BrisaService* service, serviceList){
             if(argument->getAttribute(argument->Direction) == "in"){
                 if(!stateVariableList.contains(argument->getAttribute(argument->RelatedStateVariable))){
                     stateVariableList.append(argument->getAttribute(argument->RelatedStateVariable));
-                    block += "\t void on"+argument->getAttribute(argument->RelatedStateVariable)+"Change(BrisaStateVariable*);\n";
+                    block += "\t void on"+argument->getAttribute(argument->RelatedStateVariable).toAscii()+"Change(BrisaStateVariable*);\n";
                 }
             }
         }
-        block += "\t void " + action->getName() + "();\n";
+        block += "\t void " + action->getName().toAscii() + "();\n";
     }
 }
 if(((inArguments.count() > 0) && (outArguments.count() > 0)) || ((inArguments.count() == 0) && (outArguments.count() > 0)) ){
@@ -386,7 +391,7 @@ block += "};\n\n"
    "\t" + deviceName.toLower() + ".cpp \\ \n";
     int index = 1;
     foreach(BrisaService* service, serviceList){
-        block += "\t"+service->getAttribute(service->ServiceId).toLower() + ".cpp";
+        block += "\t"+service->getAttribute(service->ServiceId).toLower().toAscii() + ".cpp";
         if(index != serviceList.count()){
             block += "\\ \n";
         }
@@ -394,12 +399,12 @@ block += "};\n\n"
     }
 
 block += "\n\n"
-        "HEADERS += "+ className.toLower() + ".h";
+        "HEADERS += "+ className.toLower().toAscii() + ".h";
         if(!serviceList.count() == 0)
             block += "\\ \n";
         index = 1;
         foreach(BrisaService* service, serviceList){
-            block += "\t"+service->getAttribute(service->ServiceId).toLower() + ".h";
+            block += "\t"+service->getAttribute(service->ServiceId).toLower().toAscii() + ".h";
             if(index != serviceList.count()){
                 block += "\\ \n";
             }
@@ -409,13 +414,13 @@ block += "\n\n"
          "RESOURCES +=";
          index = 1;
          foreach(BrisaService* service, serviceList){
-             block += "\t"+service->getAttribute(service->ServiceId) + ".xml";
+             block += "\t"+service->getAttribute(service->ServiceId).toAscii() + ".xml";
              if(index != serviceList.count()){
                  block += "\\ \n";
              }
              index++;
          }
-block +=   "\nFORMS += "+ className.toLower() + ".ui\n";
+block +=   "\nFORMS += "+ className.toLower().toAscii() + ".ui\n";
 
                             QFile *projectFile = new QFile(path + "/" + field("projectName").toString() + ".pro");
                                  if (!projectFile->open(QFile::WriteOnly | QFile::Text)) {
@@ -433,8 +438,8 @@ block +=   "\nFORMS += "+ className.toLower() + ".ui\n";
 block +=
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
         "<ui version=\"4.0\">\n"
-         "  <class>" + className + "</class>\n"
-         "  <widget class=\"QMainWindow\" name=\"" + className + "\" >\n"
+         "  <class>" + className.toAscii() + "</class>\n"
+         "  <widget class=\"QMainWindow\" name=\"" + className.toAscii() + "\" >\n"
          "   <property name=\"geometry\">\n"
          "     <rect>\n"
          "       <x>0</x>\n"
@@ -444,7 +449,7 @@ block +=
          "     </rect>\n"
          "   </property>\n"
          "   <property name=\"windowTitle\">\n"
-         "    <string>"+className+"</string>\n"
+         "    <string>" + className.toAscii() + "</string>\n"
          "   </property>\n"
          "   <widget class=\"QMenuBar\" name=\"menuBar\"/>\n"
          "   <widget class=\"QToolBar\" name=\"mainToolBar\"/>\n"
@@ -477,7 +482,7 @@ block +=
         "int main(int argc, char *argv[])\n"
         "{\n"
         "\tQApplication a(argc, argv);\n"
-        "\t" + className + " w;\n"
+        "\t" + className.toAscii() + " w;\n"
         "\tw.show();\n"
         "\treturn a.exec();\n"
         "}";
@@ -589,13 +594,13 @@ foreach(BrisaService* service, serviceList){
          block.clear();
 
          block +=
-           "#ifndef " + serviceName.toUpper() + "_H\n"
-           "#define " + serviceName.toUpper() + "_H\n\n"
-           "#define SERVICE_TYPE \""+ service->getAttribute(service->ServiceType) +"\"\n"
-           "#define SERVICE_ID \"" + service->getAttribute(service->ServiceId) + "\"\n"
-           "#define SERVICE_XML_PATH \"/" + service->getAttribute(service->FileAddress) + "\"\n"
-           "#define SERVICE_CONTROL \"/" + service->getAttribute(service->ControlUrl) +"\"\n"
-           "#define SERVICE_EVENT_SUB \"/" + service->getAttribute(service->EventSubUrl) +"\"\n"
+           "#ifndef " + serviceName.toUpper().toAscii() + "_H\n"
+           "#define " + serviceName.toUpper().toAscii() + "_H\n\n"
+           "#define SERVICE_TYPE \""+ service->getAttribute(service->ServiceType).toAscii() +"\"\n"
+           "#define SERVICE_ID \"" + service->getAttribute(service->ServiceId).toAscii() + "\"\n"
+           "#define SERVICE_XML_PATH \"/" + service->getAttribute(service->FileAddress).toAscii() + "\"\n"
+           "#define SERVICE_CONTROL \"/" + service->getAttribute(service->ControlUrl).toAscii() +"\"\n"
+           "#define SERVICE_EVENT_SUB \"/" + service->getAttribute(service->EventSubUrl).toAscii() +"\"\n"
            "#include <BRisa/BrisaUpnp/BrisaAction>\n"
            "#include <BRisa/BrisaUpnp/BrisaService>\n"
            "#include <BRisa/BrisaUpnp/brisastatevariable.h>\n"
@@ -604,11 +609,11 @@ foreach(BrisaService* service, serviceList){
            "using BrisaUpnp::BrisaAction;\n"
            "using BrisaUpnp::BrisaStateVariable;\n\n"
            "// The Service\n"
-           "class " + serviceNameClass + " : public BrisaService\n"
+           "class " + serviceNameClass.toAscii() + " : public BrisaService\n"
            "{\n"
            "\tQ_OBJECT\n"
            "public:\n"
-           "\t" + serviceNameClass +"();\n";
+           "\t" + serviceNameClass.toAscii() +"();\n";
         qDebug() << "passed out action it";
 
         foreach(BrisaAction* action, service->getActionList()){
@@ -618,7 +623,7 @@ foreach(BrisaService* service, serviceList){
             }
             block +=
                     "};\n"
-                    "#endif //" + serviceName.toUpper() +"_H";
+                    "#endif //" + serviceName.toUpper().toAscii() +"_H";
 
 
 
@@ -634,23 +639,23 @@ foreach(BrisaService* service, serviceList){
          headerServiceFile->write(block);
          headerServiceFile->close();
          block.clear();
-         block += "#include \"" + serviceName.toLower() + ".h\"\n\n";
-         block += serviceNameClass + "::" + serviceNameClass + "():BrisaService(SERVICE_TYPE,\n"
+         block += "#include \"" + serviceName.toLower().toAscii() + ".h\"\n\n";
+         block += serviceNameClass.toAscii() + "::" + serviceNameClass.toAscii() + "():BrisaService(SERVICE_TYPE,\n"
                   "\tSERVICE_ID,SERVICE_XML_PATH,SERVICE_CONTROL,SERVICE_EVENT_SUB){}\n\n";
 
 
          foreach(BrisaAction* action, service->getActionList()){
              qDebug() << "passed action argument setting";
-             block +="BrisaOutArgument* " + serviceNameClass +"::" + action->getName().toLower().toAscii() + "(BrisaInArgument* const inArguments, BrisaAction* const action){\n"
+             block +="BrisaOutArgument* " + serviceNameClass.toAscii() +"::" + action->getName().toLower().toAscii() + "(BrisaInArgument* const inArguments, BrisaAction* const action){\n"
                  "\tBrisaOutArgument *outArg = new BrisaOutArgument();\n";
              foreach(BrisaArgument *argument, action->getArgumentList()){
                  if(argument->getAttribute(argument->Direction) == "in"){
                     if(argument->getAttribute(argument->ArgumentName).isEmpty())
-                        block += "\taction->getStateVariable(\"" +  argument->getAttribute(argument->RelatedStateVariable) + "\")->setAttribute(BrisaStateVariable::Value,\"" + action->getName() + "\");\n";
+                        block += "\taction->getStateVariable(\"" +  argument->getAttribute(argument->RelatedStateVariable).toAscii() + "\")->setAttribute(BrisaStateVariable::Value,\"" + action->getName().toAscii() + "\");\n";
                     else
-                        block += "\taction->getStateVariable(\"" +  argument->getAttribute(argument->RelatedStateVariable) + "\")->setAttribute(BrisaStateVariable::Value,inArguments->value(\"" +  argument->getAttribute(argument->RelatedStateVariable) + "\"));\n";
+                        block += "\taction->getStateVariable(\"" +  argument->getAttribute(argument->RelatedStateVariable).toAscii() + "\")->setAttribute(BrisaStateVariable::Value,inArguments->value(\"" +  argument->getAttribute(argument->RelatedStateVariable).toAscii() + "\"));\n";
                   }else
-                    block += "\toutArg->insert(\"" +  argument->getAttribute(argument->RelatedStateVariable) + "\", action->getStateVariable(\"" +  argument->getAttribute(argument->RelatedStateVariable) + "\")->getAttribute(BrisaStateVariable::Value));\n";
+                    block += "\toutArg->insert(\"" +  argument->getAttribute(argument->RelatedStateVariable).toAscii() + "\", action->getStateVariable(\"" +  argument->getAttribute(argument->RelatedStateVariable).toAscii() + "\")->getAttribute(BrisaStateVariable::Value));\n";
              }
              block += "\treturn outArg;\n"
                    "}\n\n";
@@ -681,39 +686,39 @@ if(field("generateControlPointYES").toString() == "true"){
              "#define " + deviceName.toUpper() + "CONTROLPOINT_H\n\n"
              "#include <QMainWindow>\n"
              "#include <BRisa/BrisaUpnp/BrisaControlPoint>\n\n"
-             "#define DEVICE_TYPE  \"" + field("deviceType").toString() + "\"\n";
+             "#define DEVICE_TYPE  \"" + field("deviceType").toString().toAscii() + "\"\n";
     foreach(BrisaService* service, serviceList)
-        block += "#define SERVICE_TYPE \"" + service->getAttribute(service->ServiceType) + "\"\n";
+        block += "#define SERVICE_TYPE \"" + service->getAttribute(service->ServiceType).toAscii() + "\"\n";
     block += "#define DEVICE_UDN   \"uuid:" + uuidDevice + "\"\n\n"
              "using namespace BrisaUpnp;\n\n"
              "namespace Ui {\n"
-             "\tclass " + className + "ControlPoint;\n"
+             "\tclass " + className.toAscii() + "ControlPoint;\n"
              "}\n\n"
-             "class " + className + "ControlPoint : public QMainWindow {\n"
+             "class " + className.toAscii() + "ControlPoint : public QMainWindow {\n"
              "\tQ_OBJECT\n\n"
              "public:\n"
-             "\t" + className + "ControlPoint(QWidget *parent = 0);\n"
-             "\t~" + className + "ControlPoint();\n\n"
+             "\t" + className.toAscii() + "ControlPoint(QWidget *parent = 0);\n"
+             "\t~" + className.toAscii() + "ControlPoint();\n\n"
              "protected:\n"
              "\tvoid changeEvent(QEvent *e);\n\n"
              "private:\n"
-             "\tUi::" + className + "ControlPoint *ui;\n"
+             "\tUi::" + className.toAscii() + "ControlPoint *ui;\n"
              "\tBrisaControlPoint *" + deviceName + ";\n"
              "\tQList<BrisaControlPointDevice *> " + deviceName + "Devices;\n";
     foreach(BrisaService *service, serviceList){
         QString serviceName = service->getAttribute(service->ServiceId);
         foreach(BrisaAction* action, service->getActionList()){
-            block += "\tvoid _" + action->getName() + "(BrisaControlPointDevice *d";
+            block += "\tvoid _" + action->getName().toAscii() + "(BrisaControlPointDevice *d";
             int i = 0;
             foreach(BrisaArgument* argument, action->getArgumentList()){
                 BrisaStateVariable* v = service->getStateVariableList().at(i);
-                qDebug() << "direction to controlpoint.h " + argument->getAttribute(argument->Direction) ;
+                qDebug() << "direction to controlpoint.h " + argument->getAttribute(argument->Direction).toAscii() ;
                 if(argument->getAttribute(argument->Direction) == "in"){
                     if(!argument->getAttribute(argument->ArgumentName).isEmpty()){
                         if( (v->getAttribute(v->DataType) != "string") && (v->getAttribute(v->DataType) != "boolean"))
-                            block += ", " + v->getAttribute(v->DataType) + " " + v->getAttribute(v->Name);
+                            block += ", " + v->getAttribute(v->DataType).toAscii() + " " + v->getAttribute(v->Name).toAscii();
                         else
-                            block += ", " + QString(v->getAttribute(v->DataType) == "string"? "QString":"bool") + " " + v->getAttribute(v->Name);
+                            block += ", " + QString(v->getAttribute(v->DataType) == "string"? "QString":"bool").toAscii() + " " + v->getAttribute(v->Name).toAscii();
                     }
                 }
                 i++;
@@ -749,8 +754,8 @@ if(field("generateControlPointYES").toString() == "true"){
     block +=
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<ui version=\"4.0\">\n"
-            "  <class>" + className + "ControlPoint</class>\n"
-            "  <widget class=\"QMainWindow\" name=\"" + className + "ControlPoint\" >\n"
+            "  <class>" + className.toAscii() + "ControlPoint</class>\n"
+            "  <widget class=\"QMainWindow\" name=\"" + className.toAscii() + "ControlPoint\" >\n"
             "   <property name=\"geometry\">\n"
             "     <rect>\n"
             "       <x>0</x>\n"
@@ -760,7 +765,7 @@ if(field("generateControlPointYES").toString() == "true"){
             "     </rect>\n"
             "   </property>\n"
             "   <property name=\"windowTitle\">\n"
-            "    <string>"+className+"ControlPoint</string>\n"
+            "    <string>" + className.toAscii() + "ControlPoint</string>\n"
             "   </property>\n"
             "   <widget class=\"QMenuBar\" name=\"menuBar\"/>\n"
             "   <widget class=\"QToolBar\" name=\"mainToolBar\"/>\n"
@@ -791,8 +796,8 @@ if(field("generateControlPointYES").toString() == "true"){
             "#include \"" + deviceName.toLower() + "controlpoint.h\"\n"
             "#include \"ui_" + deviceName.toLower() + "controlpoint.h\"\n"
             "#include <QMessageBox>\n\n" +
-            className + "ControlPoint::" + className + "ControlPoint(QWidget *parent) :\n"
-            "\tQMainWindow(parent),ui(new Ui::" + className + "ControlPoint),\n\t" + deviceName + "(new BrisaControlPoint)\n"
+            className.toAscii() + "ControlPoint::" + className.toAscii() + "ControlPoint(QWidget *parent) :\n"
+            "\tQMainWindow(parent),ui(new Ui::" + className.toAscii() + "ControlPoint),\n\t" + deviceName + "(new BrisaControlPoint)\n"
             "{\n"
             "\tui->setupUi(this);\n\n"
             "\tconnect(this->" + deviceName + ",SIGNAL(deviceFound(BrisaControlPointDevice*)),this,SLOT(onNewDevice(BrisaControlPointDevice*)));\n"
@@ -800,11 +805,11 @@ if(field("generateControlPointYES").toString() == "true"){
             "\t" + deviceName + "->start()\n;"
             "\t" + deviceName + "->discover();\n"
             "}\n\n" +
-            className + "ControlPoint::~" + className + "ControlPoint()\n"
+            className.toAscii() + "ControlPoint::~" + className.toAscii() + "ControlPoint()\n"
             "{\n"
             "\tdelete ui;\n"
             "}\n\n"
-            "void " + className + "ControlPoint::changeEvent(QEvent *e)\n"
+            "void " + className.toAscii() + "ControlPoint::changeEvent(QEvent *e)\n"
             "{\n"
             "\tQMainWindow::changeEvent(e);\n"
             "\tswitch (e->type()) {\n"
@@ -815,12 +820,12 @@ if(field("generateControlPointYES").toString() == "true"){
             "\t\tbreak;\n"
             "\t}\n"
             "}\n\n"
-            "void " + className + "ControlPoint::restart(){\n" +
+            "void " + className.toAscii() + "ControlPoint::restart(){\n" +
             "\t" + deviceName + "->stop();\n" +
             "\t" + deviceName + "->start();\n" +
             "\t" + deviceName + "->discover();\n"
             "}\n\n"
-            "void " + className + "ControlPoint::onNewDevice(BrisaControlPointDevice *c){\n"
+            "void " + className.toAscii() + "ControlPoint::onNewDevice(BrisaControlPointDevice *c){\n"
             "\tif(c->getAttribute(BrisaControlPointDevice::DeviceType).compare(DEVICE_TYPE))\n"
             "\t\treturn;\n\n"
             "\tfor(int i = 0; i <" + deviceName + "Devices.size(); i++) {\n"
@@ -833,13 +838,13 @@ if(field("generateControlPointYES").toString() == "true"){
             "\tthis->testing(c);\n"
             "}\n\n"
             "//this slot remove device from device list if the device leave\n"
-            "void " + className + "ControlPoint::onRemovedDevice(QString udn){\n" +
+            "void " + className.toAscii() + "ControlPoint::onRemovedDevice(QString udn){\n" +
             "\t" + deviceName + "Devices.removeOne(getDeviceByUDN(udn));\n"
             "\tqDebug() << \"item removed\";\n"
             "\tqDebug() << udn;\n"
             "\trestart();\n"
             "}\n\n"
-            "BrisaControlPointDevice* " + className + "ControlPoint::getDeviceByUDN(QString UDN)\n"
+            "BrisaControlPointDevice* " + className.toAscii() + "ControlPoint::getDeviceByUDN(QString UDN)\n"
             "{\n"
             "\tfor(int i = 0; i < "+ deviceName + "Devices.size(); i++)\n"
             "\t\tif(UDN.compare(" + deviceName + "Devices[i]->getAttribute(BrisaControlPointDevice::Udn)) == 0)\n"
@@ -853,16 +858,16 @@ if(field("generateControlPointYES").toString() == "true"){
         QString serviceName = service->getAttribute(service->ServiceId);
         foreach(BrisaAction* action, service->getActionList()) {
             block +=
-                    "void " + className + "ControlPoint::_" + action->getName() + "(BrisaControlPointDevice *c";
+                    "void " + className.toAscii() + "ControlPoint::_" + action->getName().toAscii() + "(BrisaControlPointDevice *c";
             int i = 0;
             foreach(BrisaArgument* argument, action->getArgumentList()){
                 BrisaStateVariable* v = service->getStateVariableList().at(i);
                 if(argument->getAttribute(argument->Direction) == "in"){
                     if(!argument->getAttribute(argument->ArgumentName).isEmpty()){
                         if( (v->getAttribute(v->DataType) != "string") && (v->getAttribute(v->DataType) != "boolean"))
-                            block += ", " + v->getAttribute(v->DataType) + " " + v->getAttribute(v->Name);
+                            block += ", " + v->getAttribute(v->DataType).toAscii() + " " + v->getAttribute(v->Name).toAscii();
                         else
-                            block += ", " + QString(v->getAttribute(v->DataType) == "string"? "QString":"bool") + " " + v->getAttribute(v->Name);
+                            block += ", " + QString(v->getAttribute(v->DataType) == "string"? "QString":"bool").toAscii() + " " + v->getAttribute(v->Name).toAscii();
                     }
                 }
                 i++;
@@ -878,22 +883,22 @@ if(field("generateControlPointYES").toString() == "true"){
                 BrisaStateVariable* v = service->getStateVariableList().at(i);
                 if(argument->getAttribute(argument->Direction) == "in"){
                     if(!argument->getAttribute(argument->ArgumentName).isEmpty()){
-                        block += "\tparams[\"" + v->getAttribute(v->Name) + "\"] = ";
+                        block += "\tparams[\"" + v->getAttribute(v->Name).toAscii() + "\"] = ";
                         if(v->getAttribute(v->DataType) != "string")
-                            block += "str.number("+ v->getAttribute(v->Name)+");\n";
+                            block += "str.number(" + v->getAttribute(v->Name).toAscii()+");\n";
                         else
-                            block += v->getAttribute(v->Name)+";\n";
+                            block += v->getAttribute(v->Name).toAscii() +";\n";
                     }
                 }
                 i++;
             }
-            block += "\tservice->call(\""+ action->getName() +"\",params);\n"
+            block += "\tservice->call(\"" + action->getName().toAscii() + "\",params);\n"
                      "}\n\n";
         }
     }
     int i = 0;
-    block += "void "+className+"ControlPoint::testing(BrisaControlPointDevice *c){\n"
-             "\t_"+serviceList[0]->getActionList().value(0)->getName()+"(c";
+    block += "void " + className.toAscii() + "ControlPoint::testing(BrisaControlPointDevice *c){\n"
+             "\t_" + serviceList[0]->getActionList().value(0)->getName().toAscii() + "(c";
     foreach(BrisaArgument *a, serviceList[0]->getActionList().value(0)->getArgumentList()){
         BrisaStateVariable *v = serviceList[0]->getStateVariableList().at(i);
         if(!a->getAttribute(a->ArgumentName).isEmpty()){
@@ -911,7 +916,7 @@ if(field("generateControlPointYES").toString() == "true"){
 
     block +=
             "//this method returns result after action on Device\n"
-            "void " + className + "ControlPoint::serviceCall(BrisaOutArgument result, QString action){\n"
+            "void " + className.toAscii() + "ControlPoint::serviceCall(BrisaOutArgument result, QString action){\n"
             "\tQ_UNUSED(action);\n"
             "\tqDebug() << result;\n"
             "}\n\n"
@@ -967,7 +972,7 @@ if(field("generateControlPointYES").toString() == "true"){
             "int main(int argc, char *argv[])\n"
             "{\n"
             "\tQApplication a(argc, argv);\n"
-            "\t" + className + "ControlPoint w;\n"
+            "\t" + className.toAscii() + "ControlPoint w;\n"
             "\tw.show();\n"
             "\ta.exec();\n"
             "}";
@@ -989,17 +994,12 @@ if(field("generateControlPointYES").toString() == "true"){
 
   }
 
-    QFile file("info.path");
-
-    QDir::setCurrent(QApplication::applicationDirPath());
-    qDebug()<< QDir::currentPath();
-    if(file.open(QIODevice::WriteOnly))
-    {
-        file.write(QString( field("devicePath").toString() + "/" + field("deviceName").toString() + "/" + field("projectName").toString() + ".pro").toAscii() );
-        if(field("generateControlPointYES").toString() == "true")
-            file.write("\n" + QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "ControlPoint/" + field("deviceName").toString() + "ControlPoint.pro").toAscii() );
-    }
-
+   // QStringList paths;
+    //paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "/" + field("projectName").toString() + ".pro").toAscii());
+    //if(field("generateControlPointYES").toString() == "true")
+    //    paths.append(QString(field("devicePath").toString() + "/" + field("deviceName").toString() + "ControlPoint/" + field("deviceName").toString() + "ControlPoint.pro").toAscii());
+    //BrisaProjectWizard::setProjectPaths(paths);
+    //wasAccept = true;
     QDialog::accept();
 
 }
@@ -1010,5 +1010,9 @@ if(field("generateControlPointYES").toString() == "true"){
 
  void BrisaWizard::generateService(){
 
+ }
+
+ bool BrisaWizard::wasAcceptedWizard(){
+     return wasAccept;
  }
 

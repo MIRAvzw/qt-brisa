@@ -26,7 +26,7 @@ QT += network \
 CONFIG += QT \
     BRISA
 CONFIG += qt \
-    qxt
+  #  qxt
 QT += core \
     network \
     xml

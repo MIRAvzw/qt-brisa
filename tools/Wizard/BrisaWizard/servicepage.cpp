@@ -2,7 +2,7 @@
 
 static QStringList serviceNameList;
 static QList<BrisaService*> serviceList;
-static int rowArgumentsRepeated = -1;
+//static int rowArgumentsRepeated = -1;
 
 
 ServicePage::ServicePage(QWidget *parent)

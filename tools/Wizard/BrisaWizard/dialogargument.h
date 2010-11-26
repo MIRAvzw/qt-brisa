@@ -13,6 +13,7 @@
 using namespace BrisaUpnp;
 
 Q_DECLARE_METATYPE(BrisaArgument*)
+Q_DECLARE_METATYPE(BrisaStateVariable*)
 Q_DECLARE_METATYPE(QComboBox*);
 
 namespace Ui {
@@ -43,9 +44,16 @@ private:
     
 
 private slots:
+    void on_btn_add_clicked();
+    void on_btn_remove_clicked();
+    void on_btnRemove_stateVariable_clicked();
+    void on_btnRemove_argument_clicked();
+    void on_btn_relationship_clicked();
+    void on_btnInsert_argument_clicked();
+    void on_btninsert_stateVariable_clicked();
+    void on_pushButton_clicked();
     void on_table_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
     void on_btnRemove_clicked();
-    void on_btnInsert_clicked();
     void on_buttonBox_accepted();
 };
 

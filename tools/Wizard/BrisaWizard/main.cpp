@@ -52,14 +52,17 @@ int main(int argc, char *argv[])
     Q_INIT_RESOURCE(brisawizard);
 
     QApplication app(argc, argv);
-
+    //ev
     QString translatorFileName = QLatin1String("qt_");
     translatorFileName += QLocale::system().name();
     QTranslator *translator = new QTranslator(&app);
     if (translator->load(translatorFileName, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
-        app.installTranslator(translator);
+       app.installTranslator(translator);
 
     BrisaWizard wizard;
+    //qDebug()<< "argc e argv:";
+    //qDebug() << argc;
+    //qDebug() << argv;
     wizard.show();
-    return app.exec();
+    app.exec();
 }

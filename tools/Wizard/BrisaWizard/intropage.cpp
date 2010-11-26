@@ -49,6 +49,7 @@ IntroPage::IntroPage(QWidget *parent)
 
      connect(browserButton, SIGNAL(clicked()), this, SLOT(changeDirectory()));
      connect(deviceNameEdit,SIGNAL(textChanged(QString)),this,SLOT(on_deviceNameChanged()));
+     connect(projectNameLineEdit,SIGNAL(textChanged(QString)),this,SLOT(on_projectNameChanged()));
 
  }
 
@@ -66,8 +67,8 @@ IntroPage::IntroPage(QWidget *parent)
 
  void IntroPage::on_deviceNameChanged()
  {
+     pathLineEdit->setText(directory.absolutePath() +"/" + this->deviceNameEdit->text());
      projectNameLineEdit->setText(this->deviceNameEdit->text());
-
  }
 
  void IntroPage::on_projectNameChanged(){

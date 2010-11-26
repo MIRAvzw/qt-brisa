@@ -108,6 +108,12 @@ void ActionPage::on_repeatArgumentsButton_clicked(){
                currentAction->addArguments(action->getArgumentList());
            }
        }
+       /*BrisaService *service = serviceCbox->itemData(serviceCbox->currentIndex(),Qt::UserRole).value<BrisaService*>();
+       service->clearActionList();
+       foreach(BrisaStateVariable* v, service->getStateVariableList()){
+           service->addStateVariable(v);
+       }*/
+
        repeatArgumentsButton->setEnabled(false);
    }
 }
