@@ -42,7 +42,7 @@ namespace Brisa
 
 #endif
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
@@ -67,24 +67,24 @@ namespace BrisaUpnp {
 
         BrisaStateVariable *getVariable(const QString &variableName);
 
-        void buildWebServiceTree(Brisa::BrisaWebserver *sessionManager);
+        void buildWebServiceTree(BrisaWebserver *sessionManager);
 
         void setDescriptionFile(const QString &scpdFilePath);
 
         QString getDescriptionFile();
 
     protected:
-        void onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session);
+        void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
 
     private slots:
-        void call(const QString &method, BrisaInArgument param, Brisa::BrisaWebserverSession *);
-        void onInvalidRequest(Brisa::BrisaWebserverSession *session);
+        void call(const QString &method, BrisaInArgument param, BrisaWebserverSession *);
+        void onInvalidRequest(BrisaWebserverSession *session);
 
     private:
 
-        void respondAction(Brisa::BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName /*= QString()*/);
+        void respondAction(BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName /*= QString()*/);
 
-        void respondError(Brisa::BrisaWebserverSession *session, int errorCode, QString errorDescription = QString());
+        void respondError(BrisaWebserverSession *session, int errorCode, QString errorDescription = QString());
 
         void parseDescriptionFile();
 
@@ -94,7 +94,7 @@ namespace BrisaUpnp {
 
         void bindActionsToServiceMethods();
 
-        QMap<QString, Brisa::BrisaWebService *> childWebServices;
+        QMap<QString, BrisaWebService *> childWebServices;
 
         QString scpdFilePath;
 
@@ -108,7 +108,7 @@ namespace BrisaUpnp {
 #else
 
 /*!
- *  \class BrisaUpnp::BrisaService brisaservice.h BrisaUpnp/BrisaService
+ *  \class Brisa::BrisaService brisaservice.h BrisaUpnp/BrisaService
  *  \brief UPnP service abstraction.
  *
  *  BrisaService provides a convinient way to create UPnP services. BrisaService itself contains a
@@ -156,7 +156,7 @@ public:
     /*!
      *  Returns the web service.
      */
-    Brisa::BrisaWebServiceProvider *getWebService();
+    BrisaWebServiceProvider *getWebService();
 
     /*!
      *  This method creates all the webservice related stuff. It creates a URL for the control path,
@@ -223,9 +223,9 @@ private:
      */
     void bindActionsToServiceMethods();
 
-    Brisa::BrisaWebServiceProvider *webService;
+    BrisaWebServiceProvider *webService;
 
-    QMap<QString, Brisa::BrisaWebService *> childWebServices;
+    QMap<QString, BrisaWebService *> childWebServices;
 
     QString scpdFilePath;
    

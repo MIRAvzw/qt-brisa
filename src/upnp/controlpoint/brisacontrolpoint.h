@@ -39,14 +39,14 @@
 #include "brisamulticasteventreceiver.h"
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 class BrisaSSDPClient;
 class BrisaMSearchClientCP;
 class BrisaControlPointService;
 
 /*!
- *    \class BrisaUpnp::BrisaControlPoint brisacontrolpoint.h BrisaUpnp/BrisaControlPoint
+ *    \class Brisa::BrisaControlPoint brisacontrolpoint.h BrisaUpnp/BrisaControlPoint
  *
  *    \brief Class that implements the control part in UPnP Architecture
  *    \brief Create a ControlPoint and start(), then discover() devices will be found in network.

@@ -36,11 +36,11 @@
 #include "brisastatevariable.h"
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
  * \internal
- * \class BrisaUpnp::BrisaEventMessage
+ * \class Brisa::BrisaEventMessage
  *
  * \brief Represents an UPnP event message.
  */

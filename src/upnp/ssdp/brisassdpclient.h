@@ -35,10 +35,10 @@
 #include "brisaglobal.h"
 #include "brisaudplistener.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
- *  \class BrisaUpnp::BrisaSSDPClient brisassdpclient.h BrisaUpnp/BrisaSSDPClient
+ *  \class Brisa::BrisaSSDPClient brisassdpclient.h BrisaUpnp/BrisaSSDPClient
  *  \brief SSDP stack implementantion for UPnP control points.
  *
  *  Create a new BrisaSSCPClient and call "start()" to connect to the multicast

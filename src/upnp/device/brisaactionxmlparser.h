@@ -33,9 +33,9 @@
 
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 /*!
- * \class BrisaUpnp::BrisaActionXmlParser brisaactionxmlparser.h BrisaUpnp/BrisaActionXmlParser
+ * \class Brisa::BrisaActionXmlParser brisaactionxmlparser.h BrisaUpnp/BrisaActionXmlParser
  * \brief XML parser for SOAP requests.
  *
  * BrisaActionXmlParser parses information coming from the webserver. If a action is detected,

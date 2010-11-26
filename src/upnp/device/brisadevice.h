@@ -39,17 +39,14 @@
 #include "brisaicon.h"
 #include "brisaglobal.h"
 
-namespace Brisa
-{
-    class BrisaWebserver;
-}
+namespace Brisa {
 
-namespace BrisaUpnp {
+    class BrisaWebserver;
 
 class BrisaSSDPServer;
 
 /*!
- *  \class BrisaUpnp::BrisaDevice brisadevice.h BrisaUpnp/BrisaDevice
+ *  \class Brisa::BrisaDevice brisadevice.h BrisaUpnp/BrisaDevice
  *  \brief UPnP device implementation
  *
  *  BrisaDevice provides a easy and fast way to create UPnP devices. Simply create a new BrisaDevice
@@ -66,7 +63,7 @@ class BrisaSSDPServer;
  *  To stop the device and leave the network, simply call the \a stop() method, ssdp messages will
  *  also be sent for any embedded devices.
  *
- *  \sa BrisaUpnp::BrisaService
+ *  \sa Brisa::BrisaService
  */
 class BRISA_UPNP_EXPORT BrisaDevice: public QObject {
 Q_OBJECT
@@ -158,7 +155,7 @@ public:
      *  Overloads addService().
      *  Create a \a BrisaService and add it to the device. We recommend using this method for better
      *  object orientation.
-     *  \sa BrisaUpnp::BrisaService
+     *  \sa Brisa::BrisaService
      */
     void addService(BrisaService *serv);
 
@@ -328,7 +325,7 @@ private:
     QTemporaryFile descriptionFile;
 
     BrisaSSDPServer *ssdp;
-    Brisa::BrisaWebserver *webserver;
+    BrisaWebserver *webserver;
     bool running;
 };
 

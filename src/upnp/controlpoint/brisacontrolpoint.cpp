@@ -34,7 +34,7 @@
 #include "brisassdpclient.h"
 #include "brisamsearchclientcp.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
     QObject(parent) {

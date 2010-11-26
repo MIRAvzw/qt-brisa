@@ -39,13 +39,13 @@
 
 typedef QMap<QString, QString> BrisaInArgument, BrisaOutArgument;
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 class BrisaService;
 class BrisaStateVariable;
 
 /*!
- * \class BrisaUpnp::BrisaAction brisaaction.h BrisaUpnp/BrisaAction
+ * \class Brisa::BrisaAction brisaaction.h BrisaUpnp/BrisaAction
  *
  * \brief Template method class that represents each service's action.
  *

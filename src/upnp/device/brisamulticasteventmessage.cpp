@@ -28,7 +28,7 @@
 
 #include "brisamulticasteventmessage.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaMulticastEventMessage::BrisaMulticastEventMessage(
         BrisaStateVariable *variable, QString LVL, QObject *parent) :

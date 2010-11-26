@@ -32,7 +32,7 @@
 
 #include "brisacontrolpointdevice.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaControlPointDevice::BrisaControlPointDevice(QObject *parent) :
     QObject(parent) {

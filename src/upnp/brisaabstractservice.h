@@ -54,15 +54,15 @@ enum UPnPErrorCodes {
 	UPNP_STRING_ARGUMENT_TOO_LONG = 605
 };
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
- * \class BrisaUpnp::BrisaAbstractService brisaabstractservice.h BrisaUpnp/BrisaAbstractService
+ * \class Brisa::BrisaAbstractService brisaabstractservice.h BrisaUpnp/BrisaAbstractService
  *
  * \brief An abstract class for the control point side and device side service
  */
 #ifdef USE_NEW_BRISA_WEBSERVER
-class BRISA_UPNP_EXPORT BrisaAbstractService: public Brisa::BrisaWebService {
+class BRISA_UPNP_EXPORT BrisaAbstractService: public BrisaWebService {
 #else
 class BRISA_UPNP_EXPORT BrisaAbstractService: virtual public QObject {
 #endif

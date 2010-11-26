@@ -35,12 +35,12 @@
 #define BRISA_UPNP_EXPORT
 #endif
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
  * \internal
  *
- * \class BrisaUpnp::BrisaArgument brisaargument.h BrisaUpnp/BrisaArgument
+ * \class Brisa::BrisaArgument brisaargument.h BrisaUpnp/BrisaArgument
  *
  * \brief Represents the action's input and output arguments.
  */

@@ -32,7 +32,7 @@
 #include <QtDebug>
 #include <QIODevice>
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaControlPointService::BrisaControlPointService(QObject *parent) :
     BrisaAbstractService(parent) {

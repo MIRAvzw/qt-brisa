@@ -37,9 +37,9 @@
 #include "brisaudplistener.h"
 #include "brisanetwork.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
-/*! \class BrisaUpnp::BrisaSSDPServer brisassdpserver.h BrisaUpnp/BrisaSSDPServer
+/*! \class Brisa::BrisaSSDPServer brisassdpserver.h BrisaUpnp/BrisaSSDPServer
  *  \brief SSDP stack implementation for UPnP devices.
  *
  *  Call \a start() to begin listening for MSearch requests from control points. Whenever a new

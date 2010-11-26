@@ -30,7 +30,7 @@
 
 #include <QDebug>
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 void BrisaDeviceXMLHandler::xmlGenerator(BrisaDevice *device, QFile *file) {
     file->open(QIODevice::ReadWrite | QIODevice::Text);

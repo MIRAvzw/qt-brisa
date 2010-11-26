@@ -36,12 +36,12 @@
 
 #endif
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 BrisaEventController::BrisaEventController(
-        Brisa::BrisaWebserver *sessionManager,
+        BrisaWebserver *sessionManager,
         QList<BrisaStateVariable *> *stateVariableList,
         QObject *parent) :
 #ifdef USE_NEW_BRISA_WEBSERVER
@@ -55,7 +55,7 @@ BrisaEventController::BrisaEventController(
 }
 
 void BrisaEventController::onRequest(const HttpRequest &r,
-                                     Brisa::BrisaWebserverSession *session)
+                                     BrisaWebserverSession *session)
 {
     if (r.method() == "SUBSCRIBE") {
         subscribe(r, session);
@@ -65,7 +65,7 @@ void BrisaEventController::onRequest(const HttpRequest &r,
 }
 
 inline void BrisaEventController::subscribe(const HttpRequest &request,
-                                            Brisa::BrisaWebserverSession *session)
+                                            BrisaWebserverSession *session)
 {
     const QHash<QByteArray, QByteArray> headers = request.headers();
     if (headers.contains("SID")) { //Then it's probably a renewal request.
@@ -135,7 +135,7 @@ inline void BrisaEventController::subscribe(const HttpRequest &request,
 }
 
 inline void BrisaEventController::unsubscribe(const HttpRequest &request,
-                                              Brisa::BrisaWebserverSession *session)
+                                              BrisaWebserverSession *session)
 {
     const QHash<QByteArray, QByteArray> headers = request.headers();
     if (headers.contains("SID")) {

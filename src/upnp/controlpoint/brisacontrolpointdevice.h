@@ -44,10 +44,10 @@
 #include "brisadevicexmlhandlercp.h"
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
- *  \class BrisaUpnp::BrisaControlPointDevice brisacontrolpointdevice.h BrisaUpnp/BrisaControlPointDevice
+ *  \class Brisa::BrisaControlPointDevice brisacontrolpointdevice.h BrisaUpnp/BrisaControlPointDevice
  *
  *  \brief Class that implements the devices that control point part is going to handle.
  */
@@ -115,7 +115,7 @@ public:
     virtual ~BrisaControlPointDevice();
 
     /*!
-     *  \enum BrisaUpnp::BrisaControlPointDevice::xmlTags
+     *  \enum Brisa::BrisaControlPointDevice::xmlTags
      *  \brief This enum specifies the devices attributes that are going to be set/get
      *  \param Udn  Unique Device Name. Universally-unique identifier for the device.
      *  \param Major  Major version of the UPnP Device Architecture.

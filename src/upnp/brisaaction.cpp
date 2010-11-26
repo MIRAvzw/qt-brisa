@@ -29,7 +29,7 @@
 #include "brisaservice.h"
 #include <QDebug>
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaAction::BrisaAction(QString name, BrisaService *service, QObject *parent):
 	QObject(parent),

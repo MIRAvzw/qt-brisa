@@ -28,7 +28,7 @@
 #include <brisaglobal.h>
 #include "brisaargument.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaArgument::BrisaArgument(const BrisaArgument &brisaArgument):
         name(brisaArgument.name),

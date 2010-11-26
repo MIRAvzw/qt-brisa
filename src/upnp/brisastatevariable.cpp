@@ -29,7 +29,7 @@
 #include "brisastatevariable.h"
 #include "brisaabstractservice.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaStateVariable::BrisaStateVariable(QString sendEvents,
                                        QString name,

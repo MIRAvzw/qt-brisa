@@ -40,7 +40,7 @@
 #include "brisaabstractservice.h"
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 class BRISA_UPNP_EXPORT BrisaServiceXMLHandler {
 public:

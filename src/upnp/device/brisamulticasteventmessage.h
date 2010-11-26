@@ -35,7 +35,7 @@
 
 #include <brisaabstracteventmessage.h>
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 class BRISA_UPNP_EXPORT BrisaMulticastEventMessage : public BrisaAbstractEventMessage
 {

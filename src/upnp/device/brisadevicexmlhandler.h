@@ -36,7 +36,7 @@
 
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 class BrisaDevice;
 

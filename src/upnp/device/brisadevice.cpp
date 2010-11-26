@@ -39,7 +39,7 @@
 #include "brisassdpserver.h"
 #include "brisawebserver.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaDevice::BrisaDevice(QObject *parent) :
         QObject(parent), running(false)
@@ -47,7 +47,7 @@ BrisaDevice::BrisaDevice(QObject *parent) :
 
 	this->discoverNetworkAddress();
 	this->buildUrlBase();
-        webserver = new Brisa::BrisaWebserver(QHostAddress(ipAddress), port);
+        webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
 	ssdp = new BrisaSSDPServer();
 
 	QObject::connect(ssdp,
@@ -85,7 +85,7 @@ BrisaDevice::BrisaDevice(const QString &deviceType, const QString &friendlyName,
     this->major = "1";
     this->minor = "0";
 
-    webserver = new Brisa::BrisaWebserver(QHostAddress(ipAddress), port);
+    webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
     ssdp = new BrisaSSDPServer();
 
     QObject::connect(ssdp,
@@ -123,7 +123,7 @@ BrisaDevice::BrisaDevice(const BrisaDevice &dev) :
 	this->major = dev.getAttribute(BrisaDevice::Major);
 	this->minor = dev.getAttribute(BrisaDevice::Minor);
 
-        webserver = new Brisa::BrisaWebserver(QHostAddress(ipAddress), port);
+        webserver = new BrisaWebserver(QHostAddress(ipAddress), port);
 	ssdp = new BrisaSSDPServer();
 }
 
@@ -424,7 +424,7 @@ void BrisaDevice::buildWebServerTree()
 {
     descriptionFile.open();
     webserver->addService(fileAddress.toUtf8(),
-                          new Brisa::BrisaWebFile(descriptionFile.fileName(), this));
+                          new BrisaWebFile(descriptionFile.fileName(), this));
     descriptionFile.close();
 
     foreach(BrisaService *service, serviceList) {

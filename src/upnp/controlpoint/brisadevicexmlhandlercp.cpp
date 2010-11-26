@@ -31,7 +31,7 @@
 
 #define PORT_INDEX 2
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaDeviceXMLHandlerCP::~BrisaDeviceXMLHandlerCP() {
 }

@@ -46,12 +46,12 @@
 #include "brisacontrolpointservice.h"
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 class BrisaControlPointDevice;
 
 /*!
- *  \class BrisaUpnp::BrisaDeviceXMLHandlerCP brisadevicexmlhandlercp.h BrisaUpnp/BrisaDeviceXMLHandlerCP
+ *  \class Brisa::BrisaDeviceXMLHandlerCP brisadevicexmlhandlercp.h BrisaUpnp/BrisaDeviceXMLHandlerCP
  *
  *  \brief BrisaDeviceXMLHandlerCP creates a device from a xml description file, with all it's
  *  attributes, it lets it ready to be used.

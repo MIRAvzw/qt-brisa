@@ -36,9 +36,9 @@
 
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 /*!
- * \class BrisaUpnp::BrisaStateVariable brisastatevariable.h BrisaUpnp/BrisaStateVariable
+ * \class Brisa::BrisaStateVariable brisastatevariable.h BrisaUpnp/BrisaStateVariable
  *
  * \brief Represents the service's state variables.
  */

@@ -28,7 +28,7 @@
 
 #include "brisaabstracteventmessage.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaAbstractEventMessage::BrisaAbstractEventMessage(QObject *parent) :
         QObject(parent)

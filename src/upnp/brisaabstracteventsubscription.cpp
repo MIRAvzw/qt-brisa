@@ -28,7 +28,7 @@
 
 #include "brisaabstracteventsubscription.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaAbstractEventSubscription::BrisaAbstractEventSubscription(
         const QString &sid, const QStringList &callbackUrls,

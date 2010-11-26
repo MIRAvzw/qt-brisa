@@ -30,7 +30,7 @@
 
 #include <QtDebug>
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaActionXmlParser::BrisaActionXmlParser() {
     reader = new QDomDocument();

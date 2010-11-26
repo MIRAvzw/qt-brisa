@@ -40,13 +40,10 @@
 #include <QObject>
 #include <QtXml>
 
-namespace BrisaUpnp {
-
-using Brisa::BrisaWebserver;
-using Brisa::BrisaWebService;
+namespace Brisa {
 
 /*!
- *  \class BrisaUpnp::BrisaEventProxy brisaeventproxy.h BrisaUpnp/BrisaEventProxy
+ *  \class Brisa::BrisaEventProxy brisaeventproxy.h BrisaUpnp/BrisaEventProxy
  *  Class that implements the event part in control point side in Brisa Qt, this class makes the
  *  operations of subscribe, renew subscription and unsubscribe.
  */
@@ -96,7 +93,7 @@ signals:
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 protected:
-    void onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session);
+    void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
 #endif
 
 private:

@@ -32,10 +32,10 @@
 #include "brisaabstractservice.h"
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
- *  \class BrisaUpnp::BrisaControlPointService brisacontrolpointservice.h BrisaUpnp/BrisaControlPointService
+ *  \class Brisa::BrisaControlPointService brisacontrolpointservice.h BrisaUpnp/BrisaControlPointService
  *
  *  \brief BrisaControlPointService is the class that implements action control in UPnP
  *  Architecture

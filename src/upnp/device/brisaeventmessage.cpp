@@ -28,7 +28,7 @@
 
 #include "brisaeventmessage.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaEventMessage::BrisaEventMessage(BrisaEventSubscription &subscription,
         const QList<BrisaStateVariable *> *variables, QObject *parent) :

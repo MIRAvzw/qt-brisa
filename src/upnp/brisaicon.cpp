@@ -28,7 +28,7 @@
 
 #include "brisaicon.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaIcon::BrisaIcon(QString mimetype, QString width, QString height,
                      QString depth, QString url,

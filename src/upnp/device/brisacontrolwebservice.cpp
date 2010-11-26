@@ -3,7 +3,7 @@
 #include "brisaactionxmlparser.h"
 #include <httpresponse.h>
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaControlWebService::BrisaControlWebService(const QString &serviceType, QObject *parent) :
     BrisaWebService(parent),
@@ -11,7 +11,7 @@ BrisaControlWebService::BrisaControlWebService(const QString &serviceType, QObje
 {
 }
 
-void BrisaControlWebService::onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session)
+void BrisaControlWebService::onRequest(const HttpRequest &request, BrisaWebserverSession *session)
 {
     if (request.method() != "POST") {
         // TODO: close connection?

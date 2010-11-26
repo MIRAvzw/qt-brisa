@@ -29,7 +29,7 @@
 #include "brisaservicexmlhandler.h"
 #include "brisaabstractservice.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaServiceXMLHandler::BrisaServiceXMLHandler()
 {

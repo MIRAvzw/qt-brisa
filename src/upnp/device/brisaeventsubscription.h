@@ -43,7 +43,7 @@
 
 #endif
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 #ifdef USE_NEW_BRISA_WEBSERVER
 

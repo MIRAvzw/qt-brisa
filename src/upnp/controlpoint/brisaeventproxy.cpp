@@ -33,7 +33,7 @@
 
 #endif
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaEventProxy::BrisaEventProxy(const QStringList &callbackUrls,
                                  BrisaWebserver *webserver,
@@ -148,7 +148,7 @@ QHttpRequestHeader *BrisaEventProxy::getUnsubscriptionRequest() const {
 #ifdef USE_NEW_BRISA_WEBSERVER
 
 
-void BrisaEventProxy::onRequest(const HttpRequest &request, Brisa::BrisaWebserverSession *session)
+void BrisaEventProxy::onRequest(const HttpRequest &request, BrisaWebserverSession *session)
 {
     QByteArray sid = request.header("SID");
 

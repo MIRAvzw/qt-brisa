@@ -39,7 +39,7 @@
 
 #include "brisaglobal.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 class BRISA_UPNP_EXPORT BrisaIcon: public QObject {
 Q_OBJECT

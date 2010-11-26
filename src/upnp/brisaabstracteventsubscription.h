@@ -42,15 +42,15 @@
 #include "brisawebservice.h"
 #endif
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
- * \class BrisaUpnp::BrisaAbstractEventSubscription brisaabstracteventsubscription.h BrisaUpnp/BrisaAbstractEventSubscription
+ * \class Brisa::BrisaAbstractEventSubscription brisaabstracteventsubscription.h BrisaUpnp/BrisaAbstractEventSubscription
  *
  * \brief Abstract class that represents an event subscription
  */
 #ifdef USE_NEW_BRISA_WEBSERVER
-class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public Brisa::BrisaWebService {
+class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public BrisaWebService {
 #else
 class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public QObject {
 #endif

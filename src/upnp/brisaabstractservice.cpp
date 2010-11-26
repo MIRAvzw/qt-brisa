@@ -27,7 +27,7 @@
  */
 #include "brisaabstractservice.h"
 
-using namespace BrisaUpnp;
+using namespace Brisa;
 
 BrisaAbstractService::BrisaAbstractService(QObject *parent) :QObject(parent)
 {

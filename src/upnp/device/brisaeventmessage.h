@@ -36,11 +36,11 @@
 #include "brisaabstracteventmessage.h"
 #include "brisaeventsubscription.h"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
  * \internal
- * \class BrisaUpnp::BrisaEventMessage
+ * \class Brisa::BrisaEventMessage
  *
  * \brief Represents an UPnP unicast event message.
  */
@@ -94,7 +94,7 @@ private:
 
 }
 
-inline QString BrisaUpnp::BrisaEventMessage::getSid() const
+inline QString Brisa::BrisaEventMessage::getSid() const
 {
     return subscription.getSid();
 }

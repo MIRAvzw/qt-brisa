@@ -37,10 +37,10 @@
 #define DEFAULT_SEARCH_TIME 600
 #define DEFAULT_SEARCH_TYPE "ssdp:all"
 
-namespace BrisaUpnp {
+namespace Brisa {
 
 /*!
- \class BrisaUpnp::BrisaMSearchClientCP brisamsearchclientcp.h BrisaUpnp/BrisaMSearchClientCP
+ \class Brisa::BrisaMSearchClientCP brisamsearchclientcp.h BrisaUpnp/BrisaMSearchClientCP
  \brief SSDP MSearch implementation for UPnP control points
 
  Create a new BrisaMSearchClientCP with the desired service type and mx values, and call start()
