@@ -1,2 +1,0 @@
-CONFIG += silent
-DEFINES+=HAVE_Qt
