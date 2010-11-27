@@ -101,7 +101,12 @@ void HttpMessage::clear()
 {
     m_headers.clear();
 
-    m_entityBody->deleteLater();
+    if (m_entityBody)
+        delete m_entityBody;
+
+    m_range.first = 0;
+    m_range.second = 0;
+
     m_entityBody = NULL;
 }
 
