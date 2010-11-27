@@ -38,9 +38,7 @@
 
 #include "brisaglobal.h"
 
-#ifdef USE_NEW_BRISA_WEBSERVER
 #include "brisawebservice.h"
-#endif
 
 namespace Brisa {
 
@@ -49,11 +47,7 @@ namespace Brisa {
  *
  * \brief Abstract class that represents an event subscription
  */
-#ifdef USE_NEW_BRISA_WEBSERVER
 class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public BrisaWebService {
-#else
-class BRISA_UPNP_EXPORT BrisaAbstractEventSubscription: virtual public QObject {
-#endif
 Q_OBJECT
 
 public:

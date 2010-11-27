@@ -39,8 +39,6 @@ void BrisaEventSubscription::renew(const int &newTimeout) {
     this->timeout = newTimeout;
 }
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 HttpResponse BrisaEventSubscription::getAcceptSubscriptionResponse() const {
     HttpResponse response(HttpVersion(1, 1), HttpResponse::OK);
 
@@ -62,30 +60,3 @@ HttpResponse BrisaEventSubscription::getAcceptSubscriptionResponse() const {
 HttpResponse BrisaEventSubscription::getAcceptUnsubscriptionResponse() const {
     return HttpResponse(HttpVersion(1, 1), HttpResponse::OK);
 }
-
-#else // !USE_NEW_BRISA_WEBSERVER
-
-QHttpResponseHeader BrisaEventSubscription::getAcceptSubscriptionResponse() const {
-    QHttpResponseHeader header(200, "OK");
-
-    header.addValue("DATE", QDateTime::currentDateTime().toUTC().toString(
-            "ddd, dd MMM yyyy HH:mm:ss") + " GMT");
-
-    //FIXME: use system information
-    header.addValue("SERVER", QString("OS/version") + QString(" UPnP/1.0 ")
-            + QString("product/version"));
-
-    header.addValue("SID", QString("uuid:") + this->SID);
-
-    header.addValue("TIMEOUT", (timeout >= 0) ? QString("Second-")
-            + QString::number(this->timeout) : "infinite");
-
-    return header;
-}
-
-QHttpResponseHeader BrisaEventSubscription::getAcceptUnsubscriptionResponse() const {
-    return QHttpResponseHeader(200, "OK");
-}
-
-#endif // USE_NEW_BRISA_WEBSERVER
-

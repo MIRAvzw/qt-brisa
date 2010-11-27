@@ -1,4 +1,3 @@
-#ifdef USE_NEW_BRISA_WEBSERVER
 #include "brisacontrolwebservice.h"
 #include "brisaactionxmlparser.h"
 #include <httpresponse.h>
@@ -38,5 +37,3 @@ void BrisaControlWebService::onRequest(const HttpRequest &request, BrisaWebserve
         emit invalidRequest(session);
     }
 }
-
-#endif

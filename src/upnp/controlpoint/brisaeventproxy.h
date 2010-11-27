@@ -91,10 +91,8 @@ signals:
     void eventNotification(BrisaEventProxy *subscription,
             QMap<QString, QString> eventingVariables);
 
-#ifdef USE_NEW_BRISA_WEBSERVER
 protected:
     void onRequest(const HttpRequest &request, BrisaWebserverSession *session);
-#endif
 
 private:
     /*!
@@ -152,17 +150,6 @@ private:
      */
     BrisaWebserver *webServer;
 
-#ifndef USE_NEW_BRISA_WEBSERVER
-    
-    /*!
-     *  \property eventService
-     *  \brief Webservice that is going to be add to web server, and will properly receive the event
-     *  responses.
-     */
-    BrisaWebService *eventService;
-
-#endif
-
     /*!
      *  Creates and returns a Http subscription header with the passed \a timeout
      *  \param timeout timeout
@@ -188,20 +175,6 @@ private:
      *  \param sid sid
      */
     void setSid(QString &sid);
-
-#ifndef USE_NEW_BRISA_WEBSERVER
-private slots:
-
-    /*!
-     *  Slot to receive and treat the events that are received from \a service with the following
-     *  \a headers and the \a rawData.
-     *  \param service service
-     *  \param headers headers
-     *  \param rawData rawData
-     */
-    void eventReceived(BrisaWebService *service,
-            QMultiHash<QString, QString> headers, QString rawData);
-#endif
 };
 
 }

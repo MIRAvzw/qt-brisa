@@ -28,11 +28,7 @@
 #include <QtDebug>
 #include <QIODevice>
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 #include "brisawebfile.h"
-
-#endif
 
 // TODO: put this include at the begin of the file
 #include "brisadevice.h"
@@ -400,8 +396,6 @@ void BrisaDevice::start()
 	running = true;
 }
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 int BrisaDevice::threadsNumber() const
 {
     return webserver->threadsNumber();
@@ -411,8 +405,6 @@ void BrisaDevice::setThreadsNumber(int n)
 {
     webserver->setThreadsNumber(n);
 }
-
-#endif
 
 void BrisaDevice::stop()
 {
@@ -432,8 +424,6 @@ void BrisaDevice::startWebServer()
 	this->webserver->start();
 }
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 void BrisaDevice::buildWebServerTree()
 {
     descriptionFile.open();
@@ -445,27 +435,6 @@ void BrisaDevice::buildWebServerTree()
         service->buildWebServiceTree(webserver);
     }
 }
-
-#else // !USE_NEW_BRISA_WEBSERVER
-
-void BrisaDevice::buildWebServerTree()
-{
-	// open the file to get its name
-	this->descriptionFile.open();
-	this->webserver->publishFile(this->fileAddress,
-			this->descriptionFile.fileName());
-	this->descriptionFile.close();
-
-	foreach (BrisaService *service, serviceList)
-		{
-			service->buildWebServiceTree(webserver);
-			webserver->addService(
-					service->getAttribute(BrisaService::ServiceId),
-					service->getWebService());
-		}
-}
-
-#endif
 
 void BrisaDevice::respondMSearch(const QString &st, const QString &senderIp,
                 quint16 senderPort)

@@ -29,13 +29,9 @@
 #include <QtDebug>
 #include <QUrl>
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 #include "brisawebfile.h"
 #include "brisacontrolwebservice.h"
 #include "brisawebserversession.h"
-
-#endif // USE_NEW_BRISA_WEBSERVER
 
 // TODO: move the include directive to the begin of the file
 #include "brisaservice.h"
@@ -87,15 +83,9 @@ BrisaService::BrisaService(BrisaService &serv) :
 }
 
 BrisaService::~BrisaService() {
-#ifndef USE_NEW_BRISA_WEBSERVER
-    delete webService;
-#endif
-
     qDeleteAll(this->childWebServices);
     childWebServices.clear();
 }
-
-#ifdef USE_NEW_BRISA_WEBSERVER
 
 void BrisaService::call(const QString &method, BrisaInArgument param, BrisaWebserverSession *session)
 {
@@ -197,112 +187,6 @@ void BrisaService::call(const QString &method, BrisaInArgument param, BrisaWebse
     respondError(session, UPNP_INVALID_ACTION);
 }
 
-#else // !USE_NEW_BRISA_WEBSERVER
-
-void BrisaService::call(const QString &method, BrisaInArgument &param) {
-    // TODO: Improve this by using a QMap of type <QString, BrisaAction*> (action_name, action instance) to fastly
-    // find an action, instead of make a looping and comparisons. For this, it is necessary to change the type of the
-    // BrisaAbstractService::actionList attribute to QMap<QString, BrisaAction*>, current it is a QList<BrisaAction*>.
-    for (QList<BrisaAction *>::iterator i = this->actionList.begin(); i != actionList.end(); ++i) {
-		BrisaAction *action = *i;
-        if (action->getName() == method) {
-            int prePostActionReturn = 0;
-			QString errorDescription = "";
-			// executing preMethod if available
-            if (this->preActionMethod.methodIndex() >= 0) {
-                if (!this->preActionMethod.invoke(this,
-                                                  Qt::DirectConnection,
-                                                  Q_RETURN_ARG(int, prePostActionReturn),
-                                                  Q_ARG(BrisaInArgument *, &param),
-                                                  Q_ARG(BrisaAction *, action),
-                                    	          Q_ARG(QString, errorDescription)))
-                {
-                    qDebug() << "Error invoking preAction method. Continuing...";
-                }
-            } else {
-                qDebug() << "Warning: preAction method not found, continuing...";
-            }
-
-            if (prePostActionReturn == 0) {
-                // call the action
-                BrisaOutArgument *outArguments;
-
-                if (!action->call(&param, outArguments)) {
-                    qDebug() << "An error has occurred during the " << action->getName() << " callback.";
-					if (!outArguments) {
-						delete outArguments;
-					}
-
-                	if (this->handleActionFailureMethod.methodIndex() >= 0) {
-						int handleFailureActionMethodReturn = 0;
-                		if (!this->handleActionFailureMethod.invoke(this,
-                        	                          	  			Qt::DirectConnection,
-                            	                      	  			Q_RETURN_ARG(int, handleFailureActionMethodReturn),
-                                	                  	  			Q_ARG(BrisaInArgument *, &param),
-                                    	              	  			Q_ARG(BrisaAction *, action),
-                                    	              	  			Q_ARG(QString, errorDescription)))
-                		{
-                    		qDebug() << "Error invoking handleActionFailure method. Continuing...";
-                    		this->respondError(UPNP_ACTION_FAILED);
-							return;
-						}
-						this->respondError(handleFailureActionMethodReturn, "Error specified by UPnP vendor: " + errorDescription);
-						return;
-					}
-
-                    qDebug() << "handleActionFailure method not implemented in service, returning default error.";
-                    this->respondError(UPNP_ACTION_FAILED);
-					return;
-                }
-
-				// avoiding segmentation fault...
-				if (!outArguments) {
-                	outArguments = new BrisaOutArgument();
-				}
-
-				// executing postMethod if available
-                if (this->postActionMethod.methodIndex() >= 0) {
-                    if (!this->postActionMethod.invoke(this,
-                                                       Qt::DirectConnection,
-                                                       Q_RETURN_ARG(int, prePostActionReturn),
-                                                       Q_ARG(BrisaInArgument *, &param),
-                                                       Q_ARG(BrisaOutArgument *, outArguments),
-                                                       Q_ARG(BrisaAction *, action),
-                                    	               Q_ARG(QString, errorDescription)))
-                    {
-                        qDebug() << "Error invoking postAction method.";
-                    }
-
-					if (prePostActionReturn != 0) {
-                        qDebug() << "Warning: postAction service method returned non-zero, sending UPnP error code " << prePostActionReturn;
-						delete outArguments;
-						this->respondError(prePostActionReturn, errorDescription);
-						return;
-                    }
-                } else {
-                    qDebug() << "Warning: postAction method not found, continuing...";
-                }
-
-                // send response.
-                this->respondAction(action->getName(), outArguments);
-                delete outArguments;
-                return;
-            } else { // preAction returned non-zero
-            	qDebug() << "Warning: preAction method returned non-zero value, it returned " << prePostActionReturn << " with description " << errorDescription;
-				this->respondError(prePostActionReturn, errorDescription);
-				return;
-			}
-        }
-    }
-
-    qDebug() << "BrisaService: Unknown callback: " << method;
-    this->respondError(UPNP_INVALID_ACTION);
-}
-
-#endif
-
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 void BrisaService::buildWebServiceTree(BrisaWebserver *sessionManager)
 {
     BrisaWebService *control = new BrisaControlWebService(serviceType);
@@ -334,43 +218,6 @@ void BrisaService::onInvalidRequest(BrisaWebserverSession *session)
     respondError(session, UPNP_INVALID_ACTION);
 }
 
-#else // !USE_NEW_BRISA_WEBSERVER
-
-void BrisaService::buildWebServiceTree(QxtAbstractWebSessionManager *sessionManager) {
-    webService = new BrisaWebServiceProvider(sessionManager, this);
-
-    BrisaWebService *control = new BrisaWebService(sessionManager, this);
-    webService->addService(controlUrl.section('/', -1), control);
-
-    BrisaEventController *event = new BrisaEventController(sessionManager,
-                                                           &this->stateVariableList,
-                                                           this);
-    webService->addService(eventSubUrl.section('/', -1), event);
-
-    webService->addFile(scpdUrl.section('/', -1), scpdFilePath);
-
-    QObject::connect(control,
-                     SIGNAL(genericRequestReceived(const QString &,
-                                                   const QMultiHash<QString, QString> &,
-                                                   const QByteArray &,
-                                                   int,
-                                                   int)),
-                     this,
-                     SLOT(parseGenericRequest(const QString &,
-                                              const QMultiHash<QString, QString> &,
-                                              const QByteArray &,
-                                              int,
-                                              int))
-                    );
-
-    childWebServices.insert(controlUrl.section('/', -1), control);
-    childWebServices.insert(eventSubUrl.section('/', -1), event);
-
-    this->parseDescriptionFile();
-}
-
-#endif
-
 BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
     for (QList<BrisaStateVariable *>::iterator i =
             this->stateVariableList.begin(); i != this->stateVariableList.end(); ++i) {
@@ -380,17 +227,6 @@ BrisaStateVariable *BrisaService::getVariable(const QString &variableName) {
 
     return 0;
 }
-
-#ifndef USE_NEW_BRISA_WEBSERVER
-
-BrisaWebServiceProvider *BrisaService::getWebService()
-{
-    return webService;
-}
-
-#endif
-
-#ifdef USE_NEW_BRISA_WEBSERVER
 
 void BrisaService::onRequest(const HttpRequest &request, BrisaWebserverSession *session)
 {
@@ -417,38 +253,6 @@ void BrisaService::onRequest(const HttpRequest &request, BrisaWebserverSession *
         respondError(session, UPNP_INVALID_ACTION);
     }
 }
-
-#else
-
-void BrisaService::parseGenericRequest(const QString &method, const QMultiHash<
-        QString, QString> &headers, const QByteArray &requestContent,
-        int sessionId, int requestId) {
-    Q_UNUSED(headers);
-    Q_UNUSED(sessionId);
-    Q_UNUSED(requestId);
-
-    if (method != "POST")
-        return;
-
-    BrisaActionXmlParser actionXmlParser;
-
-    actionXmlParser.setXmlContent(requestContent);
-
-    if (actionXmlParser.parseSOAP()) {
-        //If servicetype is incorrect
-        if (actionXmlParser.serviceType != serviceType)
-            return;
-
-        this->call(actionXmlParser.method, actionXmlParser.args);
-    } else {
-        qDebug() << "BrisaService: Invalid SOAP xml format.";
-        this->respondError(UPNP_INVALID_ACTION);
-    }
-}
-
-#endif
-
-#ifdef USE_NEW_BRISA_WEBSERVER
 
 inline void BrisaService::respondAction(BrisaWebserverSession *session, const BrisaOutArgument *outArgs, const QString &actionName)
 {
@@ -488,41 +292,6 @@ inline void BrisaService::respondError(BrisaWebserverSession *session, int error
     r.setEntityBody(message.toUtf8());
     session->respond(r);
 }
-
-#else // !USE_NEW_BRISA_WEBSERVER
-
-void BrisaService::respondAction(const QString &actionName, const BrisaOutArgument *outArgs)
-{
-    QByteArray message("<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
-                       "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
-                       "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
-                       "<s:Body>\r\n"
-                       "<u:" + actionName.toUtf8() + "Response xmlns:u=\"" + serviceType.toUtf8() + "\">\r\n");
-
-    for (QMap<QString, QString>::const_iterator i = outArgs->begin(); i != outArgs->end(); ++i) {
-        message.append("<" + i.key() + ">" + i.value() + "</" + i.key()
-                + ">\r\n");
-    }
-
-    message.append("</u:" + actionName + "Response>\r\n"
-        "</s:Body>\r\n"
-        "</s:Envelope>\r\n");
-    childWebServices.value(controlUrl.section('/', -1))->respond(message);
-
-    qDebug() << "BrisaService finished responding action.";
-}
-
-void BrisaService::respondError(int errorCode, QString errorDescription) {
-	if (errorDescription == "") {
-		errorDescription = this->errorCodeToString(errorCode);
-	}
-    QString message = SOAP_ERROR_TEMPLATE.arg(QString::number(errorCode),
-                                              this->errorCodeToString(errorCode));
-
-    childWebServices.value(controlUrl.section('/', -1))->respond(message.toUtf8());
-}
-
-#endif
 
 void BrisaService::setDescriptionFile(const QString &scpdFilePath) {
     this->scpdFilePath = scpdFilePath;

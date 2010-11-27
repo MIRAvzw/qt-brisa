@@ -37,9 +37,7 @@
 #include "brisastatevariable.h"
 #include "brisaaction.h"
 
-#ifdef USE_NEW_BRISA_WEBSERVER
 #include "brisawebservice.h"
-#endif
 
 enum UPnPErrorCodes {
 	UPNP_SUCCESS = 0,
@@ -61,11 +59,7 @@ namespace Brisa {
  *
  * \brief An abstract class for the control point side and device side service
  */
-#ifdef USE_NEW_BRISA_WEBSERVER
 class BRISA_UPNP_EXPORT BrisaAbstractService: public BrisaWebService {
-#else
-class BRISA_UPNP_EXPORT BrisaAbstractService: virtual public QObject {
-#endif
 Q_OBJECT
 
 public:
@@ -202,10 +196,6 @@ signals:
     void requestError(QString errorMessage, QString methodName);
 
 protected:
-#ifndef USE_NEW_BRISA_WEBSERVER
-    virtual void call(const QString &method, BrisaInArgument &param) = 0;
-#endif
-
     QList<BrisaAction *> actionList;
     QList<BrisaStateVariable *> stateVariableList;
 

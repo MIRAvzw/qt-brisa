@@ -25,7 +25,7 @@
 
 #include "brisaglobal.h"
 
-#if !defined(BRISAWEBSERVERSESSION_H) && defined(USE_NEW_BRISA_WEBSERVER)
+#ifndef BRISAWEBSERVERSESSION_H
 #define BRISAWEBSERVERSESSION_H
 
 #include "httpsession.h"

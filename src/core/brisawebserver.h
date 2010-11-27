@@ -34,22 +34,7 @@
 #include <QtNetwork>
 #include "brisaglobal.h"
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 #include "httpserver.h"
-
-#else // !USE_NEW_BRISA_WEBSERVER
-
-#include "QxtHttpSessionManager"
-#include <QxtWebServiceDirectory>
-#include <QxtWebSlotService>
-#include <QxtWebPageEvent>
-#include <QxtWebContent>
-#include "brisawebserviceprovider.h"
-#include "brisawebfile.h"
-#include "brisawebservice.h"
-
-#endif // USE_NEW_BRISA_WEBSERVER
 
 namespace Brisa {
 
@@ -58,7 +43,6 @@ namespace Brisa {
  *
  *  BrisaWebServer implements a Web Server using libQxt.
  */
-#ifdef USE_NEW_BRISA_WEBSERVER
     class BrisaWebService;
     class BrisaWebserverSession;
 
@@ -91,60 +75,6 @@ namespace Brisa {
         mutable QMutex mutex;
         QHash<QByteArray, BrisaWebService *> services;
     };
-
-#else // !USE_NEW_BRISA_WEBSERVER
-class BRISA_CORE_EXPORT BrisaWebserver: public QxtHttpSessionManager {
-Q_OBJECT
-
-public:
-    /*!
-     *  Constructor for BrisaWebServer
-     *
-     *  \param host \a empty
-     *  \param port \a empty
-     */
-    BrisaWebserver(const QHostAddress &host, quint16 port);
-
-    /*!
-     *  Destructor for BrisaWebServer
-     */
-    ~BrisaWebserver();
-
-    /*!
-     *  Publishes a file to the root.
-     *
-     *  \param publishPath \a empty
-     *  \param filePath \a empty
-     */
-    void publishFile(QString path, QString filePath);
-
-    /*!
-     *  Adds a service to the web server. The service url path will be added to the root of the server.
-     *
-     *  \param path \a empty
-     *  \param service \a empty
-     */
-    void addService(QString path, QxtWebServiceDirectory *service);
-
-protected:
-    /*!
-     *  This method dumps request information to the screen.
-     *
-     *  \param requestID \a empty
-     *  \param header \a empty
-     *  \param deviceContent \a empty
-     */
-    void incomingRequest(quint32 requestID, const QHttpRequestHeader &header,
-            QxtWebContent *deviceContent);
-    /*!
-     *  Creates a new session and returns the session number.
-     */
-    int newSession();
-
-private:
-    BrisaWebServiceProvider *rootService;
-};
-#endif // USE_NEW_BRISA_WEBSERVER
 
 }
 

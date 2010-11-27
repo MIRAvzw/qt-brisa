@@ -13,7 +13,6 @@ echo #depends.pri > %PROJECT_ROOT%\depends.pri
 
 shift
 set QMAKEBIN=qmake
-set QXT=1
 set OPENSSL=0
 set FCGI=0
 set DB=0
@@ -106,25 +105,9 @@ echo qt4 not found, can not proceed
 goto end
 
 
-:qxtfail
-cd ../..
-echo qxt not found, can not proceed
-goto end
-
 :detectTools_end_test_make
 echo    Testing for external libraries.
 echo    If a test fails, installation won't proceed.
-if "%QXT%"=="0" goto qxtfail
-echo    Testing for qxt...
-echo QXT... >> %PROJECT_ROOT%\%CONFIG_LOG%
-cd %TESTDIR%\qxt
-%QMAKE% >> %PROJECT_ROOT%\%CONFIG_LOG% 2>&1
-if errorlevel 1 goto qxtfail
-call %MAKE% clean >> %PROJECT_ROOT%\%CONFIG_LOG% 2>&1
-call %MAKE% >> %PROJECT_ROOT%\%CONFIG_LOG% 2>&1
-if errorlevel 1 goto qxtfail
-echo DEFINES += HAVE_QXT >> %PROJECT_ROOT%\config.in
-echo        QXT enabled.
 
 echo   Installing dependencies.
 

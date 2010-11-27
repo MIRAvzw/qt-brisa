@@ -1,4 +1,4 @@
-#if !defined(BRISACONTROLWEBSERVICE_H) && defined USE_NEW_BRISA_WEBSERVER
+#ifndef BRISACONTROLWEBSERVICE_H
 #define BRISACONTROLWEBSERVICE_H
 
 #include "brisawebservice.h"

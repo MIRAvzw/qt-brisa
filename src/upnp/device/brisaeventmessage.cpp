@@ -39,8 +39,6 @@ BrisaEventMessage::BrisaEventMessage(BrisaEventSubscription &subscription,
 {
 }
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 QByteArray BrisaEventMessage::getRequestMessage() const
 {
     static const QString genericRequest = "NOTIFY %1 HTTP/1.1\r\n"
@@ -88,54 +86,3 @@ QByteArray BrisaEventMessage::getRequestMessage() const
                               body                          // REQUEST BODY
                               ).toAscii();
 }
-
-#else // !USE_NEW_BRISA_WEBSERVER
-
-QHttpRequestHeader BrisaEventMessage::getMessageHeader() const {
-    // Select callback url
-    QString callback = "";
-    QStringList urlList = subscription.getCallbackUrls();
-    if (urlList.size() > 0)
-        callback = urlList[0];
-
-    QUrl url(callback);
-
-    // Header
-    QHttpRequestHeader header("NOTIFY", url.path());
-
-    header.setValue("HOST", url.host() + ":" + QString::number(url.port()));
-    header.setValue("CONTENT-TYPE", "text/xml");
-    header.setValue("CONTENT-LENGTH", QString::number(
-            this->getMessageBody().size()));
-    header.setValue("NT", "upnp:event");
-    header.setValue("NTS", "upnp:propchange");
-    header.setValue("SID", "uuid:" + subscription.getSid());
-    header.setValue("SEQ", QString::number(SEQ));
-
-    return header;
-}
-
-QByteArray BrisaEventMessage::getMessageBody() const {
-    QByteArray body;
-
-    body.append("<?xml version=\"1.0\"?>\r\n");
-    body.append(
-            "<e:propertyset xmlns:e=\"urn:schemas-upnp-org:event-1-0\">\r\n");
-
-    for (QList<BrisaStateVariable *>::const_iterator i =
-            this->VARIABLES->begin(); i != this->VARIABLES->end(); ++i) {
-        QString variableName = (*i)->getAttribute(BrisaStateVariable::Name);
-        QString variableValue = (*i)->getAttribute(BrisaStateVariable::Value);
-
-        body.append("  <e:property>\r\n");
-        body.append("    <" + variableName + ">" + variableValue + "</"
-                + variableName + ">\r\n");
-        body.append("  </e:property>\r\n");
-    }
-
-    body.append("</e:propertyset>\r\n");
-
-    return body;
-}
-
-#endif // USE_NEW_BRISA_WEBSERVER

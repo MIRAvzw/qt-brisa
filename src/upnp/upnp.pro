@@ -16,13 +16,10 @@ INCLUDEPATH += . \
     ../../deploy/include/BrisaUtils
 DEFINES += BUILD_BRISA_UPNP
 CONFIG += BRISA \
-    QT \
-    QXT
+    QT
 QT += core \
     network \
     xml
-QXT += core \
-    web
 BRISA += core \
     utils
 CONVENIENCE += $$CLEAN_TARGET

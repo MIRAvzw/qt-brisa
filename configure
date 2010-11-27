@@ -160,7 +160,6 @@ cd ../..
 echo >&2 "Testing for external libraries."
 
 configtest qt4     Qt
-configtest qxt     Qxt
 
 #====finaly running qmake====
 echo "Autodetection finished. Running qmake."

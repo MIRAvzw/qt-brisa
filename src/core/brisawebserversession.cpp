@@ -41,8 +41,6 @@
 
 using namespace Brisa;
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 enum State
 {
     WAITING_FOR_CHUNK_SIZE = 1,
@@ -272,5 +270,3 @@ bool BrisaWebserverSession::keepAlive()
     chunksBuffer.clear();
     return true;
 }
-
-#endif // USE_NEW_BRISA_WEBSERVER

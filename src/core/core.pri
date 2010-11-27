@@ -4,13 +4,11 @@ HEADERS = brisaconfig.h \
     brisawebfile.h \
     brisawebserver.h \
     brisawebservice.h \
-    brisawebserviceprovider.h \
     brisawebstaticcontent.h \
     brisawebserversession.h
 SOURCES = brisaconfig.cpp \
     brisawebfile.cpp \
     brisawebserver.cpp \
     brisawebservice.cpp \
-    brisawebserviceprovider.cpp \
     brisawebstaticcontent.cpp \
     brisawebserversession.cpp

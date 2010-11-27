@@ -51,22 +51,7 @@ public:
 
     BrisaAbstractEventMessage(QObject *parent = 0);
 
-#ifdef USE_NEW_BRISA_WEBSERVER
-
     QByteArray getRequestMessage() const;
-
-#else
-    /*!
-     * Returns this event message's http header.
-     */
-    virtual QHttpRequestHeader getMessageHeader() const = 0;
-
-    /*!
-     * Returns this event message's http body.
-     */
-    virtual QByteArray getMessageBody() const = 0;
-#endif
-
 };
 
 }

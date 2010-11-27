@@ -24,11 +24,9 @@
  */
 
 #include "brisawebstaticcontent.h"
-using namespace Brisa;
-
-#ifdef USE_NEW_BRISA_WEBSERVER
-
 #include "brisawebserversession.h"
+
+using namespace Brisa;
 
 BrisaWebStaticContent::BrisaWebStaticContent(const QByteArray &content,
                                              QObject *parent) :
@@ -72,22 +70,3 @@ void BrisaWebStaticContent::onRequest(const HttpRequest &request,
 
     session->respond(response);
 }
-
-#else // !USE_NEW_BRISA_WEBSERVER
-
-BrisaWebStaticContent::BrisaWebStaticContent(QxtAbstractWebSessionManager *sm,
-        QString content, QObject *parent) :
-    QxtWebSlotService(sm, parent) {
-    this->content = new QString(content);
-}
-
-BrisaWebStaticContent::~BrisaWebStaticContent() {
-    delete content;
-}
-
-void BrisaWebStaticContent::index(QxtWebRequestEvent *event) {
-    postEvent(new QxtWebPageEvent(event->sessionID, event->requestID,
-            content->toUtf8()));
-}
-
-#endif // USE_NEW_BRISA_WEBSERVER
