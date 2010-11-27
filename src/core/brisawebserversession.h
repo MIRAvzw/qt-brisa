@@ -57,6 +57,8 @@ protected:
     void prepareResponse(HttpResponse &);
     void writeEntityBody(const HttpResponse &, QTcpSocket *);
 
+    bool keepAlive();
+
 private:
     BrisaWebserver *server;
     int entitySize;

@@ -267,4 +267,10 @@ void BrisaWebserverSession::writeEntityBody(const HttpResponse &r, QTcpSocket *s
     }
 }
 
+bool BrisaWebserverSession::keepAlive()
+{
+    chunksBuffer.clear();
+    return true;
+}
+
 #endif // USE_NEW_BRISA_WEBSERVER

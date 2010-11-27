@@ -68,10 +68,6 @@ HttpSession::~HttpSession()
 
 void HttpSession::setSession(int socketDescriptor)
 {
-    requestInfo.clear();
-    buffer.clear();
-    state = WAITING_FOR_REQUEST_LINE;
-
     birthTime = QDateTime::currentDateTime();
 
     socket->setSocketDescriptor(socketDescriptor);
@@ -234,7 +230,11 @@ void HttpSession::onReadyRead()
 
 void HttpSession::onConnectionDie()
 {
-    if (cleanUp())
+    requestInfo.clear();
+    buffer.clear();
+    state = WAITING_FOR_REQUEST_LINE;
+
+    if (keepAlive())
         sessionManager->releaseSession(this);
     else
         deleteLater();

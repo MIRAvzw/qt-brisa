@@ -75,9 +75,9 @@ protected:
     // this function is called every time a connection is closed
     // should return true if the object must keep alive or false
     // if the object should be deleted
-    virtual bool cleanUp()
+    virtual bool keepAlive()
     {
-        return true;
+        return false;
     }
 
 private slots:
