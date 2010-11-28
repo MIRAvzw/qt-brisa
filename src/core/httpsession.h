@@ -72,6 +72,10 @@ protected:
     virtual void prepareResponse(HttpResponse &);
     virtual void writeEntityBody(const HttpResponse &, QTcpSocket *);
 
+    virtual void sessionStarted()
+    {
+    }
+
     // this function is called every time a connection is closed
     // should return true if the object must keep alive or false
     // if the object should be deleted
@@ -88,7 +92,6 @@ private:
     HttpSessionManager *sessionManager;
     QTcpSocket *socket;
     HttpRequest requestInfo;
-    QDateTime birthTime;
     int state;
     QByteArray buffer;
 };

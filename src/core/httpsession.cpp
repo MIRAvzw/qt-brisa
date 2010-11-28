@@ -68,9 +68,8 @@ HttpSession::~HttpSession()
 
 void HttpSession::setSession(int socketDescriptor)
 {
-    birthTime = QDateTime::currentDateTime();
-
     socket->setSocketDescriptor(socketDescriptor);
+    sessionStarted();
 }
 
 int HttpSession::isRequestSupported(const HttpRequest &request) const

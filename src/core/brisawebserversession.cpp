@@ -26,9 +26,15 @@
 #include "brisawebserversession.h"
 #include "brisawebserver.h"
 #include "brisawebservice.h"
+#include <QTimer>
 
 #ifndef MAPPED_MEMORY_SIZE
 #define MAPPED_MEMORY_SIZE 64
+#endif
+
+// in miliseconds
+#ifndef SESSION_TIMEOUT
+#define SESSION_TIMEOUT 180000
 #endif
 
 #ifdef major
@@ -50,14 +56,17 @@ enum State
 
 BrisaWebserverSession::BrisaWebserverSession(BrisaWebserver *server, HttpSessionManager *parent) :
     HttpSession(parent),
-    server(server)
+    server(server),
+    timer(new QTimer)
 {
     lastSupportedHttpVersion = HttpVersion(1, 1);
     connect(this, SIGNAL(responsePosted(HttpResponse)), this, SLOT(writeResponse(HttpResponse)));
+    connect(timer, SIGNAL(timeout()), this, SLOT(onTimeout()));
 }
 
 BrisaWebserverSession::~BrisaWebserverSession()
 {
+    delete timer;
 }
 
 void BrisaWebserverSession::respond(HttpResponse r, bool chunkedResponse)
@@ -189,9 +198,11 @@ bool BrisaWebserverSession::atEnd(HttpRequest &request, QByteArray &buffer) thro
 
 void BrisaWebserverSession::onRequest(const HttpRequest &request)
 {
+    timer->start(SESSION_TIMEOUT);
     if (request.httpVersion() == lastSupportedHttpVersion &&
         request.header("HOST").isNull()) {
         writeResponse(HttpResponse(lastSupportedHttpVersion, HttpResponse::BAD_REQUEST, true));
+        timer->stop();
         return;
     }
     if (BrisaWebService *service = server->service(request.uri())) {
@@ -199,6 +210,7 @@ void BrisaWebserverSession::onRequest(const HttpRequest &request)
         service->postRequest(request, this);
     } else {
         writeResponse(HttpResponse(request.httpVersion(), HttpResponse::NOT_FOUND, true));
+        timer->stop();
     }
 }
 
@@ -265,8 +277,18 @@ void BrisaWebserverSession::writeEntityBody(const HttpResponse &r, QTcpSocket *s
     }
 }
 
+void BrisaWebserverSession::sessionStarted()
+{
+    timer->start(SESSION_TIMEOUT);
+}
+
 bool BrisaWebserverSession::keepAlive()
 {
     chunksBuffer.clear();
     return true;
+}
+
+void BrisaWebserverSession::onTimeout()
+{
+    writeResponse(HttpResponse(HttpVersion(1, 1), HttpResponse::REQUEST_TIMEOUT, true));
 }

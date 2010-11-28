@@ -30,6 +30,8 @@
 
 #include "httpsession.h"
 
+class QTimer;
+
 namespace Brisa {
 
 class BrisaWebserver;
@@ -48,6 +50,7 @@ signals:
 
 public slots:
     void respond(HttpResponse r, bool chunkedResponse = false);
+    void onTimeout();
 
 protected:
     bool hasEntityBody(const HttpRequest &request) throw(HttpResponse);
@@ -57,10 +60,12 @@ protected:
     void prepareResponse(HttpResponse &);
     void writeEntityBody(const HttpResponse &, QTcpSocket *);
 
+    void sessionStarted();
     bool keepAlive();
 
 private:
     BrisaWebserver *server;
+    QTimer *timer;
     int entitySize;
 
     int chunkedEntity;
