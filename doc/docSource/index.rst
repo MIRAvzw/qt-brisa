@@ -15,6 +15,7 @@ BRisa UPnP's documentation
    core/index.rst
    upnp/index.rst
    code_examples.rst
+   wizard/wizard.rst
    copyright.rst
 
 Indices and tables
