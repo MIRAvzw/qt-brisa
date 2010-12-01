@@ -243,6 +243,9 @@ public:
     int threadsNumber() const;
     void setThreadsNumber(int);
 
+    QByteArray addWebservice(QByteArray pathSuffix, BrisaWebService *service);
+    void removeWebservice(const QByteArray &path);
+
 public slots:
     /*!
      *  Connects to the msearchRequestReceived() signal comming from the ssdp module. It parses

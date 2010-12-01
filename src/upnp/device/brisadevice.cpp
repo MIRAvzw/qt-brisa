@@ -8,6 +8,7 @@
  * Description: Implements the BrisaDevice class.
  * Authors: Name <email> @since 2009
  *          Jeysibel de Sousa Dantas <jeysibel@gmail.com> @since 11/05/2010
+ *          Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com> @since 2010
  *
  * Copyright (C) <2009> <Embbeded Systems and Pervasive Computing Laboratory>
  *
@@ -36,6 +37,8 @@
 #include "brisawebserver.h"
 
 using namespace Brisa;
+
+static const QByteArray customWebservicesPath = "/custom/";
 
 BrisaDevice::BrisaDevice(QObject *parent) :
         QObject(parent), running(false)
@@ -661,3 +664,19 @@ void BrisaDevice::discoverNetworkAddress()
 			<< this->port;
 }
 
+QByteArray BrisaDevice::addWebservice(QByteArray pathSuffix,
+                                      BrisaWebService *service)
+{
+    if (pathSuffix.startsWith('/'))
+        pathSuffix.remove(0, 1);
+    QByteArray path = customWebservicesPath + pathSuffix;
+    webserver->addService(path, service);
+    return path;
+}
+
+void BrisaDevice::removeWebservice(const QByteArray &path)
+{
+    if (path.startsWith(customWebservicesPath)) {
+        webserver->removeService(path);
+    }
+}
