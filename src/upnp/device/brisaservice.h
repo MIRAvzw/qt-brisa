@@ -28,7 +28,7 @@
 #ifndef BRISASERVICE_H_
 #define BRISASERVICE_H_
 
-#include "brisaglobal.h"
+#include <brisaglobal.h>
 #include "brisaabstractservice.h"
 #include "brisaeventcontroller.h"
 #include "brisaactionxmlparser.h"
