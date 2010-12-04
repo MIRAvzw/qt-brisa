@@ -74,11 +74,17 @@ void BrisaUdpListener::start()
         mreq.imr_interface.s_addr = htons(INADDR_ANY);
     }
 
-
+#ifdef Q_WS_X11
     if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
-            reinterpret_cast<char*>(&mreq), sizeof(mreq)) < 0 ||
+                   &mreq, sizeof(mreq)) < 0 ||
         setsockopt(fd, IPPROTO_IP, IP_MULTICAST_LOOP,
-                    &boolean, sizeof (boolean)) < 0)
+                   &boolean, sizeof (boolean)) < 0)
+#else
+    if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
+                   reinterpret_cast<char *>(&mreq), sizeof(mreq)) < 0 ||
+        setsockopt(fd, IPPROTO_IP, IP_MULTICAST_LOOP,
+                   reinterpret_cast<char *>(&boolean), sizeof (boolean)) < 0)
+#endif
     {
           qWarning() << this->objectName << ": could not join MULTICAST group.";
     }
