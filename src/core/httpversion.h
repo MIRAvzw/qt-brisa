@@ -28,9 +28,11 @@
 
 #include <QByteArray>
 
+#include "brisaglobal.h"
+
 namespace Brisa {
 
-class HttpVersion
+class BRISA_CORE_EXPORT HttpVersion
 {
 public:
     HttpVersion(int httpVersionMajor = 1, int httpVersionMinor = 1);

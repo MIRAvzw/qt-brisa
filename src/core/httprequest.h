@@ -31,7 +31,7 @@
 
 namespace Brisa {
 
-class HttpRequest: public HttpMessage
+class BRISA_CORE_EXPORT HttpRequest: public HttpMessage
 {
 public:
     explicit HttpRequest(const QByteArray &method = QByteArray(), const QByteArray &uri = "/",

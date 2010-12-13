@@ -33,7 +33,7 @@ class QIODevice;
 
 namespace Brisa {
 
-class HttpMessage
+class BRISA_CORE_EXPORT HttpMessage
 {
 public:
     HttpMessage(HttpVersion httpVersion);

@@ -32,7 +32,7 @@
 
 namespace Brisa {
 
-class HttpSessionManager : public QThread
+class BRISA_CORE_EXPORT HttpSessionManager : public QThread
 {
 Q_OBJECT
 public:

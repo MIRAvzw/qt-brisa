@@ -30,13 +30,15 @@
 
 #include "httpsession.h"
 
+#include "brisaglobal.h"
+
 class QTimer;
 
 namespace Brisa {
 
 class BrisaWebserver;
 
-class BrisaWebserverSession : public HttpSession
+class BRISA_CORE_EXPORT BrisaWebserverSession : public HttpSession
 {
 Q_OBJECT
 public:

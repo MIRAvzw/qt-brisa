@@ -27,12 +27,11 @@
 #define HTTPRESPONSE_H
 
 #include "httpmessage.h"
-#include "httpversion.h"
 #include <QHash>
 
 namespace Brisa {
 
-class HttpResponse: public HttpMessage
+class BRISA_CORE_EXPORT HttpResponse: public HttpMessage
 {
 public:
     enum StatusCode

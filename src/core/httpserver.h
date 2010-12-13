@@ -30,6 +30,8 @@
 #include <QFile>
 #include <QHostAddress>
 
+#include "brisaglobal.h"
+
 namespace Brisa {
 
 class HttpSession;
@@ -41,7 +43,7 @@ public:
     virtual HttpSession *generateSessionHandler(HttpSessionManager *parent) = 0;
 };
 
-class HttpServer : public QTcpServer
+class BRISA_CORE_EXPORT HttpServer : public QTcpServer
 {
     Q_OBJECT
 public:

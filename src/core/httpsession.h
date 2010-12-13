@@ -37,7 +37,7 @@ namespace Brisa {
 
 class HttpSessionManager;
 
-class HttpSession: public QObject
+class BRISA_CORE_EXPORT HttpSession: public QObject
 {
 Q_OBJECT
 public:
