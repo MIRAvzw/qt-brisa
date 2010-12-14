@@ -60,7 +60,7 @@ BrisaControlPoint::BrisaControlPoint(QObject *parent, QString st, int mx) :
 
     connect(http, SIGNAL(requestFinished(int, bool)), this, SLOT(httpResponse(int, bool)));
     connect(ssdpClient, SIGNAL(removedDeviceEvent(QString)), this, SLOT(deviceRemoved(QString)));
-    connect(ssdpClient, 
+    connect(ssdpClient,
             SIGNAL(newDeviceEvent(QString, QString, QString, QString, QString, QString)),
             this,
             SLOT(deviceFound(QString, QString, QString, QString, QString, QString)));

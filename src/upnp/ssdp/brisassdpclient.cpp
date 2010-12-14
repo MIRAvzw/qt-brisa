@@ -34,21 +34,21 @@ BrisaSSDPClient::BrisaSSDPClient(QObject *parent) :
 	QObject(parent),
     running(false)
 {
-    this->udpListener = new BrisaUdpListener("239.255.255.250", 1900,
-                                             "BrisaSSDPClient", parent);
-    connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
 BrisaSSDPClient::~BrisaSSDPClient() {
     if (isRunning())
         stop();
 
-    delete udpListener;
+    delete this->udpListener;
 }
 
 void BrisaSSDPClient::start() {
     if (!isRunning()) {
-        udpListener->start();
+        this->udpListener = new BrisaUdpListener("239.255.255.250", 1900,
+                                                 "BrisaSSDPClient");
+        connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+        this->udpListener->start();
         running = true;
     } else {
         qDebug() << "Brisa SSDP Client: Already running!";
@@ -75,8 +75,8 @@ void BrisaSSDPClient::datagramReceived() {
         datagram->resize(udpListener->pendingDatagramSize());
         udpListener->readDatagram(datagram->data(), datagram->size());
 
-        QString Temp(datagram->data());
-        QHttpRequestHeader *parser = new QHttpRequestHeader(Temp);
+        QString temp(datagram->data());
+        QHttpRequestHeader *parser = new QHttpRequestHeader(temp);
 
         notifyReceived(parser);
 

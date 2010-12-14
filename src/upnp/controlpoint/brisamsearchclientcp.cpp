@@ -51,9 +51,8 @@ BrisaMSearchClientCP::BrisaMSearchClientCP(QObject *parent,
     QObject(parent), running(false), type(serviceType), mx(QByteArray::number(
             serviceMx)), SSDP_ADDR("0.0.0.0"), SSDP_PORT(1900), S_SSDP_PORT(
             "1900") {
-    udpListener = new QUdpSocket(this);
-    connect(udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 
+    this->udpListener = 0;
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(discover()));
 }
@@ -61,9 +60,10 @@ BrisaMSearchClientCP::BrisaMSearchClientCP(QObject *parent,
 BrisaMSearchClientCP::~BrisaMSearchClientCP() {
     if (isRunning())
         stop();
-
-    delete udpListener;
-    delete timer;
+    if (this->udpListener) {
+        delete this->udpListener;
+    }
+    delete this->timer;
 }
 
 void BrisaMSearchClientCP::discover() {
@@ -71,6 +71,7 @@ void BrisaMSearchClientCP::discover() {
 
     qDebug() << "BrisaMSearch discover message sent";
 
+    this->udpListener->moveToThread(this->thread());
     udpListener->writeDatagram(discoverMessage.toUtf8(), QHostAddress(
             "239.255.255.250"), 1900);
 }
@@ -86,6 +87,10 @@ bool BrisaMSearchClientCP::isRunning() const {
 
 void BrisaMSearchClientCP::start(int interval) {
     if (!isRunning()) {
+        if (!this->udpListener) {
+            this->udpListener = new QUdpSocket();
+            connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+        }
         if (!udpListener->bind(QHostAddress(SSDP_ADDR), 1900)) {
             // TODO remove these magic numbers!
             for (qint32 i = 49152; i < 65535; ++i) {
