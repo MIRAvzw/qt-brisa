@@ -89,9 +89,9 @@ In this demonstration, only the service "CalculatorActions." was added. Advancin
    :scale: 50 %
    :align: center
 
-With all actions added, the next step is to define the arguments that constitute each action,  to do that we can give a double click on an action or, with the action selected click on the button "Edit Arguments", making the following screen appear:
+With all actions added, the next step is to deﬁne the arguments of each action. Double click on an action or select a desired action and click on the “Edit Arguments” button, the following screen will appear:
 
-.. image:: dialog1.png
+.. image:: screen.png
    :height: 100px
    :width: 200 px
    :scale: 50 %
@@ -99,17 +99,45 @@ With all actions added, the next step is to define the arguments that constitute
 
 To insert a new argument click on the “Insert” button and a new line will appear on the list:
 
-.. image:: dialog2.png
+.. image:: addingnewline.png
    :height: 100px
    :width: 200 px
    :scale: 50 %
    :align: center
 
-You must define the following fields: StateVariable, Direction, and SendEvents Type. If you want you can omit the fields DefaultValue and Argument.
+In this example we define two input arguments “Op1” and “Op2” and an output: “Result".
 
-In this example we define two input arguments "Op1" and "Op2" and an output: "ResultOperation. We also define a StateVariable "Operation", omitting the field Argument to identify what action was requested by the ControlPoint.
+.. image:: addingArguments.png
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :align: center
 
-.. image:: dialog3.png
+In next step we define the state variable with same name of the arguments. If you want you can omit the field DefaultValue.
+
+.. image:: statevariables.png
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :align: center
+
+In next step we can link the arguments to state variable:
+
+.. image:: relationateVariable1.png
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :align: center
+
+And repeat the same procedure to others arguments and state variables, as shown next.
+
+.. image:: relationateVariable2.png
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :align: center
+
+.. image:: relationateVariable3.png
    :height: 100px
    :width: 200 px
    :scale: 50 %
