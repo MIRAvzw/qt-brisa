@@ -89,7 +89,9 @@ In this demonstration, only the service "CalculatorActions." was added. Advancin
    :scale: 50 %
    :align: center
 
-With all actions added, the next step is to deﬁne the arguments of each action. Double click on an action or select a desired action and click on the “Edit Arguments” button, the following screen will appear:
+
+
+With all actions added, the next step is to define the arguments that each action. Double click on an action or select a desired action and click on the "Edit Arguments" button, the follow screen will appear:
 
 .. image:: screen.png
    :height: 100px
@@ -113,7 +115,7 @@ In this example we define two input arguments “Op1” and “Op2” and an out
    :scale: 50 %
    :align: center
 
-In next step we define the state variable with same name of the arguments. If you want you can omit the field DefaultValue.
+In next step we define the state variable with same name of the arguments. The field “Default Value” is optional, fill it in case you wish to have a default value of the corresponding state variable.
 
 .. image:: statevariables.png
    :height: 100px
@@ -143,18 +145,12 @@ And repeat the same procedure to others arguments and state variables, as shown 
    :scale: 50 %
    :align: center
 
-As all actions of the calculator have the same input and output arguments, so we must repeat the same procedure for other actions or click the "Repeat Arguments" button so it can be done automatically:
-
-.. image:: finalActionPage.png
-   :height: 100px
-   :width: 200 px
-   :scale: 50 %
-   :align: center
 
 And we are done creating our calculator device. As we chose to generate a ControlPoint in the beginning of the wizard, two QtCreator projects will be opened at the end, as shown:
 
 .. image:: openProject.png
       :align: center
+
 These projects are buildable. Running ControlPoint, will perform the action Sum, which is the first action defined by setting the input arguments to "1". On the application output appears that the Device variables "Op1", "Op2" were changed to the value 1 and the variable "Operation" was changed to "Sum". Then, the ControlPoint receives the concatenation of the values of "Op1" and "Op2" as the answer “11”. Chek the implementation of projects and ControlPoint Device:
 
 .. image:: openProject2.png
