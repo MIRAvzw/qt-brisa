@@ -1,0 +1,12 @@
+Source: libbrisa
+Section: devel
+Priority: optional
+Maintainer: Camilo Campos <zeromaisum@gmail.com>
+Build-Depends: debhelper (>= 5.0.38), libqt4-dev
+Standards-Version: 3.8.2
+Package: libbrisa-dev
+Architecture: all
+Section: devel
+Depends: libqt4-dev
+version:2.0
+Description: A C++ UPnP library.

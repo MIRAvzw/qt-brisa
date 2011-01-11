@@ -1,0 +1,10 @@
+#! /bin/bash
+
+echo "Instaling BRisa UPnP"
+cd /usr/lib/brisa-2.0
+./configure
+make 
+make install
+echo "Instalation finished"
+exit 0
+

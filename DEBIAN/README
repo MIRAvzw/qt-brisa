@@ -1,0 +1,48 @@
+This Readme was wroten by Camilo Campos <zeromaisum@gmail.com> and explans how to make a package .deb of BRisa UPnP framework
+This package was made using the Ubuntu 9.10 Karmic Koala and the kernel 2.6.31-22-generic
+
+The first step is changing the name of the folder qt-brisa to brisa2.0 then this folder should be moved to "/home/username/brisa-2.0/usr/lib".
+The second step is create a folder "DEBIAN" in "/home/username/brisa-2.0" and the files: 
+
+"control" whose content is 
+
+Source: libbrisa
+Section: devel
+Priority: optional
+Maintainer: Camilo Campos <zeromaisum@gmail.com>
+Build-Depends: debhelper (>= 5.0.38), libqt4-dev
+Standards-Version: 3.8.2
+Package: libbrisa-dev
+Architecture: all
+Section: devel
+Depends: libqt4-dev
+version:2.0
+Description: A C++ UPnP library.
+
+
+
+postinst whose content is 
+
+#! /bin/bash
+
+echo "Instaling BRisa UPnP"
+cd /usr/lib/brisa-2.0
+./configure
+make 
+make install
+echo "Instalation finished"
+exit 0
+
+
+
+rules whose content is 
+
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/class/qmake.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+
+
+the trird step is go to the shell change the directory to "/home/username/brisa-2.0" and type "dpkg -b brisa-2.0" then the package brisa-2.0.deb will be created.
+
