@@ -29,7 +29,7 @@
 
 #include "brisaudplistener.h"
 
-#ifdef Q_WS_X11
+#ifdef Q_OS_UNIX
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #else

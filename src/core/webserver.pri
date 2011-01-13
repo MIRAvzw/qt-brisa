@@ -1,13 +1,17 @@
-SOURCES += httprequest.cpp \
-    httpserver.cpp \
-    httpsession.cpp \
-    httpresponse.cpp \
-    httpmessage.cpp \
-    httpsessionmanager.cpp
-HEADERS += httprequest.h \
-    httpserver.h \
-    httpsession.h \
-    httpresponse.h \
-    httpversion.h \
-    httpmessage.h \
-    httpsessionmanager.h
+INCLUDEPATH += $$PWD
+DEPENDPATH += $$PWD
+
+SOURCES += httprequest.cpp
+SOURCES += httpserver.cpp
+SOURCES += httpsession.cpp
+SOURCES += httpresponse.cpp
+SOURCES += httpmessage.cpp
+SOURCES += httpsessionmanager.cpp
+
+HEADERS += httprequest.h
+HEADERS += httpserver.h
+HEADERS += httpsession.h
+HEADERS += httpresponse.h
+HEADERS += httpversion.h
+HEADERS += httpmessage.h
+HEADERS += httpsessionmanager.h

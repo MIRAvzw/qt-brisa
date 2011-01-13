@@ -25,7 +25,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#include "brisaglobal.h"
+#include <brisaglobal.h>
 
 #ifndef _BRISALOG_H
 #define _BRISALOG_H

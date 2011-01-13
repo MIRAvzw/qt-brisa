@@ -1,20 +1,24 @@
-HEADERS += device/brisaactionxmlparser.h \
-    device/brisadevice.h \
-    device/brisadevicexmlhandler.h \
-    device/brisaeventcontroller.h \
-    device/brisaeventmessage.h \
-    device/brisaservice.h \
-    device/brisaeventsubscription.h \
-    brisaabstracteventmessage.h \
-    brisamulticasteventmessage.h \
-    brisacontrolwebservice.h
-SOURCES += device/brisadevice.cpp \
-    device/brisadevicexmlhandler.cpp \
-    device/brisaservice.cpp \
-    device/brisaeventcontroller.cpp \
-    device/brisaeventmessage.cpp \
-    device/brisaeventsubscription.cpp \
-    device/brisaactionxmlparser.cpp \
-    brisaabstracteventmessage.cpp \
-    brisamulticasteventmessage.cpp \
-    brisacontrolwebservice.cpp
+INCLUDEPATH += $$PWD
+DEPENDPATH += $$PWD
+
+HEADERS += device/brisaactionxmlparser.h 
+HEADERS += device/brisadevice.h 
+HEADERS += device/brisadevicexmlhandler.h 
+HEADERS += device/brisaeventcontroller.h 
+HEADERS += device/brisaeventmessage.h 
+HEADERS += device/brisaservice.h 
+HEADERS += device/brisaeventsubscription.h 
+HEADERS += device/brisaabstracteventmessage.h 
+HEADERS += device/brisamulticasteventmessage.h 
+HEADERS += device/brisacontrolwebservice.h
+
+SOURCES += device/brisadevice.cpp 
+SOURCES += device/brisadevicexmlhandler.cpp 
+SOURCES += device/brisaservice.cpp 
+SOURCES += device/brisaeventcontroller.cpp 
+SOURCES += device/brisaeventmessage.cpp 
+SOURCES += device/brisaeventsubscription.cpp 
+SOURCES += device/brisaactionxmlparser.cpp 
+SOURCES += device/brisaabstracteventmessage.cpp 
+SOURCES += device/brisamulticasteventmessage.cpp 
+SOURCES += device/brisacontrolwebservice.cpp

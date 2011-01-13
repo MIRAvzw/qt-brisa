@@ -1,0 +1,8 @@
+.
+This component is now configured.
+.
+To build the component library (if requested) and example(s),
+run qmake and your make or nmake command.
+.
+To remove or reconfigure, run make (nmake) distclean.
+.

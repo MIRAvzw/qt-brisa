@@ -28,17 +28,16 @@
 #ifndef _BRISAEVENTPROXY_H
 #define _BRISAEVENTPROXY_H
 
-#include "brisaabstracteventsubscription.h"
-#include "brisaglobal.h"
-
-#include <BrisaCore>
-
 #include <QDateTime>
 #include <QList>
 #include <QString>
 #include <QHttpResponseHeader>
 #include <QObject>
 #include <QtXml>
+
+#include "brisaabstracteventsubscription.h"
+#include "brisaglobal.h"
+#include "brisawebserver.h"
 
 namespace Brisa {
 

@@ -31,6 +31,8 @@
 
 #include "brisaargument.h"
 
+#include "brisaglobal.h"
+
 #include <QString>
 #include <QList>
 #include <QMap>

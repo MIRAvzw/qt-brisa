@@ -37,7 +37,6 @@
 #include <QNetworkAddressEntry>
 #include <QtDebug>
 #include <QObject>
-#include <BrisaCore>
 
 #include "brisaicon.h"
 #include "brisacontrolpointservice.h"

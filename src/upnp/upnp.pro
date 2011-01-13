@@ -11,24 +11,18 @@ INCLUDEPATH += . \
     ./controlpoint \
     ./device \
     ../core \
-    ../utils \
-    ../../deploy/include/BrisaCore \
-    ../../deploy/include/BrisaUtils
+    ../utils
 DEFINES += BUILD_BRISA_UPNP
-CONFIG += BRISA \
-    QT
-QT += core \
-    network \
-    xml
-BRISA += core \
-    utils
+CONFIG += BRISA QT 
+QT += core network xml 
+BRISA += core utils 
 CONVENIENCE += $$CLEAN_TARGET
 CONFIG += brisabuild
 include(upnp.pri)
 include(controlpoint/controlpoint.pri)
 include(ssdp/ssdp.pri)
 include(device/device.pri)
+include(../brisabase.pri)
 
 # Deps
-include(../../config.pri)
 include(../../deps/qtsoap-2.6-opensource/src/qtsoap.pri)
