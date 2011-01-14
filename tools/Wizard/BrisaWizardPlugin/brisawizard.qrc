@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>images/watermark2.png</file>
-        <file>images/brisaLogo.png</file>
-        <file>images/brisa.png</file>
-        <file>images/bigBrisaIcon.png</file>
-    </qresource>
-</RCC>
