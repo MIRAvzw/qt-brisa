@@ -1,6 +1,3 @@
-INCLUDEPATH += $$PWD
-DEPENDPATH += $$PWD
-
 HEADERS += brisaconfig.h
 HEADERS += brisacore.h
 HEADERS += brisaglobal.h

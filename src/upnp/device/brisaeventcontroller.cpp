@@ -102,7 +102,7 @@ inline void BrisaEventController::subscribe(const HttpRequest &request,
         }
 
         qDebug() << "BrisaEventController received a subscription request:"
-            " Callback: " << headers.value("CALLBACK") << "- Timeout: "
+                " Callback: " << headers.value("CALLBACK") << "- Timeout: "
                 << headers.value("TIMEOUT");
 
         BrisaEventSubscription *newSubscriber = new BrisaEventSubscription(
@@ -183,8 +183,8 @@ void BrisaEventController::sendEvent(const BrisaEventMessage &message, const QUr
     socket->write(message.getRequestMessage());
 
     qDebug() << "BrisaEventController sending event to "
-             << message.getSid() << " at Host: "
-             << url.host() << ":" << url.port();
+            << message.getSid() << " at Host: "
+            << url.host() << ":" << url.port();
 }
 
 BrisaEventController::~BrisaEventController()
@@ -234,7 +234,7 @@ QStringList BrisaEventController::getEventUrls(const QString &urls)
 
 int BrisaEventController::getTimeOut(const QString &timeout) {
     QString returnTime = timeout;
-    returnTime.remove("Second-");
-    bool ok;
+    returnTime.remove("Second-"); 	bool ok;
     return returnTime.toInt(&ok, 10);
 }
+

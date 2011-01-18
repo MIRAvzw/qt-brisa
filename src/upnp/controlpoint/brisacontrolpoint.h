@@ -31,6 +31,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QMap>
+#include <BrisaCore>
 
 #include "brisanetwork.h"
 #include "brisacontrolpointdevice.h"

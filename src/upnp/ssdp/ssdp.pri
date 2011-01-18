@@ -1,6 +1,3 @@
-INCLUDEPATH += $$PWD
-DEPENDPATH += $$PWD
-
 HEADERS += ssdp/brisassdpclient.h 
 HEADERS += ssdp/brisassdpserver.h
 

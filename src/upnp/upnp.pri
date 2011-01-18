@@ -1,6 +1,3 @@
-INCLUDEPATH += $$PWD
-DEPENDPATH += $$PWD
-
 HEADERS += brisaabstracteventsubscription.h
 HEADERS += brisaabstractservice.h
 HEADERS += brisaservicexmlhandler.h

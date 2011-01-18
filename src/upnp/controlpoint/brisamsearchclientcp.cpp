@@ -28,7 +28,7 @@
 #include <QtDebug>
 #include "brisamsearchclientcp.h"
 
-#ifdef Q_OS_UNIX
+#ifdef Q_WS_X11
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #else
