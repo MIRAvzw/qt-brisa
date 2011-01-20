@@ -35,18 +35,17 @@
 #include "brisaglobal.h"
 #include "brisautils.h"
 
+#include <BrisaCore>
 #include "brisawebservice.h"
-#include "brisawebserver.h"
 
 namespace Brisa {
-
     class BRISA_UPNP_EXPORT BrisaEventController: public BrisaWebService
     {
     Q_OBJECT
 
     public:
         BrisaEventController(BrisaWebserver *sessionManager,
-		QList<BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
+                QList<BrisaStateVariable *> *stateVariableList, QObject *parent = 0);
         virtual ~BrisaEventController();
 
     public slots:

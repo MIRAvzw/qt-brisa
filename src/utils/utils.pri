@@ -1,10 +1,6 @@
-INCLUDEPATH += $$PWD
-INCLUDEPATH += ../core/ 
-DEPENDPATH += $$PWD
+SOURCES += brisalog.cpp \
+           brisanetwork.cpp
 
-SOURCES += brisalog.cpp
-SOURCES += brisanetwork.cpp
-
-HEADERS += brisalog.h
-HEADERS += brisanetwork.h
-HEADERS += brisautils.h
+HEADERS += brisalog.h \
+	   brisanetwork.h \
+	   brisautils.h

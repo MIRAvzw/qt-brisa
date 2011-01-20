@@ -1,31 +1,29 @@
 TEMPLATE = lib
 CLEAN_TARGET = BrisaUpnp
 DEPENDPATH += . \
-        ./ssdp \
-        ./controlpoint \
-        ./device \
-        ../core \
-        ../utils
-        INCLUDEPATH += . \
-        ./ssdp \
-        ./controlpoint \
-        ./device \
-        ../core \
-       ../utils \
-       ../../deploy/include/BrisaCore \
-       ../../deploy/include/BrisaUtils
-
+    ./ssdp \
+    ./controlpoint \
+    ./device \
+    ../core \
+    ../utils
+INCLUDEPATH += . \
+    ./ssdp \
+    ./controlpoint \
+    ./device \
+    ../core \
+    ../utils \
+    ../../deploy/include/BrisaCore \
+    ../../deploy/include/BrisaUtils
 DEFINES += BUILD_BRISA_UPNP
 CONFIG += BRISA \
-QT
+    QT
 QT += core \
-network \
-xml
+    network \
+    xml
 BRISA += core \
-utils
+    utils
 CONVENIENCE += $$CLEAN_TARGET
 CONFIG += brisabuild
-
 include(upnp.pri)
 include(controlpoint/controlpoint.pri)
 include(ssdp/ssdp.pri)

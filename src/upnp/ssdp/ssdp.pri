@@ -1,8 +1,8 @@
-HEADERS += ssdp/brisassdpclient.h 
-HEADERS += ssdp/brisassdpserver.h
+HEADERS += ssdp/brisassdpclient.h \
+           ssdp/brisassdpserver.h
 
-SOURCES += ssdp/brisassdpclient.cpp 
-SOURCES +=ssdp/brisassdpserver.cpp
+SOURCES += ssdp/brisassdpclient.cpp \
+           ssdp/brisassdpserver.cpp
            
 win32 {
     LIBS += -lwsock32 -lws2_32

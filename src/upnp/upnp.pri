@@ -1,15 +1,16 @@
-HEADERS += brisaabstracteventsubscription.h
-HEADERS += brisaabstractservice.h
-HEADERS += brisaservicexmlhandler.h
-HEADERS += brisaaction.h
-HEADERS += brisaargument.h
-HEADERS += brisaicon.h
-HEADERS += brisastatevariable.h
+HEADERS += brisaabstracteventsubscription.h \
+           brisaabstractservice.h \
+           brisaservicexmlhandler.h \
+           brisaaction.h \
+           brisaargument.h \
+           brisaicon.h \
+           brisastatevariable.h
 
-SOURCES += brisaabstracteventsubscription.cpp 
-SOURCES += brisaabstractservice.cpp 
-SOURCES += brisaservicexmlhandler.cpp 
-SOURCES += brisaaction.cpp 
-SOURCES += brisaargument.cpp 
-SOURCES += brisaicon.cpp 
-SOURCES += brisastatevariable.cpp
+SOURCES += brisaabstracteventsubscription.cpp \
+           brisaabstractservice.cpp \
+           brisaservicexmlhandler.cpp \
+           brisaaction.cpp \
+           brisaargument.cpp \
+           brisaicon.cpp \
+           brisastatevariable.cpp
+

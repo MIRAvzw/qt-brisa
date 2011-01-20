@@ -39,7 +39,6 @@
 #include <QObject>
 #include <BrisaCore>
 
-
 #include "brisaicon.h"
 #include "brisacontrolpointservice.h"
 #include "brisadevicexmlhandlercp.h"
