@@ -37,14 +37,6 @@
 #define SESSION_TIMEOUT 180000
 #endif
 
-#ifdef major
-#undef major
-#endif
-
-#ifdef minor
-#undef minor
-#endif
-
 using namespace Brisa;
 
 enum State
