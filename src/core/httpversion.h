@@ -27,6 +27,15 @@
 #define HTTPVERSION_H
 
 #include <QByteArray>
+#include <QDebug>
+
+#ifdef major
+#undef major
+#endif
+
+#ifdef minor
+#undef minor
+#endif
 
 #include "brisaglobal.h"
 
@@ -193,6 +202,12 @@ inline Brisa::HttpVersion::operator QByteArray() const
 inline Brisa::HttpVersion::operator bool() const
 {
     return m_major || m_minor;
+}
+
+inline QDebug &operator<<(QDebug dbg, const Brisa::HttpVersion &version)
+{
+    dbg.nospace() << "HTTP/" << version.major() << '.' << version.minor();
+    return dbg.maybeSpace();
 }
 
 #endif // HTTPVERSION_H

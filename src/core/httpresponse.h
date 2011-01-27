@@ -137,4 +137,16 @@ inline bool Brisa::HttpResponse::closeConnection() const
     return m_closeConnection;
 }
 
+inline QDebug &operator<<(QDebug dbg, const Brisa::HttpResponse &response)
+{
+    dbg.nospace() << "{\n  " << response.httpVersion() << ' ' << response.statusCode() << ' ' << response.reasonPhrase().data() << '\n';
+    for (QHash<QByteArray, QByteArray>::const_iterator i = response.headersBeginIterator();i != response.headersEndIterator();++i) {
+        dbg.nospace() << "  " <<  i.key().data() << ": " << i.value().data() << '\n';
+    }
+    if (response.entitySize())
+        dbg.nospace() << " Entity body size: " << response.entitySize() << '\n';
+    dbg.nospace() << "}\n";
+    return dbg.maybeSpace();
+}
+
 #endif // HTTPRESPONSE_H
