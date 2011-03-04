@@ -29,6 +29,7 @@
 #include <QFile>
 #include <QDataStream>
 #include <QSet>
+#include <QDir>
 
 #include "brisaconfig.h"
 
@@ -142,4 +143,9 @@ bool BrisaConfigurationManager::removeSection(const QString &section) {
         this->save();
 
     return error;
+}
+
+bool BrisaConfigurationManager::setConfigFilePath(QString &path)
+{
+    this->configPath = path;
 }

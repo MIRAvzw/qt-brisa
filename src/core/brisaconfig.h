@@ -131,6 +131,11 @@ public:
      \return a boolean. true whether is possible remove it
      */
     bool removeSection(const QString &section);
+    /*!
+      Sets a new path for the configuration file.
+      \param path new path
+     */
+    bool setConfigFilePath(QString &path);
 
 private:
     QHash<QString, QString> state;
