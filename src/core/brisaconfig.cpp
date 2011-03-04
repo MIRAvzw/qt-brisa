@@ -38,7 +38,7 @@ BrisaConfigurationManager::BrisaConfigurationManager(const QString &configPath,
         const QHash<QString, QString> &state) {
     this->state = state;
     this->configPath = configPath;
-    this->fileName = "/file.dat";
+    this->fileName = "/brisa.conf";
     this->parameterSeparator = ".";
     this->directAccess = false;
 }
@@ -73,19 +73,13 @@ QString BrisaConfigurationManager::getParameter(const QString &section,
     if (getDirectAccess())
         update();
 
-    QString str(section);
-    str.append(parameterSeparator + parameter);
-    if (this->state.contains(str))
-        return this->state.value(str);
-
-    return "";
+    return this->state.value(section + parameterSeparator + parameter);
 }
 
 void BrisaConfigurationManager::setParameter(const QString &section,
         const QString &parameter, const QString &parValue) {
 
-    QString str(section);
-    str.append(parameterSeparator + parameter);
+    QString str(section + parameterSeparator + parameter);
 
     if ((parValue == "") and (this->state.contains(str))) {
         this->state.remove(str);
