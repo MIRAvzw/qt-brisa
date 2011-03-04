@@ -67,14 +67,9 @@ Q_OBJECT
 public:
 
     /*!
-     Constructor for the BrisaConfigurationManager class.
-     \param config_path a QString that represents the path of the database to work on.
-     If not supplied will work on a memory database.
-     \param state: hash as a dictionaryr with sections and parameters.\
-            Keys are section.parameters format and values are the their respective values.
+      Returns the only instance of BrisaConfigurationManager (singleton).
      */
-    BrisaConfigurationManager(const QString &configPath, const QHash<QString,
-            QString> &state);
+    static BrisaConfigurationManager* getInstance();
 
     /*!
      Sets the direct access option of the ConfigurationManager. When True, direct access makes all
@@ -137,12 +132,26 @@ public:
      */
     bool setConfigFilePath(QString &path);
 
+    static bool setGlobalConfigPath(QString &path);
+
 private:
+    /*!
+     Constructor for the BrisaConfigurationManager class.
+     \param config_path a QString that represents the path of the database to work on.
+     If not supplied will work on a memory database.
+     \param state: hash as a dictionaryr with sections and parameters.\
+            Keys are section.parameters format and values are the their respective values.
+     */
+    BrisaConfigurationManager(const QString &configPath, const QHash<QString,
+            QString> &state);
+
     QHash<QString, QString> state;
     QString configPath;
     QString fileName;
     QString parameterSeparator;
     bool directAccess;
+    static BrisaConfigurationManager *instance;
+    static QString globalConfigPath;
 };
 }
 

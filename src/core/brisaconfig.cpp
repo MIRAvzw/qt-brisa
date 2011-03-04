@@ -147,5 +147,32 @@ bool BrisaConfigurationManager::removeSection(const QString &section) {
 
 bool BrisaConfigurationManager::setConfigFilePath(QString &path)
 {
-    this->configPath = path;
+    QDir dir;
+    if (dir.exists(path)) {
+        this->configPath = path;
+        return true;
+    }
+    return false;
 }
+
+bool BrisaConfigurationManager::setGlobalConfigPath(QString &path)
+{
+    QDir dir;
+    if (dir.exists(path)) {
+        globalConfigPath = path;
+        return true;
+    }
+    return false;
+}
+
+BrisaConfigurationManager* BrisaConfigurationManager::getInstance()
+{
+    if (!instance) {
+        instance = new BrisaConfigurationManager(globalConfigPath, QHash<QString, QString>());
+    }
+    return instance;
+}
+
+BrisaConfigurationManager* BrisaConfigurationManager::instance = NULL;
+
+QString BrisaConfigurationManager::globalConfigPath = "./";
