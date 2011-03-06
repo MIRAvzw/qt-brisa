@@ -28,8 +28,7 @@
 
 
 #include "brisaudplistener.h"
-
-#ifdef Q_WS_X11
+#ifdef Q_OS_UNIX
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #else
@@ -37,6 +36,7 @@
 #include <ws2tcpip.h>
 #endif
 #include <cstring>
+#define MAX_LEN  1024   /* maximum receive string size */
 
 BrisaUdpListener::BrisaUdpListener(QString address, quint32 port,
                                    QString objectName, QObject *parent) :
@@ -53,10 +53,13 @@ BrisaUdpListener::~BrisaUdpListener()
 
 void BrisaUdpListener::start()
 {
+
+#ifdef Q_WS_X11
     if (!this->bind(QHostAddress(this->address), this->port, QUdpSocket::ShareAddress |
                     QUdpSocket::ReuseAddressHint)) {
             qWarning() << this->objectName << ": failure to bind interface.";
     }
+#endif
 
     int fd;
     fd = this->socketDescriptor();
@@ -73,19 +76,72 @@ void BrisaUdpListener::start()
     {
         mreq.imr_interface.s_addr = htons(INADDR_ANY);
     }
+#ifndef Q_WS_X11
+    qWarning() << "windows procedure is running...";
+       WSADATA wsaData;              /* Windows socket DLL structure */
+       struct sockaddr_in mc_addr;   /* socket address structure */
+
+           /* Load Winsock 2.0 DLL */
+       if (WSAStartup(MAKEWORD(2, 0), &wsaData) != 0) {
+             fprintf(stderr, "WSAStartup() failed");
+             exit(1);
+       }
+
+       /* create socket to join multicast group on */
+       if ((fd = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) {
+         qWarning() << "socket() failed";
+         exit(1);
+       }
+
+       /* set reuse port to on to allow multiple binds per host */
+       if ((setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char*)&boolean,
+            sizeof(boolean))) < 0) {
+         qWarning() << "setsockopt() failed";
+             exit(1);
+       }
+
+       /* construct a multicast address structure */
+       memset(&mc_addr, 0, sizeof(mc_addr));
+       mc_addr.sin_family      = AF_INET;
+       mc_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+       mc_addr.sin_port        = htons(this->port);
+
+       /* bind to multicast address to socket */
+       if ((::bind(fd, (struct sockaddr *) &mc_addr,
+            sizeof(mc_addr))) < 0) {
+         qWarning() << "bind() failed";
+         exit(1);
+       }
+
+         /* construct an IGMP join request structure */
+       mreq.imr_multiaddr.s_addr = inet_addr(address.toAscii());
+       mreq.imr_interface.s_addr = htonl(INADDR_ANY);
+
+
+       /* send an ADD MEMBERSHIP message via setsockopt */
+       if ((setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
+            (char*) &mreq, sizeof(mreq))) < 0) {
+           qWarning() << this->objectName << ": could not join MULTICAST group.";
+
+         exit(1);
+       }
+       this->setSocketDescriptor(fd,QUdpSocket::BoundState,QUdpSocket::ReadOnly);
+#endif
+
 
 #ifdef Q_WS_X11
     if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
                    &mreq, sizeof(mreq)) < 0 ||
         setsockopt(fd, IPPROTO_IP, IP_MULTICAST_LOOP,
                    &boolean, sizeof (boolean)) < 0)
-#else
-    if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
-                   reinterpret_cast<char *>(&mreq), sizeof(mreq)) < 0 ||
-        setsockopt(fd, IPPROTO_IP, IP_MULTICAST_LOOP,
-                   reinterpret_cast<char *>(&boolean), sizeof (boolean)) < 0)
-#endif
     {
           qWarning() << this->objectName << ": could not join MULTICAST group.";
     }
+#endif
 }
+
+
+
+
+
+

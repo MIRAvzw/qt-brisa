@@ -1,3 +1,6 @@
+INCLUDEPATH += $$PWD
+DEPENDPATH += $$PWD
+
 HEADERS += device/brisaactionxmlparser.h \
     device/brisadevice.h \
     device/brisadevicexmlhandler.h \

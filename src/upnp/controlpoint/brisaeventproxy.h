@@ -30,9 +30,7 @@
 
 #include "brisaabstracteventsubscription.h"
 #include "brisaglobal.h"
-
-#include <BrisaCore>
-
+#include "brisawebserver.h"
 #include <QDateTime>
 #include <QList>
 #include <QString>

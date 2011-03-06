@@ -28,7 +28,7 @@
 #include "brisassdpserver.h"
 
 #include <QtDebug>
-#ifdef Q_WS_X11
+#ifdef Q_OS_UNIX
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #else
@@ -104,7 +104,7 @@ BrisaSSDPServer::BrisaSSDPServer(QObject *parent) :
     SSDP_PORT(1900), // TODO: make this as #define
     S_SSDP_PORT("1900") // TODO: make this as #defin
 {
-    this->udpListener = new BrisaUdpListener(SSDP_ADDR, SSDP_PORT, "Brisa SSDP Server");
+    this->udpListener = new BrisaUdpListener(SSDP_ADDR, SSDP_PORT, "Brisa SSDP Server", parent);
     connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
 }
 
@@ -223,6 +223,7 @@ void BrisaSSDPServer::respondMSearch(const QString &senderIp,
                                      const QString &usn)
 {
     QString message = UPNP_MSEARCH_RESPONSE.arg(cacheControl, date, location, server, st, usn);
+
     this->udpListener->writeDatagram(message.toUtf8(),
                                      QHostAddress(senderIp),
                                      senderPort);

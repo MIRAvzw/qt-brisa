@@ -28,7 +28,7 @@
 
 #ifndef _BRISAACTION_H
 #define _BRISAACTION_H
-
+#include "brisaglobal.h"
 #include "brisaargument.h"
 
 #include <QString>

@@ -37,7 +37,7 @@
 #include <QtCore>
 
 #include "brisaglobal.h"
-
+#include "brisawebserver.h"
 #include "brisawebservice.h"
 
 namespace Brisa {

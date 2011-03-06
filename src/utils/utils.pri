@@ -1,3 +1,7 @@
+INCLUDEPATH += $$PWD
+INCLUDEPATH += ../core/ 
+DEPENDPATH += $$PWD
+
 SOURCES += brisalog.cpp \
            brisanetwork.cpp
 

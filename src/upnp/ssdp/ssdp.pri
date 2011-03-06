@@ -1,8 +1,11 @@
-HEADERS += ssdp/brisassdpclient.h \
-           ssdp/brisassdpserver.h
+INCLUDEPATH += $$PWD
+DEPENDPATH += $$PWD
 
-SOURCES += ssdp/brisassdpclient.cpp \
-           ssdp/brisassdpserver.cpp
+HEADERS += ssdp/brisassdpclient.h 
+HEADERS += ssdp/brisassdpserver.h
+
+SOURCES += ssdp/brisassdpclient.cpp 
+SOURCES +=ssdp/brisassdpserver.cpp
            
 win32 {
     LIBS += -lwsock32 -lws2_32

@@ -54,6 +54,7 @@ BrisaMSearchClientCP::BrisaMSearchClientCP(QObject *parent,
 
     this->udpListener = 0;
     timer = new QTimer(this);
+    this->udpListener = 0;
     connect(timer, SIGNAL(timeout()), this, SLOT(discover()));
 }
 
@@ -72,6 +73,7 @@ void BrisaMSearchClientCP::discover() {
     qDebug() << "BrisaMSearch discover message sent";
 
     this->udpListener->moveToThread(this->thread());
+    this->udpListener->moveToThread(this->thread());
     udpListener->writeDatagram(discoverMessage.toUtf8(), QHostAddress(
             "239.255.255.250"), 1900);
 }
@@ -86,6 +88,10 @@ bool BrisaMSearchClientCP::isRunning() const {
 }
 
 void BrisaMSearchClientCP::start(int interval) {
+        if (!this->udpListener) {
+            this->udpListener = new QUdpSocket();
+            connect(this->udpListener, SIGNAL(readyRead()), this, SLOT(datagramReceived()));
+        }
     if (!isRunning()) {
         if (!this->udpListener) {
             this->udpListener = new QUdpSocket();
