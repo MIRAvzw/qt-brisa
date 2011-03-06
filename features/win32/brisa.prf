@@ -1,0 +1,50 @@
+include(brisavars.prf)
+
+DEPENDPATH      += $${BRISA_INSTALL_HEADERS}
+INCLUDEPATH     += $${BRISA_INSTALL_HEADERS}
+
+unix:!macx{
+        BRISAQMAKERPATH=$${QMAKE_RPATH}
+        isEmpty(BRISAQMAKERPATH):BRISAQMAKERPATH=-Wl,-rpath,
+        LIBS += $${BRISAQMAKERPATH}$${BRISA_INSTALL_LIBS}
+}
+macx:LIBS       += -F$${BRISA_INSTALL_LIBS}
+LIBS            += -L$${BRISA_INSTALL_LIBS}
+
+contains(BRISA, core) {
+    contains(BRISA_MODULES, core):DEFINES += BRISA_CORE_LIB
+    else:warning(BRisa was built without BrisaCore)
+
+    DEPENDPATH       += $${BRISA_INSTALL_HEADERS}/BrisaCore
+    INCLUDEPATH      += $${BRISA_INSTALL_HEADERS}/BrisaCore
+    macx:INCLUDEPATH += $${BRISA_INSTALL_LIBS}/BrisaCore.framework/HEADERS/
+
+    qtAddLibrary(BrisaCore)
+    BRISA += utils
+    QT  += core network xml
+}
+
+contains(BRISA, upnp) {
+    contains(BRISA_MODULES, upnp):DEFINES += BRISA_UPNP_LIB
+    else:warning(BRisa was built without BrisaUpnp)
+
+    DEPENDPATH       += $${BRISA_INSTALL_HEADERS}/BrisaUpnp
+    INCLUDEPATH      += $${BRISA_INSTALL_HEADERS}/BrisaUpnp
+    macx:INCLUDEPATH += $${BRISA_INSTALL_LIBS}/BrisaUpnp.framework/HEADERS/
+
+    qtAddLibrary(BrisaUpnp)
+    BRISA += core utils 
+    QT  += core network xml
+}
+
+contains(BRISA, utils) {
+    contains(BRISA_MODULES, utils):DEFINES += BRISA_UTILS_LIB
+    else:warning(BRisa was built without BrisaUtils)
+
+    DEPENDPATH       += $${BRISA_INSTALL_HEADERS}/BrisaUtils
+    INCLUDEPATH      += $${BRISA_INSTALL_HEADERS}/BrisaUtils
+    macx:INCLUDEPATH += $${BRISA_INSTALL_LIBS}/BrisaUtils.framework/HEADERS/
+
+    qtAddLibrary(BrisaUtils)
+    QT  += core network
+}

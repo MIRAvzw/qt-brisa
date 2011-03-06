@@ -1,0 +1,7 @@
+BRISA_MODULES = core upnp utils 
+BRISA_INSTALL_PREFIX = C:/BRisa 
+BRISA_INSTALL_LIBS = C:/BRisa/lib 
+BRISA_INSTALL_BINS = C:/BRisa/bin 
+BRISA_INSTALL_HEADERS = C:/BRisa/include 
+BRISA_INSTALL_FEATURES = C:/Qt/2010.05/qt/mkspecs/features/win32 
+BRISA_INSTALL_DOCS = C:/BRisa/doc 
