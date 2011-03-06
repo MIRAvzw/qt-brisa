@@ -151,8 +151,8 @@ configtest()
 
 echo >&2 "Installing dependencies."
 
-echo >&2 "Installing QtSoap 2.6..."
-cd deps/qtsoap-2.6-opensource
+echo >&2 "Installing QtSoap 2.7_1..."
+cd deps/qtsoap-2.7_1-opensource
 ./configure &> qtsoap_build.log
 make &> qtsoap_build.log
 cd ../..
@@ -168,6 +168,6 @@ cd  $PROJECT_ROOT
 [ -f config.pri ] && mv config.pri config.pri.bak
 mv config.in config.pri
 
-$QMAKE_BIN $QMAKE_PARAMS -recursive 2>>$CONFIG_LOG
+$QMAKE_BIN $QMAKE_PARAMS -recursive $PROJECT_ROOT/projects.pro 2>> config.log
 
 echo -e >&2 "${C_CYAN}Configure finished. Run $MAKE now.${C_NONE}\n"

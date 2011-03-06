@@ -3,7 +3,7 @@
 #################################################
 
 unix:!macx:include(features/unix/brisabuild.prf)
-win32:include(features/win32/brisabuild.prf)
+win32:include(features/win32/brisa.prf)
 
 TEMPLATE = subdirs
 DESTDIR = deploy/libs
@@ -39,7 +39,7 @@ contains(BRISA_BUILD, upnp) {
    system(echo BRISA_MODULES+=upnp >> modules.prf)
 }
 
-QMAKE_CLEAN += modules.prf deps/qtsoap-2.6-opensource/qtsoap_build.log deps/libqxt/config.log deploy/qt/brisa.prf
+QMAKE_CLEAN += modules.prf deps/qtsoap-2.7_1-opensource/qtsoap_build.log deps/libqxt/config.log deploy/qt/brisa.prf
 
 unix:system((echo BRISAbase=$${BRISAINSTALLDIR}; echo BRISAinclude=$${include.path}; echo BRISAbin=$${bin.path}; echo BRISAlib=$${target.path}; cat modules.prf; cat deploy/qt/brisa.prf.m) > deploy/qt/brisa.prf)
 
