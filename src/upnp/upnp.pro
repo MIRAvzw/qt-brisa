@@ -19,7 +19,7 @@ CONFIG += BRISA QT
 QT += core network xml 
 BRISA += core utils 
 CONVENIENCE += $$CLEAN_TARGET
-CONFIG += brisabuild
+unix:CONFIG += brisabuild
 include(upnp.pri)
 include(controlpoint/controlpoint.pri)
 include(ssdp/ssdp.pri)
