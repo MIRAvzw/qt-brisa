@@ -10,7 +10,7 @@ CONFIG         += brisabuild
 DEFINES        += BUILD_BRISA_UTILS
 include(../../config.pri)
 CONFIG         += QT
-CONFIG         += brisabuild
+unix : CONFIG  += brisabuild
 QT             += core network
 include(../../config.pri)
 CONVENIENCE    += $$CLEAN_TARGET
