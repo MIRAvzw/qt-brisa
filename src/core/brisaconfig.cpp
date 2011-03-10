@@ -30,6 +30,7 @@
 #include <QDataStream>
 #include <QSet>
 #include <QDir>
+#include <QDebug>
 
 #include "brisaconfig.h"
 
