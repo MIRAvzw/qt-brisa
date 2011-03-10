@@ -155,8 +155,17 @@ bool BrisaConfigurationManager::setConfigFilePath(QString &path)
     return false;
 }
 
+QString BrisaConfigurationManager::getConfigFilePath()
+{
+    return this->configPath;
+}
+
 bool BrisaConfigurationManager::setGlobalConfigPath(QString &path)
 {
+    if (instance) {
+        qWarning() << "BrisaConfigurationManager was already instanciated. "
+                "Call setConfigFilePath to change the already existing instance configuration file path.";
+    }
     QDir dir;
     if (dir.exists(path)) {
         globalConfigPath = path;

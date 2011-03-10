@@ -132,6 +132,8 @@ public:
      */
     bool setConfigFilePath(QString &path);
 
+    QString getConfigFilePath();
+
     static bool setGlobalConfigPath(QString &path);
 
 private:
