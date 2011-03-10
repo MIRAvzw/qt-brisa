@@ -35,6 +35,8 @@
 #include "brisaglobal.h"
 #include "brisanetwork.h"
 
+namespace Brisa {
+
 class BRISA_UPNP_EXPORT BrisaUdpListener : public QUdpSocket
 {
     Q_OBJECT
@@ -86,5 +88,7 @@ private:
     quint32 port;
 
 };
+
+}
 
 #endif // BRISAUDPLISTENER_H

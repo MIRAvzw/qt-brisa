@@ -28,6 +28,7 @@
 
 
 #include "brisaudplistener.h"
+
 #ifdef Q_OS_UNIX
 #include <arpa/inet.h>
 #include <netinet/in.h>
@@ -37,6 +38,8 @@
 #endif
 #include <cstring>
 #define MAX_LEN  1024   /* maximum receive string size */
+
+using namespace Brisa;
 
 BrisaUdpListener::BrisaUdpListener(QString address, quint32 port,
                                    QString objectName, QObject *parent) :
@@ -68,9 +71,10 @@ void BrisaUdpListener::start()
     mreq.imr_multiaddr.s_addr = inet_addr(this->address.toUtf8());
     bool boolean = true;
 
-    if (getValidIP() == LOCAL_HOST)
+    QString ip = getValidIP();
+    if (ip == LOCAL_HOST)
     {
-        mreq.imr_interface.s_addr = inet_addr(QString(LOCAL_HOST).toUtf8());
+        mreq.imr_interface.s_addr = inet_addr(ip.toUtf8());
     }
     else
     {

@@ -1,5 +1,7 @@
 #include "brisamulticasteventreceiver.h"
 
+using namespace Brisa;
+
 BrisaMulticastEventReceiver::BrisaMulticastEventReceiver(QObject *parent) :
         QObject(parent)
 {
