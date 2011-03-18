@@ -1,9 +1,6 @@
 Installing Brisa-C++
 ====================
 
-Running QMake:
-   $ qmake
-
 Configure:
 
    $ ./configure
@@ -25,7 +22,6 @@ Examples
    $ make
 
 For running, enter the example directory and run the binary.
-
 
 Instructions for developers
 ===========================
