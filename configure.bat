@@ -304,7 +304,7 @@ echo CONFIG += release >> %QMAKE_CACHE%
 echo    Configuration successful.
 echo    Generating makefiles...
 cd %BRISA_BUILD_TREE%
-%QMAKE_BIN% %MSVCMODE% -recursive %BRISA_SOURCE_TREE%\brisa.pro 
+%QMAKE_BIN% %MSVCMODE% -recursive %BRISA_SOURCE_TREE%\brisa.pro
 if errorlevel 1 goto mainqmakeERR
 
 if not "%MSVCMODE%" == "" goto skipmakeannounce

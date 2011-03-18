@@ -31,9 +31,11 @@ contains(BRISA_MODULES, upnp) {
    SUBDIRS += sub_upnp
 }
 
+#SUBDIRS += examples
 
 features.path = $$BRISA_INSTALL_FEATURES
-features.files = $$BRISA_SOURCE_TREE/features/win32/brisa.prf $$BRISA_BUILD_TREE/features/brisavars.prf
+win32:features.files = $$BRISA_SOURCE_TREE/features/win32/brisa.prf $$BRISA_BUILD_TREE/features/win32/brisavars.prf
+unix:features.files = $$BRISA_SOURCE_TREE/deploy/qt/brisa.prf $$BRISA_BUILD_TREE/features/brisavars.prf
 INSTALLS += features
 
 style.CONFIG = recursive
@@ -41,6 +43,8 @@ style.recurse = $$SUBDIRS
 style.recurse_target = astyle
 QMAKE_EXTRA_TARGETS += style
 
+sub-examples.commands += cd examples && $(QMAKE) $$BRISA_SOURCE_TREE/examples/examples.pro && $(MAKE)
+QMAKE_EXTRA_TARGETS += sub-examples
 
 #sub-tests.commands += cd tests && $(QMAKE) $$BRISA_SOURCE_TREE/tests/tests.pro && $(MAKE)
 #QMAKE_EXTRA_TARGETS += sub-tests
