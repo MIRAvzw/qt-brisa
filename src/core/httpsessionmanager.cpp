@@ -52,9 +52,9 @@ void HttpSessionManager::onNewConnection(int socketDescriptor)
 
     mutex.lock();
 
-
     if (pool.size()) {
         pool.back()->setSession(socketDescriptor);
+        pool.pop_back();
         created = true;
     }
 
