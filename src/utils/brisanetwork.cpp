@@ -49,6 +49,18 @@ QBool isPromiscuousIPv6Address(QString address) {
 }
 
 QString getValidIP() {
+#ifdef Q_OS_UNIX
+    BrisaConfigurationManager *config = BrisaConfigurationManager::getInstance();
+    QString interfaceName = config->getParameter("network", "interface");
+    QString ip = getIp(interfaceName);
+    if (ip.isEmpty()) {
+        ip = config->getParameter("network", "ip");
+    }
+    if (ip.isEmpty()) {
+        ip = QHostAddress(QHostAddress::Any).toString();
+    }
+    return ip;
+#else
     foreach(QHostAddress addressEntry , QNetworkInterface::allAddresses() )
         {
             QString address = addressEntry.toString();
@@ -60,23 +72,19 @@ QString getValidIP() {
         }
     qDebug()
             << "Couldn't acquire a non loopback IP  address,returning 127.0.0.1.";
-
-    //TODO refactor this when IPv6 becomes to be fully supported
     return "127.0.0.1";
+#endif
 }
 
 //TODO deprecated function
 QString getIp(QString networkInterface) {
-    foreach( QNetworkInterface interface, QNetworkInterface::allInterfaces() )
-        {
-            foreach( QNetworkAddressEntry addressEntry, interface.addressEntries() )
-                {
-                    if (interface.name() == networkInterface)
-                        return QHostAddress(addressEntry.ip()).toString();
-                }
-        }
+    QNetworkInterface interface = QNetworkInterface::interfaceFromName(networkInterface);
+    if (interface.isValid()) {
+        return interface.addressEntries().first().ip().toString();
+    }
     return "";
 }
+
 
 QBool isPortOpen(QString address, qint16 port, qint16 timeout) {
     QTcpSocket *socket = new QTcpSocket();
