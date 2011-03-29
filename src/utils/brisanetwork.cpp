@@ -31,6 +31,9 @@
 #include <QIODevice>
 #include <QTcpSocket>
 #include "brisanetwork.h"
+#include "../core/brisaconfig.h"
+
+using namespace Brisa;
 
 QBool isLoopbackIPv4Address(QString address) {
     return QBool(!address.compare("127.0.0.1"));
