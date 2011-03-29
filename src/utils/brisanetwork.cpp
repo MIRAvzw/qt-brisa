@@ -32,10 +32,6 @@
 #include <QTcpSocket>
 #include "brisanetwork.h"
 
-#include <brisaconfig.h>
-
-using namespace Brisa;
-
 QBool isLoopbackIPv4Address(QString address) {
     return QBool(!address.compare("127.0.0.1"));
 }
@@ -53,24 +49,32 @@ QBool isPromiscuousIPv6Address(QString address) {
 }
 
 QString getValidIP() {
-    BrisaConfigurationManager *config = BrisaConfigurationManager::getInstance();
-    QString interfaceName = config->getParameter("network", "interface");
-    QString ip = getIp(interfaceName);
-    if (ip.isEmpty()) {
-        ip = config->getParameter("network", "ip");
-    }
-    if (ip.isEmpty()) {
-        ip = QHostAddress(QHostAddress::Any).toString();
-    }
-    return ip;
+    foreach(QHostAddress addressEntry , QNetworkInterface::allAddresses() )
+        {
+            QString address = addressEntry.toString();
+            if (!(isLoopbackIPv4Address(address)) && !(isLoopbackIPv6Address(
+                    address)) && !(isPromiscuousIPv4Address(address))
+                    && !(isPromiscuousIPv6Address(address))) {
+                return address;
+            }
+        }
+    qDebug()
+            << "Couldn't acquire a non loopback IP  address,returning 127.0.0.1.";
+
+    //TODO refactor this when IPv6 becomes to be fully supported
+    return "127.0.0.1";
 }
 
 //TODO deprecated function
 QString getIp(QString networkInterface) {
-    QNetworkInterface interface = QNetworkInterface::interfaceFromName(networkInterface);
-    if (interface.isValid()) {
-        return interface.addressEntries().first().ip().toString();
-    }
+    foreach( QNetworkInterface interface, QNetworkInterface::allInterfaces() )
+        {
+            foreach( QNetworkAddressEntry addressEntry, interface.addressEntries() )
+                {
+                    if (interface.name() == networkInterface)
+                        return QHostAddress(addressEntry.ip()).toString();
+                }
+        }
     return "";
 }
 
