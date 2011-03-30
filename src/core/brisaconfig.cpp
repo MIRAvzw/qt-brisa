@@ -34,13 +34,21 @@
 
 #include "brisaconfig.h"
 
+#ifdef Q_OS_UNIX
+#define DEFAULT_CONFIG_PATH "/etc/brisa"
+#else
+#define DEFAULT_CONFIG_PATH "C:/brisa"
+#endif
+
+#define CONFIG_FILE_NAME "/brisa.conf"
+
 using namespace Brisa;
 
 BrisaConfigurationManager::BrisaConfigurationManager(const QString &configPath,
         const QHash<QString, QString> &state) {
     this->state = state;
     this->configPath = configPath;
-    this->fileName = "/brisa.conf";
+    this->fileName = CONFIG_FILE_NAME;
     this->parameterSeparator = ".";
     this->directAccess = false;
 }
@@ -152,6 +160,10 @@ bool BrisaConfigurationManager::setConfigFilePath(QString &path)
     if (dir.exists(path)) {
         this->configPath = path;
         return true;
+    } else if (dir.mkpath(path)) {
+        qWarning() << "Path " << path << " does not exist. Creating path...";
+        this->configPath = path;
+        return true;
     }
     return false;
 }
@@ -171,14 +183,29 @@ bool BrisaConfigurationManager::setGlobalConfigPath(QString &path)
     if (dir.exists(path)) {
         globalConfigPath = path;
         return true;
+    } else if (dir.mkpath(path)) {
+        qWarning() << "Path " << path << " does not exist. Creating path...";
+        globalConfigPath = path;
+        return true;
     }
+    checkConfigFile = false;
     return false;
 }
 
 BrisaConfigurationManager* BrisaConfigurationManager::getInstance()
 {
     if (!instance) {
-        instance = new BrisaConfigurationManager(globalConfigPath, QHash<QString, QString>());
+        QString path;
+        if (checkConfigFile) {
+            if (QFile::exists(globalConfigPath + CONFIG_FILE_NAME)) {
+                path = globalConfigPath;
+            } else {
+                path = DEFAULT_CONFIG_PATH;
+            }
+        } else {
+            path = globalConfigPath;
+        }
+        instance = new BrisaConfigurationManager(path, QHash<QString, QString>());
     }
     return instance;
 }
@@ -186,3 +213,5 @@ BrisaConfigurationManager* BrisaConfigurationManager::getInstance()
 BrisaConfigurationManager* BrisaConfigurationManager::instance = NULL;
 
 QString BrisaConfigurationManager::globalConfigPath = "./";
+
+bool BrisaConfigurationManager::checkConfigFile = false;

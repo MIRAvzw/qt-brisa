@@ -154,6 +154,7 @@ private:
     bool directAccess;
     static BrisaConfigurationManager *instance;
     static QString globalConfigPath;
+    static bool checkConfigFile;
 };
 }
 
