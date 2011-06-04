@@ -1,0 +1,120 @@
+#!/bin/bash
+
+#=========================================
+# Android BRisa Compile and Deploy script
+# jeysibel@gmail.com
+#=========================================
+
+# colors
+C_RED='\e[1;31m'
+C_BLUE='\e[1;34m'
+C_GREEN='\e[1;32m'
+C_CYAN='\e[1;36m'
+C_NONE='\e[0m'
+
+
+clean()
+{
+echo -e "${C_GREEN}=============================="
+echo -e "${C_GREEN}    Cleaning the Project      "
+echo -e "${C_GREEN}=============================="
+echo -e "${C_NONE}"
+make clean
+cd "android/bin"
+rm -rvf *.class
+cd "../../"
+echo
+echo -e "${C_RED}DONE!"
+echo -e "${C_NONE}"
+}
+
+compile_java()
+{
+echo -e "${C_GREEN}=============================="
+echo -e "${C_GREEN}     Compiling Java Side      "
+echo -e "${C_GREEN}=============================="
+echo -e "${C_NONE}"
+cd "android"
+ant compile
+cd ".."
+echo
+echo -e "${C_RED}DONE!"
+echo -e "${C_NONE}"
+
+}
+
+compile_qt()
+{
+echo -e "${C_GREEN}=============================="
+echo -e "${C_GREEN}      Compiling Qt Side       "
+echo -e "${C_GREEN}=============================="
+echo -e "${C_NONE}"
+make
+echo
+echo -e "${C_RED}DONE!"
+echo -e "${C_NONE}"
+}
+
+generate_apk()
+{
+echo -e "${C_GREEN}=============================="
+echo -e "${C_GREEN} Generating Android Package   "
+echo -e "${C_GREEN}=============================="
+echo -e "${C_NONE}"
+cd "android"
+ant release
+cd ".."
+echo
+echo -e "${C_RED}DONE!"
+echo -e "${C_NONE}"
+}
+
+compile_all()
+{
+compile_qt
+compile_java
+}
+
+release()
+{
+generate_apk
+
+}
+
+
+while (( $# > 0 )); do
+    if [ $1 == "--compile-java" ]; then
+        compile_java ; shift
+    elif [ $1 == "--compile-qt" ]; then
+        compile_qt ; shift
+    elif [ $1 == "--compile-all" ]; then
+        compile_all ;shift
+    elif [ $1 == "--compile-and-release" ]; then
+        clean
+        compile_all
+        generate_apk ;shift
+    elif [ $1 == "--release" ]; then
+        generate_apk ; shift
+    elif [ $1 == "--clean" ]; then
+        clean ; shift
+    elif [ $1 == "-h" ] || [ $1 == "-help" ] || [ $1 == "--help" ]; then
+        echo -e "Usage: ./build-android-brisa [--clean] [--compile-qt] [--compile-java]"
+        echo -e "       [--compile-all] [--release] [--compile-and-release]"
+        echo -e
+        echo -e "Available options:"
+        echo -e
+        echo -e "--clean ....... This will perform a make clean and also delete"
+        echo -e " .class files"
+        echo -e "--compile-qt ....... Compile only the Qt side of Android BRisa"
+        echo -e "--compile-java ....... Compile only the Java side of Android BRisa"
+        echo -e "--compile-all ....... Compile Both side of Android BRisa"
+        echo -e "--release ....... Generate Android .apk file to "   
+        echo -e "--compile-and-release ....... Perform all compile and release tasks"    
+        exit
+    else
+        echo -e "Unrecognized Option: $1"
+    fi
+    shift
+done
+
+echo -e ""

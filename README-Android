@@ -1,0 +1,68 @@
+==================================
+Brisa Android Build Guide
+==================================
+
+
+1. Setting Up Environment
+------------------------------
+
+Before start the Qt-Brisa Android compilation you will need to install the following packages:
+
+- Android Latest SDK
+- Android Latest NDK
+- Necessitas SDK at /opt/necessitas (known necessitas bug)
+
+2. Setting configure variables
+------------------------------
+
+Once that android environment has been properly configured, it's time to setup the correct paths at configure-android-build script, you must fill the following variables with the respectives paths:
+
+============================================================================================
+Variable                                        Example 
+============================================================================================
+
+
+NECESSITAS_ROOT=/path/to/necessitas             (e.g. /opt/necessitas)
+NDK_ROOT=/path/to/ndk                           (e.g. /foo/bar/android-ndk-r5b)
+ANDROID_NDK_ROOT=/path/to/ndk                   (e.g. /foo/bar/android-ndk-r5b)
+ANDROID_NDK_TOOLCHAIN_PREFIX=toolchain-name     (e.g. arm-linux-androideabi)
+ANDROID_NDK_TOOLCHAIN_VERSION=toolchain-version (e.g. 4.4.3)
+
+After this you must run the configure script running the command:
+
+$ ./configure-android-build
+
+If everything is ok, you will see the message "Configure finished. Run /usr/bin/make now."
+
+3. Compiling Qt-Brisa to Android 
+----------------------------------
+
+
+to perform just a native arm build of Qt/C++ part, you must execute the command at a shell :
+
+$ make
+
+4. Compiling QT-Brisa to Android and generate the Apk File
+------------------------------------------------------------
+
+If instead of just compile Qt-BRisa to Android/ARM you wanna compile the Java side or Qt Side or both sides,  you only need to execute the command line:
+
+$ ./build-android-brisa --compile-java
+
+ or 
+
+$ ./build-android-brisa --compile-Qt
+
+ or
+
+$ ./build-android-brisa --compile-all (Default Option)
+
+
+But if you beyond compile, wanna generate the apk file execute the command line:
+
+$ ./build-android-brisa --compile-and-release
+
+
+
+
+
