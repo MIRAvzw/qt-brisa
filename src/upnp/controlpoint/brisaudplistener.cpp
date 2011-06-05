@@ -29,9 +29,10 @@
 
 #include "brisaudplistener.h"
 
-#ifdef Q_OS_UNIX
+#if defined(Q_OS_UNIX) || defined(Q_OS_ANDROID)
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <sys/socket.h>
 #else
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -57,7 +58,7 @@ BrisaUdpListener::~BrisaUdpListener()
 void BrisaUdpListener::start()
 {
 
-#ifdef Q_WS_X11
+#if defined(Q_WS_X11) || defined (Q_OS_ANDROID)
     if (!this->bind(QHostAddress(this->address), this->port, QUdpSocket::ShareAddress |
                     QUdpSocket::ReuseAddressHint)) {
             qWarning() << this->objectName << ": failure to bind interface.";
@@ -80,7 +81,7 @@ void BrisaUdpListener::start()
     {
         mreq.imr_interface.s_addr = htons(INADDR_ANY);
     }
-#ifndef Q_WS_X11
+#if !defined(Q_WS_X11) && !defined(Q_OS_ANDROID)
     qWarning() << "windows procedure is running...";
        WSADATA wsaData;              /* Windows socket DLL structure */
        struct sockaddr_in mc_addr;   /* socket address structure */
@@ -133,7 +134,7 @@ void BrisaUdpListener::start()
 #endif
 
 
-#ifdef Q_WS_X11
+#if defined(Q_WS_X11) || defined(Q_OS_ANDROID)
     if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
                    &mreq, sizeof(mreq)) < 0 ||
         setsockopt(fd, IPPROTO_IP, IP_MULTICAST_LOOP,

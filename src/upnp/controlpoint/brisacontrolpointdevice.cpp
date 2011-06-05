@@ -268,6 +268,8 @@ BrisaControlPointService *BrisaControlPointDevice::getServiceById(QString servic
 BrisaControlPointService *BrisaControlPointDevice::getServiceByType(QString serviceType)
 {
     for (int i = 0; i < this->serviceList.size(); i++) {
+    	qDebug() << "########### Brisa : String to Compare " << serviceType;
+    	qDebug() << "########### Brisa : Service Current " << this->serviceList.at(i)->getAttribute(BrisaControlPointService::ServiceType);
         if (this->serviceList.at(i)->getAttribute(BrisaControlPointService::ServiceType).compare(serviceType) == 0) {
             return serviceList.at(i);
         }

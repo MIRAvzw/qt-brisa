@@ -28,7 +28,7 @@
 #include <QtDebug>
 #include "brisamsearchclientcp.h"
 
-#ifdef Q_WS_X11
+#if defined(Q_WS_X11) || defined(Q_OS_ANDROID)
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #else
