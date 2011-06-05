@@ -31,7 +31,7 @@
 #include <QIODevice>
 #include <QTcpSocket>
 #include "brisanetwork.h"
-#include "../core/brisaconfig.h"
+#include "brisaconfig.h"
 
 using namespace Brisa;
 
@@ -52,7 +52,7 @@ QBool isPromiscuousIPv6Address(QString address) {
 }
 
 QString getValidIP() {
-#ifdef Q_OS_UNIX
+/*#if defined(Q_OS_UNIX) || defined(Q_OS_ANDROID)
     BrisaConfigurationManager *config = BrisaConfigurationManager::getInstance();
     QString interfaceName = config->getParameter("network", "interface");
     QString ip = getIp(interfaceName);
@@ -63,7 +63,7 @@ QString getValidIP() {
         ip = QHostAddress(QHostAddress::Any).toString();
     }
     return ip;
-#else
+#else*/
     foreach(QHostAddress addressEntry , QNetworkInterface::allAddresses() )
         {
             QString address = addressEntry.toString();
@@ -76,7 +76,7 @@ QString getValidIP() {
     qDebug()
             << "Couldn't acquire a non loopback IP  address,returning 127.0.0.1.";
     return "127.0.0.1";
-#endif
+//#endif
 }
 
 //TODO deprecated function
