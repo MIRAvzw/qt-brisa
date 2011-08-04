@@ -1,0 +1,41 @@
+# Contributor: Tim Besard <tim.besard@gmail.com>
+pkgname=libbrisa-git
+pkgver=20110804
+pkgrel=1
+pkgdesc="BRisa is a project focused on the development of UPnP technologies. It provides an API to building UPnP devices, services and control points."
+arch=('i686' , 'x86_64')
+url="http://brisa.garage.maemo.org/"
+license=('LGPL')
+depends=('qt' 'libqxt')
+provides=('libbrisa')
+conflicts=('libbrisa')
+
+_gitroot="git://github.com/MIRAvzw/qt-brisa.git"
+_gitname="qt-brisa"
+
+noextract=()
+build() {
+    cd "${srcdir}"
+    msg "Connecting to GIT server...."
+
+    if [ -d ${_gitname} ] ; then
+        cd ${_gitname} && git pull origin
+        msg "The local files are updated."
+    else
+        git clone ${_gitroot} ${_gitname} --depth=1
+    fi
+    msg "GIT checkout done or server timeout"
+    
+    cd "${srcdir}"
+    msg "Starting make..."
+    rm -rf ${_gitname}-build
+    cp --archive --recursive ${_gitname} ${_gitname}-build
+    cd ${_gitname}-build
+	./configure -prefix /usr
+	make || return 1
+	make INSTALL_ROOT=${pkgdir} install || return 1
+	
+	rm -rf ${srcdir}/${_svnmod}-build
+}
+
+
