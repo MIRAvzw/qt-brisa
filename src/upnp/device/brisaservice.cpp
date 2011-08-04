@@ -50,7 +50,7 @@ using namespace Brisa;
 
 static const QString SOAP_ERROR_TEMPLATE = "<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
                                            "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
-                                           "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
+                                           " s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
                                            "<s:Body>\r\n"
                                            "<s:Fault>\r\n"
                                            "<faultcode>s:Client</faultcode>\r\n"
@@ -258,7 +258,7 @@ inline void BrisaService::respondAction(BrisaWebserverSession *session, const Br
 {
     QByteArray message("<?xml version=\"1.0\"  encoding=\"utf-8\"?>\r\n"
                        "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
-                       "s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
+                       " s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n"
                        "<s:Body>\r\n"
                        "<u:" + actionName.toUtf8() + "Response xmlns:u=\"" + serviceType.toUtf8() + "\">\r\n");
 
