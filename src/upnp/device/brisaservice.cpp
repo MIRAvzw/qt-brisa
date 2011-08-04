@@ -204,8 +204,9 @@ void BrisaService::buildWebServiceTree(BrisaWebserver *sessionManager)
 
     sessionManager->addService((serviceId + '/' + eventSubUrl.section('/', -1)).toUtf8(), event);
 
-    sessionManager->addService((serviceId + '/' + scpdUrl.section('/', -1)).toUtf8(),
-                               new BrisaWebFile(scpdFilePath, this));
+    BrisaWebFile *scpd = new BrisaWebFile(scpdFilePath, this);
+    scpd->setContentType("text/xml");
+    sessionManager->addService((serviceId + '/' + scpdUrl.section('/', -1)).toUtf8(), scpd);
 
     childWebServices.insert(controlUrl.section('/', -1), control);
     childWebServices.insert(eventSubUrl.section('/', -1), event);
@@ -274,6 +275,7 @@ inline void BrisaService::respondAction(BrisaWebserverSession *session, const Br
     // TODO: if the connection should br closed, set the flag in the HttpResponse constructor
     HttpResponse r(HttpVersion(1, 1), HttpResponse::OK);
     r.setHeader("CONTENT-LENGTH", QByteArray::number(message.size()));
+    r.setHeader("CONTENT-TYPE", "text/xml");
     r.setEntityBody(message);
     session->respond(r);
 }
@@ -289,6 +291,7 @@ inline void BrisaService::respondError(BrisaWebserverSession *session, int error
     // TODO: if the connection should br closed, set the flag in the HttpResponse constructor
     HttpResponse r(HttpVersion(1, 1), HttpResponse::OK);
     r.setHeader("CONTENT-LENGTH", QByteArray::number(message.size()));
+    r.setHeader("CONTENT-TYPE", "text/xml");
     r.setEntityBody(message.toUtf8());
     session->respond(r);
 }

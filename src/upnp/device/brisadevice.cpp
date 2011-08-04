@@ -430,8 +430,9 @@ void BrisaDevice::startWebServer()
 void BrisaDevice::buildWebServerTree()
 {
     descriptionFile.open();
-    webserver->addService(fileAddress.toUtf8(),
-                          new BrisaWebFile(descriptionFile.fileName(), this));
+    BrisaWebFile* descriptionWebFile = new BrisaWebFile(descriptionFile.fileName(), this);
+    descriptionWebFile->setContentType("text/xml");
+    webserver->addService(fileAddress.toUtf8(), descriptionWebFile);
     descriptionFile.close();
 
     foreach(BrisaService *service, serviceList) {
