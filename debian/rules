@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+%:
+	dh $@
+override_dh_auto_configure:
+	./configure -prefix /usr -debug
+override_dh_strip:
+	dh_strip --dbg-package=libbrisa-dbg
+.PHONY: override_dh_strip override_dh_auto_configure

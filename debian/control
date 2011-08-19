@@ -1,0 +1,28 @@
+Source: libbrisa
+Maintainer: root <tim.besard@gmail.com>
+Homepage: http://brisa.garage.maemo.org/
+Priority: extra
+Build-Depends: debhelper (>= 7.0.50~), qt4-qmake, libqt4-dev
+Standards-Version: 3.8.4
+Vcs-Git: git://github.com/MIRAvzw/qt-brisa.git
+Vcs-Browser: https://github.com/MIRAvzw/qt-brisa
+
+Package: libbrisa
+Section: lib
+Architecture: any
+Depends: libqt4-core, libqt4-xml, libqt4-network, ${misc:Depends}, ${shlibs:Depends}
+Description: BRisa is a project focused on the development of UPnP technologies.
+ It provides an API to building UPnP devices, services and control points.
+
+Package: libbrisa-dev
+Section: libdevel
+Architecture: any
+Depends: libbrisa (= ${Source-Version})
+Description: Development files for the BRisa UPnP library.
+
+Package: libbrisa-dbg
+Section: libdevel
+Architecture: any
+Depends: libbrisa (= ${binary:Version}), ${misc:Depends}
+Description: Debug symbols for the BRisa UPnP library.
+
