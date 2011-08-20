@@ -11,18 +11,20 @@ Package: libbrisa
 Section: lib
 Architecture: any
 Depends: libqt4-core, libqt4-xml, libqt4-network, ${misc:Depends}, ${shlibs:Depends}
-Description: BRisa is a project focused on the development of UPnP technologies.
+Description: UPnP library for the Qt framework
+ .
+ BRisa is a project focused on the development of UPnP technologies.
  It provides an API to building UPnP devices, services and control points.
 
 Package: libbrisa-dev
 Section: libdevel
 Architecture: any
 Depends: libbrisa (= ${Source-Version})
-Description: Development files for the BRisa UPnP library.
+Description: UPnP library for the Qt framework (development files)
 
 Package: libbrisa-dbg
 Section: libdevel
 Architecture: any
 Depends: libbrisa (= ${binary:Version}), ${misc:Depends}
-Description: Debug symbols for the BRisa UPnP library.
+Description: UPnP library for the Qt framework (debug symbols)
 
